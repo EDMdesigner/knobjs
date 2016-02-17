@@ -43,7 +43,7 @@ function createWatchTask(config) {
 	return function () {
 		gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], [taskToRun])
 			.on("change", function (event) {
-				log(event);
+				//log(event);
 			});
 	};
 }

@@ -95,29 +95,26 @@
 
 <h2>knob-paged-list</h2>
 
-<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'name', sort: ['id', 'name']">
-	<div>
-		<span data-bind="text: data.id"></span>
-		<span data-bind="text: data.email"></span>
-		<span data-bind="text: data.name"></span>
-		<span data-bind="text: data.title"></span>
-	</div>
-</knob-paged-list>
-
-
-
-
-
+<!-- 
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'name', sort: ['id', 'name']">
+		<div>
+			<span data-bind="text: data.id"></span>
+			<span data-bind="text: data.email"></span>
+			<span data-bind="text: data.name"></span>
+			<span data-bind="text: data.title"></span>
+		</div>
+	</knob-paged-list>
+ -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-<script src="../../src/knob/components.built.js"></script>
+<script src="../src/components.built.js"></script>
 <script>
 	var buttons = [];
 	for (var idx = 0; idx < 10; idx += 1) {
 		buttons.push("button" + idx);
 	}
 	ko.applyBindings({
-		store: store,
+		//store: store,
 		numOfPages: ko.observable(),
 		numOfItems: ko.observable(1000),
 		buttons: buttons
