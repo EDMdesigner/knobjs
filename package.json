@@ -25,6 +25,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "superdata": "*"
+    "superdata": "0.0.2"
   }
 }
