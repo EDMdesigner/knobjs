@@ -23,5 +23,8 @@
     "jsonlint": "^1.6.2",
     "partialify": "^3.1.6",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "superdata": "*"
   }
 }
