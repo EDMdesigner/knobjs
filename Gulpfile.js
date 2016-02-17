@@ -1,14 +1,42 @@
-var gulp = require("gulp");
-var browserify = require("browserify");
-var source = require("vinyl-source-stream");
-var partialify = require("partialify");
+var gulp 		= require("gulp");
+var browserify 	= require("browserify");
+var source 		= require("vinyl-source-stream");
+var partialify 	= require("partialify");
 var jsonlint	= require("gulp-jsonlint");
-
+var jscs		= require("gulp-jscs");
+var jshint		= require("gulp-jshint");
+var stylish 	= require('gulp-jscs-stylish');
 
 gulp.task("jsonlint", function() {
-	return gulp.src(["src/featureConfigDefaults/**/*.json", "src/modules/**/*.json"])
+	return gulp.src([
+			"src/featureConfigDefaults/**/*.json", 
+			"package.json",
+			".jshintrc",
+			".jscsrc",
+			"src/modules/**/*.json"
+		])
 		.pipe(jsonlint())
 		.pipe(jsonlint.failOnError());
+});
+
+gulp.task("js-validate", function() {
+	return gulp.src([
+		"!src/components.built.js",
+		"Gulpfile.js",
+		"src/**/*.js"
+		])
+		.pipe(jshint(".jshintrc"))
+		.pipe(jshint.reporter("jshint-stylish"))
+});
+
+gulp.task("js-style", function() {
+	return gulp.src([
+			"!src/components.built.js",
+			"Gulpfile.js",
+			"src/**/*.js"
+		])
+		.pipe(jscs(".jscsrc"))
+		.pipe(stylish())
 });
 
 function createBrowserifyTask(config) {
