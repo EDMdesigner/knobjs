@@ -11,6 +11,6 @@ registerComponent("knob-button", require("./button/vm"), require("./button/templ
 registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html")/*, require("./button/style.json")*/);
 registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"));
 registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
-//registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
+registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
 
 //

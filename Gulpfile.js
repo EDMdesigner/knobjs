@@ -77,15 +77,21 @@ function createWatchTask(config) {
 }
 
 var examplesConfigs = {
-	knob: {
+	components: {
 		entries: ["./src/components.js"],
 		outputFileName: "components.built.js",
 		destFolder: "./src/"
+	},
+	knob: {
+		entries: ["./examples/knob.js"],
+		outputFileName: "knob.built.js",
+		destFolder: "./examples/"
 	}
 };
 
-var prop = "knob";
-var actConfig = examplesConfigs[prop];
-var actBrowserifyTaskName = "browserify-examples-" + prop;
-gulp.task(actBrowserifyTaskName, ["jsonlint"], createBrowserifyTask(actConfig));
-gulp.task("watch-examples-" + prop, createWatchTask({taskToRun: actBrowserifyTaskName}));
+for (var prop in examplesConfigs) {
+	var actConfig = examplesConfigs[prop];
+	var actBrowserifyTaskName = "browserify-examples-" + prop;
+	gulp.task(actBrowserifyTaskName, ["jsonlint"], createBrowserifyTask(actConfig));
+	gulp.task("watch-examples-" + prop, createWatchTask({taskToRun: actBrowserifyTaskName}));
+}
