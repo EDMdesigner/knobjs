@@ -51,7 +51,7 @@ module.exports = function createPagination(config) {
 		var beforeCurrent = config.beforeCurrent || 2;
 		var afterCurrent = config.afterCurrent || 2;
 
-		function createPageSelector(idx, isCurrentPage) {
+		function createPageSelector(idx) {
 			return {
 				label: idx + 1,
 				state: "default",
@@ -77,7 +77,7 @@ module.exports = function createPagination(config) {
 
 			var nonClickableInserted = false;
 			for (var idx = 0; idx < numOfPagesVal; idx += 1) {
-				if (idx <= afterHead || idx >= numOfPagesVal - beforeTail -1 || (idx >= currentPageVal - beforeCurrent && idx <= currentPageVal + afterCurrent)) {
+				if (idx <= afterHead || idx >= numOfPagesVal - beforeTail -1 || idx >= currentPageVal - beforeCurrent && idx <= currentPageVal + afterCurrent) {
 					var pageSelector;
 
 					if (idx === currentPageVal) {

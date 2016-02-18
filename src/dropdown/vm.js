@@ -42,7 +42,7 @@ function createButtonDropdown (config) {
 			label: ko.observable(config.label),
 			icon: ko.observable(config.icon),
 			value: config.value,
-			select: function(item) {
+			select: function() {
 				selected(obj);
 				dropdownVisible.toggle();
 			}
