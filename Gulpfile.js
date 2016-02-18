@@ -14,11 +14,6 @@ var concat = require("gulp-concat");
 // SASS Compile
 // ==================================================
 
-
-gulp.src("src/css/**/*.css")
-	.pipe(autoprefixer("last 2 version", "safari 5", "ie 8", "ie 9"));
-
-
 gulp.task("sass", function() {
 	return gulp.src("./src/**/*.scss")
 		.pipe(sass().on("error", sass.logError))
