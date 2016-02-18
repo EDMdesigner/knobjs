@@ -19,63 +19,12 @@ function createBaseVm(config) {
 		return style[variation][stateVal];
 	});
 
-	var previousState;
-
-	function mouseOver() {
-		var actState = state();
-
-		if (actState === "disabled") {
-			return;
-		}
-
-		if (actState !== "hover") {
-			previousState = actState;
-		}
-
-		state("hover");
-	}
-
-	function mouseOut() {
-		var actState = state();
-
-		if (actState === "disabled") {
-			return;
-		}
-
-		state(previousState);
-	}
-
-	function mouseDown() {
-		var actState = state();
-
-		if (actState === "disabled") {
-			return;
-		}
-
-		state("active");
-	}
-
-	function mouseUp() {
-		var actState = state();
-
-		if (actState === "disabled") {
-			return;
-		}
-
-		state("hover");
-	}
-
 	return {
 		variation: variation,
 		state: state,
 
 		cssClass: cssClassComputed,
-		style: styleComputed,
-
-		mouseOver: mouseOver,
-		mouseOut: mouseOut,
-		mouseDown: mouseDown,
-		mouseUp: mouseUp
+		style: styleComputed
 	};
 }
 
