@@ -1,4 +1,4 @@
-<div data-bind="if: pageSelectors().length">
+<div class="knob-pagination" data-bind="if: pageSelectors().length">
 	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-first', state: first().state, click: first().selectPage}}"></span>
 	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-prev', state: prev().state, click: prev().selectPage}}"></span>
 	<span data-bind="foreach: pageSelectors">

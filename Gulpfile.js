@@ -8,7 +8,7 @@ var jshint = require("gulp-jshint");
 var stylish = require("gulp-jscs-stylish");
 var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
-var minifyCss = require("gulp-minify-css");
+var cssnano = require("gulp-cssnano");
 var concat = require("gulp-concat");
 
 // SASS Compile
@@ -17,7 +17,7 @@ var concat = require("gulp-concat");
 gulp.task("sass", function() {
 	return gulp.src("./src/**/*.scss")
 		.pipe(sass().on("error", sass.logError))
-		.pipe(minifyCss())
+		.pipe(cssnano())
 		.pipe(autoprefixer({
 			browsers: ["last 2 version", "iOS 6"],
 			cascade: false
