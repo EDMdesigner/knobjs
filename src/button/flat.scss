@@ -1,0 +1,39 @@
+// Main button style without colors
+//==================================
+
+button {
+
+	padding: 14px 22px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 1;
+	font-size: 18px;
+	border: 0 none;
+	border-radius: 5px;
+	display: inline-block;
+	text-align: center;
+/*
+	transition: box-shadow 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+	transition-delay: 0.1s;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+*/
+	&:hover {
+/*
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+		transition-delay: 0.1s;
+*/
+		cursor: pointer
+	}
+
+	&:active {
+/*
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+		transition-delay: 0s;
+*/
+		cursor: pointer
+	}
+}
+
+.icon-wrapper {
+
+}

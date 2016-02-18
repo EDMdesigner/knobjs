@@ -1,15 +1,36 @@
-var gulp 		= require("gulp");
-var browserify 	= require("browserify");
-var source 		= require("vinyl-source-stream");
-var partialify 	= require("partialify");
-var jsonlint	= require("gulp-jsonlint");
-var jscs		= require("gulp-jscs");
-var jshint		= require("gulp-jshint");
-var stylish 	= require('gulp-jscs-stylish');
+var gulp = require("gulp");
+var browserify = require("browserify");
+var source = require("vinyl-source-stream");
+var partialify = require("partialify");
+var jsonlint = require("gulp-jsonlint");
+var jscs = require("gulp-jscs");
+var jshint = require("gulp-jshint");
+var stylish = require("gulp-jscs-stylish");
+var sass = require("gulp-sass");
+var autoprefixer = require("gulp-autoprefixer");
 
+// SASS Compile
+// ==================================================
+gulp.task("sass", function() {
+	return gulp.src("./src/**/*.scss")
+		.pipe(sass().on("error", sass.logError))
+		.pipe(autoprefixer({
+			browsers: ["last 2 version", "iOS 6"],
+			cascade: false
+		}))
+		.pipe(gulp.dest("./public"));
+});
+
+gulp.task("sass:watch", function() {
+	gulp.watch("./src/**/*.scss", ["sass"]);
+});
+
+
+// JSON lint
+// ==================================================
 gulp.task("jsonlint", function() {
 	return gulp.src([
-			"src/featureConfigDefaults/**/*.json", 
+			"src/featureConfigDefaults/**/*.json",
 			"package.json",
 			".jshintrc",
 			".jscsrc",
@@ -19,6 +40,9 @@ gulp.task("jsonlint", function() {
 		.pipe(jsonlint.failOnError());
 });
 
+
+// JS Hint and CodeStyle
+// ==================================================
 gulp.task("js-validate", function() {
 	return gulp.src([
 		"!src/components.built.js",
@@ -27,17 +51,12 @@ gulp.task("js-validate", function() {
 		])
 		.pipe(jshint(".jshintrc"))
 		.pipe(jshint.reporter("jshint-stylish"))
+		.pipe(jscs({
+			configPath: ".jscsrc"
+		}))
+		.pipe(stylish());
 });
 
-gulp.task("js-style", function() {
-	return gulp.src([
-			"!src/components.built.js",
-			"Gulpfile.js",
-			"src/**/*.js"
-		])
-		.pipe(jscs(".jscsrc"))
-		.pipe(stylish())
-});
 
 function createBrowserifyTask(config) {
 	return function() {
@@ -68,9 +87,9 @@ function createBrowserifyTask(config) {
 
 function createWatchTask(config) {
 	var taskToRun = config.taskToRun;
-	return function () {
+	return function() {
 		gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], [taskToRun])
-			.on("change", function (event) {
+			.on("change", function(event) {
 				//log(event);
 			});
 	};
@@ -95,3 +114,5 @@ for (var prop in examplesConfigs) {
 	gulp.task(actBrowserifyTaskName, ["jsonlint"], createBrowserifyTask(actConfig));
 	gulp.task("watch-examples-" + prop, createWatchTask({taskToRun: actBrowserifyTaskName}));
 }
+
+gulp.task("test", ["jsonlint", "js-validate"]);

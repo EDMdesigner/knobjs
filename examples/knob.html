@@ -5,6 +5,7 @@
 	<title>KnobJS</title>
 </head>
 <body>
+<link rel="stylesheet" href="../public/button/flat.css">
 <style>
 .icon {
 	display: inline-block;
@@ -78,9 +79,14 @@
 
 <h1>knob.js</h1>
 
-<h2>knob-button</h2>
+<h2>knob-button default</h2>
 <div data-bind="foreach: buttons">
 	<knob-button params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+</div>
+
+<h2>knob-button primary</h2>
+<div data-bind="foreach: buttons">
+	<knob-button params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
 </div>
 
 <h2>knob-dropdown</h2>
@@ -102,20 +108,17 @@
 
 <h2>knob-paged-list</h2>
 
-	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', sort: ['id', 'name']">
-		<div>
-			<span data-bind="text: data.id"></span>
-			<span data-bind="text: data.email"></span>
-			<span data-bind="text: data.name"></span>
-			<span data-bind="text: data.title"></span>
-		</div>
-	</knob-paged-list>
-
-
-
-
-
+<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', sort: ['id', 'name']">
+	<div>
+		<span data-bind="text: data.id"></span>
+		<span data-bind="text: data.email"></span>
+		<span data-bind="text: data.name"></span>
+		<span data-bind="text: data.title"></span>
+	</div>
+</knob-paged-list>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="../src/components.built.js"></script>
 <script src="./knob.built.js"></script>
+</body>
+</html>

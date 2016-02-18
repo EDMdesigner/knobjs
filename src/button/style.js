@@ -1,14 +1,14 @@
 module.exports = {
 	"default": {
 		"default": {
-			"backgroundColor": "#eeeeee",
-			"color": "#000000",
-			"fill": "#000000"
+			"backgroundColor": "#26a69a",
+			"color": "#fff",
+			"fill": "#fff"
 		},
 		"hover": {
-			"backgroundColor": "#ff0000",
-			"color": "#000000",
-			"fill": "#00ff00"
+			"backgroundColor": "#2bbbad",
+			"color": "#fff",
+			"fill": "#fff"
 		},
 		"active": {
 			"color": "#1337aa",
@@ -19,18 +19,22 @@ module.exports = {
 			"color": "#aaaaaa"
 		},
 		"success": {
-
+			"backgroundColor": "#171717",
+			"color": "#fff",
+			"fill": "#fff"
 		},
 		"error": {
-
+			"backgroundColor": "#171717",
+			"color": "#fff",
+			"fill": "#fff"
 		}
 	},
 	"primary": {
 		"default": {
-			"backgroundColor": "#aaaaaa"
+			"backgroundColor": "#3AB54A"
 		},
 		"disabled": {
-			"backgroundColor": "#eeeeff"
+			"backgroundColor": "#3AB54A"
 		}
 	}
 };

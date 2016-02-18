@@ -5,7 +5,7 @@ var ko = require("knockout");
 
 module.exports = function createPagination(config) {
 	config = config || {};
-	
+
 	var numOfPages;
 	if (ko.isObservable(config.numOfPages)) {
 		numOfPages = config.numOfPages;
@@ -43,9 +43,6 @@ module.exports = function createPagination(config) {
 			}
 		});
 	}());
-
-
-	
 
 	var currentPageRealIdx;
 	var pageSelectors = (function(config) {
