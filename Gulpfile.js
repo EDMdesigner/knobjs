@@ -76,6 +76,37 @@ gulp.task("jscs", function() {
 });
 
 
+// Build components
+// ==================================================
+gulp.task("build-components", createBrowserifyTask({
+	entries: ["./src/components.js"],
+	outputFileName: "components.built.js",
+	destFolder: "./src/"
+}));
+
+// Build examples
+// ==================================================
+gulp.task("build-examples", createBrowserifyTask({
+	entries: ["./examples/knob.js"],
+	outputFileName: "knob.built.js",
+	destFolder: "./examples/"
+}));
+
+// Build
+// ==================================================
+gulp.task("build", ["build-components", "build-examples"]);
+
+
+// Watch js
+// ==================================================
+gulp.task("watch-js", function() {
+	gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], ["build"])
+		.on("change", function(event) {
+			console.log(event);
+		});
+});
+
+
 function createBrowserifyTask(config) {
 	return function() {
 		var bundleMethod = browserify;//global.isWatching ? watchify : browserify;
@@ -101,40 +132,6 @@ function createBrowserifyTask(config) {
 
 		return bundle();
 	};
-}
-
-function createWatchTask(config) {
-	var taskToRun = config.taskToRun;
-
-	return function() {
-		gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], [taskToRun])
-			.on("change", function(event) {
-				console.log(event);
-			});
-	};
-}
-
-var examplesConfigs = {
-	components: {
-		entries: ["./src/components.js"],
-		outputFileName: "components.built.js",
-		destFolder: "./src/"
-	},
-	knob: {
-		entries: ["./examples/knob.js"],
-		outputFileName: "knob.built.js",
-		destFolder: "./examples/"
-	}
-};
-
-for (var prop in examplesConfigs) {
-	var actConfig = examplesConfigs[prop];
-	var actBrowserifyTaskName = "browserify-examples-" + prop;
-
-	gulp.task(actBrowserifyTaskName, ["jsonlint"], createBrowserifyTask(actConfig));
-	gulp.task("watch-examples-" + prop, createWatchTask({
-		taskToRun: actBrowserifyTaskName
-	}));
 }
 
 gulp.task("test", ["jsonlint", "jshint", "jscs"]);
