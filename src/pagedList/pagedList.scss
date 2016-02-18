@@ -2,12 +2,12 @@
 
 	.knob-pagelist__bar {
 		overflow: hidden;
+		border-bottom: 1px solid #ddd;
 
 		.knob-pagelist__input {
-			padding: 13px 5px;
+			padding: 6px 12px;
 			display: inline-block;
 			float: left;
-			font-size: 16px;
 		}
 
 		.knob-dropdown,
@@ -20,29 +20,31 @@
 	}
 
 	.knob-pagelist__result {
+		display: table;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+
 		div {
 			padding: 10px;
 			width: 100%;
+			display: table-row;
 
+			&:hover{
+				background: #e9e9e9;
+			}
 			&:nth-child(odd) {
-				background: #e1e1e1
+				background: #fdfdfd;
+
+				&:hover{
+					background: #e9e9e9;
+				}
+
 			}
 
 			span {
-				display: inline-block;
-
-				&:nth-child(1) {
-					width: 10%;
-				}
-				&:nth-child(2) {
-					width: 40%;
-				}
-				&:nth-child(3) {
-					width: 30%;
-				}
-				&:nth-child(4) {
-					width: 10%;
-				}
+				border-top: 1px solid #eaeaea;
+				display: table-cell;
+				padding: 8px 10px;
 			}
 		}
 	}

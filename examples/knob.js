@@ -4,6 +4,7 @@
 var superdata = require("superdata");
 
 var initKnob = require("../src/components");
+
 initKnob({
 	firstColor: "#26a69a"
 });

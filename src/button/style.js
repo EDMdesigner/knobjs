@@ -39,8 +39,23 @@ module.exports = function createStyleConfig(theme) {
 				"color": "#fff",
 				"fill": "#fff"
 			},
+			"active": {
+				"color": "#1337aa",
+				"fill": "#abcdef"
+			},
 			"disabled": {
-				"backgroundColor": "#3AB54A"
+				"backgroundColor": "#dddddd",
+				"color": "#aaaaaa"
+			},
+			"success": {
+				"backgroundColor": "#171717",
+				"color": "#fff",
+				"fill": "#fff"
+			},
+			"error": {
+				"backgroundColor": "#171717",
+				"color": "#fff",
+				"fill": "#fff"
 			}
 		}
 	};

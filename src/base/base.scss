@@ -1,0 +1,13 @@
+body{
+	font-size: 13px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+/* TODO
+* Separate ItemsPerPage and Input styles
+********************************************/
+
+@import "../button/button.scss";
+@import "../dropdown/dropdown.scss";
+@import "../pagedList/pagedList.scss";
+@import "../pagination/pagination.scss";

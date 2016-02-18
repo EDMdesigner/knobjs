@@ -2,11 +2,10 @@
 //==================================
 
 button {
-	padding: 14px 22px;
+	line-height: 1.42857143;
+	padding: 6px 12px;
 	cursor: pointer;
 	text-align: center;
-	line-height: 1;
-	font-size: 18px;
 	border: 0 none;
 	display: inline-block;
 	text-align: center;
@@ -14,6 +13,16 @@ button {
 	transition-delay: 0.5s;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 
+// Button icons
+	.icon-wrapper {
+		.icon {
+			width: 13px;
+			height: 13px;
+			vertical-align: middle;
+		}
+	}
+
+// Button states
 	&:hover {
 		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 		transition-delay: 0s;
@@ -26,10 +35,31 @@ button {
 		cursor: pointer;
 	}
 
-	.icon {
-		width: 14px;
-		height: 14px;
-		vertical-align: baseline;
+// Button sizes
+	&.button--lg {
+		padding: 10px 16px;
+		font-size: 18px;
+		line-height: 1.3333333;
+
+		.icon-wrapper {
+			.icon{
+				width: 18px;
+				height: 18px;
+			}
+		}
+	}
+
+	&.button--sm {
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 1.5;
+
+		.icon-wrapper {
+			.icon{
+				width: 11px;
+				height: 11px;
+			}
+		}
 	}
 }
 

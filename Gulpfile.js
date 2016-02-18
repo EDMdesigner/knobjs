@@ -15,7 +15,7 @@ var concat = require("gulp-concat");
 // ==================================================
 
 gulp.task("sass", function() {
-	return gulp.src("./src/**/*.scss")
+	return gulp.src("./src/base/base.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(cssnano())
 		.pipe(autoprefixer({
