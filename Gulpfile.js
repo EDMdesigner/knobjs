@@ -8,16 +8,26 @@ var jshint = require("gulp-jshint");
 var stylish = require("gulp-jscs-stylish");
 var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
+var minifyCss = require("gulp-minify-css");
+var concat = require("gulp-concat");
 
 // SASS Compile
 // ==================================================
+
+
+gulp.src("src/css/**/*.css")
+	.pipe(autoprefixer("last 2 version", "safari 5", "ie 8", "ie 9"));
+
+
 gulp.task("sass", function() {
 	return gulp.src("./src/**/*.scss")
 		.pipe(sass().on("error", sass.logError))
+		.pipe(minifyCss())
 		.pipe(autoprefixer({
 			browsers: ["last 2 version", "iOS 6"],
 			cascade: false
 		}))
+		.pipe(concat("knob.min.css"))
 		.pipe(gulp.dest("./public"));
 });
 
