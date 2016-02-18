@@ -3,6 +3,13 @@
 
 var superdata = require("superdata");
 
+var initKnob = require("../src/components");
+initKnob({
+	firstColor: "#26a69a"
+});
+
+
+
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
