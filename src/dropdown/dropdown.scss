@@ -1,3 +1,10 @@
 .knob-dropdown-menu {
 	z-index: 2;
+	position: absolute;
+
+	button {
+		width: 100px;
+		text-align: left;
+	}
 }
+
