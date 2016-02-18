@@ -33,6 +33,11 @@ module.exports = {
 		"default": {
 			"backgroundColor": "#3AB54A"
 		},
+		"hover": {
+			"backgroundColor": "#2bbbad",
+			"color": "#fff",
+			"fill": "#fff"
+		},
 		"disabled": {
 			"backgroundColor": "#3AB54A"
 		}

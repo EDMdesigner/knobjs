@@ -1,31 +1,36 @@
-<div>
+<div class="knob-pagelist">
 	<!-- ko if: error -->
 		<div data-bind="text: error"></div>
 	<!-- /ko -->
+
 	<div>
-		<div>
-			<input type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/><knob-button params="label: '', variation: 'default', icon: '#icon-search'"></knob-button>
+		<div class="knob-pagelist__bar">
+			<input class="knob-pagelist__input" type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
+			<knob-button class="knob-button-search" params="label: '', 
+								variation: 'default', 
+								icon: '#icon-search'">
+			</knob-button>
+			<knob-items-per-page class="knob-pagelist__items-per-page" params="numOfItems: count, 
+										numOfPages: numOfPages, 
+										itemsPerPage: itemsPerPage">
+			</knob-items-per-page>
 			<!-- ko if: sortOptions.length > 0 -->
-				<knob-dropdown params="rightIcon: '#icon-down', selected: sort, items: sortOptions"></knob-dropdown>
+				<knob-dropdown class="knob-dropdown" params="rightIcon: '#icon-down', selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
-			<knob-items-per-page params="numOfItems: count, numOfPages: numOfPages, itemsPerPage: itemsPerPage"></knob-items-per-page>
 		</div>
-		<div data-bind="foreach: items">
+		<div class="knob-pagelist__result" data-bind="foreach: items">
 			<!-- ko template: { nodes: $componentTemplateNodes, data: $data } --><!-- /ko -->
 		</div>
 	</div>
-	<div data-bind="visible: loading">Loading...</div>
 
+	<div data-bind="visible: loading">Loading...</div>
 	<!--
 	<knob-pagination params="numOfItems: pagination.numOfItems, itemsPerPage: itemsPerPage"></knob-pagination>
 	-->
-
-
 	<!-- ko if: numOfPages() > 0 -->
 		<knob-pagination params="numOfPages: numOfPages, currentPage: currentPage"></knob-pagination>
 	<!-- /ko -->
-
 	<!-- ko if: $data.loadMore -->
 		<div data-bind="visible: !loading(), click: loadMore">Load more...</div>
 	<!-- /ko -->
-</div>
+</div>k

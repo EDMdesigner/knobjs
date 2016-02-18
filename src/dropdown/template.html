@@ -1,7 +1,17 @@
 <div class="knob-dropdown">
 	<!-- with params, the selected().label won't be recalculated, when selected is changed... -->
-	<div data-bind="component: {name: 'knob-button', params: {label: selected().label, icon: selected().icon, rightIcon: rightIcon, click: dropdownVisible.toggle}}"></div>
+	<div data-bind="component: {
+						name: 'knob-button',
+						params: {label: selected().label,
+						icon: selected().icon,
+						rightIcon: rightIcon,
+						click: dropdownVisible.toggle}}">
+	</div>
 	<div class="knob-dropdown-menu" data-bind="foreach: options, visible: dropdownVisible">
-		<div data-bind="component: {name: 'knob-button', params: {label: label, icon: icon, click: select}}, visible: $data !== $parent.selected()"></div>
+		<div data-bind="component: {
+							name: 'knob-button',
+							params: {label: label, icon: icon, click: select}}, 
+							visible: $data !== $parent.selected()">
+		</div>
 	</div>
 </div>
