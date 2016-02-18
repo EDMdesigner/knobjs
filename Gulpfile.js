@@ -97,7 +97,7 @@ gulp.task("build-examples", createBrowserifyTask({
 	destFolder: "./examples/"
 }));
 
-// Build 
+// Build
 // ==================================================
 gulp.task("build", ["build-components", "build-examples"]);
 

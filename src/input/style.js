@@ -6,12 +6,13 @@ module.exports = {
 			"fill": "#fff"
 		},
 		"hover": {
-			"backgroundColor": "#2bbbad",
+			"backgroundColor": "red",
 			"color": "#fff",
 			"fill": "#fff"
 		},
 		"active": {
-			"color": "#1337aa",
+			"color": "blue",
+			"backgroundColor": "pink",
 			"fill": "#abcdef"
 		},
 		"disabled": {

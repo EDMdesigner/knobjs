@@ -1,8 +1,6 @@
 /*jslint node: true */
 "use strict";
 
-var ko = require("knockout");
-
 module.exports = function buttonBehaviour(vm) {
 	var previousState;
 
@@ -30,7 +28,7 @@ module.exports = function buttonBehaviour(vm) {
 		vm.state(previousState);
 	}
 
-	function mouseDown() {
+	function focus() {
 		var actState = vm.state();
 
 		if (actState === "disabled") {
@@ -40,27 +38,22 @@ module.exports = function buttonBehaviour(vm) {
 		vm.state("active");
 	}
 
-	function mouseUp() {
+	function blur() {
 		var actState = vm.state();
 
 		if (actState === "disabled") {
 			return;
 		}
 
-		vm.state("hover");
+		vm.state("default");
 	}
 
-	var obj = {
-		mouseOver: mouseOver,
-		mouseOut: mouseOut,
-		mouseDown: mouseDown,
-		mouseUp: mouseUp
+	vm.eventHandlers = {
+		mouseover: mouseOver,
+		mouseout: mouseOut,
+		focus: focus,
+		blur: blur
 	};
 
-	obj;
-
-	vm.eventHandlers = ko.computed(function() {
-		return {
-		};
-	});
+	return vm;
 };

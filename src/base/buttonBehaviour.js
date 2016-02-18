@@ -1,8 +1,6 @@
 /*jslint node: true */
 "use strict";
 
-var ko = require("knockout");
-
 module.exports = function buttonBehaviour(vm) {
 	var previousState;
 
@@ -50,12 +48,13 @@ module.exports = function buttonBehaviour(vm) {
 		vm.state("hover");
 	}
 
-	vm.eventHandlers = ko.computed(function() {
-		return {
-			mouseOver: mouseOver,
-			mouseOut: mouseOut,
-			mouseDown: mouseDown,
-			mouseUp: mouseUp
-		};
-	});
+	vm.eventHandlers = {
+		mouseover: mouseOver,
+		mouseout: mouseOut,
+		mousedown: mouseDown,
+		mouseup: mouseUp
+	};
+
+
+	return vm;
 };
