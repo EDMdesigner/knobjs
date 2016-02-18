@@ -11,6 +11,7 @@ function createInput(config) {
 	config.type = config.type || "text";
 
 	var vm = base(config);
+
 	inputBehaviour(vm);
 
 	vm.type = config.type;

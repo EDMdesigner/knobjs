@@ -10,6 +10,7 @@ function createButton(config) {
 	config.component = "button";
 
 	var vm = base(config);
+
 	buttonBehaviour(vm);
 
 	vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
