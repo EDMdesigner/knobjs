@@ -45,9 +45,9 @@ gulp.task("jsonlint", function() {
 // ==================================================
 gulp.task("jshint", function() {
 	return gulp.src([
-		"!src/components.built.js",
-		"Gulpfile.js",
-		"src/**/*.js"
+		"./**/*.js",
+		"!node_modules/**/*",
+		"!./**/*.built.js"
 		])
 		.pipe(jshint(".jshintrc"))
 		.pipe(jshint.reporter("jshint-stylish"));
@@ -58,9 +58,9 @@ gulp.task("jshint", function() {
 // ==================================================
 gulp.task("jscs", function() {
 	return gulp.src([
-		"!src/components.built.js",
-		"!src/knob.built.js",
-		"./**/*.js"
+		"./**/*.js",
+		"!node_modules/**/*",
+		"!./**/*.built.js"
 		])
 		.pipe(jscs({
 			configPath: ".jscsrc",

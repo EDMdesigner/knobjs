@@ -7,6 +7,8 @@ var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
 
+var ko = window.ko;
+
 var proxy = createProxy({
 	idProperty: "id",
 	route: "/user"
