@@ -36,14 +36,17 @@ var store = createStore({
 //seed
 //atom
 var seed = true;
-function handleResponse(err, result) {
+
+function handleResponse() {
 	//console.log(err, result);
 }
 if (seed) {
 	var names = ["Bob", "Rob", "Olga", "Helga"];
 	var titles = ["CEO", "CTO", "Slave"];
+
 	for (var idx = 0; idx < 100; idx += 1) {
 		var actName = names[idx % 4];
+
 		store.add({
 			id: idx,
 			email: actName.toLowerCase() + "_" + idx + "@supercorp.com",
@@ -56,6 +59,7 @@ if (seed) {
 window.store = store;
 
 var buttons = [];
+
 for (var idx = 0; idx < 10; idx += 1) {
 	buttons.push("button" + idx);
 }

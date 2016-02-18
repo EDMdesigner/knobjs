@@ -10,21 +10,26 @@ module.exports = function createList(config) {
 
 	var fields = config.fields;
 
-	var search = ko.observable("").extend({throttle: 500});
+	var search = ko.observable("").extend({
+		throttle: 500
+	});
 
 	//config.sorters
 	// - label
 	// - prop
 
 	var sortOptions = [];
+
 	function createQureyObj(prop, asc) {
 		var obj = {};
+
 		obj[prop] = asc;
 		return obj;
 	}
 	if (config.sort) {
-		for(var idx = 0; idx < config.sort.length; idx += 1) {
+		for (var idx = 0; idx < config.sort.length; idx += 1) {
 			var act = config.sort[idx];
+
 			sortOptions.push({
 				icon: "#icon-a-z",
 				label: act,
@@ -45,6 +50,7 @@ module.exports = function createList(config) {
 
 
 	var items = ko.observableArray([]);
+
 	store.items.forEach(function(item) { //store === this
 		items.push(item);
 	});
@@ -70,7 +76,9 @@ module.exports = function createList(config) {
 		store.sort = sortVal;
 		store.skip = skipVal;
 		store.limit = limitVal;
-	}).extend({throttle: 0});
+	}).extend({
+		throttle: 0
+	});
 
 	function beforeLoad() {
 		if (loading()) {

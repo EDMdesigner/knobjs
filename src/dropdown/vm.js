@@ -4,10 +4,11 @@
 var ko = require("knockout");
 
 
-function createButtonDropdown (config) {
+function createButtonDropdown(config) {
 	var rightIcon = ko.observable(config.rightIcon);
 
 	var options = ko.observableArray([]);
+
 	for (var idx = 0; idx < config.items.length; idx += 1) {
 		options.push(createOption({
 			label: config.items[idx].label,
@@ -17,16 +18,19 @@ function createButtonDropdown (config) {
 	}
 
 	var selected = config.selected || ko.observable();
+
 	selected(options()[0]);
 
 
 	var dropdownVisible = ko.observable(false);
+
 	dropdownVisible.toggle = function toggleDropdownVisible(item, event) {
 		if (event) {
 			event.stopPropagation();
 		}
 
 		var visible = dropdownVisible();
+
 		dropdownVisible(!visible);
 
 

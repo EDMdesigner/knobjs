@@ -8,6 +8,7 @@ module.exports = function createPagedList(config) {
 	config = config || {};
 
 	var store = config.store;
+
 	store.load.before.add(afterLoad);
 
 	var list = createList(config);
@@ -26,6 +27,7 @@ module.exports = function createPagedList(config) {
 	ko.computed(function() {
 		var currentPageVal = currentPage();
 		var itemsPerPageVal = itemsPerPage();
+
 		list.skip(currentPageVal * itemsPerPageVal);
 		list.limit(itemsPerPageVal);
 	});
@@ -37,7 +39,7 @@ module.exports = function createPagedList(config) {
 	});
 	*/
 
-	
+
 	function afterLoad() {
 		list.items([]);
 	}
