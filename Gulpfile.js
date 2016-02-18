@@ -41,19 +41,32 @@ gulp.task("jsonlint", function() {
 });
 
 
-// JS Hint and CodeStyle
+// JS Hint
 // ==================================================
-gulp.task("js-validate", function() {
+gulp.task("jshint", function() {
 	return gulp.src([
-		"!src/components.built.js",
-		"Gulpfile.js",
-		"src/**/*.js"
+		"./**/*.js",
+		"!node_modules/**/*",
+		"!./**/*.built.js"
 		])
 		.pipe(jshint(".jshintrc"))
-		.pipe(jshint.reporter("jshint-stylish"))
+		.pipe(jshint.reporter("jshint-stylish"));
+});
+
+
+// CodeStyle
+// ==================================================
+gulp.task("jscs", function() {
+	return gulp.src([
+		"./**/*.js",
+		"!node_modules/**/*",
+		"!./**/*.built.js"
+		])
 		.pipe(jscs({
-			configPath: ".jscsrc"
+			configPath: ".jscsrc",
+			fix: true
 		}))
+		.pipe(gulp.dest("./"))
 		.pipe(stylish());
 });
 
@@ -87,10 +100,11 @@ function createBrowserifyTask(config) {
 
 function createWatchTask(config) {
 	var taskToRun = config.taskToRun;
+
 	return function() {
 		gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], [taskToRun])
 			.on("change", function(event) {
-				//log(event);
+				console.log(event);
 			});
 	};
 }
@@ -111,8 +125,11 @@ var examplesConfigs = {
 for (var prop in examplesConfigs) {
 	var actConfig = examplesConfigs[prop];
 	var actBrowserifyTaskName = "browserify-examples-" + prop;
+
 	gulp.task(actBrowserifyTaskName, ["jsonlint"], createBrowserifyTask(actConfig));
-	gulp.task("watch-examples-" + prop, createWatchTask({taskToRun: actBrowserifyTaskName}));
+	gulp.task("watch-examples-" + prop, createWatchTask({
+		taskToRun: actBrowserifyTaskName
+	}));
 }
 
-gulp.task("test", ["jsonlint", "js-validate"]);
+gulp.task("test", ["jsonlint", "jshint", "jscs"]);

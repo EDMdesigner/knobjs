@@ -9,16 +9,18 @@ function createBaseVm(config) {
 	var variation = config.variation || "default";
 
 	var style = config.style;
-	
+
 	var cssClassComputed = ko.computed(function() {
 		return "knob-" + component + " state-" + state() + " variation-" + variation;
 	});
 	var styleComputed = ko.computed(function() {
 		var stateVal = state();
+
 		return style[variation][stateVal];
 	});
 
 	var previousState;
+
 	function mouseOver() {
 		var actState = state();
 
@@ -65,7 +67,7 @@ function createBaseVm(config) {
 
 	return {
 		variation: variation,
-		state: state,	
+		state: state,
 
 		cssClass: cssClassComputed,
 		style: styleComputed,

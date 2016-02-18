@@ -1,7 +1,7 @@
 /*jslint node: true */
 "use strict";
 
-var ko = require("knockout");
+//var ko = require("knockout");
 
 var createList = require("./list");
 
@@ -10,7 +10,6 @@ module.exports = function createInfiniteList(config) {
 	var originalNumOfItems = config.numOfItems || 10;
 	var numOfItems = originalNumOfItems;
 	var numOfItemsToLoad = config.numOfItemsToLoad || 10;
-	var skip = 0;
 
 
 	var list = createList(config);
@@ -18,14 +17,14 @@ module.exports = function createInfiniteList(config) {
 
 	var loadMoreCalled = false;
 
-	store.load.before.add(function(err, result) {
+	store.load.before.add(function() {
 		if (!loadMoreCalled) {
 			list.items([]);
 		}
 	});
 
 	//this should be in list.js
-	store.load.after.add(function(err, result) {
+	store.load.after.add(function() {
 		numOfItems += numOfItemsToLoad;
 		loadMoreCalled = false;
 	});
