@@ -2,7 +2,7 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.firstColor, //STEVE, you will be able to set the colors like this. This way we can define multiple styles!
+				"backgroundColor": theme.BaseColor, //STEVE, you will be able to set the colors like this. This way we can define multiple styles!
 				"color": "#fff",
 				"fill": "#fff"
 			},

@@ -3,6 +3,11 @@ body{
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 
 }
+
+.container {
+	margin: 0 auto;
+	width: 960px
+}
 /* TODO
 * Separate ItemsPerPage and Input styles
 ********************************************/
@@ -11,3 +16,4 @@ body{
 @import "../dropdown/dropdown.scss";
 @import "../pagedList/pagedList.scss";
 @import "../pagination/pagination.scss";
+@import "../input/input.scss";

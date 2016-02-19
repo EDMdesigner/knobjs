@@ -1,11 +1,11 @@
 <span>
 	<span data-bind="visible: !editMode()">
 		<span data-bind="text: value"></span>
-		<knob-button params="label: 'EDIT ICON', click: edit">
+		<knob-button params="label: '', click: edit, icon: '#icon-edit'">
 	</span>
 	<span data-bind="visible: editMode">
 		<knob-input params="value: editedValue, visible: editMode"></knob-input>
-		<knob-button params="label: 'OK ICON', click: save"></knob-button>
-		<knob-button params="label: 'CANCEL ICON', click: cancel"></knob-button>
+		<knob-button params="label: '', click: save, icon: '#icon-succes'"></knob-button>
+		<knob-button params="label: '', click: cancel, icon: '#icon-delete'"></knob-button>
 	</span>
 </span>

@@ -4,10 +4,13 @@
 		overflow: hidden;
 		border-bottom: 1px solid #ddd;
 
-		.knob-pagelist__input {
-			padding: 6px 12px;
-			display: inline-block;
+		.knob-input {
 			float: left;
+			border-color: #ddd;
+
+			&:hover {
+				border-color: #131313;
+			}
 		}
 
 		.knob-dropdown,

@@ -2,7 +2,7 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": "#fff", //STEVE, you will be able to set the colors like this. This way we can define multiple styles!
+				"backgroundColor": "#fff",
 				"color": "#131313",
 				"border-color": "#ddd"
 			},
@@ -28,19 +28,6 @@ module.exports = function createStyleConfig(theme) {
 				"backgroundColor": "#171717",
 				"color": "#fff",
 				"fill": "#fff"
-			}
-		},
-		"primary": {
-			"default": {
-				"backgroundColor": "#3AB54A"
-			},
-			"hover": {
-				"backgroundColor": "#2bbbad",
-				"color": "#fff",
-				"fill": "#fff"
-			},
-			"disabled": {
-				"backgroundColor": "#3AB54A"
 			}
 		}
 	};
