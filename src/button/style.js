@@ -7,17 +7,19 @@ module.exports = function createStyleConfig(theme) {
 				"fill": "#fff"
 			},
 			"hover": {
-				"backgroundColor": "#2bbbad",
+				"backgroundColor": "#3d8eb9",
 				"color": "#fff",
 				"fill": "#fff"
 			},
 			"active": {
-				"color": "#1337aa",
-				"fill": "#abcdef"
+				"backgroundColor": "#54acd2",
+				"color": "#fff",
+				"fill": "#fff"
 			},
 			"disabled": {
-				"backgroundColor": "#dddddd",
-				"color": "#aaaaaa"
+				"backgroundColor": "#D1D5D8",
+				"color": "#131313",
+				"fill": "#131313"
 			},
 			"success": {
 				"backgroundColor": "#171717",
@@ -25,27 +27,31 @@ module.exports = function createStyleConfig(theme) {
 				"fill": "#fff"
 			},
 			"error": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": "#B8312F",
+				"color": "#131313",
+				"fill": "#131313"
 			}
 		},
 		"primary": {
 			"default": {
-				"backgroundColor": "#3AB54A"
+				"backgroundColor": theme.PrimaryColor,
+				"color": "#fff",
+				"fill": "#fff"
 			},
 			"hover": {
-				"backgroundColor": "#2bbbad",
+				"backgroundColor": "#FAC51C",
 				"color": "#fff",
 				"fill": "#fff"
 			},
 			"active": {
-				"color": "#1337aa",
-				"fill": "#abcdef"
+				"backgroundColor": "#F7DA64",
+				"color": "#fff",
+				"fill": "#fff"
 			},
 			"disabled": {
-				"backgroundColor": "#dddddd",
-				"color": "#aaaaaa"
+				"backgroundColor": "#D1D5D8",
+				"color": "#131313",
+				"fill": "#131313"
 			},
 			"success": {
 				"backgroundColor": "#171717",

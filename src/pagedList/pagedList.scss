@@ -48,6 +48,10 @@
 				border-top: 1px solid #eaeaea;
 				display: table-cell;
 				padding: 8px 10px;
+
+				&:nth-last-child(1) {
+					text-align: right
+				}
 			}
 		}
 	}
