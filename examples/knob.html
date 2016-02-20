@@ -142,6 +142,34 @@
 	<knob-input></knob-input>
 	<knob-input params="type: 'password'"></knob-input>
 
+	<h2>knob-radio</h2>
+	<p>There should be a vertical and horizontal layout as well...</p>
+	<knob-radio params="
+		group: 'test',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+	<knob-radio params="
+		group: 'test',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+
+	<knob-radio params="
+		group: 'test2',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+
 	<h2>knob-dropdown</h2>
 	<knob-dropdown params="
 		rightIcon: '#icon-down',

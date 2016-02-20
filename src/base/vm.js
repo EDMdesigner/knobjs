@@ -3,6 +3,12 @@
 
 var ko = require("knockout");
 
+var hoverBehaviour = require("./behaviours/hover");
+var focusBehaviour = require("./behaviours/focus");
+var clickBehaviour = require("./behaviours/click");
+var selectBehaviour = require("./behaviours/select");
+
+
 function createBaseVm(config) {
 	var component = config.component;
 	var state = ko.observable(config.state || "default");
@@ -19,13 +25,40 @@ function createBaseVm(config) {
 		return style[variation][stateVal];
 	});
 
-	return {
+	var vm = {
 		variation: variation,
 		state: state,
 
 		cssClass: cssClassComputed,
-		style: styleComputed
+		style: styleComputed,
+
+		eventHandlers: {}
 	};
+
+
+	function createEnabler(behaviour, props) {
+		return {
+			enable: function() {
+				behaviour(vm, config);
+			},
+			disable: function() {
+				props.forEach(function(prop) {
+					if (vm.eventHandlers[prop]) {
+						delete vm.eventHandlers[prop];
+					}
+				});
+			}
+		};
+	}
+
+	vm.behaviours = {
+		hover: createEnabler(hoverBehaviour, ["mouseover", "mouseout"]),
+		focus: createEnabler(focusBehaviour, ["focus", "blur"]),
+		click: createEnabler(clickBehaviour, ["mousedown", "mouseup"]),
+		select: createEnabler(selectBehaviour, ["mousedown", "mouseup"])
+	};
+
+	return vm;
 }
 
 module.exports = createBaseVm;

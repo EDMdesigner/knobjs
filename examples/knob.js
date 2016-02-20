@@ -6,8 +6,8 @@ var superdata = require("superdata");
 var initKnob = require("../src/components");
 
 initKnob({
-	BaseColor: "#2969B0",
-	PrimaryColor: "#FBA026"
+	baseColor: "#2969B0",
+	primaryColor: "#FBA026"
 });
 
 
