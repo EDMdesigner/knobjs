@@ -14,6 +14,7 @@ function createInlineTextEditor(config) {
 	vm.edit = function() {
 		vm.editedValue(vm.value());
 		vm.editMode(true);
+		vm.inputHasFocus(true);
 	};
 
 	vm.save = function() {
@@ -24,6 +25,17 @@ function createInlineTextEditor(config) {
 	vm.cancel = function() {
 		vm.editMode(false);
 	};
+
+	vm.keyDown = function(item, event) {
+		if (event.keyCode === 13) {
+			return vm.save();
+		} else if (event.keyCode === 27) {
+			return vm.cancel();
+		}
+		return true;
+	};
+
+	vm.inputHasFocus = ko.observable(false);
 
 	return vm;
 }

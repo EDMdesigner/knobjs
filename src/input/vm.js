@@ -12,10 +12,15 @@ function createInput(config) {
 
 	var vm = base(config);
 
-	inputBehaviour(vm);
-
 	vm.type = config.type;
 	vm.value = config.value || ko.observable();
+	vm.hasFocus = config.hasFocus || ko.observable(false);
+
+	inputBehaviour(vm);
+
+	if (config.keyDown) {
+		vm.eventHandlers.keydown = config.keyDown;
+	}
 
 	return vm;
 }
