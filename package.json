@@ -27,7 +27,9 @@
   "maintainers": [
     {
       "name": "Gyula Németh",
-      "email": "gyula.nemeth@edmdesigner.com",
+      "email": "gyula.nemeth@edmdesigner.com"
+    },
+    {
       "name": "Istvan Nagy",
       "email": "steve@edmdesigner.com"
     }
