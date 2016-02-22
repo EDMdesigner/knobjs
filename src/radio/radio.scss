@@ -1,0 +1,11 @@
+.knob-radio--inline {
+	clear: both;
+
+	.knob-radio  {
+	overflow: hidden;
+
+		&> div {
+			float: left
+		}
+	}
+}

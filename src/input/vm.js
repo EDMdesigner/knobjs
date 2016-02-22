@@ -10,6 +10,7 @@ function createInput(config) {
 	config.type = config.type || "text";
 
 	var vm = base(config);
+
 	vm.behaviours.hover.enable();
 	vm.behaviours.focus.enable();
 

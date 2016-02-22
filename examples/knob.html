@@ -5,6 +5,17 @@
 	<title>KnobJS</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="../public/knob.min.css">
+	<style>
+		body{
+			font-size: 13px;
+			font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		}
+
+		.container {
+			margin: 0 auto;
+			width: 960px
+		}
+	</style>
 </head>
 <body>
 <div class="container">
@@ -128,14 +139,34 @@
 
 	<h1>knob.js</h1>
 
-	<h2>knob-button default</h2>
+	<h2>knob-button default Small</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--sm" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+	</div>
+
+	<h2>knob-button default Medium</h2>
 	<div data-bind="foreach: buttons">
 		<knob-button params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
 	</div>
 
-	<h2>knob-button primary</h2>
+	<h2>knob-button default large</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--lg" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+	</div>
+
+	<h2>knob-button primary Small</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--sm" params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+	</div>
+
+	<h2>knob-button primary Medium</h2>
 	<div data-bind="foreach: buttons">
 		<knob-button params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+	</div>
+
+	<h2>knob-button primary large</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--lg" params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
 	</div>
 
 	<h2>knob-input</h2>
@@ -144,6 +175,15 @@
 
 	<h2>knob-radio</h2>
 	<p>There should be a vertical and horizontal layout as well...</p>
+	<knob-radio class="knob-radio--inline" params="
+		group: 'test',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+	<hr>
 	<knob-radio params="
 		group: 'test',
 		items: [
@@ -152,15 +192,7 @@
 			{label: 'Third option', value: {field: 'name', asc: true}}
 		]">
 	</knob-radio>
-	<knob-radio params="
-		group: 'test',
-		items: [
-			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
-			{icon: '#icon-list', value: {field: 'id', asc: false}},
-			{label: 'Third option', value: {field: 'name', asc: true}}
-		]">
-	</knob-radio>
-
+	<hr>
 	<knob-radio params="
 		group: 'test2',
 		items: [

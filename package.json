@@ -1,4 +1,37 @@
 {
+  "name": "KnobJS",
+  "version": "0.0.1",
+  "description": "A highly customizable component library for knockout.js",
+  "main": "src/components.js",
+  "keywords": [
+    "knockout",
+    "knockout.js",
+    "component",
+    "model",
+    "view model",
+    "view"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EDMdesigner/knobjs.git"
+  },
+  "author": {
+    "name": "EDMdesigner",
+    "email": "info@edmdesigner.com",
+    "url": "http://edmdesigner.com"
+  },
+  "bugs": {
+    "url": "https://github.com/EDMdesigner/knobjs/issues"
+  },
+  "maintainers": [
+    {
+      "name": "Gyula Németh",
+      "email": "gyula.nemeth@edmdesigner.com",
+      "name": "Istvan Nagy",
+      "email": "steve@edmdesigner.com"
+    }
+  ],
   "browserify": {
     "transform": [
       "browserify-global-shim"
