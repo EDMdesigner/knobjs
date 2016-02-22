@@ -1,19 +1,10 @@
-body{
-	font-size: 13px;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-
-}
-
-.container {
-	margin: 0 auto;
-	width: 960px
-}
 /* TODO
 * Separate ItemsPerPage and Input styles
 ********************************************/
 
-@import "../button/button.scss";
-@import "../dropdown/dropdown.scss";
-@import "../pagedList/pagedList.scss";
-@import "../pagination/pagination.scss";
-@import "../input/input.scss";
+@import "../button/button";
+@import "../dropdown/dropdown";
+@import "../pagedList/pagedList";
+@import "../pagination/pagination";
+@import "../input/input";
+@import "../radio/radio";
