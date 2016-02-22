@@ -29,7 +29,9 @@ function createInlineTextEditor(config) {
 	vm.keyDown = function(item, event) {
 		if (event.keyCode === 13) {
 			return vm.save();
-		} else if (event.keyCode === 27) {
+		}
+
+		if (event.keyCode === 27) {
 			return vm.cancel();
 		}
 		return true;
