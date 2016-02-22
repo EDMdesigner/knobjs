@@ -16,7 +16,6 @@ function createRadio(config) {
 		vm.items.push(createItemVm(act.label, act.icon));
 	}
 
-	vm.items[0].select();
 
 	function createItemVm(label, icon) {
 		var obj = {
@@ -25,7 +24,6 @@ function createRadio(config) {
 			group: config.group,
 			select: function() {
 				vm.selected(obj);
-
 			}
 		};
 
