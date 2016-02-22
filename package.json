@@ -1,5 +1,5 @@
 {
-  "name": "KnobJS",
+  "name": "knobjs",
   "version": "0.0.1",
   "description": "A highly customizable component library for knockout.js",
   "main": "src/components.js",
