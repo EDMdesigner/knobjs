@@ -2,7 +2,7 @@
   "name": "KnobJS",
   "version": "0.0.1",
   "description": "A highly customizable component library for knockout.js",
-  "main": "src/knob.js",
+  "main": "src/components.js",
   "keywords": [
     "knockout",
     "knockout.js",
