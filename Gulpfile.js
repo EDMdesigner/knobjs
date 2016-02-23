@@ -14,7 +14,7 @@ var concat = require("gulp-concat");
 // SASS Compile
 // ==================================================
 
-gulp.task("sass", function() {
+gulp.task("sass:prod", function() {
 	return gulp.src("./src/base/base.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(cssnano())
@@ -23,11 +23,22 @@ gulp.task("sass", function() {
 			cascade: false
 		}))
 		.pipe(concat("knob.min.css"))
-		.pipe(gulp.dest("./public"));
+		.pipe(gulp.dest("./dist"));
+});
+
+gulp.task("sass:dev", function() {
+	return gulp.src("./src/base/base.scss")
+		.pipe(sass().on("error", sass.logError))
+		.pipe(autoprefixer({
+			browsers: ["last 2 version", "iOS 6"],
+			cascade: false
+		}))
+		.pipe(concat("knob.min.css"))
+		.pipe(gulp.dest("./examples"));
 });
 
 gulp.task("sass:watch", function() {
-	gulp.watch("./src/**/*.scss", ["sass"]);
+	gulp.watch("./src/**/*.scss", ["sass:dev"]);
 });
 
 
@@ -52,6 +63,7 @@ gulp.task("jshint", function() {
 	return gulp.src([
 		"./**/*.js",
 		"!node_modules/**/*",
+		"!dist/**/*",
 		"!./**/*.built.js"
 		])
 		.pipe(jshint(".jshintrc"))
@@ -78,15 +90,15 @@ gulp.task("jscs", function() {
 
 // Build components
 // ==================================================
-gulp.task("build-components", createBrowserifyTask({
+gulp.task("js:prod", createBrowserifyTask({
 	entries: ["./src/components.js"],
-	outputFileName: "components.built.js",
-	destFolder: "./src/"
+	outputFileName: "knob.js",
+	destFolder: "./dist/"
 }));
 
 // Build examples
 // ==================================================
-gulp.task("build-examples", createBrowserifyTask({
+gulp.task("js:dev", createBrowserifyTask({
 	entries: ["./examples/knob.js"],
 	outputFileName: "knob.built.js",
 	destFolder: "./examples/"
@@ -94,13 +106,17 @@ gulp.task("build-examples", createBrowserifyTask({
 
 // Build
 // ==================================================
-gulp.task("build", ["build-components", "build-examples"]);
+gulp.task("test", ["jsonlint", "jshint", "jscs"]);
+
+// Build
+// ==================================================
+gulp.task("build", ["test", "js:prod", "sass:prod"]);
 
 
 // Watch js
 // ==================================================
-gulp.task("watch-js", function() {
-	gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], ["build"])
+gulp.task("js:watch", function() {
+	gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], ["js:dev"])
 		.on("change", function(event) {
 			console.log(event);
 		});
@@ -114,7 +130,8 @@ function createBrowserifyTask(config) {
 		var bundler = bundleMethod({
 			// Specify the entry point of your app
 			debug: true,
-			entries: config.entries
+			entries: config.entries,
+			standalone: "knob"
 		});
 
 		var bundle = function() {
@@ -134,4 +151,3 @@ function createBrowserifyTask(config) {
 	};
 }
 
-gulp.task("test", ["jsonlint", "jshint", "jscs"]);
