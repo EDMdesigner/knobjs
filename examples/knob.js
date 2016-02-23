@@ -6,8 +6,26 @@ var superdata = require("superdata");
 var initKnob = require("../src/components");
 
 initKnob({
-	baseColor: "#2969B0",
-	primaryColor: "#FBA026"
+
+//Button Colors
+	baseButtonFontColor: "#fff",
+	disabledButtonBg: "#d1d5d8",
+	disabledButtonColor: "#131313",
+	baseBg: "#2969b0",
+	baseHoverBg: "#3d8eb9",
+	baseActiveBg: "#54acd2",
+	primaryBg: "#fba026",
+	primaryHoverBg: "#FAC51C",
+	primaryActiveBg: "#F7DA64",
+
+// InputColors
+	inputBg: "#fff",
+	inputText: "#131313",
+	inputBorder: "#ddd"
+	inputHoverBorder: "#131313",
+	inputDisabledBg: "#fafafa",
+	inputActiveColor: "#1337aa",
+	inputDisabledColor: "#aaa"
 });
 
 

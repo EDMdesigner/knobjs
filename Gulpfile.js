@@ -11,6 +11,22 @@ var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
 var concat = require("gulp-concat");
 
+var jsFiles = [
+	"./**/*.js",
+	"!node_modules/**/*",
+	"!dist/**/*",
+	"!./**/*.built.js"
+];
+
+var jsonFiles = [
+	"src/featureConfigDefaults/**/*.json",
+	"package.json",
+	".jshintrc",
+	".jscsrc",
+	"src/modules/**/*.json"
+];
+
+
 // SASS Compile
 // ==================================================
 
@@ -45,13 +61,7 @@ gulp.task("sass:watch", function() {
 // JSON lint
 // ==================================================
 gulp.task("jsonlint", function() {
-	return gulp.src([
-			"src/featureConfigDefaults/**/*.json",
-			"package.json",
-			".jshintrc",
-			".jscsrc",
-			"src/modules/**/*.json"
-		])
+	return gulp.src(jsonFiles)
 		.pipe(jsonlint())
 		.pipe(jsonlint.failOnError());
 });
@@ -60,12 +70,7 @@ gulp.task("jsonlint", function() {
 // JS Hint
 // ==================================================
 gulp.task("jshint", function() {
-	return gulp.src([
-		"./**/*.js",
-		"!node_modules/**/*",
-		"!dist/**/*",
-		"!./**/*.built.js"
-		])
+	return gulp.src(jsFiles)
 		.pipe(jshint(".jshintrc"))
 		.pipe(jshint.reporter("jshint-stylish"));
 });
@@ -74,11 +79,7 @@ gulp.task("jshint", function() {
 // CodeStyle
 // ==================================================
 gulp.task("jscs", function() {
-	return gulp.src([
-		"./**/*.js",
-		"!node_modules/**/*",
-		"!./**/*.built.js"
-		])
+	return gulp.src(jsFiles)
 		.pipe(jscs({
 			configPath: ".jscsrc",
 			fix: true
@@ -96,6 +97,7 @@ gulp.task("js:prod", createBrowserifyTask({
 	destFolder: "./dist/"
 }));
 
+
 // Build examples
 // ==================================================
 gulp.task("js:dev", createBrowserifyTask({
@@ -104,9 +106,11 @@ gulp.task("js:dev", createBrowserifyTask({
 	destFolder: "./examples/"
 }));
 
+
 // Build
 // ==================================================
 gulp.task("test", ["jsonlint", "jshint", "jscs"]);
+
 
 // Build
 // ==================================================
@@ -150,4 +154,3 @@ function createBrowserifyTask(config) {
 		return bundle();
 	};
 }
-
