@@ -7,7 +7,7 @@ var initKnob = require("../src/components");
 
 initKnob({
 
-//Button Colors
+	//Button Colors
 	baseButtonFontColor: "#fff",
 	disabledButtonBg: "#d1d5d8",
 	disabledButtonColor: "#131313",
@@ -18,10 +18,10 @@ initKnob({
 	primaryHoverBg: "#FAC51C",
 	primaryActiveBg: "#F7DA64",
 
-// InputColors
+	// InputColors
 	inputBg: "#fff",
 	inputText: "#131313",
-	inputBorder: "#ddd"
+	inputBorder: "#ddd",
 	inputHoverBorder: "#131313",
 	inputDisabledBg: "#fafafa",
 	inputActiveColor: "#1337aa",
