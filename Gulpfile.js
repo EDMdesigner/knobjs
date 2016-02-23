@@ -114,7 +114,11 @@ gulp.task("test", ["jsonlint", "jshint", "jscs"]);
 
 // Build
 // ==================================================
-gulp.task("build", ["test", "js:prod", "sass:prod"]);
+gulp.task("build", ["test"], function() {
+	//"js:prod", "sass:prod"
+	gulp.start("js:prod");
+	gulp.start("sass:prod");
+});
 
 
 // Watch js
