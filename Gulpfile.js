@@ -31,7 +31,7 @@ var jsonFiles = [
 // ==================================================
 
 gulp.task("sass:prod", function() {
-	return gulp.src("./src/base/base.scss")
+	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(cssnano())
 		.pipe(autoprefixer({
@@ -43,7 +43,7 @@ gulp.task("sass:prod", function() {
 });
 
 gulp.task("sass:dev", function() {
-	return gulp.src("./src/base/base.scss")
+	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(autoprefixer({
 			browsers: ["last 2 version", "iOS 6"],
