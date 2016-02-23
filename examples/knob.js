@@ -6,7 +6,6 @@ var superdata = require("superdata");
 var initKnob = require("../src/components");
 
 initKnob({
-
 	//Button Colors
 	baseButtonFontColor: "#fff",
 	disabledButtonBg: "#d1d5d8",
