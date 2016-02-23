@@ -2,66 +2,46 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.baseColor, //STEVE, you will be able to set the colors like this. This way we can define multiple styles!
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.baseBg,
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"hover": {
-				"backgroundColor": "#3d8eb9",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.baseHoverBg,
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"active": {
-				"backgroundColor": "#54acd2",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.baseActiveBg,
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"disabled": {
-				"backgroundColor": "#D1D5D8",
-				"color": "#131313",
-				"fill": "#131313"
-			},
-			"success": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
-			},
-			"error": {
-				"backgroundColor": "#B8312F",
-				"color": "#131313",
-				"fill": "#131313"
+				"backgroundColor": theme.DisabledButtonBg,
+				"color": theme.DisabledButtonColor,
+				"fill": theme.DisabledButtonColor
 			}
 		},
 		"primary": {
 			"default": {
 				"backgroundColor": theme.primaryColor,
-				"color": "#fff",
-				"fill": "#fff"
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"hover": {
-				"backgroundColor": "#FAC51C",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.primaryHoverBg,
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"active": {
-				"backgroundColor": "#F7DA64",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.primaryActiveBg,
+				"color": theme.ButtonFontColor,
+				"fill": theme.ButtonFontColor
 			},
 			"disabled": {
-				"backgroundColor": "#D1D5D8",
-				"color": "#131313",
-				"fill": "#131313"
-			},
-			"success": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
-			},
-			"error": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.DisabledButtonBg,
+				"color": theme.DisabledButtonColor,
+				"fill": theme.DisabledButtonColor
 			}
 		}
 	};
