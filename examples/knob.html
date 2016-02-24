@@ -5,12 +5,35 @@
 	<title>KnobJS</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="knob.min.css">
+	<style type="text/css">
+		.anim-rotate {
+			animation: rotate 1.9s infinite linear;
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0) scale(1) skew(1deg) translate(0);
+			}
+
+			to {
+				transform: rotate(360deg) scale(1) skew(1deg) translate(0);
+			}
+		}
+	</style>
 </head>
 <body>
 <div class="example">
 
 <svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<symbol id="icon-loading" viewBox="0 0 1024 1024">
+<title>loading</title>
+<path class="path1" d="M915.049 419.618h108.955l-176.31 210.761-176.31-210.761h99.082c-29.592-122.967-140.436-214.64-272.352-214.64-111.363 0-212.172 65.936-256.821 167.977l-129.963-56.869c67.245-153.669 219.066-252.966 386.783-252.966 210.421 0 385.357 154.804 416.934 356.499zM525.89 960.881c167.717 0 319.538-99.297 386.783-252.966l-129.959-56.869c-44.653 102.045-145.462 167.977-256.821 167.977-131.916 0-242.765-91.673-272.352-214.64h99.078l-176.31-210.761-176.31 210.761h108.955c31.578 201.699 206.51 356.499 416.934 356.499z"></path>
+</symbol>
+<symbol id="icon-error" viewBox="0 0 1024 1024">
+<title>error</title>
+<path class="path1" d="M1016.431 900.134l-446.654-836.911c-11.137-20.923-32.962-34.055-56.717-34.055h-0.064c-23.755 0-45.514 13.069-56.717 33.992l-448.649 836.909c-10.686 20.087-10.108 44.163 1.48 63.477 11.652 19.377 32.641 31.287 55.237 31.287h895.238c22.662 0 43.583-11.847 55.237-31.287 11.652-19.377 12.232-43.454 1.609-63.411zM512.996 866.077c-35.538 0-64.377-28.841-64.377-64.377s28.841-64.377 64.377-64.377c35.472 0 64.377 28.841 64.377 64.377s-28.839 64.377-64.377 64.377zM577.439 609.597c0 35.601-28.905 64.377-64.377 64.377-35.538 0-64.377-28.778-64.377-64.377v-257.512c0-35.538 28.841-64.377 64.377-64.377 35.472 0 64.377 28.841 64.377 64.377v257.512z"></path>
+</symbol>
 <symbol id="icon-trash" viewBox="0 0 1024 1024">
 <title>trash</title>
 <path class="path1" d="M219.97 974.618c1.156 27.6 23.868 49.382 51.488 49.382h481.089c27.62 0 50.332-21.782 51.488-49.382l34.356-725.268h-652.778l34.356 725.268zM620.831 429.494c0-11.557 9.371-20.93 20.932-20.93h33.479c11.554 0 20.932 9.371 20.932 20.93v414.362c0 11.559-9.371 20.93-20.932 20.93h-33.479c-11.557 0-20.932-9.366-20.932-20.93v-414.362zM474.334 429.494c0-11.557 9.371-20.93 20.93-20.93h33.479c11.554 0 20.93 9.371 20.93 20.93v414.362c0 11.559-9.368 20.93-20.93 20.93h-33.479c-11.557 0-20.93-9.366-20.93-20.93v-414.362zM327.832 429.494c0-11.557 9.371-20.93 20.93-20.93h33.481c11.557 0 20.93 9.371 20.93 20.93v414.362c0 11.559-9.371 20.93-20.93 20.93h-33.481c-11.557 0-20.93-9.366-20.93-20.93v-414.362z"></path>
@@ -141,6 +164,7 @@
 </svg>
 
 
+
 	<h1>knob.js</h1>
 	<h2>Symbols</h2>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-trash'"></knob-button>
@@ -157,8 +181,18 @@
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-last'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-up'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-down'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-error'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-loading'"></knob-button>
 	<hr>
 
+	<h2>Loading Symbol</h2>
+	<br>
+	<svg class="icon icon-loading anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
+	<br>
+	<br>
+	<br>
+
+	<hr>
 	<h2>knob-button default Small</h2>
 	<div data-bind="foreach: buttons">
 		<knob-button class="button--sm" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
