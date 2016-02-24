@@ -15,7 +15,9 @@ initKnob({
 	baseActiveBg: "#54acd2",
 	primaryBg: "#fba026",
 	primaryHoverBg: "#FAC51C",
+	primaryHoverButtonFontColor: "#fff",
 	primaryActiveBg: "#F7DA64",
+	activeButtonFontColor: "#fff",
 
 	// InputColors
 	inputBg: "#fff",
