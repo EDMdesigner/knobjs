@@ -29,9 +29,6 @@ img {
 [role="button"] {
   cursor: pointer; }
 
-/* TODO
-* Separate ItemsPerPage and Input styles
-********************************************/
 .knob-button {
   line-height: 1.42857143;
   padding: 6px 12px;
@@ -83,7 +80,7 @@ img {
   z-index: 2;
   position: absolute; }
   .knob-dropdown-menu button {
-    width: 100px;
+    width: 100%;
     text-align: left; }
 
 .knob-pagelist .knob-pagelist__bar {
@@ -122,3 +119,31 @@ img {
     overflow: hidden; }
     .knob-radio--inline .knob-radio > div {
       float: left; }
+
+body {
+  font-size: 13px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+
+.example {
+  margin: 0 auto;
+  width: 960px; }
+  .example .knob-pagelist__result {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #ddd; }
+    .example .knob-pagelist__result div {
+      padding: 10px;
+      width: 100%;
+      display: table-row; }
+      .example .knob-pagelist__result div:hover {
+        background: #e9e9e9; }
+      .example .knob-pagelist__result div:nth-child(odd) {
+        background: #fdfdfd; }
+        .example .knob-pagelist__result div:nth-child(odd):hover {
+          background: #e9e9e9; }
+      .example .knob-pagelist__result div span {
+        border-top: 1px solid #eaeaea;
+        display: table-cell;
+        padding: 8px 10px; }
+        .example .knob-pagelist__result div span:nth-last-child(1) {
+          text-align: right; }
