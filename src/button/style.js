@@ -30,16 +30,16 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"hover": {
 				"backgroundColor": theme.primaryHoverBg,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"color": theme.primaryHoverButtonFontColor,
+				"fill": theme.primaryHoverButtonFontColor
 			},
 			"active": {
 				"backgroundColor": theme.primaryActiveBg,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"color": theme.activeButtonFontColor,
+				"fill": theme.activeButtonFontColor
 			},
 			"disabled": {
-				"backgroundColor": theme.DisabledButtonBg,
+				"backgroundColor": theme.disabledButtonBg,
 				"color": theme.disabledButtonColor,
 				"fill": theme.disabledButtonColor
 			}
