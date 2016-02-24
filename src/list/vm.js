@@ -118,6 +118,8 @@ module.exports = function createList(config) {
 	store.load.after.add(afterLoad);
 
 	return {
+		store: store,
+
 		fields: fields, //should filter to the fields. (select)
 
 		search: search,
