@@ -17,7 +17,7 @@ initKnob({
 	primaryHoverBg: "#FAC51C",
 	primaryHoverButtonFontColor: "#fff",
 	primaryActiveBg: "#F7DA64",
-	activeButtonFontColor: "#fff",
+	primaryActiveButtonFontColor: "#fff",
 
 	// InputColors
 	inputBg: "#fff",
@@ -26,7 +26,17 @@ initKnob({
 	inputHoverBorder: "#131313",
 	inputDisabledBg: "#fafafa",
 	inputActiveColor: "#1337aa",
-	inputDisabledColor: "#aaa"
+	inputDisabledColor: "#aaa",
+
+	//ListItemRowColors
+	evenBg: "red",
+	evenColor: "yellow",
+	evenHoverBg: "yellow",
+	evenHoverColor: "red",
+	oddBg: "pink",
+	oddColor: "navy",
+	oddHoverBg: "navy",
+	oddHoverColor: "pink"
 });
 
 

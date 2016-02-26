@@ -35,8 +35,8 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"active": {
 				"backgroundColor": theme.primaryActiveBg,
-				"color": theme.activeButtonFontColor,
-				"fill": theme.activeButtonFontColor
+				"color": theme.primaryActiveButtonFontColor,
+				"fill": theme.primaryActiveButtonFontColor
 			},
 			"disabled": {
 				"backgroundColor": theme.disabledButtonBg,
