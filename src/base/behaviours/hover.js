@@ -3,7 +3,7 @@
 
 var ko = require("knockout");
 
-module.exports = function buttonBehaviour(vm) {
+module.exports = function hoverBehaviour(vm) {
 	if (!vm) {
 		throw new Error("vm is mandatory!");
 	}

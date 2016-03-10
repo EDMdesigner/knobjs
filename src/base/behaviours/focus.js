@@ -1,7 +1,7 @@
 /*jslint node: true */
 "use strict";
 
-module.exports = function buttonBehaviour(vm) {
+module.exports = function focusBehaviour(vm) {
 	function focus() {
 		var actState = vm.state();
 
