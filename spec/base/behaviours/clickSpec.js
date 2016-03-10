@@ -1,20 +1,20 @@
 var ko = require("knockout");
-var hoverBehaviour = require("../../../src/base/behaviours/click");
+var clickBehaviour = require("../../../src/base/behaviours/click");
 
 describe("click behaviour", function() {
 
 	describe("with invalid config", function() {
 		it(" - falsy", function() {
-			expect(hoverBehaviour).toThrowError("vm is mandatory!");
+			expect(clickBehaviour).toThrowError("vm is mandatory!");
 		});
 
 		it(" - config.state is not observable", function() {
 			expect(function() {
-				hoverBehaviour({});
+				clickBehaviour({});
 			}).toThrowError("vm.state has to be a knockout observable!");
 
 			expect(function() {
-				hoverBehaviour({
+				clickBehaviour({
 					state: function() {}
 				});
 			}).toThrowError("vm.state has to be a knockout observable!");
@@ -29,7 +29,7 @@ describe("click behaviour", function() {
 			vm = {
 				state: ko.observable(actState)
 			};
-			hoverBehaviour(vm);
+			clickBehaviour(vm);
 		});
 
 		it("interface check", function() {
