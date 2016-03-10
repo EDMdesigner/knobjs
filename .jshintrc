@@ -1,4 +1,4 @@
-{  
+{
   "asi":false,
   "boss":false,
   "debug":false,
@@ -20,15 +20,27 @@
   "notypeof":false,
   "node":true,
   "esnext":true,
-  "globals":{  
-
+  "globals":{
+    "jasmine": true
   },
   "globalstrict":false,
   "immed":true,
   "newcap":true,
   "plusplus":true,
-  "predef":[  
-    "$"
+  "predef":[
+    "$",
+    "describe",
+    "xdescribe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "xit",
+    "it",
+    "inject",
+    "expect",
+    "spyOn"
   ],
   "phantom":true,
   "shadow":true,
