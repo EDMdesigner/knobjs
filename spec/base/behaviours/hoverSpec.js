@@ -23,11 +23,12 @@ describe("hover behaviour", function() {
 	describe("with valid config", function() {
 		var vm;
 		var defaultState = "myDefaultState";
+
 		beforeEach(function() {
 			vm = {
 				state: ko.observable(defaultState)
 			};
-			hoverBehaviour(vm);			
+			hoverBehaviour(vm);
 		});
 
 		it("interface check", function() {
