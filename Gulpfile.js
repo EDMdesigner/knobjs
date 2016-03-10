@@ -10,6 +10,7 @@ var sass = require("gulp-sass");
 var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
 var concat = require("gulp-concat");
+var jasmine = require("gulp-jasmine");
 
 var jsFiles = [
 	"./**/*.js",
@@ -128,6 +129,11 @@ gulp.task("js:watch", function() {
 		.on("change", function(event) {
 			console.log(event);
 		});
+});
+
+gulp.task("jasmine", function() {
+	return gulp.src("spec/**/*Spec.js")
+		.pipe(jasmine());
 });
 
 
