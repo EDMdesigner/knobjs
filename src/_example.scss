@@ -1,0 +1,43 @@
+body{
+	font-size: 13px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.example {
+	margin: 0 auto;
+	width: 960px;
+
+	.knob-pagelist__result {
+		display: table;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+
+		div {
+			padding: 10px;
+			width: 100%;
+			display: table-row;
+
+			&:hover {
+				background: #e9e9e9;
+			}
+
+			&:nth-child(odd) {
+				background: #fdfdfd;
+
+				&:hover {
+					background: #e9e9e9;
+				}
+			}
+
+			span {
+				border-top: 1px solid #eaeaea;
+				display: table-cell;
+				padding: 8px 10px;
+
+				&:nth-last-child(1) {
+					text-align: right;
+				}
+			}
+		}
+	}
+}

@@ -1,8 +1,8 @@
 {
-  "name": "KnobJS",
-  "version": "0.0.1",
+  "name": "knob-js",
+  "version": "0.0.5",
   "description": "A highly customizable component library for knockout.js",
-  "main": "src/components.js",
+  "main": "dist/knob.js",
   "keywords": [
     "knockout",
     "knockout.js",
@@ -27,7 +27,9 @@
   "maintainers": [
     {
       "name": "Gyula Németh",
-      "email": "gyula.nemeth@edmdesigner.com",
+      "email": "gyula.nemeth@edmdesigner.com"
+    },
+    {
       "name": "Istvan Nagy",
       "email": "steve@edmdesigner.com"
     }
@@ -50,6 +52,7 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.1",
+    "gulp-jasmine": "^2.3.0",
     "gulp-jscs": "^3.0.2",
     "gulp-jscs-stylish": "^1.3.0",
     "gulp-jshint": "^2.0.0",
@@ -58,6 +61,7 @@
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
     "jsonlint": "^1.6.2",
+    "knockout": "^3.4.0",
     "partialify": "^3.1.6",
     "vinyl-source-stream": "^1.1.0"
   },

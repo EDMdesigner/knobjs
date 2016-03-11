@@ -1,46 +1,25 @@
-module.exports = function createStyleConfig() {
+module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": "#fff", //STEVE, you will be able to set the colors like this. This way we can define multiple styles!
-				"color": "#131313",
-				"border-color": "#ddd"
+				"backgroundColor": theme.inputBg,
+				"color": theme.inputText,
+				"border-color": theme.inputBorder
 			},
 			"hover": {
-				"backgroundColor": "#fff",
-				"color": "#131313",
-				"border-color": "#131313"
+				"backgroundColor": theme.inputBg,
+				"color": theme.inputText,
+				"border-color": theme.inputText
 			},
 			"active": {
-				"color": "#1337aa",
-				"fill": "#abcdef"
+				"backgroundColor": theme.inputBg,
+				"color": theme.inputActiveColor,
+				"fill": theme.inputActiveColor
 			},
 			"disabled": {
-				"backgroundColor": "#dddddd",
-				"color": "#aaaaaa"
-			},
-			"success": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
-			},
-			"error": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
-			}
-		},
-		"primary": {
-			"default": {
-				"backgroundColor": "#3AB54A"
-			},
-			"hover": {
-				"backgroundColor": "#2bbbad",
-				"color": "#fff",
-				"fill": "#fff"
-			},
-			"disabled": {
-				"backgroundColor": "#3AB54A"
+				"backgroundColor": theme.inputBorder,
+				"color": theme.inputDisabledColor,
+				"fill": theme.inputActiveColor
 			}
 		}
 	};

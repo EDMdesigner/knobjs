@@ -10,11 +10,22 @@ var selectBehaviour = require("./behaviours/select");
 
 
 function createBaseVm(config) {
+	config = config || {};
+
+	if (!config.component) {
+		throw new Error("config.component is mandatory!");
+	}
+
+	if (!config.style) {
+		throw new Error("config.style is mandatory!");
+	}
+
 	var component = config.component;
+	var style = config.style;
+
 	var state = ko.observable(config.state || "default");
 	var variation = config.variation || "default";
 
-	var style = config.style;
 
 	var cssClassComputed = ko.computed(function() {
 		return "knob-" + component + " state-" + state() + " variation-" + variation;

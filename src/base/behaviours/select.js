@@ -3,8 +3,10 @@
 
 var vms = {};
 
-module.exports = function buttonBehaviour(vm, config) {
-	var group = config.group;
+module.exports = function selectBehaviour(vm, config) {
+	config = config || {};
+
+	var group = config.group || "default";
 
 	if (!vms[group]) {
 		vms[group] = [];

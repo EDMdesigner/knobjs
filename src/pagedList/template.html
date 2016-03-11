@@ -6,12 +6,12 @@
 	<div>
 		<div class="knob-pagelist__bar">
 			<input class="knob-input" type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
-			<knob-button class="knob-button-search" params="label: '', 
-								variation: 'default', 
+			<knob-button class="knob-button-search" params="label: '',
+								variation: 'default',
 								icon: '#icon-search'">
 			</knob-button>
-			<knob-items-per-page class="knob-pagelist__items-per-page" params="numOfItems: count, 
-										numOfPages: numOfPages, 
+			<knob-items-per-page class="knob-pagelist__items-per-page" params="numOfItems: count,
+										numOfPages: numOfPages,
 										itemsPerPage: itemsPerPage">
 			</knob-items-per-page>
 			<!-- ko if: sortOptions.length > 0 -->
@@ -19,7 +19,7 @@
 			<!-- /ko -->
 		</div>
 		<div class="knob-pagelist__result" data-bind="foreach: items">
-			<!-- ko template: { nodes: $componentTemplateNodes, data: $data } --><!-- /ko -->
+			<!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parent, index: $index} } --><!-- /ko -->
 		</div>
 	</div>
 

@@ -70,7 +70,7 @@ module.exports = function createList(config) {
 
 		var find = {};
 
-		find[config.search] = searchVal;
+		find[config.search] = (new RegExp(searchVal, "ig")).toString();
 
 		store.find = find;
 		store.sort = sortVal;
@@ -118,6 +118,8 @@ module.exports = function createList(config) {
 	store.load.after.add(afterLoad);
 
 	return {
+		store: store,
+
 		fields: fields, //should filter to the fields. (select)
 
 		search: search,
