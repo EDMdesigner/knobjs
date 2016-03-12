@@ -3,7 +3,7 @@
 
 var superdata = require("superdata");
 
-var initKnob = require("../src/components");
+var initKnob = require("../src/components").init;
 
 initKnob({
 	//Button Colors

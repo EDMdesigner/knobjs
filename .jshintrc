@@ -9,7 +9,6 @@
   "curly":true,
   "eqeqeq":true,
   "funcscope":true,
-  "jasmine":true,
   "mocha":true,
   "maxcomplexity":12,
   "maxdepth":12,
@@ -28,7 +27,19 @@
   "newcap":true,
   "plusplus":true,
   "predef":[  
-    "$"
+    "$",
+    "describe",
+    "xdescribe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "xit",
+    "it",
+    "inject",
+    "expect",
+    "spyOn"
   ],
   "phantom":true,
   "shadow":true,
