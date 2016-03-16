@@ -18,6 +18,7 @@ function createRadio(config) {
 	}
 
 	var sel = vm.selectedIdx();
+
 	if (typeof sel === "number") {
 		sel = Math.floor(sel);
 		sel %= vm.items.length;
