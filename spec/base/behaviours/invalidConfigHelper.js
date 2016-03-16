@@ -1,4 +1,4 @@
-module.exports = function invalidConfig(config) {
+function invalidConfig(config) {
 
 	var behaviour = config.behaviour;
 
@@ -20,3 +20,5 @@ module.exports = function invalidConfig(config) {
 		});
 	});
 };
+
+module.exports = invalidConfig;

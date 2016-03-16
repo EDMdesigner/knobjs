@@ -1,0 +1,67 @@
+var ko = require("knockout");
+var hoverBehaviour = require("../../../src/base/behaviours/hover");
+var clickBehaviour = require("../../../src/base/behaviours/click");
+var focusBehaviour = require("../../../src/base/behaviours/focus");
+
+function describeEventHandler(config) {
+	var firstEvent = config.firstEvent;
+	var secondEvent = config.secondEvent;
+	var label = config.label;
+
+	var vm;
+	var defaultState = "myDefaultState";
+
+	describe(label, function() {
+		beforeEach(function() {
+			vm = {
+				state: ko.observable(defaultState)
+			};
+
+			hoverBehaviour(vm);
+			clickBehaviour(vm);
+			focusBehaviour(vm);
+		});
+
+		it("interface check", function() {
+			expect(ko.isObservable(vm.state)).toBe(true);
+			expect(typeof vm.eventHandlers).toBe("object");
+			expect(typeof vm.eventHandlers.mouseover).toBe("function");
+			expect(typeof vm.eventHandlers.mouseout).toBe("function");
+		});
+		it("should set state to" + firstEvent.setState + "on "+ firstEvent.name +" call", function() {
+			vm.eventHandlers[firstEvent.name]();
+			expect(vm.state()).toBe(firstEvent.setState);
+		});
+
+		it("should set state to the previous state on mouseout call", function() {
+			vm.eventHandlers[firstEvent.name]();
+			expect(vm.state()).toBe(firstEvent.setState);
+			vm.eventHandlers[secondEvent.name]();
+			expect(vm.state()).toBe(secondEvent.setState);
+		});
+
+		it("should not set the state on mouseover call when the state is 'disabled' or 'active'", function() {
+			vm.state(firstEvent.notsetState);
+
+			vm.eventHandlers[firstEvent.name]();
+			expect(vm.state()).toBe(firstEvent.notsetState);
+
+			vm.eventHandlers[secondEvent.name]();
+			expect(vm.state()).toBe(firstEvent.notsetState);
+
+			vm.state(secondEvent.notsetState);
+
+			vm.eventHandlers[firstEvent.name]();
+			expect(vm.state()).toBe(secondEvent.notsetState);
+
+			vm.eventHandlers[secondEvent.name]();
+			expect(vm.state()).toBe(secondEvent.notsetState);
+		});
+	});
+}
+
+module.exports = describeEventHandler;
+
+
+
+

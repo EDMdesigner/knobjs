@@ -133,7 +133,9 @@ gulp.task("js:watch", function() {
 
 gulp.task("jasmine", function() {
 	return gulp.src("spec/**/*Spec.js")
-		.pipe(jasmine());
+		.pipe(jasmine({
+			verbose: true
+			}));
 });
 
 

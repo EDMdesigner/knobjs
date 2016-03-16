@@ -1,24 +1,24 @@
 var ko = require("knockout");
-var focusBehaviour = require("../../../src/base/behaviours/focus");
+var clickBehaviour = require("../../../src/base/behaviours/click");
 var invalidConfig = require("./invalidConfigHelper");
 var describeEventHandler = require("./behaviourHelper");
 
-describe("Focus behaviour", function() {
+describe("Click behaviour", function() {
 	invalidConfig({
-		behaviour: focusBehaviour
+		behaviour: clickBehaviour
 	});
 });
 
 describeEventHandler({
-	label: "Valid Config - focusBehaviour",
+	label: "Valid Config - clickBehaviour",
 	firstEvent: {
-		name: "focus",
+		name: "mousedown",
 		notsetState: "disabled",
 		setState: "active"
 	},
 	secondEvent: {
-		name: "blur",
+		name: "mouseup",
 		notsetState: "disabled",
-		setState: "default"
+		setState: "hover"
 	}
 });
