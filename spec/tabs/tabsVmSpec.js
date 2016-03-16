@@ -102,7 +102,9 @@ describe("tabs", function() {
 			]
 		};
 
-		var vm = createTabs({defaultTab: 1}, componentInfo);
+		var vm = createTabs({
+			defaultTab: 1
+		}, componentInfo);
 
 		it("should have four elements in the buttons and in the panels array as well", function() {
 			expect(vm.buttons.length).toBe(4);
@@ -158,7 +160,7 @@ describe("tabs", function() {
 					expect(propsToCheck.label).not.toBeDefined();
 				}
 			}
-			
+
 			checkButtonProps(vm.buttons[0], {
 				label: "myTestLabel",
 				rightIcon: "#abcd"
