@@ -19,8 +19,11 @@ function convertParamsToObject(params) {
 
 		act = act.split(":");
 
-		act = "\"" + act[0] + "\"" + ":" + act[1];
+		if (act.length !== 2) {
+			continue;
+		}
 
+		act = "\"" + act[0] + "\"" + ":" + act[1];
 		convertedParams.push(act);
 	}
 
@@ -28,6 +31,10 @@ function convertParamsToObject(params) {
 }
 
 function createTabs(config, componentInfo) {
+	config = config || {};
+	componentInfo = componentInfo || {};
+	componentInfo.templateNodes = componentInfo.templateNodes || [];
+
 	var defaultTab = config.defaultTab;
 
 	var vm = {};
@@ -40,24 +47,31 @@ function createTabs(config, componentInfo) {
 	for (var idx = 0; idx < componentInfo.templateNodes.length; idx += 1) {
 		var actTemplateNode = componentInfo.templateNodes[idx];
 
-		if (actTemplateNode.nodeName.toLowerCase() === "knob-tab") {
-			var tabButtonData = convertParamsToObject(actTemplateNode.getAttribute("params"));
-
-			tabButtonData.tabIdx = tabIdx;
-			tabIdx += 1;
-
-			tabButtons.push(tabButtonData);
-
-			tabPanels.push(actTemplateNode.childNodes);
+		if (actTemplateNode.nodeName.toLowerCase() !== "knob-tab") {
+			continue;
 		}
+
+		var tabButtonData = convertParamsToObject(actTemplateNode.getAttribute("params"));
+
+		tabButtonData.tabIdx = tabIdx;
+		tabIdx += 1;
+
+		tabButtons.push(tabButtonData);
+
+		tabPanels.push(actTemplateNode.childNodes);
 	}
 
+	if (tabPanels.length < 1) {
+		throw new Error("knob-tabs component should have at least one knob-tab component as a child component!");
+	}
 
-	//child templates
-	// - params - label, etc
-	// - based on that we can build a knob-radio-button
+	for (var idx = 0; idx < tabButtons.length; idx += 1) {
+		var act = tabButtons[idx];
 
-
+		if (!act.icon && !act.leftIcon && !act.rightIcon && !act.label) {
+			throw new Error("the child knob-tab components should have proper params (icon and/or label) just like with buttons!");
+		}
+	}
 
 	vm.tabsGroup = "tabsGroup_" + nextTabsGroupIdx;
 	nextTabsGroupIdx += 1;
