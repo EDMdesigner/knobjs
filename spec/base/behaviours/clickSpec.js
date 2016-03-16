@@ -1,4 +1,3 @@
-var ko = require("knockout");
 var clickBehaviour = require("../../../src/base/behaviours/click");
 var invalidConfig = require("./invalidConfigHelper");
 var describeEventHandler = require("./behaviourHelper");
@@ -11,6 +10,7 @@ describe("Click behaviour", function() {
 
 describeEventHandler({
 	label: "Valid Config - clickBehaviour",
+	behaviour: "click",
 	firstEvent: {
 		name: "mousedown",
 		notsetState: "disabled",

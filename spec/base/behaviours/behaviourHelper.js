@@ -7,27 +7,43 @@ function describeEventHandler(config) {
 	var firstEvent = config.firstEvent;
 	var secondEvent = config.secondEvent;
 	var label = config.label;
+	var behaviour = config.behaviour;
+	var vm = config.vm;
 
-	var vm;
 	var defaultState = "myDefaultState";
 
 	describe(label, function() {
 		beforeEach(function() {
-			vm = {
-				state: ko.observable(defaultState)
-			};
+			vm = vm || {};
+			vm.state = ko.observable(defaultState);
 
-			hoverBehaviour(vm);
-			clickBehaviour(vm);
-			focusBehaviour(vm);
+			switch (behaviour) {
+				case "click": {
+					clickBehaviour(vm);
+					break;
+				}
+				case "select": {
+					break;
+				}
+				case "hover": {
+					hoverBehaviour(vm);
+					break;
+				}
+				case "focus": {
+					focusBehaviour(vm);
+					break;
+				}
+				default: {
+					return console.log("unrecognised behaviour");
+				}
+			}
 		});
 
 		it("interface check", function() {
 			expect(ko.isObservable(vm.state)).toBe(true);
 			expect(typeof vm.eventHandlers).toBe("object");
-			expect(typeof vm.eventHandlers.mouseover).toBe("function");
-			expect(typeof vm.eventHandlers.mouseout).toBe("function");
 		});
+
 		it("should set state to" + firstEvent.setState + "on "+ firstEvent.name +" call", function() {
 			vm.eventHandlers[firstEvent.name]();
 			expect(vm.state()).toBe(firstEvent.setState);

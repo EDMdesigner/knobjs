@@ -1,4 +1,3 @@
-var ko = require("knockout");
 var hoverBehaviour = require("../../../src/base/behaviours/hover");
 var invalidConfig = require("./invalidConfigHelper");
 var describeEventHandler = require("./behaviourHelper");
@@ -11,6 +10,7 @@ describe("focus behaviour", function() {
 
 describeEventHandler({
 	label: "Valid Config - hoverBehaviour",
+	behaviour: "hover",
 	firstEvent: {
 		name: "mouseover",
 		notsetState: "disabled",

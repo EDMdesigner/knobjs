@@ -1,4 +1,3 @@
-var ko = require("knockout");
 var focusBehaviour = require("../../../src/base/behaviours/focus");
 var invalidConfig = require("./invalidConfigHelper");
 var describeEventHandler = require("./behaviourHelper");
@@ -11,6 +10,7 @@ describe("Focus behaviour", function() {
 
 describeEventHandler({
 	label: "Valid Config - focusBehaviour",
+	behaviour: "focus",
 	firstEvent: {
 		name: "focus",
 		notsetState: "disabled",
