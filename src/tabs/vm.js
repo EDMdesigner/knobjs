@@ -35,7 +35,7 @@ function createTabs(config, componentInfo) {
 	componentInfo = componentInfo || {};
 	componentInfo.templateNodes = componentInfo.templateNodes || [];
 
-	var defaultTab = config.defaultTab;
+	var defaultTab = config.defaultTab || 0;
 
 	var vm = {};
 
@@ -69,7 +69,7 @@ function createTabs(config, componentInfo) {
 		var act = tabButtons[idx];
 
 		if (!act.icon && !act.leftIcon && !act.rightIcon && !act.label) {
-			throw new Error("the child knob-tab components should have proper params (icon and/or label) just like with buttons!");
+			throw new Error("The child knob-tab components should have proper params (icon and/or label) just like with buttons!");
 		}
 	}
 
