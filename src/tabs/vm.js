@@ -12,8 +12,9 @@ function convertParamsToObject(params) {
 
 	var convertedParams = [];
 
-	for(var idx = 0; idx < params.length; idx += 1) {
+	for (var idx = 0; idx < params.length; idx += 1) {
 		var act = params[idx];
+
 		act = act.trim();
 
 		act = act.split(":");
@@ -35,11 +36,13 @@ function createTabs(config, componentInfo) {
 	var tabPanels = [];
 
 	var tabIdx = 0;
-	for (var idx = 0; idx< componentInfo.templateNodes.length; idx += 1) {
+
+	for (var idx = 0; idx < componentInfo.templateNodes.length; idx += 1) {
 		var actTemplateNode = componentInfo.templateNodes[idx];
 
-		if (actTemplateNode.nodeName === "KNOB-TAB") {
+		if (actTemplateNode.nodeName.toLowerCase() === "knob-tab") {
 			var tabButtonData = convertParamsToObject(actTemplateNode.getAttribute("params"));
+
 			tabButtonData.tabIdx = tabIdx;
 			tabIdx += 1;
 
