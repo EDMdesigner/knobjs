@@ -5,6 +5,12 @@ var ko = require("knockout");
 
 
 function createButtonDropdown(config) {
+	config = config || {};
+
+	if (!config.rightIcon) {
+		throw new Error("config.rightIcon is mandatory!");
+	}
+
 	var rightIcon = ko.observable(config.rightIcon);
 
 	var options = ko.observableArray([]);
