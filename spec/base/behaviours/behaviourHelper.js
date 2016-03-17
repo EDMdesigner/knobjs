@@ -1,6 +1,7 @@
 var ko = require("knockout");
 var hoverBehaviour = require("../../../src/base/behaviours/hover");
 var clickBehaviour = require("../../../src/base/behaviours/click");
+var selectBehaviour = require("../../../src/base/behaviours/select");
 var focusBehaviour = require("../../../src/base/behaviours/focus");
 
 function describeEventHandler(config) {
@@ -8,33 +9,37 @@ function describeEventHandler(config) {
 	var secondEvent = config.secondEvent;
 	var label = config.label;
 	var behaviour = config.behaviour;
-	var vm = config.vm;
+	var configVm = config.vm;
+	var vm;
 
 	var defaultState = "myDefaultState";
 
 	describe(label, function() {
 		beforeEach(function() {
-			vm = vm || {};
+			vm = configVm || {};
 			vm.state = ko.observable(defaultState);
 
-			switch (behaviour) {
-				case "click": {
-					clickBehaviour(vm);
-					break;
-				}
-				case "select": {
-					break;
-				}
-				case "hover": {
-					hoverBehaviour(vm);
-					break;
-				}
-				case "focus": {
-					focusBehaviour(vm);
-					break;
-				}
-				default: {
-					return console.log("unrecognised behaviour");
+			if (!configVm) {
+				switch (behaviour) {
+					case "click": {
+						clickBehaviour(vm);
+						break;
+					}
+					case "select": {
+						selectBehaviour(vm);
+						break;
+					}
+					case "hover": {
+						hoverBehaviour(vm);
+						break;
+					}
+					case "focus": {
+						focusBehaviour(vm);
+						break;
+					}
+					default: {
+						return console.log("unrecognised behaviour");
+					}
 				}
 			}
 		});
