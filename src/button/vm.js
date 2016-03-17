@@ -14,6 +14,10 @@ function createButton(config) {
 		throw new Error("click has to be a function!");
 	}
 
+	if (!config.label && !config.leftIcon && !config.rightIcon && !config.icon) {
+		throw new Error("either label/lefticon/righticon/icon has to be given!");
+	}
+
 	config.component = "button";
 
 	var vm = base(config);

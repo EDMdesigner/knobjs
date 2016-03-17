@@ -53,6 +53,19 @@ describe("Button", function() {
 				});
 			}).toThrowError("click has to be a function!");
 		});
+
+		it("config has to contain minimum one of label/lefticon/righticon/icon", function() {
+			expect(function() {
+				createButton({
+					componentName: componentName,
+					variation: variation,
+					initialState: initialState,
+					style: style,
+					value: value,
+					click: function() {}
+				});
+			}).toThrowError("either label/lefticon/righticon/icon has to be given!");
+		});
 	});
 
 	describe("With valid config", function() {
