@@ -9,7 +9,6 @@
   "curly":true,
   "eqeqeq":true,
   "funcscope":true,
-  "jasmine":true,
   "mocha":true,
   "maxcomplexity":12,
   "maxdepth":12,

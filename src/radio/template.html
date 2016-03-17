@@ -2,6 +2,7 @@
 	<div data-bind="component: {
 		name: 'knob-button',
 		params: {
+			state: isSelected() ? 'active' : 'default',
 			label: label,
 			icon: icon,
 			radio: true,

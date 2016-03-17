@@ -20,6 +20,9 @@ function initKnob(theme) {
 	registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"));
 	registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
 	registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
+
+	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
+	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"));
 }
 
 module.exports = {

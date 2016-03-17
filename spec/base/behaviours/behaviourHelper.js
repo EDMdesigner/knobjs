@@ -49,7 +49,7 @@ function describeEventHandler(config) {
 			expect(typeof vm.eventHandlers).toBe("object");
 		});
 
-		it("should set state to" + firstEvent.setState + "on "+ firstEvent.name +" call", function() {
+		it("should set state to" + firstEvent.setState + "on " + firstEvent.name + " call", function() {
 			vm.eventHandlers[firstEvent.name]();
 			expect(vm.state()).toBe(firstEvent.setState);
 		});

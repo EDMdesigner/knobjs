@@ -19,6 +19,7 @@ function invalidConfig(config) {
 			}).toThrowError("vm.state has to be a knockout observable!");
 		});
 	});
-};
+
+}
 
 module.exports = invalidConfig;

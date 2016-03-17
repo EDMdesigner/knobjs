@@ -1,0 +1,13 @@
+<div>
+	<knob-radio class="knob-radio--inline" params="
+		group: tabsGroup,
+		selectedIdx: selectedIdx,
+		items: buttons">
+	</knob-radio>
+
+	<div data-bind="foreach: panels">
+		<knob-tab data-bind="visible: $parent.selectedIdx() == $index()">
+			<!-- ko template: { nodes: $data } --><!-- /ko -->
+		</knob-tab>
+	</div>
+</div>
