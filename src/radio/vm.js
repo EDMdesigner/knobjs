@@ -16,6 +16,8 @@ function createRadio(config) {
 	vm.selected = config.selected || ko.observable();
 	vm.selectedIdx = config.selectedIdx || ko.observable();
 
+	vm.variation = config.variation || "default";
+
 	vm.items = [];
 
 	for (var idx = 0; idx < config.items.length; idx += 1) {
