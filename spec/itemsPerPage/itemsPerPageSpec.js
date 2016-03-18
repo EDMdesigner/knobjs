@@ -2,9 +2,9 @@
 var ko = require("knockout");
 var createItemsPerPage = require("../../src/itemsPerPage/vm");
 
-describe('=== itemsPerPage ===', function() {
+describe("=== itemsPerPage ===", function() {
 
-	describe(' - with invalid config', function() {
+	describe(" - with invalid config", function() {
 		it("numOfItems", function() {
 			expect(function() {
 				createItemsPerPage({
@@ -33,7 +33,7 @@ describe('=== itemsPerPage ===', function() {
 		});
 	});
 
-	describe(' - with valid config', function() {
+	describe(" - with valid config", function() {
 
 		var config = {
 			numOfItems: ko.observable(),
@@ -48,7 +48,7 @@ describe('=== itemsPerPage ===', function() {
 
 		var vm = createItemsPerPage(config);
 
-		it('itemsPerPageList - label - value', function() {
+		it("itemsPerPageList - label - value", function() {
 			vm.itemsPerPage();
 			expect(vm.itemsPerPage().label).toBe(10);
 			expect(vm.itemsPerPage().value).toBe(10);

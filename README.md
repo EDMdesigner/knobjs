@@ -26,7 +26,7 @@ click | No | | This is the callback which will be called on click.
 ```html
 <knob-button class="button--sm" params="
 	label: 'Search',
-	variation: 'default',
+	variation: 'primary',
 	icon: '#icon-search',
 	click: clickCallback">
 </knob-button>
