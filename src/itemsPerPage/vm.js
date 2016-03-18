@@ -5,6 +5,19 @@ var ko = require("knockout");
 
 module.exports = function createItemsPerPage(config) {
 	config = config || {};
+
+	if (!config.numOfItems) {
+		throw new Error("config.numOfItems element is mandatory!");
+	}
+
+	if (!config.itemsPerPageList) {
+		throw new Error("config.itemsPerPageList element is mandatory!");
+	}
+
+	if (!config.itemsPerPage) {
+		throw new Error("config.itemsPerPage element is mandatory!");
+	}
+
 	var numOfItems = config.numOfItems || ko.observable(0);
 
 	var itemsPerPageList = config.itemsPerPageList || [{
