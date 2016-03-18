@@ -10,14 +10,15 @@ This is one of the most basic components in knobjs. It works like you would expe
 
 ### Params
 
-Param | Required | Default value | Description
----|---|---|---
-variation | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
-label | Partially ** | | The text which will be written on the button.
-iconLeft | Partially ** | | The id of the icon on the left of the label.
-iconRight | Partially ** | | The id of the icon on the right of the label
-icon | Partially ** | | This is a synonim for iconLeft.
-click | No | | This is the callback which will be called on click.
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+variation | string | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
+label | string | Partially ** | | The text which will be written on the button.
+iconLeft | string | Partially ** | | The id of the icon on the left of the label.
+iconRight | string | Partially ** | | The id of the icon on the right of the label
+icon | string | Partially ** | | This is a synonim for iconLeft.
+click | function | No | | This is the callback which will be called on click.
+
 ** At least one of these params has to be given, otherwise an error will be thrown. It's because you probably don't want to create a totally empty button.
 
 
@@ -42,7 +43,17 @@ click | No | | This is the callback which will be called on click.
 
 ## knob-input
 
+This is the other most basic component in knobjs. It's just a simple imput, but you can style it in the [knob way](#styling-knob-components).
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+variation | string | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
+type | string | No | "text" | The type of the input. (Eg.: 'password')
+value | ko.observable | Yes | | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
+hasFocus | ko.observable (boolean) | No | ko.observable (false) | With this observable, you can programmatically set the focus to this input.
+
 
 ### Example
 ```html
