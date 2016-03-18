@@ -4,7 +4,14 @@
 var ko = require("knockout");
 
 function createRadio(config) {
+
+	config = config || {};
+
 	var vm = {};
+
+	if (config.items.length === 0) {
+		throw new Error("config.items should not be empty");
+	}
 
 	vm.selected = config.selected || ko.observable();
 	vm.selectedIdx = config.selectedIdx || ko.observable();
@@ -24,10 +31,13 @@ function createRadio(config) {
 		sel %= vm.items.length;
 
 		vm.items[sel].select();
+
+	} else {
+		vm.items[0].select();
 	}
 
-
 	function createItemVm(label, icon, idx) {
+
 		var obj = {
 			label: label,
 			icon: icon,
