@@ -6,7 +6,20 @@ Dependency: superdata
 
 ## knob-button
 
+This is one of the most basic components in knobjs. It works like you would expect it from a button. If you click on it, something will be triggered. This is why most of the components in knobjs are using this element. Each components where some kind of changes should be triggered by a click are implemented with knob-buttons.
+
 ### Params
+
+Param | Required | Default value | Description
+---|---|---|---
+variation | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
+label | Partially ** | | The text which will be written on the button.
+iconLeft | Partially ** | | The id of the icon on the left of the label.
+iconRight | Partially ** | | The id of the icon on the right of the label
+icon | Partially ** | | This is a synonim for iconLeft.
+click | No | | This is the callback which will be called on click.
+** At least one of these params has to be given, otherwise an error will be thrown. It's because you probably don't want to create a totally empty button.
+
 
 ### Example
 
@@ -180,6 +193,7 @@ Dependency: superdata
 	});
 </script>
 ```
+
 
 ## knob-tabs
 
