@@ -1,4 +1,3 @@
-var ko = require("knockout");
 var createRadio = require("../../src/radio/vm");
 
 describe("=== Radio ===", function() {
