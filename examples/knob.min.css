@@ -120,6 +120,17 @@ img {
     .knob-radio--inline .knob-radio > div {
       float: left; }
 
+.knob-button.variation-tab {
+  border: 1px solid;
+  margin-right: 5px; }
+  .knob-button.variation-tab.state-active {
+    border: 1px solid; }
+
+.knob-tab {
+  padding: 10px;
+  border: 1px solid;
+  margin-top: -1px; }
+
 body {
   font-size: 13px;
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
