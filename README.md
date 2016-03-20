@@ -107,7 +107,15 @@ items | Array | Yes | | You can configure the buttons within the component, so e
 
 ## knob-dropdown
 
+This component is also composed of knob-buttons. Therefore very element can have it's icon and label. It also can have an icon on the right, which is usually a caret pointing down to indicate the options will be visible if you click on it. In a sense, it's very similar to the knob-radio element.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+selected | ko.observable | Yes | | The selected element. This is not visible in the dropdown list.
+rightIcon | string | No | | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
+items | Array | Yes | | The items in the dropdown. They are configured just like buttons and they also can have a value property.
 
 ### Example
 ```html
