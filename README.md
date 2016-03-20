@@ -162,7 +162,16 @@ value | ko.observable | Yes | | The initial value is read from this observable a
 
 ## knob-items-per-page
 
+This component is used in the knob-paged-list component. It's basically responsible for calculating the actual number of pages based on the number of items and the items per page value. This value is selected from a dropdown list.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+numOfItems | ko.observable (number) | Yes | | The number of items in a result set.
+itemsPerPage | ko.observable (number) | Yes | | The number of items on a page.
+numOfPages | ko.observable (number) | Yes | | The calculated number of pages, which are based on the previous two values.
+itemsPerPageList | Array | Yes | | The available numbers of items which will show up in the dropdown.
 
 ### Example
 ```html
