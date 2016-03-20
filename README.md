@@ -1,6 +1,8 @@
 # knobjs
 A component library for knockout.js
 
+Components communicate through ko.observables.
+
 Dependency: superdata
 
 
@@ -71,7 +73,16 @@ hasFocus | ko.observable (boolean) | No | ko.observable (false) | With this obse
 
 ## knob-radio
 
+This component is built on top of the knob-button component and it implements a radio button behaviour. This means that you can select one of it's elements and only one element can be selected from the group. Since it is composed from knob-button elements, you can add icons and labels to it's elements.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+group | string | Yes | | This value will indicate in which group the buttons will be. You can connect multiple knob-radios by putting them into the same group.
+selected | ko.observable | No | | The selected element will be put into this observable.
+selectedIdx | ko.observable (number) | No | | The selected index will be written into this observable. Also, you can set the default selection by giving a value to this observable.
+items | Array | Yes | | You can configure the buttons within the component, so every parameter which you can pass to buttons are valid in this array. Also, there is an extra value parameter.
 
 ### Example
 ```html
