@@ -139,7 +139,13 @@ items | Array | Yes | | The items in the dropdown. They are configured just like
 
 ## knob-inline-text-editor
 
+It's a quite common task to edit a short text. This component has one major boolean state variable, the editMode. If the edit mode is false, then the text value is shown as a text node and there is an edit button next to it. If you click on the edit mode, then it's replaced with a knob-input and a save and a cancel button. The save and cancel functionality can be triggered with pressing enter and the esc key.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+value | ko.observable | Yes | | The initial value is read from this observable and the changes will be written back to it. (Only if you save the changes.)
 
 ### Example
 ```html
