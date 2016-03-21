@@ -1,3 +1,4 @@
+var ko = require("knockout");
 var createRadio = require("../../src/radio/vm");
 
 describe("=== Radio ===", function() {
@@ -11,6 +12,20 @@ describe("=== Radio ===", function() {
 				});
 			}).toThrowError("config.items should not be empty");
 		});
+
+		it("items", function() {
+			expect(function() {
+				createRadio({
+					items: [
+						{
+							value: "majom"
+						}
+					],
+					selected: ko.observable()
+				});
+			}).toThrowError("each element of config.items has to have label and/or icon property");
+		});
+
 	});
 
 
@@ -37,7 +52,6 @@ describe("=== Radio ===", function() {
 
 			vm.items[1].select();
 			expect(vm.selected().icon).toBe("randomIcon1");
-
 
 			vm.items[2].select();
 			expect(vm.selected().label).toBe("randomLabel2");
