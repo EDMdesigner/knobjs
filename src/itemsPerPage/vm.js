@@ -14,11 +14,15 @@ module.exports = function createItemsPerPage(config) {
 		throw new Error("config.itemsPerPageList element is mandatory!");
 	}
 
-	if (!config.itemsPerPage) {
-		throw new Error("config.itemsPerPage element is mandatory!");
+	for (var i = 0; i < config.itemsPerPageList.length; i += 1) {
+
+		if (!config.itemsPerPageList[i].value && !config.itemsPerPageList[i].label) {
+			throw new Error("problem");
+		}
+
 	}
 
-	var numOfItems = config.numOfItems || ko.observable(0);
+	var numOfItems = config.numOfItems;
 
 	var itemsPerPageList = config.itemsPerPageList || [{
 		label: 10,
@@ -33,6 +37,7 @@ module.exports = function createItemsPerPage(config) {
 		label: 100,
 		value: 100
 	}];
+
 	var itemsPerPage = ko.observable(itemsPerPageList[0]);
 
 	var numOfPages = config.numOfPages || ko.observable();

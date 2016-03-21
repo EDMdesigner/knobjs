@@ -14,18 +14,18 @@ describe("=== itemsPerPage ===", function() {
 		it("itemsPerPageList", function() {
 			expect(function() {
 				createItemsPerPage({
-					numOfItems: 100
+					numOfItems: ko.observable()
 				});
 			}).toThrowError("config.itemsPerPageList element is mandatory!");
 		});
 
-		it("itemsPerPage", function() {
+		it("itemsPerPageList not empty", function() {
 			expect(function() {
 				createItemsPerPage({
-					numOfItems: 100,
-					itemsPerPageList: 10
+					numOfItems: ko.observable(),
+					itemsPerPageList: [{}]
 				});
-			}).toThrowError("config.itemsPerPage element is mandatory!");
+			}).toThrowError("problem");
 		});
 	});
 
@@ -52,6 +52,21 @@ describe("=== itemsPerPage ===", function() {
 		};
 
 		var vm = createItemsPerPage(config);
+
+		it('numOfPages and numOfItems should be observable', function() {
+			expect(ko.isObservable(vm.numOfItems)).toBe(true);
+			expect(ko.isObservable(vm.numOfPages)).toBe(true);
+			expect(ko.isObservable(vm.itemsPerPage)).toBe(true);
+		});
+
+		it('itemsPerPageList is array', function() {
+			expect(vm.itemsPerPageList.length).toBe(3);
+		});
+
+		it('valid typeof label and value', function() {
+			expect(typeof vm.itemsPerPage().value).toBe("number");
+			expect(typeof vm.itemsPerPage().label).not.toBeUndefined();
+		});
 
 		it("itemsPerPageList - label - value", function() {
 			vm.itemsPerPage(vm.itemsPerPageList[0]);
