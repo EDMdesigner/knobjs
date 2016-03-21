@@ -198,12 +198,24 @@ itemsPerPageList | Array | Yes | | The available numbers of items which will sho
 
 ## knob-pagination
 
+This component is used by the knob-paged-list as well. It's very tightly bound with the knob-items-per-page. Basically if you pass the same numOfPages ko.observable to the two components, then they will smoothly function together.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+numOfPages | ko.observable | Yes | | You can set the total number of pages with this property. The page selector items will be generated based on this variable.
+currentPage | ko.observable | Yes | ko.observable(0) | The selected page's value will be written into this ko.observable
+afterHead | number | No | 2 | The number of page selectors to be visible at the beginning of the list.
+beforeTail | number | No | 2 | The number of page selectors to be visible at the end of the list.
+beforeCurrent | number | No | 2 | The number of page selectors to be visible before the currently selected item.
+afterCurrent | number | No | 2 | The number of page selectors to be visible after the currently selected element.
 
 ### Example
 ```html
 <knob-pagination params="
-	numOfPages: numOfPages
+	numOfPages: numOfPages,
+	currentPage: current,
 	afterHead: 3,
 	beforeTail: 3,
 	beforeCurrent: 4,
@@ -212,6 +224,7 @@ itemsPerPageList | Array | Yes | | The available numbers of items which will sho
 
 <script>
 	ko.applyBindings({
+		current: ko.observable(0),
 		numOfPages: ko.observable(100)
 	});
 </script>
@@ -219,7 +232,17 @@ itemsPerPageList | Array | Yes | | The available numbers of items which will sho
 
 ## knob-paged-list
 
+An easily configurable general paged list with which you can list any kind of data. You can create project lists, galleries or anything related to listing by using this module. The child template can be anything of this component depending on the data you want to show in the list.
+
+The main dependency of the module is [superdata's](https://github.com/EDMdesigner/superdata) store module.
+
 ### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+store | superdata.store | Yes | | A store instance from superdata. Every data reading and writing goes through this module.
+search | string | Yes | | The field's name based on which the filtering should work.
+sort | Array | Yes | | The field names based on which the you want to have a sorting option.
 
 ### Example
 ```html
@@ -246,7 +269,9 @@ With the **knob-tabs** component, you can easily create tabbed user interfaces. 
 
 ### Params
 
-defaultTab - you can set the 0 based index of the default tab.
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+defaultTab | number | No | 0 | You can set the default selected tab by giving the zero-based index of it.
 
 Also, the knob-tab child elements has to have at least one of the following parameters:
  - label
