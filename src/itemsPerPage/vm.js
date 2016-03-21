@@ -17,7 +17,7 @@ module.exports = function createItemsPerPage(config) {
 	for (var i = 0; i < config.itemsPerPageList.length; i += 1) {
 
 		if (!config.itemsPerPageList[i].value && !config.itemsPerPageList[i].label) {
-			throw new Error("problem");
+			throw new Error("each element of config.items has to have label and/or value property");
 		}
 
 	}

@@ -25,7 +25,7 @@ describe("=== itemsPerPage ===", function() {
 					numOfItems: ko.observable(),
 					itemsPerPageList: [{}]
 				});
-			}).toThrowError("problem");
+			}).toThrowError("each element of config.items has to have label and/or value property");
 		});
 	});
 
