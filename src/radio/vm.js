@@ -21,7 +21,12 @@ function createRadio(config) {
 	vm.items = [];
 
 	for (var idx = 0; idx < config.items.length; idx += 1) {
+
 		var act = config.items[idx];
+
+		if(!act.label && !act.icon) {
+			throw new Error("each element of config.items has to have label and/or icon property")
+		}
 
 		vm.items.push(createItemVm(act.label, act.icon, idx));
 	}
