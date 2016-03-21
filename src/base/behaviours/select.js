@@ -4,6 +4,10 @@
 var vms = {};
 
 module.exports = function selectBehaviour(vm, config) {
+	if (!vm) {
+		throw new Error("vm is mandatory!");
+	}
+
 	config = config || {};
 
 	var group = config.group || "default";

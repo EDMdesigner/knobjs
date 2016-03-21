@@ -1,10 +1,8 @@
 # knobjs
-A component library for knockout.js
 
-Components communicate through ko.observables.
+A component library for knockout.js to build skinnable UIs with ease.
 
-Dependency: superdata
-
+Knobjs is a component library based on knockoutjs. The main goal of the lib is to ease the way of creating skinnable / themed UIs. The components communicate through ko.observables. Other than knockout, its dependency is [superdata](https://github.com/EDMdesigner/superdata) which is a general data layer which can be used with any client-side frameworks.
 
 ## knob-button
 
@@ -295,4 +293,42 @@ Also, the knob-tab child elements has to have at least one of the following para
 ```
 
 ## Styling knob components
-Awesomeness!
+
+At the moment we have only one style, where you have to set up way too many colors. We will refactor it soon. You will have to give only a few colors and some gray variations.
+
+### Example
+```javascript
+knob.init({
+	//Button Colors
+	baseButtonFontColor: "#fff",
+	disabledButtonBg: "#d1d5d8",
+	disabledButtonColor: "#131313",
+	baseBg: "#2969b0",
+	baseHoverBg: "#3d8eb9",
+	baseActiveBg: "#54acd2",
+	primaryBg: "#fba026",
+	primaryHoverBg: "#FAC51C",
+	primaryHoverButtonFontColor: "#fff",
+	primaryActiveBg: "#F7DA64",
+	primaryActiveButtonFontColor: "#fff",
+
+	// InputColors
+	inputBg: "#fff",
+	inputText: "#131313",
+	inputBorder: "#ddd",
+	inputHoverBorder: "#131313",
+	inputDisabledBg: "#fafafa",
+	inputActiveColor: "#1337aa",
+	inputDisabledColor: "#aaa",
+
+	//ListItemRowColors
+	evenBg: "red",
+	evenColor: "yellow",
+	evenHoverBg: "yellow",
+	evenHoverColor: "red",
+	oddBg: "pink",
+	oddColor: "navy",
+	oddHoverBg: "navy",
+	oddHoverColor: "pink"
+});
+```
