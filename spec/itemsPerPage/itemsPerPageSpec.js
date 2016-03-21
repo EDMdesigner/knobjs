@@ -64,7 +64,7 @@ describe("=== itemsPerPage ===", function() {
 			expect(vm.itemsPerPage().value).toBe(50);
 		});
 
-		it("numOf....", function() {
+		it("Change numOfItems and itemsPerPage, should change numOfPages value", function() {
 			vm.numOfItems(250);
 			vm.itemsPerPage(vm.itemsPerPageList[2]);
 			expect(vm.numOfPages()).toBe(5);
