@@ -144,25 +144,25 @@ describe("List", function() {
 			expect(ko.isObservable(list.search)).toBe(true);	
 		});
 
-		/* TODO
+		//TODO
 		it("- sort should be az object", function() {
-			expect(typeof list.sort).toBe("object");	
+			expect(ko.isObservable(list.sort)).toBe(true);	
 		});
-		*/
+		
 
 		it("- sortOptions should be an array", function() {
 			expect(list.sortOptions instanceof Array).toBe(true);	
 		});
 
-		/* TODO
+		// TODO
 		it("- skip should be a number", function() {
-			expect(typeof list.skip).toBe("number");	
+			expect(typeof list.skip()).toBe("number");
 		});
 
 		it("- limit should be a number", function() {
-			expect(typeof list.limit).toBe("number");	
+			expect(typeof list.limit()).toBe("number");
 		});
-		*/
+		
 
 		// items
 
