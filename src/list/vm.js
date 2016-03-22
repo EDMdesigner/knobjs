@@ -3,11 +3,22 @@
 
 var ko = require("knockout");
 
-
-
 module.exports = function createList(config) {
-	var store = config.store;
+	config = config || {};
 
+	if (!config.store) {
+		throw new Error("config.store is mandatory!");
+	}
+
+	if (!config.fields) {
+		throw new Error("config.fields is mandatory!");
+	}
+
+	if (!config.sort) {
+		throw new Error("config.sort is mandatory!");
+	}
+
+	var store = config.store;
 	var fields = config.fields;
 
 	var search = ko.observable("").extend({
@@ -20,27 +31,26 @@ module.exports = function createList(config) {
 
 	var sortOptions = [];
 
-	function createQureyObj(prop, asc) {
+	function createQueryObj(prop, asc) {
 		var obj = {};
 
 		obj[prop] = asc;
 		return obj;
 	}
-	if (config.sort) {
-		for (var idx = 0; idx < config.sort.length; idx += 1) {
-			var act = config.sort[idx];
+	
+	for (var idx = 0; idx < config.sort.length; idx += 1) {
+		var act = config.sort[idx];
 
-			sortOptions.push({
-				icon: "#icon-a-z",
-				label: act,
-				value: createQureyObj(act, 1)
-			});
-			sortOptions.push({
-				icon: "#icon-z-a",
-				label: act,
-				value: createQureyObj(act, -1)
-			});
-		}
+		sortOptions.push({
+			icon: "#icon-a-z",
+			label: act,
+			value: createQueryObj(act, 1)
+		});
+		sortOptions.push({
+			icon: "#icon-z-a",
+			label: act,
+			value: createQueryObj(act, -1)
+		});
 	}
 
 	var sort = ko.observable(sortOptions[0]);
