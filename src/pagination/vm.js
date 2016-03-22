@@ -6,10 +6,6 @@ var ko = require("knockout");
 module.exports = function createPagination(config) {
 	config = config || {};
 
-	if (config.currentPage && !ko.isObservable(config.currentPage)) {
-		throw new Error("currentPage has to be an observable");
-	}
-
 	if (config.afterHead && config.afterHead < 1) {
 		throw new Error("config.afterHead must be larger than zero");
 	}
@@ -49,7 +45,13 @@ module.exports = function createPagination(config) {
 	}
 
 	var currentPage = (function() {
-		var currentPage = config.currentPage || ko.observable(0);
+		var currentPage;
+
+		if (ko.isObservable(config.currentPage)) {
+			currentPage = config.currentPage;
+		} else {
+			currentPage = ko.observable(config.currentPage || 0);
+		}
 
 		ko.computed(function() {
 			numOfPages();
