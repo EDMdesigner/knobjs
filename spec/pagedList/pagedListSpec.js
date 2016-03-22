@@ -57,10 +57,11 @@ describe("pagedList", function() {
 		});
 
 		it('limit and skip function', function() {
-			pagedList.itemsPerPage(0);
+			pagedList.itemsPerPage(100);
+			pagedList.currentPage(5);
 
+			expect(pagedList.limit()).toBe(100);
+			expect(pagedList.skip()).toBe(500);
 		});
 	});
-
-
 });
