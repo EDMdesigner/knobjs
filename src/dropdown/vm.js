@@ -39,7 +39,9 @@ function createButtonDropdown(config) {
 
 	}
 
-	var selected = config.selected || ko.observable(options()[0]);
+	var selected = config.selected() || ko.observable();
+
+	selected(options()[0]);
 
 	var dropdownVisible = ko.observable(false);
 
