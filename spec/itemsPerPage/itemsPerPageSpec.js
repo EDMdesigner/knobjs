@@ -53,17 +53,17 @@ describe("=== itemsPerPage ===", function() {
 
 		var vm = createItemsPerPage(config);
 
-		it('numOfPages and numOfItems should be observable', function() {
+		it("numOfPages and numOfItems should be observable", function() {
 			expect(ko.isObservable(vm.numOfItems)).toBe(true);
 			expect(ko.isObservable(vm.numOfPages)).toBe(true);
 			expect(ko.isObservable(vm.itemsPerPage)).toBe(true);
 		});
 
-		it('itemsPerPageList is array', function() {
+		it("itemsPerPageList is array", function() {
 			expect(vm.itemsPerPageList.length).toBe(3);
 		});
 
-		it('valid typeof label and value', function() {
+		it("valid typeof label and value", function() {
 			expect(typeof vm.itemsPerPage().value).toBe("number");
 			expect(typeof vm.itemsPerPage().label).not.toBeUndefined();
 		});

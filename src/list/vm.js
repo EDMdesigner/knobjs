@@ -48,7 +48,6 @@ module.exports = function createList(config) {
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
 
-
 	var items = ko.observableArray([]);
 
 	store.items.forEach(function(item) { //store === this
@@ -59,8 +58,6 @@ module.exports = function createList(config) {
 
 	var loading = ko.observable(false); //should be read-only
 	var error = ko.observable(false); //should be read-only?
-
-
 
 	ko.computed(function() {
 		var searchVal = search();
