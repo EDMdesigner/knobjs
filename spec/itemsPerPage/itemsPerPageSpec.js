@@ -11,14 +11,6 @@ describe("=== itemsPerPage ===", function() {
 			}).toThrowError("config.numOfItems element is mandatory!");
 		});
 
-		it("itemsPerPageList", function() {
-			expect(function() {
-				createItemsPerPage({
-					numOfItems: ko.observable()
-				});
-			}).toThrowError("config.itemsPerPageList element is mandatory!");
-		});
-
 		it("itemsPerPageList not empty", function() {
 			expect(function() {
 				createItemsPerPage({

@@ -10,16 +10,14 @@ module.exports = function createItemsPerPage(config) {
 		throw new Error("config.numOfItems element is mandatory!");
 	}
 
-	if (!config.itemsPerPageList) {
-		throw new Error("config.itemsPerPageList element is mandatory!");
-	}
+	if (config.itemsPerPageList) {
+		for (var i = 0; i < config.itemsPerPageList.length; i += 1) {
 
-	for (var i = 0; i < config.itemsPerPageList.length; i += 1) {
+			if (!config.itemsPerPageList[i].value && !config.itemsPerPageList[i].label) {
+				throw new Error("each element of config.items has to have label and/or value property");
+			}
 
-		if (!config.itemsPerPageList[i].value && !config.itemsPerPageList[i].label) {
-			throw new Error("each element of config.items has to have label and/or value property");
 		}
-
 	}
 
 	var numOfItems = config.numOfItems;

@@ -13,7 +13,7 @@ function createButtonDropdown(config) {
 	if (!config.items) {
 		throw new Error("config.items element is mandatory!");
 	}
-	if (!ko.isObservable(config.selected)) {
+	if (config.selected && !ko.isObservable(config.selected)) {
 		throw new Error("config.selected has to be a knockout observable!");
 	}
 
@@ -39,7 +39,7 @@ function createButtonDropdown(config) {
 
 	}
 
-	var selected = config.selected;
+	var selected = config.selected() || ko.observable();
 
 	selected(options()[0]);
 

@@ -20,6 +20,7 @@ describe(" === Dropdown === ", function() {
 			expect(function() {
 				createButtonDropdown({
 					rightIcon: "random",
+					selected: "notAnObservable",
 					items: []
 				});
 			}).toThrowError("config.selected has to be a knockout observable!");
