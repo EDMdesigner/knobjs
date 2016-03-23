@@ -57,12 +57,25 @@ describe("List", function() {
 			});
 		});
 
+		describe("without search", function() {
+			it("should return an error", function() {
+				expect(function() {
+					createList({
+						store: {},
+						fields: {},
+						sort: []
+					});
+				}).toThrowError("config.search is mandatory!");
+			});
+		});
+
 		describe("without sort", function() {
 			it("should return an error", function() {
 				expect(function() {
 					createList({
 						store: {},
-						fields: {}
+						fields: {},
+						search: ""
 					});
 				}).toThrowError("config.sort is mandatory!");
 			});
@@ -73,7 +86,8 @@ describe("List", function() {
 				expect(function() {
 					createList({
 						store: {},
-						sort: []
+						sort: [],
+						search: ""
 					});
 				}).toThrowError("config.fields is mandatory!");
 			});
@@ -84,11 +98,65 @@ describe("List", function() {
 				expect(function() {
 					createList({
 						fields: {},
-						sort: []
+						sort: [],
+						search: ""
 					});
 				}).toThrowError("config.store is mandatory!");
 			});
 		});
+
+		describe("with invalid search type", function() {
+			it("should return an error", function() {
+				expect(function() {
+					createList({
+						store: {},
+						fields: {},
+						sort: [],
+						search: undefined
+					});
+				}).toThrowError("config.search must be a string!");
+			});
+		});
+
+		describe("with invalid sort type", function() {
+			it("should return an error", function() {
+				expect(function() {
+					createList({
+						store: {},
+						fields: {},
+						sort: undefined,
+						search: ""
+					});
+				}).toThrowError("config.sort must be an array!");
+			});
+		});
+
+		describe("with invalid fields type", function() {
+			it("should return an error", function() {
+				expect(function() {
+					createList({
+						store: {},
+						fields: undefined,
+						sort: [],
+						search: ""
+					});
+				}).toThrowError("config.fields must be an object!");
+			});
+		});
+
+		describe("with invalid store type", function() {
+			it("should return an error", function() {
+				expect(function() {
+					createList({
+						store: undefined,
+						fields: {},
+						sort: [],
+						search: ""
+					});
+				}).toThrowError("config.search must be an object!");
+			});
+		});
+
 	});
 
 

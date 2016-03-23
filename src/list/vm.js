@@ -6,16 +6,36 @@ var ko = require("knockout");
 module.exports = function createList(config) {
 	config = config || {};
 
-	if (!config.store) {
+	if (!config.hasOwnProperty("store")) {
 		throw new Error("config.store is mandatory!");
 	}
 
-	if (!config.fields) {
+	if (!config.hasOwnProperty("fields")) {
 		throw new Error("config.fields is mandatory!");
 	}
 
-	if (!config.sort) {
+	if (!config.hasOwnProperty("sort")) {
 		throw new Error("config.sort is mandatory!");
+	}
+
+	if (!config.hasOwnProperty("search")) {
+		throw new Error("config.search is mandatory!");
+	}
+
+	if (typeof config.store !== "object") {
+		throw new Error("config.search must be an object!");
+	}
+
+	if (typeof config.fields !== "object") {
+		throw new Error("config.fields must be an object!");
+	}
+
+	if (!(config.sort instanceof Array)) {
+		throw new Error("config.sort must be an array!");
+	}
+
+	if (typeof config.search !== "string") {
+		throw new Error("config.search must be a string!");
 	}
 
 	var store = config.store;
@@ -24,10 +44,6 @@ module.exports = function createList(config) {
 	var search = ko.observable("").extend({
 		throttle: config.throttle || 500
 	});
-
-	//config.sorters
-	// - label
-	// - prop
 
 	var sortOptions = [];
 
