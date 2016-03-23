@@ -213,5 +213,9 @@ describe("List", function() {
 				}).toThrow("This computed variable should not be written.");
 			});
 		});
+
+		describe("should behave like this:", function() {
+			// TODO
+		});
 	});
 });
