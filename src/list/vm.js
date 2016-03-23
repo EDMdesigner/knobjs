@@ -42,6 +42,15 @@ module.exports = function createList(config) {
 		throw new Error("config.fields must contain the value of config.search!");
 	}
 
+	var orderField;
+
+	if (config.orderBy) {
+		orderField = Object.keys(config.orderBy)[0];
+		if (config.fields.indexOf(orderField) === -1 || Math.abs(config.orderBy[orderField]) !== 1) {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+	}
+
 	config.sort.forEach(function(item) {
 		if (config.fields.indexOf(item.value) === -1) {
 			throw new Error("values of config.sort must be in config.fields!");
@@ -57,12 +66,9 @@ module.exports = function createList(config) {
 
 	var sortOptions = [];
 
-	var orderField;
 	var defaultOrderIdx;
 
-	if (config.orderBy) {
-		orderField = Object.keys(config.orderBy)[0];
-	}
+
 
 	function createQueryObj(prop, asc) {
 		var obj = {};

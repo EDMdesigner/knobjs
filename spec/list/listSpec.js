@@ -193,6 +193,23 @@ describe("List", function() {
 					}).toThrowError("values of config.sort must be in config.fields!");
 				});
 			});
+
+			describe("with invalid orderBy format", function() {
+				it("should throw Error", function() {
+					expect(function() {
+						createList({
+							store: store,
+							fields: Object.keys(fields),
+							sort: [
+								{ label: "By Id", value: "id" },
+								{ label: "By Name", value: "name" }
+							],
+							search: "name",
+							orderBy: "name"
+						});
+					}).toThrowError("config.orderBy must have the format of { <key>: [1;-1] } ");
+				});
+			});
 		});
 
 	});
