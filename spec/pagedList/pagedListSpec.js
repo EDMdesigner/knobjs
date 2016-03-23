@@ -47,7 +47,7 @@ describe("pagedList", function() {
 
 		var config = {
 			store: store,
-			fields: {},
+			fields: ["title", "id", "name"],
 			search: "title",
 			sort: [{
 				label: "By Id",

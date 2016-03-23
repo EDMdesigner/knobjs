@@ -69,15 +69,12 @@ module.exports = function createList(config) {
 
 		obj[prop] = asc;
 
-
 		if (orderField && prop === orderField && asc === config.orderBy[orderField]) {
 			defaultOrderIdx = sortOptions.length;
-			console.log(defaultOrderIdx);
 		}
 
 		return obj;
 	}
-
 
 	for (var idx = 0; idx < config.sort.length; idx += 1) {
 		var act = config.sort[idx];
