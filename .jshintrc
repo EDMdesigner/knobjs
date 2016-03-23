@@ -7,10 +7,12 @@
   "browser":true,
   "browserify":true,
   "curly":true,
+  "devel":true,
   "eqeqeq":true,
   "funcscope":true,
+  "jasmine":true,
   "mocha":true,
-  "maxcomplexity":12,
+  "maxcomplexity":32,
   "maxdepth":12,
   "maxparams":12,
   "nocomma":true,
@@ -20,7 +22,9 @@
   "node":true,
   "esnext":true,
   "globals":{
-    "jasmine": true
+    "jquery":true,
+    "jasmine":true,
+    "$":true
   },
   "globalstrict":false,
   "immed":true,
@@ -43,7 +47,7 @@
   ],
   "phantom":true,
   "shadow":true,
-  "singleGroups":true,
+  "singleGroups":false,
   "quotmark":"double",
   "strict":false,
   "undef":true,

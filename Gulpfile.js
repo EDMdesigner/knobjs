@@ -20,11 +20,10 @@ var jsFiles = [
 ];
 
 var jsonFiles = [
-	"src/featureConfigDefaults/**/*.json",
-	"package.json",
+	"./**/*.json",
 	".jshintrc",
 	".jscsrc",
-	"src/modules/**/*.json"
+	"!node_modules/**/*"
 ];
 
 
@@ -58,38 +57,6 @@ gulp.task("sass:watch", function() {
 	gulp.watch("./src/**/*.scss", ["sass:dev"]);
 });
 
-
-// JSON lint
-// ==================================================
-gulp.task("jsonlint", function() {
-	return gulp.src(jsonFiles)
-		.pipe(jsonlint())
-		.pipe(jsonlint.failOnError());
-});
-
-
-// JS Hint
-// ==================================================
-gulp.task("jshint", function() {
-	return gulp.src(jsFiles)
-		.pipe(jshint(".jshintrc"))
-		.pipe(jshint.reporter("jshint-stylish"));
-});
-
-
-// CodeStyle
-// ==================================================
-gulp.task("jscs", function() {
-	return gulp.src(jsFiles)
-		.pipe(jscs({
-			configPath: ".jscsrc",
-			fix: true
-		}))
-		.pipe(gulp.dest("./"))
-		.pipe(stylish());
-});
-
-
 // Build components
 // ==================================================
 gulp.task("js:prod", createBrowserifyTask({
@@ -108,20 +75,6 @@ gulp.task("js:dev", createBrowserifyTask({
 }));
 
 
-// Build
-// ==================================================
-gulp.task("test", ["jsonlint", "jshint", "jscs"]);
-
-
-// Build
-// ==================================================
-gulp.task("build", ["test"], function() {
-	//"js:prod", "sass:prod"
-	gulp.start("js:prod");
-	gulp.start("sass:prod");
-});
-
-
 // Watch js
 // ==================================================
 gulp.task("js:watch", function() {
@@ -131,11 +84,65 @@ gulp.task("js:watch", function() {
 		});
 });
 
+
+// JSON lint
+// ==================================================
+gulp.task("jsonlint", function() {
+	return gulp.src(jsonFiles)
+		.pipe(jsonlint())
+		.pipe(jsonlint.failOnError());
+});
+
+
+// JS Hint
+// ==================================================
+gulp.task("jshint", function() {
+	return gulp.src(jsFiles)
+		.pipe(jshint(".jshintrc"))
+		.pipe(jshint.reporter("jshint-stylish"))
+		.pipe(jshint.reporter("fail"));
+});
+
+// CodeStyle
+// ==================================================
+gulp.task("jscs", function() {
+	return gulp.src(jsFiles)
+		.pipe(jscs({
+			configPath: ".jscsrc",
+			fix: true
+		}))
+		.pipe(gulp.dest("./"))
+		.pipe(stylish())
+		.pipe(jscs.reporter("fail"));
+});
+
+// Jasmine
+// ==================================================
 gulp.task("jasmine", function() {
 	return gulp.src("spec/**/*Spec.js")
 		.pipe(jasmine({
 			verbose: true
 		}));
+});
+
+// Test
+// ==================================================
+gulp.task("js-test", ["jsonlint", "jshint", "jscs"]);
+
+
+// Build:prod
+// ==================================================
+gulp.task("build:prod", ["js-test"], function() {
+	gulp.start("js:prod");
+	gulp.start("sass:prod");
+});
+
+
+// Build:dev
+// ==================================================
+gulp.task("build:dev", ["js-test"], function() {
+	gulp.start("js:dev");
+	gulp.start("sass:dev");
 });
 
 

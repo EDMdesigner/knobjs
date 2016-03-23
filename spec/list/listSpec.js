@@ -245,7 +245,7 @@ describe("List", function() {
 					var list = createList(config);
 
 					list.search("My beautiful knob search works ❤!");
-					
+
 					setTimeout(function() {
 						expect(list.store.find).toEqual({
 							title: "/My beautiful knob search works ❤!/gi"
@@ -268,7 +268,7 @@ describe("List", function() {
 					var list = createList(config);
 
 					list.search("My beautiful knob search works ❤!");
-					
+
 					setTimeout(function() {
 						expect(list.store.find).toEqual({
 							title: "/My beautiful knob search works ❤!/gi"
