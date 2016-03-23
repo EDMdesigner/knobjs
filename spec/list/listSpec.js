@@ -57,37 +57,7 @@ describe("List", function() {
 			});
 		});
 
-		describe("only with store", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {}
-					});
-				}).toThrowError("config.fields is mandatory!");
-			});
-		});
-
-		describe("only with fields", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						fields: {}
-					});
-				}).toThrowError("config.store is mandatory!");
-			});
-		});
-
-		describe("only with sort", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						sort: {}
-					});
-				}).toThrowError("config.store is mandatory!");
-			});
-		});
-
-		describe("with store and fields", function() {
+		describe("without sort", function() {
 			it("should return an error", function() {
 				expect(function() {
 					createList({
@@ -98,7 +68,7 @@ describe("List", function() {
 			});
 		});
 
-		describe("with store and sort", function() {
+		describe("without fields", function() {
 			it("should return an error", function() {
 				expect(function() {
 					createList({
@@ -109,7 +79,7 @@ describe("List", function() {
 			});
 		});
 
-		describe("with fields and sort", function() {
+		describe("without store", function() {
 			it("should return an error", function() {
 				expect(function() {
 					createList({
