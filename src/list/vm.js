@@ -38,6 +38,16 @@ module.exports = function createList(config) {
 		throw new Error("config.search must be a string!");
 	}
 
+	if (Object.keys(config.fields).indexOf(config.search) === -1) {
+		throw new Error("config.fields must contain the value of config.search!");
+	}
+
+	config.sort.forEach(function(item) {
+		if (Object.keys(config.fields).indexOf(item.value) === -1) {
+			throw new Error("values of config.sort must be in config.fields!");
+		}
+	});
+
 	var store = config.store;
 	var fields = config.fields;
 
@@ -59,15 +69,17 @@ module.exports = function createList(config) {
 
 		sortOptions.push({
 			icon: "#icon-a-z",
-			label: act,
-			value: createQueryObj(act, 1)
+			label: act.label,
+			value: createQueryObj(act.value, 1)
 		});
 		sortOptions.push({
 			icon: "#icon-z-a",
-			label: act,
-			value: createQueryObj(act, -1)
+			label: act.label,
+			value: createQueryObj(act.value, -1)
 		});
 	}
+
+
 
 	var sort = ko.observable(sortOptions[0]);
 
