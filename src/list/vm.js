@@ -45,6 +45,10 @@ module.exports = function createList(config) {
 	var orderField;
 
 	if (config.orderBy) {
+		if (typeof config.orderBy !== "object") {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+
 		orderField = Object.keys(config.orderBy)[0];
 		if (config.fields.indexOf(orderField) === -1 || Math.abs(config.orderBy[orderField]) !== 1) {
 			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
