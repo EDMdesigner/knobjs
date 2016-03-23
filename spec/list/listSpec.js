@@ -133,25 +133,25 @@ describe("List", function() {
 		var list = createList(config);
 
 		it("- store should be an object", function() {
-			expect(typeof list.store).toBe("object");	
+			expect(typeof list.store).toBe("object");
 		});
 
 		it("- fields should be an object", function() {
-			expect(typeof list.fields).toBe("object");	
+			expect(typeof list.fields).toBe("object");
 		});
 
 		it("- search should be an observable", function() {
-			expect(ko.isObservable(list.search)).toBe(true);	
+			expect(ko.isObservable(list.search)).toBe(true);
 		});
 
 		//TODO
 		it("- sort should be az object", function() {
-			expect(ko.isObservable(list.sort)).toBe(true);	
+			expect(ko.isObservable(list.sort)).toBe(true);
 		});
-		
+
 
 		it("- sortOptions should be an array", function() {
-			expect(list.sortOptions instanceof Array).toBe(true);	
+			expect(list.sortOptions instanceof Array).toBe(true);
 		});
 
 		// TODO
@@ -162,7 +162,7 @@ describe("List", function() {
 		it("- limit should be a number", function() {
 			expect(typeof list.limit()).toBe("number");
 		});
-		
+
 
 		// items
 

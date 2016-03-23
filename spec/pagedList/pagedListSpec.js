@@ -37,17 +37,17 @@ describe("pagedList", function() {
 		model: model
 	});
 
-	describe('- II -', function() {
+	describe("- II -", function() {
 
 		var config = {
 			store: store,
 			fields: {},
 			sort: ["id", "name"]
-		}
+		};
 
 		var pagedList = createPagedList(config);
 
-		it('pagedList - interface', function() {
+		it("pagedList - interface", function() {
 			expect(ko.isObservable(pagedList.numOfPages)).toBe(true);
 			expect(ko.isObservable(pagedList.itemsPerPage)).toBe(true);
 			expect(ko.isObservable(pagedList.currentPage)).toBe(true);
@@ -56,7 +56,7 @@ describe("pagedList", function() {
 			expect(ko.isObservable(pagedList.sort)).toBe(true);
 		});
 
-		it('limit and skip function', function() {
+		it("limit and skip function", function() {
 			pagedList.itemsPerPage(100);
 			pagedList.currentPage(5);
 

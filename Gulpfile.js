@@ -132,7 +132,7 @@ gulp.task("js:watch", function() {
 });
 
 gulp.task("jasmine", function() {
-	return gulp.src("spec/**/*Spec.js")
+	return gulp.src("spec/input/*Spec.js")
 		.pipe(jasmine({
 			verbose: true
 		}));

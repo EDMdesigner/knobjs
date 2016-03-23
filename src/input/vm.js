@@ -6,6 +6,11 @@ var ko = require("knockout");
 var base = require("../base/vm");
 
 function createInput(config) {
+
+	if (!config) {
+		throw new Error("config is mandatory!");
+	}
+
 	config.component = "input";
 	config.type = config.type || "text";
 

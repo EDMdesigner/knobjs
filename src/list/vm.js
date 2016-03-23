@@ -37,7 +37,7 @@ module.exports = function createList(config) {
 		obj[prop] = asc;
 		return obj;
 	}
-	
+
 	for (var idx = 0; idx < config.sort.length; idx += 1) {
 		var act = config.sort[idx];
 
