@@ -73,7 +73,7 @@ describe("List", function() {
 				expect(function() {
 					createList({
 						store: {},
-						sort: {}
+						sort: []
 					});
 				}).toThrowError("config.fields is mandatory!");
 			});
@@ -84,7 +84,7 @@ describe("List", function() {
 				expect(function() {
 					createList({
 						fields: {},
-						sort: {}
+						sort: []
 					});
 				}).toThrowError("config.store is mandatory!");
 			});
@@ -164,12 +164,12 @@ describe("List", function() {
 		});
 
 		describe("should behave like this:", function() {
-			describe("Sort", function() {
+			describe("Search", function() {
 				it("should set the stores earch field properly", function(done) {
 					var config = {
 						store: store,
 						fields: fields,
-						sort: "title",
+						sort: ["title"],
 						throttle: 300,
 						search: "title"
 					};
@@ -177,6 +177,7 @@ describe("List", function() {
 					var list = createList(config);
 
 					list.search("My beautiful knob search works ❤!");
+					
 					setTimeout(function() {
 						expect(list.store.find).toEqual({
 							title: "/My beautiful knob search works ❤!/gi"
@@ -185,6 +186,30 @@ describe("List", function() {
 					}, config.throttle + 100);
 				});
 			});
+
+			/*
+			describe("Sort", function() {
+				it("should set the stores earch field properly", function(done) {
+					var config = {
+						store: store,
+						fields: fields,
+						sort: "title",
+						throttle: 300
+					};
+
+					var list = createList(config);
+
+					list.search("My beautiful knob search works ❤!");
+					
+					setTimeout(function() {
+						expect(list.store.find).toEqual({
+							title: "/My beautiful knob search works ❤!/gi"
+						});
+						done();
+					}, config.throttle + 100);
+				});
+			});
+			*/
 		});
 	});
 });
