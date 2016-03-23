@@ -63,7 +63,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: {},
-							fields: {},
+							fields: [],
 							sort: []
 						});
 					}).toThrowError("config.search is mandatory!");
@@ -75,7 +75,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: {},
-							fields: {},
+							fields: [],
 							search: ""
 						});
 					}).toThrowError("config.sort is mandatory!");
@@ -98,7 +98,7 @@ describe("List", function() {
 				it("should return an error", function() {
 					expect(function() {
 						createList({
-							fields: {},
+							fields: [],
 							sort: [],
 							search: ""
 						});
@@ -113,7 +113,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: {},
-							fields: {},
+							fields: [],
 							sort: [],
 							search: undefined
 						});
@@ -126,7 +126,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: {},
-							fields: {},
+							fields: [],
 							sort: undefined,
 							search: ""
 						});
@@ -143,7 +143,7 @@ describe("List", function() {
 							sort: [],
 							search: ""
 						});
-					}).toThrowError("config.fields must be an object!");
+					}).toThrowError("config.fields must be an array!");
 				});
 			});
 
@@ -152,7 +152,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: undefined,
-							fields: {},
+							fields: [],
 							sort: [],
 							search: ""
 						});
@@ -167,7 +167,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: store,
-							fields: fields,
+							fields: Object.keys(fields),
 							sort: [
 								{ label: "By Id", value: "id" },
 								{ label: "By Name", value: "name" }
@@ -183,7 +183,7 @@ describe("List", function() {
 					expect(function() {
 						createList({
 							store: store,
-							fields: fields,
+							fields: Object.keys(fields),
 							sort: [
 								{ label: "By Id", value: "id" },
 								{ label: "By Category", value: "category" }
@@ -203,7 +203,7 @@ describe("List", function() {
 		describe("the interface should look like this:", function() {
 			var config = {
 				store: store,
-				fields: fields,
+				fields: Object.keys(fields),
 				search: "title",
 				sort: [
 					{
@@ -223,8 +223,8 @@ describe("List", function() {
 				expect(typeof list.store).toBe("object");
 			});
 
-			it("- fields should be an object", function() {
-				expect(typeof list.fields).toBe("object");
+			it("- fields should be an array", function() {
+				expect(list.fields instanceof Array).toBe(true);
 			});
 
 			it("- search should be an observable", function() {
@@ -284,7 +284,7 @@ describe("List", function() {
 				it("should set the stores earch field properly", function(done) {
 					var config = {
 						store: store,
-						fields: fields,
+						fields: Object.keys(fields),
 						sort: [{
 							label: "By Id",
 							value: "id"
