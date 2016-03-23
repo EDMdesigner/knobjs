@@ -166,7 +166,14 @@ describe("List", function() {
 			var config = {
 				store: store,
 				fields: fields,
-				sort: ["id", "name"]
+				search: "title",
+				sort: [{
+					label: "By Id",
+					value: "id"
+				}, {
+					label: "By Name",
+					value: "name"
+				}]
 			};
 
 			var list = createList(config);
@@ -237,7 +244,13 @@ describe("List", function() {
 					var config = {
 						store: store,
 						fields: fields,
-						sort: ["title"],
+						sort: [{
+							label: "By Id",
+							value: "id"
+						}, {
+							label: "By Name",
+							value: "name"
+						}],
 						throttle: 300,
 						search: "title"
 					};
@@ -245,7 +258,7 @@ describe("List", function() {
 					var list = createList(config);
 
 					list.search("My beautiful knob search works ❤!");
-					
+
 					setTimeout(function() {
 						expect(list.store.find).toEqual({
 							title: "/My beautiful knob search works ❤!/gi"
@@ -268,7 +281,7 @@ describe("List", function() {
 					var list = createList(config);
 
 					list.search("My beautiful knob search works ❤!");
-					
+
 					setTimeout(function() {
 						expect(list.store.find).toEqual({
 							title: "/My beautiful knob search works ❤!/gi"

@@ -59,15 +59,17 @@ module.exports = function createList(config) {
 
 		sortOptions.push({
 			icon: "#icon-a-z",
-			label: act,
-			value: createQueryObj(act, 1)
+			label: act.label,
+			value: createQueryObj(act.value, 1)
 		});
 		sortOptions.push({
 			icon: "#icon-z-a",
-			label: act,
-			value: createQueryObj(act, -1)
+			label: act.label,
+			value: createQueryObj(act.value, -1)
 		});
 	}
+
+
 
 	var sort = ko.observable(sortOptions[0]);
 
