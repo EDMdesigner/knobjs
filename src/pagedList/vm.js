@@ -5,7 +5,11 @@ var ko = require("knockout");
 var createList = require("../list/vm");
 
 module.exports = function createPagedList(config) {
+
 	config = config || {};
+	if (!config.store) {
+		throw new Error("config.store is mandatory!");
+	}
 
 	var store = config.store;
 

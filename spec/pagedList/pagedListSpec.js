@@ -6,38 +6,44 @@ var superdata = require("superdata");
 
 describe("pagedList", function() {
 
-	var createProxy = superdata.proxy.memory;
-	var createModel = superdata.model.model;
-	var createStore = superdata.store.store;
-
-	var proxy = createProxy({
-		idProperty: "id",
-		route: "/user"
+	describe('- with invalid config', function() {
+		it("missing config", function() {
+			expect(createPagedList).toThrowError("config.store is mandatory!");
+		});
 	});
 
-	var model = createModel({
-		fields: {
-			id: {
-				type: "number"
-			},
-			email: {
-				type: "string"
-			},
-			name: {
-				type: "string"
-			},
-			title: {
-				type: "string"
-			}
-		},
-		proxy: proxy
-	});
+	describe("- with valid config", function() {
 
-	var store = createStore({
-		model: model
-	});
+		var createProxy = superdata.proxy.memory;
+		var createModel = superdata.model.model;
+		var createStore = superdata.store.store;
 
-	describe("- II -", function() {
+		var proxy = createProxy({
+			idProperty: "id",
+			route: "/user"
+		});
+
+		var model = createModel({
+			fields: {
+				id: {
+					type: "number"
+				},
+				email: {
+					type: "string"
+				},
+				name: {
+					type: "string"
+				},
+				title: {
+					type: "string"
+				}
+			},
+			proxy: proxy
+		});
+
+		var store = createStore({
+			model: model
+		});
 
 		var config = {
 			store: store,
@@ -47,7 +53,7 @@ describe("pagedList", function() {
 
 		var pagedList = createPagedList(config);
 
-		it("pagedList - interface", function() {
+		it("interface", function() {
 			expect(ko.isObservable(pagedList.numOfPages)).toBe(true);
 			expect(ko.isObservable(pagedList.itemsPerPage)).toBe(true);
 			expect(ko.isObservable(pagedList.currentPage)).toBe(true);
