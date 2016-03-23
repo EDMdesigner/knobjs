@@ -326,29 +326,31 @@ describe("List", function() {
 				});
 			});
 
-			/*
 			describe("Sort", function() {
 				it("should set the stores earch field properly", function(done) {
 					var config = {
 						store: store,
-						fields: fields,
-						sort: "title",
-						throttle: 300
+						fields: Object.keys(fields),
+						sort: [{
+							label: "By Id",
+							value: "id"
+						}, {
+							label: "By Name",
+							value: "name"
+						}],
+						search: "name"
 					};
 
 					var list = createList(config);
 
-					list.search("My beautiful knob search works ❤!");
+					list.sort(list.sortOptions[2]);
 
 					setTimeout(function() {
-						expect(list.store.find).toEqual({
-							title: "/My beautiful knob search works ❤!/gi"
-						});
+						expect(list.store.sort).toEqual(list.sortOptions[2].value);
 						done();
-					}, config.throttle + 100);
+					}, 100);
 				});
 			});
-			*/
 		});
 	});
 });

@@ -72,8 +72,6 @@ module.exports = function createList(config) {
 
 	var defaultOrderIdx;
 
-
-
 	function createQueryObj(prop, asc) {
 		var obj = {};
 
