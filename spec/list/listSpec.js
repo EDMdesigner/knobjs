@@ -132,45 +132,65 @@ describe("List", function() {
 
 		var list = createList(config);
 
-		it("- store should be an object", function() {
-			expect(typeof list.store).toBe("object");
+		describe("the interface should look like this:", function() {
+			it("- store should be an object", function() {
+				expect(typeof list.store).toBe("object");
+			});
+
+			it("- fields should be an object", function() {
+				expect(typeof list.fields).toBe("object");
+			});
+
+			it("- search should be an observable", function() {
+				expect(ko.isObservable(list.search)).toBe(true);
+			});
+
+			it("- sort should be an object observable", function() {
+				expect(ko.isObservable(list.sort)).toBe(true);
+				expect(typeof list.sort()).toBe("object");
+			});
+			
+			it("- sortOptions should be an array", function() {
+				expect(list.sortOptions instanceof Array).toBe(true);
+			});
+
+			it("- skip should be a number observable", function() {
+				expect(ko.isObservable(list.skip)).toBe(true);
+				expect(typeof list.skip()).toBe("number");
+			});
+
+			it("- limit should be a number observable", function() {
+				expect(ko.isObservable(list.limit)).toBe(true);
+				expect(typeof list.limit()).toBe("number");
+			});
+			
+			it("- items should be an observable array", function() {
+				expect(ko.isObservable(list.items)).toBe(true);
+			});
+
+			it("- count should be a read-only computed observable", function() {
+				expect(ko.isComputed(list.count)).toBe(true);
+
+				expect(function() {
+					list.count("anything");
+				}).toThrow("This computed variable should not be written.");
+			});
+
+			it("- loading should be a read-only computed observable", function() {
+				expect(ko.isComputed(list.loading)).toBe(true);
+
+				expect(function() {
+					list.loading("anything");
+				}).toThrow("This computed variable should not be written.");
+			});
+
+			it("- error should be a read-only computed observable", function() {
+				expect(ko.isComputed(list.error)).toBe(true);
+				
+				expect(function() {
+					list.error("anything");
+				}).toThrow("This computed variable should not be written.");
+			});
 		});
-
-		it("- fields should be an object", function() {
-			expect(typeof list.fields).toBe("object");
-		});
-
-		it("- search should be an observable", function() {
-			expect(ko.isObservable(list.search)).toBe(true);
-		});
-
-		//TODO
-		it("- sort should be az object", function() {
-			expect(ko.isObservable(list.sort)).toBe(true);
-		});
-
-
-		it("- sortOptions should be an array", function() {
-			expect(list.sortOptions instanceof Array).toBe(true);
-		});
-
-		// TODO
-		it("- skip should be a number", function() {
-			expect(typeof list.skip()).toBe("number");
-		});
-
-		it("- limit should be a number", function() {
-			expect(typeof list.limit()).toBe("number");
-		});
-
-
-		// items
-
-		// count
-
-		// loading
-
-		// error
 	});
-
 });
