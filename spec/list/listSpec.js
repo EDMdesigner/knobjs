@@ -49,111 +49,149 @@ describe("List", function() {
 
 	describe("with invalid config", function() {
 
-		describe("with empty config", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({});
-				}).toThrowError("config.store is mandatory!");
+		describe("(existence check)", function() {
+			describe("with empty config", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({});
+					}).toThrowError("config.store is mandatory!");
+				});
+			});
+
+			describe("without search", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							fields: {},
+							sort: []
+						});
+					}).toThrowError("config.search is mandatory!");
+				});
+			});
+
+			describe("without sort", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							fields: {},
+							search: ""
+						});
+					}).toThrowError("config.sort is mandatory!");
+				});
+			});
+
+			describe("without fields", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							sort: [],
+							search: ""
+						});
+					}).toThrowError("config.fields is mandatory!");
+				});
+			});
+
+			describe("without store", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							fields: {},
+							sort: [],
+							search: ""
+						});
+					}).toThrowError("config.store is mandatory!");
+				});
 			});
 		});
 
-		describe("without search", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						fields: {},
-						sort: []
-					});
-				}).toThrowError("config.search is mandatory!");
+		describe("(type check)", function() {
+			describe("with invalid search type", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							fields: {},
+							sort: [],
+							search: undefined
+						});
+					}).toThrowError("config.search must be a string!");
+				});
+			});
+
+			describe("with invalid sort type", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							fields: {},
+							sort: undefined,
+							search: ""
+						});
+					}).toThrowError("config.sort must be an array!");
+				});
+			});
+
+			describe("with invalid fields type", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: {},
+							fields: undefined,
+							sort: [],
+							search: ""
+						});
+					}).toThrowError("config.fields must be an object!");
+				});
+			});
+
+			describe("with invalid store type", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: undefined,
+							fields: {},
+							sort: [],
+							search: ""
+						});
+					}).toThrowError("config.search must be an object!");
+				});
 			});
 		});
 
-		describe("without sort", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						fields: {},
-						search: ""
-					});
-				}).toThrowError("config.sort is mandatory!");
+		describe("(relation check)", function() {
+			describe("with invalid search value", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: store,
+							fields: fields,
+							sort: [
+								{ label: "By Id", value: "id" },
+								{ label: "By Name", value: "name" }
+							],
+							search: "category"
+						});
+					}).toThrowError("config.fields must contain the value of config.search!");
+				});
 			});
-		});
 
-		describe("without fields", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						sort: [],
-						search: ""
-					});
-				}).toThrowError("config.fields is mandatory!");
-			});
-		});
-
-		describe("without store", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						fields: {},
-						sort: [],
-						search: ""
-					});
-				}).toThrowError("config.store is mandatory!");
-			});
-		});
-
-		describe("with invalid search type", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						fields: {},
-						sort: [],
-						search: undefined
-					});
-				}).toThrowError("config.search must be a string!");
-			});
-		});
-
-		describe("with invalid sort type", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						fields: {},
-						sort: undefined,
-						search: ""
-					});
-				}).toThrowError("config.sort must be an array!");
-			});
-		});
-
-		describe("with invalid fields type", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: {},
-						fields: undefined,
-						sort: [],
-						search: ""
-					});
-				}).toThrowError("config.fields must be an object!");
-			});
-		});
-
-		describe("with invalid store type", function() {
-			it("should return an error", function() {
-				expect(function() {
-					createList({
-						store: undefined,
-						fields: {},
-						sort: [],
-						search: ""
-					});
-				}).toThrowError("config.search must be an object!");
+			describe("with invalid sort object", function() {
+				it("should return an error", function() {
+					expect(function() {
+						createList({
+							store: store,
+							fields: fields,
+							sort: [
+								{ label: "By Id", value: "id" },
+								{ label: "By Category", value: "category" }
+							],
+							search: "name"
+						});
+					}).toThrowError("values of config.sort must be in config.fields!");
+				});
 			});
 		});
 
@@ -167,13 +205,16 @@ describe("List", function() {
 				store: store,
 				fields: fields,
 				search: "title",
-				sort: [{
-					label: "By Id",
-					value: "id"
-				}, {
-					label: "By Name",
-					value: "name"
-				}]
+				sort: [
+					{
+						label: "By Id",
+						value: "id"
+					},
+					{
+						label: "By Name",
+						value: "name"
+					}
+				]
 			};
 
 			var list = createList(config);
