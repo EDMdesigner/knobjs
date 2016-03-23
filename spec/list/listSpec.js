@@ -298,7 +298,7 @@ describe("List", function() {
 
 		describe("should behave like this:", function() {
 			describe("Search", function() {
-				it("should set the stores earch field properly", function(done) {
+				it("should set the store's search field properly", function(done) {
 					var config = {
 						store: store,
 						fields: Object.keys(fields),
