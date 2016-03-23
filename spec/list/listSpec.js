@@ -327,7 +327,7 @@ describe("List", function() {
 			});
 
 			describe("Sort", function() {
-				it("should set the stores earch field properly", function(done) {
+				it("should set the store's sort field properly", function(done) {
 					var config = {
 						store: store,
 						fields: Object.keys(fields),
