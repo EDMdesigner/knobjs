@@ -10,7 +10,8 @@ describe("Pagination", function() {
 				currentPage: 99
 			});
 
-			console.log(pagination.currentPage());
+			// TODO: expect current page to be ???
+			//console.log(pagination.currentPage());
 
 		});
 
