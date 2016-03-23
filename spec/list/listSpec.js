@@ -119,28 +119,6 @@ describe("List", function() {
 				}).toThrowError("config.store is mandatory!");
 			});
 		});
-
-		describe("Sort", function() {
-			it("should set the stores earch field properly", function(done) {
-				var config = {
-					store: store,
-					fields: fields,
-					sort: "title",
-					throttle: 300,
-					search: "title"
-				};
-
-				var list = createList(config);
-
-				list.search("My beautiful knob search works ❤!");
-				setTimeout(function() {
-					expect(list.store.find).toEqual({
-						title: "/My beautiful knob search works ❤!/gi"
-					});
-					done();
-				}, config.throttle + 100);
-			});
-		});
 	});
 
 
@@ -170,7 +148,7 @@ describe("List", function() {
 				expect(ko.isObservable(list.sort)).toBe(true);
 				expect(typeof list.sort()).toBe("object");
 			});
-			
+
 			it("- sortOptions should be an array", function() {
 				expect(list.sortOptions instanceof Array).toBe(true);
 			});
@@ -184,7 +162,7 @@ describe("List", function() {
 				expect(ko.isObservable(list.limit)).toBe(true);
 				expect(typeof list.limit()).toBe("number");
 			});
-			
+
 			it("- items should be an observable array", function() {
 				expect(ko.isObservable(list.items)).toBe(true);
 			});
@@ -207,7 +185,7 @@ describe("List", function() {
 
 			it("- error should be a read-only computed observable", function() {
 				expect(ko.isComputed(list.error)).toBe(true);
-				
+
 				expect(function() {
 					list.error("anything");
 				}).toThrow("This computed variable should not be written.");
@@ -215,7 +193,27 @@ describe("List", function() {
 		});
 
 		describe("should behave like this:", function() {
-			// TODO
+			describe("Sort", function() {
+				it("should set the stores earch field properly", function(done) {
+					var config = {
+						store: store,
+						fields: fields,
+						sort: "title",
+						throttle: 300,
+						search: "title"
+					};
+
+					var list = createList(config);
+
+					list.search("My beautiful knob search works ❤!");
+					setTimeout(function() {
+						expect(list.store.find).toEqual({
+							title: "/My beautiful knob search works ❤!/gi"
+						});
+						done();
+					}, config.throttle + 100);
+				});
+			});
 		});
 	});
 });
