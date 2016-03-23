@@ -57,12 +57,27 @@ module.exports = function createList(config) {
 
 	var sortOptions = [];
 
+	var orderField;
+	var defaultOrderIdx;
+
+	if (config.orderBy) {
+		orderField = Object.keys(config.orderBy)[0];
+	}
+
 	function createQueryObj(prop, asc) {
 		var obj = {};
 
 		obj[prop] = asc;
+
+
+		if (orderField && prop === orderField && asc === config.orderBy[orderField]) {
+			defaultOrderIdx = sortOptions.length;
+			console.log(defaultOrderIdx);
+		}
+
 		return obj;
 	}
+
 
 	for (var idx = 0; idx < config.sort.length; idx += 1) {
 		var act = config.sort[idx];
@@ -79,7 +94,8 @@ module.exports = function createList(config) {
 		});
 	}
 
-	var sort = ko.observable(sortOptions[0]);
+	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
+	var sortIdx = defaultOrderIdx || 0;
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
@@ -157,6 +173,7 @@ module.exports = function createList(config) {
 		search: search,
 
 		sort: sort,
+		sortIdx: sortIdx,
 		sortOptions: sortOptions,
 
 		skip: skip,

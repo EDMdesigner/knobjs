@@ -6,7 +6,7 @@ var superdata = require("superdata");
 
 describe("pagedList", function() {
 
-	describe('- with invalid config', function() {
+	describe("- with invalid config", function() {
 		it("missing config", function() {
 			expect(createPagedList).toThrowError("config.store is mandatory!");
 		});
@@ -48,7 +48,14 @@ describe("pagedList", function() {
 		var config = {
 			store: store,
 			fields: {},
-			sort: ["id", "name"]
+			search: "title",
+			sort: [{
+				label: "By Id",
+				value: "id"
+			}, {
+				label: "By Name",
+				value: "name"
+			}]
 		};
 
 		var pagedList = createPagedList(config);
