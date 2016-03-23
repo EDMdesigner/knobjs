@@ -120,6 +120,27 @@ describe("List", function() {
 			});
 		});
 
+		describe("Sort", function() {
+			it("should set the stores earch field properly", function(done) {
+				var config = {
+					store: store,
+					fields: fields,
+					sort: "title",
+					throttle: 300,
+					search: "title"
+				};
+
+				var list = createList(config);
+
+				list.search("My beautiful knob search works ❤!");
+				setTimeout(function() {
+					expect(list.store.find).toEqual({
+						title: "/My beautiful knob search works ❤!/gi"
+					});
+					done();
+				}, config.throttle + 100);
+			});
+		});
 	});
 
 

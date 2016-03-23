@@ -22,7 +22,7 @@ module.exports = function createList(config) {
 	var fields = config.fields;
 
 	var search = ko.observable("").extend({
-		throttle: 500
+		throttle: config.throttle || 500
 	});
 
 	//config.sorters
