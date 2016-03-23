@@ -93,15 +93,16 @@ describe("List", function() {
 
 
 	describe("with valid config", function() {
-		var config = {
-			store: store,
-			fields: fields,
-			sort: ["id", "name"]
-		};
-
-		var list = createList(config);
 
 		describe("the interface should look like this:", function() {
+			var config = {
+				store: store,
+				fields: fields,
+				sort: ["id", "name"]
+			};
+
+			var list = createList(config);
+
 			it("- store should be an object", function() {
 				expect(typeof list.store).toBe("object");
 			});
