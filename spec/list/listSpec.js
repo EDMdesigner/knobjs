@@ -159,6 +159,23 @@ describe("List", function() {
 					}).toThrowError("config.search must be an object!");
 				});
 			});
+
+			describe("with invalid orderBy format", function() {
+				it("should throw Error", function() {
+					expect(function() {
+						createList({
+							store: store,
+							fields: Object.keys(fields),
+							sort: [
+								{ label: "By Id", value: "id" },
+								{ label: "By Name", value: "name" }
+							],
+							search: "name",
+							orderBy: "name"
+						});
+					}).toThrowError("config.orderBy must have the format of { <key>: [1;-1] } ");
+				});
+			});
 		});
 
 		describe("(relation check)", function() {
@@ -206,7 +223,7 @@ describe("List", function() {
 				});
 			});
 
-			describe("with invalid orderBy format", function() {
+			describe("with invalid orderBy key", function() {
 				it("should throw Error", function() {
 					expect(function() {
 						createList({
@@ -217,7 +234,24 @@ describe("List", function() {
 								{ label: "By Name", value: "name" }
 							],
 							search: "name",
-							orderBy: "name"
+							orderBy: { category: 1}
+						});
+					}).toThrowError("config.orderBy must have the format of { <key>: [1;-1] } ");
+				});
+			});
+
+			describe("with invalid orderBy value", function() {
+				it("should throw Error", function() {
+					expect(function() {
+						createList({
+							store: store,
+							fields: Object.keys(fields),
+							sort: [
+								{ label: "By Id", value: "id" },
+								{ label: "By Name", value: "name" }
+							],
+							search: "name",
+							orderBy: { name: 2}
 						});
 					}).toThrowError("config.orderBy must have the format of { <key>: [1;-1] } ");
 				});
