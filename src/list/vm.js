@@ -26,8 +26,8 @@ module.exports = function createList(config) {
 		throw new Error("config.search must be an object!");
 	}
 
-	if (typeof config.fields !== "object") {
-		throw new Error("config.fields must be an object!");
+	if (!(config.fields instanceof Array)) {
+		throw new Error("config.fields must be an array!");
 	}
 
 	if (!(config.sort instanceof Array)) {
@@ -38,12 +38,25 @@ module.exports = function createList(config) {
 		throw new Error("config.search must be a string!");
 	}
 
-	if (Object.keys(config.fields).indexOf(config.search) === -1) {
+	if (config.fields.indexOf(config.search) === -1) {
 		throw new Error("config.fields must contain the value of config.search!");
 	}
 
+	var orderField;
+
+	if (config.orderBy) {
+		if (typeof config.orderBy !== "object") {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+
+		orderField = Object.keys(config.orderBy)[0];
+		if (config.fields.indexOf(orderField) === -1 || Math.abs(config.orderBy[orderField]) !== 1) {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+	}
+
 	config.sort.forEach(function(item) {
-		if (Object.keys(config.fields).indexOf(item.value) === -1) {
+		if (config.fields.indexOf(item.value) === -1) {
 			throw new Error("values of config.sort must be in config.fields!");
 		}
 	});
@@ -57,10 +70,17 @@ module.exports = function createList(config) {
 
 	var sortOptions = [];
 
+	var defaultOrderIdx;
+
 	function createQueryObj(prop, asc) {
 		var obj = {};
 
 		obj[prop] = asc;
+
+		if (orderField && prop === orderField && asc === config.orderBy[orderField]) {
+			defaultOrderIdx = sortOptions.length;
+		}
+
 		return obj;
 	}
 
@@ -79,9 +99,8 @@ module.exports = function createList(config) {
 		});
 	}
 
-
-
-	var sort = ko.observable(sortOptions[0]);
+	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
+	var sortIdx = defaultOrderIdx || 0;
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
@@ -148,7 +167,6 @@ module.exports = function createList(config) {
 		});
 	}
 
-
 	store.load.before.add(beforeLoad);
 	store.load.after.add(afterLoad);
 
@@ -160,6 +178,7 @@ module.exports = function createList(config) {
 		search: search,
 
 		sort: sort,
+		sortIdx: sortIdx,
 		sortOptions: sortOptions,
 
 		skip: skip,

@@ -30,18 +30,18 @@ function createButtonDropdown(config) {
 		if (!config.items[idx].label && !config.items[idx].icon) {
 			throw new Error("each element of config.items has to have label and/or icon property");
 		}
-
 		options.push(createOption({
 			label: config.items[idx].label,
 			icon: config.items[idx].icon,
 			value: config.items[idx].value
 		}));
-
 	}
+
+	// console.log(options());
 
 	var selected = config.selected || ko.observable();
 
-	selected(options()[0]);
+	selected(options()[config.selectedIdx || 0]);
 
 	var dropdownVisible = ko.observable(false);
 

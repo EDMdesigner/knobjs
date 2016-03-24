@@ -47,8 +47,15 @@ describe("pagedList", function() {
 
 		var config = {
 			store: store,
-			fields: {},
-			sort: ["id", "name"]
+			fields: ["title", "id", "name"],
+			search: "title",
+			sort: [{
+				label: "By Id",
+				value: "id"
+			}, {
+				label: "By Name",
+				value: "name"
+			}]
 		};
 
 		var pagedList = createPagedList(config);
