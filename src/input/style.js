@@ -2,24 +2,24 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.inputBg,
-				"color": theme.inputText,
+				"backgroundColor": theme.white,
+				"color": theme.black,
 				"border-color": theme.inputBorder
 			},
 			"hover": {
-				"backgroundColor": theme.inputBg,
-				"color": theme.inputText,
-				"border-color": theme.inputText
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": theme.darkGray
 			},
 			"active": {
-				"backgroundColor": theme.inputBg,
-				"color": theme.inputActiveColor,
-				"fill": theme.inputActiveColor
+				"backgroundColor": theme.white,
+				"color": theme.primaryColor,
+				"fill": theme.primaryColor
 			},
 			"disabled": {
-				"backgroundColor": theme.inputBorder,
-				"color": theme.inputDisabledColor,
-				"fill": theme.inputActiveColor
+				"backgroundColor": theme.lightGray,
+				"color": theme.lightGray,
+				"fill": theme.lightGray
 			}
 		}
 	};

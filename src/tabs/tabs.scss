@@ -1,15 +1,15 @@
 .knob-button.variation-tab {
-	border: 1px solid;
+	border-top: 1px solid;
 	margin-right: 5px;
+	box-shadow: 0 0 0;
+
 
 	&.state-active {
-		border: 1px solid;
+		border-top: 1px solid;
 	}
 }
 
 //panel
 .knob-tab {
 	padding: 10px;
-	border: 1px solid;
-	margin-top: -1px;
 }
