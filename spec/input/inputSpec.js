@@ -24,12 +24,31 @@ describe("Input", function() {
 		it("missing config", function() {
 			expect(createInput).toThrowError("config is mandatory!");
 		});
+
+		it("invalid value type", function() {
+			expect(function() {
+				createInput({
+					type: "text",
+					style: style,
+					value: "string"
+				});
+			}).toThrowError("config.value must be an observable");
+		});
+
+		it("invalid hasFocus type", function() {
+			expect(function() {
+				createInput({
+					type: "text",
+					style: style,
+					hasFocus: "string"
+				});
+			}).toThrowError("config.hasFocus must be an observable");
+		});
 	});
 
 	describe("- with valid config", function() {
 		var config = {
 			type: "text",
-			value: "value",
 			style: style
 		};
 

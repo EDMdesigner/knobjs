@@ -11,6 +11,14 @@ function createInput(config) {
 		throw new Error("config is mandatory!");
 	}
 
+	if (config.value && !ko.isObservable(config.value)) {
+		throw new Error("config.value must be an observable");
+	}
+
+	if (config.hasFocus && !ko.isObservable(config.hasFocus)) {
+		throw new Error("config.hasFocus must be an observable");
+	}
+
 	config.component = "input";
 	config.type = config.type || "text";
 
