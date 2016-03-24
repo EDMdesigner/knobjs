@@ -26,7 +26,6 @@ var jsonFiles = [
 	"!node_modules/**/*"
 ];
 
-
 // SASS Compile
 // ==================================================
 
@@ -65,7 +64,6 @@ gulp.task("js:prod", createBrowserifyTask({
 	destFolder: "./dist/"
 }));
 
-
 // Build examples
 // ==================================================
 gulp.task("js:dev", createBrowserifyTask({
@@ -73,7 +71,6 @@ gulp.task("js:dev", createBrowserifyTask({
 	outputFileName: "knob.built.js",
 	destFolder: "./examples/"
 }));
-
 
 // Watch js
 // ==================================================
@@ -84,7 +81,6 @@ gulp.task("js:watch", function() {
 		});
 });
 
-
 // JSON lint
 // ==================================================
 gulp.task("jsonlint", function() {
@@ -92,7 +88,6 @@ gulp.task("jsonlint", function() {
 		.pipe(jsonlint())
 		.pipe(jsonlint.failOnError());
 });
-
 
 // JS Hint
 // ==================================================
@@ -128,6 +123,7 @@ gulp.task("jasmine", function() {
 // Test
 // ==================================================
 gulp.task("js-test", ["jsonlint", "jshint", "jscs"]);
+gulp.task("test", ["jsonlint", "jshint", "jscs", "jasmine"]);
 
 
 // Build:prod
@@ -144,7 +140,6 @@ gulp.task("build:dev", ["js-test"], function() {
 	gulp.start("js:dev");
 	gulp.start("sass:dev");
 });
-
 
 function createBrowserifyTask(config) {
 	return function() {

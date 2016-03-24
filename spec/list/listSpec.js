@@ -169,9 +169,15 @@ describe("List", function() {
 							store: store,
 							fields: fields,
 							sort: [
-								{ label: "By Id", value: "id" },
-								{ label: "By Name", value: "name" }
-							],
+								{
+									label: "By Id",
+									value: "id"
+								},
+								{
+									label: "By Name",
+									value: "name"
+								}
+															],
 							search: "category"
 						});
 					}).toThrowError("config.fields must contain the value of config.search!");
@@ -185,9 +191,15 @@ describe("List", function() {
 							store: store,
 							fields: fields,
 							sort: [
-								{ label: "By Id", value: "id" },
-								{ label: "By Category", value: "category" }
-							],
+								{
+									label: "By Id",
+									value: "id"
+								},
+								{
+									label: "By Category",
+									value: "category"
+								}
+															],
 							search: "name"
 						});
 					}).toThrowError("values of config.sort must be in config.fields!");
