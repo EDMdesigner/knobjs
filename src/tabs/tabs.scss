@@ -1,15 +1,16 @@
 .knob-button.variation-tab {
-	border-top: 1px solid;
 	margin-right: 5px;
 	box-shadow: 0 0 0;
 
-
+	&:hover,
 	&.state-active {
-		border-top: 1px solid;
+		min-height: 33px;
+		box-shadow: inset 0 -2px 0 0 ;
 	}
 }
 
 //panel
 .knob-tab {
 	padding: 10px;
+	border-top: 1px solid;
 }

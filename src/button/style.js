@@ -47,28 +47,24 @@ module.exports = function createStyleConfig(theme) {
 		"tab": {
 			"default": {
 				"borderColor": theme.white,
-				"borderTopColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.darkGray,
 				"fill": theme.darkGray
 			},
 			"hover": {
 				"borderColor": theme.white,
-				"borderTopColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.black,
 				"fill": theme.black
 			},
 			"active": {
-				"borderColor": theme.darkGray,
-				"borderTopColor": theme.darkGray,
+				"borderColor": theme.black,
 				"backgroundColor": theme.white,
 				"color": theme.black,
 				"fill": theme.black
 			},
-			"disabled": {
+				"disabled": {
 				"borderColor": theme.white,
-				"borderTopColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.lightGray,
 				"fill": theme.lightGray

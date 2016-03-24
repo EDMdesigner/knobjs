@@ -1,9 +1,9 @@
 <div class="knob-pagination" data-bind="if: pageSelectors().length">
-	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-first', state: first().state, click: first().selectPage}}"></span>
-	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-prev', state: prev().state, click: prev().selectPage}}"></span>
+	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-first-page', state: first().state, click: first().selectPage}}"></span>
+	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-chevron-left', state: prev().state, click: prev().selectPage}}"></span>
 	<span data-bind="foreach: pageSelectors">
 		<knob-button params="label: label, state: state, click: selectPage"></knob-button>
 	</span>
-	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-next', state: next().state, click: next().selectPage}}"></span>
-	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-last', state: last().state, click: last().selectPage}}"></span>
+	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-chevron-right', state: next().state, click: next().selectPage}}"></span>
+	<span data-bind="component: {name: 'knob-button', params: {icon: '#icon-last-page', state: last().state, click: last().selectPage}}"></span>
 </div>

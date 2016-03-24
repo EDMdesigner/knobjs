@@ -88,12 +88,12 @@ module.exports = function createList(config) {
 		var act = config.sort[idx];
 
 		sortOptions.push({
-			icon: "#icon-a-z",
+			icon: "#icon-sort-asc",
 			label: act.label,
 			value: createQueryObj(act.value, 1)
 		});
 		sortOptions.push({
-			icon: "#icon-z-a",
+			icon: "#icon-sort-desc",
 			label: act.label,
 			value: createQueryObj(act.value, -1)
 		});
