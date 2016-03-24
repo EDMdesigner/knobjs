@@ -50,7 +50,7 @@ module.exports = function createPagination(config) {
 		if (ko.isObservable(config.currentPage)) {
 			currentPage = config.currentPage;
 		} else {
-			currentPage = ko.observable(config.currentPage || 0);
+			currentPage = ko.observable(0);
 		}
 
 		ko.computed(function() {
@@ -67,6 +67,8 @@ module.exports = function createPagination(config) {
 			}
 		});
 	}());
+
+	currentPage(normalize(config.currentPage) || currentPage());
 
 	var currentPageRealIdx;
 	var pageSelectors = (function(config) {

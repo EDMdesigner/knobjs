@@ -10,9 +10,7 @@ describe("Pagination", function() {
 				currentPage: 99
 			});
 
-			// TODO: expect current page to be ???
-			//console.log(pagination.currentPage());
-
+			expect(pagination.currentPage()).toBe(9);
 		});
 
 		it("if config.afterHead present, it should be larger than zero", function() {
