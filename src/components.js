@@ -21,7 +21,7 @@ function initKnob(theme) {
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent("knob-inline-text-editor", require("./inlineTextEditor/vm"), require("./inlineTextEditor/template.html"));
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
-	registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"));
+	registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"), buttonStyle);
 	registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
 	registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
 

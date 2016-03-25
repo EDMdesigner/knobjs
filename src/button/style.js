@@ -69,6 +69,32 @@ module.exports = function createStyleConfig(theme) {
 				"color": theme.lightGray,
 				"fill": theme.lightGray
 			}
+		},
+		"pagination": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white0
+			},
+			"active": {
+				"borderColor": theme.black,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white
+			},
+				"disabled": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.white,
+				"color": theme.mediumGray,
+				"fill": theme.mediumGray
+			}
 		}
 	};
 };
