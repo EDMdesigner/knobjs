@@ -1,4 +1,4 @@
-module.exports = function createStyleConfig() {
+module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
