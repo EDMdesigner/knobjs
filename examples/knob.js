@@ -28,6 +28,7 @@ var ko = window.ko;
 
 var proxy = createProxy({
 	idProperty: "id",
+	idType: "number",
 	route: "/user"
 });
 var model = createModel({
@@ -45,6 +46,7 @@ var model = createModel({
 			type: "string"
 		}
 	},
+	"idField": "id",
 	proxy: proxy
 });
 var store = createStore({

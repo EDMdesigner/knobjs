@@ -68,7 +68,7 @@ module.exports = function createPagination(config) {
 		});
 	}());
 
-	currentPage(normalize(config.currentPage) || currentPage());
+	
 
 	var currentPageRealIdx;
 	var pageSelectors = (function(config) {
