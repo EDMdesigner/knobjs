@@ -20,6 +20,7 @@ describe("pagedList", function() {
 
 		var proxy = createProxy({
 			idProperty: "id",
+			idType: "number",
 			route: "/user"
 		});
 
@@ -38,6 +39,7 @@ describe("pagedList", function() {
 					type: "string"
 				}
 			},
+			idField: "id",
 			proxy: proxy
 		});
 

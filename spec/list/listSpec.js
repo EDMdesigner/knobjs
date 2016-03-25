@@ -10,6 +10,7 @@ var createStore = superdata.store.store;
 
 var proxy = createProxy({
 	idProperty: "id",
+	idType: "number",
 	route: "/user"
 });
 
@@ -30,6 +31,7 @@ var fields = {
 
 var model = createModel({
 	fields: fields,
+	idField: "id",
 	proxy: proxy
 });
 
