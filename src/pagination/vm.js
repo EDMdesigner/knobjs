@@ -45,18 +45,18 @@ module.exports = function createPagination(config) {
 	}
 
 	var currentPage = (function() {
-		var currentPage;
-
-		if (ko.isObservable(config.currentPage)) {
-			currentPage = config.currentPage;
-		} else {
-			currentPage = ko.observable(0);
-		}
+		var currentPage = ko.observable();
 
 		ko.computed(function() {
 			numOfPages();
 			currentPage(0);
 		});
+
+		if (ko.isObservable(config.currentPage)) {
+			currentPage = config.currentPage;
+		} else {
+			currentPage = ko.observable(normalize(config.currentPage) || 0);
+		}
 
 		return ko.computed({
 			read: function() {
@@ -68,7 +68,7 @@ module.exports = function createPagination(config) {
 		});
 	}());
 
-	currentPage(normalize(config.currentPage) || currentPage());
+
 
 	var currentPageRealIdx;
 	var pageSelectors = (function(config) {

@@ -15,7 +15,7 @@
 										itemsPerPage: itemsPerPage">
 			</knob-items-per-page>
 			<!-- ko if: sortOptions.length > 0 -->
-				<knob-dropdown class="knob-dropdown" params="rightIcon: '#icon-expand-more', selectedIdx: sortIdx, items: sortOptions"></knob-dropdown>
+				<knob-dropdown class="knob-dropdown" params="rightIcon: '#icon-expand-more', selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
 		</div>
 		<div class="knob-pagelist__result" data-bind="foreach: items">
