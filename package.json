@@ -70,6 +70,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "superdata": "0.0.2"
+    "superdata": "0.1.1"
   }
 }

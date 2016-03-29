@@ -63,7 +63,7 @@ function handleResponse() {
 }
 if (seed) {
 	var names = ["Bob", "Rob", "Olga", "Helga"];
-	var titles = ["CEO", "CTO", "Slave"];
+	var titles = ["CEO", "CTO", "Developer"];
 
 	for (var idx = 0; idx < 100; idx += 1) {
 		var actName = names[idx % 4];
