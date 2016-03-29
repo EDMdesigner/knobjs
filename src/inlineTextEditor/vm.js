@@ -6,6 +6,12 @@ var ko = require("knockout");
 function createInlineTextEditor(config) {
 	var vm = {};
 
+	var config = config || {};
+
+	if (config.value && !ko.isObservable(config.value)) {
+		throw new Error("config.value has to be an observable!");
+	}
+
 	vm.value = config.value || ko.observable("");
 	vm.editedValue = ko.observable(vm.value());
 

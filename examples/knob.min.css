@@ -3,7 +3,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 1.42857; }
 
@@ -29,6 +29,12 @@ img {
 [role="button"] {
   cursor: pointer; }
 
+[class^=knob-],
+[class^=knob-] *,
+[class^=knob-]:before,
+[class^=knob-]:after {
+  box-sizing: border-box; }
+
 .knob-button {
   line-height: 1.42857143;
   padding: 6px 12px;
@@ -45,9 +51,10 @@ img {
   transition-delay: 0.5s;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); }
   .knob-button .icon-wrapper .icon {
-    width: 13px;
-    height: 13px;
-    vertical-align: middle; }
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    line-height: 1; }
   .knob-button:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     -webkit-transition-delay: 0s;
@@ -62,16 +69,16 @@ img {
   font-size: 18px;
   line-height: 1.3333333; }
   .button--lg .knob-button .icon-wrapper .icon {
-    width: 18px;
-    height: 18px; }
+    width: 24px;
+    height: 24px; }
 
 .button--sm .knob-button {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5; }
   .button--sm .knob-button .icon-wrapper .icon {
-    width: 11px;
-    height: 11px; }
+    width: 13px;
+    height: 13px; }
 
 .knob-button:disabled {
   cursor: not-allowed; }
@@ -120,9 +127,16 @@ img {
     .knob-radio--inline .knob-radio > div {
       float: left; }
 
-body {
-  font-size: 13px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+.knob-button.variation-tab {
+  margin-right: 5px;
+  box-shadow: 0 0 0; }
+  .knob-button.variation-tab:hover, .knob-button.variation-tab.state-active {
+    min-height: 33px;
+    box-shadow: inset 0 -2px 0 0; }
+
+.knob-tab {
+  padding: 10px;
+  border-top: 1px solid; }
 
 .example {
   margin: 0 auto;

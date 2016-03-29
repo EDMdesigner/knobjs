@@ -1,4 +1,4 @@
-{  
+{
   "asi":false,
   "boss":false,
   "debug":false,
@@ -7,11 +7,12 @@
   "browser":true,
   "browserify":true,
   "curly":true,
+  "devel":true,
   "eqeqeq":true,
   "funcscope":true,
   "jasmine":true,
   "mocha":true,
-  "maxcomplexity":12,
+  "maxcomplexity":32,
   "maxdepth":12,
   "maxparams":12,
   "nocomma":true,
@@ -20,19 +21,32 @@
   "notypeof":false,
   "node":true,
   "esnext":true,
-  "globals":{  
-
+  "globals":{
+    "jquery":true,
+    "jasmine":true,
+    "$":true
   },
   "globalstrict":false,
   "immed":true,
   "newcap":true,
   "plusplus":true,
-  "predef":[  
-    "$"
+  "predef":[
+    "$",
+    "describe",
+    "xdescribe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "xit",
+    "it",
+    "expect",
+    "spyOn"
   ],
   "phantom":true,
   "shadow":true,
-  "singleGroups":true,
+  "singleGroups":false,
   "quotmark":"double",
   "strict":false,
   "undef":true,

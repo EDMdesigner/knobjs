@@ -6,10 +6,14 @@ var createList = require("../list/vm");
 
 module.exports = function createPagedList(config) {
 	config = config || {};
+	
+	if (!config.store) {
+		throw new Error("config.store is mandatory!");
+	}
 
 	var store = config.store;
 
-	store.load.before.add(afterLoad);
+	store.load.before.add(beforeLoad);
 
 	var list = createList(config);
 	//var pagination = createPagination(config.pagination);
@@ -22,7 +26,6 @@ module.exports = function createPagedList(config) {
 	list.numOfPages = numOfPages;
 	list.itemsPerPage = itemsPerPage;
 	list.currentPage = currentPage;
-
 
 	ko.computed(function() {
 		var currentPageVal = currentPage();
@@ -39,8 +42,7 @@ module.exports = function createPagedList(config) {
 	});
 	*/
 
-
-	function afterLoad() {
+	function beforeLoad() {
 		list.items([]);
 	}
 

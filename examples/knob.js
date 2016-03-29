@@ -3,43 +3,22 @@
 
 var superdata = require("superdata");
 
-var initKnob = require("../src/components");
+var initKnob = require("../src/components").init;
 
 initKnob({
-	//Button Colors
-	baseButtonFontColor: "#fff",
-	disabledButtonBg: "#d1d5d8",
-	disabledButtonColor: "#131313",
-	baseBg: "#2969b0",
-	baseHoverBg: "#3d8eb9",
-	baseActiveBg: "#54acd2",
-	primaryBg: "#fba026",
-	primaryHoverBg: "#FAC51C",
-	primaryHoverButtonFontColor: "#fff",
-	primaryActiveBg: "#F7DA64",
-	primaryActiveButtonFontColor: "#fff",
+	primaryColor: "#2199e8",
+	secondaryColor: "#777",
 
-	// InputColors
-	inputBg: "#fff",
-	inputText: "#131313",
-	inputBorder: "#ddd",
-	inputHoverBorder: "#131313",
-	inputDisabledBg: "#fafafa",
-	inputActiveColor: "#1337aa",
-	inputDisabledColor: "#aaa",
+	successColor: "#3adb76",
+	alertColor: "#e74c3c",
+	warningColor: "#ec5840",
 
-	//ListItemRowColors
-	evenBg: "red",
-	evenColor: "yellow",
-	evenHoverBg: "yellow",
-	evenHoverColor: "red",
-	oddBg: "pink",
-	oddColor: "navy",
-	oddHoverBg: "navy",
-	oddHoverColor: "pink"
+	white: "#fff",
+	lightGray: "#e6e6e6",
+	mediumGray: "#cacaca",
+	darkGray: "#8a8a8a",
+	black: "#000"
 });
-
-
 
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
@@ -49,6 +28,7 @@ var ko = window.ko;
 
 var proxy = createProxy({
 	idProperty: "id",
+	idType: "number",
 	route: "/user"
 });
 var model = createModel({
@@ -66,6 +46,7 @@ var model = createModel({
 			type: "string"
 		}
 	},
+	"idField": "id",
 	proxy: proxy
 });
 var store = createStore({
@@ -82,7 +63,7 @@ function handleResponse() {
 }
 if (seed) {
 	var names = ["Bob", "Rob", "Olga", "Helga"];
-	var titles = ["CEO", "CTO", "Slave"];
+	var titles = ["CEO", "CTO", "Developer"];
 
 	for (var idx = 0; idx < 100; idx += 1) {
 		var actName = names[idx % 4];
@@ -100,7 +81,7 @@ window.store = store;
 
 var buttons = [];
 
-for (var idx = 0; idx < 10; idx += 1) {
+for (var idx = 0; idx < 5; idx += 1) {
 	buttons.push("button" + idx);
 }
 ko.applyBindings({

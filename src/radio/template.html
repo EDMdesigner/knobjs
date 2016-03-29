@@ -2,6 +2,8 @@
 	<div data-bind="component: {
 		name: 'knob-button',
 		params: {
+			state: isSelected() ? 'active' : 'default',
+			variation: $parent.variation,
 			label: label,
 			icon: icon,
 			radio: true,

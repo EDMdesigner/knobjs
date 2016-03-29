@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>KnobJS</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.0.0/normalize.min.css">
 	<link rel="stylesheet" href="knob.min.css">
 	<style type="text/css">
 		.anim-rotate {
@@ -24,165 +24,113 @@
 <body>
 <div class="example">
 
-<svg style="position: absolute; width: 0; height: 0;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs>
-<symbol id="icon-loading" viewBox="0 0 1024 1024">
-<title>loading</title>
-<path class="path1" d="M915.049 419.618h108.955l-176.31 210.761-176.31-210.761h99.082c-29.592-122.967-140.436-214.64-272.352-214.64-111.363 0-212.172 65.936-256.821 167.977l-129.963-56.869c67.245-153.669 219.066-252.966 386.783-252.966 210.421 0 385.357 154.804 416.934 356.499zM525.89 960.881c167.717 0 319.538-99.297 386.783-252.966l-129.959-56.869c-44.653 102.045-145.462 167.977-256.821 167.977-131.916 0-242.765-91.673-272.352-214.64h99.078l-176.31-210.761-176.31 210.761h108.955c31.578 201.699 206.51 356.499 416.934 356.499z"></path>
-</symbol>
-<symbol id="icon-error" viewBox="0 0 1024 1024">
-<title>error</title>
-<path class="path1" d="M1016.431 900.134l-446.654-836.911c-11.137-20.923-32.962-34.055-56.717-34.055h-0.064c-23.755 0-45.514 13.069-56.717 33.992l-448.649 836.909c-10.686 20.087-10.108 44.163 1.48 63.477 11.652 19.377 32.641 31.287 55.237 31.287h895.238c22.662 0 43.583-11.847 55.237-31.287 11.652-19.377 12.232-43.454 1.609-63.411zM512.996 866.077c-35.538 0-64.377-28.841-64.377-64.377s28.841-64.377 64.377-64.377c35.472 0 64.377 28.841 64.377 64.377s-28.839 64.377-64.377 64.377zM577.439 609.597c0 35.601-28.905 64.377-64.377 64.377-35.538 0-64.377-28.778-64.377-64.377v-257.512c0-35.538 28.841-64.377 64.377-64.377 35.472 0 64.377 28.841 64.377 64.377v257.512z"></path>
-</symbol>
-<symbol id="icon-trash" viewBox="0 0 1024 1024">
-<title>trash</title>
-<path class="path1" d="M219.97 974.618c1.156 27.6 23.868 49.382 51.488 49.382h481.089c27.62 0 50.332-21.782 51.488-49.382l34.356-725.268h-652.778l34.356 725.268zM620.831 429.494c0-11.557 9.371-20.93 20.932-20.93h33.479c11.554 0 20.932 9.371 20.932 20.93v414.362c0 11.559-9.371 20.93-20.932 20.93h-33.479c-11.557 0-20.932-9.366-20.932-20.93v-414.362zM474.334 429.494c0-11.557 9.371-20.93 20.93-20.93h33.479c11.554 0 20.93 9.371 20.93 20.93v414.362c0 11.559-9.368 20.93-20.93 20.93h-33.479c-11.557 0-20.93-9.366-20.93-20.93v-414.362zM327.832 429.494c0-11.557 9.371-20.93 20.93-20.93h33.481c11.557 0 20.93 9.371 20.93 20.93v414.362c0 11.559-9.371 20.93-20.93 20.93h-33.481c-11.557 0-20.93-9.366-20.93-20.93v-414.362z"></path>
-<path class="path2" d="M861.266 52.751h-221.943v-41.959c0-5.959-4.831-10.792-10.792-10.792h-233.063c-5.959 0-10.789 4.833-10.789 10.792v41.957h-221.945c-17.861 0-32.338 14.479-32.338 32.341v101.595h763.209v-101.592c0-17.861-14.477-32.341-32.338-32.341z"></path>
-</symbol>
-<symbol id="icon-open" viewBox="0 0 1024 1024">
-<title>open</title>
-<path class="path1" d="M1011.484 305.744c-10.786-13.449-27.125-21.299-44.373-21.299h-56.889c0-31.425-25.463-56.889-56.889-56.889h-56.889v-56.889c0-31.425-25.463-56.889-56.889-56.889h-682.667c-31.425 0-56.889 25.463-56.889 56.889v682.667c0 31.425 25.463 56.889 56.889 56.889h796.444c26.67 0 49.789-18.523 55.501-44.555l113.778-512c3.777-16.839-0.319-34.475-11.127-47.923zM56.889 170.667h682.667v56.889h-56.889c-31.425 0-56.889 25.463-56.889 56.889h-341.333c-26.67 0-49.744 18.523-55.524 44.555 0 0-115.098 520.238-115.098 524.334h-56.934v-682.667z"></path>
-</symbol>
-<symbol id="icon-copy" viewBox="0 0 1024 1024">
-<title>copy</title>
-<path class="path1" d="M726.053 0h-423.788c-20.357 0-37.012 16.655-37.012 37.012v160.386h-160.384c-20.357 0-37.012 16.655-37.012 37.012v752.58c0 20.357 16.655 37.012 37.012 37.012h623.037c20.357 0 37.012-16.655 37.012-37.012v-166.554h154.216c20.357 0 37.012-16.655 37.012-37.012v-552.098c0-9.869-3.701-19.122-10.487-25.908l-193.079-194.313c-6.786-7.402-16.655-11.104-26.527-11.104zM690.891 949.976h-549.011v-678.553h123.374v512.001c0 20.357 16.655 37.012 37.012 37.012h388.627v129.54zM339.277 746.409v-672.385h320.771v209.734c0 20.357 16.655 37.012 37.012 37.012h185.060v425.639h-542.843zM882.122 246.746h-148.048v-149.281l148.048 149.281z"></path>
-</symbol>
-<symbol id="icon-down" viewBox="0 0 1024 1024">
-<title>down</title>
-<path class="path1" d="M0.001 256.007h1023.997l-512.006 511.986-511.991-511.986z"></path>
-</symbol>
-<symbol id="icon-up" viewBox="0 0 1024 1024">
-<title>up</title>
-<path class="path1" d="M0 768l512-512 512 512z"></path>
-</symbol>
-<symbol id="icon-a-z" viewBox="0 0 1024 1024">
-<title>a-z</title>
-<path class="path1" d="M499.973 426.082h283.814c6.936 0 12.557-5.589 12.557-12.515v-149.183c0-6.915-5.6-12.515-12.557-12.515h-283.814c-6.915 0-12.536 5.589-12.536 12.515v149.193c0 6.915 5.611 12.504 12.536 12.504z"></path>
-<path class="path2" d="M499.973 175.517h160.382c6.915 0 12.536-5.611 12.536-12.536v-149.161c0-6.936-5.6-12.536-12.536-12.536h-160.382c-6.915 0-12.536 5.589-12.536 12.536v149.161c0 6.926 5.611 12.536 12.536 12.536z"></path>
-<path class="path3" d="M499.973 724.373h392.206c6.904 0 12.526-5.589 12.526-12.515v-149.161c0-6.915-5.6-12.536-12.526-12.536h-392.206c-6.915 0-12.536 5.611-12.536 12.536v149.161c0 6.915 5.611 12.515 12.536 12.515z"></path>
-<path class="path4" d="M1000.54 848.504h-500.567c-6.915 0-12.536 5.579-12.536 12.547v149.14c0 6.915 5.611 12.536 12.536 12.536h500.577c6.915 0 12.526-5.611 12.526-12.536v-149.161c-0.011-6.947-5.6-12.526-12.536-12.526z"></path>
-<path class="path5" d="M415.571 695.694h-84.964v-674.482c0-11.72-9.503-21.212-21.212-21.212h-171.073c-11.709 0-21.212 9.492-21.212 21.212v674.482h-84.953c-8.177 0-15.612 4.698-19.133 12.070-3.532 7.36-2.524 16.089 2.588 22.453l191.712 285.872c4.030 5.027 10.107 7.912 16.535 7.912s12.494-2.885 16.524-7.912l191.712-285.872c5.112-6.374 6.13-15.092 2.598-22.453-3.521-7.36-10.945-12.070-19.122-12.070z"></path>
-</symbol>
-<symbol id="icon-z-a" viewBox="0 0 1024 1024">
-<title>z-a</title>
-<path class="path1" d="M783.787 597.918h-283.814c-6.915 0-12.536 5.579-12.536 12.526v149.172c0 6.904 5.611 12.515 12.536 12.515h283.814c6.936 0 12.557-5.579 12.557-12.515v-149.193c-0.011-6.926-5.621-12.504-12.557-12.504z"></path>
-<path class="path2" d="M660.345 848.483h-160.372c-6.915 0-12.536 5.6-12.536 12.547v149.151c0 6.926 5.611 12.536 12.536 12.536h160.382c6.915 0 12.536-5.579 12.536-12.536v-149.172c-0.011-6.926-5.611-12.526-12.547-12.526z"></path>
-<path class="path3" d="M892.19 299.627h-392.206c-6.915 0-12.536 5.589-12.536 12.515v149.151c0 6.915 5.611 12.536 12.536 12.536h392.206c6.904 0 12.526-5.611 12.526-12.536v-149.161c-0.021-6.915-5.621-12.504-12.526-12.504z"></path>
-<path class="path4" d="M1000.54 1.294h-500.567c-6.915 0-12.536 5.611-12.536 12.536v149.151c0 6.936 5.611 12.536 12.536 12.536h500.577c6.915 0 12.526-5.589 12.526-12.536v-149.161c-0.011-6.915-5.6-12.526-12.536-12.526z"></path>
-<path class="path5" d="M415.571 695.694h-84.964v-674.482c0-11.72-9.503-21.212-21.212-21.212h-171.073c-11.709 0-21.212 9.492-21.212 21.212v674.482h-84.953c-8.177 0-15.612 4.698-19.133 12.070-3.532 7.36-2.524 16.089 2.588 22.453l191.712 285.872c4.030 5.027 10.107 7.912 16.535 7.912s12.494-2.885 16.524-7.912l191.712-285.872c5.112-6.374 6.13-15.092 2.598-22.453-3.521-7.36-10.945-12.070-19.122-12.070z"></path>
-</symbol>
-<symbol id="icon-delete2" viewBox="0 0 1024 1024">
-<title>delete2</title>
-<path class="path1" d="M1024 102.4l-102.4-102.4-409.6 409.6-409.6-409.6-102.4 102.4 409.6 409.6-409.6 409.6 102.4 102.4 409.6-409.6 409.6 409.6 102.4-102.4-409.6-409.6z"></path>
-</symbol>
-<symbol id="icon-edit" viewBox="0 0 1024 1024">
-<title>edit</title>
-<path class="path1" d="M636.75 172.555l208.305 208.303-527.277 527.277-208.187-208.303 527.159-527.277zM1003.117 122.317l-92.896-92.896c-35.901-35.901-94.197-35.901-130.22 0l-88.985 88.985 208.305 208.305 103.796-103.796c27.845-27.847 27.845-72.753 0-100.598zM0.581 992.618c-3.791 17.061 11.613 32.348 28.676 28.199l232.121-56.28-208.187-208.303-52.61 236.384z"></path>
-</symbol>
-<symbol id="icon-search" viewBox="0 0 1024 1024">
-<title>search</title>
-<path class="path1" d="M1002.391 914.56l-306.624-308.385c44.384-62.752 70.751-139.294 70.751-222.175 0.002-212.063-170.942-384-381.789-384-210.849 0-381.792 171.937-381.792 384s170.943 384 381.792 384c82.4 0 158.496-26.525 220.897-71.165l306.624 308.381c12.447 12.512 28.768 18.784 45.088 18.784 16.324 0 32.64-6.272 45.056-18.784 24.893-25.023 24.893-65.634-0.003-90.656zM592.087 531.969l-25.024 35.39-35.199 25.184c-43.393 31.040-94.273 47.457-147.135 47.457-140.352 0-254.528-114.849-254.528-256 0-141.153 114.175-256 254.528-256s254.529 114.847 254.529 256c0.028 53.151-16.29 104.32-47.171 147.969z"></path>
-</symbol>
-<symbol id="icon-succes" viewBox="0 0 1024 1024">
-<title>succes</title>
-<path class="path1" d="M994.449 13.811c-29.952-19.72-70.415-11.256-90.135 18.883l-511.884 820.427-283.151-275.336c-26.417-24.558-67.532-22.881-91.996 3.536-24.371 26.323-22.791 67.625 3.629 91.903l340.635 331.427 2.417 1.58 4.929 5.116 8.929 3.348 10.697 4.466 10.885 1.674 15.626-0.187 6.325-1.49 18.231-7.627 2.883-2.046 11.163-8.092 5.21-8.558 0.278-0.372 554.208-888.424c19.726-30.14 11.353-70.511-18.877-90.229z"></path>
-</symbol>
-<symbol id="icon-grid" viewBox="0 0 1024 1024">
-<title>grid</title>
-<path class="path1" d="M279.924 31.828c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.412c0 17.611 14.216 31.828 31.828 31.828h214.412c17.611 0 31.828-14.216 31.828-31.828v-214.412h-0.106z"></path>
-<path class="path2" d="M650.928 31.828c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.412c0 17.611 14.216 31.828 31.828 31.828h214.306c17.611 0 31.828-14.216 31.828-31.828v-214.412z"></path>
-<path class="path3" d="M1021.932 31.828c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.612 0-31.828 14.216-31.828 31.828v214.412c0 17.611 14.215 31.828 31.828 31.828h214.412c17.612 0 31.828-14.216 31.828-31.828v-214.412h-0.106z"></path>
-<path class="path4" d="M279.924 404.847c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.306c0 17.611 14.216 31.828 31.828 31.828h214.412c17.611 0 31.828-14.216 31.828-31.828v-214.306h-0.106z"></path>
-<path class="path5" d="M650.928 404.847c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.306c0 17.611 14.216 31.828 31.828 31.828h214.306c17.611 0 31.828-14.216 31.828-31.828v-214.306z"></path>
-<path class="path6" d="M1021.932 404.847c0-17.611-14.216-31.828-31.828-31.828h-214.306c-17.612 0-31.828 14.216-31.828 31.828v214.306c0 17.611 14.215 31.828 31.828 31.828h214.412c17.612 0 31.828-14.216 31.828-31.828v-214.306h-0.106z"></path>
-<path class="path7" d="M248.096 745.934h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.412c0 17.613 14.216 31.828 31.828 31.828h214.412c17.611 0 31.828-14.214 31.828-31.828v-214.412c-0.106-17.505-14.322-31.828-31.934-31.828z"></path>
-<path class="path8" d="M619.101 745.934h-214.306c-17.611 0-31.828 14.216-31.828 31.828v214.412c0 17.613 14.216 31.828 31.828 31.828h214.306c17.611 0 31.828-14.214 31.828-31.828v-214.412c0-17.505-14.217-31.828-31.828-31.828z"></path>
-<path class="path9" d="M990.105 745.934h-214.306c-17.612 0-31.828 14.216-31.828 31.828v214.412c0 17.613 14.215 31.828 31.828 31.828h214.412c17.612 0 31.828-14.214 31.828-31.828v-214.412c-0.106-17.505-14.322-31.828-31.934-31.828z"></path>
-</symbol>
-<symbol id="icon-list" viewBox="0 0 1024 1024">
-<title>list</title>
-<path class="path1" d="M0 78.907h261.625v216.487h-261.625v-216.487z"></path>
-<path class="path2" d="M0 403.739h261.625v216.555h-261.625v-216.555z"></path>
-<path class="path3" d="M0 728.538h261.625v216.487h-261.625v-216.487z"></path>
-<path class="path4" d="M369.937 403.807h654.063v216.555h-654.063v-216.555z"></path>
-<path class="path5" d="M369.937 728.538h654.063v216.555h-654.063v-216.555z"></path>
-<path class="path6" d="M369.937 78.907h654.063v216.555h-654.063v-216.555z"></path>
-</symbol>
-<symbol id="icon-first" viewBox="0 0 1024 1024">
-<title>first</title>
-<path class="path1" d="M634.080 391.232l389.92-276.384v794.272l-389.92-276.384v276.384l-452.864-320.992v320.992h-181.184v-794.272h181.184v320.992l452.864-320.992v276.384z"></path>
-</symbol>
-<symbol id="icon-last" viewBox="0 0 1024 1024">
-<title>last</title>
-<path class="path1" d="M389.92 632.768l-389.92 276.384v-794.272l389.92 276.384v-276.384l452.864 320.992v-320.992h181.184v794.272h-181.184v-320.992l-452.864 320.992v-276.384z"></path>
-</symbol>
-<symbol id="icon-next" viewBox="0 0 1024 1024">
-<title>next</title>
-<path class="path1" d="M66.88 0l-0.096 1024 890.4-512.064z"></path>
-</symbol>
-<symbol id="icon-prev" viewBox="0 0 1024 1024">
-<title>prev</title>
-<path class="path1" d="M957.152 0l0.032 1024-890.4-512.064z"></path>
-</symbol>
-<symbol id="icon-cross" viewBox="0 0 1024 1024">
-<title>cross</title>
-<path class="path1" d="M1014.662 822.66c-0.004-0.004-0.008-0.008-0.012-0.010l-310.644-310.65 310.644-310.65c0.004-0.004 0.008-0.006 0.012-0.010 3.344-3.346 5.762-7.254 7.312-11.416 4.246-11.376 1.824-24.682-7.324-33.83l-146.746-146.746c-9.148-9.146-22.45-11.566-33.828-7.32-4.16 1.55-8.070 3.968-11.418 7.31 0 0.004-0.004 0.006-0.008 0.010l-310.648 310.652-310.648-310.65c-0.004-0.004-0.006-0.006-0.010-0.010-3.346-3.342-7.254-5.76-11.414-7.31-11.38-4.248-24.682-1.826-33.83 7.32l-146.748 146.748c-9.148 9.148-11.568 22.452-7.322 33.828 1.552 4.16 3.97 8.072 7.312 11.416 0.004 0.002 0.006 0.006 0.010 0.010l310.65 310.648-310.65 310.652c-0.002 0.004-0.006 0.006-0.008 0.010-3.342 3.346-5.76 7.254-7.314 11.414-4.248 11.376-1.826 24.682 7.322 33.83l146.748 146.746c9.15 9.148 22.452 11.568 33.83 7.322 4.16-1.552 8.070-3.97 11.416-7.312 0.002-0.004 0.006-0.006 0.010-0.010l310.648-310.65 310.648 310.65c0.004 0.002 0.008 0.006 0.012 0.008 3.348 3.344 7.254 5.762 11.414 7.314 11.378 4.246 24.684 1.826 33.828-7.322l146.746-146.748c9.148-9.148 11.57-22.454 7.324-33.83-1.552-4.16-3.97-8.068-7.314-11.414z"></path>
-</symbol>
-<symbol id="icon-checkmark" viewBox="0 0 1024 1024">
-<title>checkmark</title>
-<path class="path1" d="M864 128l-480 480-224-224-160 160 384 384 640-640z"></path>
-</symbol>
-<symbol id="icon-first2" viewBox="0 0 1024 1024">
-<title>first2</title>
-<path class="path1" d="M128 896v-768h128v352l320-320v320l320-320v704l-320-320v320l-320-320v352z"></path>
-</symbol>
-<symbol id="icon-last2" viewBox="0 0 1024 1024">
-<title>last2</title>
-<path class="path1" d="M896 128v768h-128v-352l-320 320v-320l-320 320v-704l320 320v-320l320 320v-352z"></path>
-</symbol>
-<symbol id="icon-previous2" viewBox="0 0 1024 1024">
-<title>previous2</title>
-<path class="path1" d="M256 896v-768h128v352l320-320v704l-320-320v352z"></path>
-</symbol>
-<symbol id="icon-next2" viewBox="0 0 1024 1024">
-<title>next2</title>
-<path class="path1" d="M768 128v768h-128v-352l-320 320v-704l320 320v-352z"></path>
-</symbol>
-<symbol id="icon-sort-alpha-asc" viewBox="0 0 1024 1024">
-<title>sort-alpha-asc</title>
-<path class="path1" d="M320 768v-768h-128v768h-160l224 224 224-224h-160z"></path>
-<path class="path2" d="M928 1024h-256c-11.8 0-22.644-6.496-28.214-16.9-5.566-10.404-4.958-23.030 1.59-32.85l222.832-334.25h-196.208c-17.672 0-32-14.328-32-32s14.328-32 32-32h256c11.8 0 22.644 6.496 28.214 16.9 5.566 10.404 4.958 23.030-1.59 32.85l-222.83 334.25h196.206c17.672 0 32 14.328 32 32s-14.328 32-32 32z"></path>
-<path class="path3" d="M1020.622 401.686l-192.002-384c-5.42-10.842-16.502-17.69-28.622-17.69-12.122 0-23.202 6.848-28.624 17.69l-191.996 384c-7.904 15.806-1.496 35.030 14.31 42.932 4.594 2.296 9.476 3.386 14.288 3.386 11.736 0 23.040-6.484 28.644-17.698l55.156-110.31h216.446l55.156 110.31c7.902 15.806 27.124 22.21 42.932 14.31 15.808-7.902 22.216-27.124 14.312-42.93zM723.778 255.996l76.22-152.446 76.224 152.446h-152.444z"></path>
-</symbol>
-<symbol id="icon-sort-alpha-desc" viewBox="0 0 1024 1024">
-<title>sort-alpha-desc</title>
-<path class="path1" d="M320 768v-768h-128v768h-160l224 224 224-224h-160z"></path>
-<path class="path2" d="M928 448h-256c-11.8 0-22.644-6.496-28.214-16.9-5.566-10.406-4.958-23.030 1.59-32.85l222.832-334.25h-196.208c-17.672 0-32-14.328-32-32s14.328-32 32-32h256c11.8 0 22.644 6.496 28.214 16.9 5.566 10.406 4.958 23.030-1.59 32.85l-222.83 334.25h196.206c17.672 0 32 14.328 32 32s-14.328 32-32 32z"></path>
-<path class="path3" d="M1020.622 977.69l-192.002-384c-5.42-10.842-16.502-17.69-28.622-17.69-12.122 0-23.202 6.848-28.624 17.69l-191.996 384c-7.904 15.806-1.496 35.030 14.31 42.932 4.594 2.296 9.476 3.386 14.288 3.386 11.736 0 23.040-6.484 28.644-17.698l55.158-110.31h216.446l55.156 110.31c7.902 15.806 27.124 22.21 42.932 14.31 15.806-7.902 22.214-27.124 14.31-42.93zM723.778 832l76.22-152.446 76.226 152.446h-152.446z"></path>
-</symbol>
-</defs>
-</svg>
-
-
+<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-arrow-downward" viewBox="0 0 32 32">
+<path d="M26.667 16l-1.88-1.88-7.453 7.44v-16.227h-2.667v16.227l-7.44-7.453-1.893 1.893 10.667 10.667 10.667-10.667z"/>
+</symbol><symbol id="icon-arrow-upward" viewBox="0 0 32 32">
+<path d="M5.333 16l1.887 1.887 7.447-7.447v16.227h2.667v-16.227l7.447 7.447 1.887-1.887-10.667-10.667-10.667 10.667z"/>
+</symbol><symbol id="icon-attach" viewBox="0 0 32 32">
+<path d="M22 8v15.333c0 2.947-2.387 5.333-5.333 5.333s-5.333-2.387-5.333-5.333v-16.667c0-1.84 1.493-3.333 3.333-3.333s3.333 1.493 3.333 3.333v14c0 0.733-0.593 1.333-1.333 1.333s-1.333-0.6-1.333-1.333v-12.667h-2v12.667c0 1.84 1.493 3.333 3.333 3.333s3.333-1.493 3.333-3.333v-14c0-2.947-2.387-5.333-5.333-5.333s-5.333 2.387-5.333 5.333v16.667c0 4.053 3.287 7.333 7.333 7.333s7.333-3.28 7.333-7.333v-15.333h-2z"/>
+</symbol><symbol id="icon-check" viewBox="0 0 32 32">
+<path d="M16 2.667c-7.367 0-13.333 5.967-13.333 13.333 0 7.36 5.967 13.333 13.333 13.333 7.36 0 13.333-5.973 13.333-13.333 0-7.367-5.973-13.333-13.333-13.333zM13.333 22.667l-6.667-6.667 1.887-1.887 4.78 4.78 10.113-10.113 1.887 1.887-12 12z"/>
+</symbol><symbol id="icon-chevron-left" viewBox="0 0 32 32">
+<path d="M20.553 9.887l-1.887-1.887-8 8 8 8 1.887-1.887-6.113-6.113z"/>
+</symbol><symbol id="icon-chevron-right" viewBox="0 0 32 32">
+<path d="M13.333 8l-1.887 1.887 6.113 6.113-6.113 6.113 1.887 1.887 8-8z"/>
+</symbol><symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M25.333 8.553l-1.887-1.887-7.447 7.447-7.447-7.447-1.887 1.887 7.447 7.447-7.447 7.447 1.887 1.887 7.447-7.447 7.447 7.447 1.887-1.887-7.447-7.447z"/>
+</symbol><symbol id="icon-copy" viewBox="0 0 32 32">
+<path d="M21.333 1.333h-16c-1.473 0-2.667 1.193-2.667 2.667v18.667h2.667v-18.667h16v-2.667zM25.333 6.667h-14.667c-1.473 0-2.667 1.193-2.667 2.667v18.667c0 1.473 1.193 2.667 2.667 2.667h14.667c1.473 0 2.667-1.193 2.667-2.667v-18.667c0-1.473-1.193-2.667-2.667-2.667zM25.333 28h-14.667v-18.667h14.667v18.667z"/>
+</symbol><symbol id="icon-delete" viewBox="0 0 32 32">
+<path d="M8 25.333c0 1.473 1.193 2.667 2.667 2.667h10.667c1.473 0 2.667-1.193 2.667-2.667v-16h-16v16zM25.333 5.333h-4.667l-1.333-1.333h-6.667l-1.333 1.333h-4.667v2.667h18.667v-2.667z"/>
+</symbol><symbol id="icon-desktop" viewBox="0 0 32 32">
+<path d="M28 4h-24c-1.473 0-2.667 1.193-2.667 2.667v16c0 1.473 1.193 2.667 2.667 2.667h6.667v2.667h10.667v-2.667h6.667c1.473 0 2.653-1.193 2.653-2.667l0.013-16c0-1.473-1.193-2.667-2.667-2.667zM28 22.667h-24v-16h24v16z"/>
+</symbol><symbol id="icon-done" viewBox="0 0 32 32">
+<path d="M12 21.56l-5.56-5.56-1.887 1.887 7.447 7.447 16-16-1.887-1.887z"/>
+</symbol><symbol id="icon-edit" viewBox="0 0 32 32">
+<path d="M4 23v5h5l14.747-14.747-5-5-14.747 14.747zM27.613 9.387c0.52-0.52 0.52-1.36 0-1.88l-3.12-3.12c-0.52-0.52-1.36-0.52-1.88 0l-2.44 2.44 5 5 2.44-2.44z"/>
+</symbol><symbol id="icon-error" viewBox="0 0 32 32">
+<path d="M16 2.667c-7.36 0-13.333 5.967-13.333 13.333s5.973 13.333 13.333 13.333 13.333-5.967 13.333-13.333-5.973-13.333-13.333-13.333zM17.333 22.667h-2.667v-2.667h2.667v2.667zM17.333 17.333h-2.667v-8h2.667v8z"/>
+</symbol><symbol id="icon-expand-less" viewBox="0 0 32 32">
+<path d="M16 10.667l-8 8 1.887 1.887 6.113-6.113 6.113 6.113 1.887-1.887z"/>
+</symbol><symbol id="icon-expand-more" viewBox="0 0 32 32">
+<path d="M22.113 11.447l-6.113 6.113-6.113-6.113-1.887 1.887 8 8 8-8z"/>
+</symbol><symbol id="icon-first-page" viewBox="0 0 32 32">
+<path d="M24.547 22.12l-6.12-6.12 6.12-6.12-1.88-1.88-8 8 8 8zM8 8h2.667v16h-2.667z"/>
+</symbol><symbol id="icon-grid" viewBox="0 0 32 32">
+<path d="M5.333 10.667h5.333v-5.333h-5.333v5.333zM13.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 18.667h5.333v-5.333h-5.333v5.333zM13.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 5.333v5.333h5.333v-5.333h-5.333zM13.333 10.667h5.333v-5.333h-5.333v5.333zM21.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 26.667h5.333v-5.333h-5.333v5.333z"/>
+</symbol><symbol id="icon-info" viewBox="0 0 32 32">
+<path d="M14.667 22.667h2.667v-8h-2.667v8zM16 2.667c-7.367 0-13.333 5.967-13.333 13.333s5.967 13.333 13.333 13.333 13.333-5.967 13.333-13.333-5.967-13.333-13.333-13.333zM16 26.667c-5.88 0-10.667-4.787-10.667-10.667s4.787-10.667 10.667-10.667 10.667 4.787 10.667 10.667-4.787 10.667-10.667 10.667zM14.667 12h2.667v-2.667h-2.667v2.667z"/>
+</symbol><symbol id="icon-last-page" viewBox="0 0 32 32">
+<path d="M7.453 9.88l6.12 6.12-6.12 6.12 1.88 1.88 8-8-8-8zM21.333 8h2.667v16h-2.667z"/>
+</symbol><symbol id="icon-list" viewBox="0 0 32 32">
+<path d="M5.333 18.667h5.333v-5.333h-5.333v5.333zM5.333 25.333h5.333v-5.333h-5.333v5.333zM5.333 12h5.333v-5.333h-5.333v5.333zM12 18.667h16v-5.333h-16v5.333zM12 25.333h16v-5.333h-16v5.333zM12 6.667v5.333h16v-5.333h-16z"/>
+</symbol><symbol id="icon-loading" viewBox="0 0 32 32">
+<path d="M16 8v4l5.333-5.333-5.333-5.333v4c-5.893 0-10.667 4.773-10.667 10.667 0 2.093 0.613 4.033 1.653 5.68l1.947-1.947c-0.593-1.113-0.933-2.38-0.933-3.733 0-4.42 3.58-8 8-8zM25.013 10.32l-1.947 1.947c0.593 1.113 0.933 2.38 0.933 3.733 0 4.42-3.58 8-8 8v-4l-5.333 5.333 5.333 5.333v-4c5.893 0 10.667-4.773 10.667-10.667 0-2.093-0.613-4.033-1.653-5.68z"/>
+</symbol><symbol id="icon-mobile" viewBox="0 0 32 32">
+<path d="M22.667 1.347l-13.333-0.013c-1.473 0-2.667 1.193-2.667 2.667v24c0 1.473 1.193 2.667 2.667 2.667h13.333c1.473 0 2.667-1.193 2.667-2.667v-24c0-1.473-1.193-2.653-2.667-2.653zM22.667 25.333h-13.333v-18.667h13.333v18.667z"/>
+</symbol><symbol id="icon-more-horiz" viewBox="0 0 32 32">
+<path d="M8 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM24 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM16 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667z"/>
+</symbol><symbol id="icon-more-vert" viewBox="0 0 32 32">
+<path d="M16 10.667c1.473 0 2.667-1.193 2.667-2.667s-1.193-2.667-2.667-2.667-2.667 1.193-2.667 2.667 1.193 2.667 2.667 2.667zM16 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM16 21.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667z"/>
+</symbol><symbol id="icon-open" viewBox="0 0 32 32">
+<path d="M26.667 8h-10.667l-2.667-2.667h-8c-1.473 0-2.653 1.193-2.653 2.667l-0.013 16c0 1.473 1.193 2.667 2.667 2.667h21.333c1.473 0 2.667-1.193 2.667-2.667v-13.333c0-1.473-1.193-2.667-2.667-2.667zM26.667 24h-21.333v-13.333h21.333v13.333z"/>
+</symbol><symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M20.667 18.667h-1.060l-0.367-0.367c1.307-1.513 2.093-3.48 2.093-5.633 0-4.787-3.88-8.667-8.667-8.667s-8.667 3.88-8.667 8.667 3.88 8.667 8.667 8.667c2.153 0 4.12-0.787 5.633-2.087l0.367 0.367v1.053l6.667 6.653 1.987-1.987-6.653-6.667zM12.667 18.667c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/>
+</symbol><symbol id="icon-settings" viewBox="0 0 32 32">
+<path d="M25.907 17.3c0.053-0.427 0.093-0.86 0.093-1.3s-0.040-0.873-0.093-1.3l2.82-2.207c0.253-0.2 0.327-0.56 0.16-0.853l-2.667-4.62c-0.167-0.287-0.513-0.407-0.813-0.287l-3.32 1.34c-0.687-0.527-1.44-0.973-2.253-1.313l-0.5-3.533c-0.060-0.313-0.333-0.56-0.667-0.56h-5.333c-0.333 0-0.607 0.247-0.66 0.56l-0.5 3.533c-0.813 0.34-1.567 0.78-2.253 1.313l-3.32-1.34c-0.3-0.113-0.647 0-0.813 0.287l-2.667 4.62c-0.167 0.287-0.093 0.647 0.16 0.853l2.813 2.207c-0.053 0.427-0.093 0.86-0.093 1.3s0.040 0.873 0.093 1.3l-2.813 2.207c-0.253 0.2-0.327 0.56-0.16 0.853l2.667 4.62c0.167 0.287 0.513 0.407 0.813 0.287l3.32-1.34c0.687 0.527 1.44 0.973 2.253 1.313l0.5 3.533c0.053 0.313 0.327 0.56 0.66 0.56h5.333c0.333 0 0.607-0.247 0.66-0.56l0.5-3.533c0.813-0.34 1.567-0.78 2.253-1.313l3.32 1.34c0.3 0.113 0.647 0 0.813-0.287l2.667-4.62c0.167-0.287 0.093-0.647-0.16-0.853l-2.813-2.207zM16 20.667c-2.58 0-4.667-2.087-4.667-4.667s2.087-4.667 4.667-4.667 4.667 2.087 4.667 4.667-2.087 4.667-4.667 4.667z"/>
+</symbol><symbol id="icon-sort-asc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 18h18v4h-18v-4z"/>
+<path d="M14 12h14v4h-14v-4z"/>
+<path d="M14 6h10v4h-10v-4z"/>
+<path d="M14 0h6v4h-6v-4z"/>
+</symbol><symbol id="icon-sort-desc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 0h18v4h-18v-4z"/>
+<path d="M14 6h14v4h-14v-4z"/>
+<path d="M14 12h10v4h-10v-4z"/>
+<path d="M14 18h6v4h-6v-4z"/>
+</symbol><symbol id="icon-tablet" viewBox="0 0 32 32">
+<path d="M24.667 0h-18.667c-1.84 0-3.333 1.493-3.333 3.333v25.333c0 1.84 1.493 3.333 3.333 3.333h18.667c1.84 0 3.333-1.493 3.333-3.333v-25.333c0-1.84-1.493-3.333-3.333-3.333zM15.333 30.667c-1.107 0-2-0.893-2-2s0.893-2 2-2 2 0.893 2 2-0.893 2-2 2zM25.333 25.333h-20v-21.333h20v21.333z"/>
+</symbol><symbol id="icon-warning" viewBox="0 0 32 32">
+<path d="M1.333 28h29.333l-14.667-25.333-14.667 25.333zM17.333 24h-2.667v-2.667h2.667v2.667zM17.333 18.667h-2.667v-5.333h2.667v5.333z"/>
+</symbol></svg><!-- endinject -->
 
 	<h1>knob.js</h1>
 	<h2>Symbols</h2>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-trash'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-open'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-copy'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-search'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-grid'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-warning'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-list'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-a-z'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-z-a'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-first'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-prev'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-next'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-last'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-up'"></knob-button>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-down'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-desktop'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-tablet'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-mobile'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-settings'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-search'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-more-vert'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-more-horiz'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-last-page'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-info'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-open'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-first-page'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-expand-more'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-expand-less'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-error'"></knob-button>
+		<br>
+		<br>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-done'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-delete'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-copy'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-edit'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-close'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-chevron-right'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-chevron-left'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-check'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-loading'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-attach'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-arrow-upward'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-arrow-downward'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-grid'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-sort-desc'"></knob-button>
+		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-sort-asc'"></knob-button>
 	<hr>
 
 	<h2>Loading Symbol</h2>
@@ -257,12 +205,12 @@
 
 	<h2>knob-dropdown</h2>
 	<knob-dropdown params="
-		rightIcon: '#icon-down',
+		rightIcon: '#icon-expand-more',
 		items: [
-			{label: 'id', icon: '#icon-a-z', value: {field: 'id desc', asc: true}},
-			{label: 'id', icon: '#icon-z-a', value: {field: 'id', asc: false}},
-			{label: 'name', icon: '#icon-a-z', value: {field: 'name', asc: true}},
-			{label: 'name', icon: '#icon-z-a', value: {field: 'name', asc: false}}
+			{label: 'id', icon: '#icon-sort-asc', value: {field: 'id desc', asc: true}},
+			{label: 'id', icon: '#icon-sort-desc', value: {field: 'id', asc: false}},
+			{label: 'name', icon: '#icon-sort-asc', value: {field: 'name', asc: true}},
+			{label: 'name', icon: '#icon-sort-desc', value: {field: 'name', asc: false}}
 		]">
 	</knob-dropdown>
 	<hr>
@@ -281,16 +229,56 @@
 
 	<h2>knob-paged-list</h2>
 
-	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', sort: ['id', 'name']">
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}]">
 		<div>
-			<span data-bind="text: data.id"></span>
-			<span data-bind="text: data.email"></span>
-			<span data-bind="text: data.name"></span>
-			<span data-bind="text: data.title"></span>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
 		</div>
 	</knob-paged-list>
-</div>
 
+
+	<h2>knob-tabs</h2>
+	<knob-tabs params="defaultTab: 1">
+		<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+			<p>
+				Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+			</p>
+			<p>
+				Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+			</p>
+			<p>
+				In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+			</p>
+		</knob-tab>
+		<knob-tab params="icon: '#icon-grid'">
+			<p>
+				In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+			</p>
+			<p>
+				Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+			</p>
+			<p>
+				Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+			</p>
+
+		</knob-tab>
+		<knob-tab params="label: 'tabX'">
+			<p>
+				Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+			</p>
+			<p>
+				In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+			</p>
+			<p>
+				Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+			</p>
+
+		</knob-tab>
+	</knob-tabs>
+
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="./knob.built.js"></script>
 </body>

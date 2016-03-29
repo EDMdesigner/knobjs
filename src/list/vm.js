@@ -3,51 +3,120 @@
 
 var ko = require("knockout");
 
-
-
 module.exports = function createList(config) {
-	var store = config.store;
+	config = config || {};
 
-	var fields = config.fields;
-
-	var search = ko.observable("").extend({
-		throttle: 500
-	});
-
-	//config.sorters
-	// - label
-	// - prop
-
-	var sortOptions = [];
-
-	function createQureyObj(prop, asc) {
-		var obj = {};
-
-		obj[prop] = asc;
-		return obj;
+	if (!config.hasOwnProperty("store")) {
+		throw new Error("config.store is mandatory!");
 	}
-	if (config.sort) {
-		for (var idx = 0; idx < config.sort.length; idx += 1) {
-			var act = config.sort[idx];
 
-			sortOptions.push({
-				icon: "#icon-a-z",
-				label: act,
-				value: createQureyObj(act, 1)
-			});
-			sortOptions.push({
-				icon: "#icon-z-a",
-				label: act,
-				value: createQureyObj(act, -1)
-			});
+	if (!config.hasOwnProperty("fields")) {
+		throw new Error("config.fields is mandatory!");
+	}
+
+	if (!config.hasOwnProperty("sort")) {
+		throw new Error("config.sort is mandatory!");
+	}
+
+	if (!config.hasOwnProperty("search")) {
+		throw new Error("config.search is mandatory!");
+	}
+
+	if (typeof config.store !== "object") {
+		throw new Error("config.search must be an object!");
+	}
+
+	if (!(config.fields instanceof Array)) {
+		throw new Error("config.fields must be an array!");
+	}
+
+	if (!(config.sort instanceof Array)) {
+		throw new Error("config.sort must be an array!");
+	}
+
+	if (typeof config.search !== "string") {
+		throw new Error("config.search must be a string!");
+	}
+
+	if (config.fields.indexOf(config.search) === -1) {
+		throw new Error("config.fields must contain the value of config.search!");
+	}
+
+	var orderField;
+
+	if (config.orderBy) {
+		if (typeof config.orderBy !== "object") {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+
+		orderField = Object.keys(config.orderBy)[0];
+		if (config.fields.indexOf(orderField) === -1 || Math.abs(config.orderBy[orderField]) !== 1) {
+			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
+		}
+
+		var sortContainsOrderField = false;
+
+		config.sort.forEach(function(item) {
+			if (item.value === orderField) {
+				sortContainsOrderField = true;
+				return;
+			}
+		});
+
+		if (!sortContainsOrderField) {
+			throw new Error("config.sort must contain the value of config.orderBy!");
 		}
 	}
 
-	var sort = ko.observable(sortOptions[0]);
+	config.sort.forEach(function(item) {
+		if (config.fields.indexOf(item.value) === -1) {
+			throw new Error("values of config.sort must be in config.fields!");
+		}
+	});
+
+	var store = config.store;
+	var fields = config.fields;
+
+	var search = ko.observable("").extend({
+		throttle: config.throttle || 500
+	});
+
+	var sortOptions = [];
+
+	var defaultOrderIdx;
+
+	function createQueryObj(prop, asc) {
+		var obj = {};
+
+		obj[prop] = asc;
+
+		if (orderField && prop === orderField && asc === config.orderBy[orderField]) {
+			defaultOrderIdx = sortOptions.length;
+		}
+
+		return obj;
+	}
+
+	for (var idx = 0; idx < config.sort.length; idx += 1) {
+		var act = config.sort[idx];
+
+		sortOptions.push({
+			icon: "#icon-sort-asc",
+			label: act.label,
+			value: createQueryObj(act.value, 1)
+		});
+		sortOptions.push({
+			icon: "#icon-sort-desc",
+			label: act.label,
+			value: createQueryObj(act.value, -1)
+		});
+	}
+
+	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
+	var sortIdx = defaultOrderIdx || 0;
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
-
 
 	var items = ko.observableArray([]);
 
@@ -59,8 +128,6 @@ module.exports = function createList(config) {
 
 	var loading = ko.observable(false); //should be read-only
 	var error = ko.observable(false); //should be read-only?
-
-
 
 	ko.computed(function() {
 		var searchVal = search();
@@ -113,7 +180,6 @@ module.exports = function createList(config) {
 		});
 	}
 
-
 	store.load.before.add(beforeLoad);
 	store.load.after.add(afterLoad);
 
@@ -125,6 +191,7 @@ module.exports = function createList(config) {
 		search: search,
 
 		sort: sort,
+		sortIdx: sortIdx,
 		sortOptions: sortOptions,
 
 		skip: skip,

@@ -11,6 +11,10 @@ var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
 var concat = require("gulp-concat");
 var jasmine = require("gulp-jasmine");
+var inject = require("gulp-inject");
+var svgstore = require("gulp-svgstore");
+var svgmin = require("gulp-svgmin");
+var path = require("path");
 
 var jsFiles = [
 	"./**/*.js",
@@ -20,17 +24,51 @@ var jsFiles = [
 ];
 
 var jsonFiles = [
-	"src/featureConfigDefaults/**/*.json",
-	"package.json",
+	"./**/*.json",
 	".jshintrc",
 	".jscsrc",
-	"src/modules/**/*.json"
+	"!node_modules/**/*"
 ];
 
 
-// SASS Compile
+// Build example
 // ==================================================
+gulp.task("sass:dev", function() {
+	return gulp.src("./src/knob.scss")
+		.pipe(sass().on("error", sass.logError))
+		.pipe(autoprefixer({
+			browsers: ["last 2 version", "iOS 6"],
+			cascade: false
+		}))
+		.pipe(concat("knob.min.css"))
+		.pipe(gulp.dest("./examples"));
+});
 
+gulp.task("js:dev", createBrowserifyTask({
+	entries: ["./examples/knob.js"],
+	outputFileName: "knob.built.js",
+	destFolder: "./examples/"
+}));
+
+gulp.task("svg:dev", function () {
+	var svgs = gulp.src("examples/SVG/*.svg")
+		.pipe(svgstore({ inlineSvg: true }));
+
+		function fileContents (filePath, file) {
+			return file.contents.toString();
+		}
+
+	return gulp.src("examples/knob.html")
+		.pipe(inject(svgs, { transform: fileContents }))
+
+
+
+		.pipe(gulp.dest("examples/"));
+});
+
+
+// Build production
+// ==================================================
 gulp.task("sass:prod", function() {
 	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
@@ -43,87 +81,37 @@ gulp.task("sass:prod", function() {
 		.pipe(gulp.dest("./dist"));
 });
 
-gulp.task("sass:dev", function() {
-	return gulp.src("./src/knob.scss")
-		.pipe(sass().on("error", sass.logError))
-		.pipe(autoprefixer({
-			browsers: ["last 2 version", "iOS 6"],
-			cascade: false
-		}))
-		.pipe(concat("knob.min.css"))
-		.pipe(gulp.dest("./examples"));
-});
-
-gulp.task("sass:watch", function() {
-	gulp.watch("./src/**/*.scss", ["sass:dev"]);
-});
-
-
-// JSON lint
-// ==================================================
-gulp.task("jsonlint", function() {
-	return gulp.src(jsonFiles)
-		.pipe(jsonlint())
-		.pipe(jsonlint.failOnError());
-});
-
-
-// JS Hint
-// ==================================================
-gulp.task("jshint", function() {
-	return gulp.src(jsFiles)
-		.pipe(jshint(".jshintrc"))
-		.pipe(jshint.reporter("jshint-stylish"));
-});
-
-
-// CodeStyle
-// ==================================================
-gulp.task("jscs", function() {
-	return gulp.src(jsFiles)
-		.pipe(jscs({
-			configPath: ".jscsrc",
-			fix: true
-		}))
-		.pipe(gulp.dest("./"))
-		.pipe(stylish());
-});
-
-
-// Build components
-// ==================================================
 gulp.task("js:prod", createBrowserifyTask({
 	entries: ["./src/components.js"],
 	outputFileName: "knob.js",
 	destFolder: "./dist/"
 }));
 
-
-// Build examples
-// ==================================================
-gulp.task("js:dev", createBrowserifyTask({
-	entries: ["./examples/knob.js"],
-	outputFileName: "knob.built.js",
-	destFolder: "./examples/"
-}));
-
-
-// Build
-// ==================================================
-gulp.task("test", ["jsonlint", "jshint", "jscs"]);
-
-
-// Build
-// ==================================================
-gulp.task("build", ["test"], function() {
-	//"js:prod", "sass:prod"
-	gulp.start("js:prod");
-	gulp.start("sass:prod");
+gulp.task("svg:prod", function () {
+	return gulp
+		.src("./examples/SVG/*.svg")
+		.pipe(svgmin(function (file) {
+			var prefix = path.basename(file.relative, path.extname(file.relative));
+			return {
+				plugins: [{
+					cleanupIDs: {
+						prefix: prefix + "-",
+						minify: true
+					}
+				}]
+			};
+		}))
+		.pipe(svgstore())
+		.pipe(gulp.dest("./dist"));
 });
 
 
-// Watch js
+// Watchers
 // ==================================================
+gulp.task("sass:watch", function() {
+	gulp.watch("./src/**/*.scss", ["sass:dev"]);
+});
+
 gulp.task("js:watch", function() {
 	gulp.watch(["./src/**/*.js", "./examples/**/*.js", "./src/**/*.html", "./examples/**/*.html", "./src/**/*.json"], ["js:dev"])
 		.on("change", function(event) {
@@ -131,11 +119,63 @@ gulp.task("js:watch", function() {
 		});
 });
 
-gulp.task("jasmine", function() {
-	return gulp.src("spec/**/*Spec.js")
-		.pipe(jasmine());
+
+// Validators
+// ==================================================
+gulp.task("jsonlint", function() {
+	return gulp.src(jsonFiles)
+		.pipe(jsonlint())
+		.pipe(jsonlint.failOnError());
 });
 
+gulp.task("jshint", function() {
+	return gulp.src(jsFiles)
+		.pipe(jshint(".jshintrc"))
+		.pipe(jshint.reporter("jshint-stylish"))
+		.pipe(jshint.reporter("fail"));
+});
+
+gulp.task("jscs", function() {
+	return gulp.src(jsFiles)
+		.pipe(jscs({
+			configPath: ".jscsrc",
+			fix: true
+		}))
+		.pipe(stylish())
+		.pipe(jscs.reporter("fail"));
+});
+
+// Test
+// ==================================================
+gulp.task("jasmine", function() {
+	return gulp.src("spec/**/*Spec.js")
+		.pipe(jasmine({
+			verbose: true
+		}));
+});
+
+// Test
+// ==================================================
+gulp.task("js-test", ["jsonlint", "jshint", "jscs"]);
+gulp.task("test", ["jsonlint", "jshint", "jscs", "jasmine"]);
+
+
+// Build:prod
+// ==================================================
+gulp.task("build:prod", ["js-test"], function() {
+	gulp.start("js:prod");
+	gulp.start("sass:prod");
+	gulp.start("svg:prod");
+});
+
+
+// Build:dev
+// ==================================================
+gulp.task("build:dev", ["js-test"], function() {
+	gulp.start("js:dev");
+	gulp.start("sass:dev");
+	gulp.start("svg:dev");
+});
 
 function createBrowserifyTask(config) {
 	return function() {

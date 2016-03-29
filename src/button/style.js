@@ -2,46 +2,98 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.baseBg,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"backgroundColor": theme.primaryColor,
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.baseHoverBg,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"backgroundColor": theme.primaryColor,
+				"color": theme.black,
+				"fill": theme.black
 			},
 			"active": {
-				"backgroundColor": theme.baseActiveBg,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"backgroundColor": theme.primaryColor,
+				"color": theme.black,
+				"fill": theme.black
 			},
 			"disabled": {
-				"backgroundColor": theme.DisabledButtonBg,
-				"color": theme.disabledButtonColor,
-				"fill": theme.disabledButtonColor
+				"backgroundColor": theme.mediumGray,
+				"color": theme.lightGray,
+				"fill": theme.lightGray
 			}
 		},
 		"primary": {
 			"default": {
-				"backgroundColor": theme.primaryColor,
-				"color": theme.baseButtonFontColor,
-				"fill": theme.baseButtonFontColor
+				"backgroundColor": theme.secondaryColor,
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.primaryHoverBg,
-				"color": theme.primaryHoverButtonFontColor,
-				"fill": theme.primaryHoverButtonFontColor
+				"backgroundColor": theme.secondaryColor,
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"active": {
-				"backgroundColor": theme.primaryActiveBg,
-				"color": theme.primaryActiveButtonFontColor,
-				"fill": theme.primaryActiveButtonFontColor
+				"backgroundColor": theme.secondaryColor,
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"disabled": {
-				"backgroundColor": theme.disabledButtonBg,
-				"color": theme.disabledButtonColor,
-				"fill": theme.disabledButtonColor
+				"backgroundColor": theme.lightGray,
+				"color": theme.darkGray,
+				"fill": theme.darkGray
+			}
+		},
+		"tab": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.white,
+				"color": theme.darkGray,
+				"fill": theme.darkGray
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"fill": theme.black
+			},
+			"active": {
+				"borderColor": theme.black,
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"fill": theme.black
+			},
+				"disabled": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.white,
+				"color": theme.lightGray,
+				"fill": theme.lightGray
+			}
+		},
+		"pagination": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white0
+			},
+			"active": {
+				"borderColor": theme.black,
+				"backgroundColor": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white
+			},
+				"disabled": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.white,
+				"color": theme.mediumGray,
+				"fill": theme.mediumGray
 			}
 		}
 	};

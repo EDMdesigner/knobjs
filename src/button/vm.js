@@ -6,6 +6,18 @@ var ko = require("knockout");
 var base = require("../base/vm");
 
 function createButton(config) {
+	if (!config) {
+		throw new Error("config is mandatory!");
+	}
+
+	if (config.click && typeof config.click !== "function") {
+		throw new Error("click has to be a function!");
+	}
+
+	if (!config.label && !config.leftIcon && !config.rightIcon && !config.icon) {
+		throw new Error("either label/lefticon/righticon/icon has to be given!");
+	}
+
 	config.component = "button";
 
 	var vm = base(config);

@@ -1,33 +1,33 @@
-module.exports = function createStyleConfig() {
+module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": "#fff",
-				"color": "#131313",
-				"border-color": "#ddd"
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": theme.mediumGray
 			},
 			"hover": {
-				"backgroundColor": "#fff",
-				"color": "#131313",
-				"border-color": "#131313"
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": theme.black
 			},
 			"active": {
-				"color": "#1337aa",
-				"fill": "#abcdef"
+				"color": theme.mediumGray,
+				"fill": theme.mediumGray
 			},
 			"disabled": {
-				"backgroundColor": "#dddddd",
-				"color": "#aaaaaa"
+				"backgroundColor": theme.lightGray,
+				"color": theme.black
 			},
 			"success": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.successColor,
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"error": {
-				"backgroundColor": "#171717",
-				"color": "#fff",
-				"fill": "#fff"
+				"backgroundColor": theme.alertColor,
+				"color": theme.white,
+				"fill": theme.white
 			}
 		}
 	};

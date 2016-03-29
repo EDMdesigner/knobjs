@@ -6,6 +6,22 @@ var ko = require("knockout");
 module.exports = function createPagination(config) {
 	config = config || {};
 
+	if (config.afterHead && config.afterHead < 1) {
+		throw new Error("config.afterHead must be larger than zero");
+	}
+
+	if (config.beforeTail && config.beforeTail < 1) {
+		throw new Error("config.beforeTail must be larger than zero");
+	}
+
+	if (config.beforeCurrent && config.beforeCurrent < 1) {
+		throw new Error("config.beforeCurrent must be larger than zero");
+	}
+
+	if (config.afterCurrent && config.afterCurrent < 1) {
+		throw new Error("config.afterCurrent must be larger than zero");
+	}
+
 	var numOfPages;
 
 	if (ko.isObservable(config.numOfPages)) {
@@ -29,12 +45,18 @@ module.exports = function createPagination(config) {
 	}
 
 	var currentPage = (function() {
-		var currentPage = config.currentPage || ko.observable(0);
+		var currentPage = ko.observable();
 
 		ko.computed(function() {
 			numOfPages();
 			currentPage(0);
 		});
+
+		if (ko.isObservable(config.currentPage)) {
+			currentPage = config.currentPage;
+		} else {
+			currentPage = ko.observable(normalize(config.currentPage) || 0);
+		}
 
 		return ko.computed({
 			read: function() {
@@ -45,6 +67,8 @@ module.exports = function createPagination(config) {
 			}
 		});
 	}());
+
+
 
 	var currentPageRealIdx;
 	var pageSelectors = (function(config) {
