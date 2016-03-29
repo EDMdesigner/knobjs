@@ -53,6 +53,19 @@ module.exports = function createList(config) {
 		if (config.fields.indexOf(orderField) === -1 || Math.abs(config.orderBy[orderField]) !== 1) {
 			throw new Error("config.orderBy must have the format of { <key>: [1;-1] } ");
 		}
+
+		var sortContainsOrderField = false;
+
+		config.sort.forEach(function(item) {
+			if (item.value === orderField) {
+				sortContainsOrderField = true;
+				return;
+			}
+		});
+
+		if (!sortContainsOrderField) {
+			throw new Error("config.sort must contain the value of config.orderBy!");
+		}
 	}
 
 	config.sort.forEach(function(item) {
