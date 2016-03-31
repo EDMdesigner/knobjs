@@ -138,6 +138,60 @@ img {
   padding: 10px;
   border-top: 1px solid; }
 
+.knob-modal-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.knob-modal {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-smoothing: antialiased;
+  background: white;
+  max-width: 90%;
+  z-index: 22;
+  border: 1px solid #ddd; }
+  .knob-modal__header, .knob-modal__body {
+    width: 100%; }
+  .knob-modal__header {
+    background: #8a8a8a;
+    color: white;
+    padding: 10px; }
+    .knob-modal__header .title {
+      padding-right: 10px;
+      color: #ff0;
+      fill: pink;
+      vertical-align: middle; }
+      .knob-modal__header .title svg {
+        float: left;
+        margin-right: 10px;
+        width: 24px;
+        height: 24px; }
+    .knob-modal__header .button-close {
+      float: right; }
+      .knob-modal__header .button-close button {
+        padding: 0;
+        background: none;
+        color: black; }
+  .knob-modal__body {
+    padding: 10px; }
+
 .example {
   margin: 0 auto;
   width: 960px; }

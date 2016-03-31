@@ -1,0 +1,20 @@
+<div class="knob-modal-overlay" data-bind="visible: visible, click: visible.toggle">
+
+	<div class="knob-modal">
+		<div class="knob-modal__header">
+			<knob-button class="button-close" params="variation: 'default', icon: '#icon-close', click: visible.toggle"></knob-button>
+
+			<span class="title">
+				<svg class="icon">
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': icon}" xlink:href=""></use>
+				</svg>
+				<span data-bind="text: title"></span>
+
+			</span>
+
+		</div>
+		<div class="knob-modal__body">
+			<!-- ko template: { nodes: $componentTemplateNodes, data: $data } --><!-- /ko -->
+		</div>
+	</div>
+</div>

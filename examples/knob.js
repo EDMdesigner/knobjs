@@ -88,5 +88,7 @@ ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
 	numOfItems: ko.observable(1000),
-	buttons: buttons
+	buttons: buttons,
+	modalVisible: ko.observable(false),
+	xxx: "my test"
 });
