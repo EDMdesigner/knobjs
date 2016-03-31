@@ -170,15 +170,11 @@ img {
   .knob-modal__header, .knob-modal__body {
     width: 100%; }
   .knob-modal__header {
-    background: #8a8a8a;
-    color: white;
     padding: 10px; }
-    .knob-modal__header .title {
+    .knob-modal__header .desc {
       padding-right: 10px;
-      color: #ff0;
-      fill: pink;
       vertical-align: middle; }
-      .knob-modal__header .title svg {
+      .knob-modal__header .desc svg {
         float: left;
         margin-right: 10px;
         width: 24px;
@@ -188,7 +184,7 @@ img {
       .knob-modal__header .button-close button {
         padding: 0;
         background: none;
-        color: black; }
+        box-shadow: 0 0 0 0; }
   .knob-modal__body {
     padding: 10px; }
 

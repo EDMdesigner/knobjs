@@ -28,14 +28,10 @@
 	}
 
 	&__header {
-		background: #8a8a8a;
-		color: white;
 		padding: 10px;
 
-		.title {
+		.desc {
 			padding-right: 10px;
-			color: #ff0;
-			fill: pink;
 			vertical-align: middle;
 
 			svg {
@@ -52,7 +48,7 @@
 			button {
 				padding: 0;
 				background: none;
-				color: black;
+				box-shadow: 0 0 0 0;
 			}
 		}
 	}

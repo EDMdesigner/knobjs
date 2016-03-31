@@ -1,10 +1,10 @@
 <div class="knob-modal-overlay" data-bind="visible: visible, click: visible.toggle">
 
 	<div class="knob-modal">
-		<div class="knob-modal__header">
-			<knob-button class="button-close" params="variation: 'default', icon: '#icon-close', click: visible.toggle"></knob-button>
+		<div class="knob-modal__header" data-bind="style: style">
+			<knob-button class="button-close" params="variation: 'modalHead', icon: '#icon-close', click: function() {modalVisible.toggle();}"></knob-button>
 
-			<span class="title">
+			<span class="desc">
 				<svg class="icon">
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': icon}" xlink:href=""></use>
 				</svg>

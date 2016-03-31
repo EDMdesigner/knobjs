@@ -136,16 +136,10 @@
 	<br>
 	<hr>
 
-	<h2>Loading Symbol</h2>
-	<br>
-	<svg class="icon icon-loading anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
-	<br>
-	<hr>
-	<br>
-	<br>
-
 	<h2>knob-modal</h2>
 	<knob-button class="button-close" params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+
+
 	<knob-modal params="
 		title: 'test modal',
 		icon: '#icon-open',
@@ -153,20 +147,19 @@
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
 		</p>
-		<p data-bind="text: xxx"></p>
 	</knob-modal>
-	<knob-modal params="
-		title: 'test modal',
-		icon: '#icon-open',
-		visible: modalVisible">
-		<p data-bind="text: $parent.xxx"></p>
-		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-sort-asc', click: $data.visible.toggle"></knob-button>
-	</knob-modal>
-
 
 	<br>
 	<br>
 	<hr>
+	<br>
+
+	<h2>Loading Symbol</h2>
+	<br>
+	<svg class="icon icon-loading anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
+	<br>
+	<hr>
+	<br>
 	<br>
 	<h2>knob-button default Small</h2>
 	<div data-bind="foreach: buttons">

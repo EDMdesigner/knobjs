@@ -9,15 +9,19 @@ initKnob({
 	primaryColor: "#2199e8",
 	secondaryColor: "#777",
 
+	highlightColor: "yellow",
 	successColor: "#3adb76",
 	alertColor: "#e74c3c",
 	warningColor: "#ec5840",
 
 	white: "#fff",
+
 	lightGray: "#e6e6e6",
 	mediumGray: "#cacaca",
 	darkGray: "#8a8a8a",
-	black: "#000"
+
+	black: "#000",
+	transparent: "transparent"
 });
 
 var createProxy = superdata.proxy.memory;
