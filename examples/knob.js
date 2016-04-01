@@ -94,5 +94,13 @@ ko.applyBindings({
 	numOfItems: ko.observable(1000),
 	buttons: buttons,
 	modalVisible: ko.observable(false),
+	confirmVisible: ko.observable(false),
+	confirmCallback: function(ok) {
+		if (ok) {
+			alert("Ok");
+		} else {
+			alert("Not ok");
+		}
+	},
 	xxx: "my test"
 });
