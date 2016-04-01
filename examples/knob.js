@@ -88,6 +88,11 @@ var buttons = [];
 for (var idx = 0; idx < 5; idx += 1) {
 	buttons.push("button" + idx);
 }
+
+function alertClose() {
+	window.alert("Alert closed");
+}
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -97,10 +102,12 @@ ko.applyBindings({
 	confirmVisible: ko.observable(false),
 	confirmCallback: function(ok) {
 		if (ok) {
-			alert("Ok");
+			window.alert("Ok");
 		} else {
-			alert("Not ok");
+			window.alert("Not ok");
 		}
 	},
+	alertVisible: ko.observable(false),
+	alertCallback: alertClose,
 	xxx: "my test"
 });

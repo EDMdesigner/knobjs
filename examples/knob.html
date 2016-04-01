@@ -161,7 +161,26 @@
 		callback: confirmCallback
 	"></knob-confirm>
 
+	<h3>knob-alert</h3>
+	<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
 
+
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-open',
+		visible: alertVisible,
+		okLabel: 'Understood',
+		callback: alertCallback">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
+		</p>
+	</knob-alert>
+
+	<br>
+	<hr>
+	<br>
+
+	<br>
 	<br>
 	<hr>
 	<br>

@@ -27,6 +27,7 @@ function initKnob(theme) {
 
 	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(theme));
 	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"));
+	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);

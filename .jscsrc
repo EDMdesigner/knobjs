@@ -1,4 +1,4 @@
-{  
+{
   "disallowDanglingUnderscores":true,
   "disallowEmptyBlocks":true,
   "disallowMixedSpacesAndTabs":true,
@@ -8,12 +8,12 @@
   "disallowNestedTernaries":true,
   "disallowNewlineBeforeBlockStatements":true,
   "disallowSpacesInCallExpression":true,
-  "disallowSpacesInAnonymousFunctionExpression":{  
+  "disallowSpacesInAnonymousFunctionExpression":{
     "beforeOpeningRoundBrace":true
   },
   "disallowSpaceBeforeSemicolon":true,
   "disallowSpaceBeforeComma":true,
-  "disallowSpaceAfterPrefixUnaryOperators":[  
+  "disallowSpaceAfterPrefixUnaryOperators":[
     "+",
     "-",
     "~",
@@ -25,16 +25,16 @@
   "disallowSpacesInsideObjectBrackets":true,
   "disallowSpacesInsideBrackets":true,
   "disallowSpacesInsideArrayBrackets":"all",
-  "disallowSpacesInNamedFunctionExpression":{  
+  "disallowSpacesInNamedFunctionExpression":{
     "beforeOpeningRoundBrace":true
   },
-  "disallowSpacesInFunction":{  
+  "disallowSpacesInFunction":{
     "beforeOpeningRoundBrace":true
   },
-  "disallowSpacesInFunctionExpression":{  
+  "disallowSpacesInFunctionExpression":{
     "beforeOpeningRoundBrace":true
   },
-  "disallowSpacesInFunctionDeclaration":{  
+  "disallowSpacesInFunctionDeclaration":{
     "beforeOpeningRoundBrace":true
   },
   "requireEarlyReturn":true,
@@ -48,41 +48,41 @@
   "disallowTrailingWhitespace":true,
   "disallowTrailingComma":true,
   "requireLineBreakAfterVariableAssignment":true,
-  "requireSpacesInNamedFunctionExpression":{  
+  "requireSpacesInNamedFunctionExpression":{
     "beforeOpeningCurlyBrace":true
   },
-  "requireSpacesInGenerator":{  
+  "requireSpacesInGenerator":{
     "afterStar":true
   },
-  "requireSpacesInFunction":{  
+  "requireSpacesInFunction":{
     "beforeOpeningCurlyBrace":true
   },
-  "requireSpacesInFunctionExpression":{  
+  "requireSpacesInFunctionExpression":{
     "beforeOpeningCurlyBrace":true
   },
-  "requireSpacesInFunctionDeclaration":{  
+  "requireSpacesInFunctionDeclaration":{
     "beforeOpeningCurlyBrace":true
   },
   "requireSpacesInForStatement":true,
-  "requireSpacesInConditionalExpression":{  
+  "requireSpacesInConditionalExpression":{
     "afterTest":true,
     "beforeConsequent":true,
     "afterConsequent":true,
     "beforeAlternate":true
   },
-  "requireSpacesInAnonymousFunctionExpression":{  
+  "requireSpacesInAnonymousFunctionExpression":{
     "beforeOpeningCurlyBrace":true
   },
   "requireSpaceBetweenArguments":true,
   "requireSpaceBeforeObjectValues":true,
-  "requireSpaceBeforeKeywords":[  
+  "requireSpaceBeforeKeywords":[
     "else",
     "while",
     "catch"
   ],
   "requireSpaceBeforeBlockStatements":1,
   "requireSpaceBeforeBinaryOperators":true,
-  "requireSpaceAfterKeywords":[  
+  "requireSpaceAfterKeywords":[
     "do",
     "for",
     "if",
