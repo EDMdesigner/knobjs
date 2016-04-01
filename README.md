@@ -4,16 +4,6 @@ A component library for knockout.js to build skinnable UIs with ease.
 
 Knobjs is a component library based on knockoutjs. The main goal of the lib is to ease the way of creating skinnable / themed UIs. The components communicate through ko.observables. Other than knockout, its dependency is [superdata](https://github.com/EDMdesigner/superdata) which is a general data layer which can be used with any client-side frameworks.
 
-[knob-button](#knob-button)
-[knob-radio](#knob-radio)
-[knob-dropdown](#knob-dropdown)
-[knob-inline-text-editor](#knob-inline-text-editor)
-[knob-items-per-page](#knob-items-per-page)
-[knob-paginaton](#knob-paginaton)
-[knob-paged-list](#knob-paged-list)
-[knob-tabs](#knob-tabs)
-[knob-modal](#knob-modal)
-[Styling knob components](#Styling knob components)
 
 ## knob-button
 
@@ -303,6 +293,29 @@ Also, the knob-tab child elements has to have at least one of the following para
 </knob-tabs>
 ```
 ## knob-modal
+
+This component, you can easily create modal window.
+
+### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+variation | string | Yes | "modalHead" | The variation of the button in modal header section.
+title | string | No | "text" | Header text in the header element.
+icon | string | No | "text" | The icon on the left of the header element.
+visible | ko.observable (boolean) | Yes | | This is the observable in which the show / hide the modal.
+
+### Example
+``` html
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: modalVisible">
+		<p>
+			Content text
+		</p>
+	</knob-modal>
+```
 
 ## Styling knob components
 
