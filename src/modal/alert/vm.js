@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = function createAlert(config) {
+
 	var visible = config.visible;
 	var callback = config.callback;
 
