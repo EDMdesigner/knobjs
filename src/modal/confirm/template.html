@@ -1,0 +1,16 @@
+<div>
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: visible">
+		<p data-bind="text: $parent.message"></p>
+		<knob-button params="
+			label: 'Ok',
+			click: ok
+		"></knob-button>
+		<knob-button params="
+			label: 'Cancel',
+			click: cancel
+		"></knob-button>
+	</knob-modal>	
+</div>
