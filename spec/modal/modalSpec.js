@@ -1,9 +1,9 @@
 var ko = require("knockout");
 var createModal = require("../../src/modal/vm");
 
-describe('Modal', function() {
+describe("Modal", function() {
 
-	describe('- with invalid config', function() {
+	describe("- with invalid config", function() {
 		it("missing config", function() {
 			expect(createModal).toThrowError("config is mandatory!");
 		});
@@ -20,7 +20,7 @@ describe('Modal', function() {
 	});
 
 
-	describe('- with valid config', function() {
+	describe("- with valid config", function() {
 
 		var style = {
 			default: {

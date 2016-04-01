@@ -148,7 +148,7 @@ gulp.task("jscs", function() {
 // Test
 // ==================================================
 gulp.task("jasmine", function() {
-	return gulp.src("spec/modal/*Spec.js")
+	return gulp.src("spec/**/*Spec.js")
 		.pipe(jasmine({
 			verbose: true
 		}));
