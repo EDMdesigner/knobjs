@@ -317,6 +317,10 @@ visible | ko.observable (boolean) | Yes | | This is the observable in which the 
 	</knob-modal>
 ```
 
+## knob-modal - alert
+
+## knob-modal - confirm
+
 ## Styling knob components
 
 ### Example

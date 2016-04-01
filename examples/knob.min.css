@@ -187,8 +187,23 @@ img {
         padding: 0;
         background: none;
         box-shadow: 0 0 0 0; }
-  .knob-modal__body {
-    padding: 10px; }
+
+.knob-confirm__content {
+  max-width: 555px;
+  padding: 10px 10px 0 10px; }
+
+.knob-confirm__buttons {
+  padding: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end; }
+  .knob-confirm__buttons button {
+    margin-left: 5px; }
 
 .example {
   margin: 0 auto;

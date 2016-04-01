@@ -1,3 +1,16 @@
 .knob-confirm__content {
-	padding: 0 0 10px;
+	max-width: 555px;
+	padding: 10px 10px 0 10px;
+}
+
+.knob-confirm__buttons {
+	padding: 10px;
+
+	display: flex;
+	justify-content: flex-end;
+
+	button {
+		margin-left: 5px
+	}
+
 }
