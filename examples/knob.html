@@ -149,7 +149,19 @@
 		</p>
 	</knob-modal>
 
-	<br>
+	<h3>knob-confirm</h3>
+	<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-confirm',
+		message: 'Are you sure?',
+		visible: confirmVisible,
+		okLabel: 'Okay',
+		cancelLabel: 'No way!',
+		callback: confirmCallback
+	"></knob-confirm>
+
+
 	<br>
 	<hr>
 	<br>

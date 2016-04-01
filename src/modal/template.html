@@ -2,7 +2,7 @@
 
 	<div class="knob-modal">
 		<div class="knob-modal__header" data-bind="style: style">
-			<knob-button class="button-close" params="variation: 'modalHead', icon: '#icon-close', click: function() {modalVisible.toggle();}"></knob-button>
+			<knob-button class="button-close" params="variation: 'modalHead', icon: '#icon-close', click: $component.visible.toggle"></knob-button>
 
 			<span class="desc">
 				<svg class="icon">
@@ -14,7 +14,7 @@
 
 		</div>
 		<div class="knob-modal__body">
-			<!-- ko template: { nodes: $componentTemplateNodes, data: $data } --><!-- /ko -->
+			<!-- ko template: { nodes: $componentTemplateNodes, data: $parent } --><!-- /ko -->
 		</div>
 	</div>
 </div>

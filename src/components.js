@@ -26,6 +26,7 @@ function initKnob(theme) {
 	registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
 
 	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(theme));
+	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
