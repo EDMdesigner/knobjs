@@ -6,6 +6,18 @@ function createConfirmModal(config) {
 		throw new Error("config is mandatory!");
 	}
 
+	if (!config.message) {
+		throw new Error("config.message element is mandatory!");
+	}
+
+	if (!config.okLabel) {
+		throw new Error("config.okLabel element is mandatory!");
+	}
+
+	if (!config.cancelLabel) {
+		throw new Error("config.cancelLabel element is mandatory!");
+	}
+
 	config = config || {};
 
 	var visible = config.visible;
@@ -21,12 +33,12 @@ function createConfirmModal(config) {
 
 	function ok() {
 		callback(true);
-		visible.toggle();
+		visible(!visible());
 	}
 
 	function cancel() {
 		callback(false);
-		visible.toggle();
+		visible(!visible());
 	}
 
 	return {
