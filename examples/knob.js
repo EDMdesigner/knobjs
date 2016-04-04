@@ -9,15 +9,19 @@ initKnob({
 	primaryColor: "#2199e8",
 	secondaryColor: "#777",
 
+	highlightColor: "yellow",
 	successColor: "#3adb76",
 	alertColor: "#e74c3c",
 	warningColor: "#ec5840",
 
 	white: "#fff",
+
 	lightGray: "#e6e6e6",
 	mediumGray: "#cacaca",
 	darkGray: "#8a8a8a",
-	black: "#000"
+
+	black: "#000",
+	transparent: "transparent"
 });
 
 var createProxy = superdata.proxy.memory;
@@ -84,9 +88,26 @@ var buttons = [];
 for (var idx = 0; idx < 5; idx += 1) {
 	buttons.push("button" + idx);
 }
+
+function alertClose() {
+	window.alert("Alert closed");
+}
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
 	numOfItems: ko.observable(1000),
-	buttons: buttons
+	buttons: buttons,
+	modalVisible: ko.observable(false),
+	confirmVisible: ko.observable(false),
+	confirmCallback: function(ok) {
+		if (ok) {
+			window.alert("Ok");
+		} else {
+			window.alert("Not ok");
+		}
+	},
+	alertVisible: ko.observable(false),
+	alertCallback: alertClose,
+	xxx: "my test"
 });

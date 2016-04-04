@@ -1,0 +1,60 @@
+.knob-modal-overlay {
+	background: rgba(0,0,0,.7);
+	position: fixed;
+	top:0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	z-index: 20;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.knob-modal {
+	backface-visibility: hidden;
+	font-smoothing: antialiased;
+	background: white;
+	min-width: 240px;
+	max-width: 90%;
+
+	z-index: 22;
+
+	border: 1px solid #ddd;
+
+	&__header,
+	&__body {
+		width: 100%;
+	}
+
+	&__header {
+		padding: 10px;
+
+		.desc {
+			padding-right: 10px;
+			vertical-align: middle;
+
+			svg {
+				float: left;
+				margin-right: 10px;
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		.button-close  {
+			float: right;
+
+			button {
+				padding: 0;
+				background: none;
+				box-shadow: 0 0 0 0;
+			}
+		}
+	}
+
+	&__body {
+		//padding: 10px;
+	}
+}

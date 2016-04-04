@@ -131,16 +131,65 @@
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-grid'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-sort-desc'"></knob-button>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-sort-asc'"></knob-button>
+	<br>
+	<br>
+	<br>
 	<hr>
+
+	<h2>knob-modal</h2>
+	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+
+
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: modalVisible">
+		<p>
+			Lorem ipsum <a href="#">dolor sit amet</a>, <strong>consectetur adipisicing elit</strong>. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
+		</p>
+	</knob-modal>
+
+	<h3>knob-confirm</h3>
+	<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-open',
+		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+		visible: confirmVisible,
+		okLabel: 'Ok',
+		cancelLabel: 'Cancel',
+		callback: confirmCallback
+	"></knob-confirm>
+
+	<h3>knob-alert</h3>
+	<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
+
+
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-warning',
+		message: 'I have to alert you about something?',
+		visible: alertVisible,
+		okLabel: 'Ok',
+		callback: alertCallback">
+	</knob-alert>
+
+	<br>
+	<hr>
+	<br>
+
+	<br>
+	<br>
+	<hr>
+	<br>
 
 	<h2>Loading Symbol</h2>
 	<br>
 	<svg class="icon icon-loading anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
 	<br>
-	<br>
-	<br>
-
 	<hr>
+	<br>
+	<br>
 	<h2>knob-button default Small</h2>
 	<div data-bind="foreach: buttons">
 		<knob-button class="button--sm" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
@@ -277,7 +326,6 @@
 
 		</knob-tab>
 	</knob-tabs>
-
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="./knob.built.js"></script>

@@ -10,7 +10,7 @@ var baseVm = require("./base/vm");
 
 var createButtonStyle = require("./button/style");
 var createInputStyle = require("./input/style");
-
+var createModalStyle = require("./modal/style");
 
 function initKnob(theme) {
 
@@ -24,6 +24,10 @@ function initKnob(theme) {
 	registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"), buttonStyle);
 	registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
 	registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"));
+
+	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(theme));
+	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(theme));
+	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(theme));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);

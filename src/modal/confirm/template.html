@@ -1,0 +1,19 @@
+<div class="knob-confirm">
+	<knob-modal params="
+		title: title,
+		icon: icon,
+		visible: visible">
+		<div class="knob-confirm__content" data-bind="text: message"></div>
+		<div class="knob-confirm__buttons">
+			<knob-button params="
+				label: okLabel,
+				variation: 'primary',
+				click: ok
+			"></knob-button>
+			<knob-button params="
+				label: cancelLabel,
+				click: cancel
+			"></knob-button>
+		</div>
+	</knob-modal>
+</div>

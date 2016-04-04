@@ -4,6 +4,7 @@ A component library for knockout.js to build skinnable UIs with ease.
 
 Knobjs is a component library based on knockoutjs. The main goal of the lib is to ease the way of creating skinnable / themed UIs. The components communicate through ko.observables. Other than knockout, its dependency is [superdata](https://github.com/EDMdesigner/superdata) which is a general data layer which can be used with any client-side frameworks.
 
+
 ## knob-button
 
 This is one of the most basic components in knobjs. It works like you would expect it from a button. If you click on it, something will be triggered. This is why most of the components in knobjs are using this element. Each components where some kind of changes should be triggered by a click are implemented with knob-buttons.
@@ -274,7 +275,7 @@ defaultTab | number | No | 0 | You can set the default selected tab by giving th
 Also, the knob-tab child elements has to have at least one of the following parameters:
  - label
  - icon (a synonim for leftIcon)
- - leftIcon 
+ - leftIcon
  - rightIcon
 
 ### Example
@@ -291,44 +292,131 @@ Also, the knob-tab child elements has to have at least one of the following para
 	</knob-tab>
 </knob-tabs>
 ```
+## knob-modal
+
+With this component, you can easily create a modal window.
+
+### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+variation | string | Yes | "modalHead" | The variation of the button in modal header section.
+title | string | No | "text" | Header text in the header element.
+icon | string | No | "text" | The icon on the left of the header element.
+visible | ko.observable (boolean) | Yes | | This is the observable in which the show / hide the modal.
+
+### Example
+``` html
+<knob-modal params="
+	title: 'test modal',
+	icon: '#icon-open',
+	visible: modalVisible">
+	<p>
+		Content text
+	</p>
+</knob-modal>
+<script>
+	ko.applyBindings({
+		modalVisible: ko.observable(false)
+	});
+</script>
+```
+
+## knob-modal - alert
+
+With this component, you can easily create a modal - alert window.
+
+### Params
+
+Param    | Type                    | Required | Default value | Description
+---      | ---                     | ---      | ---           | ---
+title    | string                  | No       | ""            | Header text in the header element.
+icon     | string                  | No       | ""            | The id of the icon on the left of the header element.
+message  | string                  | Yes      |               | The message shown.
+okLabel  | string                  | Yes      |               | The label on the button.
+visible  | ko.observable (boolean) | Yes      |               | This is the observable in which the show / hide the modal.
+callback | function                | Yes      |               | The callback function to be executed on pressing the button button.
+
+### Example
+``` html
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-warning',
+		message: 'I have to alert you about something?',
+		okLabel: 'Ok',
+		visible: alertVisible,
+		callback : confirmCallback
+	</knob-alert>
+
+	<script>
+		ko.applyBindings({
+			alertVisible: ko.observable(false),
+			confirmCallback: function(ok) {
+				console.log(ok);
+			}
+		});
+	</script>
+```
+
+## knob-modal - confirm
+
+With this component, you can easily create a confirm dialog.
+
+### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+title | string | No | "" | Header text in the header element.
+icon | string | No | "" | The icon on the left of the header element.
+visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
+message | string | Yes | | Content message in the confirm modal window content section.
+okLabel | string | Yes | | The label of the ok button.
+cancelLabel | string | Yes | | The label of the cancel button.
+callback | function | Yes | | This function will be called when the user clicks on the ok or cancel button. If the ok was clicked, then the param of it will be true, otherwise false.
+
+### Example
+``` html
+<knob-confirm params="
+	title: 'Confirm',
+	icon: '#icon-open',
+	message: 'Lorem ipsum dolor sit amet?',
+	visible: confirmVisible,
+	okLabel: 'Ok',
+	cancelLabel: 'Cancel',
+	callback: confirmCallback
+"></knob-confirm>
+
+<script>
+	ko.applyBindings({
+		confirmVisible: ko.observable(false),
+		confirmCallback: function(ok) {
+			console.log(ok);
+		}
+	});
+</script>
+```
+
 
 ## Styling knob components
 
-At the moment we have only one style, where you have to set up way too many colors. We will refactor it soon. You will have to give only a few colors and some gray variations.
-
 ### Example
 ```javascript
-knob.init({
-	//Button Colors
-	baseButtonFontColor: "#fff",
-	disabledButtonBg: "#d1d5d8",
-	disabledButtonColor: "#131313",
-	baseBg: "#2969b0",
-	baseHoverBg: "#3d8eb9",
-	baseActiveBg: "#54acd2",
-	primaryBg: "#fba026",
-	primaryHoverBg: "#FAC51C",
-	primaryHoverButtonFontColor: "#fff",
-	primaryActiveBg: "#F7DA64",
-	primaryActiveButtonFontColor: "#fff",
+initKnob({
+	primaryColor: "#2199e8",
+	secondaryColor: "#777",
 
-	// InputColors
-	inputBg: "#fff",
-	inputText: "#131313",
-	inputBorder: "#ddd",
-	inputHoverBorder: "#131313",
-	inputDisabledBg: "#fafafa",
-	inputActiveColor: "#1337aa",
-	inputDisabledColor: "#aaa",
+	highlightColor: "#ff00ff",
+	successColor: "#3adb76",
+	alertColor: "#e74c3c",
+	warningColor: "#ec5840",
 
-	//ListItemRowColors
-	evenBg: "red",
-	evenColor: "yellow",
-	evenHoverBg: "yellow",
-	evenHoverColor: "red",
-	oddBg: "pink",
-	oddColor: "navy",
-	oddHoverBg: "navy",
-	oddHoverColor: "pink"
+	white: "#fff",
+
+	lightGray: "#e6e6e6",
+	mediumGray: "#cacaca",
+	darkGray: "#8a8a8a",
+
+	black: "#000",
+	transparent: "transparent"
 });
 ```

@@ -63,7 +63,7 @@ module.exports = function createStyleConfig(theme) {
 				"color": theme.black,
 				"fill": theme.black
 			},
-				"disabled": {
+			"disabled": {
 				"borderColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.lightGray,
@@ -89,11 +89,31 @@ module.exports = function createStyleConfig(theme) {
 				"color": theme.white,
 				"fill": theme.white
 			},
-				"disabled": {
+			"disabled": {
 				"borderColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.mediumGray,
 				"fill": theme.mediumGray
+			}
+		},
+		"modalHead": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.transparent,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.transparent,
+				"color": theme.mediumGray,
+				"fill": theme.mediumGray
+			},
+			"active": {
+				"borderColor": theme.black,
+				"backgroundColor": theme.transparent,
+				"color": theme.white,
+				"fill": theme.white
 			}
 		}
 	};

@@ -4,7 +4,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.inputBorder
+				"border-color": theme.darkGray
 			},
 			"hover": {
 				"backgroundColor": theme.white,
