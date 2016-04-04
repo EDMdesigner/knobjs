@@ -319,6 +319,27 @@ visible | ko.observable (boolean) | Yes | | This is the observable in which the 
 
 ## knob-modal - alert
 
+This component, you can easily create modal - alert window.
+
+### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+title | string | No | "text" | Header text in the header element.
+icon | string | No | "text" | The icon on the left of the header element.
+visible | ko.observable (boolean) | Yes | | This is the observable in which the show / hide the modal.
+
+### Example
+``` html
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-warning',
+		message: 'I have to alert you about something?',
+		visible: alertVisible,
+		okLabel: 'Ok'">
+	</knob-alert>
+```
+
 ## knob-modal - confirm
 
 ## Styling knob components
