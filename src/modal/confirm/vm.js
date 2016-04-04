@@ -1,7 +1,6 @@
 "use strict";
 
 function createConfirmModal(config) {
-
 	if (!config) {
 		throw new Error("config is mandatory!");
 	}
@@ -11,8 +10,8 @@ function createConfirmModal(config) {
 	var visible = config.visible;
 	var callback = config.callback;
 
-	var title = config.title;
-	var icon = config.icon;
+	var title = config.title || "";
+	var icon = config.icon || "";
 	var message = config.message;
 
 	var okLabel = config.okLabel;

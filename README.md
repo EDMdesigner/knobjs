@@ -294,7 +294,7 @@ Also, the knob-tab child elements has to have at least one of the following para
 ```
 ## knob-modal
 
-This component, you can easily create modal window.
+With this component, you can easily create a modal window.
 
 ### Params
 
@@ -307,14 +307,19 @@ visible | ko.observable (boolean) | Yes | | This is the observable in which the 
 
 ### Example
 ``` html
-	<knob-modal params="
-		title: 'test modal',
-		icon: '#icon-open',
-		visible: modalVisible">
-		<p>
-			Content text
-		</p>
-	</knob-modal>
+<knob-modal params="
+	title: 'test modal',
+	icon: '#icon-open',
+	visible: modalVisible">
+	<p>
+		Content text
+	</p>
+</knob-modal>
+<script>
+	ko.applyBindings({
+		modalVisible: ko.observable(false)
+	});
+</script>
 ```
 
 ## knob-modal - alert
@@ -342,28 +347,40 @@ visible | ko.observable (boolean) | Yes | false | This is the observable in whic
 
 ## knob-modal - confirm
 
-This component, you can easily create modal - confirm window.
+With this component, you can easily create a confirm dialog.
 
 ### Params
 
 Param | Type | Required | Default value | Description
 ---|---|---|---|---
-title | string | No | "text" | Header text in the header element.
-icon | string | No | "text" | The icon on the left of the header element.
+title | string | No | "" | Header text in the header element.
+icon | string | No | "" | The icon on the left of the header element.
 visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
 message | string | Yes | | Content message in the confirm modal window content section.
+okLabel | string | Yes | | The label of the ok button.
+cancelLabel | string | Yes | | The label of the cancel button.
+callback | function | Yes | | This function will be called when the user clicks on the ok or cancel button. If the ok was clicked, then the param of it will be true, otherwise false.
 
 ### Example
 ``` html
-	<knob-confirm params="
-		title: 'Confirm',
-		icon: '#icon-open',
-		message: 'Lorem ipsum dolor sit amet?',
-		visible: confirmVisible,
-		okLabel: 'Ok',
-		cancelLabel: 'Cancel',
-		callback: confirmCallback
-	"></knob-confirm>
+<knob-confirm params="
+	title: 'Confirm',
+	icon: '#icon-open',
+	message: 'Lorem ipsum dolor sit amet?',
+	visible: confirmVisible,
+	okLabel: 'Ok',
+	cancelLabel: 'Cancel',
+	callback: confirmCallback
+"></knob-confirm>
+
+<script>
+	ko.applyBindings({
+		confirmVisible: ko.observable(false),
+		confirmCallback: function(ok) {
+			console.log(ok);
+		}
+	});
+</script>
 ```
 
 
