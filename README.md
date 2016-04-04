@@ -327,7 +327,7 @@ Param | Type | Required | Default value | Description
 ---|---|---|---|---
 title | string | No | "text" | Header text in the header element.
 icon | string | No | "text" | The icon on the left of the header element.
-visible | ko.observable (boolean) | Yes | | This is the observable in which the show / hide the modal.
+visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
 
 ### Example
 ``` html
@@ -341,6 +341,31 @@ visible | ko.observable (boolean) | Yes | | This is the observable in which the 
 ```
 
 ## knob-modal - confirm
+
+This component, you can easily create modal - confirm window.
+
+### Params
+
+Param | Type | Required | Default value | Description
+---|---|---|---|---
+title | string | No | "text" | Header text in the header element.
+icon | string | No | "text" | The icon on the left of the header element.
+visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
+message | string | Yes | | Content message in the confirm modal window content section.
+
+### Example
+``` html
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-open',
+		message: 'Lorem ipsum dolor sit amet?',
+		visible: confirmVisible,
+		okLabel: 'Ok',
+		cancelLabel: 'Cancel',
+		callback: confirmCallback
+	"></knob-confirm>
+```
+
 
 ## Styling knob components
 
