@@ -8,12 +8,32 @@ describe("Modal - Alert", function() {
 			expect(createAlert).toThrowError("config is mandatory!");
 		});
 
-		it("invalid visible type", function() {
+		it("invalid message type", function() {
 			expect(function() {
 				createAlert({
 					visible: "text",
-					title: "style",
-					icon: "string",
+					okLabel: "ok",
+					callback: function() {}
+				});
+			}).toThrowError("config.message must be a string");
+		});
+
+		it("invalid okLabel type", function() {
+			expect(function() {
+				createAlert({
+					message: "Hello",
+					visible: "text",
+					callback: function() {}
+				});
+			}).toThrowError("config.okLabel must be a string");
+		});
+
+		it("invalid visible type", function() {
+			expect(function() {
+				createAlert({
+					message: "Hello",
+					okLabel: "ok",
+					visible: "text",
 					callback: function() {}
 				});
 			}).toThrowError("config.visible must be an observable");
@@ -23,8 +43,8 @@ describe("Modal - Alert", function() {
 			expect(function() {
 				createAlert({
 					visible: ko.observable(),
-					title: "style",
-					icon: "string",
+					message: "Hello",
+					okLabel: "ok",
 					callback: "notAFunction"
 				});
 			}).toThrowError("config.callback must be a function");

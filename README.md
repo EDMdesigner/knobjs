@@ -324,15 +324,18 @@ visible | ko.observable (boolean) | Yes | | This is the observable in which the 
 
 ## knob-modal - alert
 
-This component, you can easily create modal - alert window.
+With this component, you can easily create a modal - alert window.
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-title | string | No | "text" | Header text in the header element.
-icon | string | No | "text" | The icon on the left of the header element.
-visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
+Param    | Type                    | Required | Default value | Description
+---      | ---                     | ---      | ---           | ---
+title    | string                  | No       | ""            | Header text in the header element.
+icon     | string                  | No       | ""            | The id of the icon on the left of the header element.
+message  | string                  | Yes      |               | The message shown.
+okLabel  | string                  | Yes      |               | The label on the button.
+visible  | ko.observable (boolean) | Yes      |               | This is the observable in which the show / hide the modal.
+callback | function                | Yes      |               | The callback function to be executed on pressing the button button.
 
 ### Example
 ``` html
@@ -340,9 +343,19 @@ visible | ko.observable (boolean) | Yes | false | This is the observable in whic
 		title: 'test alert',
 		icon: '#icon-warning',
 		message: 'I have to alert you about something?',
+		okLabel: 'Ok',
 		visible: alertVisible,
-		okLabel: 'Ok'">
+		callback : confirmCallback
 	</knob-alert>
+
+	<script>
+		ko.applyBindings({
+			alertVisible: ko.observable(false),
+			confirmCallback: function(ok) {
+				console.log(ok);
+			}
+		});
+	</script>
 ```
 
 ## knob-modal - confirm

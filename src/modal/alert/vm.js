@@ -8,7 +8,15 @@ module.exports = function createAlert(config) {
 		throw new Error("config is mandatory!");
 	}
 
-	if (config.visible && !ko.isObservable(config.visible)) {
+	if (typeof config.message !== "string") {
+		throw new Error("config.message must be a string");
+	}
+
+	if (typeof config.okLabel !== "string") {
+		throw new Error("config.okLabel must be a string");
+	}
+
+	if (!ko.isObservable(config.visible)) {
 		throw new Error("config.visible must be an observable");
 	}
 
@@ -17,10 +25,11 @@ module.exports = function createAlert(config) {
 	}
 
 	var visible = config.visible;
+	var okLabel = config.okLabel;
 	var callback = config.callback;
 
-	var title = config.title;
-	var icon = config.icon;
+	var title = config.title || "";
+	var icon = config.icon || "";
 	var message = config.message;
 
 	var okLabel = config.okLabel;
