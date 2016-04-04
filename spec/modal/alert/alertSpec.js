@@ -1,7 +1,7 @@
 var ko = require("knockout");
 var createAlert = require("../../../src/modal/alert/vm");
 
-describe("Alert", function() {
+describe("Modal - Alert", function() {
 
 	describe("- with invalid config", function() {
 		it("missing config", function() {
