@@ -1,15 +1,15 @@
 var ko = require("knockout");
 var createConfirm = require("../../../src/modal/confirm/vm");
 
-describe('Modal - Confirm', function() {
+describe("Modal - Confirm", function() {
 
-	describe('- with invalid config', function() {
+	describe("- with invalid config", function() {
 		it("missing config", function() {
 			expect(createConfirm).toThrowError("config is mandatory!");
 		});
 	});
 
-	describe('- with valid config', function() {
+	describe("- with valid config", function() {
 		var style = {
 			default: {
 				default: {
@@ -30,7 +30,7 @@ describe('Modal - Confirm', function() {
 
 		var confirmModalVm = createConfirm(config);
 
-		it('Confirm ok / cancel is a function', function() {
+		it("Confirm ok / cancel is a function", function() {
 			expect(typeof confirmModalVm.ok).toBe("function");
 			expect(typeof confirmModalVm.cancel).toBe("function");
 		});
