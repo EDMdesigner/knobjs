@@ -3,7 +3,7 @@ var createNotification = require("../../src/notificationBar/vm");
 
 describe("NotificationBar", function() {
 
-	describe('- with invalid config', function() {
+	describe("- with invalid config", function() {
 		it("missing config", function() {
 			expect(createNotification).toThrowError("config is mandatory!");
 		});
@@ -19,7 +19,7 @@ describe("NotificationBar", function() {
 		});
 	});
 
-	describe('- with valid config', function() {
+	describe("- with valid config", function() {
 
 		var style = {
 			default: {

@@ -1,6 +1,6 @@
 /*jslint node: true */
 "use strict";
-var ko = require("knockout");
+
 var base = require("../../base/vm");
 
 function createTab(config) {
@@ -10,8 +10,6 @@ function createTab(config) {
 	config.state = "active";
 
 	var vm = base(config);
-
-	vm.notificationVisible = config.visible;
 
 	return vm;
 }
