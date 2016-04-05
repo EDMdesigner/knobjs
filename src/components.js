@@ -11,6 +11,7 @@ var baseVm = require("./base/vm");
 var createButtonStyle = require("./button/style");
 var createInputStyle = require("./input/style");
 var createModalStyle = require("./modal/style");
+var createNotificationStyle = require("./notificationBar/style");
 
 function initKnob(theme) {
 
@@ -31,6 +32,8 @@ function initKnob(theme) {
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
+
+	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(theme));
 }
 
 module.exports = {

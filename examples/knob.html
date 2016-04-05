@@ -96,6 +96,7 @@
 <path d="M1.333 28h29.333l-14.667-25.333-14.667 25.333zM17.333 24h-2.667v-2.667h2.667v2.667zM17.333 18.667h-2.667v-5.333h2.667v5.333z"/>
 </symbol></svg><!-- endinject -->
 
+
 	<h1>knob.js</h1>
 	<h2>Symbols</h2>
 		<knob-button class="button--lg" params="variation: 'default', icon: '#icon-warning'"></knob-button>
@@ -136,10 +137,22 @@
 	<br>
 	<hr>
 
+	<h2>knob-notification-bar</h2>
+	<knob-button params="label: 'Open warning', variation: 'default', icon: '#icon-open', click: function() {notificationVisible.toggle();}"></knob-button>
+	<a href="" data-bind="click: function() {notificationVisible.toggle();}">Open notification</a>
+
+	<knob-notification params="
+		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur molestias error, quia aliquid, illo enim vel asperiores neque obcaecati debitis nesciunt molestiae unde quas, ipsam amet fugiat quibusdam. Expedita, pariatur.',
+		icon: '#icon-done',
+		variation: 'success',
+		visible: notificationVisible
+	">
+	</knob-notification>
+
+
 	<h2>knob-modal</h2>
+
 	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
-
-
 	<knob-modal params="
 		title: 'test modal',
 		icon: '#icon-open',
@@ -287,13 +300,22 @@
 		</div>
 	</knob-paged-list>
 
-
 	<h2>knob-tabs</h2>
-	<knob-tabs params="defaultTab: 1">
+	<knob-tabs params="defaultTab: 0">
 		<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+
+			<knob-notification params="
+				message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur molestias error, quia aliquid, illo enim vel asperiores neque obcaecati debitis nesciunt molestiae unde quas, ipsam amet fugiat quibusdam. Expedita, pariatur.',
+				icon: '#icon-warning',
+				variation: 'warning',
+				visible: $root.notificationVisible
+			">
+			</knob-notification>
+
 			<p>
 				Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 			</p>
+			<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 			<p>
 				Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 			</p>
