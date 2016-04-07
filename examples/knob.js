@@ -10,9 +10,23 @@ initKnob({
 	secondaryColor: "#777",
 
 	highlightColor: "yellow",
-	successColor: "#3adb76",
-	alertColor: "#e74c3c",
-	warningColor: "#ec5840",
+
+	info: {
+		text: "#00529b",
+		background: "#bde5f8"
+	},
+	success: {
+		text: "#4f8a10",
+		background: "#dff2bf"
+	},
+	warning: {
+		text: "#9f6000",
+		background: "#feefb3"
+	},
+	error: {
+		text: "#d8000c",
+		background: "#ffbaba"
+	},
 
 	white: "#fff",
 

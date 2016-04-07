@@ -115,6 +115,46 @@ module.exports = function createStyleConfig(theme) {
 				"color": theme.white,
 				"fill": theme.white
 			}
+		},
+		"action": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.info.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.info.text,
+				"color": theme.black,
+				"fill": theme.black
+			},
+			"active": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.info.text,
+				"color": theme.black,
+				"fill": theme.black
+			}
+		},
+		"danger": {
+			"default": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.error.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.white,
+				"backgroundColor": theme.error.text,
+				"color": theme.error.black,
+				"fill": theme.error.black
+			},
+			"active": {
+				"borderColor": theme.black,
+				"backgroundColor": theme.error.text,
+				"color": theme.error.black,
+				"fill": theme.error.black
+			}
 		}
 	};
 };
