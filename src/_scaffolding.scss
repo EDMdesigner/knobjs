@@ -43,3 +43,22 @@ img {
 [role="button"] {
 	cursor: pointer;
 }
+
+.circle {
+
+	.knob-button {
+		padding: 2%;
+		border-radius: 50%;
+	}
+}
+
+$baseColor: red;
+
+@mixin darkenBg($baseColor) {
+	background-color: $baseColor;
+
+	&:hover {
+
+		background-color: darken($baseColor, 5%)
+	}
+}

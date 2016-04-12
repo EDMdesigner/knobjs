@@ -49,6 +49,7 @@ var proxy = createProxy({
 	idType: "number",
 	route: "/user"
 });
+
 var model = createModel({
 	fields: {
 		id: {
@@ -67,6 +68,7 @@ var model = createModel({
 	"idField": "id",
 	proxy: proxy
 });
+
 var store = createStore({
 	model: model
 });
@@ -79,6 +81,7 @@ var seed = true;
 function handleResponse() {
 	//console.log(err, result);
 }
+
 if (seed) {
 	var names = ["Bob", "Rob", "Olga", "Helga"];
 	var titles = ["CEO", "CTO", "Developer"];

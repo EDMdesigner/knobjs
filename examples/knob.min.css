@@ -30,6 +30,10 @@ img {
 [role="button"] {
   cursor: pointer; }
 
+.circle .knob-button {
+  padding: 2%;
+  border-radius: 50%; }
+
 [class^=knob-],
 [class^=knob-] *,
 [class^=knob-]:before,

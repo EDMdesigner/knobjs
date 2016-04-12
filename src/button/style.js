@@ -1,4 +1,8 @@
+
 module.exports = function createStyleConfig(theme) {
+
+	var tinycolor = require("tinycolor2");
+
 	return {
 		"default": {
 			"default": {
@@ -7,14 +11,14 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.primaryColor,
-				"color": theme.black,
-				"fill": theme.black
+				"backgroundColor": tinycolor(theme.primaryColor).lighten().toString(),
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"active": {
-				"backgroundColor": theme.primaryColor,
-				"color": theme.black,
-				"fill": theme.black
+				"backgroundColor": tinycolor(theme.primaryColor).darken().toString(),
+				"color": theme.white,
+				"fill": theme.white
 			},
 			"disabled": {
 				"backgroundColor": theme.mediumGray,
@@ -29,12 +33,12 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.secondaryColor,
+				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString(),
 				"color": theme.white,
 				"fill": theme.white
 			},
 			"active": {
-				"backgroundColor": theme.secondaryColor,
+				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
 				"color": theme.white,
 				"fill": theme.white
 			},
@@ -53,13 +57,13 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"hover": {
 				"borderColor": theme.white,
-				"backgroundColor": theme.white,
+				"backgroundColor": tinycolor(theme.white).darken().toString(),
 				"color": theme.black,
 				"fill": theme.black
 			},
 			"active": {
 				"borderColor": theme.black,
-				"backgroundColor": theme.white,
+				"backgroundColor": tinycolor(theme.white).lighten().toString(),
 				"color": theme.black,
 				"fill": theme.black
 			},
@@ -79,15 +83,15 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"hover": {
 				"borderColor": theme.white,
-				"backgroundColor": theme.darkGray,
-				"color": theme.white,
-				"fill": theme.white0
+				"backgroundColor": tinycolor(theme.darkGray).darken().toString(),
+				"color": theme.write,
+				"fill": theme.write
 			},
 			"active": {
 				"borderColor": theme.black,
-				"backgroundColor": theme.darkGray,
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": tinycolor(theme.darkGray).darken().toString(),
+				"color": theme.write,
+				"fill": theme.write
 			},
 			"disabled": {
 				"borderColor": theme.white,
@@ -125,13 +129,13 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"hover": {
 				"borderColor": theme.white,
-				"backgroundColor": theme.info.text,
+				"backgroundColor": tinycolor(theme.info.text).lighten().toString(),
 				"color": theme.black,
 				"fill": theme.black
 			},
 			"active": {
 				"borderColor": theme.white,
-				"backgroundColor": theme.info.text,
+				"backgroundColor": tinycolor(theme.info.text).darken().toString(),
 				"color": theme.black,
 				"fill": theme.black
 			}
@@ -145,16 +149,96 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"hover": {
 				"borderColor": theme.white,
-				"backgroundColor": theme.error.text,
+				"backgroundColor": tinycolor(theme.error.text).lighten().toString(),
 				"color": theme.error.black,
 				"fill": theme.error.black
 			},
 			"active": {
 				"borderColor": theme.black,
-				"backgroundColor": theme.error.text,
+				"backgroundColor": tinycolor(theme.error.text).darken().toString(),
 				"color": theme.error.black,
 				"fill": theme.error.black
 			}
-		}
+		},
+		"info": {
+			"default": {
+				"borderColor": theme.info.text,
+				"backgroundColor": theme.info.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.info.text,
+				"backgroundColor": tinycolor(theme.info.text).lighten().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"active": {
+				"borderColor": theme.info.text,
+				"backgroundColor": tinycolor(theme.info.text).darken().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			}
+		},
+		"success": {
+			"default": {
+				"borderColor": theme.success.text,
+				"backgroundColor": theme.success.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.success.text,
+				"backgroundColor": tinycolor(theme.success.text).lighten().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"active": {
+				"borderColor": theme.success.text,
+				"backgroundColor": tinycolor(theme.success.text).darken().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			}
+		},
+		"warning": {
+			"default": {
+				"borderColor": theme.warning.text,
+				"backgroundColor": theme.warning.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.warning.text,
+				"backgroundColor": tinycolor(theme.warning.text).lighten().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"active": {
+				"borderColor": theme.warning.text,
+				"backgroundColor": tinycolor(theme.warning.text).darken().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			}
+		},
+		"error": {
+			"default": {
+				"borderColor": theme.error.text,
+				"backgroundColor": theme.error.text,
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"hover": {
+				"borderColor": theme.error.text,
+				"backgroundColor": tinycolor(theme.error.text).lighten().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			},
+			"active": {
+				"borderColor": theme.error.text,
+				"backgroundColor": tinycolor(theme.error.text).darken().toString(),
+				"color": theme.white,
+				"fill": theme.white
+			}
+		},
 	};
 };

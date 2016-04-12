@@ -1,4 +1,7 @@
 module.exports = function createStyleConfig(theme) {
+
+	var tinycolor = require("tinycolor2");
+
 	return {
 		"default": {
 			"default": {
@@ -7,7 +10,7 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.darkGray,
+				"backgroundColor": tinycolor(theme.black).lighten().toString(),
 				"color": theme.white,
 				"fill": theme.white
 			}

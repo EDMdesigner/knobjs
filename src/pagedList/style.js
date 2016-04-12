@@ -1,4 +1,7 @@
 module.exports = function createStyleConfig(theme) {
+
+	var tinycolor = require("tinycolor2");
+
 	return {
 		"default": {
 			"default": {
@@ -7,13 +10,13 @@ module.exports = function createStyleConfig(theme) {
 				"border-color": theme.mediumGray
 			},
 			"hover": {
-				"backgroundColor": theme.white,
+				"backgroundColor": tinycolor(theme.white).darken().toString(),
 				"color": theme.black,
-				"border-color": theme.black
+				"border-color": tinycolor(theme.mediumGray).darken.toString()
 			},
 			"active": {
-				"color": theme.mediumGray,
-				"fill": theme.mediumGray
+				"color": tinycolor(theme.mediumGray).darken.toString(),
+				"fill": tinycolor(theme.mediumGray).darken.toString()
 			},
 			"disabled": {
 				"backgroundColor": theme.lightGray,
