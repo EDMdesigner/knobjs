@@ -6,36 +6,39 @@ var superdata = require("superdata");
 var initKnob = require("../src/components").init;
 
 initKnob({
-	primaryColor: "#2199e8",
-	secondaryColor: "#777",
+	theme: "theme2",
+	colorSet: {
+		primaryColor: "#2199e8",
+		secondaryColor: "#777",
 
-	highlightColor: "yellow",
+		highlightColor: "yellow",
 
-	info: {
-		text: "#00529b",
-		background: "#bde5f8"
-	},
-	success: {
-		text: "#4f8a10",
-		background: "#dff2bf"
-	},
-	warning: {
-		text: "#9f6000",
-		background: "#feefb3"
-	},
-	error: {
-		text: "#d8000c",
-		background: "#ffbaba"
-	},
+		info: {
+			text: "#00529b",
+			background: "#bde5f8"
+		},
+		success: {
+			text: "#4f8a10",
+			background: "#dff2bf"
+		},
+		warning: {
+			text: "#9f6000",
+			background: "#feefb3"
+		},
+		error: {
+			text: "#d8000c",
+			background: "#ffbaba"
+		},
 
-	white: "#fff",
+		white: "#fff",
 
-	lightGray: "#e6e6e6",
-	mediumGray: "#cacaca",
-	darkGray: "#8a8a8a",
+		lightGray: "#e6e6e6",
+		mediumGray: "#cacaca",
+		darkGray: "#8a8a8a",
 
-	black: "#000",
-	transparent: "transparent"
+		black: "#000",
+		transparent: "transparent"
+	}
 });
 
 var createProxy = superdata.proxy.memory;

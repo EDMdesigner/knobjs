@@ -52,6 +52,12 @@ img {
 	}
 }
 
+.bordered {
+	.knob-button {
+		border: 1px solid;
+	}
+}
+
 $baseColor: red;
 
 @mixin darkenBg($baseColor) {

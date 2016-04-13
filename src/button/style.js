@@ -11,14 +11,10 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.primaryColor).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": tinycolor(theme.primaryColor).lighten().toString()
 			},
 			"active": {
-				"backgroundColor": tinycolor(theme.primaryColor).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": tinycolor(theme.primaryColor).darken().toString()
 			},
 			"disabled": {
 				"backgroundColor": theme.mediumGray,
@@ -33,14 +29,10 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString()
 			},
 			"active": {
-				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString()
 			},
 			"disabled": {
 				"backgroundColor": theme.lightGray,
@@ -56,19 +48,12 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.darkGray
 			},
 			"hover": {
-				"borderColor": theme.white,
 				"backgroundColor": tinycolor(theme.white).darken().toString(),
-				"color": theme.black,
-				"fill": theme.black
 			},
 			"active": {
-				"borderColor": theme.black,
 				"backgroundColor": tinycolor(theme.white).lighten().toString(),
-				"color": theme.black,
-				"fill": theme.black
 			},
 			"disabled": {
-				"borderColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.lightGray,
 				"fill": theme.lightGray
@@ -82,16 +67,10 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.white,
 				"backgroundColor": tinycolor(theme.darkGray).darken().toString(),
-				"color": theme.write,
-				"fill": theme.write
 			},
 			"active": {
-				"borderColor": theme.black,
 				"backgroundColor": tinycolor(theme.darkGray).darken().toString(),
-				"color": theme.write,
-				"fill": theme.write
 			},
 			"disabled": {
 				"borderColor": theme.white,
@@ -108,76 +87,49 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.white,
 				"backgroundColor": theme.transparent,
-				"color": theme.mediumGray,
-				"fill": theme.mediumGray
 			},
 			"active": {
-				"borderColor": theme.black,
 				"backgroundColor": theme.transparent,
-				"color": theme.white,
-				"fill": theme.white
 			}
 		},
 		"action": {
 			"default": {
-				"borderColor": theme.white,
 				"backgroundColor": theme.info.text,
 				"color": theme.white,
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.white,
 				"backgroundColor": tinycolor(theme.info.text).lighten().toString(),
-				"color": theme.black,
-				"fill": theme.black
 			},
 			"active": {
-				"borderColor": theme.white,
 				"backgroundColor": tinycolor(theme.info.text).darken().toString(),
-				"color": theme.black,
-				"fill": theme.black
 			}
 		},
 		"danger": {
 			"default": {
-				"borderColor": theme.white,
 				"backgroundColor": theme.error.text,
 				"color": theme.white,
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.white,
 				"backgroundColor": tinycolor(theme.error.text).lighten().toString(),
-				"color": theme.error.black,
-				"fill": theme.error.black
 			},
 			"active": {
-				"borderColor": theme.black,
 				"backgroundColor": tinycolor(theme.error.text).darken().toString(),
-				"color": theme.error.black,
-				"fill": theme.error.black
 			}
 		},
 		"info": {
 			"default": {
-				"borderColor": theme.info.text,
 				"backgroundColor": theme.info.text,
 				"color": theme.white,
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.info.text,
 				"backgroundColor": tinycolor(theme.info.text).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			},
 			"active": {
-				"borderColor": theme.info.text,
 				"backgroundColor": tinycolor(theme.info.text).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			}
 		},
 		"success": {
@@ -188,16 +140,10 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.success.text,
 				"backgroundColor": tinycolor(theme.success.text).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			},
 			"active": {
-				"borderColor": theme.success.text,
 				"backgroundColor": tinycolor(theme.success.text).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			}
 		},
 		"warning": {
@@ -208,16 +154,10 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.warning.text,
 				"backgroundColor": tinycolor(theme.warning.text).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			},
 			"active": {
-				"borderColor": theme.warning.text,
 				"backgroundColor": tinycolor(theme.warning.text).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			}
 		},
 		"error": {
@@ -228,17 +168,55 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.white
 			},
 			"hover": {
-				"borderColor": theme.error.text,
 				"backgroundColor": tinycolor(theme.error.text).lighten().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			},
 			"active": {
-				"borderColor": theme.error.text,
 				"backgroundColor": tinycolor(theme.error.text).darken().toString(),
-				"color": theme.white,
-				"fill": theme.white
 			}
 		},
+//
+//
+//
+//
+//
+		"zergDefault": {
+			"default": {
+				"borderColor": theme.primaryColor,
+				"backgroundColor": theme.white,
+				"color": theme.primaryColor,
+				"fill": theme.primaryColor
+			},
+			"hover": {
+				"borderColor": tinycolor(theme.primaryColor).lighten().toString()
+			},
+			"active": {
+				"borderColor": tinycolor(theme.primaryColor).darken().toString()
+			},
+			"disabled": {
+				"backgroundColor": theme.mediumGray,
+				"color": theme.lightGray,
+				"fill": theme.lightGray
+			}
+		},
+		"zergPrimary": {
+			"default": {
+				"borderColor": theme.secondaryColor,
+				"backgroundColor": theme.white,
+				"color": theme.secondaryColor,
+				"fill": theme.secondaryColor
+			},
+			"hover": {
+				"borderColor": tinycolor(theme.secondaryColor).lighten().toString()
+			},
+			"active": {
+				"borderColor": tinycolor(theme.secondaryColor).darken().toString()
+			},
+			"disabled": {
+				"backgroundColor": theme.lightGray,
+				"color": theme.darkGray,
+				"fill": theme.darkGray
+			}
+		},
+
 	};
 };
