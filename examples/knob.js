@@ -11,8 +11,6 @@ initKnob({
 		primaryColor: "#2199e8",
 		secondaryColor: "#777",
 
-		highlightColor: "yellow",
-
 		info: {
 			text: "#00529b",
 			background: "#bde5f8"

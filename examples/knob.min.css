@@ -113,6 +113,12 @@ img {
   .knob-pagelist .knob-pagelist__bar .knob-button-search {
     float: left; }
 
+.knob-pagelist .knob-pagedlist__list {
+  list-style: none;
+  padding: 0; }
+  .knob-pagelist .knob-pagedlist__list li {
+    padding: 5px; }
+
 .knob-pagination {
   overflow: hidden;
   display: table;
