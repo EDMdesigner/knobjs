@@ -7,6 +7,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"borderColor": theme.secondaryColor,
+				"borderRadius": "5px",
 				"color": theme.secondaryColor,
 				"fill": theme.secondaryColor
 			},
@@ -33,6 +34,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"borderColor": theme.primaryColor,
+				"borderRadius": "5px",
 				"color": theme.primaryColor,
 				"fill": theme.primaryColor
 			},
@@ -59,6 +61,7 @@ module.exports = function createStyleConfig(theme) {
 				"borderColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.black,
+				"borderRadius": "5px 5px 0 0",
 				"fill": theme.black
 			},
 			"hover": {
@@ -149,6 +152,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor":theme.white,
 				"borderColor": theme.info.text,
+				"borderRadius": "5px",
 				"color": theme.info.text,
 				"fill": theme.info.text
 			},
@@ -169,6 +173,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"borderColor": theme.success.text,
+				"borderRadius": "5px",
 				"color": theme.success.text,
 				"fill": theme.success.text
 			},
@@ -189,6 +194,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"borderColor": theme.warning.text,
+				"borderRadius": "5px",
 				"color": theme.warning.text,
 				"fill": theme.warning.text
 			},
@@ -209,6 +215,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"borderColor": theme.error.text,
+				"borderRadius": "5px",
 				"color": theme.error.text,
 				"fill": theme.error.text
 			},

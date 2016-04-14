@@ -12,18 +12,22 @@ var baseVm = require("./base/vm");
 var createButtonStyle;
 var createButtonStyleDefault = require("./button/style");
 var createButtonStyleTheme2 = require("./button/theme2");
+var createButtonStyleTheme3 = require("./button/theme3");
 
 var createInputStyle;
 var createInputStyleDefault = require("./input/style");
 var createInputStyleTheme2 = require("./input/theme2");
+var createInputStyleTheme3 = require("./input/theme3");
 
 var createModalStyle;
 var createModalStyleDefault = require("./modal/style");
 var createModalStyleTheme2 = require("./modal/theme2");
+var createModalStyleTheme3 = require("./modal/theme3");
 
 var createPagedListStyle;
 var createPagedListStyleDefault = require("./pagedList/style");
 var createPagedListStyleTheme2 = require("./pagedList/theme2");
+var createPagedListStyleTheme3 = require("./pagedList/theme3");
 
 function initKnob(config) {
 
@@ -62,6 +66,11 @@ function initKnob(config) {
 			createInputStyle = createInputStyleTheme2;
 			createModalStyle = createModalStyleTheme2;
 			createPagedListStyle = createPagedListStyleTheme2;
+		} else if (theme === "theme3"){
+			createButtonStyle = createButtonStyleTheme3;
+			createInputStyle = createInputStyleTheme3;
+			createModalStyle = createModalStyleTheme3;
+			createPagedListStyle = createPagedListStyleTheme3;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;

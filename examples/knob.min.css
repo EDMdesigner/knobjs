@@ -97,7 +97,8 @@ img {
   position: absolute; }
   .knob-dropdown-menu button {
     width: 100%;
-    text-align: left; }
+    text-align: left;
+    border-top: 0; }
 
 .knob-pagelist .knob-pagelist__bar {
   overflow: hidden;
@@ -123,14 +124,15 @@ img {
   overflow: hidden;
   display: table;
   margin: 0 auto; }
-  .knob-pagination button {
+  .knob-pagination span button {
     position: relative;
     float: left;
-    margin-left: -1px;
     text-decoration: none; }
+  .knob-pagination span:not(:first-child) button {
+    margin-left: -1px; }
 
 .knob-input {
-  padding: 6px 12px;
+  padding: 7px 12px;
   display: inline-block;
   border-style: solid;
   border-width: 1px; }

@@ -5,13 +5,12 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.secondaryColor,
-				"border-color": theme.secondaryColor,
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": theme.mediumGray
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
+				"backgroundColor": tinycolor(theme.white).darken().toString(),
 				"color": theme.black,
 				"border-color": tinycolor(theme.mediumGray).darken.toString()
 			},

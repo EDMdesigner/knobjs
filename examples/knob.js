@@ -7,6 +7,34 @@ var initKnob = require("../src/components").init;
 
 initKnob({
 	theme: "theme2",
+	//for default
+	colorSet2: {
+		primaryColor: "#666",
+		secondaryColor: "#f4f4f4",
+
+		info: {
+			background: "#25aaf2"
+		},
+		success: {
+			background: "#54c059"
+		},
+		warning: {
+			background: "#f5a500"
+		},
+		error: {
+			background: "#ee483b"
+		},
+
+		white: "#fff",
+
+		lightGray: "#e6e6e6",
+		mediumGray: "#cacaca",
+		darkGray: "#8a8a8a",
+
+		black: "#000",
+		transparent: "transparent"
+	},
+	// for theme2 and 3
 	colorSet: {
 		primaryColor: "#2199e8",
 		secondaryColor: "#777",

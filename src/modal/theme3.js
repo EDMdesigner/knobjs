@@ -9,6 +9,7 @@ module.exports = function createStyleConfig(theme) {
 				"border-color": theme.secondaryColor,
 				"color": theme.white,
 				"fill": theme.white
+
 			},
 			"hover": {
 				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
