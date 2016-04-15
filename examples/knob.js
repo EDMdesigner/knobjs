@@ -155,5 +155,5 @@ ko.applyBindings({
 	},
 	alertVisible: ko.observable(false),
 	alertCallback: alertClose,
-	xxx: "my test"
+	notificationVisible: ko.observable(false)
 });

@@ -8,6 +8,7 @@ function createTab(config) {
 	config.component = "tab";
 	config.variation = "tab";
 	config.state = "active";
+
 	var vm = base(config);
 
 	return vm;

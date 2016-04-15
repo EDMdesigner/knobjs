@@ -29,9 +29,12 @@ var createPagedListStyleDefault = require("./pagedList/style");
 var createPagedListStyleTheme2 = require("./pagedList/theme2");
 var createPagedListStyleTheme3 = require("./pagedList/theme3");
 
+var createNotificationStyle;
+var createNotificationStyleDefault = require("./notificationBar/style");
+var createNotificationStyleTheme2 = require("./notificationBar/style");
+var createNotificationStyleTheme3 = require("./notificationBar/style");
+
 function initKnob(config) {
-
-
 
 	var colorSet = config.colorSet;
 	var theme = config.theme;
@@ -54,10 +57,15 @@ function initKnob(config) {
 			throw new Error("config.theme.createPagedListStyle must be a function");
 		}
 
+		if (typeof theme.createNotificationStyle !== "function") {
+			throw new Error("config.theme.createNotificationStyle must be a function");
+		}
+
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
+		createNotificationStyle = theme.createNotificationStyle;
 
 	} else if (typeof theme === "string") {
 
@@ -66,16 +74,20 @@ function initKnob(config) {
 			createInputStyle = createInputStyleTheme2;
 			createModalStyle = createModalStyleTheme2;
 			createPagedListStyle = createPagedListStyleTheme2;
+			createNotificationStyle = createNotificationStyleTheme2;
+
 		} else if (theme === "theme3"){
 			createButtonStyle = createButtonStyleTheme3;
 			createInputStyle = createInputStyleTheme3;
 			createModalStyle = createModalStyleTheme3;
 			createPagedListStyle = createPagedListStyleTheme3;
+			createNotificationStyle = createNotificationStyleTheme3;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
+			createNotificationStyle = createNotificationStyleDefault;
 		}
 
 	} else {
@@ -100,6 +112,8 @@ function initKnob(config) {
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
+
+	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(colorSet));
 }
 
 module.exports = {

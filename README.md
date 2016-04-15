@@ -11,14 +11,14 @@ This is one of the most basic components in knobjs. It works like you would expe
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-variation | string | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
-label | string | Partially ** | | The text which will be written on the button.
-iconLeft | string | Partially ** | | The id of the icon on the left of the label.
-iconRight | string | Partially ** | | The id of the icon on the right of the label
-icon | string | Partially ** | | This is a synonim for iconLeft.
-click | function | No | | This is the callback which will be called on click.
+Param     | Type     | Required     | Default value | Description
+---       |---       |---           |---            |---
+variation | string   | No           | "default"     | The variation of the button. See the [style](#styling-knob-components) section.
+label     | string   | Partially ** |               | The text which will be written on the button.
+iconLeft  | string   | Partially ** |               | The id of the icon on the left of the label.
+iconRight | string   | Partially ** |               | The id of the icon on the right of the label
+icon      | string   | Partially ** |               | This is a synonim for iconLeft.
+click     | function | No           |               | This is the callback which will be called on click.
 
 ** At least one of these params has to be given, otherwise an error will be thrown. It's because you probably don't want to create a totally empty button.
 
@@ -48,12 +48,12 @@ This is the other most basic component in knobjs. It's just a simple imput, but 
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-variation | string | No | "default" | The variation of the button. See the [style](#styling-knob-components) section.
-type | string | No | "text" | The type of the input. (Eg.: 'password')
-value | ko.observable | Yes | | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
-hasFocus | ko.observable (boolean) | No | ko.observable (false) | With this observable, you can programmatically set the focus to this input.
+Param     | Type                    | Required | Default value         | Description
+---       |---                      |---       |---                    |---
+variation | string                  | No       | "default"             | The variation of the button. See the [style](#styling-knob-components) section.
+type      | string                  | No       | "text"                | The type of the input. (Eg.: 'password')
+value     | ko.observable           | Yes      |                       | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
+hasFocus  | ko.observable (boolean) | No       | ko.observable (false) | With this observable, you can programmatically set the focus to this input.
 
 
 ### Example
@@ -76,12 +76,12 @@ This component is built on top of the knob-button component and it implements a 
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-group | string | Yes | | This value will indicate in which group the buttons will be. You can connect multiple knob-radios by putting them into the same group.
-selected | ko.observable | No | | The selected element will be put into this observable.
-selectedIdx | ko.observable (number) | No | | The selected index will be written into this observable. Also, you can set the default selection by giving a value to this observable.
-items | Array | Yes | | You can configure the buttons within the component, so every parameter which you can pass to buttons are valid in this array. Also, there is an extra value parameter.
+Param       | Type                   | Required | Default value | Description
+---         |---                     |---       |---            |---
+group       | string                 | Yes      |               | This value will indicate in which group the buttons will be. You can connect multiple knob-radios by putting them into the same group.
+selected    | ko.observable          | No       |               | The selected element will be put into this observable.
+selectedIdx | ko.observable (number) | No       |               | The selected index will be written into this observable. Also, you can set the default selection by giving a value to this observable.
+items       | Array                  | Yes      |               | You can configure the buttons within the component, so every parameter which you can pass to buttons are valid in this array. Also, there is an extra value parameter.
 
 ### Example
 ```html
@@ -110,11 +110,11 @@ This component is also composed of knob-buttons. Therefore very element can have
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-selected | ko.observable | Yes | | The selected element. This is not visible in the dropdown list.
-rightIcon | string | No | | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
-items | Array | Yes | | The items in the dropdown. They are configured just like buttons and they also can have a value property.
+Param     | Type          | Required | Default value | Description
+---       |---            |---       |---            |---
+selected  | ko.observable | Yes      |               | The selected element. This is not visible in the dropdown list.
+rightIcon | string        | No       |               | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
+items     | Array         | Yes      |               | The items in the dropdown. They are configured just like buttons and they also can have a value property.
 
 ### Example
 ```html
@@ -142,9 +142,9 @@ It's a quite common task to edit a short text. This component has one major bool
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-value | ko.observable | Yes | | The initial value is read from this observable and the changes will be written back to it. (Only if you save the changes.)
+Param | Type          | Required | Default value | Description
+---   |---            |---       |---            |---
+value | ko.observable | Yes      |               | The initial value is read from this observable and the changes will be written back to it. (Only if you save the changes.)
 
 ### Example
 ```html
@@ -165,12 +165,12 @@ This component is used in the knob-paged-list component. It's basically responsi
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-numOfItems | ko.observable (number) | Yes | | The number of items in a result set.
-itemsPerPage | ko.observable (number) | Yes | | The number of items on a page.
-numOfPages | ko.observable (number) | Yes | | The calculated number of pages, which are based on the previous two values.
-itemsPerPageList | Array | Yes | | The available numbers of items which will show up in the dropdown.
+Param            | Type                   | Required | Default value | Description
+---              |---                     |---       |---            |---
+numOfItems       | ko.observable (number) | Yes      |               | The number of items in a result set.
+itemsPerPage     | ko.observable (number) | Yes      |               | The number of items on a page.
+numOfPages       | ko.observable (number) | Yes      |               | The calculated number of pages, which are based on the previous two values.
+itemsPerPageList | Array                  | Yes      |               | The available numbers of items which will show up in the dropdown.
 
 ### Example
 ```html
@@ -201,14 +201,14 @@ This component is used by the knob-paged-list as well. It's very tightly bound w
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-numOfPages | ko.observable | Yes | | You can set the total number of pages with this property. The page selector items will be generated based on this variable.
-currentPage | ko.observable | Yes | ko.observable(0) | The selected page's value will be written into this ko.observable
-afterHead | number | No | 2 | The number of page selectors to be visible at the beginning of the list.
-beforeTail | number | No | 2 | The number of page selectors to be visible at the end of the list.
-beforeCurrent | number | No | 2 | The number of page selectors to be visible before the currently selected item.
-afterCurrent | number | No | 2 | The number of page selectors to be visible after the currently selected element.
+Param         | Type          | Required | Default value    | Description
+---           |---            |---       |---               |---
+numOfPages    | ko.observable | Yes      |                  | You can set the total number of pages with this property. The page selector items will be generated based on this variable.
+currentPage   | ko.observable | Yes      | ko.observable(0) | The selected page's value will be written into this ko.observable
+afterHead     | number        | No       | 2                | The number of page selectors to be visible at the beginning of the list.
+beforeTail    | number        | No       | 2                | The number of page selectors to be visible at the end of the list.
+beforeCurrent | number        | No       | 2                | The number of page selectors to be visible before the currently selected item.
+afterCurrent  | number        | No       | 2                | The number of page selectors to be visible after the currently selected element.
 
 ### Example
 ```html
@@ -237,11 +237,11 @@ The main dependency of the module is [superdata's](https://github.com/EDMdesigne
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-store | superdata.store | Yes | | A store instance from superdata. Every data reading and writing goes through this module.
-search | string | Yes | | The field's name based on which the filtering should work.
-sort | Array | Yes | | The field names based on which the you want to have a sorting option.
+Param  | Type            | Required | Default value | Description
+---    |---              |---       |---            |---
+store  | superdata.store | Yes      |               | A store instance from superdata. Every data reading and writing goes through this module.
+search | string          | Yes      |               | The field's name based on which the filtering should work.
+sort   | Array           | Yes      |               | The field names based on which the you want to have a sorting option.
 
 ### Example
 ```html
@@ -268,9 +268,9 @@ With the **knob-tabs** component, you can easily create tabbed user interfaces. 
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-defaultTab | number | No | 0 | You can set the default selected tab by giving the zero-based index of it.
+Param      | Type   | Required | Default value | Description
+---        |---     |---       |---            |---
+defaultTab | number | No       | 0             | You can set the default selected tab by giving the zero-based index of it.
 
 Also, the knob-tab child elements has to have at least one of the following parameters:
  - label
@@ -298,12 +298,12 @@ With this component, you can easily create a modal window.
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-variation | string | Yes | "modalHead" | The variation of the button in modal header section.
-title | string | No | "text" | Header text in the header element.
-icon | string | No | "text" | The icon on the left of the header element.
-visible | ko.observable (boolean) | Yes | | This is the observable in which the show / hide the modal.
+Param     | Type                    | Required | Default value | Description
+---       |---                      |---       |---            |---
+variation | string                  | Yes      | "modalHead"   | The variation of the button in modal header section.
+title     | string                  | No       | "text"        | Header text in the header element.
+icon      | string                  | No       | "text"        | The icon on the left of the header element.
+visible   | ko.observable (boolean) | Yes      |               | This is the observable in which the show / hide the modal.
 
 ### Example
 ``` html
@@ -345,7 +345,7 @@ callback | function                | Yes      |               | The callback fun
 		message: 'I have to alert you about something?',
 		okLabel: 'Ok',
 		visible: alertVisible,
-		callback : confirmCallback
+		callback : confirmCallback">
 	</knob-alert>
 
 	<script>
@@ -364,36 +364,66 @@ With this component, you can easily create a confirm dialog.
 
 ### Params
 
-Param | Type | Required | Default value | Description
----|---|---|---|---
-title | string | No | "" | Header text in the header element.
-icon | string | No | "" | The icon on the left of the header element.
-visible | ko.observable (boolean) | Yes | false | This is the observable in which the show / hide the modal.
-message | string | Yes | | Content message in the confirm modal window content section.
-okLabel | string | Yes | | The label of the ok button.
-cancelLabel | string | Yes | | The label of the cancel button.
-callback | function | Yes | | This function will be called when the user clicks on the ok or cancel button. If the ok was clicked, then the param of it will be true, otherwise false.
+Param       | Type                    | Required | Default value | Description
+---         |---                      |---       |---            |---
+title       | string                  | No       | ""            | Header text in the header element.
+icon        | string                  | No       | ""            | The icon on the left of the header element.
+visible     | ko.observable (boolean) | Yes      | false         | This is the observable in which the show / hide the modal.
+message     | string                  | Yes      |               | Content message in the confirm modal window content section.
+okLabel     | string                  | Yes      |               | The label of the ok button.
+cancelLabel | string                  | Yes      |               | The label of the cancel button.
+callback    | function                | Yes      |               | This function will be called when the user clicks on the ok or cancel button. If the ok was clicked, then the param of it will be true, otherwise false.
 
 ### Example
 ``` html
-<knob-confirm params="
-	title: 'Confirm',
-	icon: '#icon-open',
-	message: 'Lorem ipsum dolor sit amet?',
-	visible: confirmVisible,
-	okLabel: 'Ok',
-	cancelLabel: 'Cancel',
-	callback: confirmCallback
-"></knob-confirm>
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-open',
+		message: 'Lorem ipsum dolor sit amet?',
+		visible: confirmVisible,
+		okLabel: 'Ok',
+		cancelLabel: 'Cancel',
+		callback: confirmCallback">
+	</knob-confirm>
 
-<script>
-	ko.applyBindings({
-		confirmVisible: ko.observable(false),
-		confirmCallback: function(ok) {
-			console.log(ok);
-		}
-	});
-</script>
+	<script>
+		ko.applyBindings({
+			confirmVisible: ko.observable(false),
+			confirmCallback: function(ok) {
+				console.log(ok);
+			}
+		});
+	</script>
+```
+
+## knob-notification
+
+With this component, you can easily create a notification bar - info, success, warning and error statements.
+
+### Params
+
+Param     | Type                    | Required | Default value | Description
+---       |---                      |---       |---            |---
+variation | string                  | No       | ""            | Header text in the header element.
+message   | string                  | No       | ""            | Header text in the header element.
+icon      | string                  | No       | ""            | The icon on the left of the header element.
+visible   | ko.observable (boolean) | Yes      | false         | This is the observable in which the show / hide the modal.
+
+### Example
+``` html
+	<knob-notification params="
+		message: 'important message',
+		icon: '#icon-done',
+		variation: 'success',
+		visible: notificationVisible
+	">
+	</knob-notification>
+
+	<script>
+		ko.applyBindings({
+			notificationVisible: ko.observable(false)
+		});
+	</script>
 ```
 
 
