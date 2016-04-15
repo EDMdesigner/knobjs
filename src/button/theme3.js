@@ -61,7 +61,7 @@ module.exports = function createStyleConfig(theme) {
 				"borderColor": theme.white,
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"borderRadius": "5px 5px 0 0",
+				"borderRadius": "5px",
 				"fill": theme.black
 			},
 			"hover": {

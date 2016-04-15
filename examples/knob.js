@@ -6,7 +6,7 @@ var superdata = require("superdata");
 var initKnob = require("../src/components").init;
 
 initKnob({
-	theme: "theme2",
+	theme: "theme3",
 	//for default
 	colorSet2: {
 		primaryColor: "#666",
