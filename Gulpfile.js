@@ -13,8 +13,6 @@ var concat = require("gulp-concat");
 var jasmine = require("gulp-jasmine");
 var inject = require("gulp-inject");
 var svgstore = require("gulp-svgstore");
-var svgmin = require("gulp-svgmin");
-var path = require("path");
 
 var jsFiles = [
 	"./**/*.js",
@@ -50,22 +48,6 @@ gulp.task("js:dev", createBrowserifyTask({
 	destFolder: "./examples/"
 }));
 
-gulp.task("svg:dev", function () {
-	var svgs = gulp.src("examples/SVG/*.svg")
-		.pipe(svgstore({ inlineSvg: true }));
-
-		function fileContents (filePath, file) {
-			return file.contents.toString();
-		}
-
-	return gulp.src("examples/knob.html")
-		.pipe(inject(svgs, { transform: fileContents }))
-
-
-
-		.pipe(gulp.dest("examples/"));
-});
-
 
 // Build production
 // ==================================================
@@ -87,22 +69,19 @@ gulp.task("js:prod", createBrowserifyTask({
 	destFolder: "./dist/"
 }));
 
-gulp.task("svg:prod", function () {
-	return gulp
-		.src("./examples/SVG/*.svg")
-		.pipe(svgmin(function (file) {
-			var prefix = path.basename(file.relative, path.extname(file.relative));
-			return {
-				plugins: [{
-					cleanupIDs: {
-						prefix: prefix + "-",
-						minify: true
-					}
-				}]
-			};
-		}))
-		.pipe(svgstore())
-		.pipe(gulp.dest("./dist"));
+//SVG sprite generate
+
+gulp.task("svg", function () {
+	var svgs = gulp.src("examples/SVG/*.svg")
+		.pipe(svgstore({ inlineSvg: true }));
+
+		function fileContents (filePath, file) {
+			return file.contents.toString();
+		}
+
+	return gulp.src("examples/knob.html")
+		.pipe(inject(svgs, { transform: fileContents }))
+		.pipe(gulp.dest("examples/"));
 });
 
 

@@ -13,26 +13,31 @@ var createButtonStyle;
 var createButtonStyleDefault = require("./button/style");
 var createButtonStyleTheme2 = require("./button/theme2");
 var createButtonStyleTheme3 = require("./button/theme3");
+var createButtonStyleTheme4 = require("./button/theme4");
 
 var createInputStyle;
 var createInputStyleDefault = require("./input/style");
 var createInputStyleTheme2 = require("./input/theme2");
 var createInputStyleTheme3 = require("./input/theme3");
+var createInputStyleTheme4 = require("./input/theme4");
 
 var createModalStyle;
 var createModalStyleDefault = require("./modal/style");
 var createModalStyleTheme2 = require("./modal/theme2");
 var createModalStyleTheme3 = require("./modal/theme3");
+var createModalStyleTheme4 = require("./modal/theme4");
 
 var createPagedListStyle;
 var createPagedListStyleDefault = require("./pagedList/style");
 var createPagedListStyleTheme2 = require("./pagedList/theme2");
 var createPagedListStyleTheme3 = require("./pagedList/theme3");
+var createPagedListStyleTheme4 = require("./pagedList/theme4");
 
 var createNotificationStyle;
 var createNotificationStyleDefault = require("./notificationBar/style");
-var createNotificationStyleTheme2 = require("./notificationBar/style");
-var createNotificationStyleTheme3 = require("./notificationBar/style");
+var createNotificationStyleTheme2 = require("./notificationBar/theme2");
+var createNotificationStyleTheme3 = require("./notificationBar/theme3");
+var createNotificationStyleTheme4 = require("./notificationBar/theme4");
 
 function initKnob(config) {
 
@@ -82,6 +87,12 @@ function initKnob(config) {
 			createModalStyle = createModalStyleTheme3;
 			createPagedListStyle = createPagedListStyleTheme3;
 			createNotificationStyle = createNotificationStyleTheme3;
+		} else if (theme === "theme4") {
+			createButtonStyle = createButtonStyleTheme4;
+			createInputStyle = createInputStyleTheme4;
+			createModalStyle = createModalStyleTheme4;
+			createPagedListStyle = createPagedListStyleTheme4;
+			createNotificationStyle = createNotificationStyleTheme4;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
