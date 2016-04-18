@@ -428,25 +428,68 @@ visible   | ko.observable (boolean) | Yes      | false         | This is the obs
 
 
 ## Styling knob components
+You can use simply themes, and color sets. Defines the color, and use them in any module.
 
-### Example
+### Example - define
 ```javascript
 initKnob({
-	primaryColor: "#2199e8",
-	secondaryColor: "#777",
+	theme: "default",
+	colorSet: {
+		primaryColor: "#2199e8",
+		secondaryColor: "#777",
 
-	highlightColor: "#ff00ff",
-	successColor: "#3adb76",
-	alertColor: "#e74c3c",
-	warningColor: "#ec5840",
+		info: {
+			text: "#00529b",
+			background: "#bde5f8"
+		},
+		success: {
+			text: "#4f8a10",
+			background: "#dff2bf"
+		},
+		warning: {
+			text: "#9f6000",
+			background: "#feefb3"
+		},
+		error: {
+			text: "#d8000c",
+			background: "#ffbaba"
+		},
 
-	white: "#fff",
+		white: "#fff",
 
-	lightGray: "#e6e6e6",
-	mediumGray: "#cacaca",
-	darkGray: "#8a8a8a",
+		lightGray: "#e6e6e6",
+		mediumGray: "#cacaca",
+		darkGray: "#8a8a8a",
 
-	black: "#000",
-	transparent: "transparent"
+		black: "#000",
+		transparent: "transparent"
+	}
 });
+
+```
+
+### Example - during use
+```javascript
+"default": {
+	"default": {
+		"backgroundColor": theme.secondaryColor,
+		"borderColor": theme.secondaryColor,
+		"color": theme.black,
+		"fill": theme.black
+	},
+	"hover": {
+		"backgroundColor": theme.darkGray,
+		"borderColor": theme.darkGray
+	},
+	"active": {
+		"backgroundColor": theme.success.background,
+		"borderColor": theme.success.background
+	},
+	"disabled": {
+		"backgroundColor": theme.mediumGray,
+		"color": theme.lightGray,
+		"fill": theme.lightGray
+	}
+}
+
 ```
