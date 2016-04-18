@@ -144,7 +144,7 @@ gulp.task("test", ["jsonlint", "jshint", "jscs", "jasmine"]);
 gulp.task("build:prod", ["js-test"], function() {
 	gulp.start("js:prod");
 	gulp.start("sass:prod");
-	gulp.start("svg:prod");
+	gulp.start("svg");
 });
 
 
@@ -153,7 +153,7 @@ gulp.task("build:prod", ["js-test"], function() {
 gulp.task("build:dev", ["js-test"], function() {
 	gulp.start("js:dev");
 	gulp.start("sass:dev");
-	gulp.start("svg:dev");
+	gulp.start("svg");
 });
 
 function createBrowserifyTask(config) {
