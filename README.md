@@ -474,6 +474,8 @@ initKnob({
 
 ```
 
+knob-js uses the tinycolor2 npm package to the lighten and darken colors. Here is the example, hover state is lighten, active state is darken:
+
 ### Example - during use
 ```javascript
 "default": {
@@ -484,12 +486,12 @@ initKnob({
 		"fill": theme.black
 	},
 	"hover": {
-		"backgroundColor": theme.darkGray,
-		"borderColor": theme.darkGray
+		"backgroundColor": tinycolor(theme.success.background).lighten().toString(),
+		"borderColor": tinycolor(theme.success.background).lighten().toString()
 	},
 	"active": {
-		"backgroundColor": theme.success.background,
-		"borderColor": theme.success.background
+		"backgroundColor": tinycolor(theme.success.background).darken().toString(),
+		"borderColor": tinycolor(theme.success.background).darken().toString()
 	},
 	"disabled": {
 		"backgroundColor": theme.mediumGray,
