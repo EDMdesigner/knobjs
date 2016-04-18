@@ -265,6 +265,12 @@ sort   | Array           | Yes      |               | The field names based on w
 ## knob-tabs
 
 With the **knob-tabs** component, you can easily create tabbed user interfaces. This component is special in the sense that it works only if you add **knob-tab** components as child components. The params of the **knob-tab** components will be applied to a **knob-radio** component, which will be responsible for selecting the visible tab.
+You can change easily the tab orientation, with only one css selector.
+Now available:
+* knob-tab-orient--left-top
+* knob-tab-orient--top-left
+* knob-tab-orient--top-center
+* knob-tab-orient--top-right
 
 ### Params
 
@@ -280,7 +286,7 @@ Also, the knob-tab child elements has to have at least one of the following para
 
 ### Example
 ``` html
-<knob-tabs params="defaultTab: 1">
+<knob-tabs params="defaultTab: 1"  class="knob-tab-orient--left-top">
 	<knob-tab params="label: 'tab1', icon: '#icon-grid'">
 		content1
 	</knob-tab>

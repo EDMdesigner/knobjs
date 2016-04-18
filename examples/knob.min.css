@@ -137,12 +137,35 @@ img {
   border-style: solid;
   border-width: 1px; }
 
-.knob-radio--inline {
-  clear: both; }
-  .knob-radio--inline .knob-radio {
-    overflow: hidden; }
-    .knob-radio--inline .knob-radio > div {
-      float: left; }
+.knob-radio {
+  overflow: hidden; }
+  .knob-radio > div {
+    display: inline-block; }
+
+.knob-tab-orient {
+  width: 100%; }
+  .knob-tab-orient--top-left {
+    text-align: left; }
+  .knob-tab-orient--top-center {
+    text-align: center; }
+  .knob-tab-orient--top-right {
+    text-align: right; }
+  .knob-tab-orient--left-top .knob-radio,
+  .knob-tab-orient--left-top .knob-panel-group {
+    float: left; }
+  .knob-tab-orient--left-top .knob-radio {
+    width: 20%; }
+    .knob-tab-orient--left-top .knob-radio > div {
+      width: 100%; }
+      .knob-tab-orient--left-top .knob-radio > div .knob-button {
+        width: 100%;
+        text-align: left; }
+  .knob-tab-orient--left-top .knob-panel-group {
+    width: 80%; }
+  .knob-tab-orient--left-top .knob-tab {
+    padding-top: 0; }
+    .knob-tab-orient--left-top .knob-tab p:nth-child(1) {
+      margin-top: 0; }
 
 .knob-button.variation-tab {
   margin-right: 5px;
@@ -155,14 +178,7 @@ img {
   padding: 10px;
   border-top: 1px solid;
   position: relative;
-  /*
-	.knob-notification {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-*/ }
+  text-align: left; }
 
 .knob-modal-overlay {
   background: rgba(0, 0, 0, 0.7);
