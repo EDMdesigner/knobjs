@@ -1,9 +1,9 @@
 <span>
-	<span data-bind="visible: !editMode()">
+	<span data-bind="visible: !editMode()" class="knob-inlinetext--noedit">
 		<span data-bind="text: value"></span>
 		<knob-button params="label: '', click: edit, icon: '#icon-edit'">
 	</span>
-	<span data-bind="visible: editMode">
+	<span data-bind="visible: editMode" class="knob-inlinetext--edit">
 		<knob-input params="value: editedValue, hasFocus: inputHasFocus, keyDown: keyDown, visible: editMode"></knob-input>
 		<knob-button params="label: '', click: save, icon: '#icon-done'"></knob-button>
 		<knob-button params="label: '', click: cancel, icon: '#icon-close'"></knob-button>
