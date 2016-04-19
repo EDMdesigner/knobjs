@@ -37,6 +37,11 @@ img {
 .bordered .knob-button {
   border: 1px solid; }
 
+.loading {
+  text-align: center; }
+  .loading svg {
+    width: 48px; }
+
 [class^=knob-],
 [class^=knob-] *,
 [class^=knob-]:before,
@@ -100,6 +105,9 @@ img {
     text-align: left;
     border-top: 0; }
 
+.knob-pagelist__result {
+  border-bottom: 1px solid #ddd; }
+
 .knob-pagelist .knob-pagelist__bar {
   overflow: hidden;
   border-bottom: 1px solid #ddd; }
@@ -117,8 +125,6 @@ img {
 .knob-pagelist .knob-pagedlist__list {
   list-style: none;
   padding: 0; }
-  .knob-pagelist .knob-pagedlist__list li {
-    padding: 5px; }
 
 .knob-pagination {
   overflow: hidden;
@@ -320,3 +326,36 @@ img {
         padding: 8px 10px; }
         .example .knob-pagelist__result div span:nth-last-child(1) {
           text-align: right; }
+  .example .knob-pagedlist__list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0; }
+    .example .knob-pagedlist__list .knob-pagedlist__item {
+      padding: 5px;
+      cursor: pointer; }
+      .example .knob-pagedlist__list .knob-pagedlist__item:nth-child(odd) {
+        background: #f1f1f1; }
+      .example .knob-pagedlist__list .knob-pagedlist__item:hover {
+        background: #fafafa; }
+      .example .knob-pagedlist__list .knob-pagedlist__item span {
+        display: inline-block; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(1) {
+          width: 20%;
+          text-indent: 10px; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(2) {
+          width: 25%; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(3) {
+          width: 25%; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(4) {
+          width: 25%; }
+  .example .no-result {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    font-size: 36px;
+    color: #cacaca; }

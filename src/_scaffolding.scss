@@ -68,3 +68,11 @@ $baseColor: red;
 		background-color: darken($baseColor, 5%)
 	}
 }
+
+
+.loading {
+	text-align: center;
+	svg {
+		width: 48px
+	}
+}
