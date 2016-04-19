@@ -514,7 +514,7 @@ config.icons.sort.asc | string | No | "#icon-sort-asc" | The icon of the ascendi
 config.icons.sort.desc | string | No | "#icon-sort-desc" | The icon of the descending sort.
 config.icons.dropdown | string | No | "#icon-expand-more" | The icon on the right hand side in dropdowns.
 config.icons.loading | string | No | "#icon-loading" | The loading icon. It is alwas spinned!
-config.icons.pagination.first | No | "#icon-first-page" | The icon of the last page button in the pagination.
+config.icons.pagination.first | string | No | "#icon-first-page" | The icon of the last page button in the pagination.
 config.icons.pagination.prev | string | No | "#icon-chervon-left" | The icon of the prev button in the pagination.
 config.icons.pagination.next | string | No | "#icon-chervon-right" | The icon of the next button in the pagination.
 config.icons.pagination.last | string | No | "#icon-last-page" | The icon of the last page button in the paginagion.
