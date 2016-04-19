@@ -66,7 +66,7 @@ initKnob({
 		transparent: "transparent"
 	},
 	icons: {
-		search: "#icon-loading"
+		search: "#icon-search"
 	}
 });
 

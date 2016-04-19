@@ -11,7 +11,16 @@ $orient-panel: 90%;
 	& > div {
 		display: inline-block;
 	}
+
+	&--block {
+
+		& > div > div {
+			display: block;
+		}
+	}
 }
+
+
 
 .knob-tab-orient {
 
