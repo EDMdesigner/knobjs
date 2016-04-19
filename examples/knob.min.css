@@ -37,6 +37,31 @@ img {
 .bordered .knob-button {
   border: 1px solid; }
 
+.loading {
+  text-align: center; }
+  .loading svg {
+    width: 48px; }
+
+.anim-rotate {
+  -webkit-animation: rotate 1.9s infinite linear;
+  animation: rotate 1.9s infinite linear; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0) scale(1) skew(1deg) translate(0);
+    transform: rotate(0) scale(1) skew(1deg) translate(0); }
+  to {
+    -webkit-transform: rotate(360deg) scale(1) skew(1deg) translate(0);
+    transform: rotate(360deg) scale(1) skew(1deg) translate(0); } }
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0) scale(1) skew(1deg) translate(0);
+    transform: rotate(0) scale(1) skew(1deg) translate(0); }
+  to {
+    -webkit-transform: rotate(360deg) scale(1) skew(1deg) translate(0);
+    transform: rotate(360deg) scale(1) skew(1deg) translate(0); } }
+
 [class^=knob-],
 [class^=knob-] *,
 [class^=knob-]:before,
@@ -100,6 +125,9 @@ img {
     text-align: left;
     border-top: 0; }
 
+.knob-pagelist__result {
+  border-bottom: 1px solid #ddd; }
+
 .knob-pagelist .knob-pagelist__bar {
   overflow: hidden;
   border-bottom: 1px solid #ddd; }
@@ -117,8 +145,6 @@ img {
 .knob-pagelist .knob-pagedlist__list {
   list-style: none;
   padding: 0; }
-  .knob-pagelist .knob-pagedlist__list li {
-    padding: 5px; }
 
 .knob-pagination {
   overflow: hidden;
@@ -277,6 +303,26 @@ img {
     .knob-notification a:hover {
       text-decoration: none; }
 
+.knob-progress {
+  height: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
+  .knob-progress .progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    background-color: #337ab7;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: width .6s ease;
+    transition: width .6s ease; }
+
 .example {
   margin: 0 auto;
   width: 960px; }
@@ -300,3 +346,36 @@ img {
         padding: 8px 10px; }
         .example .knob-pagelist__result div span:nth-last-child(1) {
           text-align: right; }
+  .example .knob-pagedlist__list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0; }
+    .example .knob-pagedlist__list .knob-pagedlist__item {
+      padding: 5px;
+      cursor: pointer; }
+      .example .knob-pagedlist__list .knob-pagedlist__item:nth-child(odd) {
+        background: #f1f1f1; }
+      .example .knob-pagedlist__list .knob-pagedlist__item:hover {
+        background: #fafafa; }
+      .example .knob-pagedlist__list .knob-pagedlist__item span {
+        display: inline-block; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(1) {
+          width: 20%;
+          text-indent: 10px; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(2) {
+          width: 25%; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(3) {
+          width: 25%; }
+        .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(4) {
+          width: 25%; }
+  .example .no-result {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    font-size: 36px;
+    color: #cacaca; }

@@ -23,9 +23,16 @@
 				<!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parent, index: $index} } --><!-- /ko -->
 			</li>
 		</ul>
+		<!-- ko if: items().length === 0 -->
+			<span class="no-result" data-bind="visible: !loading()">
+				No result
+			</span>
+		<!-- /ko -->
 	</div>
 
-	<div data-bind="visible: loading">Loading...</div>
+	<div class="loading" data-bind="visible: loading">
+		<svg class="anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
+	</div>
 	<!--
 	<knob-pagination params="numOfItems: pagination.numOfItems, itemsPerPage: itemsPerPage"></knob-pagination>
 	-->

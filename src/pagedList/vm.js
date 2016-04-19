@@ -11,9 +11,6 @@ module.exports = function createPagedList(config) {
 		throw new Error("config.store is mandatory!");
 	}
 
-
-
-
 	var store = config.store;
 
 	store.load.before.add(beforeLoad);
