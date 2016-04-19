@@ -1,9 +1,10 @@
-/*jslint node: true */
 "use strict";
 
 //*/
 
 //THIS FILE SHOULD BE GENERATED
+
+var extend = require("extend");
 
 var registerComponent = require("./knobRegisterComponent");
 
@@ -40,9 +41,27 @@ var createNotificationStyleTheme3 = require("./notificationBar/theme3");
 var createNotificationStyleTheme4 = require("./notificationBar/theme4");
 
 function initKnob(config) {
+	var defaultIcons = {
+		search: "#icon-search",
+		sort: {
+			asc: "#icon-sort-asc",
+			desc: "#icon-sort-desc"
+		},
+		dropdown: "#icon-expand-more",
+		loading: "#icon-loading",
+		pagination: {
+			first: "#icon-first-page",
+			prev: "#icon-chevron-left",
+			last: "#icon-chevron-right",
+			next: "#icon-last-page"
+		}
+	};
+
 
 	var colorSet = config.colorSet;
 	var theme = config.theme;
+
+	var icons = extend(true, {}, defaultIcons, config.icons);
 
 	if (typeof theme === "object") {
 
@@ -102,7 +121,7 @@ function initKnob(config) {
 		}
 
 	} else {
-		throw new Error("config.theme should be a function or a string");
+		throw new Error("config.theme should be an object or a string");
 	}
 
 	var buttonStyle = createButtonStyle(colorSet);
@@ -112,10 +131,29 @@ function initKnob(config) {
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent("knob-inline-text-editor", require("./inlineTextEditor/vm"), require("./inlineTextEditor/template.html"));
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
-	registerComponent("knob-pagination", require("./pagination/vm"), require("./pagination/template.html"), buttonStyle);
+	registerComponent(
+		"knob-pagination",
+		require("./pagination/vm"),
+		require("./pagination/template.html"),
+		buttonStyle,
+		icons.pagination
+	);
 	registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
 
-	registerComponent("knob-paged-list", require("./pagedList/vm"), require("./pagedList/template.html"), createPagedListStyle(colorSet));
+	registerComponent(
+		"knob-paged-list",
+		require("./pagedList/vm"),
+		require("./pagedList/template.html"),
+		createPagedListStyle(colorSet),
+		{
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		},
+		{
+			noResults: ""
+		}
+	);
 
 	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(colorSet));
 	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(colorSet));
