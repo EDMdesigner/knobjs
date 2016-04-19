@@ -438,7 +438,7 @@ You can use simply themes, and color sets. Defines the color, and use them in an
 
 ### Example - define
 ```javascript
-initKnob({
+knob.init({
 	theme: "default",
 	colorSet: {
 		primaryColor: "#2199e8",
@@ -471,7 +471,6 @@ initKnob({
 		transparent: "transparent"
 	}
 });
-
 ```
 
 knob-js uses the tinycolor2 npm package to the lighten and darken colors. Here is the example, hover state is lighten, active state is darken:
@@ -500,4 +499,79 @@ knob-js uses the tinycolor2 npm package to the lighten and darken colors. Here i
 	}
 }
 
+```
+
+## Icons and localization
+
+You can add two extra parameters when you init knob, with which you can customize the icons and the labels in the components. The first is the icons, which should be an object, the secont is the labels property, which also should be an object.
+
+### Params
+
+Param     | Type                    | Required | Default value | Description
+---       |---                      |---       |---            |---
+config.icons.search | string | No | "#icon-search" | The search icon in the paged list component.
+config.icons.sort.asc | string | No | "#icon-sort-asc" | The icon of the ascending sort.
+config.icons.sort.desc | string | No | "#icon-sort-desc" | The icon of the descending sort.
+config.icons.dropdown | string | No | "#icon-expand-more" | The icon on the right hand side in dropdowns.
+config.icons.loading | string | No | "#icon-loading" | The loading icon. It is alwas spinned!
+config.icons.pagination.first | No | "#icon-first-page" | The icon of the last page button in the pagination.
+config.icons.pagination.prev | string | No | "#icon-chervon-left" | The icon of the prev button in the pagination.
+config.icons.pagination.next | string | No | "#icon-chervon-right" | The icon of the next button in the pagination.
+config.icons.pagination.last | string | No | "#icon-last-page" | The icon of the last page button in the paginagion.
+config.labels.noResults | string | No | "No results" | The string which will be displayed if the query in a list returns with an empty set.
+
+### Example
+
+```javascript
+knob.init({
+	theme: "default",
+	colorSet: {
+		primaryColor: "#2199e8",
+		secondaryColor: "#777",
+
+		info: {
+			text: "#00529b",
+			background: "#bde5f8"
+		},
+		success: {
+			text: "#4f8a10",
+			background: "#dff2bf"
+		},
+		warning: {
+			text: "#9f6000",
+			background: "#feefb3"
+		},
+		error: {
+			text: "#d8000c",
+			background: "#ffbaba"
+		},
+
+		white: "#fff",
+
+		lightGray: "#e6e6e6",
+		mediumGray: "#cacaca",
+		darkGray: "#8a8a8a",
+
+		black: "#000",
+		transparent: "transparent"
+	},
+	icons: {
+		search: "#icon-search",
+		sort: {
+			asc: "#icon-sort-asc",
+			desc: "#icon-sort-desc"
+		},
+		dropdown: "#icon-expand-more",
+		loading: "#icon-loading",
+		pagination: {
+			first: "#icon-first-page",
+			prev: "#icon-chevron-left",
+			last: "#icon-chevron-right",
+			next: "#icon-last-page"
+		}
+	},
+	labels: {
+		noResults: "No results"
+	}
+});
 ```

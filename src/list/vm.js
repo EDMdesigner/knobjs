@@ -100,13 +100,16 @@ module.exports = function createList(config) {
 	for (var idx = 0; idx < config.sort.length; idx += 1) {
 		var act = config.sort[idx];
 
+		var ascIcon = config.icons ? config.icons.sort.asc : "";
+		var descIcon = config.icons ? config.icons.sort.desc : "";
+
 		sortOptions.push({
-			icon: "#icon-sort-asc",
+			icon: ascIcon,
 			label: act.label,
 			value: createQueryObj(act.value, 1)
 		});
 		sortOptions.push({
-			icon: "#icon-sort-desc",
+			icon: descIcon,
 			label: act.label,
 			value: createQueryObj(act.value, -1)
 		});

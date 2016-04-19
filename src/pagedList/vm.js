@@ -29,6 +29,9 @@ module.exports = function createPagedList(config) {
 	list.itemsPerPage = itemsPerPage;
 	list.currentPage = currentPage;
 
+	list.icons = config.icons;
+	list.labels = config.labels;
+
 	ko.computed(function() {
 		var currentPageVal = currentPage();
 		var itemsPerPageVal = itemsPerPage();

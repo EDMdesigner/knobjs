@@ -64,6 +64,9 @@ initKnob({
 
 		black: "#000",
 		transparent: "transparent"
+	},
+	icons: {
+		search: "#icon-loading"
 	}
 });
 

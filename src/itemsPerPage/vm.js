@@ -60,6 +60,8 @@ module.exports = function createItemsPerPage(config) {
 		itemsPerPage: itemsPerPage,
 		numOfPages: numOfPages,
 
-		itemsPerPageList: itemsPerPageList
+		itemsPerPageList: itemsPerPageList,
+
+		icons: config.icons
 	};
 };

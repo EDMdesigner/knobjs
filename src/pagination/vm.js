@@ -173,6 +173,8 @@ module.exports = function createPagination(config) {
 
 		currentPage: currentPage,
 
-		numOfPages: numOfPages
+		numOfPages: numOfPages,
+
+		icons: config.icons
 	};
 };

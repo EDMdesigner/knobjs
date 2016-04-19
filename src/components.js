@@ -57,11 +57,16 @@ function initKnob(config) {
 		}
 	};
 
+	var defaultLabels = {
+		noResults: "No results"
+	};
+
 
 	var colorSet = config.colorSet;
 	var theme = config.theme;
 
 	var icons = extend(true, {}, defaultIcons, config.icons);
+	var labels = extend(true, {}, defaultLabels, config.labels);
 
 	if (typeof theme === "object") {
 
@@ -138,7 +143,15 @@ function initKnob(config) {
 		buttonStyle,
 		icons.pagination
 	);
-	registerComponent("knob-items-per-page", require("./itemsPerPage/vm"), require("./itemsPerPage/template.html"));
+	registerComponent(
+		"knob-items-per-page",
+		require("./itemsPerPage/vm"),
+		require("./itemsPerPage/template.html"),
+		null,
+		{
+			dropdown: icons.dropdown
+		}
+	);
 
 	registerComponent(
 		"knob-paged-list",
@@ -151,7 +164,7 @@ function initKnob(config) {
 			dropdown: icons.dropdown
 		},
 		{
-			noResults: ""
+			noResults: labels.noResults
 		}
 	);
 
