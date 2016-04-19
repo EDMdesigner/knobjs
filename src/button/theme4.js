@@ -68,18 +68,18 @@ module.exports = function createStyleConfig(theme) {
 		},
 		"pagination": {
 			"default": {
-				"borderColor": theme.success.background,
-				"backgroundColor": theme.success.background,
-				"color": theme.white,
-				"fill": theme.white
+				"borderColor": theme.lightGray,
+				"backgroundColor": theme.lightGray,
+				"color": theme.black,
+				"fill": theme.black
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.success.background).lighten().toString(),
-				"borderColor": tinycolor(theme.success.background).lighten().toString()
+				"backgroundColor": tinycolor(theme.lightGray).lighten().toString(),
+				"borderColor": tinycolor(theme.lightGray).lighten().toString()
 			},
 			"active": {
-				"backgroundColor": tinycolor(theme.success.background).darken().toString(),
-				"borderColor": tinycolor(theme.success.background).darken().toString()
+				"backgroundColor": tinycolor(theme.lightGray).darken().toString(),
+				"borderColor": tinycolor(theme.lightGray).darken().toString()
 			},
 			"disabled": {
 				"borderColor": theme.white,
