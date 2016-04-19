@@ -1,7 +1,5 @@
 module.exports = function createStyleConfig(theme) {
 
-	var tinycolor = require("tinycolor2");
-
 	return {
 		"even": {
 			"default": {
