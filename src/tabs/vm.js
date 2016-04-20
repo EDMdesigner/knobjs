@@ -35,7 +35,7 @@ function createTabs(config, componentInfo) {
 	componentInfo = componentInfo || {};
 	componentInfo.templateNodes = componentInfo.templateNodes || [];
 
-	var defaultTab = config.defaultTab || 0;
+	var defaultTab = config.defaultTab;
 
 	var vm = {};
 
@@ -76,7 +76,17 @@ function createTabs(config, componentInfo) {
 	vm.tabsGroup = "tabsGroup_" + nextTabsGroupIdx;
 	nextTabsGroupIdx += 1;
 
-	vm.selectedIdx = ko.observable(defaultTab);
+	if (ko.isObservable(config.selectedIdx)) {
+		vm.selectedIdx = config.selectedIdx;
+	} else {
+		vm.selectedIdx = ko.observable();
+	}
+
+	if (typeof defaultTab === "number") {
+		vm.selectedIdx(defaultTab);
+	} else if (!vm.selectedIdx()) {
+		vm.selectedIdx(0);
+	}
 
 	vm.buttons = tabButtons;
 	vm.panels = tabPanels;
