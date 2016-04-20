@@ -90,18 +90,18 @@ module.exports = function createStyleConfig(theme) {
 		},
 		"modalHead": {
 			"default": {
-				"backgroundColor": theme.secondaryColor,
-				"borderColor": theme.secondaryColor,
+				"backgroundColor": theme.darkGray,
+				"borderColor": theme.darkGray,
 				"color": theme.white,
 				"fill": theme.white
 			},
 			"hover": {
-				"backgroundColor": theme.secondaryColor,
-				"borderColor": theme.secondaryColor
+				"backgroundColor": theme.mediumGray,
+				"borderColor": theme.mediumGray
 			},
 			"active": {
-				"backgroundColor": theme.secondaryColor,
-				"borderColor": theme.secondaryColor
+				"backgroundColor": theme.darkGray,
+				"borderColor": theme.darkGray
 			}
 		},
 		"action": {
