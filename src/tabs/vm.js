@@ -84,6 +84,8 @@ function createTabs(config, componentInfo) {
 
 	if (typeof defaultTab === "number") {
 		vm.selectedIdx(defaultTab);
+	} else if (!vm.selectedIdx()) {
+		vm.selectedIdx(0);
 	}
 
 	vm.buttons = tabButtons;
