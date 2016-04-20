@@ -167,6 +167,8 @@ img {
   overflow: hidden; }
   .knob-radio > div {
     display: inline-block; }
+  .knob-radio--block > div > div {
+    display: block; }
 
 .knob-tab-orient {
   width: 100%; }

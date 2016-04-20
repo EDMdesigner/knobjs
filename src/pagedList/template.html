@@ -8,14 +8,15 @@
 			<input class="knob-input" type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
 			<knob-button class="knob-button-search" params="label: '',
 								variation: 'default',
-								icon: '#icon-search'">
+								icon: icons.search">
 			</knob-button>
-			<knob-items-per-page class="knob-pagelist__items-per-page" params="numOfItems: count,
-										numOfPages: numOfPages,
-										itemsPerPage: itemsPerPage">
+			<knob-items-per-page class="knob-pagelist__items-per-page" params="
+				numOfItems: count,
+				numOfPages: numOfPages,
+				itemsPerPage: itemsPerPage">
 			</knob-items-per-page>
 			<!-- ko if: sortOptions.length > 0 -->
-				<knob-dropdown class="knob-dropdown" params="rightIcon: '#icon-expand-more', selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
+				<knob-dropdown class="knob-dropdown" params="rightIcon: icons.dropdown, selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
 		</div>
 		<ul data-bind="css: listClass, foreach: items">
@@ -24,14 +25,12 @@
 			</li>
 		</ul>
 		<!-- ko if: items().length === 0 -->
-			<span class="no-result" data-bind="visible: !loading()">
-				No result
-			</span>
+			<span class="no-result" data-bind="visible: !loading(), text: labels.noResults"></span>
 		<!-- /ko -->
 	</div>
 
 	<div class="loading" data-bind="visible: loading">
-		<svg class="anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-loading"></use></svg>
+		<svg class="anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': icons.loading}" xlink:href=""></use></svg>
 	</div>
 	<!--
 	<knob-pagination params="numOfItems: pagination.numOfItems, itemsPerPage: itemsPerPage"></knob-pagination>

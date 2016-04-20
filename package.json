@@ -1,6 +1,6 @@
 {
   "name": "knob-js",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "A highly customizable component library for knockout.js",
   "main": "dist/knob.js",
   "keywords": [
@@ -73,6 +73,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
+    "extend": "^3.0.0",
     "superdata": "0.1.1"
   }
 }
