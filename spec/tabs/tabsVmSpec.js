@@ -1,4 +1,5 @@
 var createTabs = require("../../src/tabs/vm");
+var ko = require("knockout");
 
 describe("tabs", function() {
 	describe("with invalid config", function() {
@@ -177,6 +178,23 @@ describe("tabs", function() {
 			checkButtonProps(vm.buttons[3], {
 				leftIcon: "#cdayo"
 			});
+		});
+
+		it("should use given selectedIdx", function() {
+			var vm = createTabs({
+				selectedIdx: ko.observable(2)
+			}, componentInfo);
+
+			expect(vm.selectedIdx()).toBe(2);
+		});
+
+		it("should use given defaultTab over given selectedIdx", function() {
+			var vm = createTabs({
+				defaultTab: 1,
+				selectedIdx: ko.observable(2)
+			}, componentInfo);
+
+			expect(vm.selectedIdx()).toBe(1);
 		});
 	});
 });
