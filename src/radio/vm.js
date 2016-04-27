@@ -53,9 +53,9 @@ function createRadio(config) {
 				vm.selected(obj);
 				vm.selectedIdx(idx);
 			},
-			isSelected: function() {
-				return obj === vm.selected();
-			}
+			isSelected: ko.computed(function() {
+				return idx === vm.selectedIdx();
+			})
 		};
 
 		return obj;
