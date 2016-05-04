@@ -52,8 +52,8 @@ function initKnob(config) {
 		pagination: {
 			first: "#icon-first-page",
 			prev: "#icon-chevron-left",
-			last: "#icon-chevron-right",
-			next: "#icon-last-page"
+			last: "#icon-last-page",
+			next: "#icon-chevron-right"
 		}
 	};
 
