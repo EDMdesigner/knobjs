@@ -146,6 +146,14 @@ img {
   list-style: none;
   padding: 0; }
 
+.knob-pagelist .no-result {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 30px;
+  font-size: 36px;
+  color: #cacaca; }
+
 .knob-pagination {
   overflow: hidden;
   display: table;
@@ -374,10 +382,3 @@ img {
           width: 25%; }
         .example .knob-pagedlist__list .knob-pagedlist__item span:nth-child(4) {
           width: 25%; }
-  .example .no-result {
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-    padding: 30px;
-    font-size: 36px;
-    color: #cacaca; }
