@@ -28,8 +28,8 @@ initKnob({
 		white: "#fff",
 
 		lightGray: "#f5f7f8",
-		mediumGray: "#f0f2f4"
-		darkGray: "#e5e9ec",
+		mediumGray: "#f0f2f4",
+		darkGray: "#e5e9ec"
 		border: "#d2cdc6"
 
 		black: "#000",
