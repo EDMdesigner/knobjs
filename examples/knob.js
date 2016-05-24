@@ -37,7 +37,7 @@ initKnob({
 	},
 	// for theme2 and 3
 	colorSet2: {
-		primaryColor: "#2199e8",
+		primaryColor: "#2199e8"
 		secondaryColor: "#777",
 
 		info: {
