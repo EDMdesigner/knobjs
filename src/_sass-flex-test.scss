@@ -1,0 +1,46 @@
+.row {
+	clear:both;
+	overflow:hidden;
+	min-height: 60px;
+	padding:10px;
+	
+	background: #f5f7f8;
+	border-bottom: 1px solid #d2cdc6;
+}
+
+.row label {
+	display:block;
+	width:auto;
+	max-width:100%;
+	word-wrap: break-word;      /* IE 5.5-7 */
+	white-space: -moz-pre-wrap; /* Firefox 1.0-2.0 */
+	white-space: pre-wrap; 
+	
+	font-size:10px;
+}
+
+.row.single-row {
+/*
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	align-items: center;
+	-ms-flex-align:center;
+	
+	-ms-flex-wrap: none;
+*/
+
+
+
+	@include flexbox;
+	@include justify-content(space-between);
+	@include align-items(center);
+	@include flex-wrap(nowrap);
+	
+	width:100%;
+}

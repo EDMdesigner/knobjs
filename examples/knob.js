@@ -6,10 +6,10 @@ var superdata = require("superdata");
 var initKnob = require("../src/components").init;
 
 initKnob({
-	theme: "default",
+	theme: "chamaileon",
 	//for default and theme 4
 	colorSet: {
-		primaryColor: "#666",
+		primaryColor: "#44c0fc",
 		secondaryColor: "#f4f4f4",
 
 		info: {
@@ -27,9 +27,10 @@ initKnob({
 
 		white: "#fff",
 
-		lightGray: "#e6e6e6",
-		mediumGray: "#cacaca",
-		darkGray: "#8a8a8a",
+		lightGray: "#f5f7f8",
+		mediumGray: "#f0f2f4",
+		darkGray: "#e5e9ec",
+		border: "#d2cdc6"
 
 		black: "#000",
 		transparent: "transparent"
@@ -54,6 +55,33 @@ initKnob({
 		error: {
 			text: "#d8000c",
 			background: "#ffbaba"
+		},
+
+		white: "#fff",
+
+		lightGray: "#e6e6e6",
+		mediumGray: "#cacaca",
+		darkGray: "#8a8a8a",
+
+		black: "#000",
+		transparent: "transparent"
+	},
+	// old default
+	colorSet3: {
+		primaryColor: "#666",
+		secondaryColor: "#f4f4f4",
+
+		info: {
+			background: "#25aaf2"
+		},
+		success: {
+			background: "#54c059"
+		},
+		warning: {
+			background: "#f5a500"
+		},
+		error: {
+			background: "#ee483b"
 		},
 
 		white: "#fff",

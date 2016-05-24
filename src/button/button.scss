@@ -10,10 +10,8 @@
 	display: inline-block;
 	text-align: center;
 	touch-action: manipulation;
-	transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-	transition-delay: 0.5s;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border: 1px solid;
+	border-radius: 3px;
 
 // Button icons
 // ==================================================
@@ -24,18 +22,6 @@
 			vertical-align: middle;
 			line-height: 1;
 		}
-	}
-
-// Button states
-// ==================================================
-	&:hover {
-		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-		transition-delay: 0s;
-	}
-
-	&:active {
-		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-		transition-delay: 0s;
 	}
 
 }
