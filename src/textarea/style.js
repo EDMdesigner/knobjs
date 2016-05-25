@@ -4,12 +4,12 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.darkGray
+				"border-color": theme.border
 			},
 			"hover": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.darkGray
+				"border-color": theme.border
 			},
 			"active": {
 				"backgroundColor": theme.white,
