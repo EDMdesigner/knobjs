@@ -1,11 +1,13 @@
 .knob-dropdown-menu {
 	z-index: 2;
 	position: absolute;
+	border: 1px solid;
 
 	button {
 		width: 100%;
 		text-align: left;
 		border-top: 0;
+		border-radius: 0;
 	}
 }
 

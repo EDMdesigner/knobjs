@@ -12,17 +12,20 @@ var baseVm = require("./base/vm");
 
 var createButtonStyle;
 var createButtonStyleDefault = require("./button/style");
+var createButtonStyleChamaileon = require("./button/chamaileon");
 var createButtonStyleTheme2 = require("./button/theme2");
 var createButtonStyleTheme3 = require("./button/theme3");
 var createButtonStyleTheme4 = require("./button/theme4");
 
 var createInputStyle;
 var createInputStyleDefault = require("./input/style");
+var createInputStyleChamaileon = require("./input/chamaileon");
 var createInputStyleTheme2 = require("./input/theme2");
 var createInputStyleTheme3 = require("./input/theme3");
 var createInputStyleTheme4 = require("./input/theme4");
 
 var createModalStyle;
+var createModalStyleChamaileon = require("./modal/chamaileon");
 var createModalStyleDefault = require("./modal/style");
 var createModalStyleTheme2 = require("./modal/theme2");
 var createModalStyleTheme3 = require("./modal/theme3");
@@ -97,8 +100,14 @@ function initKnob(config) {
 		createNotificationStyle = theme.createNotificationStyle;
 
 	} else if (typeof theme === "string") {
-
-		if (theme === "theme2") {
+		
+		if (theme === "chamaileon") {
+			createButtonStyle = createButtonStyleChamaileon;
+			createInputStyle = createInputStyleChamaileon;
+			createModalStyle = createModalStyleChamaileon;
+			createPagedListStyle = createPagedListStyleDefault;
+			createNotificationStyle = createNotificationStyleDefault;
+		} else if (theme === "theme2") {
 			createButtonStyle = createButtonStyleTheme2;
 			createInputStyle = createInputStyleTheme2;
 			createModalStyle = createModalStyleTheme2;
@@ -133,6 +142,7 @@ function initKnob(config) {
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(colorSet));
+	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(colorSet));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent("knob-inline-text-editor", require("./inlineTextEditor/vm"), require("./inlineTextEditor/template.html"));
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
