@@ -2,6 +2,9 @@
 "use strict";
 
 var ko = require("knockout");
+var superdata = require("superdata");
+var createLsProxy = superdata.proxy.localStorage;
+var createModel = superdata.model.model;
 
 module.exports = function createList(config) {
 	config = config || {};
@@ -74,6 +77,32 @@ module.exports = function createList(config) {
 		}
 	});
 
+	var lsProxy = createLsProxy({
+		idProperty: "name",
+		idType: "string",
+		name: "lists"
+	});
+
+	var model = createModel({
+		fields: {
+			name: {
+				type: "string"
+			},
+			sort: {
+				type: "object"
+			}
+		},
+		idField: "name",
+		idType: "string",
+		proxy: lsProxy
+	});
+
+	model.load("galleryList", function(err, result) {
+		// console.log(err, result);
+		// console.log(result.data.sort);
+		// console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+	});
+
 	var store = config.store;
 	var fields = config.fields;
 
@@ -84,6 +113,16 @@ module.exports = function createList(config) {
 	var sortOptions = [];
 
 	var defaultOrderIdx;
+
+	function findSortIdx(oredrBy) {
+		console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+
+		for (var i = 0; i < sortOptions.length; i += 1) {
+			console.log(sortOptions[i].value);
+		}
+		console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+
+	}
 
 	function createQueryObj(prop, asc) {
 		var obj = {};
@@ -115,8 +154,10 @@ module.exports = function createList(config) {
 		});
 	}
 
-	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
+	findSortIdx();
+
 	var sortIdx = defaultOrderIdx || 0;
+	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
@@ -146,6 +187,16 @@ module.exports = function createList(config) {
 		store.sort = sortVal;
 		store.skip = skipVal;
 		store.limit = limitVal;
+
+		model.create({
+			name: "galleryList",
+			sort: sortVal
+		}, function(err, result) {
+			if (err) {
+				return console.log(err);
+			}
+		});
+
 	}).extend({
 		throttle: 0
 	});
