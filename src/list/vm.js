@@ -97,11 +97,11 @@ module.exports = function createList(config) {
 		proxy: lsProxy
 	});
 
-	model.load("galleryList", function(err, result) {
-		// console.log(err, result);
-		// console.log(result.data.sort);
-		// console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
-	});
+	// model.load("galleryList", function(err, result) {
+	// console.log(err, result);
+	// console.log(result.data.sort);
+	// console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+	// });
 
 	var store = config.store;
 	var fields = config.fields;
@@ -114,15 +114,15 @@ module.exports = function createList(config) {
 
 	var defaultOrderIdx;
 
-	function findSortIdx(oredrBy) {
-		console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+	// function findSortIdx(oredrBy) {
+	// 	console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
 
-		for (var i = 0; i < sortOptions.length; i += 1) {
-			console.log(sortOptions[i].value);
-		}
-		console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
+	// 	for (var i = 0; i < sortOptions.length; i += 1) {
+	// 		console.log(sortOptions[i].value);
+	// 	}
+	// 	console.log("XXXXXXXXXXXXXXXXXXXXXXXXx");
 
-	}
+	// }
 
 	function createQueryObj(prop, asc) {
 		var obj = {};
@@ -154,7 +154,7 @@ module.exports = function createList(config) {
 		});
 	}
 
-	findSortIdx();
+	// findSortIdx();
 
 	var sortIdx = defaultOrderIdx || 0;
 	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
@@ -191,7 +191,7 @@ module.exports = function createList(config) {
 		model.create({
 			name: "galleryList",
 			sort: sortVal
-		}, function(err, result) {
+		}, function(err) {
 			if (err) {
 				return console.log(err);
 			}
