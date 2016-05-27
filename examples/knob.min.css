@@ -109,12 +109,19 @@ img {
 .knob-dropdown-menu {
   z-index: 2;
   position: absolute;
-  border: 1px solid; }
+  margin-top: 3px; }
   .knob-dropdown-menu button {
     width: 100%;
     text-align: left;
-    border-top: 0;
-    border-radius: 0; }
+    border-radius: 0px;
+    border-width: 1px;
+    border-top: 0px; }
+  .knob-dropdown-menu div:first-of-type button {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; }
+  .knob-dropdown-menu div:last-of-type button {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px; }
 
 .knob-pagelist__result {
   border-bottom: 1px solid #ddd; }
@@ -162,6 +169,55 @@ img {
   border-style: solid;
   border-width: 1px;
   border-radius: 3px; }
+
+.knob-fluid-row {
+  clear: both;
+  overflow: hidden;
+  padding: 10px;
+  border-bottom: 1px solid; }
+  .knob-fluid-row label {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+    /* IE 5.5-7 */
+    white-space: -moz-pre-wrap;
+    /* Firefox 1.0-2.0 */
+    white-space: pre-wrap;
+    font-size: 14px; }
+  .knob-fluid-row.single-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: none;
+    flex-wrap: nowrap;
+    width: 100%; }
+    .knob-fluid-row.single-row .knob-dropdown {
+      /*  min-width: 80px; */
+      white-space: nowrap; }
+  .knob-fluid-row.multi-row label {
+    display: block;
+    clear: both;
+    padding-bottom: 12px; }
+  .knob-fluid-row.multi-row .knob-button.variation-primary,
+  .knob-fluid-row.multi-row .knob-input,
+  .knob-fluid-row.multi-row .knob-textarea {
+    display: block;
+    clear: both;
+    width: 100%; }
 
 .knob-textarea {
   border-style: solid;
@@ -220,7 +276,6 @@ img {
   position: relative;
   text-align: left; }
 
-/* import modal start */
 .knob-modal-overlay {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -230,12 +285,15 @@ img {
   left: 0;
   z-index: 999;
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
+  -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   -webkit-box-align: center;
+  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
 
@@ -265,32 +323,41 @@ img {
       .knob-modal__header .button-close button {
         padding: 0;
         background: none;
-        box-shadow: 0 0 0 0; }
+        border-radius: 0;
+        border: 0 none; }
+  .knob-modal__content {
+    max-width: 555px;
+    padding: 10px; }
 
-/* import modal ends */
-.knob-confirm__content {
-  max-width: 555px;
-  padding: 10px 10px 0 10px; }
+.knob-modal__buttons {
+  display: block;
+  padding: 0; }
+  .knob-modal__buttons knob-button {
+    display: inline; }
+    .knob-modal__buttons knob-button .knob-button {
+      display: block;
+      text-align: center;
+      padding: 20px 0;
+      margin: 0;
+      border: 0px none;
+      border-radius: 0;
+      width: 100%; }
 
-.knob-confirm__buttons {
-  padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end; }
-  .knob-confirm__buttons button {
-    margin-left: 5px; }
+.knob-modal-confirm .knob-modal__buttons knob-button .knob-button {
+  width: 50%;
+  float: left; }
 
 .knob-notification {
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
+  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   padding: 15px 10px;
