@@ -1,13 +1,23 @@
 .knob-dropdown-menu {
 	z-index: 2;
 	position: absolute;
-	border: 1px solid;
+	margin-top:3px;
 
 	button {
 		width: 100%;
 		text-align: left;
-		border-top: 0;
-		border-radius: 0;
+		border-radius: 0px;
+		border-width:1px;
+		border-top:0px;
+	}
+	
+	div:first-of-type button {
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+	}
+	div:last-of-type button {
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
 	}
 }
 

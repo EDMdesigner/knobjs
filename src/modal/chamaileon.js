@@ -1,37 +1,19 @@
 module.exports = function createStyleConfig(theme) {
-
-	var tinycolor = require("tinycolor2");
-
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.secondaryColor,
-				"border-color": theme.secondaryColor,
-				"color": theme.white,
-				"fill": theme.white
-			},
-			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
+				"backgroundColor": theme.white,
+				"border-color": theme.darkGray,
 				"color": theme.black,
-				"border-color": tinycolor(theme.mediumGray).darken.toString()
-			},
-			"active": {
-				"color": tinycolor(theme.mediumGray).darken.toString(),
-				"fill": tinycolor(theme.mediumGray).darken.toString()
-			},
-			"disabled": {
-				"backgroundColor": theme.lightGray,
-				"color": theme.black
-			},
-			"success": {
-				"backgroundColor": theme.successColor,
-				"color": theme.white,
-				"fill": theme.white
-			},
-			"error": {
-				"backgroundColor": theme.alertColor,
-				"color": theme.white,
-				"fill": theme.white
+				"fill": theme.black
+			}
+		},
+		"confirm": {
+			"default": {
+				"backgroundColor": theme.white,
+				"border-color": theme.darkGray,
+				"color": theme.black,
+				"fill": theme.black
 			}
 		}
 	};
