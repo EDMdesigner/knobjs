@@ -5,7 +5,7 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	z-index: 20;
+	z-index: 999;
 
 	display: flex;
 	justify-content: center;
@@ -19,14 +19,12 @@
 	min-width: 240px;
 	max-width: 90%;
 
-	z-index: 22;
+/*	z-index: 22; */
 
+	border-radius:3px;
+	overflow:hidden;
+	
 	border: 1px solid #ddd;
-
-	&__header,
-	&__body {
-		width: 100%;
-	}
 
 	&__header {
 		padding: 10px;
@@ -49,12 +47,20 @@
 			button {
 				padding: 0;
 				background: none;
-				box-shadow: 0 0 0 0;
+				border-radius:0;
+				border:0 none;
 			}
 		}
 	}
+	
 
 	&__body {
-		//padding: 10px;
+		max-width: 555px;
+		padding:0;
+		width:100%;
+	}
+	
+	&__content {
+		padding: 10px;
 	}
 }

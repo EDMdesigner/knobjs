@@ -125,7 +125,7 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.black
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString()
+				"backgroundColor": theme.lightGray
 			},
 			"active": {
 				"backgroundColor": theme.white,
@@ -138,13 +138,13 @@ module.exports = function createStyleConfig(theme) {
 		},
 		"dropdown-option": {
 			"default": {
-				"borderColor": theme.transparent,
+				"borderColor": theme.border,
 				"backgroundColor": theme.white,
 				"color": theme.black,
 				"fill": theme.black
 			},
 			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString()
+				"backgroundColor": theme.lightGray
 			},
 			"active": {
 				"backgroundColor": theme.white,
@@ -157,17 +157,17 @@ module.exports = function createStyleConfig(theme) {
 		},
 		"modalHead": {
 			"default": {
-				"backgroundColor": theme.darkGray,
-				"borderColor": theme.darkGray,
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": theme.transparent,
+				"borderColor": theme.transparent,
+				"color": theme.black,
+				"fill": theme.black
 			},
 			"hover": {
-				"backgroundColor": theme.mediumGray,
-				"borderColor": theme.mediumGray
+				"backgroundColor": theme.transparent,
+				"borderColor": theme.transparent
 			},
 			"active": {
-				"backgroundColor": theme.darkGray,
+				"backgroundColor": theme.transparent,
 				"borderColor": theme.darkGray
 			}
 		},
@@ -261,6 +261,22 @@ module.exports = function createStyleConfig(theme) {
 			"active": {
 				"backgroundColor": tinycolor(theme.error.background).darken().toString(),
 				"borderColor": tinycolor(theme.error.background).darken().toString()
+			}
+		},
+		"cancel": {
+			"default": {
+				"backgroundColor": theme.lightGray,
+				"borderColor": theme.lightGray,
+				"color": theme.secondaryColor,
+				"fill": theme.secondaryColor
+			},
+			"hover": {
+				"backgroundColor": theme.darkGray,
+				"borderColor": theme.darkGray
+			},
+			"active": {
+				"backgroundColor": tinycolor(theme.lightGray).darken().toString(),
+				"borderColor": tinycolor(theme.lightGray).darken().toString()
 			}
 		}
 	};

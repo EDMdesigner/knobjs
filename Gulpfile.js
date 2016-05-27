@@ -54,7 +54,9 @@ gulp.task("js:dev", createBrowserifyTask({
 gulp.task("sass:prod", function() {
 	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
-		.pipe(cssnano())
+		.pipe(cssnano({
+			safe: true
+		}))
 		.pipe(autoprefixer({
 			browsers: ["last 2 version", "iOS 6"],
 			cascade: false

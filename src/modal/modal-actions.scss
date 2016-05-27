@@ -1,0 +1,19 @@
+.knob-modal__buttons {
+	display:block;
+	padding:0;
+	
+	knob-button {
+		display:inline;
+		
+		.knob-button {
+			display:block;
+			text-align:center;
+			padding:13px 0;
+			margin:0;
+			border:0px none;
+			border-radius:0;
+			width:100%;
+		}
+	}
+
+}

@@ -1,8 +1,7 @@
 @import "../modal-actions";
 
-.knob-modal-confirm {
+.knob-modal-alert {
 	.knob-modal__buttons knob-button .knob-button {
-		width:50%;
-		float:left;
+		width:100%;
 	}
 }
