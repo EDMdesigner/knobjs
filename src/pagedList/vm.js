@@ -85,10 +85,6 @@ module.exports = function createPagedList(config) {
 		}
 	}
 
-	if (!config.expInit) {
-		initStoreHandling();
-	}
-
 	/*
 	ko.computed(function() {
 		var count = list.count();
