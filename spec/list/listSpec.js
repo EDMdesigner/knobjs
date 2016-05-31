@@ -327,6 +327,10 @@ describe("List", function() {
 				}).toThrow("This computed variable should not be written.");
 			});
 
+			it("initStoreHandling should be a function", function() {
+				expect(typeof list.initStoreHandling).toBe("function");
+			});
+
 			it("- loading should be a read-only computed observable", function() {
 				expect(ko.isComputed(list.loading)).toBe(true);
 
@@ -398,6 +402,39 @@ describe("List", function() {
 						done();
 					}, 100);
 				});
+
+				// it("with expInit, store handling should not work", function(done) {
+				// 	var store = createStore({
+				// 		model: model
+				// 	});
+
+				// 	var config = {
+				// 		store: store,
+				// 		expInit: true,
+				// 		fields: Object.keys(fields),
+				// 		sort: [{
+				// 			label: "By Id",
+				// 			value: "id"
+				// 		}, {
+				// 			label: "By Name",
+				// 			value: "name"
+				// 		}],
+				// 		search: "name"
+				// 	};
+
+				// 	var list = createList(config);
+
+				// 	console.log("");
+				// 	console.log("store.sort",list.store.sort);
+				// 	console.log("list.sortOptions", list.sortOptions);
+				// 	// list.sort(list.sortOptions[2]);
+
+				// 	setTimeout(function() {
+				// 		// expect(list.store.sort).toEqual(list.sortOptions[0].value);
+				// 		console.log("store.sort", list.store.sort);
+				// 		done();
+				// 	}, 100);
+				// });
 			});
 		});
 	});

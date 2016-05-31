@@ -11,6 +11,11 @@ module.exports = function createPagedList(config) {
 		throw new Error("config.store is mandatory!");
 	}
 
+	if (config.stateModel) {
+		config.expInit = true;
+	}
+
+	var stateModel = config.stateModel;
 	var store = config.store;
 
 	store.load.before.add(beforeLoad);
@@ -32,13 +37,57 @@ module.exports = function createPagedList(config) {
 	list.icons = config.icons;
 	list.labels = config.labels;
 
-	ko.computed(function() {
-		var currentPageVal = currentPage();
-		var itemsPerPageVal = itemsPerPage();
+	if (stateModel) {
+		stateModel.load("galleryList", function(err, result) {
+			if (err !== "NOT_FOUND") {
+				if (result.data.sort) {
+					list.sortIdx = list.findSortIdx(result.data.sort);
+					list.sort(list.sortOptions[list.sortIdx]);
+				}
 
-		list.skip(currentPageVal * itemsPerPageVal);
-		list.limit(itemsPerPageVal);
-	});
+				if (result.data.itemsPerPage) {
+					itemsPerPage(result.data.itemsPerPage);
+				}
+			}
+			initStoreHandling();
+		});
+	} else {
+		initStoreHandling();
+	}
+
+	function initStoreHandling() {
+		ko.computed(function() {
+			var currentPageVal = currentPage();
+			var itemsPerPageVal = itemsPerPage();
+
+			list.skip(currentPageVal * itemsPerPageVal);
+			list.limit(itemsPerPageVal);
+		});
+
+
+		if (stateModel) {
+			list.initStoreHandling();
+
+			ko.computed(function() {
+				var sortVal = list.sort().value;
+				var itemsPerPageVal = itemsPerPage();
+
+				config.stateModel.create({
+					name: "galleryList",
+					sort: sortVal,
+					itemsPerPage: itemsPerPageVal
+				}, function(err) {
+					if (err) {
+						return console.log(err);
+					}
+				});
+			});
+		}
+	}
+
+	if (!config.expInit) {
+		initStoreHandling();
+	}
 
 	/*
 	ko.computed(function() {
