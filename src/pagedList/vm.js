@@ -13,7 +13,12 @@ module.exports = function createPagedList(config) {
 
 	if (config.stateModel) {
 		config.expInit = true;
+		if (!config.name) {
+			throw new Error("If state saving is needed, config.name is mandatory!");
+		}
 	}
+
+	var name = config.name;
 
 	var stateModel = config.stateModel;
 	var store = config.store;
@@ -38,7 +43,7 @@ module.exports = function createPagedList(config) {
 	list.labels = config.labels;
 
 	if (stateModel) {
-		stateModel.load("galleryList", function(err, result) {
+		stateModel.load(name, function(err, result) {
 			if (err !== "NOT_FOUND") {
 				if (result.data.sort) {
 					list.sortIdx = list.findSortIdx(result.data.sort);
@@ -73,7 +78,7 @@ module.exports = function createPagedList(config) {
 				var itemsPerPageVal = itemsPerPage();
 
 				config.stateModel.create({
-					name: "galleryList",
+					name: name,
 					sort: sortVal,
 					itemsPerPage: itemsPerPageVal
 				}, function(err) {

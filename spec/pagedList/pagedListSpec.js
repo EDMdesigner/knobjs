@@ -10,6 +10,15 @@ describe("pagedList", function() {
 		it("missing config", function() {
 			expect(createPagedList).toThrowError("config.store is mandatory!");
 		});
+
+		it("missing name if stateModel is present", function() {
+			expect(function() {
+				createPagedList({
+					store: {},
+					stateModel: {}
+				});
+			}).toThrowError("If state saving is needed, config.name is mandatory!");
+		});
 	});
 
 	describe("- with valid config", function() {
