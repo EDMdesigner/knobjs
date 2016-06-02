@@ -12,7 +12,7 @@ module.exports = function createPagedList(config) {
 	}
 
 	if (config.stateModel) {
-		config.expInit = true;
+		config.externalInit = true;
 		if (!config.name) {
 			throw new Error("If state saving is needed, config.name is mandatory!");
 		}

@@ -173,7 +173,7 @@ module.exports = function createList(config) {
 		});
 	};
 
-	if (!config.expInit) {
+	if (!config.externalInit) {
 		initStoreHandling();
 	}
 
