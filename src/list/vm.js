@@ -137,7 +137,7 @@ module.exports = function createList(config) {
 		var sortVal = sort().value;
 
 		return findSortIdx(sortVal);
-	}, this);
+	});
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
