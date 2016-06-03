@@ -4,6 +4,7 @@ var ko = require("knockout");
 var superdata = require("superdata");
 var createList = require("../../src/list/vm");
 
+var createProp = require("../../node_modules/superdata/src/model/prop");
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
@@ -50,7 +51,6 @@ describe("List", function() {
 	});
 
 	describe("with invalid config", function() {
-
 		describe("(existence check)", function() {
 			describe("with empty config", function() {
 				it("should return an error", function() {
@@ -327,6 +327,10 @@ describe("List", function() {
 				}).toThrow("This computed variable should not be written.");
 			});
 
+			it("initStoreHandling should be a function", function() {
+				expect(typeof list.initStoreHandling).toBe("function");
+			});
+
 			it("- loading should be a read-only computed observable", function() {
 				expect(ko.isComputed(list.loading)).toBe(true);
 
@@ -345,39 +349,66 @@ describe("List", function() {
 		});
 
 		describe("should behave like this:", function() {
-			describe("Search", function() {
-				it("should set the store's search field properly", function(done) {
-					var config = {
-						store: store,
-						fields: Object.keys(fields),
-						sort: [{
-							label: "By Id",
-							value: "id"
-						}, {
-							label: "By Name",
-							value: "name"
-						}],
-						throttle: 300,
-						search: "title"
+			describe("without externalInit", function() {
+
+				var mockStore;
+				var afterChanges;
+				var list;
+
+				beforeAll(function() {
+					mockStore = {
+						items: [],
+						load: {
+							before: {
+								add: function() {}
+							},
+							after: {
+								add: function() {}
+							}
+						}
 					};
 
-					var list = createList(config);
+					afterChanges = {
+						find: function() {},
+						sort: function() {},
+						skip: function() {},
+						limit: function() {}
+					};
 
-					list.search("My beautiful knob search works ❤!");
+					spyOn(afterChanges, "find");
+					spyOn(afterChanges, "sort");
+					spyOn(afterChanges, "skip");
+					spyOn(afterChanges, "limit");
 
-					setTimeout(function() {
-						expect(list.store.find).toEqual({
-							title: "/My beautiful knob search works ❤!/gi"
-						});
-						done();
-					}, config.throttle + 100);
-				});
-			});
+					createProp(mockStore, "find", {
+						value: {},
+						beforeChange: function() {},
+						afterChange: afterChanges.find
+					});
 
-			describe("Sort", function() {
-				it("should set the store's sort field properly", function(done) {
+					createProp(mockStore, "sort", {
+						value: {
+							id: -1
+						},
+						beforeChange: function() {},
+						afterChange: afterChanges.sort
+					});
+
+					createProp(mockStore, "skip", {
+						value: 0,
+						beforeChange: function() {},
+						afterChange: afterChanges.skip
+					});
+
+					createProp(mockStore, "limit", {
+						value: 10,
+						beforeChange: function() {},
+						afterChange: afterChanges.limit
+					});
+
 					var config = {
-						store: store,
+						store: mockStore,
+						throttle: 1,
 						fields: Object.keys(fields),
 						sort: [{
 							label: "By Id",
@@ -389,14 +420,164 @@ describe("List", function() {
 						search: "name"
 					};
 
-					var list = createList(config);
+					list = createList(config);
+				});
 
+				it("should change store.find", function(done) {
+					afterChanges.find.calls.reset();
+					expect(afterChanges.find).not.toHaveBeenCalled();
+					list.search("expectNotToBeSet");
+					setTimeout(function() {
+						expect(afterChanges.find).toHaveBeenCalled();
+						done();
+					}, 20);
+				});
+
+				it("should change store.sort", function(done) {
+					afterChanges.sort.calls.reset();
+					expect(afterChanges.sort).not.toHaveBeenCalled();
 					list.sort(list.sortOptions[2]);
+					setTimeout(function() {
+						expect(afterChanges.sort).toHaveBeenCalled();
+						done();
+					}, 20);
+				});
+
+				it("should change store.skip", function(done) {
+					afterChanges.skip.calls.reset();
+					expect(afterChanges.skip).not.toHaveBeenCalled();
+					list.skip(10);
+					setTimeout(function() {
+						expect(afterChanges.skip).toHaveBeenCalled();
+						done();
+					}, 2);
+				});
+
+				it("should change store.limit", function(done) {
+					afterChanges.limit.calls.reset();
+					expect(afterChanges.limit).not.toHaveBeenCalled();
+					list.limit(10);
+					setTimeout(function() {
+						expect(afterChanges.limit).toHaveBeenCalled();
+						done();
+					}, 2);
+				});
+			});
+
+			describe("with externalInit, ", function() {
+
+				var mockStore;
+				var afterChanges;
+				var list;
+
+				beforeAll(function() {
+					mockStore = {
+						items: [],
+						load: {
+							before: {
+								add: function() {}
+							},
+							after: {
+								add: function() {}
+							}
+						}
+					};
+
+					afterChanges = {
+						find: function() {},
+						sort: function() {},
+						skip: function() {},
+						limit: function() {}
+					};
+
+					spyOn(afterChanges, "find");
+					spyOn(afterChanges, "sort");
+					spyOn(afterChanges, "skip");
+					spyOn(afterChanges, "limit");
+
+					createProp(mockStore, "find", {
+						value: {},
+						beforeChange: function() {},
+						afterChange: afterChanges.find
+					});
+
+					createProp(mockStore, "sort", {
+						value: {
+							id: -1
+						},
+						beforeChange: function() {},
+						afterChange: afterChanges.sort
+					});
+
+					createProp(mockStore, "skip", {
+						value: 0,
+						beforeChange: function() {},
+						afterChange: afterChanges.skip
+					});
+
+					createProp(mockStore, "limit", {
+						value: 10,
+						beforeChange: function() {},
+						afterChange: afterChanges.limit
+					});
+
+					var config = {
+						store: mockStore,
+						externalInit: true,
+						throttle: 1,
+						fields: Object.keys(fields),
+						sort: [{
+							label: "By Id",
+							value: "id"
+						}, {
+							label: "By Name",
+							value: "name"
+						}],
+						search: "name"
+					};
+
+					list = createList(config);
+				});
+
+				it("list should not change store.find", function(done) {
+					expect(afterChanges.find).not.toHaveBeenCalled();
+
+					list.search("expectNotToBeSet");
 
 					setTimeout(function() {
-						expect(list.store.sort).toEqual(list.sortOptions[2].value);
+						expect(afterChanges.find).not.toHaveBeenCalled();
 						done();
-					}, 100);
+					}, 2);
+				});
+
+				it("list should not change store.sort", function(done) {
+					expect(afterChanges.sort).not.toHaveBeenCalled();
+
+					list.sort(list.sortOptions[0]);
+					setTimeout(function() {
+						expect(afterChanges.sort).not.toHaveBeenCalled();
+						done();
+					}, 2);
+				});
+
+				it("list should not change store.skip", function(done) {
+					expect(afterChanges.skip).not.toHaveBeenCalled();
+
+					list.skip(10);
+					setTimeout(function() {
+						expect(afterChanges.skip).not.toHaveBeenCalled();
+						done();
+					}, 2);
+				});
+
+				it("list should not change store.limit", function(done) {
+					expect(afterChanges.limit).not.toHaveBeenCalled();
+
+					list.limit(10);
+					setTimeout(function() {
+						expect(afterChanges.limit).not.toHaveBeenCalled();
+						done();
+					}, 2);
 				});
 			});
 		});

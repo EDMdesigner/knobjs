@@ -83,16 +83,26 @@ module.exports = function createList(config) {
 
 	var sortOptions = [];
 
-	var defaultOrderIdx;
+	function findSortIdx(orderBy) {
+		var idx;
+
+		for (var i = 0; i < sortOptions.length; i += 1) {
+			var actOption = sortOptions[i].value;
+			var optionField = Object.keys(actOption)[0];
+			var orderByField = Object.keys(orderBy)[0];
+
+			if (optionField === orderByField &&
+				actOption[optionField] === orderBy[orderByField]) {
+				idx = i;
+			}
+		}
+		return idx;
+	}
 
 	function createQueryObj(prop, asc) {
 		var obj = {};
 
 		obj[prop] = asc;
-
-		if (orderField && prop === orderField && asc === config.orderBy[orderField]) {
-			defaultOrderIdx = sortOptions.length;
-		}
 
 		return obj;
 	}
@@ -115,8 +125,19 @@ module.exports = function createList(config) {
 		});
 	}
 
+	var defaultOrderIdx;
+
+	if (orderField) {
+		defaultOrderIdx = findSortIdx(config.orderBy);
+	}
+
 	var sort = ko.observable(sortOptions[defaultOrderIdx || 0]);
-	var sortIdx = defaultOrderIdx || 0;
+
+	var sortIdx = ko.computed(function() {
+		var sortVal = sort().value;
+
+		return findSortIdx(sortVal);
+	});
 
 	var skip = ko.observable(0);
 	var limit = ko.observable(0);
@@ -132,23 +153,30 @@ module.exports = function createList(config) {
 	var loading = ko.observable(false); //should be read-only
 	var error = ko.observable(false); //should be read-only?
 
-	ko.computed(function() {
-		var searchVal = search();
-		var sortVal = sort().value;
-		var skipVal = skip();
-		var limitVal = limit();
+	var initStoreHandling = function() {
+		ko.computed(function() {
+			var searchVal = search();
+			var sortVal = sort().value;
+			var skipVal = skip();
+			var limitVal = limit();
 
-		var find = {};
+			var find = {};
 
-		find[config.search] = (new RegExp(searchVal, "ig")).toString();
+			find[config.search] = (new RegExp(searchVal, "ig")).toString();
 
-		store.find = find;
-		store.sort = sortVal;
-		store.skip = skipVal;
-		store.limit = limitVal;
-	}).extend({
-		throttle: 0
-	});
+			store.find = find;
+			store.sort = sortVal;
+			store.skip = skipVal;
+			store.limit = limitVal;
+		}).extend({
+			throttle: 0
+		});
+	};
+
+	if (!config.externalInit) {
+		initStoreHandling();
+	}
+
 
 	function beforeLoad() {
 		if (loading()) {
@@ -194,7 +222,7 @@ module.exports = function createList(config) {
 		search: search,
 
 		sort: sort,
-		sortIdx: sortIdx,
+		sortIdx: sortIdx(),
 		sortOptions: sortOptions,
 
 		skip: skip,
@@ -202,6 +230,9 @@ module.exports = function createList(config) {
 
 		items: items,
 		count: readOnlyComputed(count),
+
+		findSortIdx: findSortIdx,
+		initStoreHandling: initStoreHandling,
 
 		loading: readOnlyComputed(loading),
 		error: readOnlyComputed(error)
