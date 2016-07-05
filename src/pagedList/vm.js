@@ -53,6 +53,10 @@ module.exports = function createPagedList(config) {
 				if (result.data.itemsPerPage) {
 					itemsPerPage(result.data.itemsPerPage);
 				}
+
+				if (result.data.search) {
+					list.search(result.data.search);
+				}
 			}
 			initStoreHandling();
 		});
@@ -75,11 +79,13 @@ module.exports = function createPagedList(config) {
 
 			ko.computed(function() {
 				var sortVal = list.sort().value;
+				var searchVal = list.search();
 				var itemsPerPageVal = itemsPerPage();
 
 				config.stateModel.create({
 					name: name,
 					sort: sortVal,
+					search: searchVal,
 					itemsPerPage: itemsPerPageVal
 				}, function(err) {
 					if (err) {
