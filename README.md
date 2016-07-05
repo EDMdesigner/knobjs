@@ -44,7 +44,7 @@ click     | function | No           |               | This is the callback which
 
 ## knob-input
 
-This is the other most basic component in knobjs. It's just a simple imput, but you can style it in the [knob way](#styling-knob-components).
+This is the other most basic component in knobjs. It's just a simple input, but you can style it in the [knob way](#styling-knob-components).
 
 ### Params
 
@@ -574,4 +574,28 @@ knob.init({
 		noResults: "No results"
 	}
 });
+```
+
+## knob-checkbox
+
+Checkbox component in knobjs. It has two state: checked (marked by a tick) or unchecked (marked by a cross). It's value is it's state (boolean). You can style it by giving icons object as parameter.
+
+### Params
+
+Param     | Type                    | Required | Default value         | Description
+---       |---                      |---       |---                    |---
+value     | ko.observable           | Yes      |                       | This is the observable in which the value will be written. If you want to use the value of the checkbox, then you must give it as a parameter.
+icons     | object                  | No       | { tick: icons.tick, cross: icons.cross } | You can set custon icons belonging to checked and unchecked states
+
+### Example
+```html
+<knob-checkbox params="
+	value: checkboxValue
+"></knob-checkbox>
+
+<script>
+	ko.applyBindings({
+		checkboxValue: ko.observable(false)
+	});
+</script>
 ```
