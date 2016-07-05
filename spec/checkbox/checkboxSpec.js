@@ -201,5 +201,26 @@ describe("Checkbox", function() {
 				}
 			});
 		});
+
+		it("value change on click", function() {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				icons: {
+					tick: tickIcon,
+					cross: crossIcon
+				},
+				value: value
+			};
+
+			checkboxVm = createCheckbox(config);
+			var initialValue = value();
+			checkboxVm.click();
+			expect(checkboxVm.value()).toBe(!initialValue);
+			checkboxVm.click();
+			expect(checkboxVm.value()).toBe(initialValue);
+		});
 	});
 });
