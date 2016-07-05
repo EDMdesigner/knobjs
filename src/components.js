@@ -73,7 +73,7 @@ function initKnob(config) {
 	var icons = extend(true, {}, defaultIcons, config.icons);
 	var labels = extend(true, {}, defaultLabels, config.labels);
 
-	if (!theme) {
+	if (typeof theme === "object") {
 
 		if (typeof theme.createButtonStyle !== "function") {
 			throw new Error("config.theme.createButtonStyle must be a function");
