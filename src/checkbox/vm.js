@@ -39,6 +39,10 @@ function createCheckbox(config) {
 	vm.cross = ko.observable(ko.unwrap(icons.cross));
 	vm.value = config.value;
 	vm.click = function(){
+		if(vm.state() === "disabled") {
+			return;
+		}
+
 		vm.value(!vm.value());
 	};
 
