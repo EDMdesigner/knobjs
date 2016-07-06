@@ -40,6 +40,9 @@ var createNotificationStyleTheme2 = require("./notificationBar/theme2");
 var createNotificationStyleTheme3 = require("./notificationBar/theme3");
 var createNotificationStyleTheme4 = require("./notificationBar/theme4");
 
+var createCheckboxStyle;
+var createCheckboxStyleDefault = require("./checkbox/style");
+
 function initKnob(config) {
 	var defaultIcons = {
 		search: "#icon-search",
@@ -54,7 +57,9 @@ function initKnob(config) {
 			prev: "#icon-chevron-left",
 			last: "#icon-last-page",
 			next: "#icon-chevron-right"
-		}
+		},
+		tick: "#icon-check",
+		cross: "#icon-close"
 	};
 
 	var defaultLabels = {
@@ -68,7 +73,7 @@ function initKnob(config) {
 	var icons = extend(true, {}, defaultIcons, config.icons);
 	var labels = extend(true, {}, defaultLabels, config.labels);
 
-	if (typeof theme === "object") {
+	if (typeof theme === "object" && theme !== null) {
 
 		if (typeof theme.createButtonStyle !== "function") {
 			throw new Error("config.theme.createButtonStyle must be a function");
@@ -90,11 +95,16 @@ function initKnob(config) {
 			throw new Error("config.theme.createNotificationStyle must be a function");
 		}
 
+		if (typeof theme.createCheckboxStyle !== "function") {
+			throw new Error("config.theme.createCheckboxStyle must be a function");
+		}
+
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
+		checkboxStyle = theme.createCheckboxStyle;
 
 	} else if (typeof theme === "string") {
 
@@ -124,12 +134,14 @@ function initKnob(config) {
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		}
+		createCheckboxStyle = createCheckboxStyleDefault;
 
 	} else {
 		throw new Error("config.theme should be an object or a string");
 	}
 
 	var buttonStyle = createButtonStyle(colorSet);
+	var checkboxStyle = createCheckboxStyle(colorSet);
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(colorSet));
@@ -176,6 +188,16 @@ function initKnob(config) {
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
 
 	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(colorSet));
+	registerComponent(
+		"knob-checkbox",
+		require("./checkbox/vm"),
+		require("./checkbox/template.html"),
+		checkboxStyle,
+		{
+			tick: icons.tick,
+			cross: icons.cross
+		}
+	);
 }
 
 module.exports = {
