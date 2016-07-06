@@ -222,5 +222,25 @@ describe("Checkbox", function() {
 			checkboxVm.click();
 			expect(checkboxVm.value()).toBe(initialValue);
 		});
+
+		it("handle disabled state", function() {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				icons: {
+					tick: tickIcon,
+					cross: crossIcon
+				},
+				value: value,
+				state: "disabled"
+			};
+
+			checkboxVm = createCheckbox(config);
+			var initialValue = value();
+			checkboxVm.click();
+			expect(checkboxVm.value()).toBe(initialValue);
+		});
 	});
 });
