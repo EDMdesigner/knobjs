@@ -159,5 +159,6 @@ ko.applyBindings({
 	alertVisible: ko.observable(false),
 	alertCallback: alertClose,
 	notificationVisible: ko.observable(false),
-	checkboxValue: ko.observable(false)
+	checkboxValue: ko.observable(false),
+	disabledCheckBoxValue: ko.observable(true)
 });
