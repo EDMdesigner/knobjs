@@ -20,6 +20,9 @@ function createButton(config) {
 
 	config.component = "button";
 
+	var triggerOnHold = config.triggerOnHold || false;
+	var click = config.click;
+	var interval;
 	var vm = base(config);
 
 	vm.behaviours.hover.enable();
@@ -29,6 +32,16 @@ function createButton(config) {
 	} else {
 		vm.behaviours.click.enable();
 	}
+
+	ko.computed(function() {
+		if(triggerOnHold === true && vm.state() === "active") {
+			interval = setInterval(click, 500);
+		}
+
+		if(triggerOnHold === true && vm.state() === "hover") {
+			clearInterval(interval);
+		}
+	});
 
 	vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 	vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
