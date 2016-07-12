@@ -40,6 +40,8 @@ function createNumberInput(config) {
 		inputValue(parseFloat(val));
 	});
 
+	//var onHoldStep = step;
+
 	var controlButtons = [
 		{
 			icon: "#icon-arrow-downward",
@@ -67,7 +69,8 @@ function createNumberInput(config) {
 		inputValue: inputValue,
 		controlButtons: controlButtons,
 		prefix: prefix,
-		postfix: postfix
+		postfix: postfix,
+		triggerOnHold: true
 	};
 }
 

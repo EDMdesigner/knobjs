@@ -20,9 +20,11 @@ function createButton(config) {
 
 	config.component = "button";
 
+	console.log(config.triggerOnHold);
+	
 	var triggerOnHold = config.triggerOnHold || false;
 	var click = config.click;
-	var interval;
+
 	var vm = base(config);
 
 	vm.behaviours.hover.enable();
@@ -33,13 +35,41 @@ function createButton(config) {
 		vm.behaviours.click.enable();
 	}
 
+
+	var timeoutId = null;
+	var timeout = 500;
+	var timeoutMin = 50;
+	var timeoutDiff = 100;
+	var x = 0;
+	function decoratedClick() {
+		click();
+		timeoutId = setTimeout(function() {
+			console.log("asdf", x);
+			x += 1;
+			timeout -= 100;
+
+			if (timeout < 50) {
+				timeout = 50;
+			}
+
+
+			if (vm.state() === "active") {
+				decoratedClick();
+			} else {
+				clearTimeout(timeoutId);
+				timeoutId = null;
+			}
+		}, timeout);
+	}
+
 	ko.computed(function() {
-		if(triggerOnHold === true && vm.state() === "active") {
-			interval = setInterval(click, 500);
+		if(timeoutId) {
+			return;
 		}
 
-		if(triggerOnHold === true && vm.state() === "hover") {
-			clearInterval(interval);
+		if(triggerOnHold === true && vm.state() === "active") {
+			timeout = 500;
+			decoratedClick();
 		}
 	});
 
