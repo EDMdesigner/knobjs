@@ -1,6 +1,6 @@
 var ko = require("knockout");
 var hoverBehaviour = require("../../../src/base/behaviours/hover");
-var clickBehaviour = require("../../../src/base/behaviours/click");
+//var clickBehaviour = require("../../../src/base/behaviours/click");
 var selectBehaviour = require("../../../src/base/behaviours/select");
 var focusBehaviour = require("../../../src/base/behaviours/focus");
 
@@ -22,7 +22,7 @@ function describeEventHandler(config) {
 			if (!configVm) {
 				switch (behaviour) {
 					case "click": {
-						clickBehaviour(vm);
+						// clickBehaviour(vm);
 						break;
 					}
 					case "select": {

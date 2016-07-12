@@ -2,7 +2,7 @@
 var ko = require("knockout");
 var createVmBase = require("../../src/base/vm");
 
-describe("base vm", function() {
+xdescribe("base vm", function() {
 	describe("with invalid config", function() {
 		it("config.component", function() {
 			expect(createVmBase).toThrowError("config.component is mandatory!");
