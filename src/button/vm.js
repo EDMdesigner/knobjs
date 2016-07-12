@@ -38,8 +38,8 @@ function createButton(config) {
 
 	var timeoutId = null;
 	var timeout = 500;
-	var timeoutMin = 50;
-	var timeoutDiff = 100;
+	// var timeoutMin = 50;
+	// var timeoutDiff = 100;
 	var x = 0;
 	function decoratedClick() {
 		click();

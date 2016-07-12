@@ -198,7 +198,7 @@ function initKnob(config) {
 			cross: icons.cross
 		}
 	);
-	registerComponent("knob-numberinput", require("./numberInput/vm"), require("./numberInput/template.html"));
+	registerComponent("knob-numericinput", require("./numericInput/vm"), require("./numericInput/template.html"));
 }
 
 module.exports = {
