@@ -6,8 +6,7 @@ describe("Focus behaviour", function() {
 	describe("with invalid config", function() {
 		it("missing config", function() {
 			var focusBehaviour = focusCore({
-				ko: ko/*,
-				window: {}*/
+				ko: ko
 			});
 
 			expect(focusBehaviour).toThrowError("vm is mandatory!");
@@ -15,8 +14,7 @@ describe("Focus behaviour", function() {
 
 		it("state not observable", function() {
 			var focusBehaviour = focusCore({
-				ko: ko/*,
-				window: {}*/
+				ko: ko
 			});
 
 			var mockVm = {

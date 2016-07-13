@@ -1,7 +1,5 @@
 var hoverCore = require("../../../src/base/behaviours/hoverCore");
 var ko = require("knockout");
-/*var invalidConfig = require("./invalidConfigHelper");
-var describeEventHandler = require("./behaviourHelper");*/
 
 describe("Hover behaviour", function() {
 
@@ -20,7 +18,7 @@ describe("Hover behaviour", function() {
 			});
 
 			var mockVm = {
-				state: "notAnObservables"
+				state: "notAnObservable"
 			};
 
 			expect(function() {
@@ -66,7 +64,7 @@ describe("Hover behaviour", function() {
 		});
 
 		//hover other mouseover
-		it("state changes to hover if not disabeld or active on mouseOver", function() {
+		it("state changes to hover if not disabled or active on mouseOver", function() {
 			mockVm.eventHandlers.mouseover();
 			expect(mockVm.state()).toBe("hover");
 		});

@@ -1,5 +1,6 @@
-var selectBehaviour = require("../../../src/base/behaviours/select");
+var selectCore = require("../../../src/base/behaviours/selectCore");
 var createButton = require("../../../src/button/vm");
+var ko = require("knockout");
 
 var componentName = "myTestComponent";
 var variation = "myTestVariation";
@@ -37,21 +38,47 @@ var config = {
 	value: value
 };
 
-describe("SelectSpec", function() {
+describe("Select behaviour", function() {
 
 	describe("Invalid configs", function() {
+		var selectBehaviour = selectCore({
+			ko: ko
+		});
+
 		it("vm is missing", function() {
 			expect(selectBehaviour).toThrowError("vm is mandatory!");
 		});
 
+		var mockVm = {
+			state: "notAnObservable"
+		};
+
+		it("state has to be an observable", function() {
+			expect(function () {
+				selectBehaviour(mockVm);
+			}).toThrowError("vm.state has to be a knockout observable!");
+		});
 	});
 
 	describe("Valid config", function() {
+		var mockVm;
+		var selectBehaviour;
+		var buttons;
+		var buttonCount;
 
-		it("Behaviour test", function() {
+		beforeEach(function() {
+			mockVm = {
+				state: ko.observable("default")
+			};
 
-			var buttons = [];
-			var buttonCount = 5;
+			selectBehaviour = selectCore({
+				ko: ko
+			});
+
+			selectBehaviour(mockVm);
+
+			buttons = [];
+			buttonCount = 5;
 
 			for (var i = 0; i < buttonCount; i += 1) {
 				var actButton = createButton(config);
@@ -59,21 +86,48 @@ describe("SelectSpec", function() {
 				selectBehaviour(actButton);
 				buttons.push(actButton);
 			}
+		});
 
-			buttons[0].eventHandlers.mousedown();
-			expect(buttons[0].state()).toBe("active");
-			buttons[0].eventHandlers.mouseup();
-			for (var i = 1; i < buttonCount; i += 1) {
-				expect(buttons[i].state()).toBe("default");
+		//interface check
+		it("eventHandlers are functions, state is ko.observable", function() {
+			expect(typeof mockVm.eventHandlers.mousedown).toBe("function");
+			expect(typeof mockVm.eventHandlers.mouseup).toBe("function");
+			expect(ko.isObservable(mockVm.state)).toBe(true);
+		});
+
+		//mousedown disabled
+		it("state remains unchanged when disabled on mousedown", function() {
+			mockVm.state("disabled");
+
+			mockVm.eventHandlers.mousedown();
+			expect(mockVm.state()).toBe("disabled");
+		});
+
+		//mousedown non-disabled
+		it("state changes to active when not disabled on mousedown", function() {
+			mockVm.eventHandlers.mousedown();
+			expect(mockVm.state()).toBe("active");
+
+			for(var idx = 0; idx < buttonCount; idx += 1) {
+				expect(buttons[idx].state()).toBe("default");
 			}
+		});
 
-			buttons[buttonCount - 1].eventHandlers.mousedown();
-			expect(buttons[buttonCount - 1].state()).toBe("active");
-			buttons[buttonCount - 1].eventHandlers.mouseup();
-			for (var i = 0; i < buttonCount - 1; i += 1) {
-				expect(buttons[i].state()).toBe("default");
+		//mouseup disabled
+		it("state remains unchanged when disabled on mouseup", function() {
+			mockVm.state("disabled");
+
+			mockVm.eventHandlers.mouseup();
+			expect(mockVm.state()).toBe("disabled");
+		});
+
+		//mouseup non-disabled
+		it("states of others in the gourp changes to default on mouseup", function() {
+			mockVm.eventHandlers.mouseup();
+
+			for(var idx = 0; idx < buttonCount; idx += 1) {
+				expect(buttons[idx].state()).toBe("default");
 			}
-
 		});
 	});
 });

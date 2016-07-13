@@ -114,8 +114,6 @@ describe("Click behaviour", function() {
 			mockVm.eventHandlers.mouseup();
 
 			expect(mockVm.state()).toBe("hover");
-			expect(typeof mockVm.eventHandlers.mouseup).toBe("function");
-			expect(typeof mockVm.eventHandlers.mousedown).toBe("function");
 		});
 	});
 });
