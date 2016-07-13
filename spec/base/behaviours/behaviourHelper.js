@@ -4,6 +4,9 @@ var ko = require("knockout");
 //var selectBehaviour = require("../../../src/base/behaviours/select");
 //var focusBehaviour = require("../../../src/base/behaviours/focus");
 
+//buttonSpec and checkBoxSpec uses this file only, if those are modified in
+//in the required way this file can be removed
+
 function describeEventHandler(config) {
 	var firstEvent = config.firstEvent;
 	var secondEvent = config.secondEvent;
