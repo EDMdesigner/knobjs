@@ -22,19 +22,19 @@ function describeEventHandler(config) {
 			if (!configVm) {
 				switch (behaviour) {
 					case "click": {
-						clickBehaviour(vm);
+						//clickBehaviour(vm);
 						break;
 					}
 					case "select": {
-						selectBehaviour(vm);
+						//selectBehaviour(vm);
 						break;
 					}
 					case "hover": {
-						hoverBehaviour(vm);
+						//hoverBehaviour(vm);
 						break;
 					}
 					case "focus": {
-						focusBehaviour(vm);
+						//focusBehaviour(vm);
 						break;
 					}
 					default: {
