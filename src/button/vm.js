@@ -73,7 +73,7 @@ function createButton(config) {
 	vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 	vm.label = ko.observable(ko.unwrap(config.label));
 	vm.value = config.value;
-	vm.click = (!triggerOnHold.minTimeout ? click : decoratedClick);
+	vm.click = (!triggerOnHold ? click : decoratedClick);
 
 	return vm;
 }
