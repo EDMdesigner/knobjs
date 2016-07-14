@@ -26,12 +26,16 @@ function createNumberInput(config) {
 	if(config.postfix && typeof config.postfix !== "string") {
 		throw new Error("config.postfix should be a string");
 	}
+
 	var minValue = config.minValue;
 	var maxValue = config.maxValue;
 	var initValue = config.initValue;
 	var step = config.step;
 	var prefix = config.prefix;
 	var postfix = config.postfix;
+	var minTimeout = config.minTimeout || 50;
+	var timeoutDecrement = config.timeoutDecrement || 100;
+	var baseTimeout = config.baseTimeout || 500;
 
 	var inputValue = ko.observable(initValue);
 
@@ -39,8 +43,6 @@ function createNumberInput(config) {
 		var val = inputValue();
 		inputValue(parseFloat(val));
 	});
-
-	//var onHoldStep = step;
 
 	var controlButtons = [
 		{
@@ -65,12 +67,18 @@ function createNumberInput(config) {
 		}
 	];
 
+	var triggerOnHold = {
+		minTimeout: minTimeout,
+		timeoutDecrement: timeoutDecrement,
+		baseTimeout: baseTimeout
+	};
+
 	return {
 		inputValue: inputValue,
 		controlButtons: controlButtons,
 		prefix: prefix,
 		postfix: postfix,
-		triggerOnHold: true
+		triggerOnHold: triggerOnHold
 	};
 }
 

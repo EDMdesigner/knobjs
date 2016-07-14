@@ -20,10 +20,8 @@ function createButton(config) {
 
 	config.component = "button";
 
-	console.log(config.triggerOnHold);
-	
-	var triggerOnHold = config.triggerOnHold || false;
 	var click = config.click;
+	var triggerOnHold = config.triggerOnHold || false;
 
 	var vm = base(config);
 
@@ -35,21 +33,19 @@ function createButton(config) {
 		vm.behaviours.click.enable();
 	}
 
-
 	var timeoutId = null;
-	var timeout = 500;
-	// var timeoutMin = 50;
-	// var timeoutDiff = 100;
-	var x = 0;
-	function decoratedClick() {
+	var baseTimeout = triggerOnHold.baseTimeout || null;
+	var minTimeout = triggerOnHold.minTimeout || null;
+	var timeoutDecrement = triggerOnHold.timeoutDecrement || null;
+	var timeout = baseTimeout;
+
+	var decoratedClick = function() {
 		click();
 		timeoutId = setTimeout(function() {
-			console.log("asdf", x);
-			x += 1;
-			timeout -= 100;
+			timeout -= timeoutDecrement;
 
-			if (timeout < 50) {
-				timeout = 50;
+			if (timeout < minTimeout) {
+				timeout = minTimeout;
 			}
 
 
@@ -60,15 +56,15 @@ function createButton(config) {
 				timeoutId = null;
 			}
 		}, timeout);
-	}
+	};
 
 	ko.computed(function() {
 		if(timeoutId) {
 			return;
 		}
 
-		if(triggerOnHold === true && vm.state() === "active") {
-			timeout = 500;
+		if(triggerOnHold && vm.state() === "active") {
+			timeout = baseTimeout;
 			decoratedClick();
 		}
 	});
@@ -77,7 +73,7 @@ function createButton(config) {
 	vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 	vm.label = ko.observable(ko.unwrap(config.label));
 	vm.value = config.value;
-	vm.click = config.click || function() {};
+	vm.click = (!triggerOnHold.minTimeout ? click : decoratedClick);
 
 	return vm;
 }
