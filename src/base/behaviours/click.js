@@ -3,7 +3,7 @@
 var ko = require("knockout");
 var clickCore = require("./clickCore");
 
-if (typeof window === "undefined") {
+if(typeof window === "undefined") {
 	var window = {};
 }
 
