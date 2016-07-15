@@ -1,5 +1,5 @@
 var ko = require("knockout");
-var createInput = require("../../src/input/vm");
+var inputCore = require("../../src/input/core");
 
 var style = {
 	default: {
@@ -22,10 +22,24 @@ describe("Input", function() {
 
 	describe("- with invalid config", function() {
 		it("missing config", function() {
+			var mockBase = {};
+
+			var createInput = inputCore({
+				ko: ko,
+				base: mockBase
+			});
+
 			expect(createInput).toThrowError("config is mandatory!");
 		});
 
 		it("invalid value type", function() {
+			var mockBase = {};
+
+			var createInput = inputCore({
+				ko: ko,
+				base: mockBase
+			});
+
 			expect(function() {
 				createInput({
 					type: "text",
@@ -36,6 +50,13 @@ describe("Input", function() {
 		});
 
 		it("invalid hasFocus type", function() {
+			var mockBase = {};
+
+			var createInput = inputCore({
+				ko: ko,
+				base: mockBase
+			});
+
 			expect(function() {
 				createInput({
 					type: "text",
@@ -47,27 +68,60 @@ describe("Input", function() {
 	});
 
 	describe("- with valid config", function() {
+		var mockBase;
+		var createInput;
+		var inputVm;
+
+		beforeEach(function () {
+			function createMockBaseFunction() {
+				return function() {
+					var vm = {
+						behaviours: {
+							hover: {
+								enable: function() {
+
+								},
+							},
+							focus: {
+								enable: function() {
+
+								},
+							}
+						}
+					};
+
+					spyOn(vm.behaviours.hover, "enable");
+					spyOn(vm.behaviours.focus, "enable");
+
+					return vm;
+				};
+			}
+
+			mockBase = createMockBaseFunction();
+			createInput = inputCore({
+				ko: ko,
+				base: mockBase
+			});
+		});
+
 		var config = {
 			type: "text",
 			style: style
 		};
 
-		var inputVm = createInput(config);
-
 		it("interface", function() {
-			expect(typeof inputVm.eventHandlers.mouseover).toBe("function");
-			expect(typeof inputVm.eventHandlers.focus).toBe("function");
+			inputVm = createInput(config);
+
 			expect(ko.isObservable(inputVm.hasFocus)).toBe(true);
+			expect(ko.isObservable(inputVm.value)).toBe(true);
+			expect(typeof inputVm.type).toBe("string");
 		});
 
-		it("style behaviour", function() {
-			inputVm.eventHandlers.mouseover();
-			expect(inputVm.style()).toBe(style.default.hover);
-			inputVm.eventHandlers.mouseout();
-			expect(inputVm.style()).toBe(style.default.default);
-			inputVm.eventHandlers.focus();
-			expect(inputVm.style()).toBe(style.default.active);
+		it("behaviour check", function() {
+			inputVm = createInput(config);
 
+			expect(inputVm.behaviours.hover.enable).toHaveBeenCalled();
+			expect(inputVm.behaviours.focus.enable).toHaveBeenCalled();
 		});
 	});
 });
