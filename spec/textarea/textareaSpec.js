@@ -1,5 +1,5 @@
 var ko = require("knockout");
-var inputCore = require("../../src/input/core");
+var textareaCore = require("../../src/textarea/core");
 
 var style = {
 	default: {
@@ -18,30 +18,30 @@ var style = {
 	}
 };
 
-describe("Input", function() {
+describe("Textarea", function() {
 
 	describe("- with invalid config", function() {
 		it("missing config", function() {
 			var mockBase = {};
 
-			var createInput = inputCore({
+			var createTextarea = textareaCore({
 				ko: ko,
 				base: mockBase
 			});
 
-			expect(createInput).toThrowError("config is mandatory!");
+			expect(createTextarea).toThrowError("config is mandatory!");
 		});
 
 		it("invalid value type", function() {
 			var mockBase = {};
 
-			var createInput = inputCore({
+			var createTextarea = textareaCore({
 				ko: ko,
 				base: mockBase
 			});
 
 			expect(function() {
-				createInput({
+				createTextarea({
 					type: "text",
 					style: style,
 					value: "string"
@@ -52,13 +52,13 @@ describe("Input", function() {
 		it("invalid hasFocus type", function() {
 			var mockBase = {};
 
-			var createInput = inputCore({
+			var createTextarea = textareaCore({
 				ko: ko,
 				base: mockBase
 			});
 
 			expect(function() {
-				createInput({
+				createTextarea({
 					type: "text",
 					style: style,
 					hasFocus: "string"
@@ -69,7 +69,7 @@ describe("Input", function() {
 
 	describe("- with valid config", function() {
 		var mockBase;
-		var createInput;
+		var createTextarea;
 		var inputVm;
 
 		beforeEach(function () {
@@ -98,7 +98,7 @@ describe("Input", function() {
 			}
 
 			mockBase = createMockBaseFunction();
-			createInput = inputCore({
+			createTextarea = textareaCore({
 				ko: ko,
 				base: mockBase
 			});
@@ -110,15 +110,14 @@ describe("Input", function() {
 		};
 
 		it("interface", function() {
-			inputVm = createInput(config);
+			inputVm = createTextarea(config);
 
 			expect(ko.isObservable(inputVm.hasFocus)).toBe(true);
 			expect(ko.isObservable(inputVm.value)).toBe(true);
-			expect(typeof inputVm.type).toBe("string");
 		});
 
 		it("behaviour check", function() {
-			inputVm = createInput(config);
+			inputVm = createTextarea(config);
 
 			expect(inputVm.behaviours.hover.enable).toHaveBeenCalled();
 			expect(inputVm.behaviours.focus.enable).toHaveBeenCalled();

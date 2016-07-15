@@ -1,31 +1,10 @@
 "use strict";
 
 var base = require("../base/vm");
+var core = require("./core");
 
-function createFluidRow(config) {
-	if (!config) {
-		throw new Error("config is mandatory!");
-	}
+var dependencies = {
+	base: base
+};
 
-	if (!config.label) {
-		throw new Error("config.label is mandatory!");
-	}
-
-	if (config.multiline && typeof config.multiline !== "boolean") {
-		throw new Error("config.multiline must be a boolean!");
-	}
-
-	config.component = "fluid-row";
-
-	var label = config.label;
-	var multiline = config.multiline || false;
-
-	var vm = base(config);
-
-	vm.label = label;
-	vm.multiline = multiline;
-
-	return vm;
-}
-
-module.exports = createFluidRow;
+module.exports = core(dependencies);

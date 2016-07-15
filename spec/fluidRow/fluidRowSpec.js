@@ -1,8 +1,13 @@
-var createFluidRow = require("../../src/fluidRow/vm");
+var fluidRowCore = require("../../src/fluidRow/core");
 
 describe("Fluid Row", function() {
-
 	describe("- with invalid config", function() {
+		var mockBase = {};
+
+		var createFluidRow = fluidRowCore({
+			base: mockBase
+		});
+
 		it("missing config", function() {
 			expect(createFluidRow).toThrowError("config is mandatory!");
 		});
@@ -23,11 +28,10 @@ describe("Fluid Row", function() {
 		});
 	});
 
-
 	describe("- with valid config", function() {
-
 		var style;
 		var config;
+		var createFluidRow;
 
 		beforeAll(function() {
 			style = {
@@ -43,6 +47,10 @@ describe("Fluid Row", function() {
 				label: "Label",
 				style: style
 			};
+
+			createFluidRow = fluidRowCore({
+				base: function() { return {}; }
+			});
 		});
 
 		describe("without multiline", function() {

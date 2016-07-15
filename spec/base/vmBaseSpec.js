@@ -1,16 +1,48 @@
 
 var ko = require("knockout");
-var createVmBase = require("../../src/base/vm");
+var createVmBase = require("../../src/base/vmCore");
 
-describe("base vm", function() {
+describe("Base vm", function() {
 	describe("with invalid config", function() {
 		it("config.component", function() {
-			expect(createVmBase).toThrowError("config.component is mandatory!");
+			var baseVm = createVmBase({
+				ko: ko,
+				hoverBehaviour: function() {
+
+				},
+				focusBehaviour: function() {
+
+				},
+				clickBehaviour: function() {
+
+				},
+				selectBehaviour: function() {
+
+				}
+			});
+
+			expect(baseVm).toThrowError("config.component is mandatory!");
 		});
 
 		it("config.style", function() {
+			var baseVm = createVmBase({
+				ko: ko,
+				hoverBehaviour: function() {
+
+				},
+				focusBehaviour: function() {
+
+				},
+				clickBehaviour: function() {
+
+				},
+				selectBehaviour: function() {
+
+				}
+			});
+
 			expect(function() {
-				createVmBase({
+				baseVm({
 					component: "test"
 				});
 			}).toThrowError("config.style is mandatory!");
@@ -22,6 +54,7 @@ describe("base vm", function() {
 		var componentName = "myTestComponent";
 		var variation = "myTestVariation";
 		var initialState = "myInitialState";
+		var mockVm;
 
 		var style = {
 			myTestVariation: {
@@ -43,8 +76,33 @@ describe("base vm", function() {
 			}
 		};
 
+		var mockBehaviours; 
+
 		beforeEach(function() {
-			baseVm = createVmBase({
+			mockBehaviours = {
+				ko: ko,
+				hoverBehaviour: function() {
+
+				},
+				focusBehaviour: function() {
+
+				},
+				clickBehaviour: function() {
+
+				},
+				selectBehaviour: function() {
+
+				}
+			};
+
+			spyOn(mockBehaviours, "hoverBehaviour");
+			spyOn(mockBehaviours, "focusBehaviour");
+			spyOn(mockBehaviours, "clickBehaviour");
+			spyOn(mockBehaviours, "selectBehaviour");
+
+			baseVm = createVmBase(mockBehaviours);
+
+			mockVm = baseVm({
 				component: componentName,
 				style: style,
 
@@ -54,12 +112,12 @@ describe("base vm", function() {
 		});
 
 		it("interface", function() {
-			expect(typeof baseVm.variation).toBe("string");
-			expect(ko.isObservable(baseVm.state)).toBe(true);
-			expect(ko.isComputed(baseVm.cssClass)).toBe(true);
-			expect(ko.isComputed(baseVm.style)).toBe(true);
-			expect(typeof baseVm.eventHandlers).toBe("object");
-			expect(typeof baseVm.behaviours).toBe("object");
+			expect(typeof mockVm.variation).toBe("string");
+			expect(ko.isObservable(mockVm.state)).toBe(true);
+			expect(ko.isComputed(mockVm.cssClass)).toBe(true);
+			expect(ko.isComputed(mockVm.style)).toBe(true);
+			expect(typeof mockVm.eventHandlers).toBe("object");
+			expect(typeof mockVm.behaviours).toBe("object");
 
 			function expectBehaviourEnabler(enabler) {
 				expect(typeof enabler).toBe("object");
@@ -68,103 +126,57 @@ describe("base vm", function() {
 				expect(typeof enabler.disable).toBe("function");
 			}
 
-			expectBehaviourEnabler(baseVm.behaviours.hover);
-			expectBehaviourEnabler(baseVm.behaviours.focus);
-			expectBehaviourEnabler(baseVm.behaviours.click);
-			expectBehaviourEnabler(baseVm.behaviours.select);
+			expectBehaviourEnabler(mockVm.behaviours.hover);
+			expectBehaviourEnabler(mockVm.behaviours.focus);
+			expectBehaviourEnabler(mockVm.behaviours.click);
+			expectBehaviourEnabler(mockVm.behaviours.select);
 		});
 
 		it("initial values", function() {
-			expect(baseVm.cssClass()).toBe("knob-" + componentName + " state-" + initialState + " variation-" + variation);
-			expect(baseVm.style()).toBe(style.myTestVariation.myInitialState);
+			expect(mockVm.cssClass()).toBe("knob-" + componentName + " state-" + initialState + " variation-" + variation);
+			expect(mockVm.style()).toBe(style.myTestVariation.myInitialState);
 		});
 
 		it("state change", function() {
-			baseVm.state("default");
-			expect(baseVm.cssClass()).toBe("knob-" + componentName + " state-default" + " variation-" + variation);
-			expect(baseVm.style()).toBe(style.myTestVariation.default);
+			mockVm.state("default");
+			expect(mockVm.cssClass()).toBe("knob-" + componentName + " state-default" + " variation-" + variation);
+			expect(mockVm.style()).toBe(style.myTestVariation.default);
 		});
 
-		function describeBehaviour(config) {
-			var label = config.label;
-			var behaviour = config.behaviour;
-			var firstEvent = config.firstEvent;
-			var secondEvent = config.secondEvent;
+		it("hover behaviour enable/disable", function() {
+			mockVm.behaviours.hover.enable();
+			expect(mockBehaviours.hoverBehaviour).toHaveBeenCalled();
 
-
-			describe(label, function() {
-				it("enable & disable", function() {
-					baseVm.behaviours[behaviour].enable();
-					expect(typeof baseVm.eventHandlers[firstEvent.name]).toBe("function");
-					expect(typeof baseVm.eventHandlers[secondEvent.name]).toBe("function");
-
-					baseVm.behaviours[behaviour].disable();
-					expect(baseVm.eventHandlers[firstEvent.name]).toBeUndefined();
-					expect(baseVm.eventHandlers[secondEvent.name]).toBeUndefined();
-				});
-
-				it("enabled - state change", function() {
-					baseVm.behaviours[behaviour].enable();
-
-					baseVm.eventHandlers[firstEvent.name]();
-					expect(baseVm.state()).toBe(firstEvent.state);
-
-					baseVm.eventHandlers[secondEvent.name]();
-					expect(baseVm.state()).toBe(secondEvent.state);
-				});
-			});
-		}
-
-		describeBehaviour({
-			label: "behaviours.hover",
-			behaviour: "hover",
-			firstEvent: {
-				name: "mouseover",
-				state: "hover"
-			},
-			secondEvent: {
-				name: "mouseout",
-				state: initialState
-			}
+			mockVm.behaviours.hover.disable();
+			expect(mockVm.eventHandlers.mouseover).toBeUndefined();
+			expect(mockVm.eventHandlers.mouseout).toBeUndefined();
 		});
 
-		describeBehaviour({
-			label: "behaviours.focus",
-			behaviour: "focus",
-			firstEvent: {
-				name: "focus",
-				state: "active"
-			},
-			secondEvent: {
-				name: "blur",
-				state: "default"
-			}
+		it("focus behaviour enable/disable", function() {
+			mockVm.behaviours.focus.enable();
+			expect(mockBehaviours.focusBehaviour).toHaveBeenCalled();
+
+			mockVm.behaviours.focus.disable();
+			expect(mockVm.eventHandlers.focus).toBeUndefined();
+			expect(mockVm.eventHandlers.blur).toBeUndefined();
 		});
 
-		describeBehaviour({
-			label: "behaviours.click",
-			behaviour: "click",
-			firstEvent: {
-				name: "mousedown",
-				state: "active"
-			},
-			secondEvent: {
-				name: "mouseup",
-				state: "hover"
-			}
+		it("click behaviour enable/disable", function() {
+			mockVm.behaviours.click.enable();
+			expect(mockBehaviours.clickBehaviour).toHaveBeenCalled();
+
+			mockVm.behaviours.click.disable();
+			expect(mockVm.eventHandlers.mousedown).toBeUndefined();
+			expect(mockVm.eventHandlers.mouseup).toBeUndefined();
 		});
 
-		describeBehaviour({
-			label: "behaviours.select",
-			behaviour: "select",
-			firstEvent: {
-				name: "mousedown",
-				state: "active"
-			},
-			secondEvent: {
-				name: "mouseup",
-				state: "active"
-			}
+		it("select behaviour enable/disable", function() {
+			mockVm.behaviours.select.enable();
+			expect(mockBehaviours.selectBehaviour).toHaveBeenCalled();
+
+			mockVm.behaviours.select.disable();
+			expect(mockVm.eventHandlers.mousedown).toBeUndefined();
+			expect(mockVm.eventHandlers.mouseup).toBeUndefined();
 		});
 	});
 });

@@ -1,6 +1,5 @@
 var ko = require("knockout");
-var createButton = require("../../src/button/vm");
-var describeEventHandler = require("../base/behaviours/behaviourHelper");
+var buttonCore = require("../../src/button/core");
 
 var componentName = "myTestComponent";
 var variation = "myTestVariation";
@@ -33,6 +32,12 @@ var click = function() {};
 describe("Button", function() {
 
 	describe("Invalid config", function() {
+		var mockBase = {};
+
+		var createButton = buttonCore({
+			ko: ko,
+			base: mockBase
+		});
 
 		it("missing config", function() {
 			expect(createButton).toThrowError("config is mandatory!");
@@ -69,8 +74,51 @@ describe("Button", function() {
 	});
 
 	describe("With valid config", function() {
-
+		var createButton;
+		var mockBase;
 		var buttonVm;
+
+		beforeEach(function() {
+			function createMockBaseFunction() {
+				return function() {
+					var vm = {
+						behaviours: {
+							hover: {
+								enable: function() {
+
+								},
+							},
+							select: {
+								enable: function() {
+
+								},
+							},
+							click: {
+								enable: function() {
+								}
+							}
+						}
+					};
+
+					spyOn(vm.behaviours.hover, "enable");
+					spyOn(vm.behaviours.select, "enable");
+					spyOn(vm.behaviours.click, "enable");
+
+					return vm;
+				};
+			}
+
+			
+
+			mockBase = createMockBaseFunction();
+
+			createButton = buttonCore({
+				ko: ko,
+				base: mockBase
+			});
+		});
+
+		
 
 		it("config.icon", function() {
 			var config = {
@@ -134,19 +182,10 @@ describe("Button", function() {
 			};
 
 			buttonVm = createButton(config);
-
-			describeEventHandler({
-				label: "select",
-				vm: buttonVm,
-				firstEvent: {
-					name: "mousedown",
-					state: "active"
-				},
-				secondEvent: {
-					name: "mouseup",
-					state: "active"
-				}
-			});
+			
+			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
+			expect(buttonVm.behaviours.select.enable).toHaveBeenCalled();
+			expect(buttonVm.behaviours.click.enable).not.toHaveBeenCalled();
 		});
 
 		it("click behaviour", function() {
@@ -163,20 +202,9 @@ describe("Button", function() {
 
 			buttonVm = createButton(config);
 
-			describeEventHandler({
-				label: "clickBehaviour",
-				vm: buttonVm,
-				firstEvent: {
-					name: "mousedown",
-					notsetState: "disabled",
-					setState: "active"
-				},
-				secondEvent: {
-					name: "mouseup",
-					notsetState: "disabled",
-					setState: "hover"
-				}
-			});
+			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
+			expect(buttonVm.behaviours.select.enable).not.toHaveBeenCalled();
+			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
 		});
 	});
 });

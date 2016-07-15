@@ -187,21 +187,17 @@ img {
     font-size: 14px; }
   .knob-fluid-row.single-row {
     display: -webkit-box;
-    display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
     -moz-justify-content: space-between;
     justify-content: space-between;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center;
-    -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: none;
     flex-wrap: nowrap;
     width: 100%; }
@@ -285,15 +281,12 @@ img {
   left: 0;
   z-index: 999;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
   -webkit-box-align: center;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
 
@@ -305,9 +298,9 @@ img {
   min-width: 240px;
   max-width: 90%;
   /*	z-index: 22; */
+  border-radius: 3px;
+  overflow: hidden;
   border: 1px solid #ddd; }
-  .knob-modal__header, .knob-modal__body {
-    width: 100%; }
   .knob-modal__header {
     padding: 10px; }
     .knob-modal__header .desc {
@@ -325,8 +318,11 @@ img {
         background: none;
         border-radius: 0;
         border: 0 none; }
-  .knob-modal__content {
+  .knob-modal__body {
     max-width: 555px;
+    padding: 0;
+    width: 100%; }
+  .knob-modal__content {
     padding: 10px; }
 
 .knob-modal__buttons {
@@ -337,7 +333,7 @@ img {
     .knob-modal__buttons knob-button .knob-button {
       display: block;
       text-align: center;
-      padding: 20px 0;
+      padding: 13px 0;
       margin: 0;
       border: 0px none;
       border-radius: 0;
@@ -349,15 +345,12 @@ img {
 
 .knob-notification {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
   -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   padding: 15px 10px;

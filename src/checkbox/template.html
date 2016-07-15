@@ -1,0 +1,17 @@
+<div data-bind="css: cssClass,
+	style: style,
+	click: click,
+	event: eventHandlers,
+	disable: state() === 'disabled',
+	value: value" >
+	<span class="icon-wrapper" data-bind="if: value()">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': tick}" xlink:href=""></use>
+		</svg>
+	</span>
+	<span class="icon-wrapper" data-bind="ifnot: value()">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': cross}" xlink:href=""></use>
+		</svg>
+	</span>
+</div>

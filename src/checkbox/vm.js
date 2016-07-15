@@ -3,9 +3,9 @@
 var ko = require("knockout");
 
 var base = require("../base/vm");
-var buttonCore = require("./core"); 
+var checkboxCore = require("./core");
 
-module.exports = buttonCore({
+module.exports = checkboxCore({
 	base: base,
 	ko: ko
 });
