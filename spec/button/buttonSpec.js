@@ -95,9 +95,11 @@ describe("Button", function() {
 							},
 							click: {
 								enable: function() {
+								
 								}
 							}
-						}
+						},
+						state: ko.observable("default")
 					};
 
 					spyOn(vm.behaviours.hover, "enable");
@@ -205,6 +207,26 @@ describe("Button", function() {
 			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
 			expect(buttonVm.behaviours.select.enable).not.toHaveBeenCalled();
 			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
+		});
+
+		it("should call click several times when triggerOnHold is defined", function() {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				leftIcon: leftIcon,
+				label: label,
+				value: value,
+				click: click,
+				triggerOnHold: {
+					minTimeout: 50,
+					timeoutDecrement: 100,
+					baseTimeout: 500
+				}
+			};
+
+
 		});
 	});
 });

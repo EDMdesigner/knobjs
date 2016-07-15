@@ -71,11 +71,12 @@ module.exports = function(dependencies) {
 		};
 
 		ko.computed(function() {
+			var state = vm.state();
 			if(timeoutId) {
 				return;
 			}
 
-			if(triggerOnHold && vm.state() === "active") {
+			if(triggerOnHold && state === "active") {
 				timeout = baseTimeout;
 				decoratedClick();
 			}
@@ -85,7 +86,7 @@ module.exports = function(dependencies) {
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
-		vm.click = (!triggerOnHold ? click : decoratedClick);
+		vm.click = click || function() {};//(!triggerOnHold ? click : decoratedClick);
 
 		return vm;
 	};
