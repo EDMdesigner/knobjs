@@ -50,4 +50,4 @@ module.exports = function(dependencies) {
 
 		return vm;
 	};
-}
+};

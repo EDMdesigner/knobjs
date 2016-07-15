@@ -36,7 +36,7 @@ describe("Modal", function() {
 				mockBase: function() {
 					return {};
 				}
-			}
+			};
 
 			spyOn(base, "mockBase").and.callThrough();
 			createModal = modalCore({

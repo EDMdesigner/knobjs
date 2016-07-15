@@ -35,7 +35,7 @@ describe("NotificationBar", function() {
 				mockBase: function() {
 					return {};
 				}
-			}
+			};
 
 			spyOn(base, "mockBase").and.callThrough();
 			createNotificationBar = notificationBarCore({

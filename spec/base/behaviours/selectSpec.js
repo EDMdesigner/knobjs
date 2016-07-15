@@ -1,42 +1,6 @@
 var selectCore = require("../../../src/base/behaviours/selectCore");
 var ko = require("knockout");
 
-var componentName = "myTestComponent";
-var variation = "myTestVariation";
-var initialState = "myInitialState";
-var style = {
-	myTestVariation: {
-		default: {
-			background: "#001"
-		},
-		myInitialState: {
-			background: "#002"
-		},
-		hover: {
-			background: "#003"
-		},
-		disabled: {
-			background: "#004"
-		},
-		active: {
-			background: "#005"
-		}
-	}
-};
-
-var leftIcon = "lefticon";
-var label = "label";
-var value = "value";
-var config = {
-	componentName: componentName,
-	variation: variation,
-	initialState: initialState,
-	style: style,
-	leftIcon: leftIcon,
-	label: label,
-	value: value
-};
-
 describe("Select behaviour", function() {
 
 	describe("Invalid configs", function() {
