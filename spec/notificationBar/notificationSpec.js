@@ -1,16 +1,22 @@
 var ko = require("knockout");
-var createNotification = require("../../src/notificationBar/vm");
+var notificationBarCore = require("../../src/notificationBar/core");
 
 describe("NotificationBar", function() {
 
 	describe("- with invalid config", function() {
+		var mockBase = {};
+		var createNotificationBar = notificationBarCore({
+			ko: ko,
+			base: mockBase
+		});
+
 		it("missing config", function() {
-			expect(createNotification).toThrowError("config is mandatory!");
+			expect(createNotificationBar).toThrowError("config is mandatory!");
 		});
 
 		it("invalid visible type", function() {
 			expect(function() {
-				createNotification({
+				createNotificationBar({
 					visible: "text",
 					message: "important message",
 					icon: "string"
@@ -20,6 +26,23 @@ describe("NotificationBar", function() {
 	});
 
 	describe("- with valid config", function() {
+		var base;
+		var createNotificationBar;
+		var notificationBarVm;
+
+		beforeEach(function() {
+			base = {
+				mockBase: function() {
+					return {};
+				}
+			};
+
+			spyOn(base, "mockBase").and.callThrough();
+			createNotificationBar = notificationBarCore({
+				ko: ko,
+				base: base.mockBase
+			});
+		});
 
 		var style = {
 			default: {
@@ -38,9 +61,14 @@ describe("NotificationBar", function() {
 			icon: "randomIcon"
 		};
 
-		var notificationBarVm = createNotification(config);
+		it("call base", function() {
+			notificationBarVm = createNotificationBar(config);
+			expect(base.mockBase).toHaveBeenCalled();
+		});
 
 		it("toggle true or false", function() {
+			notificationBarVm = createNotificationBar(config);
+
 			expect(notificationBarVm.visible()).toBe(false);
 			notificationBarVm.visible.toggle();
 			expect(notificationBarVm.visible()).toBe(true);

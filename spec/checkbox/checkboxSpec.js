@@ -1,6 +1,6 @@
 var ko = require("knockout");
-var createCheckbox = require("../../src/checkbox/vm");
-var describeEventHandler = require("../base/behaviours/behaviourHelper");
+var checkboxCore = require("../../src/checkbox/core");
+//var describeEventHandler = require("../base/behaviours/behaviourHelper");
 
 var componentName = "myTestComponent";
 var variation = "myTestVariation";
@@ -32,6 +32,17 @@ var value = ko.observable(false);
 describe("Checkbox", function() {
 
 	describe("Invalid config", function() {
+		var mockBase;
+		var createCheckbox;
+
+		beforeEach(function() {
+			mockBase = {};
+
+			createCheckbox = checkboxCore({
+				ko: ko,
+				base: mockBase
+			});
+		});
 
 		it("missing config", function() {
 			expect(createCheckbox).toThrowError("config is mandatory!");
@@ -125,8 +136,43 @@ describe("Checkbox", function() {
 	});
 
 	describe("With valid config", function() {
-
 		var checkboxVm;
+		var createCheckbox;
+		var mockBase;
+
+		beforeEach(function() {
+			function createMockBaseFunction() {
+				return function() {
+					var vm = {
+						behaviours: {
+							hover: {
+								enable: function() {
+
+								},
+							},
+							click: {
+								enable: function() {
+								}
+							}
+						}
+					};
+
+					spyOn(vm.behaviours.hover, "enable");
+					spyOn(vm.behaviours.click, "enable");
+
+					return vm;
+				};
+			}
+
+			
+
+			mockBase = createMockBaseFunction();
+
+			createCheckbox = checkboxCore({
+				ko: ko,
+				base: mockBase
+			});
+		});
 
 		it("config.icons", function() {
 			var config = {
@@ -186,20 +232,8 @@ describe("Checkbox", function() {
 
 			checkboxVm = createCheckbox(config);
 
-			describeEventHandler({
-				label: "clickBehaviour",
-				vm: checkboxVm,
-				firstEvent: {
-					name: "mousedown",
-					notsetState: "disabled",
-					setState: "active"
-				},
-				secondEvent: {
-					name: "mouseup",
-					notsetState: "disabled",
-					setState: "hover"
-				}
-			});
+			expect(checkboxVm.behaviours.hover.enable).toHaveBeenCalled();
+			expect(checkboxVm.behaviours.click.enable).toHaveBeenCalled();
 		});
 
 		it("value change on click", function() {

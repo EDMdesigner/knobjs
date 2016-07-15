@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 var ko = require("knockout");
@@ -8,68 +7,12 @@ var focusBehaviour = require("./behaviours/focus");
 var clickBehaviour = require("./behaviours/click");
 var selectBehaviour = require("./behaviours/select");
 
+var vmCore = require("./vmCore");
 
-function createBaseVm(config) {
-	config = config || {};
-
-	if (!config.component) {
-		throw new Error("config.component is mandatory!");
-	}
-
-	if (!config.style) {
-		throw new Error("config.style is mandatory!");
-	}
-
-	var component = config.component;
-	var style = config.style;
-
-	var state = ko.observable(config.state || "default");
-	var variation = config.variation || "default";
-
-
-	var cssClassComputed = ko.computed(function() {
-		return "knob-" + component + " state-" + state() + " variation-" + variation;
-	});
-	var styleComputed = ko.computed(function() {
-		var stateVal = state();
-
-		return style[variation][stateVal];
-	});
-
-	var vm = {
-		variation: variation,
-		state: state,
-
-		cssClass: cssClassComputed,
-		style: styleComputed,
-
-		eventHandlers: {}
-	};
-
-
-	function createEnabler(behaviour, props) {
-		return {
-			enable: function() {
-				behaviour(vm, config);
-			},
-			disable: function() {
-				props.forEach(function(prop) {
-					if (vm.eventHandlers[prop]) {
-						delete vm.eventHandlers[prop];
-					}
-				});
-			}
-		};
-	}
-
-	vm.behaviours = {
-		hover: createEnabler(hoverBehaviour, ["mouseover", "mouseout"]),
-		focus: createEnabler(focusBehaviour, ["focus", "blur"]),
-		click: createEnabler(clickBehaviour, ["mousedown", "mouseup"]),
-		select: createEnabler(selectBehaviour, ["mousedown", "mouseup"])
-	};
-
-	return vm;
-}
-
-module.exports = createBaseVm;
+module.exports = vmCore({
+	ko: ko,
+	hoverBehaviour: hoverBehaviour,
+	focusBehaviour: focusBehaviour,
+	clickBehaviour: clickBehaviour,
+	selectBehaviour: selectBehaviour
+});
