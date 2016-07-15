@@ -70,7 +70,7 @@ describe("Textarea", function() {
 	describe("- with valid config", function() {
 		var mockBase;
 		var createTextarea;
-		var inputVm;
+		var textareaVm;
 
 		beforeEach(function () {
 			function createMockBaseFunction() {
@@ -110,17 +110,17 @@ describe("Textarea", function() {
 		};
 
 		it("interface", function() {
-			inputVm = createTextarea(config);
+			textareaVm = createTextarea(config);
 
-			expect(ko.isObservable(inputVm.hasFocus)).toBe(true);
-			expect(ko.isObservable(inputVm.value)).toBe(true);
+			expect(ko.isObservable(textareaVm.hasFocus)).toBe(true);
+			expect(ko.isObservable(textareaVm.value)).toBe(true);
 		});
 
 		it("behaviour check", function() {
-			inputVm = createTextarea(config);
+			textareaVm = createTextarea(config);
 
-			expect(inputVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(inputVm.behaviours.focus.enable).toHaveBeenCalled();
+			expect(textareaVm.behaviours.hover.enable).toHaveBeenCalled();
+			expect(textareaVm.behaviours.focus.enable).toHaveBeenCalled();
 		});
 	});
 });
