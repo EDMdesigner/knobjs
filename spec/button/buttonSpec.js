@@ -209,7 +209,7 @@ describe("Button", function() {
 			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
 		});
 
-		it("should call click several times when triggerOnHold is defined", function() {
+		/*it("should call click several times when triggerOnHold is defined", function() {
 			var config = {
 				componentName: componentName,
 				variation: variation,
@@ -226,7 +226,8 @@ describe("Button", function() {
 				}
 			};
 
+			expect
 
-		});
+		});*/
 	});
 });
