@@ -1,5 +1,4 @@
 var selectCore = require("../../../src/base/behaviours/selectCore");
-var createButton = require("../../../src/button/vm");
 var ko = require("knockout");
 
 var componentName = "myTestComponent";
@@ -66,26 +65,30 @@ describe("Select behaviour", function() {
 		var buttons;
 		var buttonCount;
 
-		beforeEach(function() {
-			mockVm = {
-				state: ko.observable("default")
-			};
-
+		beforeAll(function() {
 			selectBehaviour = selectCore({
 				ko: ko
 			});
-
-			selectBehaviour(mockVm);
 
 			buttons = [];
 			buttonCount = 5;
 
 			for (var i = 0; i < buttonCount; i += 1) {
-				var actButton = createButton(config);
+				var actButton = {
+					state: ko.observable("active")
+				};
 
-				selectBehaviour(actButton);
+				selectBehaviour(actButton, {group: "testGroup"});
 				buttons.push(actButton);
 			}
+		});
+
+		beforeEach(function() {
+			mockVm = {
+				state: ko.observable("default")
+			};
+
+			selectBehaviour(mockVm, {group: "testGroup"});
 		});
 
 		//interface check
@@ -107,10 +110,6 @@ describe("Select behaviour", function() {
 		it("state changes to active when not disabled on mousedown", function() {
 			mockVm.eventHandlers.mousedown();
 			expect(mockVm.state()).toBe("active");
-
-			for(var idx = 0; idx < buttonCount; idx += 1) {
-				expect(buttons[idx].state()).toBe("default");
-			}
 		});
 
 		//mouseup disabled
@@ -123,7 +122,9 @@ describe("Select behaviour", function() {
 
 		//mouseup non-disabled
 		it("states of others in the gourp changes to default on mouseup", function() {
+			mockVm.eventHandlers.mousedown();
 			mockVm.eventHandlers.mouseup();
+			expect(mockVm.state()).toBe("active");
 
 			for(var idx = 0; idx < buttonCount; idx += 1) {
 				expect(buttons[idx].state()).toBe("default");

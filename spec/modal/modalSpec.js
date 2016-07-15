@@ -1,9 +1,15 @@
 var ko = require("knockout");
-var createModal = require("../../src/modal/vm");
+var modalCore = require("../../src/modal/core");
 
 describe("Modal", function() {
 
 	describe("- with invalid config", function() {
+		var mockBase = {};
+		var createModal = modalCore({
+			ko: ko,
+			base: mockBase
+		});
+
 		it("missing config", function() {
 			expect(createModal).toThrowError("config is mandatory!");
 		});
@@ -21,6 +27,23 @@ describe("Modal", function() {
 
 
 	describe("- with valid config", function() {
+		var base;
+		var createModal;
+		var modalVm;
+
+		beforeEach(function() {
+			base = {
+				mockBase: function() {
+					return {};
+				}
+			}
+
+			spyOn(base, "mockBase").and.callThrough();
+			createModal = modalCore({
+				ko: ko,
+				base: base.mockBase
+			});
+		});
 
 		var style = {
 			default: {
@@ -39,9 +62,15 @@ describe("Modal", function() {
 			icon: "randomIcon"
 		};
 
-		var modalVm = createModal(config);
+		it("calls base", function() {
+			modalVm = createModal(config);
+			expect(base.mockBase).toHaveBeenCalled();
+		});
+
 
 		it("toggle true or false", function() {
+			modalVm = createModal(config);
+
 			expect(modalVm.visible()).toBe(false);
 			modalVm.visible.toggle();
 			expect(modalVm.visible()).toBe(true);
