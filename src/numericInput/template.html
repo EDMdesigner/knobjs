@@ -1,4 +1,4 @@
-<div>
+<div class="knob-numericInput">
 	<span data-bind="text: prefix">
 	</span>
 	<knob-input params="
@@ -7,7 +7,7 @@
 	</knob-input>
 	<span data-bind="text: postfix">
 	</span>
-	<span data-bind="foreach: {data: controlButtons, as: 'button'}">
+	<span class="control-buttons" data-bind="foreach: {data: controlButtons, as: 'button'}">
 		<knob-button params="
 			icon: button.icon,
 			click: button.click,

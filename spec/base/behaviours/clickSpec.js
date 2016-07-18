@@ -89,14 +89,12 @@ describe("Click behaviour", function() {
 		it("call addEventListener, mouseUp and removeEventListener", function(done) {
 			mockVm.eventHandlers.mousedown();
 
-
 			expect(mockVm.state()).toBe("active");
 			expect(mockWindow.addEventListener).toHaveBeenCalled();
 
 			setTimeout(function() {
-				expect(mockVm.eventHandlers.mouseup).toHaveBeenCalled();
 				expect(mockWindow.removeEventListener).toHaveBeenCalled();
-				expect(mockVm.state()).toBe("hover");
+				expect(mockVm.state()).toBe("default");
 				done();
 			}, 1);
 		});

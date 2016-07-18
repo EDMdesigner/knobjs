@@ -11,8 +11,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 
-	return function createNumberInput(config) {
-		config = config || {};
+	return function createNumericInput(config) {
 
 		if(!config) {
 			throw new Error("Config is mandatory!");
@@ -45,6 +44,7 @@ module.exports = function(dependencies) {
 		var minTimeout = config.minTimeout || 50;
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
+		var icons = config.icons;
 
 		var inputValue = ko.observable(initValue);
 
@@ -55,7 +55,7 @@ module.exports = function(dependencies) {
 
 		var controlButtons = [
 			{
-				icon: "#icon-arrow-downward",
+				icon: icons.increase,
 				click: function() {
 					if(parseFloat(inputValue()) - step > minValue){
 						inputValue(parseFloat(inputValue()) - step);
@@ -65,7 +65,7 @@ module.exports = function(dependencies) {
 				}
 			},
 			{
-				icon: "#icon-arrow-upward",
+				icon: icons.decrease,
 				click: function() {
 					if(parseFloat(inputValue()) + step < maxValue){
 						inputValue(parseFloat(inputValue()) + step);

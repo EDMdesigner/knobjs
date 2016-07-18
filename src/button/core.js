@@ -70,23 +70,42 @@ module.exports = function(dependencies) {
 			}, timeout);
 		};
 
-		ko.computed(function() {
-			var state = vm.state();
-			if(timeoutId) {
-				return;
-			}
+		var lastState;
+		if (triggerOnHold) {
+			ko.computed(function() {
+				var state = vm.state();
 
-			if(triggerOnHold && state === "active") {
-				timeout = baseTimeout;
-				decoratedClick();
-			}
-		});
+				if (state !== "active" && timeoutId) {
+					clearTimeout(timeoutId);
+					timeoutId = null;
+					return;
+				}
+
+				if(timeoutId) {
+					return;
+				}
+
+				if(state === "active") {
+					timeout = baseTimeout;
+					decoratedClick();
+				}
+			});
+		} else {
+			ko.computed(function() {
+				var state = vm.state();
+
+				if(state === "hover" && lastState === "active") {
+					click();
+				} else {
+					lastState = state;	
+				}
+			});
+		}
 
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
-		vm.click = click || function() {};//(!triggerOnHold ? click : decoratedClick);
 
 		return vm;
 	};
