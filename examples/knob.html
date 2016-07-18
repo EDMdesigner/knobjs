@@ -298,7 +298,7 @@
 	<hr>
 
 	<h2>knob-items-per-page</h2>
-	<knob-items-per-page params="numOfItems: numOfItems, numOfPages: numOfPages"></knob-items-per-page>
+	<knob-items-per-page params="numOfItems: numOfItems, numOfPages: numOfPages, itemsPerPage: itemsPerPage"></knob-items-per-page>
 	<hr>
 
 	<h2>knob-pagination</h2>
@@ -360,10 +360,21 @@
 	<knob-checkbox params="
 		value: checkboxValue
 	"></knob-checkbox>
+	<h2>disabled knob-checkbox</h2>
 	<knob-checkbox params="
 		value: disabledCheckBoxValue,
 		state: 'disabled'
 	"></knob-checkbox>
+	<h2>knob-numericinput</h2>
+	<knob-numericinput params="
+		minValue: -2000,
+		maxValue: 2000,
+		initValue: 0,
+		step: 1,
+		prefix: 'Font size: ',
+		postfix: 'px'
+	">
+	</knob-numericinput>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="./knob.built.js"></script>

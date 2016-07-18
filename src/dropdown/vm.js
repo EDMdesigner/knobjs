@@ -45,24 +45,28 @@ function createButtonDropdown(config) {
 
 	var dropdownVisible = ko.observable(false);
 
+	var closeDropdown = function() {
+		dropdownVisible(false);
+	};
+
 	dropdownVisible.toggle = function toggleDropdownVisible(item, event) {
 		if (event) {
 			event.stopPropagation();
 		}
 
-		var visible = dropdownVisible();
+		//var visible = dropdownVisible();
 
-		dropdownVisible(!visible);
+		dropdownVisible(!dropdownVisible());
 
 		// should remove this when test in phantomjs
 		if (typeof window === "undefined") {
 			return;
 		}
 
-		if (visible) {
-			window.removeEventListener("click", toggleDropdownVisible, false);
+		if (dropdownVisible()) {
+			window.addEventListener("click", closeDropdown, false);
 		} else {
-			window.addEventListener("click", toggleDropdownVisible, false);
+			window.removeEventListener("click", closeDropdown, false);
 		}
 	};
 

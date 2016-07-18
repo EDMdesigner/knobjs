@@ -1,0 +1,18 @@
+<div class="knob-numericInput">
+	<span data-bind="text: prefix">
+	</span>
+	<knob-input params="
+		value: inputValue
+	">
+	</knob-input>
+	<span data-bind="text: postfix">
+	</span>
+	<span class="control-buttons" data-bind="foreach: {data: controlButtons, as: 'button'}">
+		<knob-button params="
+			icon: button.icon,
+			click: button.click,
+			triggerOnHold: $parent.triggerOnHold
+		">
+		</knob-button>
+	</span>
+</div>
