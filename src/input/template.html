@@ -1,8 +1,28 @@
-<input data-bind="css: cssClass,
-					style: style,
+<div data-bind="css: cssClass, 
+				style: style">
+	<span class="icon-wrapper preIcon" data-bind="if: leftIcon">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': leftIcon}" xlink:href=""></use>
+		</svg>
+	</span>
+	<!-- ko if: preFixText -->
+	<span class="preFixText" data-bind="text: preFixText">$</span>
+	<!-- /ko -->
+	
+	<input data-bind="
 					attr: {type: type, placeholder: placeholder},
 					event: eventHandlers,
 					hasFocus: hasFocus,
 					disable: state() === 'disabled',
 					value: value,
 					valueUpdate: 'afterkeydown'" />
+	<!-- ko if: postFixText -->
+	<span class="postFixText" data-bind="text: postFixText">HUF</span>
+	<!-- /ko -->
+	
+	<span class="icon-wrapper postIcon" data-bind="if: rightIcon">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': rightIcon}" xlink:href=""></use>
+		</svg>
+	</span>
+</div>

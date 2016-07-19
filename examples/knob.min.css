@@ -117,6 +117,18 @@ img {
 .knob-button:disabled {
   cursor: not-allowed; }
 
+.knob-checkbox.state-default {
+  cursor: pointer; }
+
+.knob-checkbox.state-disabled {
+  cursor: not-allowed; }
+
+.knob-checkbox .icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  line-height: 1; }
+
 .knob-dropdown-menu {
   z-index: 2;
   position: absolute; }
@@ -170,6 +182,19 @@ img {
   display: inline-block;
   border-style: solid;
   border-width: 1px; }
+  .knob-input input {
+    border: 0px none !important;
+    outline: 0px none !important;
+    background: transparent none !important; }
+  .knob-input .icon-wrapper .icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    line-height: 1; }
+  .knob-input .preFixText,
+  .knob-input .postFixText {
+    color: inherit;
+    font-size: inherit; }
 
 .knob-numericInput {
   display: -webkit-box;

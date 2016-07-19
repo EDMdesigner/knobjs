@@ -45,7 +45,12 @@ module.exports = function(dependencies) {
 		if (config.keyDown) {
 			vm.eventHandlers.keydown = config.keyDown;
 		}
-
+		
+		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
+		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
+		vm.preFixText = ko.observable(ko.unwrap(config.preFixText));
+		vm.postFixText = ko.observable(ko.unwrap(config.postFixText));
+		
 		return vm;
 	};
 };

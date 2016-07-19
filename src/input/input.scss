@@ -3,4 +3,25 @@
 	display: inline-block;
 	border-style: solid;
 	border-width: 1px;
+
+	input {
+		border: 0px none !important;
+		outline:0px none !important;
+		background: transparent none !important;
+	}
+
+	.icon-wrapper {
+		.icon {
+			width: 20px;
+			height: 20px;
+			vertical-align: middle;
+			line-height: 1;
+		}
+	}
+	
+	.preFixText,
+	.postFixText {
+		color:inherit;
+		font-size: inherit;
+	}
 }

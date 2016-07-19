@@ -1,12 +1,13 @@
 <div class="knob-numericInput">
-	<span data-bind="text: prefix">
-	</span>
+
+	<!-- pre input placeholder -->
 	<knob-input params="
-		value: inputValue
+		value: inputValue,
+		preFixText: prefix,
+		postFixText: postfix
 	">
 	</knob-input>
-	<span data-bind="text: postfix">
-	</span>
+
 	<span class="control-buttons" data-bind="foreach: {data: controlButtons, as: 'button'}">
 		<knob-button params="
 			icon: button.icon,
@@ -15,4 +16,6 @@
 		">
 		</knob-button>
 	</span>
+	
+	<!-- post input placeholder -->
 </div>
