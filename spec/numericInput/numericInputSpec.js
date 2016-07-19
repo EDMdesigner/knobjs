@@ -15,7 +15,7 @@ describe("Numeric Input", function() {
 		it("config.minValue missing", function() {
 			var config = {
 				maxValue: 20,
-				initValue: 0,
+				initValue: ko.observable(0),
 				step: 1,
 				prefix: "a prefix",
 				postfix: "a postfix"
@@ -29,7 +29,7 @@ describe("Numeric Input", function() {
 		it("config.maxValue missing", function() {
 			var config = {
 				minValue: 20,
-				initValue: 0,
+				initValue: ko.observable(0),
 				step: 1,
 				prefix: "a prefix",
 				postfix: "a postfix"
@@ -40,24 +40,10 @@ describe("Numeric Input", function() {
 			}).toThrowError("config.maxValue is mandatory and it should be a number!");
 		});
 
-		it("config.initValue missing", function() {
-			var config = {
-				maxValue: 20,
-				minValue: 0,
-				step: 1,
-				prefix: "a prefix",
-				postfix: "a postfix"
-			};
-
-			expect(function() {
-				createNumericInput(config);
-			}).toThrowError("config.initValue is mandatory and it should be a number!");
-		});
-
 		it("config.step missing", function() {
 			var config = {
 				maxValue: 20,
-				initValue: 0,
+				initValue: ko.observable(0),
 				minValue: -20,
 				prefix: "a prefix",
 				postfix: "a postfix"
@@ -72,7 +58,7 @@ describe("Numeric Input", function() {
 			var config = {
 				maxValue: 20,
 				minValue: -20,
-				initValue: 0,
+				initValue: ko.observable(0),
 				step: 1,
 				prefix: 123,
 				postfix: "a postfix"
@@ -87,7 +73,7 @@ describe("Numeric Input", function() {
 			var config = {
 				maxValue: 20,
 				minValue: -20,
-				initValue: 0,
+				initValue: ko.observable(0),
 				step: 1,
 				prefix: "a prefix",
 				postfix: 123
@@ -107,7 +93,7 @@ describe("Numeric Input", function() {
 		var config = {
 			minValue: -20,
 			maxValue: 20,
-			initValue: 0,
+			initValue: ko.observable(0),
 			step: 1,
 			prefix: "a prefix",
 			postfix: "a postfix",

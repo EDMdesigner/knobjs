@@ -22,9 +22,6 @@ module.exports = function(dependencies) {
 		if(typeof config.maxValue !== "number" || typeof config.maxValue === "undefined") {
 			throw new Error("config.maxValue is mandatory and it should be a number!");
 		}
-		if(typeof config.initValue !== "number" || typeof config.initValue === "undefined") {
-			throw new Error("config.initValue is mandatory and it should be a number!");
-		}
 		if(typeof config.step !== "number" || typeof config.step === "undefined") {
 			throw new Error("config.step is mandatory and it should be a number!");
 		}
@@ -37,7 +34,7 @@ module.exports = function(dependencies) {
 
 		var minValue = config.minValue;
 		var maxValue = config.maxValue;
-		var initValue = config.initValue;
+		var inputValue = config.initValue || ko.observable(0);
 		var step = config.step;
 		var prefix = config.prefix;
 		var postfix = config.postfix;
@@ -45,8 +42,6 @@ module.exports = function(dependencies) {
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
 		var icons = config.icons;
-
-		var inputValue = ko.observable(initValue);
 
 		ko.computed(function() {
 			var val = inputValue();
