@@ -32,6 +32,9 @@ module.exports = function(dependencies) {
 
 		config.component = "button";
 
+		var click = config.click;
+		var triggerOnHold = config.triggerOnHold || false;
+
 		var vm = base(config);
 
 		vm.behaviours.hover.enable();
@@ -42,11 +45,67 @@ module.exports = function(dependencies) {
 			vm.behaviours.click.enable();
 		}
 
+		var timeoutId = null;
+		var baseTimeout = triggerOnHold.baseTimeout || null;
+		var minTimeout = triggerOnHold.minTimeout || null;
+		var timeoutDecrement = triggerOnHold.timeoutDecrement || null;
+		var timeout = baseTimeout;
+
+		var decoratedClick = function() {
+			click();
+			timeoutId = setTimeout(function() {
+				timeout -= timeoutDecrement;
+
+				if (timeout < minTimeout) {
+					timeout = minTimeout;
+				}
+
+
+				if (vm.state() === "active") {
+					decoratedClick();
+				} else {
+					clearTimeout(timeoutId);
+					timeoutId = null;
+				}
+			}, timeout);
+		};
+
+		var lastState;
+		if (triggerOnHold) {
+			ko.computed(function() {
+				var state = vm.state();
+
+				if (state !== "active" && timeoutId) {
+					clearTimeout(timeoutId);
+					timeoutId = null;
+					return;
+				}
+
+				if(timeoutId) {
+					return;
+				}
+
+				if(state === "active") {
+					timeout = baseTimeout;
+					decoratedClick();
+				}
+			});
+		} else {
+			ko.computed(function() {
+				var state = vm.state();
+
+				if(state === "hover" && lastState === "active") {
+					click();
+				} else {
+					lastState = state;	
+				}
+			});
+		}
+
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
-		vm.click = config.click || function() {};
 
 		return vm;
 	};

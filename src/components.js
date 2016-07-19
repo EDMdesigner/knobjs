@@ -66,7 +66,11 @@ function initKnob(config) {
 			next: "#icon-chevron-right"
 		},
 		tick: "#icon-check",
-		cross: "#icon-close"
+		cross: "#icon-close",
+		numericInput:{
+			increase: "#icon-arrow-downward",
+			decrease: "#icon-arrow-upward"
+		}
 	};
 
 	var defaultLabels = {
@@ -222,6 +226,13 @@ function initKnob(config) {
 			tick: icons.tick,
 			cross: icons.cross
 		}
+	);
+	registerComponent(
+		"knob-numericinput", 
+		require("./numericInput/vm"),
+		require("./numericInput/template.html"),
+		null,
+		icons.numericInput
 	);
 }
 

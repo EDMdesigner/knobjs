@@ -25,7 +25,7 @@ module.exports = function(dependencies){
 		function mouseOver() {
 			var actState = vm.state();
 
-			if (actState === "disabled" || actState === "active") {
+			if (actState === "disabled" || actState === "active" || actState === "hover") {
 				return;
 			}
 

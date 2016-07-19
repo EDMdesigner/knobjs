@@ -26,7 +26,7 @@ module.exports = function(dependencies) {
 		}
 
 		function mouseUpOnWindow() {
-			vm.eventHandlers.mouseup();
+			vm.state("default");
 			window.removeEventListener("mouseup", mouseUpOnWindow);
 		}
 
@@ -50,6 +50,7 @@ module.exports = function(dependencies) {
 			}
 
 			vm.state("hover");
+			window.removeEventListener("mouseup", mouseUpOnWindow);
 		}
 
 		if (!vm.eventHandlers) {

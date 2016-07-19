@@ -95,9 +95,11 @@ describe("Button", function() {
 							},
 							click: {
 								enable: function() {
+								
 								}
 							}
-						}
+						},
+						state: ko.observable("default")
 					};
 
 					spyOn(vm.behaviours.hover, "enable");
@@ -158,14 +160,12 @@ describe("Button", function() {
 			expect(buttonVm.rightIcon()).toBe(config.rightIcon);
 			expect(buttonVm.label()).toBe(config.label);
 			expect(buttonVm.value).toBe(config.value);
-			expect(buttonVm.click).toBe(config.click);
 
 
 			expect(ko.isObservable(buttonVm.leftIcon)).toBe(true);
 			expect(ko.isObservable(buttonVm.rightIcon)).toBe(true);
 			expect(ko.isObservable(buttonVm.label)).toBe(true);
 			expect(typeof buttonVm.value).toBe(typeof config.value);
-			expect(typeof buttonVm.click).toBe("function");
 		});
 
 		it("radio behaviour", function() {
@@ -205,6 +205,59 @@ describe("Button", function() {
 			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
 			expect(buttonVm.behaviours.select.enable).not.toHaveBeenCalled();
 			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
+		});
+
+		it("should call click only once without triggerOnHold", function(done) {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				leftIcon: leftIcon,
+				label: label,
+				value: value,
+				click: click
+			};
+
+			spyOn(config, "click");
+
+			buttonVm = createButton(config);
+
+			buttonVm.state("active");
+			setTimeout(function() {
+				buttonVm.state("hover");
+				expect(config.click).toHaveBeenCalledTimes(1);
+				done();
+			}, 100);
+		});
+
+		it("should call click several times when triggerOnHold is defined", function(done) {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				leftIcon: leftIcon,
+				label: label,
+				value: value,
+				click: click,
+				triggerOnHold: {
+					minTimeout: 50,
+					timeoutDecrement: 0,
+					baseTimeout: 100
+				}
+			};
+
+			spyOn(config, "click");
+
+			buttonVm = createButton(config);
+
+			buttonVm.state("active");
+			setTimeout(function() {
+				buttonVm.state("default");
+				expect(config.click).toHaveBeenCalledTimes(3);
+				done();
+			}, 301);
 		});
 	});
 });

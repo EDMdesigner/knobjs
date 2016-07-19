@@ -174,6 +174,7 @@ ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
 	numOfItems: ko.observable(1000),
+	itemsPerPage: ko.observable(10),
 	buttons: buttons,
 	modalVisible: ko.observable(false),
 	confirmVisible: ko.observable(false),
