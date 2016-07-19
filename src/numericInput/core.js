@@ -16,7 +16,7 @@ module.exports = function(dependencies) {
 		if(!config) {
 			throw new Error("Config is mandatory!");
 		}
-		if(ko.isObservable(config.value) !== true || typeof config.value() !== "number") {
+		if(!ko.isObservable(config.value)|| typeof config.value() !== "number") {
 			throw new Error("config.value is mandatory and it should store a number");
 		}
 		if(typeof config.minValue !== "number" || typeof config.minValue === "undefined") {
