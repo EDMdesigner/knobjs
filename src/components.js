@@ -24,10 +24,6 @@ var createInputStyleTheme2 = require("./input/theme2");
 var createInputStyleTheme3 = require("./input/theme3");
 var createInputStyleTheme4 = require("./input/theme4");
 
-var createFluidRowStyle;
-var createFluidRowStyleDefault = require("./fluidRow/style");
-var createFluidRowStyleChamaileon = require("./fluidRow/chamaileon");
-
 var createModalStyle;
 var createModalStyleChamaileon = require("./modal/chamaileon");
 var createModalStyleDefault = require("./modal/style");
@@ -94,10 +90,6 @@ function initKnob(config) {
 			throw new Error("config.theme.createInputStyle must be a function");
 		}
 
-		if (typeof theme.createFluidRowStyle !== "function") {
-			throw new Error("config.theme.createFluidRowStyle must be a function");
-		}
-
 		if (typeof theme.createModalStyle !== "function") {
 			throw new Error("config.theme.createModalStyle must be a function");
 		}
@@ -116,7 +108,6 @@ function initKnob(config) {
 
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
-		createFluidRowStyle = theme.createFluidRowStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
@@ -127,14 +118,12 @@ function initKnob(config) {
 		if (theme === "chamaileon") {
 			createButtonStyle = createButtonStyleChamaileon;
 			createInputStyle = createInputStyleChamaileon;
-			createFluidRowStyle = createFluidRowStyleChamaileon;
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		} else if (theme === "theme2") {
 			createButtonStyle = createButtonStyleTheme2;
 			createInputStyle = createInputStyleTheme2;
-			createFluidRowStyle = createFluidRowStyleDefault;
 			createModalStyle = createModalStyleTheme2;
 			createPagedListStyle = createPagedListStyleTheme2;
 			createNotificationStyle = createNotificationStyleTheme2;
@@ -142,21 +131,18 @@ function initKnob(config) {
 		} else if (theme === "theme3"){
 			createButtonStyle = createButtonStyleTheme3;
 			createInputStyle = createInputStyleTheme3;
-			createFluidRowStyle = createFluidRowStyleDefault;
 			createModalStyle = createModalStyleTheme3;
 			createPagedListStyle = createPagedListStyleTheme3;
 			createNotificationStyle = createNotificationStyleTheme3;
 		} else if (theme === "theme4") {
 			createButtonStyle = createButtonStyleTheme4;
 			createInputStyle = createInputStyleTheme4;
-			createFluidRowStyle = createFluidRowStyleDefault;
 			createModalStyle = createModalStyleTheme4;
 			createPagedListStyle = createPagedListStyleTheme4;
 			createNotificationStyle = createNotificationStyleTheme4;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
-			createFluidRowStyle = createFluidRowStyleDefault;
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
@@ -173,7 +159,6 @@ function initKnob(config) {
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(colorSet));
 	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(colorSet));
-	registerComponent("knob-fluid-row", require("./fluidRow/vm"), require("./fluidRow/template.html"), createFluidRowStyle(colorSet));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent("knob-inline-text-editor", require("./inlineTextEditor/vm"), require("./inlineTextEditor/template.html"));
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
