@@ -44,6 +44,12 @@ module.exports = function(dependencies) {
 		var minTimeout = config.minTimeout || 50;
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
+		var layoutArrangement = config.layoutArrangement || "back";
+		
+		if(!(layoutArrangement !== "back" || layoutArrangement !== "split" || layoutArrangement !== "front")) {
+			throw new Error("config.layoutArrangement can only take values: 'back'/'front'/'split'!");
+		}
+
 		var icons = config.icons;
 
 		var inputValue = ko.observable(initValue);
@@ -87,7 +93,8 @@ module.exports = function(dependencies) {
 			decreaseButton: decreaseButton,
 			prefix: prefix,
 			postfix: postfix,
-			triggerOnHold: triggerOnHold
+			triggerOnHold: triggerOnHold,
+			layoutArrangement: layoutArrangement
 		};
 	};
 };

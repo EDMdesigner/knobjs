@@ -369,7 +369,7 @@
 		value: disabledCheckBoxValue,
 		state: 'disabled'
 	"></knob-checkbox>
-	<h2>knob-numericinput</h2>
+	<h2>knob-numericinput layout back(default)</h2>
 	<knob-numericinput params="
 		minValue: -2000,
 		maxValue: 2000,
@@ -379,6 +379,29 @@
 		postfix: 'px'
 	">
 	</knob-numericinput>
+	<h2>knob-numericinput layout split</h2>
+	<knob-numericinput params="
+		minValue: -2000,
+		maxValue: 2000,
+		initValue: 0,
+		step: 5,
+		prefix: 'Font size: ',
+		postfix: 'px',
+		layoutArrangement: 'split'
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout front</h2>
+	<knob-numericinput params="
+		minValue: -2000,
+		maxValue: 2000,
+		initValue: 550,
+		step: 3,
+		prefix: 'Font size: ',
+		postfix: 'px',
+		layoutArrangement: 'front'
+	">
+	</knob-numericinput>
+
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="./knob.built.js"></script>

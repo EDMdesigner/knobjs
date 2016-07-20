@@ -1,4 +1,4 @@
-<div class="knob-numericInput">
+<div class="knob-numericInput variation-back" data-bind="if: layoutArrangement === 'back'">
 
 	<!-- pre input placeholder -->
 	<knob-input params="
@@ -7,8 +7,6 @@
 		postFixText: postfix
 	">
 	</knob-input>
-	<span data-bind="text: postfix">
-	</span>
 	<span class="control-button">
 		<knob-button params="
 			icon: increaseButton.icon,
@@ -25,6 +23,62 @@
 		">
 		</knob-button>
 	</span>
+	
+	<!-- post input placeholder -->
+</div>
+
+<div class="knob-numericInput variation-split" data-bind="if: layoutArrangement === 'split'">
+	<span class="control-button">
+		<knob-button params="
+			icon: increaseButton.icon,
+			click: increaseButton.click,
+			triggerOnHold: triggerOnHold
+		">
+		</knob-button>
+	</span>
+	<!-- pre input placeholder -->
+	<knob-input params="
+		value: inputValue,
+		preFixText: prefix,
+		postFixText: postfix
+	">
+	</knob-input>
+	<span class="control-button">
+		<knob-button params="
+			icon: decreaseButton.icon,
+			click: decreaseButton.click,
+			triggerOnHold: triggerOnHold
+		">
+		</knob-button>
+	</span>
+	
+	<!-- post input placeholder -->
+</div>
+
+<div class="knob-numericInput variation-front" data-bind="if: layoutArrangement === 'front'">
+	<span class="control-button">
+		<knob-button params="
+			icon: increaseButton.icon,
+			click: increaseButton.click,
+			triggerOnHold: triggerOnHold
+		">
+		</knob-button>
+	</span>
+	<span class="control-button">
+		<knob-button params="
+			icon: decreaseButton.icon,
+			click: decreaseButton.click,
+			triggerOnHold: triggerOnHold
+		">
+		</knob-button>
+	</span>
+	<!-- pre input placeholder -->
+	<knob-input params="
+		value: inputValue,
+		preFixText: prefix,
+		postFixText: postfix
+	">
+	</knob-input>
 	
 	<!-- post input placeholder -->
 </div>
