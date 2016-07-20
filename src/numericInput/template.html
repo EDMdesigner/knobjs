@@ -28,15 +28,16 @@
 </div>
 
 <div class="knob-numericInput variation-split" data-bind="if: layoutArrangement === 'split'">
+	
+	<!-- pre input placeholder -->
 	<span class="control-button">
 		<knob-button params="
-			icon: increaseButton.icon,
-			click: increaseButton.click,
+			icon: decreaseButton.icon,
+			click: decreaseButton.click,
 			triggerOnHold: triggerOnHold
 		">
 		</knob-button>
 	</span>
-	<!-- pre input placeholder -->
 	<knob-input params="
 		value: inputValue,
 		preFixText: prefix,
@@ -45,8 +46,8 @@
 	</knob-input>
 	<span class="control-button">
 		<knob-button params="
-			icon: decreaseButton.icon,
-			click: decreaseButton.click,
+			icon: increaseButton.icon,
+			click: increaseButton.click,
 			triggerOnHold: triggerOnHold
 		">
 		</knob-button>
