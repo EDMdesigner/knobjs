@@ -10,7 +10,7 @@ module.exports = function createStyleConfig(config) {
 	var factor5 = 20;
 	var factor6 = 25;
 
-	function createColorVersions(color) {
+	function createColorShades(color) {
 		var color1 = tinycolor(color);
 		var color2 = tinycolor(color);
 		var color3 = tinycolor(color);
@@ -50,7 +50,7 @@ module.exports = function createStyleConfig(config) {
 	}
 
 	function createButtonStatesBackground(color) {
-		var colorVersions = createColorVersions(color);
+		var colorVersions = createColorShades(color);
 
 		var color1 = colorVersions.color1;
 		var color2 = colorVersions.color2;
@@ -85,7 +85,7 @@ module.exports = function createStyleConfig(config) {
 	}
 
 	function createButtonStatesBorder(color) {
-		var colorVersions = createColorVersions(color);
+		var colorVersions = createColorShades(color);
 
 		var color1 = colorVersions.color1;
 		var color2 = colorVersions.color2;
@@ -125,7 +125,7 @@ module.exports = function createStyleConfig(config) {
 	}
 
 	function createButtonStatesBorderFill(color) {
-		var colorVersions = createColorVersions(color);
+		var colorVersions = createColorShades(color);
 
 		var color1 = colorVersions.color1;
 		var color2 = colorVersions.color2;
@@ -166,48 +166,28 @@ module.exports = function createStyleConfig(config) {
 	}
 
 	function createModalHeadButtonState(color) {
-		var color1 = tinycolor(color);
-		var color2 = tinycolor(color);
-		var color3 = tinycolor(color);
+		var colorVersions = createColorShades(color);
 
-		if (color1.isDark()) {
-			color2 = color2.lighten(factor2);
-			color3 = color3.lighten(factor3);
-
-			color1 = color1.toString();
-			color2 = color2.toString();
-			color3 = color3.toString();
-		} else {
-			color2 = color2.darken(factor2);
-			color3 = color3.darken(factor3);
-
-			color1 = color1.toString();
-			color2 = color2.toString();
-			color3 = color3.toString();
-		}
+		var color1 = colorVersions.color1;
+		var color2 = colorVersions.color2;
+		var color3 = colorVersions.color3;
 
 		return {
-			"default": {
-				"backgroundColor": "transparent",
-				"borderColor": "transparent",
-
-				"color": color1,
-				"fill": color1
+			default: {
+				color: color1,
+				fill: color1
 			},
 			hover: {
-				"color": color2,
-				"fill": color2
+				color: color2,
+				fill: color2
 			},
 			active: {
-				"color": color3,
-				"fill": color3
+				color: color3,
+				fill: color3
 			},
-			"disabled": {
-				"backgroundColor": "transparent",
-				"borderColor": "transparent",
-
-				"color": colors.mediumGray,
-				"fill": colors.mediumGray
+			disabled: {
+				color: colors.mediumGray,
+				fill: colors.mediumGray
 			}
 		};
 	}
@@ -230,7 +210,9 @@ module.exports = function createStyleConfig(config) {
 	var successButtonStates = createButtonStates(colors.success);
 	var errorButtonStates = createButtonStates(colors.error);
 
-	var modalHeadButtonStates = createModalHeadButtonState(colors.lightGray);
+	var modalHeadButtonStates = createModalHeadButtonState(colors.black);
+
+	console.log(modalHeadButtonStates);
 
 	return {
 		"default": ligthGrayButtonStates,
