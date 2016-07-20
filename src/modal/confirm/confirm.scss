@@ -1,8 +1,6 @@
-@import "../modal-actions";
-
 .knob-modal-confirm {
-	.knob-modal__buttons knob-button .knob-button {
-		width:50%;
-		float:left;
+	.knob-modal__buttons  {
+		padding: 10px;
+		text-align: right;
 	}
 }

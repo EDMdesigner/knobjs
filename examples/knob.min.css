@@ -230,23 +230,13 @@
   .knob-modal__content {
     padding: 10px; }
 
-.knob-modal__buttons {
-  display: block;
-  padding: 0; }
-  .knob-modal__buttons knob-button {
-    display: inline; }
-    .knob-modal__buttons knob-button .knob-button {
-      display: block;
-      text-align: center;
-      padding: 13px 0;
-      margin: 0;
-      border: 0px none;
-      border-radius: 0;
-      width: 100%; }
+.knob-modal-alert .knob-modal__buttons {
+  padding: 10px;
+  text-align: right; }
 
-.knob-modal-confirm .knob-modal__buttons knob-button .knob-button {
-  width: 50%;
-  float: left; }
+.knob-modal-confirm .knob-modal__buttons {
+  padding: 10px;
+  text-align: right; }
 
 .knob-notification {
   display: -webkit-box;

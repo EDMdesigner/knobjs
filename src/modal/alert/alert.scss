@@ -1,7 +1,6 @@
-@import "../modal-actions";
-
 .knob-modal-alert {
-	.knob-modal__buttons knob-button .knob-button {
-		width:100%;
+	.knob-modal__buttons  {
+		padding: 10px;
+		text-align: right;
 	}
 }
