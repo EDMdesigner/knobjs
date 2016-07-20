@@ -7,9 +7,20 @@ function knobRegisterComponent(name, createVm, template, style, icons, labels) {
 	ko.components.register(name, {
 		viewModel: {
 			createViewModel: function(params, componentInfo) {
-				params.style = style;
-				params.icons = icons;
-				params.labels = labels;
+				if(params.style) {
+					throw new Error("style cannot be parametrized!");
+				} else {
+					params.style = style;
+				}
+
+				if(!params.icons) {
+					params.icons = icons;
+				}
+				
+				if(!params.labels) {
+					params.labels = labels;
+				}
+				
 				return createVm(params, componentInfo);
 			}
 		},
