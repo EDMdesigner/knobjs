@@ -34,6 +34,9 @@ module.exports = function(dependencies) {
 		if(config.postfix && typeof config.postfix !== "string") {
 			throw new Error("config.postfix should be a string");
 		}
+		if(layoutArrangement === "back" || layoutArrangement === "split" || layoutArrangement === "front") {
+			throw new Error("config.layoutArrangement can only take values: 'back'/'front'/'split'!");
+		}
 
 		var minValue = config.minValue;
 		var maxValue = config.maxValue;
@@ -45,10 +48,6 @@ module.exports = function(dependencies) {
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
 		var layoutArrangement = config.layoutArrangement || "back";
-		
-		if(!(layoutArrangement !== "back" || layoutArrangement !== "split" || layoutArrangement !== "front")) {
-			throw new Error("config.layoutArrangement can only take values: 'back'/'front'/'split'!");
-		}
 
 		var icons = config.icons;
 
