@@ -7,6 +7,14 @@ module.exports = function createStyleConfig(theme) {
 				"color": theme.white,
 				"fill": theme.white
 			}
+		},
+		"confirm": {
+			"default": {
+				"backgroundColor": theme.darkGray,
+				"border-color": theme.darkGray,
+				"color": theme.white,
+				"fill": theme.white
+			}
 		}
 	};
 };

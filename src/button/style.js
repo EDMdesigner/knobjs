@@ -2,28 +2,44 @@ module.exports = function createStyleConfig(theme) {
 
 	var tinycolor = require("tinycolor2");
 
-	return {
+	var defaultButtonStates = {
 		"default": {
-			"default": {
-				"backgroundColor": theme.secondaryColor,
-				"borderColor": theme.secondaryColor,
-				"color": theme.black,
-				"fill": theme.black
-			},
-			"hover": {
-				"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString(),
-				"borderColor": tinycolor(theme.secondaryColor).lighten().toString()
-			},
-			"active": {
-				"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
-				"borderColor": tinycolor(theme.secondaryColor).darken().toString()
-			},
-			"disabled": {
-				"backgroundColor": theme.mediumGray,
-				"color": theme.lightGray,
-				"fill": theme.lightGray
-			}
+			"backgroundColor": theme.secondaryColor,
+			"borderColor": theme.secondaryColor,
+			"color": tinycolor(theme.secondaryColor).isDark() ? theme.white : theme.black,
+			"fill": tinycolor(theme.secondaryColor).isDark() ? theme.white : theme.black
 		},
+		"disabled": {
+			"backgroundColor": theme.mediumGray,
+			"color": theme.lightGray,
+			"fill": theme.lightGray
+		}
+	};
+
+	if (tinycolor(theme.secondaryColor).isDark()) {
+		defaultButtonStates.hover = {
+			"backgroundColor": tinycolor(theme.secondaryColor).lighten().toString(),
+			"borderColor": tinycolor(theme.secondaryColor).lighten().toString()
+		};
+
+		defaultButtonStates.active = {
+			"backgroundColor": tinycolor(theme.secondaryColor).lighten().lighten().toString(),
+			"borderColor": tinycolor(theme.secondaryColor).lighten().lighten().toString()
+		};
+	} else {
+		defaultButtonStates.hover = {
+			"backgroundColor": tinycolor(theme.secondaryColor).darken().toString(),
+			"borderColor": tinycolor(theme.secondaryColor).darken().toString()
+		};
+
+		defaultButtonStates.active = {
+			"backgroundColor": tinycolor(theme.secondaryColor).darken().darken().toString(),
+			"borderColor": tinycolor(theme.secondaryColor).darken().darken().toString()
+		};
+	}
+
+	return {
+		"default": defaultButtonStates,
 		"primary": {
 			"default": {
 				"backgroundColor": theme.primaryColor,
@@ -88,6 +104,8 @@ module.exports = function createStyleConfig(theme) {
 				"fill": theme.mediumGray
 			}
 		},
+		"dropdown": defaultButtonStates,
+		"dropdown-option": defaultButtonStates,
 		"modalHead": {
 			"default": {
 				"backgroundColor": theme.darkGray,
@@ -194,6 +212,22 @@ module.exports = function createStyleConfig(theme) {
 			"active": {
 				"backgroundColor": tinycolor(theme.error.background).darken().toString(),
 				"borderColor": tinycolor(theme.error.background).darken().toString()
+			}
+		},
+		"cancel": {
+			"default": {
+				"backgroundColor": theme.darkGray,
+				"borderColor": theme.lightGray,
+				"color": tinycolor(theme.darkGray).isDark() ? theme.white : theme.black,
+				"fill": tinycolor(theme.secondaryColor).isDark() ? theme.white : theme.black
+			},
+			"hover": {
+				"backgroundColor": theme.darkGray,
+				"borderColor": theme.darkGray
+			},
+			"active": {
+				"backgroundColor": tinycolor(theme.lightGray).darken().toString(),
+				"borderColor": tinycolor(theme.lightGray).darken().toString()
 			}
 		}
 	};
