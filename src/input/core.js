@@ -45,7 +45,19 @@ module.exports = function(dependencies) {
 		if (config.keyDown) {
 			vm.eventHandlers.keydown = config.keyDown;
 		}
-		
+
+		/* this should be working
+		vm.left = {
+			icon: ko.observable(ko.unwrap(config.leftIcon || config.icon)),
+			text: ko.observable(ko.unwrap(config.prefixText))
+		}
+
+		vm.righ = {
+			icon: ko.observable(ko.unwrap(config.rightIcon)),
+			text: ko.observable(ko.unwrap(config.postFixText))
+		}
+		*/
+
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 		vm.preFixText = ko.observable(ko.unwrap(config.preFixText));

@@ -1,12 +1,15 @@
 <div data-bind="css: cssClass, 
 				style: style">
 	<span class="icon-wrapper preIcon" data-bind="if: leftIcon">
+	<!-- data-bind="if: left.icon" -->
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': leftIcon}" xlink:href=""></use>
+			<!-- {'xlink:href': left.icon} -->
 		</svg>
 	</span>
 	<!-- ko if: preFixText -->
 	<span class="preFixText" data-bind="text: preFixText"></span>
+	<!-- data-bind="text: left.text" -->
 	<!-- /ko -->
 	
 	<input data-bind="
@@ -18,11 +21,14 @@
 					valueUpdate: 'afterkeydown'" />
 	<!-- ko if: postFixText -->
 	<span class="postFixText" data-bind="text: postFixText"></span>
+	<!-- data-bind="text: right.text" -->
 	<!-- /ko -->
 	
 	<span class="icon-wrapper postIcon" data-bind="if: rightIcon">
+	<!-- data-bind="if: right.icon" -->
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': rightIcon}" xlink:href=""></use>
+			<!-- {'xlink:href' : right.icon} -->
 		</svg>
 	</span>
 </div>
