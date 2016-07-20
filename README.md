@@ -617,3 +617,21 @@ postfix   | string                  | No       |                       | String 
 minTimeout | number                 | No       | 50                    | The miminum of the refresh rate when holding one of the buttons.
 timeoutDecrement | number           | No       | 100                   | Specifies how fast the value will refresh.
 baseTimeout | number                | No       | 500                   | Refresh rate in the beginning.
+layoutArrangement | string          | No*      | "back"                | Specifies the button placements.
+
+*Only "back", "split" or "front" values are viable. No value means "back" by default. OTherwise an exception is thrown.
+
+### Example
+``` html
+<knob-numericinput params="
+		minValue: -100,
+		maxValue: 100,
+		value: ko.observable(0),
+		step: 1,
+		prefix: 'Font size: ',
+		postfix: 'px',
+		layoutArrangement: 'split'
+	">
+</knob-numericinput>
+<!-- The refresh rate variables have defaul values -->
+
