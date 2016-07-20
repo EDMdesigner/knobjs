@@ -9,9 +9,9 @@ function knobRegisterComponent(name, createVm, template, style, icons, labels) {
 			createViewModel: function(params, componentInfo) {
 				if(params.style) {
 					throw new Error("style cannot be parametrized!");
-				} else {
-					params.style = style;
 				}
+				
+				params.style = style;
 
 				if(!params.icons) {
 					params.icons = icons;
