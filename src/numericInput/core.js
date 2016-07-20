@@ -16,14 +16,14 @@ module.exports = function(dependencies) {
 		if(!config) {
 			throw new Error("Config is mandatory!");
 		}
+		if(!ko.isObservable(config.value)|| typeof config.value() !== "number") {
+			throw new Error("config.value is mandatory and it should store a number");
+		}
 		if(typeof config.minValue !== "number" || typeof config.minValue === "undefined") {
 			throw new Error("config.minValue is mandatory and it should be a number!");
 		}
 		if(typeof config.maxValue !== "number" || typeof config.maxValue === "undefined") {
 			throw new Error("config.maxValue is mandatory and it should be a number!");
-		}
-		if(typeof config.initValue !== "number" || typeof config.initValue === "undefined") {
-			throw new Error("config.initValue is mandatory and it should be a number!");
 		}
 		if(typeof config.step !== "number" || typeof config.step === "undefined") {
 			throw new Error("config.step is mandatory and it should be a number!");
@@ -37,7 +37,7 @@ module.exports = function(dependencies) {
 
 		var minValue = config.minValue;
 		var maxValue = config.maxValue;
-		var initValue = config.initValue;
+		var inputValue = config.value;
 		var step = config.step;
 		var prefix = config.prefix;
 		var postfix = config.postfix;
@@ -51,8 +51,6 @@ module.exports = function(dependencies) {
 		}
 
 		var icons = config.icons;
-
-		var inputValue = ko.observable(initValue);
 
 		ko.computed(function() {
 			var val = inputValue();
