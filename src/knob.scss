@@ -1,6 +1,5 @@
 @import "sass-extend";
-@import "variables";
-@import "scaffolding";
+
 @import "base/base.scss";
 @import "button/button";
 @import "dropdown/dropdown";
@@ -17,5 +16,3 @@
 @import "progressBar/progressBar";
 
 //@import "shadows";
-
-@import "example";
