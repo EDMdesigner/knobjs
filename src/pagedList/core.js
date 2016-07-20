@@ -28,6 +28,38 @@ module.exports = function pagedListCore(dependencies) {
 			}
 		}
 
+		if(!config.icons) {
+			throw new Error("config.icons is mandatory!");
+		}
+
+		if(!config.icons.search) {
+			throw new Error("config.icons.search is mandatory!");
+		}
+
+		if(!config.icons.dropdown) {
+			throw new Error("config.icons.dropdown is mandatory!");
+		}
+
+		if(!config.icons.sort) {
+			throw new Error("config.icons.sort is mandatory!");
+		}
+
+		if(!config.icons.sort.asc) {
+		 	throw new Error("config.icons.sort.asc is mandatory!");
+		}
+
+		if(!config.icons.sort.desc) {
+			throw new Error("config.icons.sort.desc is mandatory!");
+		}
+
+		if(!config.labels) {
+			throw new Error("config.labels is mandatory!");
+		}
+
+		if(!config.labels.noResults) {
+			throw new Error("config.labels.noResults is mandatory!");
+		}
+
 		var name = config.name;
 
 		var stateModel = config.stateModel;

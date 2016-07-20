@@ -5,15 +5,70 @@ describe("Invalid config", function() {
 	it("config.value has to be an observable!", function() {
 		expect(function() {
 			createInlineTextEditor({
-				value: 2
+				value: 2,
+				icons: {
+					edit: "icon",
+					done: "icon",
+					close: "icon"
+				}
 			});
 		}).toThrowError("config.value has to be an observable!");
+	});
+
+	it("config.icons missing", function() {
+		expect(function() {
+			createInlineTextEditor({
+				value: ko.observable(null)
+			});
+		}).toThrowError("config.icons is mandatory!");
+	});
+
+	it("config.icons.edit missing", function() {
+		expect(function() {
+			createInlineTextEditor({
+				value: ko.observable(null),
+				icons: {
+					done: "icon",
+					close: "icon"
+				}
+			});
+		}).toThrowError("config.icons.edit is mandatory!");
+	});
+
+	it("config.icons.done missing", function() {
+		expect(function() {
+			createInlineTextEditor({
+				value: ko.observable(null),
+				icons: {
+					edit: "icon",
+					close: "icon"
+				}
+			});
+		}).toThrowError("config.icons.done is mandatory!");
+	});
+
+	it("config.icons.close missing", function() {
+		expect(function() {
+			createInlineTextEditor({
+				value: ko.observable(null),
+				icons: {
+					edit: "icon",
+					done: "icon"
+				}
+			});
+		}).toThrowError("config.icons.close is mandatory!");
 	});
 });
 
 describe("Valid config", function() {
 	it("Interface", function() {
-		var te = createInlineTextEditor();
+		var te = createInlineTextEditor({
+			icons: {
+					edit: "icon",
+					done: "icon",
+					close: "icon"
+				}
+		});
 
 		//Types
 		expect(ko.isObservable(te.value)).toBe(true);
@@ -35,7 +90,12 @@ describe("Valid config", function() {
 	it("config.value set", function() {
 		var value = ko.observable(2);
 		var te = createInlineTextEditor({
-			value: value
+			value: value,
+			icons: {
+					edit: "icon",
+					done: "icon",
+					close: "icon"
+			}
 		});
 
 		expect(te.value()).toBe(value());
@@ -48,7 +108,13 @@ describe("Valid config", function() {
 		var editedValue = "bunny";
 
 		beforeEach(function() {
-			te = createInlineTextEditor();
+			te = createInlineTextEditor({	
+				icons: {
+					edit: "icon",
+					done: "icon",
+					close: "icon"
+				}
+			});
 		});
 
 		it("edit", function() {

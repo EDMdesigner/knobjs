@@ -66,6 +66,11 @@ function initKnob(config) {
 		numericInput:{
 			increase: "#icon-arrow-downward",
 			decrease: "#icon-arrow-upward"
+		},
+		inlineTextEditor: {
+			edit: "#icon-edit",
+			done: "#icon-done",
+			close: "#icon-close"
 		}
 	};
 
@@ -160,7 +165,13 @@ function initKnob(config) {
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(colorSet));
 	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(colorSet));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
-	registerComponent("knob-inline-text-editor", require("./inlineTextEditor/vm"), require("./inlineTextEditor/template.html"));
+	registerComponent(
+		"knob-inline-text-editor",
+		 require("./inlineTextEditor/vm"),
+		 require("./inlineTextEditor/template.html"),
+		 null,
+		 icons.inlineTextEditor
+		);
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
 	registerComponent(
 		"knob-pagination",
