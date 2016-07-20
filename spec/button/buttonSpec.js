@@ -257,7 +257,7 @@ describe("Button", function() {
 				buttonVm.state("default");
 				expect(config.click).toHaveBeenCalledTimes(3);
 				done();
-			}, 350);
+			}, 310);
 		});
 	});
 });
