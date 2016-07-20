@@ -6,36 +6,28 @@ var superdata = require("superdata");
 var initKnob = require("../src/components").init;
 
 initKnob({
-	theme: "default",
+	theme: "background", //background, border, border-fill, chamaileon
 	// for default and theme4
-	colorSet: {
-		primaryColor: "#2980b9",
-		secondaryColor: "#f4f4f4",
+	colors: {
+		primary: "#44c0fc",
+		secondary: "#f4f4f4",
 
-		info: {
-			background: "#25aaf2"
-		},
-		success: {
-			background: "#54c059"
-		},
-		warning: {
-			background: "#f5a500"
-		},
-		error: {
-			background: "#ee483b"
-		},
+		info: "#25aaf2",
+		success: "#54c059",
+		warning: "#f5a500",
+		error: "#ee483b",
 
 		white: "#fff",
-
-		lightGray: "#e6e6e6",
-		mediumGray: "#cacaca",
-		darkGray: "#333333",
-
 		black: "#000",
-		transparent: "transparent"
+
+		lightGray: "#f5f7f8",
+		mediumGray: "#f0f2f4",
+		darkGray: "#e5e9ec",
+
+		border: "#d2cdc6" //only for the chamaileon style
 	},
 	// for chamaileon theme
-	colorSet1: {
+	color1: {
 		primaryColor: "#44c0fc",
 		secondaryColor: "#f4f4f4",
 
@@ -58,37 +50,6 @@ initKnob({
 		mediumGray: "#f0f2f4",
 		darkGray: "#e5e9ec",
 		border: "#d2cdc6",
-
-		black: "#000",
-		transparent: "transparent"
-	},
-	// for theme2 and 3
-	colorSet2: {
-		primaryColor: "#2199e8",
-		secondaryColor: "#777",
-
-		info: {
-			text: "#00529b",
-			background: "#bde5f8"
-		},
-		success: {
-			text: "#4f8a10",
-			background: "#dff2bf"
-		},
-		warning: {
-			text: "#9f6000",
-			background: "#feefb3"
-		},
-		error: {
-			text: "#d8000c",
-			background: "#ffbaba"
-		},
-
-		white: "#fff",
-
-		lightGray: "#e6e6e6",
-		mediumGray: "#cacaca",
-		darkGray: "#8a8a8a",
 
 		black: "#000",
 		transparent: "transparent"

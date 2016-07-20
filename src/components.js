@@ -13,35 +13,20 @@ var baseVm = require("./base/vm");
 var createButtonStyle;
 var createButtonStyleDefault = require("./button/style");
 var createButtonStyleChamaileon = require("./button/chamaileon");
-var createButtonStyleTheme2 = require("./button/theme2");
-var createButtonStyleTheme3 = require("./button/theme3");
-var createButtonStyleTheme4 = require("./button/theme4");
 
 var createInputStyle;
 var createInputStyleDefault = require("./input/style");
 var createInputStyleChamaileon = require("./input/chamaileon");
-var createInputStyleTheme2 = require("./input/theme2");
-var createInputStyleTheme3 = require("./input/theme3");
-var createInputStyleTheme4 = require("./input/theme4");
 
 var createModalStyle;
 var createModalStyleChamaileon = require("./modal/chamaileon");
 var createModalStyleDefault = require("./modal/style");
-var createModalStyleTheme2 = require("./modal/theme2");
-var createModalStyleTheme3 = require("./modal/theme3");
-var createModalStyleTheme4 = require("./modal/theme4");
 
 var createPagedListStyle;
 var createPagedListStyleDefault = require("./pagedList/style");
-var createPagedListStyleTheme2 = require("./pagedList/theme2");
-var createPagedListStyleTheme3 = require("./pagedList/theme3");
-var createPagedListStyleTheme4 = require("./pagedList/theme4");
 
 var createNotificationStyle;
 var createNotificationStyleDefault = require("./notificationBar/style");
-var createNotificationStyleTheme2 = require("./notificationBar/theme2");
-var createNotificationStyleTheme3 = require("./notificationBar/theme3");
-var createNotificationStyleTheme4 = require("./notificationBar/theme4");
 
 var createCheckboxStyle;
 var createCheckboxStyleDefault = require("./checkbox/style");
@@ -79,7 +64,6 @@ function initKnob(config) {
 	};
 
 
-	var colorSet = config.colorSet;
 	var theme = config.theme;
 
 	var icons = extend(true, {}, defaultIcons, config.icons);
@@ -126,25 +110,6 @@ function initKnob(config) {
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
-		} else if (theme === "theme2") {
-			createButtonStyle = createButtonStyleTheme2;
-			createInputStyle = createInputStyleTheme2;
-			createModalStyle = createModalStyleTheme2;
-			createPagedListStyle = createPagedListStyleTheme2;
-			createNotificationStyle = createNotificationStyleTheme2;
-
-		} else if (theme === "theme3"){
-			createButtonStyle = createButtonStyleTheme3;
-			createInputStyle = createInputStyleTheme3;
-			createModalStyle = createModalStyleTheme3;
-			createPagedListStyle = createPagedListStyleTheme3;
-			createNotificationStyle = createNotificationStyleTheme3;
-		} else if (theme === "theme4") {
-			createButtonStyle = createButtonStyleTheme4;
-			createInputStyle = createInputStyleTheme4;
-			createModalStyle = createModalStyleTheme4;
-			createPagedListStyle = createPagedListStyleTheme4;
-			createNotificationStyle = createNotificationStyleTheme4;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
@@ -158,12 +123,12 @@ function initKnob(config) {
 		throw new Error("config.theme should be an object or a string");
 	}
 
-	var buttonStyle = createButtonStyle(colorSet);
-	var checkboxStyle = createCheckboxStyle(colorSet);
+	var buttonStyle = createButtonStyle(config);
+	var checkboxStyle = createCheckboxStyle(config);
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
-	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(colorSet));
-	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(colorSet));
+	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config));
+	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(config));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent(
 		"knob-inline-text-editor",
@@ -194,7 +159,7 @@ function initKnob(config) {
 		"knob-paged-list",
 		require("./pagedList/vm"),
 		require("./pagedList/template.html"),
-		createPagedListStyle(colorSet),
+		createPagedListStyle(config),
 		{
 			search: icons.search,
 			sort: icons.sort,
@@ -205,14 +170,14 @@ function initKnob(config) {
 		}
 	);
 
-	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(colorSet));
-	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(colorSet));
-	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(colorSet));
+	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config));
+	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config));
+	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
 
-	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(colorSet));
+	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(config));
 	registerComponent(
 		"knob-checkbox",
 		require("./checkbox/vm"),
