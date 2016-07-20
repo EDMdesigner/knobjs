@@ -7,12 +7,21 @@
 		postFixText: postfix
 	">
 	</knob-input>
-
-	<span class="control-buttons" data-bind="foreach: {data: controlButtons, as: 'button'}">
+	<span data-bind="text: postfix">
+	</span>
+	<span class="control-button">
 		<knob-button params="
-			icon: button.icon,
-			click: button.click,
-			triggerOnHold: $parent.triggerOnHold
+			icon: increaseButton.icon,
+			click: increaseButton.click,
+			triggerOnHold: triggerOnHold
+		">
+		</knob-button>
+	</span>
+	<span class="control-button">
+		<knob-button params="
+			icon: decreaseButton.icon,
+			click: decreaseButton.click,
+			triggerOnHold: triggerOnHold
 		">
 		</knob-button>
 	</span>

@@ -61,8 +61,8 @@ function initKnob(config) {
 		tick: "#icon-check",
 		cross: "#icon-close",
 		numericInput:{
-			increase: "#icon-arrow-downward",
-			decrease: "#icon-arrow-upward"
+			increase: "#icon-arrow-upward",
+			decrease: "#icon-arrow-downward"
 		}
 	};
 

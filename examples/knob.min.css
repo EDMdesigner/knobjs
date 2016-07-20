@@ -204,7 +204,7 @@ img {
   -ms-flex-align: center;
   align-items: center; }
 
-.control-buttons {
+.control-button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;

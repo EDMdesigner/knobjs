@@ -123,11 +123,10 @@ describe("Numeric Input", function() {
 			expect(typeof numericInputVm.prefix).toBe("string");
 			expect(typeof numericInputVm.postfix).toBe("string");
 			expect(ko.isObservable(numericInputVm.inputValue)).toBe(true);
-			expect(numericInputVm.controlButtons.length).toBe(2);
-			for(var idx = 0; idx < numericInputVm.controlButtons.length; idx += 1) {
-				expect(typeof numericInputVm.controlButtons[idx].icon).toBe("string");
-				expect(typeof numericInputVm.controlButtons[idx].click).toBe("function");
-			}
+			expect(typeof numericInputVm.increaseButton.icon).toBe("string");
+			expect(typeof numericInputVm.increaseButton.click).toBe("function");
+			expect(typeof numericInputVm.decreaseButton.icon).toBe("string");
+			expect(typeof numericInputVm.decreaseButton.click).toBe("function");
 			expect(typeof numericInputVm.triggerOnHold).toBe("object");
 			expect(typeof numericInputVm.triggerOnHold.minTimeout).toBe("number");
 			expect(typeof numericInputVm.triggerOnHold.timeoutDecrement).toBe("number");

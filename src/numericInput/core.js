@@ -53,28 +53,27 @@ module.exports = function(dependencies) {
 			inputValue(parseFloat(val));
 		});
 
-		var controlButtons = [
-			{
-				icon: icons.increase,
-				click: function() {
-					if(parseFloat(inputValue()) - step > minValue){
-						inputValue(parseFloat(inputValue()) - step);
-					} else {
-						inputValue(minValue);
-					}
-				}
-			},
-			{
-				icon: icons.decrease,
-				click: function() {
-					if(parseFloat(inputValue()) + step < maxValue){
-						inputValue(parseFloat(inputValue()) + step);
-					} else {
-						inputValue(maxValue);
-					}
+		var decreaseButton = {
+			icon: icons.decrease,
+			click: function() {
+				if(parseFloat(inputValue()) - step > minValue){
+					inputValue(parseFloat(inputValue()) - step);
+				} else {
+					inputValue(minValue);
 				}
 			}
-		];
+		};
+
+		var increaseButton = {
+			icon: icons.increase,
+			click: function() {
+				if(parseFloat(inputValue()) + step < maxValue){
+					inputValue(parseFloat(inputValue()) + step);
+				} else {
+					inputValue(maxValue);
+				}
+			}
+		};
 
 		var triggerOnHold = {
 			minTimeout: minTimeout,
@@ -84,7 +83,8 @@ module.exports = function(dependencies) {
 
 		return {
 			inputValue: inputValue,
-			controlButtons: controlButtons,
+			increaseButton: increaseButton,
+			decreaseButton: decreaseButton,
 			prefix: prefix,
 			postfix: postfix,
 			triggerOnHold: triggerOnHold
