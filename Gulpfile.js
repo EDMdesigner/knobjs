@@ -31,7 +31,7 @@ var jsonFiles = [
 
 // Build example
 // ==================================================
-gulp.task("sass:dev", function() {
+gulp.task("sass:dev", ["sass:example"], function() {
 	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
 		.pipe(autoprefixer({
@@ -39,6 +39,17 @@ gulp.task("sass:dev", function() {
 			cascade: false
 		}))
 		.pipe(concat("knob.min.css"))
+		.pipe(gulp.dest("./examples"));
+});
+
+gulp.task("sass:example", function() {
+	return gulp.src("./examples/example.scss")
+		.pipe(sass().on("error", sass.logError))
+		.pipe(autoprefixer({
+			browsers: ["last 2 version", "iOS 6"],
+			cascade: false
+		}))
+		.pipe(concat("example.min.css"))
 		.pipe(gulp.dest("./examples"));
 });
 
@@ -54,7 +65,9 @@ gulp.task("js:dev", createBrowserifyTask({
 gulp.task("sass:prod", function() {
 	return gulp.src("./src/knob.scss")
 		.pipe(sass().on("error", sass.logError))
-		.pipe(cssnano())
+		.pipe(cssnano({
+			safe: true
+		}))
 		.pipe(autoprefixer({
 			browsers: ["last 2 version", "iOS 6"],
 			cascade: false

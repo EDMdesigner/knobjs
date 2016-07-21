@@ -9,30 +9,30 @@ module.exports = function createStyleConfig(theme) {
 		},
 		"info": {
 			"default": {
-				"backgroundColor": theme.info.background,
-				"color": theme.info.text,
-				"fill": theme.info.text
+				"backgroundColor": theme.info,
+				"color": theme.black,
+				"fill": theme.black
 			}
 		},
 		"success": {
 			"default": {
-				"backgroundColor": theme.success.background,
-				"color": theme.success.text,
-				"fill": theme.success.text
+				"backgroundColor": theme.success,
+				"color": theme.black,
+				"fill": theme.black
 			}
 		},
 		"warning": {
 			"default": {
-				"backgroundColor": theme.warning.background,
-				"color": theme.warning.text,
-				"fill": theme.warning.text
+				"backgroundColor": theme.warning,
+				"color": theme.black,
+				"fill": theme.black
 			}
 		},
 		"error": {
 			"default": {
-				"backgroundColor": theme.error.background,
-				"color": theme.error.text,
-				"fill": theme.error.text
+				"backgroundColor": theme.error,
+				"color": theme.black,
+				"fill": theme.black
 			}
 		}
 	};
