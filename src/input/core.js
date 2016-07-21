@@ -32,6 +32,18 @@ module.exports = function(dependencies) {
 		config.type = config.type || "text";
 		config.placeholder = config.placeholder || "";
 
+		var left = config.left || {};
+		left.icon = ko.observable(ko.unwrap(left.icon || config.icon) || "");
+		left.hideOnFocus = ko.unwrap(left.hideOnFocus) || false;
+		left.text = ko.observable(ko.unwrap(left.text) || "");
+		left.visible = ko.observable(true);
+
+		var right = config.right || {};
+		right.icon = ko.observable(ko.unwrap(right.icon) || "");
+		right.hideOnFocus = ko.unwrap(right.hideOnFocus) || false;
+		right.text = ko.observable(ko.unwrap(right.text) || "");
+		right.visible = ko.observable(true);
+
 		var vm = base(config);
 
 		vm.behaviours.hover.enable();
@@ -46,22 +58,24 @@ module.exports = function(dependencies) {
 			vm.eventHandlers.keydown = config.keyDown;
 		}
 
-		/* this should be working
-		vm.left = {
-			icon: ko.observable(ko.unwrap(config.leftIcon || config.icon)),
-			text: ko.observable(ko.unwrap(config.prefixText))
-		}
+		ko.computed(function() {
+			if(vm.hasFocus() && left.hideOnFocus) {
+				left.visible(false);
+			} else {
+				left.visible(true);
+			}
+		});
 
-		vm.righ = {
-			icon: ko.observable(ko.unwrap(config.rightIcon)),
-			text: ko.observable(ko.unwrap(config.postFixText))
-		}
-		*/
+		ko.computed(function() {
+			if(vm.hasFocus() && right.hideOnFocus) {
+				right.visible(false);
+			} else {
+				right.visible(true);
+			}
+		});
 
-		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
-		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
-		vm.preFixText = ko.observable(ko.unwrap(config.preFixText));
-		vm.postFixText = ko.observable(ko.unwrap(config.postFixText));
+		vm.left = left;
+		vm.right = right;
 		
 		return vm;
 	};

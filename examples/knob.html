@@ -261,8 +261,40 @@
 	<hr>
 	
 	<h2> advanced knob-inputs</h2>
-	<knob-input params="placeholder: 'Price', preFixText: 'PRE:', postFixText: 'HUF'"></knob-input>
-	<knob-input params="placeholder: 'Search', leftIcon: '#icon-search', rightIcon: '#icon-search'"></knob-input>
+	<knob-input params="
+		placeholder: 'Price',
+		left: {
+			text: 'PRE:',
+			icon: '#icon-search',
+			hideOnFocus: true
+		},
+		right: {
+			text: 'HUF'
+		}">
+	</knob-input>
+
+	<knob-input params="
+		left: {
+			text: 'Search',
+			icon: '#icon-search',
+			hideOnFocus: true
+		}">
+	</knob-input>
+
+	<knob-input params="
+		placeholder: 'Search',
+		leftIcon: '#icon-search', 
+		rightIcon: '#icon-search',
+		left: {
+			icon: '#icon-search',
+			hideOnFocus: true
+		},
+		right: {
+			icon: '#icon-search',
+			hideOnFocus: true
+		}">
+			
+	</knob-input>
 
 	<h2>knob-radio</h2>
 	<h4>Inline</h4>
