@@ -254,46 +254,56 @@
 	<hr>
 
 	<h2>knob-input</h2>
-	<knob-input params="placeholder: 'Name'"></knob-input>
-	<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
-
+	<div style="width: 300px">
+		<knob-input params="placeholder: 'Name'"></knob-input>
+		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
+	</div>
 	<hr>
 	
 	<h2> advanced knob-inputs</h2>
-	<knob-input params="
-		placeholder: 'Price',
-		left: {
-			text: 'PRE:',
-			icon: '#icon-search',
-			hideOnFocus: true
-		},
-		right: {
-			text: 'HUF'
-		}">
-	</knob-input>
+	<div style="width: 300px">
+		<knob-input params="
+			placeholder: 'Price',
+			left: {
+				text: 'PRE:',
+				icon: '#icon-search',
+				hideOnFocus: true
+			},
+			right: {
+				text: 'HUF'
+			}">
+		</knob-input>
 
-	<knob-input params="
-		left: {
-			text: 'Search',
-			icon: '#icon-search',
-			hideOnFocus: true
-		}">
-	</knob-input>
+		<knob-input params="
+			left: {
+				text: 'Search',
+				icon: '#icon-search',
+				hideOnFocus: true
+			}">
+		</knob-input>
 
-	<knob-input params="
-		placeholder: 'Search',
-		leftIcon: '#icon-search', 
-		rightIcon: '#icon-search',
-		left: {
-			icon: '#icon-search',
-			hideOnFocus: true
-		},
-		right: {
-			icon: '#icon-search',
-			hideOnFocus: true
-		}">
-			
-	</knob-input>
+		<knob-input params="
+			placeholder: 'Search',
+			leftIcon: '#icon-search', 
+			rightIcon: '#icon-search',
+			left: {
+				icon: '#icon-search',
+				hideOnFocus: true
+			},
+			right: {
+				icon: '#icon-search',
+				hideOnFocus: true
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: '#icon-search',
+				hideOnFocus: true
+			}">
+		</knob-input>
+	</div>
 
 	<h2>knob-textarea</h2>
 	<knob-textarea></knob-textarea>
