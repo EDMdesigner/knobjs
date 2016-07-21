@@ -22,6 +22,26 @@ module.exports = function createPagination(config) {
 		throw new Error("config.afterCurrent must be larger than zero");
 	}
 
+	if(!config.icons) {
+		throw new Error("config.icons is mandatory!");
+	}
+
+	if(!config.icons.first) {
+		throw new Error("config.icons.first is mandatory!");
+	}
+
+	if(!config.icons.prev) {
+		throw new Error("config.icons.prev is mandatory!");
+	}
+
+	if(!config.icons.next) {
+		throw new Error("config.icons.next is mandatory!");
+	}
+
+	if(!config.icons.last) {
+		throw new Error("config.icons.last is mandatory!");
+	}
+
 	var numOfPages;
 
 	if (ko.isObservable(config.numOfPages)) {

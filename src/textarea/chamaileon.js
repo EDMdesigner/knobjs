@@ -2,18 +2,17 @@ module.exports = function createStyleConfig(theme) {
 	return {
 		"default": {
 			"default": {
-				"backgroundColor": theme.secondaryColor,
-				"border-color": theme.secondaryColor,
-				"color": theme.white,
-				"fill": theme.white
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": "blue"
 			},
 			"hover": {
-				"backgroundColor": theme.primaryColor,
+				"backgroundColor": theme.white,
 				"color": theme.black,
 				"border-color": theme.darkGray
 			},
 			"active": {
-				"backgroundColor": theme.primaryColor,
+				"backgroundColor": theme.white,
 				"color": theme.primaryColor,
 				"fill": theme.primaryColor
 			},
@@ -25,3 +24,4 @@ module.exports = function createStyleConfig(theme) {
 		}
 	};
 };
+ 

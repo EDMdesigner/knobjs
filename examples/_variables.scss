@@ -1,15 +1,17 @@
 //
 // Variables
 // --------------------------------------------------
-$font-family-base:        "Roboto", sans-serif;;
 
+// Used in _scaffolding.scss
+$font-family-base:        "Roboto", sans-serif;;
+$link-hover-decoration: underline;
 $font-size-base:          14px;
 $line-height-base:        1.428571429;
+
+// Unused
 $line-height-computed:    floor(($font-size-base * $line-height-base));
 $headings-font-family:    inherit;
 $headings-font-weight:    500;
 $headings-line-height:    1.1;
 $headings-color:          inherit;
-
-$link-hover-decoration: underline;
 $btn-font-weight:                normal;

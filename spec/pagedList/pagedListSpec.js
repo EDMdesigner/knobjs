@@ -16,18 +16,169 @@ describe("pagedList", function() {
 			expect(createPagedList).toThrowError("config.store is mandatory!");
 		});
 
+		it("config.store missing", function() {
+			expect(function() {
+				createPagedList({
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+					},
+					labels: {
+						noResults: "result"
+					}
+				});
+			}).toThrowError("config.store is mandatory!");
+		});
+
+		it("config.icons missing", function() {
+			expect(function() {	
+				createPagedList({
+					store: "store",
+					labels: {
+						noResults: "result"
+					}
+				});
+			}).toThrowError("config.icons is mandatory!");
+		});
+
+		it("config.icons.search missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						dropdown: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						noResults: "result"
+					}
+				});
+			}).toThrowError("config.icons.search is mandatory!");
+		});
+
+		it("config.icons.dropdown missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						noResults: "result"
+					}
+				});
+			}).toThrowError("config.icons.dropdown is mandatory!");
+		});
+
+		it("config.icons.sort missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						dropdown: "icon"
+					},
+					labels: {
+						noResults: "result"
+					}
+				});
+			}).toThrowError("config.icons.sort is mandatory!");
+		});
+
+		it("config.icons.sort.asc missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							desc: "icon"
+						}
+					}
+				});
+			}).toThrowError("config.icons.sort.asc is mandatory!");
+		});
+
+		it("config.icons.sort.desc missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							asc: "icon"
+						}
+					}
+				});
+			}).toThrowError("config.icons.sort.desc is mandatory!");
+		});
+
+		it("config.labels missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					}
+				});
+			}).toThrowError("config.labels is mandatory!");
+		});
+
+		it("config.labels.noResults missing", function() {
+			expect(function() {
+				createPagedList({
+					store: "store",
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						results: "result"
+					}
+				});
+			}).toThrowError("config.labels.noResults is mandatory!");
+		});
+
 		it("missing name if stateModel is present", function() {
 			expect(function() {
 				createPagedList({
 					store: {},
-					stateModel: {}
+					stateModel: {},
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						results: "result"
+					}
 				});
 			}).toThrowError("If state saving is needed, config.name is mandatory!");
 		});
 	});
 
 	describe("- with valid config", function() {
-
 
 		var proxy;
 		var model;
@@ -76,7 +227,18 @@ describe("pagedList", function() {
 					}, {
 						label: "By Name",
 						value: "name"
-					}]
+					}],
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						noResults: "result"
+					}
 				};
 
 				pagedList = createPagedList(config);
@@ -202,7 +364,18 @@ describe("pagedList", function() {
 						}, {
 							label: "By Name",
 							value: "name"
-						}]
+						}],
+						icons: {
+							search: "icon",
+							dropdown: "icon",
+							sort: {
+								asc: "icon",
+								desc: "icon"
+							}
+						},
+						labels: {
+							noResults: "result"
+						}
 					};
 
 					pagedList = createPagedListWithMockCreateList(config);
