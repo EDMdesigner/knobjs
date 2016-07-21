@@ -265,42 +265,58 @@
 		<knob-input params="
 			placeholder: 'Price',
 			left: {
-				text: 'PRE:',
-				icon: '#icon-search',
-				hideOnFocus: true
+				text: {
+					value: 'PRE:',
+					hideOnFocus: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnFocus: false
+				}
 			},
 			right: {
-				text: 'HUF'
+				text:{
+					value: 'HUF',
+					hideOnFocus: true
+				}
 			}">
 		</knob-input>
 
 		<knob-input params="
 			left: {
-				text: 'Search',
-				icon: '#icon-search',
-				hideOnFocus: true
+				text:{
+					value: 'Search',
+					hideOnFocus: true
+				},
+				icon: { 
+					value: '#icon-search',
+					hideOnFocus: false
+				}
 			}">
 		</knob-input>
 
 		<knob-input params="
 			placeholder: 'Search',
-			leftIcon: '#icon-search', 
-			rightIcon: '#icon-search',
 			left: {
-				icon: '#icon-search',
-				hideOnFocus: true
+				icon: {
+					value: '#icon-search',
+					hideOnFocus: true
+				}
 			},
 			right: {
-				icon: '#icon-search',
-				hideOnFocus: true
+				icon: {
+					value: '#icon-search',
+					hideOnFocus: true
+				}
 			}">
 		</knob-input>
 
 		<knob-input params="
 			placeholder: 'Search',
 			left: {
-				icon: '#icon-search',
-				hideOnFocus: true
+				icon: {
+					value: '#icon-search'
+				}
 			}">
 		</knob-input>
 	</div>

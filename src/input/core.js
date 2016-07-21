@@ -33,16 +33,24 @@ module.exports = function(dependencies) {
 		config.placeholder = config.placeholder || "";
 
 		var left = config.left || {};
-		left.icon = ko.observable(ko.unwrap(left.icon || config.icon) || "");
-		left.hideOnFocus = ko.unwrap(left.hideOnFocus) || false;
-		left.text = ko.observable(ko.unwrap(left.text) || "");
-		left.visible = ko.observable(true);
+		left.icon = left.icon || {};
+		left.text = left.text || {};
+		left.icon.value = ko.observable(ko.unwrap(left.icon.value || config.icon) || "");
+		left.icon.hideOnFocus = ko.unwrap(left.icon.hideOnFocus) || false;
+		left.icon.visible = ko.observable(true);
+		left.text.value = ko.observable(ko.unwrap(left.text.value) || "");
+		left.text.hideOnFocus = ko.unwrap(left.text.hideOnFocus) || false;
+		left.text.visible = ko.observable(true);
 
 		var right = config.right || {};
-		right.icon = ko.observable(ko.unwrap(right.icon) || "");
-		right.hideOnFocus = ko.unwrap(right.hideOnFocus) || false;
-		right.text = ko.observable(ko.unwrap(right.text) || "");
-		right.visible = ko.observable(true);
+		right.icon = right.icon || {};
+		right.text = right.text || {};
+		right.icon.value = ko.observable(ko.unwrap(right.icon.value) || "");
+		right.icon.hideOnFocus = ko.unwrap(right.icon.hideOnFocus) || false;
+		right.icon.visible = ko.observable(true);
+		right.text.value = ko.observable(ko.unwrap(right.text.value) || "");
+		right.text.hideOnFocus = ko.unwrap(right.text.hideOnFocus) || false;
+		right.text.visible = ko.observable(true);
 
 		var vm = base(config);
 
@@ -59,26 +67,46 @@ module.exports = function(dependencies) {
 		}
 
 		ko.computed(function() {
-			if(vm.hasFocus()) {
-				vm.placeholder("");
+			if(vm.hasFocus() && left.icon.hideOnFocus) {
+				left.icon.visible(false);
 			} else {
-				vm.placeholder(config.placeholder);
+				left.icon.visible(true);
 			}
 		});
 
 		ko.computed(function() {
-			if(vm.hasFocus() && left.hideOnFocus) {
-				left.visible(false);
+			if(vm.hasFocus() && left.text.hideOnFocus) {
+				left.text.visible(false);
 			} else {
-				left.visible(true);
+				left.text.visible(true);
+			}
+
+			if(vm.value()) {
+				left.text.visible(false);
+			} else {
+				left.text.visible(true);
 			}
 		});
 
 		ko.computed(function() {
-			if(vm.hasFocus() && right.hideOnFocus) {
-				right.visible(false);
+			if(vm.hasFocus() && right.icon.hideOnFocus) {
+				right.icon.visible(false);
 			} else {
-				right.visible(true);
+				right.icon.visible(true);
+			}
+		});
+
+		ko.computed(function() {
+			if(vm.hasFocus() && right.text.hideOnFocus) {
+				right.text.visible(false);
+			} else {
+				right.text.visible(true);
+			}
+
+			if(vm.value()) {
+				right.text.visible(false);
+			} else {
+				right.text.visible(true);
 			}
 		});
 

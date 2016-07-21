@@ -1,15 +1,15 @@
 <div data-bind="css: cssClass, 
 				style: style">
-	<span class="icon-wrapper preIcon" data-bind="if: left.icon, visible: left.visible">
+	<span class="icon-wrapper preIcon" data-bind="if: left.icon, visible: left.icon.visible">
 		<svg class="icon">
-			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': left.icon}" xlink:href=""></use>
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': left.icon.value}" xlink:href=""></use>
 		</svg>
 	</span>
 
 	<span data-bind="if: left.text">
 		<span class="preFixText" data-bind="
-			text: left.text,
-			visible: left.visible"></span>
+			text: left.text.value,
+			visible: left.text.visible"></span>
 	</span>
 	
 	<input data-bind="
@@ -22,13 +22,13 @@
 
 	<span data-bind="if: right.text">
 		<span class="postFixText" data-bind="
-			text: right.text,
-		 	visible: right.visible"></span>
+			text: right.text.value,
+		 	visible: right.text.visible"></span>
 	</span>
 	
-	<span class="icon-wrapper postIcon" data-bind="if: right.icon, visible: right.visible">
+	<span class="icon-wrapper postIcon" data-bind="if: right.icon, visible: right.icon.visible">
 		<svg class="icon">
-			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': right.icon}" xlink:href=""></use>
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': right.icon.value}" xlink:href=""></use>
 		</svg>
 	</span>
 </div>
