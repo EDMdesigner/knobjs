@@ -49,7 +49,7 @@ module.exports = function(dependencies) {
 		vm.behaviours.hover.enable();
 		vm.behaviours.focus.enable();
 
-		vm.placeholder = config.placeholder;
+		vm.placeholder = ko.observable(config.placeholder);
 		vm.type = config.type;
 		vm.value = config.value || ko.observable();
 		vm.hasFocus = config.hasFocus || ko.observable(false);
@@ -57,6 +57,14 @@ module.exports = function(dependencies) {
 		if (config.keyDown) {
 			vm.eventHandlers.keydown = config.keyDown;
 		}
+
+		ko.computed(function() {
+			if(vm.hasFocus()) {
+				vm.placeholder("");
+			} else {
+				vm.placeholder(config.placeholder);
+			}
+		});
 
 		ko.computed(function() {
 			if(vm.hasFocus() && left.hideOnFocus) {
