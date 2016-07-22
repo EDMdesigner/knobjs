@@ -619,7 +619,7 @@ timeoutDecrement | number           | No       | 100                   | Specifi
 baseTimeout | number                | No       | 500                   | Refresh rate in the beginning.
 layoutArrangement | string          | No*      | "back"                | Specifies the button placements.
 
-*Only "back", "split" or "front" values are viable. No value means "back" by default. OTherwise an exception is thrown.
+*Only "back", "split" or "front" values are viable. No value means "back" by default. Otherwise an exception is thrown.
 
 ### Example
 ``` html
