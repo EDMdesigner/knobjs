@@ -599,3 +599,38 @@ icons     | object                  | No       | { tick: icons.tick, cross: icon
 	});
 </script>
 ```
+
+##knob-numericinput
+
+A numeric stepper component. It's built up from two knob-buttons and a knob-input, the buttons are able to increase or decrease the input's value. Holding one of the buttons make the value change faster to a cap.
+
+### Params
+
+Param     | Type                    | Required | Default value         | Description
+---       |---                      |---       |---                    |---
+value     | ko.observable           | Yes      |                       | The value of the input, it should store a number as an inital value.
+minValue  | number                  | Yes      |                       | The minimum value the input can reach.
+maxValue  | number                  | Yes      |                       | The maxmimum value the input can reach.
+step      | number                  | Yes      |                       | The amount the input can be decreased or increased with when clicking once.
+prefix    | string                  | No       |                       | String before the input's value.
+postfix   | string                  | No       |                       | String appended before the input's value.
+minTimeout | number                 | No       | 50                    | The miminum of the refresh rate when holding one of the buttons.
+timeoutDecrement | number           | No       | 100                   | Specifies how fast the value will refresh.
+baseTimeout | number                | No       | 500                   | Refresh rate in the beginning.
+layoutArrangement | string          | No*      | "back"                | Specifies the button placements.
+
+*Only "back", "split" or "front" values are viable. No value means "back" by default. Otherwise an exception is thrown.
+
+### Example
+``` html
+<knob-numericinput params="
+		minValue: -100,
+		maxValue: 100,
+		value: ko.observable(0),
+		step: 1,
+		prefix: 'Font size: ',
+		postfix: 'px',
+		layoutArrangement: 'split'
+	">
+</knob-numericinput>
+```

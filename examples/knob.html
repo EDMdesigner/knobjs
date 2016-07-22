@@ -254,11 +254,72 @@
 	<hr>
 
 	<h2>knob-input</h2>
-	<knob-input params="placeholder: 'Name'"></knob-input>
-	<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
-
+	<div style="width: 300px">
+		<knob-input params="placeholder: 'Name'"></knob-input>
+		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
+	</div>
 	<hr>
 	
+	<h2> advanced knob-inputs</h2>
+	<div style="width: 300px">
+		<knob-input params="
+			placeholder: 'Price',
+			left: {
+				text: {
+					value: 'PRE:',
+					hideOnContent: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			},
+			right: {
+				text:{
+					value: 'HUF'
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			left: {
+				text:{
+					value: 'Search',
+					hideOnContent: true
+				},
+				icon: { 
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			right: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search'
+				}
+			}">
+		</knob-input>
+	</div>
+
 	<h2>knob-textarea</h2>
 	<knob-textarea></knob-textarea>
 
@@ -367,16 +428,63 @@
 		value: disabledCheckBoxValue,
 		state: 'disabled'
 	"></knob-checkbox>
-	<h2>knob-numericinput</h2>
+	<h2>knob-numericinput layout back(default)</h2>
 	<knob-numericinput params="
 		minValue: -2000,
 		maxValue: 2000,
 		value: ko.observable(0),
 		step: 1,
-		prefix: 'Font size: ',
-		postfix: 'px'
+		left: {
+			text: {
+				value: 'Font size: '
+			}
+		},
+		right: {
+			text: {
+				value: 'px'
+			}
+		}
 	">
 	</knob-numericinput>
+	<h2>knob-numericinput layout split</h2>
+	<knob-numericinput params="
+		minValue: -2000,
+		maxValue: 2000,
+		value: ko.observable(0),
+		step: 5,
+		left: {
+			text: {
+				value: 'Font size: '
+			}
+		},
+		right: {
+			text: {
+				value: 'px'
+			}
+		},
+		layoutArrangement: 'split'
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout front</h2>
+	<knob-numericinput params="
+		minValue: -2000,
+		maxValue: 2000,
+		value: ko.observable(0.6),
+		step: 3,
+		left: {
+			text: {
+				value: 'Font size: '
+			}
+		},
+		right: {
+			text: {
+				value: 'px'
+			}
+		},
+		layoutArrangement: 'front'
+	">
+	</knob-numericinput>
+
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
 <script src="./knob.built.js"></script>
