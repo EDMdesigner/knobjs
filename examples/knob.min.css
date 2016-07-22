@@ -135,7 +135,8 @@
   .knob-input .preFixText,
   .knob-input .postFixText {
     color: inherit;
-    font-size: inherit; }
+    font-size: inherit;
+    white-space: nowrap; }
 
 .knob-textarea {
   border-style: solid;

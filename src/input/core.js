@@ -32,25 +32,22 @@ module.exports = function(dependencies) {
 		config.type = config.type || "text";
 		config.placeholder = config.placeholder || "";
 
-		var left = config.left || {};
-		left.icon = left.icon || {};
-		left.text = left.text || {};
-		left.icon.value = ko.observable(ko.unwrap(left.icon.value || config.icon) || "");
-		left.icon.hideOnFocus = ko.unwrap(left.icon.hideOnFocus) || false;
-		left.icon.visible = ko.observable(true);
-		left.text.value = ko.observable(ko.unwrap(left.text.value) || "");
-		left.text.hideOnFocus = ko.unwrap(left.text.hideOnFocus) || false;
-		left.text.visible = ko.observable(true);
+		function createInputDeco(config, prop) {
+			var returnable = config[prop] || {};
+			returnable.icon = returnable.icon || {};
+			returnable.text = returnable.text || {};
+			returnable.icon.value = ko.observable(ko.unwrap(returnable.icon.value || config.icon) || "");
+			returnable.icon.hideOnContent = ko.unwrap(returnable.icon.hideOnContent) || false;
+			returnable.icon.visible = ko.observable(true);
+			returnable.text.value = ko.observable(ko.unwrap(returnable.text.value) || "");
+			returnable.text.hideOnContent = ko.unwrap(returnable.text.hideOnContent) || false;
+			returnable.text.visible = ko.observable(true);
 
-		var right = config.right || {};
-		right.icon = right.icon || {};
-		right.text = right.text || {};
-		right.icon.value = ko.observable(ko.unwrap(right.icon.value) || "");
-		right.icon.hideOnFocus = ko.unwrap(right.icon.hideOnFocus) || false;
-		right.icon.visible = ko.observable(true);
-		right.text.value = ko.observable(ko.unwrap(right.text.value) || "");
-		right.text.hideOnFocus = ko.unwrap(right.text.hideOnFocus) || false;
-		right.text.visible = ko.observable(true);
+			return returnable;
+		}
+
+		var left = createInputDeco(config, "left");
+		var right = createInputDeco(config, "right");
 
 		var vm = base(config);
 
@@ -66,49 +63,20 @@ module.exports = function(dependencies) {
 			vm.eventHandlers.keydown = config.keyDown;
 		}
 
-		ko.computed(function() {
-			if(vm.hasFocus() && left.icon.hideOnFocus) {
-				left.icon.visible(false);
-			} else {
-				left.icon.visible(true);
-			}
-		});
+		function createPlaceholderComputed(item, dependency) {
+			ko.computed(function() {
+				if(item.hideOnContent && dependency()) {
+					item.visible(false);
+				} else {
+					item.visible(true);
+				}
+			});
+		}
 
-		ko.computed(function() {
-			if(vm.hasFocus() && left.text.hideOnFocus) {
-				left.text.visible(false);
-			} else {
-				left.text.visible(true);
-			}
-
-			if(vm.value()) {
-				left.text.visible(false);
-			} else {
-				left.text.visible(true);
-			}
-		});
-
-		ko.computed(function() {
-			if(vm.hasFocus() && right.icon.hideOnFocus) {
-				right.icon.visible(false);
-			} else {
-				right.icon.visible(true);
-			}
-		});
-
-		ko.computed(function() {
-			if(vm.hasFocus() && right.text.hideOnFocus) {
-				right.text.visible(false);
-			} else {
-				right.text.visible(true);
-			}
-
-			if(vm.value()) {
-				right.text.visible(false);
-			} else {
-				right.text.visible(true);
-			}
-		});
+		createPlaceholderComputed(left.icon, vm.value);
+		createPlaceholderComputed(left.text, vm.value);
+		createPlaceholderComputed(right.icon, vm.value);
+		createPlaceholderComputed(right.text, vm.value);
 
 		vm.left = left;
 		vm.right = right;

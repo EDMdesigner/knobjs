@@ -1,6 +1,6 @@
 <div data-bind="css: cssClass, 
 				style: style">
-	<span class="icon-wrapper preIcon" data-bind="if: left.icon, visible: left.icon.visible">
+	<span class="icon-wrapper preIcon" data-bind="if: left.icon.value, visible: left.icon.visible">
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': left.icon.value}" xlink:href=""></use>
 		</svg>
@@ -26,7 +26,7 @@
 		 	visible: right.text.visible"></span>
 	</span>
 	
-	<span class="icon-wrapper postIcon" data-bind="if: right.icon, visible: right.icon.visible">
+	<span class="icon-wrapper postIcon" data-bind="if: right.icon.value, visible: right.icon.visible">
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': right.icon.value}" xlink:href=""></use>
 		</svg>
