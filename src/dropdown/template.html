@@ -3,6 +3,7 @@
 	<div data-bind="component: {
 						name: 'knob-button',
 						params: {label: selected().label,
+						variation: 'dropdown',
 						icon: selected().icon,
 						rightIcon: rightIcon,
 						click: dropdownVisible.toggle}}">
@@ -10,7 +11,7 @@
 	<div class="knob-dropdown-menu" data-bind="foreach: options, visible: dropdownVisible">
 		<div data-bind="component: {
 							name: 'knob-button',
-							params: {label: label, icon: icon, click: select}}, 
+							params: {variation: 'dropdown-option', label: label, icon: icon, click: select}}, 
 							visible: $data !== $parent.selected()">
 		</div>
 	</div>

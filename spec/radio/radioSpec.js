@@ -5,7 +5,7 @@ describe("=== Radio ===", function() {
 
 	describe(" - with invalid config", function() {
 
-		it("items", function() {
+		it("items is an empty array", function() {
 			expect(function() {
 				createRadio({
 					items: []
@@ -13,7 +13,7 @@ describe("=== Radio ===", function() {
 			}).toThrowError("config.items should not be empty");
 		});
 
-		it("items", function() {
+		it("items without label or icon property", function() {
 			expect(function() {
 				createRadio({
 					items: [
@@ -33,7 +33,7 @@ describe("=== Radio ===", function() {
 		var config = {
 			items: [
 				{
-					label: "randomLabel1"
+					label: "randomLabel0"
 				},
 				{
 					icon: "randomIcon1"
@@ -41,6 +41,11 @@ describe("=== Radio ===", function() {
 				{
 					label: "randomLabel2",
 					icon: "randomIcon2"
+				},
+				{
+					label: "randomLabel3",
+					icon: "randomIcon3",
+					value: "randomValue3"
 				}
 			]
 		};
@@ -48,7 +53,7 @@ describe("=== Radio ===", function() {
 		var vm = createRadio(config);
 
 		it("selected", function() {
-			expect(vm.selected().label).toBe("randomLabel1");
+			expect(vm.selected().label).toBe("randomLabel0");
 
 			vm.items[1].select();
 			expect(vm.selected().icon).toBe("randomIcon1");
@@ -56,6 +61,11 @@ describe("=== Radio ===", function() {
 			vm.items[2].select();
 			expect(vm.selected().label).toBe("randomLabel2");
 			expect(vm.selected().icon).toBe("randomIcon2");
+
+			vm.items[3].select();
+			expect(vm.selected().label).toBe("randomLabel3");
+			expect(vm.selected().icon).toBe("randomIcon3");
+			expect(vm.selected().value).toBe("randomValue3");
 
 		});
 	});

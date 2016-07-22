@@ -28,7 +28,7 @@ function createRadio(config) {
 			throw new Error("each element of config.items has to have label and/or icon property");
 		}
 
-		vm.items.push(createItemVm(act.label, act.icon, idx));
+		vm.items.push(createItemVm(act.label, act.icon, act.value, idx));
 	}
 
 	var sel = vm.selectedIdx();
@@ -43,12 +43,13 @@ function createRadio(config) {
 		vm.items[0].select();
 	}
 
-	function createItemVm(label, icon, idx) {
+	function createItemVm(label, icon, value, idx) {
 
 		var obj = {
 			label: label,
 			icon: icon,
 			group: config.group,
+			value: value,
 			select: function() {
 				vm.selected(obj);
 				vm.selectedIdx(idx);

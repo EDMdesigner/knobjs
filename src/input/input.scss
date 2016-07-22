@@ -1,6 +1,8 @@
 .knob-input {
+	@include flexbox;
+	
 	padding: 7px 12px;
-	display: inline-block;
+	margin: 3px;
 	border-style: solid;
 	border-width: 1px;
 
@@ -8,6 +10,9 @@
 		border: 0px none !important;
 		outline:0px none !important;
 		background: transparent none !important;
+		flex: 1 100%;
+		margin-left: 3px;
+		margin-right: 3px;
 	}
 
 	.icon-wrapper {
@@ -23,5 +28,6 @@
 	.postFixText {
 		color:inherit;
 		font-size: inherit;
+		white-space: nowrap;
 	}
 }

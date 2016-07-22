@@ -7,7 +7,13 @@ describe("Pagination", function() {
 
 		it("config.currentPage out of range should work", function() {
 			var pagination = createPagination({
-				currentPage: 99
+				currentPage: 99,
+				icons: {
+					first: "icon",
+					prev: "icon",
+					next: "icon",
+					last: "icon"
+				}
 			});
 
 			expect(pagination.currentPage()).toBe(9);
@@ -45,12 +51,79 @@ describe("Pagination", function() {
 			});
 		});
 
+		it("config.icons missing", function() {
+			expect(function() {
+				createPagination({
+					currentPage: 1
+				});
+			}).toThrowError("config.icons is mandatory!");
+		}); 
+
+		it("config.icons.first missing", function() {
+			expect(function() {
+				createPagination({
+					currentPage: 1,
+					icons: {
+						prev: "icon",
+						next: "icon",
+						last: "icon"
+					}
+				});
+			}).toThrowError("config.icons.first is mandatory!");
+		});
+
+		it("config.icons.prev missing", function() {
+			expect(function() {
+				createPagination({
+					currentPage: 1,
+					icons: {
+						first: "icon",
+						next: "icon",
+						last: "icon"
+					}
+				});
+			}).toThrowError("config.icons.prev is mandatory!");
+		});
+
+		it("config.icons.next missing", function() {
+			expect(function() {
+				createPagination({
+					currentPage: 1,
+					icons: {
+						first: "icon",
+						prev: "icon",
+						last: "icon"
+					}
+				});
+			}).toThrowError("config.icons.next is mandatory!");
+		});
+
+		it("config.icons.last missing", function() {
+			expect(function() {
+				createPagination({
+					currentPage: 1,
+					icons: {
+						first: "icon",
+						prev: "icon",
+						next: "icon"
+					}
+				});
+			}).toThrowError("config.icons.last is mandatory!");
+		});
+
 	});
 
 	describe("valid config", function() {
 
 		it("Interface", function() {
-			var pagination = createPagination();
+			var pagination = createPagination({
+				icons: {
+					first: "icon",
+					prev: "icon",
+					next: "icon",
+					last: "icon"
+				}
+			});
 
 			expect(ko.isObservable(pagination.pageSelectors)).toBe(true);
 			expect(ko.isObservable(pagination.first)).toBe(true);
@@ -63,7 +136,14 @@ describe("Pagination", function() {
 
 		describe("Step Tests", function() {
 			it("Empty config", function() {
-				var pagination = createPagination();
+				var pagination = createPagination({
+					icons: {
+						first: "icon",
+						prev: "icon",
+						next: "icon",
+						last: "icon"
+					}
+				});
 
 				var description = {
 					labels: [1, 2, 3, "...", 8, 9, 10],
@@ -160,7 +240,13 @@ describe("Pagination", function() {
 					afterHead: 4,
 					beforeTail: 4,
 					beforeCurrent: 4,
-					afterCurrent: 4
+					afterCurrent: 4,
+					icons: {
+						first: "icon",
+						prev: "icon",
+						next: "icon",
+						last: "icon"
+					}
 				});
 
 				var description = {
@@ -232,7 +318,14 @@ describe("Pagination", function() {
 			});
 
 			it("next and prev should not out index", function() {
-				var pagination = createPagination();
+				var pagination = createPagination({	
+					icons: {
+						first: "icon",
+						prev: "icon",
+						next: "icon",
+						last: "icon"
+					}
+				});
 
 				pagination.prev().selectPage();
 

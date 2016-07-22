@@ -3,8 +3,16 @@
 	<!-- pre input placeholder -->
 	<knob-input params="
 		value: inputValue,
-		preFixText: prefix,
-		postFixText: postfix
+		left: {
+			text: {
+				value: prefix
+			}
+		},
+		right:{
+			text: {
+				value: postfix
+			}
+		}
 	">
 	</knob-input>
 	<span class="control-button">

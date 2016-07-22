@@ -3,16 +3,13 @@
 
 .knob-button {
 	line-height: 1.42857143;
+	font-size: 12px;
 	padding: 6px 12px;
 	cursor: pointer;
 	text-align: center;
-	border: 0 none;
 	display: inline-block;
 	text-align: center;
 	touch-action: manipulation;
-	transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-	transition-delay: 0.5s;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 	border: 1px solid;
 
 // Button icons
@@ -26,23 +23,11 @@
 		}
 	}
 
-// Button states
-// ==================================================
-	&:hover {
-		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-		transition-delay: 0s;
-	}
-
-	&:active {
-		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-		transition-delay: 0s;
-	}
-
 }
 
 // Button sizes
 // ==================================================
-&.button--lg {
+.button--lg {
 	.knob-button {
 		padding: 10px 16px;
 		font-size: 18px;
@@ -57,10 +42,10 @@
 	}
 }
 
-&.button--sm {
+.button--sm {
 	.knob-button {
 		padding: 5px 10px;
-		font-size: 12px;
+		font-size: 10px;
 		line-height: 1.5;
 
 		.icon-wrapper {

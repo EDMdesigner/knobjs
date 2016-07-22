@@ -1,13 +1,16 @@
 <div data-bind="css: cssClass, 
 				style: style">
-	<span class="icon-wrapper preIcon" data-bind="if: leftIcon">
+	<span class="icon-wrapper preIcon" data-bind="if: left.icon.value, visible: left.icon.visible">
 		<svg class="icon">
-			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': leftIcon}" xlink:href=""></use>
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': left.icon.value}" xlink:href=""></use>
 		</svg>
 	</span>
-	<!-- ko if: preFixText -->
-	<span class="preFixText" data-bind="text: preFixText">$</span>
-	<!-- /ko -->
+
+	<span data-bind="if: left.text">
+		<span class="preFixText" data-bind="
+			text: left.text.value,
+			visible: left.text.visible"></span>
+	</span>
 	
 	<input data-bind="
 					attr: {type: type, placeholder: placeholder},
@@ -16,13 +19,16 @@
 					disable: state() === 'disabled',
 					value: value,
 					valueUpdate: 'afterkeydown'" />
-	<!-- ko if: postFixText -->
-	<span class="postFixText" data-bind="text: postFixText">HUF</span>
-	<!-- /ko -->
+
+	<span data-bind="if: right.text">
+		<span class="postFixText" data-bind="
+			text: right.text.value,
+		 	visible: right.text.visible"></span>
+	</span>
 	
-	<span class="icon-wrapper postIcon" data-bind="if: rightIcon">
+	<span class="icon-wrapper postIcon" data-bind="if: right.icon.value, visible: right.icon.visible">
 		<svg class="icon">
-			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': rightIcon}" xlink:href=""></use>
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': right.icon.value}" xlink:href=""></use>
 		</svg>
 	</span>
 </div>
