@@ -4,7 +4,7 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.darkGray
+				"border-color": theme.border
 			},
 			"hover": {
 				"backgroundColor": theme.white,
@@ -24,3 +24,4 @@ module.exports = function createStyleConfig(theme) {
 		}
 	};
 };
+ 

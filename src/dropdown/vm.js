@@ -16,7 +16,6 @@ function createButtonDropdown(config) {
 	if (config.selected && !ko.isObservable(config.selected)) {
 		throw new Error("config.selected has to be a knockout observable!");
 	}
-
 	if (config.items.length === 0) {
 		throw new Error("config.items should not be empty");
 	}

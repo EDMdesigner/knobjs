@@ -12,6 +12,24 @@ function createInlineTextEditor(config) {
 		throw new Error("config.value has to be an observable!");
 	}
 
+	if(!config.icons) {
+		throw new Error("config.icons is mandatory!");
+	}
+
+	if(!config.icons.edit) {
+		throw new Error("config.icons.edit is mandatory!");
+	}
+
+	if(!config.icons.done) {
+		throw new Error("config.icons.done is mandatory!");
+	}
+
+	if(!config.icons.close) {
+		throw new Error("config.icons.close is mandatory!");
+	}
+
+	vm.icons = config.icons;
+
 	vm.value = config.value || ko.observable("");
 	vm.editedValue = ko.observable(vm.value());
 
