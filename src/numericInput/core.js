@@ -38,22 +38,69 @@ module.exports = function(dependencies) {
 			throw new Error("config.layoutArrangement can only take values: 'back'/'front'/'split'!");
 		}
 
+		function createInputDeco(config, prop) {
+			var returnable = config[prop] || {};
+			returnable.icon = returnable.icon || {};
+			returnable.text = returnable.text || {};
+			returnable.icon.value = ko.observable(ko.unwrap(returnable.icon.value || config.icon) || "");
+			returnable.icon.hideOnContent = ko.unwrap(returnable.icon.hideOnContent) || false;
+			returnable.icon.visible = ko.observable(true);
+			returnable.text.value = ko.observable(ko.unwrap(returnable.text.value) || "");
+			returnable.text.hideOnContent = ko.unwrap(returnable.text.hideOnContent) || false;
+			returnable.text.visible = ko.observable(true);
+
+			return returnable;
+		}
+
+		var left = createInputDeco(config, "left");
+		var right = createInputDeco(config, "right");
+
 		var minValue = config.minValue;
 		var maxValue = config.maxValue;
 		var inputValue = config.value;
 		var step = config.step;
-		var prefix = config.prefix;
-		var postfix = config.postfix;
 		var minTimeout = config.minTimeout || 50;
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
 		var layoutArrangement = config.layoutArrangement || "back";
 
 		var icons = config.icons;
-
+		
 		ko.computed(function() {
 			var val = inputValue();
-			inputValue(parseFloat(val));
+			
+			if(!val || val === "-" || val === "+") {
+				return;
+			}
+
+			if (typeof val === "string" && val.charAt(val.length - 1) === ".") {
+				var beforeTheLast = val.charAt(val.length - 2);
+
+				if (beforeTheLast && beforeTheLast === ".") {
+					inputValue(val.slice(0, -1));
+				}
+
+				return;
+			}
+
+			var parsed = parseFloat(val);
+
+			if(isNaN(parsed)) {
+				inputValue(val.slice(0, -1));
+				return;
+			}
+
+			if(parsed > maxValue) {
+				inputValue(maxValue);
+				return;
+			} 
+
+			if(parsed < minValue) {
+				inputValue(minValue);
+				return;
+			}
+
+			inputValue(parsed);
 		});
 
 		var decreaseButton = {
@@ -88,8 +135,8 @@ module.exports = function(dependencies) {
 			inputValue: inputValue,
 			increaseButton: increaseButton,
 			decreaseButton: decreaseButton,
-			prefix: prefix,
-			postfix: postfix,
+			left: left,
+			right: right,
 			triggerOnHold: triggerOnHold,
 			layoutArrangement: layoutArrangement
 		};

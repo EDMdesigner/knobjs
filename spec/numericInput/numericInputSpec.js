@@ -17,8 +17,8 @@ describe("Numeric Input", function() {
 				maxValue: 20,
 				minValue: -20,
 				step: 1,
-				prefix: "a prefix",
-				postfix: "a postfix"
+				left: {},
+				right: {}
 			};
 
 			expect(function() {
@@ -31,8 +31,8 @@ describe("Numeric Input", function() {
 				maxValue: 20,
 				value: ko.observable(0),
 				step: 1,
-				prefix: "a prefix",
-				postfix: "a postfix"
+				left: {},
+				right: {}
 			};
 
 			expect(function() {
@@ -45,8 +45,8 @@ describe("Numeric Input", function() {
 				minValue: 20,
 				value: ko.observable(0),
 				step: 1,
-				prefix: "a prefix",
-				postfix: "a postfix"
+				left: {},
+				right: {}
 			};
 
 			expect(function() {
@@ -59,43 +59,13 @@ describe("Numeric Input", function() {
 				maxValue: 20,
 				value: ko.observable(0),
 				minValue: -20,
-				prefix: "a prefix",
-				postfix: "a postfix"
+				left: {},
+				right: {}
 			};
 
 			expect(function() {
 				createNumericInput(config);
 			}).toThrowError("config.step is mandatory and it should be a number!");
-		});
-
-		it("config.prefix missing", function() {
-			var config = {
-				maxValue: 20,
-				minValue: -20,
-				value: ko.observable(0),
-				step: 1,
-				prefix: 123,
-				postfix: "a postfix"
-			};
-
-			expect(function() {
-				createNumericInput(config);
-			}).toThrowError("config.prefix should be a string");
-		});
-
-		it("config.prefix missing", function() {
-			var config = {
-				maxValue: 20,
-				minValue: -20,
-				value: ko.observable(0),
-				step: 1,
-				prefix: "a prefix",
-				postfix: 123
-			};
-
-			expect(function() {
-				createNumericInput(config);
-			}).toThrowError("config.postfix should be a string");
 		});
 	});
 
@@ -109,8 +79,6 @@ describe("Numeric Input", function() {
 			maxValue: 20,
 			value: ko.observable(0),
 			step: 1,
-			prefix: "a prefix",
-			postfix: "a postfix",
 			icons: {
 				increase: "up",
 				decrease: "down"
@@ -120,8 +88,8 @@ describe("Numeric Input", function() {
 		it("Interface check", function() {
 			var numericInputVm = createNumericInput(config);
 
-			expect(typeof numericInputVm.prefix).toBe("string");
-			expect(typeof numericInputVm.postfix).toBe("string");
+			expect(typeof numericInputVm.left).toBe("object");
+			expect(typeof numericInputVm.right).toBe("object");
 			expect(ko.isObservable(numericInputVm.inputValue)).toBe(true);
 			expect(typeof numericInputVm.increaseButton.icon).toBe("string");
 			expect(typeof numericInputVm.increaseButton.click).toBe("function");
