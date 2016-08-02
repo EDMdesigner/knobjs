@@ -70,7 +70,8 @@ module.exports = function(dependencies) {
 			}, timeout);
 		};
 
-		var lastState;
+		var clickCb;
+		
 		if (triggerOnHold) {
 			ko.computed(function() {
 				var state = vm.state();
@@ -90,22 +91,19 @@ module.exports = function(dependencies) {
 					decoratedClick();
 				}
 			});
+			
+			clickCb = function() {};
+			
 		} else {
-			ko.computed(function() {
-				var state = vm.state();
-
-				if(state === "hover" && lastState === "active") {
-					click();
-				} else {
-					lastState = state;	
-				}
-			});
+			clickCb = click;
 		}
 
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
 		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
+
+		vm.click = clickCb;
 
 		return vm;
 	};

@@ -207,7 +207,7 @@ describe("Button", function() {
 			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
 		});
 
-		it("should call click only once without triggerOnHold", function(done) {
+		it("should call click only once without triggerOnHold", function() {
 			var config = {
 				componentName: componentName,
 				variation: variation,
@@ -223,12 +223,8 @@ describe("Button", function() {
 
 			buttonVm = createButton(config);
 
-			buttonVm.state("active");
-			setTimeout(function() {
-				buttonVm.state("hover");
-				expect(config.click).toHaveBeenCalledTimes(1);
-				done();
-			}, 100);
+			buttonVm.click();
+			expect(config.click).toHaveBeenCalledTimes(1);
 		});
 
 		it("should call click several times when triggerOnHold is defined", function(done) {
