@@ -124,11 +124,11 @@ function initKnob(config) {
 	}
 
 	var buttonStyle = createButtonStyle(config);
-	var checkboxStyle = createCheckboxStyle(config);
+	var checkboxStyle = createCheckboxStyle(config.colors);
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
-	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config));
-	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(config));
+	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config.colors));
+	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(config.colors));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent(
 		"knob-inline-text-editor",
@@ -159,7 +159,7 @@ function initKnob(config) {
 		"knob-paged-list",
 		require("./pagedList/vm"),
 		require("./pagedList/template.html"),
-		createPagedListStyle(config),
+		createPagedListStyle(config.colors),
 		{
 			search: icons.search,
 			sort: icons.sort,
@@ -170,14 +170,14 @@ function initKnob(config) {
 		}
 	);
 
-	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config));
-	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config));
-	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config));
+	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config.colors));
+	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config.colors));
+	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config.colors));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
 	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
 
-	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(config));
+	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(config.colors));
 	registerComponent(
 		"knob-checkbox",
 		require("./checkbox/vm"),
