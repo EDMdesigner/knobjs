@@ -43,20 +43,22 @@ function createButtonDropdown(config) {
 	var options = ko.computed(function() {
 		var newOptions = [];
 		var selectedIdx = 0;
-		for (var idx = 0; idx < items().length; idx += 1) {
+		var currentItems = items();
+		var currentSelected = selected.peek();
+		for (var idx = 0; idx < currentItems.length; idx += 1) {
 
-			if (!items()[idx].label && !items()[idx].icon) {
+			if (!currentItems[idx].label && !currentItems[idx].icon) {
 				throw new Error("each element of config.items has to have label and/or icon property");
 			}
-			if (typeof selected.peek() === "object") {
-				if (selected.peek().value === items()[idx].value) {
+			if (currentSelected) {
+				if (currentSelected.value === currentItems[idx].value) {
 					selectedIdx = idx;
 				}
 			}
 			newOptions.push(createOption({
-				label: items()[idx].label,
-				icon: items()[idx].icon,
-				value: items()[idx].value
+				label: currentItems[idx].label,
+				icon: currentItems[idx].icon,
+				value: currentItems[idx].value
 			}));
 		}
 		selected(newOptions[selectedIdx]);
