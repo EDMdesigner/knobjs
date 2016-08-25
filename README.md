@@ -110,11 +110,13 @@ This component is also composed of knob-buttons. Therefore very element can have
 
 ### Params
 
-Param     | Type          | Required | Default value | Description
----       |---            |---       |---            |---
-selected  | ko.observable | Yes      |               | The selected element. This is not visible in the dropdown list.
-rightIcon | string        | No       |               | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
-items     | Array         | Yes      |               | The items in the dropdown. They are configured just like buttons and they also can have a value property.
+Param     | Type                        | Required | Default value | Description
+---       |---                          |---       |---            |---
+selected  | ko.observable               | Yes      |               | The selected element. This is not visible in the dropdown list.
+rightIcon | string                      | No       |               | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
+items     | Array or ko.observableArray | Yes      |               | The items in the dropdown. They are configured just like buttons and they also can have a value property.
+
+You can give ko.observableArray as items parameter. This way you can change dropdown's items after creating component by setting value of observableArray to other items array. It throws error if given new value is invalid (each element of array value should contain label and/or icon property).
 
 ### Example
 ```html
@@ -135,6 +137,8 @@ items     | Array         | Yes      |               | The items in the dropdown
 	});
 </script>
 ```
+
+Example for giving ko.observableArray() as items parameter can be found in ./examples/knob.html and ./examples/knob.js
 
 ## knob-inline-text-editor
 

@@ -345,6 +345,7 @@
 	<hr>
 
 	<h2>knob-dropdown</h2>
+	<h3>array 'items' parameter</h3>
 	<knob-dropdown params="
 		rightIcon: '#icon-expand-more',
 		items: [
@@ -354,6 +355,16 @@
 			{label: 'name', icon: '#icon-sort-desc', value: {field: 'name', asc: false}}
 		]">
 	</knob-dropdown>
+	<h3>observableArray 'items' parameter</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdownItems">
+	</knob-dropdown>
+	<knob-button params="
+		label: 'change items',
+		click: changeDropdownItems
+	">
+	</knob-button>
 	<hr>
 
 	<h2>knob-inline-text-editor</h2>

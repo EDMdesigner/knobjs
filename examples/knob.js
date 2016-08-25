@@ -131,6 +131,25 @@ function alertClose() {
 	window.alert("Alert closed");
 }
 
+var dropdownItems = ko.observableArray([]);
+
+var changeDropdownItems = function() {
+	var prev = dropdownItems().length;
+	var newLength = prev;
+	while (newLength === prev) {
+		newLength = Math.round(Math.random()*10 + 2);
+	}
+	var newItems = [];
+	for (var i = 0; i < newLength; i += 1) {
+		newItems.push({
+			label: "item " + (i + 1).toString() + " " + Math.round(Math.random()*1000 + 1).toString(),
+			value: "value " + (i + 1).toString()
+		});
+	}
+	dropdownItems(newItems);
+};
+changeDropdownItems();
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -150,5 +169,7 @@ ko.applyBindings({
 	alertCallback: alertClose,
 	notificationVisible: ko.observable(false),
 	checkboxValue: ko.observable(false),
-	disabledCheckBoxValue: ko.observable(true)
+	disabledCheckBoxValue: ko.observable(true),
+	dropdownItems: dropdownItems,
+	changeDropdownItems: changeDropdownItems
 });
