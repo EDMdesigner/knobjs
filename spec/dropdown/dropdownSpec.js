@@ -253,6 +253,18 @@ describe(" === Dropdown === ", function() {
 					expect(vm.selected().label()).toBe("label3");
 				});
 
+				it("should select element at index 0 when selectedIdx is changed to index out of range", function() {
+					selectedIdx(2);
+					selectedIdx(10);
+					expect(selectedIdx()).toBe(0);
+					expect(vm.selected().value).toBe("value1");
+					expect(vm.selected().label()).toBe("label1");
+					selectedIdx(-1);
+					expect(selectedIdx()).toBe(0);
+					expect(vm.selected().value).toBe("value1");
+					expect(vm.selected().label()).toBe("label1");
+				});
+
 			});
 
 		});
