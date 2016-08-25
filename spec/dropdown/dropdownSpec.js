@@ -53,7 +53,7 @@ describe(" === Dropdown === ", function() {
 			});
 		});
 
-		it("should throw error if config.items has an element which hasn't label and/or icon property", function() {
+		it("should throw error if config.items has an element which doesn't have label and/or icon property", function() {
 			expect(function() {
 				createButtonDropdown({
 					rightIcon: "random",
