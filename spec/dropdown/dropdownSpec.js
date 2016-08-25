@@ -107,11 +107,13 @@ describe(" === Dropdown === ", function() {
 			expect(vm.selected().label()).toBe("randonLabel2");
 			expect(vm.selected().icon()).toBe("ranomdIcon2");
 		});
+		describe("optional observable parameters", function() {
 
-		describe("observableArray given as config.items", function() {
-
-			var items = ko.observableArray([]);
+			var items;
+			var selectedIdx;
 			beforeEach(function() {
+				items = ko.observableArray([]);
+				selectedIdx = ko.observable(0);
 				items([
 					{
 						label: "label1",
@@ -127,75 +129,130 @@ describe(" === Dropdown === ", function() {
 					}
 				]);
 				config.items = items;
+				config.selectedIdx = selectedIdx;
 				vm = createButtonDropdown(config);
 			});
 
-			it("should throw error if value of items changed to an invalid items array", function() {
-				expect(function() {
+			describe("observableArray given as config.items", function() {
+
+				it("should throw error if value of items changed to an invalid items array", function() {
+					expect(function() {
+						items([
+							{
+								notLabelNorIconProperty: "some value"
+							}
+						]);
+					}).toThrowError("each element of config.items has to have label and/or icon property");
+				});
+				
+				it("should refresh options corresponding to changed items", function() {
 					items([
 						{
-							notLabelNorIconProperty: "some value"
+							label: "changed label",
+							value: "changed value"
+						},
+						{
+							label: "changed label2",
+							value: "changed value2"
 						}
 					]);
-				}).toThrowError("each element of config.items has to have label and/or icon property");
+					expect(vm.options()[0].label()).toBe("changed label");
+					expect(vm.options()[0].value).toBe("changed value");
+					expect(vm.options()[1].label()).toBe("changed label2");
+					expect(vm.options()[1].value).toBe("changed value2");
+					expect(vm.options().length).toBe(2);
+				});
+
+				it("should refresh selected assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also", function() {
+					
+					vm.options()[1].select();
+					items([
+						{
+							label: "other label1",
+							value: "other value1"
+						},
+						{
+							label: "other label2",
+							value: "other value2"
+						},
+						{
+							label: "label3",
+							value: "value2"
+						},
+						{
+							label: "label4",
+							value: "value4"
+						}
+					]);
+					expect(vm.selected().value).toBe("value2");
+					expect(vm.selected().label()).toBe("label3");
+				});
+
+				it("should refresh selected to first item if value of previously selected option can't be found in items observableArray's value", function() {
+					vm.options()[1].select();
+					items([
+						{
+							label: "some label",
+							value: "some value"
+						},
+						{
+							label: "some labe2",
+							value: "some value2"
+						}
+					]);
+					expect(vm.selected().value).toBe("some value");
+					expect(vm.selected().label()).toBe("some label");
+				});
+
 			});
 			
-			it("should refresh options corresponding to changed items", function() {
-				items([
-					{
-						label: "changed label",
-						value: "changed value"
-					},
-					{
-						label: "changed label2",
-						value: "changed value2"
-					}
-				]);
-				expect(vm.options()[0].label()).toBe("changed label");
-				expect(vm.options()[0].value).toBe("changed value");
-				expect(vm.options()[1].label()).toBe("changed label2");
-				expect(vm.options()[1].value).toBe("changed value2");
-				expect(vm.options().length).toBe(2);
-			});
+			describe("observable given as selectedIdx", function() {
+				
+				it("should refresh value of selectedIdx when selecting element", function() {
+					vm.options()[1].select();
+					expect(selectedIdx()).toBe(1);
+					vm.options()[2].select();
+					expect(selectedIdx()).toBe(2);
+					vm.options()[0].select();
+					expect(selectedIdx()).toBe(0);
+				});
 
-			it("should refresh selected assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also", function() {
-				vm.selected(vm.options()[1]);
-				items([
-					{
-						label: "other label1",
-						value: "other value1"
-					},
-					{
-						label: "other label2",
-						value: "other value2"
-					},
-					{
-						label: "label3",
-						value: "value2"
-					},
-					{
-						label: "label4",
-						value: "value4"
-					}
-				]);
-				expect(vm.selected().value).toBe("value2");
-				expect(vm.selected().label()).toBe("label3");
-			});
+				it("should refresh value of selectedIdx when refreshing items", function() {
+					vm.options()[1].select();
+					items([
+						{
+							label: "other label1",
+							value: "other value1"
+						},
+						{
+							label: "other label2",
+							value: "other value2"
+						},
+						{
+							label: "other label3",
+							value: "value2"
+						}
+					]);
+					expect(selectedIdx()).toBe(2);
+					items([
+						{
+							label: "label1",
+							value: "value1"
+						},
+						{
+							label: "label2",
+							value: "notValue2"
+						}
+					]);
+					expect(selectedIdx()).toBe(0);
+				});
 
-			it("should refresh selected to first item if value of previously selected option can't be found in items observableArray's value", function() {
-				vm.selected(vm.options()[1]);
-				items([
-					{
-						label: "some label",
-						value: "some value"
-					},
-					{
-						label: "some labe2",
-						value: "some value2"
-					}
-				]);
-				expect(vm.selected().value).toBe("some value");
-				expect(vm.selected().label()).toBe("some label");
+				it("should select item when changing selectedIdx observable's value", function() {
+					selectedIdx(2);
+					expect(vm.selected().value).toBe("value3");
+					expect(vm.selected().label()).toBe("label3");
+				});
+
 			});
 
 		});

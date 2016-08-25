@@ -38,11 +38,17 @@ function createButtonDropdown(config) {
 		items = ko.observableArray(items);
 	}
 
+	if (!config.selectedIdx) {
+		config.selectedIdx = 0;
+	}
+	var selectedIdx = ko.isObservable(config.selectedIdx) ? config.selectedIdx : ko.observable(config.selectedIdx);
+
 	
 	var selected = config.selected || ko.observable();
-	var options = ko.computed(function() {
+	var options = ko.observableArray([]);
+	ko.computed(function() {
 		var newOptions = [];
-		var selectedIdx = 0;
+		var newSelectedIdx = 0;
 		var currentItems = items();
 		var currentSelected = selected.peek();
 		for (var idx = 0; idx < currentItems.length; idx += 1) {
@@ -52,24 +58,21 @@ function createButtonDropdown(config) {
 			}
 			if (currentSelected) {
 				if (currentSelected.value === currentItems[idx].value) {
-					selectedIdx = idx;
+					newSelectedIdx = idx;
 				}
 			}
 			newOptions.push(createOption({
 				label: currentItems[idx].label,
 				icon: currentItems[idx].icon,
+				idx: idx,
 				value: currentItems[idx].value
 			}));
 		}
-		selected(newOptions[selectedIdx]);
-		return newOptions;
+		options(newOptions);
+		selected(newOptions[newSelectedIdx]);
+		selectedIdx(newSelectedIdx);
 	});
 	
-
-	// console.log(options());
-
-	selected(options()[config.selectedIdx || 0]);
-
 	var dropdownVisible = ko.observable(false);
 
 	var closeDropdown = function() {
@@ -101,15 +104,26 @@ function createButtonDropdown(config) {
 		var obj = {
 			label: ko.observable(config.label),
 			icon: ko.observable(config.icon),
+			idx: config.idx,
 			value: config.value,
 			select: function() {
 				selected(obj);
+				selectedIdx(obj.idx);
 				dropdownVisible.toggle();
 			}
 		};
 
 		return obj;
 	}
+
+	ko.computed(function() {
+		var currentSelectedIdx = selectedIdx();
+		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < options.peek().length)) {
+			currentSelectedIdx = 0;
+		}
+		selected(options.peek()[currentSelectedIdx]);
+		selectedIdx(currentSelectedIdx);
+	});
 
 	return {
 		rightIcon: rightIcon,

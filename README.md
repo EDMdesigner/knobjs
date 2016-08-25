@@ -115,8 +115,13 @@ Param     | Type                        | Required | Default value | Description
 selected  | ko.observable               | Yes      |               | The selected element. This is not visible in the dropdown list.
 rightIcon | string                      | No       |               | The icon on the right of the selected element. Should be a caret to indicate that something will appear on the bottom if you click on it.
 items     | Array or ko.observableArray | Yes      |               | The items in the dropdown. They are configured just like buttons and they also can have a value property.
+selectedIdx | number or ko.observable   | No       | 0             | The selected index. If it's an observable, is it possible to get or set selected index after creating component
 
 You can give ko.observableArray as items parameter. This way you can change dropdown's items after creating component by setting value of observableArray to other items array. It throws error if given new value is invalid (each element of array value should contain label and/or icon property).
+
+If you give an observable as selectedIdx parameter, you can change selected item after creating component by setting value of selectedIdx observable. If given selectedIdx value is not a valid index, it will be changed to 0.
+
+If an item is selected or its position changes caused by setting items observableArray's value, selectedIdx observable will be automatically refreshed to the new selected index.
 
 ### Example
 ```html
