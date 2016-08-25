@@ -48,7 +48,7 @@ function createButtonDropdown(config) {
 			if (!items()[idx].label && !items()[idx].icon) {
 				throw new Error("each element of config.items has to have label and/or icon property");
 			}
-			if (selected.peek() !== undefined) {
+			if (typeof selected.peek() === "object") {
 				if (selected.peek().value === items()[idx].value) {
 					selectedIdx = idx;
 				}
