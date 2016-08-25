@@ -16,29 +16,55 @@ function createButtonDropdown(config) {
 	if (config.selected && !ko.isObservable(config.selected)) {
 		throw new Error("config.selected has to be a knockout observable!");
 	}
-	if (config.items.length === 0) {
-		throw new Error("config.items should not be empty");
+	if (!Array.isArray(config.items) && !ko.isObservable(config.items)) {
+		throw new Error("config.items should be an array or an observableArray!");
+	}
+	if (Array.isArray(config.items)) {
+		if (config.items.length === 0) {
+			throw new Error("config.items should not be empty");
+		}
+	}
+	if (ko.isObservable(config.items)) {
+		if (config.items().length === 0) {
+			throw new Error("value of config.items should not be empty");
+		}
 	}
 
 	var rightIcon = ko.observable(config.rightIcon);
 
-	var options = ko.observableArray([]);
+	var items = config.items;
 
-	for (var idx = 0; idx < config.items.length; idx += 1) {
-
-		if (!config.items[idx].label && !config.items[idx].icon) {
-			throw new Error("each element of config.items has to have label and/or icon property");
-		}
-		options.push(createOption({
-			label: config.items[idx].label,
-			icon: config.items[idx].icon,
-			value: config.items[idx].value
-		}));
+	if(!ko.isObservable(items)) {
+		items = ko.observableArray(items);
 	}
 
-	// console.log(options());
-
+	
 	var selected = config.selected || ko.observable();
+	var options = ko.computed(function() {
+		var newOptions = [];
+		var selectedIdx = 0;
+		for (var idx = 0; idx < items().length; idx += 1) {
+
+			if (!items()[idx].label && !items()[idx].icon) {
+				throw new Error("each element of config.items has to have label and/or icon property");
+			}
+			if (selected.peek() !== undefined) {
+				if (selected.peek().value === items()[idx].value) {
+					selectedIdx = idx;
+				}
+			}
+			newOptions.push(createOption({
+				label: items()[idx].label,
+				icon: items()[idx].icon,
+				value: items()[idx].value
+			}));
+		}
+		selected(newOptions[selectedIdx]);
+		return newOptions;
+	});
+	
+
+	// console.log(options());
 
 	selected(options()[config.selectedIdx || 0]);
 
