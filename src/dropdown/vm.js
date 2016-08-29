@@ -48,9 +48,14 @@ function createButtonDropdown(config) {
 	var options = ko.observableArray([]);
 	ko.computed(function() {
 		var newOptions = [];
-		var newSelectedIdx = 0;
 		var currentItems = items();
-		var currentSelected = selected.peek();
+		var currentSelectedIdx = selectedIdx();
+		var currentSelected = options.peek()[currentSelectedIdx];
+		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
+			currentSelectedIdx = 0;
+		}
+		var found = false;
+		
 		for (var idx = 0; idx < currentItems.length; idx += 1) {
 
 			if (!currentItems[idx].label && !currentItems[idx].icon) {
@@ -58,7 +63,8 @@ function createButtonDropdown(config) {
 			}
 			if (currentSelected) {
 				if (currentSelected.value === currentItems[idx].value) {
-					newSelectedIdx = idx;
+					currentSelectedIdx = idx;
+					found = true;
 				}
 			}
 			newOptions.push(createOption({
@@ -68,9 +74,12 @@ function createButtonDropdown(config) {
 				value: currentItems[idx].value
 			}));
 		}
+		if(!found) {
+			currentSelectedIdx = 0;
+		}
 		options(newOptions);
-		selected(newOptions[newSelectedIdx]);
-		selectedIdx(newSelectedIdx);
+		selected(newOptions[currentSelectedIdx]);
+		selectedIdx(currentSelectedIdx);
 	});
 	
 	var dropdownVisible = ko.observable(false);
@@ -107,7 +116,6 @@ function createButtonDropdown(config) {
 			idx: config.idx,
 			value: config.value,
 			select: function() {
-				selected(obj);
 				selectedIdx(obj.idx);
 				dropdownVisible.toggle();
 			}
@@ -115,15 +123,6 @@ function createButtonDropdown(config) {
 
 		return obj;
 	}
-
-	ko.computed(function() {
-		var currentSelectedIdx = selectedIdx();
-		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < options.peek().length)) {
-			currentSelectedIdx = 0;
-		}
-		selected(options.peek()[currentSelectedIdx]);
-		selectedIdx(currentSelectedIdx);
-	});
 
 	return {
 		rightIcon: rightIcon,

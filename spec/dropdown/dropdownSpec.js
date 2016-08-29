@@ -75,14 +75,17 @@ describe(" === Dropdown === ", function() {
 			selected: ko.observable(),
 			items: [
 				{
-					label: "randonLabel1"
+					label: "randonLabel1",
+					value: "value1"
 				},
 				{
-					icon: "ranomdIcon1"
+					icon: "ranomdIcon1",
+					value: "value2"
 				},
 				{
 					label: "randonLabel2",
-					icon: "ranomdIcon2"
+					icon: "ranomdIcon2",
+					value: "value3"
 				}
 			]
 		};
@@ -163,7 +166,7 @@ describe(" === Dropdown === ", function() {
 					expect(vm.options().length).toBe(2);
 				});
 
-				it("should refresh selected assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also", function() {
+				it("should refresh selected and selectedIdx assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also", function() {
 					
 					vm.options()[1].select();
 					items([
@@ -186,6 +189,7 @@ describe(" === Dropdown === ", function() {
 					]);
 					expect(vm.selected().value).toBe("value2");
 					expect(vm.selected().label()).toBe("label3");
+					expect(selectedIdx()).toBe(2);
 				});
 
 				it("should refresh selected to first item if value of previously selected option can't be found in items observableArray's value", function() {
@@ -196,7 +200,7 @@ describe(" === Dropdown === ", function() {
 							value: "some value"
 						},
 						{
-							label: "some labe2",
+							label: "some label2",
 							value: "some value2"
 						}
 					]);
