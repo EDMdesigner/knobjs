@@ -38,13 +38,24 @@ function createButtonDropdown(config) {
 		items = ko.observableArray(items);
 	}
 
+	if (!config.selectedIdx) {
+		config.selectedIdx = 0;
+	}
+	var selectedIdx = ko.isObservable(config.selectedIdx) ? config.selectedIdx : ko.observable(config.selectedIdx);
+
 	
 	var selected = config.selected || ko.observable();
-	var options = ko.computed(function() {
+	var options = ko.observableArray([]);
+	ko.computed(function() {
 		var newOptions = [];
-		var selectedIdx = 0;
 		var currentItems = items();
-		var currentSelected = selected.peek();
+		var currentSelectedIdx = selectedIdx();
+		var currentSelected = options.peek()[currentSelectedIdx];
+		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
+			currentSelectedIdx = 0;
+		}
+		var found = false;
+		
 		for (var idx = 0; idx < currentItems.length; idx += 1) {
 
 			if (!currentItems[idx].label && !currentItems[idx].icon) {
@@ -52,24 +63,25 @@ function createButtonDropdown(config) {
 			}
 			if (currentSelected) {
 				if (currentSelected.value === currentItems[idx].value) {
-					selectedIdx = idx;
+					currentSelectedIdx = idx;
+					found = true;
 				}
 			}
 			newOptions.push(createOption({
 				label: currentItems[idx].label,
 				icon: currentItems[idx].icon,
+				idx: idx,
 				value: currentItems[idx].value
 			}));
 		}
-		selected(newOptions[selectedIdx]);
-		return newOptions;
+		if(!found) {
+			currentSelectedIdx = 0;
+		}
+		options(newOptions);
+		selected(newOptions[currentSelectedIdx]);
+		selectedIdx(currentSelectedIdx);
 	});
 	
-
-	// console.log(options());
-
-	selected(options()[config.selectedIdx || 0]);
-
 	var dropdownVisible = ko.observable(false);
 
 	var closeDropdown = function() {
@@ -101,9 +113,10 @@ function createButtonDropdown(config) {
 		var obj = {
 			label: ko.observable(config.label),
 			icon: ko.observable(config.icon),
+			idx: config.idx,
 			value: config.value,
 			select: function() {
-				selected(obj);
+				selectedIdx(obj.idx);
 				dropdownVisible.toggle();
 			}
 		};
