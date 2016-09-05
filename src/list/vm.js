@@ -162,7 +162,15 @@ module.exports = function createList(config) {
 
 			var find = {};
 
-			find[config.search] = (new RegExp(searchVal, "ig")).toString();
+			if (typeof searchVal === "string") {
+				find[config.search] = (new RegExp(searchVal, "ig")).toString();
+			}
+
+			if (Array.isArray(searchVal)) {
+				find[config.search] = searchVal.map(function(item) {
+					return (new RegExp(item, "ig")).toString();
+				});
+			}
 
 			store.find = find;
 			store.sort = sortVal;
