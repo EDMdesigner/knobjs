@@ -76,6 +76,6 @@
   "dependencies": {
     "knockout": "^3.4.0",
     "extend": "^3.0.0",
-    "superdata": "0.1.14"
+    "superdata": "0.1.15"
   }
 }
