@@ -462,6 +462,30 @@ describe("List", function() {
 						done();
 					}, 2);
 				});
+
+				describe("if value of the search observable changed", function() {
+					describe("to a string", function() {
+						it("should set store.find with the RegExp of the string", function(done) {
+							list.search("search");
+
+							setTimeout(function() {
+								expect(mockStore.find.name).toEqual("/search/gi");
+								done();
+							}, 20);
+						});
+					});
+
+					describe("to an array of strings", function() {
+						it("should set store.find with an array of RegExps", function(done) {
+							list.search(["search", "array"]);
+
+							setTimeout(function() {
+								expect(mockStore.find.name).toEqual(["/search/gi", "/array/gi"]);
+								done();
+							}, 20);
+						});
+					});
+				});
 			});
 
 			describe("with externalInit, ", function() {
