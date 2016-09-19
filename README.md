@@ -48,13 +48,14 @@ This is the other most basic component in knobjs. It's just a simple input, but 
 
 ### Params
 
-Param     | Type                    | Required | Default value         | Description
----       |---                      |---       |---                    |---
-variation | string                  | No       | "default"             | The variation of the button. See the [style](#styling-knob-components) section.
-type      | string                  | No       | "text"                | The type of the input. (Eg.: 'password')
-value     | ko.observable           | Yes      |                       | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
-hasFocus  | ko.observable (boolean) | No       | ko.observable (false) | With this observable, you can programmatically set the focus to this input.
+Param     | Type                    | Required | Default value          | Description
+---       |---                      |---       |---                     |---
+variation | string                  | No       | "default" or "primary" | The variation of the button. See the [style](#styling-knob-components) section.
+type      | string                  | No       | "text"                 | The type of the input. (Eg.: 'password')
+value     | ko.observable           | Yes      |                        | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
+hasFocus  | ko.observable (boolean) | No       | ko.observable (false)  | With this observable, you can programmatically set the focus to this input.
 
+You can use "primary" variation instead of "default" in order to use a style depending on primary color. In this case, default state's fill color and border-color will be the primary color. Hover and active states will use darkened or lightened primary colors depending whether primary color is a dark color or not.
 
 ### Example
 ```html
@@ -63,9 +64,15 @@ hasFocus  | ko.observable (boolean) | No       | ko.observable (false) | With th
 	value: value">
 </knob-input>
 
+<knob-input params="
+	variation: 'primary',
+	value: value2">
+</knob-input>
+
 <script>
 	ko.applyBindings({
-		value: ko.observable("")
+		value: ko.observable(""),
+		value2: ko.observable("")
 	});
 </script>
 ```
