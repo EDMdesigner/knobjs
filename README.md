@@ -50,7 +50,7 @@ This is the other most basic component in knobjs. It's just a simple input, but 
 
 Param     | Type                    | Required | Default value          | Description
 ---       |---                      |---       |---                     |---
-variation | string                  | No       | "default" or "primary" | The variation of the button. See the [style](#styling-knob-components) section.
+variation | string                  | No       | "default" 				| The variation of the button. See the [style](#styling-knob-components) section.
 type      | string                  | No       | "text"                 | The type of the input. (Eg.: 'password')
 value     | ko.observable           | Yes      |                        | This is the observable in which the value will be written. If you want to use the value of the input, then you must give it as a parameter.
 hasFocus  | ko.observable (boolean) | No       | ko.observable (false)  | With this observable, you can programmatically set the focus to this input.
