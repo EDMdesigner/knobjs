@@ -1,4 +1,8 @@
+var tinycolor = require("tinycolor2");
+
 module.exports = function createStyleConfig(theme) {
+	var hoverColor = tinycolor(theme.primary).isDark() ? tinycolor(theme.primary).lighten(20).toString() : tinycolor(theme.primary).darken(20).toString();
+	var activeColor = tinycolor(theme.primary).isDark() ? tinycolor(theme.primary).lighten(30).toString() : tinycolor(theme.primary).darken(30).toString();
 	return {
 		"default": {
 			"default": {
@@ -13,8 +17,33 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"active": {
 				"backgroundColor": theme.white,
-				"color": theme.primaryColor,
-				"fill": theme.primaryColor
+				"color": theme.primary,
+				"fill": theme.primary
+			},
+			"disabled": {
+				"backgroundColor": theme.lightGray,
+				"color": theme.lightGray,
+				"fill": theme.lightGray
+			}
+		},
+		"primary": {
+			"default": {
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": theme.primary,
+				"fill": theme.primary
+			},
+			"hover": {
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": hoverColor,
+				"fill": hoverColor
+			},
+			"active": {
+				"backgroundColor": theme.white,
+				"color": theme.black,
+				"border-color": activeColor,
+				"fill": activeColor
 			},
 			"disabled": {
 				"backgroundColor": theme.lightGray,
