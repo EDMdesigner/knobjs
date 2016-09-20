@@ -13,8 +13,8 @@ module.exports = function createStyleConfig(theme) {
 			},
 			"active": {
 				"backgroundColor": theme.white,
-				"color": theme.primaryColor,
-				"fill": theme.primaryColor
+				"color": theme.primary,
+				"fill": theme.primary
 			},
 			"disabled": {
 				"backgroundColor": theme.lightGray,

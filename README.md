@@ -457,8 +457,8 @@ You can use simply themes, and color sets. Defines the color, and use them in an
 knob.init({
 	theme: "default",
 	colorSet: {
-		primaryColor: "#2199e8",
-		secondaryColor: "#777",
+		primary: "#2199e8",
+		secondary: "#777",
 
 		info: {
 			text: "#00529b",
@@ -495,8 +495,8 @@ knob-js uses the tinycolor2 npm package to the lighten and darken colors. Here i
 ```javascript
 "default": {
 	"default": {
-		"backgroundColor": theme.secondaryColor,
-		"borderColor": theme.secondaryColor,
+		"backgroundColor": theme.secondary,
+		"borderColor": theme.secondary,
 		"color": theme.black,
 		"fill": theme.black
 	},
@@ -542,8 +542,8 @@ config.labels.noResults | string | No | "No results" | The string which will be 
 knob.init({
 	theme: "default",
 	colorSet: {
-		primaryColor: "#2199e8",
-		secondaryColor: "#777",
+		primary: "#2199e8",
+		secondary: "#777",
 
 		info: {
 			text: "#00529b",

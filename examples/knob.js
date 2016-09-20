@@ -28,8 +28,8 @@ initKnob({
 	},
 	// for chamaileon theme
 	color1: {
-		primaryColor: "#44c0fc",
-		secondaryColor: "#f4f4f4",
+		primary: "#44c0fc",
+		secondary: "#f4f4f4",
 
 		info: {
 			background: "#25aaf2"
