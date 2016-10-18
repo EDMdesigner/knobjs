@@ -32,6 +32,10 @@ var createCheckboxStyle;
 var createCheckboxStyleDefault = require("./checkbox/style");
 
 function initKnob(config) {
+	if (!config) {
+		config = {};
+	}
+
 	var defaultIcons = {
 		search: "#icon-search",
 		sort: {
