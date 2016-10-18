@@ -18,6 +18,9 @@ var createInputStyle;
 var createInputStyleDefault = require("./input/style");
 var createInputStyleChamaileon = require("./input/chamaileon");
 
+var createToggleSwitchStyle;
+var createToggleSwitchStyleDefault = require("./toggleSwitch/style");
+
 var createModalStyle;
 var createModalStyleChamaileon = require("./modal/chamaileon");
 var createModalStyleDefault = require("./modal/style");
@@ -83,6 +86,10 @@ function initKnob(config) {
 			throw new Error("config.theme.createInputStyle must be a function");
 		}
 
+		if (typeof theme.createToggleSwitchStyle !== "function") {
+			throw new Error("config.theme.createToggleSwitchStyle must be a function");
+		}
+
 		if (typeof theme.createModalStyle !== "function") {
 			throw new Error("config.theme.createModalStyle must be a function");
 		}
@@ -101,6 +108,7 @@ function initKnob(config) {
 
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
+		createToggleSwitchStyle = theme.createToggleSwitchStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
@@ -111,12 +119,14 @@ function initKnob(config) {
 		if (theme === "chamaileon") {
 			createButtonStyle = createButtonStyleChamaileon;
 			createInputStyle = createInputStyleChamaileon;
+			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
+			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
@@ -174,6 +184,7 @@ function initKnob(config) {
 		}
 	);
 
+	registerComponent("knob-toggleswitch", require("./toggleSwitch/vm"), require("./toggleSwitch/template.html"), createToggleSwitchStyle(colors));
 	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config.colors));
 	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config.colors));
 	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config.colors));
