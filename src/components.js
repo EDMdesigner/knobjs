@@ -184,7 +184,7 @@ function initKnob(config) {
 		}
 	);
 
-	registerComponent("knob-toggleswitch", require("./toggleSwitch/vm"), require("./toggleSwitch/template.html"), createToggleSwitchStyle(colors));
+	registerComponent("knob-toggleswitch", require("./toggleSwitch/vm"), require("./toggleSwitch/template.html"), createToggleSwitchStyle(config.colors));
 	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config.colors));
 	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config.colors));
 	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config.colors));

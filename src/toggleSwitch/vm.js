@@ -1,10 +1,10 @@
 "use strict";
 
-var core = require("./core");
+var toggleSwitchCore = require("./core");
 var ko = require("knockout");
 
 var dependencies = {
 	ko: ko
 };
 
-module.exports = core(dependencies);
+module.exports = toggleSwitchCore(dependencies);
