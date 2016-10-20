@@ -13,7 +13,7 @@ module.exports = function(dependencies) {
 
 	return function createToggleSwitch(config) {
 		if (!config) {
-			throw new Error("config is mandatory!");
+			config = {};
 		}
 
 		if (!ko.isObservable(config.value)) {
