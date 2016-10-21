@@ -9,7 +9,19 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.ko is mandatory!");
 	}
 
+	if (!dependencies.base) {
+		throw new Error("dependencies.base is mandatory!");
+	}
+
+	if (!dependencies.tinycolor) {
+		throw new Error("dependencies.tinycolor is mandatory!");
+	}
+
 	var ko = dependencies.ko;
+	var base = dependencies.base;
+	//var tinycolor = dependencies.tinycolor;
+
+	//var hoverBehaviour = dependencies.hover;
 
 	return function createToggleSwitch(config) {
 		if (!config) {
@@ -20,18 +32,46 @@ module.exports = function(dependencies) {
 			throw new Error("config.value is mandatory and has to be an observable!");
 		}
 
-		var value = config.value;
-		var click = function(){
-			if(config.state === "disabled") {
-				return;
-			}
+		config.component = "toggleSwitch";
 
+		var vm = {};
+
+
+		var tickConfig = {
+			component: "toggle-tick",
+			style: config.style.tick 
+		};
+
+		var trackConfig = {
+			component: "toggle-track",
+			style: config.style.track
+		};
+
+		vm.tick = base(tickConfig);
+		vm.track = base(trackConfig);
+
+		vm.tick.behaviours.hover.enable();
+		vm.track.behaviours.hover.enable();
+
+
+		var value = config.value;
+		var click = function() {
 			value(!value());
 		};
 
-		return {
-			value: value,
-			click: click
-		};
+		ko.computed(function() {
+			if (value()) {
+				vm.tick.state("active");
+				vm.track.state("active");
+			} else {
+				vm.tick.state("default");
+				vm.track.state("default");
+			}
+		});
+
+		vm.value = value;
+		vm.click = click;
+
+		return vm;
 	};
 };

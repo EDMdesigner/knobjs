@@ -1,23 +1,41 @@
-var tinycolor = require("tinycolor2"); 
+//var tinycolor = require("tinycolor2"); 
 
-module.exports = function createColorThemeBackground(theme) {
-	var activeColor = tinycolor(theme.darkGray).darken().darken();
-	var hoverColor = tinycolor(theme.mediumGray).darken(); 
-	var defaultColor = theme.lightGray;
+module.exports = function createColorThemeBackground(colors) {
+	//var activeColor = tinycolor(theme.primary).darken().darken();
+	//var hoverColor = tinycolor(theme.mediumGray).darken(); 
+	var defaultColor = colors.lightGray;
 
 	return {
-		"default": {	
+		track: {
 			default: {
-				backgroundColor: defaultColor
-			},
-			hover: {
-				backgroundColor: hoverColor
-			},
-			active: {
-				backgroundColor: activeColor
-			},
-			disabled: {
-				backgroundColor: defaultColor
+				default: {
+					backgroundColor: "#aaa"
+				},
+				hover: {
+					backgroundColor: "#bbb"
+				},
+				active: {
+					backgroundColor: colors.primary
+				},
+				disabled: {
+					backgroundColor: defaultColor
+				}
+			}
+		},
+		tick: {
+			default: {
+				default: {
+					backgroundColor: "#ddd"
+				},
+				hover: {
+					backgroundColor: "#eee"
+				},
+				active: {
+					backgroundColor: "#eee"
+				},
+				disabled: {
+					backgroundColor: defaultColor
+				}
 			}
 		}
 	};
