@@ -13,15 +13,9 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.base is mandatory!");
 	}
 
-	if (!dependencies.tinycolor) {
-		throw new Error("dependencies.tinycolor is mandatory!");
-	}
-
 	var ko = dependencies.ko;
 	var base = dependencies.base;
-	//var tinycolor = dependencies.tinycolor;
-
-	//var hoverBehaviour = dependencies.hover;
+	
 
 	return function createToggleSwitch(config) {
 		if (!config) {

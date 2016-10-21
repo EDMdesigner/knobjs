@@ -1,8 +1,11 @@
 var ko = require("knockout");
 var toggleSwitchCore = require("../../src/toggleSwitch/core");
 
+var mockBase = {};
+
 var createToggleSwitch = toggleSwitchCore({
-	ko: ko
+	ko: ko,
+	base: mockBase
 });
 
 describe("==== ToggleSwitch ====", function(){
@@ -24,7 +27,7 @@ describe("==== ToggleSwitch ====", function(){
 
 	describe(" - with valid config", function(){
 		var config = {
-			value: ko.observable(false)
+			value: ko.observable(true)
 		};
 
 		var vm = createToggleSwitch(config);

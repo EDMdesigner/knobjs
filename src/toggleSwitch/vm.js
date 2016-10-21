@@ -4,12 +4,10 @@ var ko = require("knockout");
 
 var base = require("../base/vm");
 var toggleSwitchCore = require("./core");
-var tinycolor = require("tinycolor2"); 
 
 var dependencies = {
 	ko: ko,
-	base: base,
-	tinycolor: tinycolor
+	base: base
 };
 
 module.exports = toggleSwitchCore(dependencies);
