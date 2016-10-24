@@ -473,6 +473,14 @@ describe("List", function() {
 								done();
 							}, 20);
 						});
+						it("should not convert store.find to RegExp if it's a RegExp already", function(done) {
+							list.search(new RegExp("search", "gi"));
+
+							setTimeout(function() {
+								expect(mockStore.find.name.toString()).toEqual("/search/gi");
+								done();
+							}, 20);
+						});
 					});
 
 					describe("to an array of strings", function() {
