@@ -15,7 +15,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 	var base = dependencies.base;
-	
+
 
 	return function createToggleSwitch(config) {
 		if (!config) {
@@ -26,10 +26,7 @@ module.exports = function(dependencies) {
 			throw new Error("config.value is mandatory and has to be an observable!");
 		}
 
-		config.component = "toggleSwitch";
-
 		var vm = {};
-
 
 		var tickConfig = {
 			component: "toggle-tick",
