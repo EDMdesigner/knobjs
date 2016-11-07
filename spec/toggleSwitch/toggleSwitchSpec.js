@@ -3,6 +3,8 @@ var toggleSwitchCore = require("../../src/toggleSwitch/core");
 
 
 describe("==== ToggleSwitch ====", function(){
+
+
 	describe(" - with invalid config", function(){
 
 		var mockBase = {};
@@ -26,7 +28,6 @@ describe("==== ToggleSwitch ====", function(){
 	});
 
 
-
 	describe(" - with valid config", function(){
 
 		var config = {
@@ -44,16 +45,16 @@ describe("==== ToggleSwitch ====", function(){
 		var createToggleSwitch;
 		var toggleVm;
 
-
 		beforeAll(function() {
-			function mockBase() {
+			function mockBase(conf) {
 				return {
 					behaviours: {
 						hover: {
 							enable: jasmine.createSpy("hover-enable")
 						}
 					},
-					state: ko.observable("default")
+					state: ko.observable("default"),
+					variation: conf.variation
 				};
 			}
 
@@ -63,7 +64,6 @@ describe("==== ToggleSwitch ====", function(){
 			});
 		});
 
-
 		it("interface", function() {
 			toggleVm = createToggleSwitch(config);
 
@@ -72,7 +72,6 @@ describe("==== ToggleSwitch ====", function(){
 			expect(ko.isObservable(toggleVm.value)).toBe(true);
 			expect(typeof toggleVm.click).toBe("function");
 
-			expect(toggleVm.tick.behaviours.hover.enable).toHaveBeenCalled();
 			expect(toggleVm.track.behaviours.hover.enable).toHaveBeenCalled();
 		});
 
@@ -101,5 +100,13 @@ describe("==== ToggleSwitch ====", function(){
 			expect(toggleVm.tick.state()).toBe("default");
 			expect(toggleVm.track.state()).toBe("default");
 		});
+
+		it("should write variation value to the baseVM when called with baseconfig", function() {
+			config.variation = "myVar";
+			toggleVm = createToggleSwitch(config);
+			expect(toggleVm.tick.variation).toEqual("myVar");
+			expect(toggleVm.track.variation).toEqual("myVar");
+		});
+
 	});
 });

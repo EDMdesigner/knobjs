@@ -30,7 +30,7 @@ module.exports = function(dependencies) {
 
 		var tickConfig = {
 			component: "toggle-tick",
-			style: config.style.tick 
+			style: config.style.tick
 		};
 
 		var trackConfig = {
@@ -38,10 +38,16 @@ module.exports = function(dependencies) {
 			style: config.style.track
 		};
 
+		// Pass the variation if given to style.js for 
+		// rectangular toggleswitch buttons
+		if (config.variation) {
+			trackConfig.variation = config.variation;
+			tickConfig.variation = config.variation;
+		}
+
 		vm.tick = base(tickConfig);
 		vm.track = base(trackConfig);
 
-		vm.tick.behaviours.hover.enable();
 		vm.track.behaviours.hover.enable();
 
 

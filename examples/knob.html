@@ -181,6 +181,17 @@
 
 	<div data-bind="text: toggleValue"></div>
 
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<br>
+
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<div data-bind="text: toggleValue"></div>
+
+
 	<h2>knob-modal</h2>
 
 	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
@@ -410,7 +421,7 @@
 
 	<h2>knob-paged-list</h2>
 
-	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'Nincs eredmény wazze'}">
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
 		<div>
 			<span data-bind="text: model.data.id"></span>
 			<span data-bind="text: model.data.email"></span>

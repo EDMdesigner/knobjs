@@ -56,6 +56,9 @@ initKnob({
 	},
 	icons: {
 		search: "#icon-search"
+	},
+	labels: {
+		noResults: "No results"
 	}
 });
 
