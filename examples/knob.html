@@ -167,7 +167,30 @@
 		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
 	</div>
 
--->
+--> 
+
+	<h2>knob-toggleswitch</h2>
+
+	<knob-toggleswitch params="value: toggleValue">
+	</knob-toggleswitch>
+
+	<br>
+
+	<knob-toggleswitch params="value: toggleValue">
+	</knob-toggleswitch>
+
+	<div data-bind="text: toggleValue"></div>
+
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<br>
+
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<div data-bind="text: toggleValue"></div>
+
 
 	<h2>knob-modal</h2>
 
@@ -398,7 +421,7 @@
 
 	<h2>knob-paged-list</h2>
 
-	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}]">
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
 		<div>
 			<span data-bind="text: model.data.id"></span>
 			<span data-bind="text: model.data.email"></span>

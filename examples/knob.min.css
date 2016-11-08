@@ -212,6 +212,41 @@
   position: relative;
   text-align: left; }
 
+.knob-toggle-track {
+  display: block;
+  width: 40px;
+  height: 20px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 11px;
+  -webkit-transition: background-color 0.4s ease-in;
+  transition: background-color 0.4s ease-in; }
+  .knob-toggle-track .knob-toggle-tick {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid transparent;
+    background: transparent;
+    border-radius: 11px;
+    -webkit-transition: margin 0.4s;
+    transition: margin 0.4s;
+    box-shadow: 1px 2px 3px rgba(125, 125, 125, 0.25);
+    margin-top: 1px;
+    margin-left: 1px; }
+  .knob-toggle-track .knob-toggle-tick.state-active {
+    margin-left: 21px; }
+  .knob-toggle-track:hover {
+    -webkit-transition: background-color 0.4s ease-in;
+    transition: background-color 0.4s ease-in; }
+    .knob-toggle-track:hover .knob-toggle-tick {
+      -webkit-transition: all 0.4s;
+      transition: all 0.4s;
+      box-shadow: 1px 2px 3px rgba(125, 125, 125, 0.3); }
+  .knob-toggle-track:active {
+    -webkit-transition: margin 0.4s ease-in;
+    transition: margin 0.4s ease-in; }
+
 .knob-modal-overlay {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;

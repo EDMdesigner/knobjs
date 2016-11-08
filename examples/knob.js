@@ -56,6 +56,9 @@ initKnob({
 	},
 	icons: {
 		search: "#icon-search"
+	},
+	labels: {
+		noResults: "No results"
 	}
 });
 
@@ -171,5 +174,6 @@ ko.applyBindings({
 	checkboxValue: ko.observable(false),
 	disabledCheckBoxValue: ko.observable(true),
 	dropdownItems: dropdownItems,
-	changeDropdownItems: changeDropdownItems
+	changeDropdownItems: changeDropdownItems,
+	toggleValue: ko.observable(false)
 });

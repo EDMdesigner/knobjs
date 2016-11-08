@@ -42,6 +42,32 @@ click     | function | No           |               | This is the callback which
 </script>
 ```
 
+## knob-toggleSwitch
+
+This switch component is used for enabling or disabling features. If you click on it, you toggle the value property associated with the component.
+
+### Params
+
+Param     | Type                   | Required     | Default value         | Description
+---       |---                     |---           |---                    |---
+value     | ko.observable(boolean) | Yes          | ko.observalble(false) | With this observable, you can set the default state of the switch button.
+variation | string                 | No           |                       | By giving "square" value to variation, the component can be set to have rectangular button.
+
+### Example
+
+```html
+<knob-toggleswitch params="
+	value: toggleValue,
+	variation: 'square'">
+</knob-toggleswitch>
+
+<script>
+	ko.applyBindings({
+		toggleValue: ko.observable(false)
+	});
+</script>
+```
+
 ## knob-input
 
 This is the other most basic component in knobjs. It's just a simple input, but you can style it in the [knob way](#styling-knob-components).

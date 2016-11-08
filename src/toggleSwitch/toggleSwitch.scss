@@ -1,0 +1,52 @@
+$toggleTrackWidth: 40px;
+$toggleTrackHeight: 20px;
+$toggleTickSize: 16px;
+$toggleWidth: 19px;
+
+
+.knob-toggle-track {
+	display: block;
+	width: $toggleTrackWidth;
+	height: $toggleTrackHeight;
+	cursor: pointer;
+	border: 1px solid transparent;
+	background: transparent;
+	border-radius: 11px;
+
+	transition: background-color 0.4s ease-in;
+
+	.knob-toggle-tick {
+		display: block;
+		width: $toggleTickSize;
+		height: $toggleTickSize;
+
+		border: 1px solid transparent;
+		background: transparent;
+		border-radius: 11px;
+
+
+		transition: margin 0.4s;
+		box-shadow: 1px 2px 3px rgba(125, 125, 125, .25);
+		margin-top: 1px;
+		margin-left: 1px;
+	}
+
+	.knob-toggle-tick.state-active {
+		margin-left: $toggleTrackWidth - $toggleWidth;
+	}
+
+	&:hover {
+		transition: background-color 0.4s ease-in;
+				
+
+			.knob-toggle-tick {
+				transition: all 0.4s;
+				box-shadow: 1px 2px 3px rgba(125, 125, 125, .3);
+			}
+	}
+
+	&:active {
+		transition: margin 0.4s ease-in;
+	}
+}
+
