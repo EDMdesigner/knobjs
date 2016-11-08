@@ -51,7 +51,7 @@ This switch component is used for enabling or disabling features. If you click o
 Param     | Type                   | Required     | Default value         | Description
 ---       |---                     |---           |---                    |---
 value     | ko.observable(boolean) | Yes          | ko.observalble(false) | With this observable, you can set the default state of the switch button.
-variation | string                 | No           | "square"              | By giving it to the component you can set the switch button rectangular.
+variation | string                 | No           |                       | By giving "square" value to variation, the component can be set to have rectangular button.
 
 ### Example
 
