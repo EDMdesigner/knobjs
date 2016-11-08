@@ -10,9 +10,9 @@ describe("==== ToggleSwitch ====", function(){
 		var mockBase = {};
 
 		var createToggleSwitch = toggleSwitchCore({
-				ko: ko,
-				base: mockBase
-			});
+			ko: ko,
+			base: mockBase
+		});
 
 		it("config.value should be defined", function() {
 			expect(createToggleSwitch).toThrowError("config.value is mandatory and has to be an observable!");
