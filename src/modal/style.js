@@ -3,7 +3,7 @@ module.exports = function createStyleConfig(theme) {
 		"default": {
 			"default": {
 				"backgroundColor": theme.darkGray,
-				"border-color": theme.darkGray,
+				"borderColor": theme.darkGray,
 				"color": theme.white,
 				"fill": theme.white
 			}
@@ -11,7 +11,7 @@ module.exports = function createStyleConfig(theme) {
 		"confirm": {
 			"default": {
 				"backgroundColor": theme.darkGray,
-				"border-color": theme.darkGray,
+				"borderColor": theme.darkGray,
 				"color": theme.white,
 				"fill": theme.white
 			}

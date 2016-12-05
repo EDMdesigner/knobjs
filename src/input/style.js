@@ -8,12 +8,12 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.darkGray
+				"borderColor": theme.darkGray
 			},
 			"hover": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.darkGray
+				"borderColor": theme.darkGray
 			},
 			"active": {
 				"backgroundColor": theme.white,
@@ -30,19 +30,19 @@ module.exports = function createStyleConfig(theme) {
 			"default": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": theme.primary,
+				"borderColor": theme.primary,
 				"fill": theme.primary
 			},
 			"hover": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": hoverColor,
+				"borderColor": hoverColor,
 				"fill": hoverColor
 			},
 			"active": {
 				"backgroundColor": theme.white,
 				"color": theme.black,
-				"border-color": activeColor,
+				"borderColor": activeColor,
 				"fill": activeColor
 			},
 			"disabled": {
