@@ -34,6 +34,9 @@ var createNotificationStyleDefault = require("./notificationBar/style");
 var createCheckboxStyle;
 var createCheckboxStyleDefault = require("./checkbox/style");
 
+var createTabStyle;
+var createTabStyleDefault = require("./tabs/tab/style");
+
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -106,13 +109,18 @@ function initKnob(config) {
 			throw new Error("config.theme.createCheckboxStyle must be a function");
 		}
 
+		if (typeof theme.createTabStyle !== "function") {
+			throw new Error("config.theme.createTabStyle must be a function");
+		}
+
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
 		createToggleSwitchStyle = theme.createToggleSwitchStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
-		checkboxStyle = theme.createCheckboxStyle;
+		createCheckboxStyle = theme.createCheckboxStyle;
+		createTabStyle = theme.createTabStyle;
 
 	} else if (typeof theme === "string") {
 		
@@ -132,6 +140,7 @@ function initKnob(config) {
 			createNotificationStyle = createNotificationStyleDefault;
 		}
 		createCheckboxStyle = createCheckboxStyleDefault;
+		createTabStyle = createTabStyleDefault;
 
 	} else {
 		throw new Error("config.theme should be an object or a string");
@@ -139,6 +148,7 @@ function initKnob(config) {
 
 	var buttonStyle = createButtonStyle(config);
 	var checkboxStyle = createCheckboxStyle(config.colors);
+	var tabStyle = createTabStyle(config);
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config.colors));
@@ -190,7 +200,7 @@ function initKnob(config) {
 	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config.colors));
 
 	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
-	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), buttonStyle);
+	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), tabStyle);
 
 	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(config.colors));
 	registerComponent(
@@ -210,6 +220,10 @@ function initKnob(config) {
 		null,
 		icons.numericInput
 	);
+
+	if (config.background) {
+		document.body.style.backgroundColor = config.background;
+	}
 }
 
 module.exports = {

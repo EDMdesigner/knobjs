@@ -7,7 +7,7 @@
 	</knob-radio>
 
 	<div class="knob-panel-group" data-bind="foreach: panels">
-		<knob-tab data-bind="visible: $parent.selectedIdx() == $index()">
+		<knob-tab data-bind="visible: $parent.selectedIdx() == $index()" params="variation: $parent.variation">
 			<!-- ko template: { nodes: $data } --><!-- /ko -->
 		</knob-tab>
 	</div>

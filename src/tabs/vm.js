@@ -36,6 +36,7 @@ function createTabs(config, componentInfo) {
 	componentInfo.templateNodes = componentInfo.templateNodes || [];
 
 	var defaultTab = config.defaultTab;
+	var variation = config.variation || "tab";
 
 	var vm = {};
 
@@ -89,6 +90,7 @@ function createTabs(config, componentInfo) {
 	}
 
 	vm.buttons = tabButtons;
+	vm.variation = variation;
 	vm.panels = tabPanels;
 
 	return vm;
