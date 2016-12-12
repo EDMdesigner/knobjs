@@ -196,5 +196,20 @@ describe("tabs", function() {
 
 			expect(vm.selectedIdx()).toBe(1);
 		});
+
+		it("should pass given config.variation", function() {
+			var vm = createTabs({
+				variation: "tab-transparent"
+			}, componentInfo);
+
+			expect(vm.variation).toBe("tab-transparent");
+		});
+
+		it("should use default tab variation if no config.variation is given", function() {
+			var vm = createTabs({}, componentInfo);
+
+			expect(vm.variation).toBe("tab");
+		});
+
 	});
 });
