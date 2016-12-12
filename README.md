@@ -319,12 +319,15 @@ Now available:
 Param      | Type   | Required | Default value | Description
 ---        |---     |---       |---            |---
 defaultTab | number | No       | 0             | You can set the default selected tab by giving the zero-based index of it.
+variation  | string | No       | "tab"         | Possible values: "tab", "tab-transparent"
 
 Also, the knob-tab child elements has to have at least one of the following parameters:
  - label
  - icon (a synonim for leftIcon)
  - leftIcon
  - rightIcon
+
+Variation "tab-transparent" displays tab panels with transparent backgound.
 
 ### Example
 ``` html
@@ -676,3 +679,8 @@ layoutArrangement | string          | No*      | "back"                | Specifi
 	">
 </knob-numericinput>
 ```
+
+## Additional features
+
+### background color
+You can set a background color for body of the HTML document by setting background property in theme parameter passed to knob's init function.
