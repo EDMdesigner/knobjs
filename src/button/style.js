@@ -218,7 +218,8 @@ module.exports = function createStyleConfig(config) {
 			padding: 0,
 			border: "none",
 			backgroundColor: "transparent",
-			cursor: "pointer"
+			cursor: "pointer",
+			whiteSpace: "nowrap"
 		},
 		hover: {
 			color: tinycolor(colors.primary).lighten(20).toString(),
