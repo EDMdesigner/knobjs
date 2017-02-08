@@ -220,8 +220,8 @@ module.exports = function createStyleConfig(config) {
 			backgroundColor: "transparent"
 		},
 		hover: {
-			color: colors.primary.lighten(20),
-			fill: colors.primary.lighten(20)
+			color: tinycolor(colors.primary).lighten(20).toString(),
+			fill: tinycolor(colors.primary).lighten(20).toString()
 		},
 		active: {},
 		disabled: {
