@@ -251,6 +251,26 @@ module.exports = function createStyleConfig(config) {
 				"backgroundColor": tinycolor(colors.lightGray).darken().toString(),
 				"borderColor": tinycolor(colors.lightGray).darken().toString()
 			}
+		},
+		"link": {
+			"default": {
+				"color": colors.primary,
+				"fill": colors.primary,
+				"padding": 0,
+				"border": "none",
+				"backgroundColor": "transparent",
+				"cursor": "pointer",
+				"whiteSpace": "nowrap"
+			},
+			"hover": {
+				"color": tinycolor(colors.primary).lighten(20).toString(),
+				"fill": tinycolor(colors.primary).lighten(20).toString()
+			},
+			"active": {},
+			"disabled": {
+				"color": colors.mediumGray,
+				"fill": colors.mediumGray
+			}
 		}
 	};
 };

@@ -211,6 +211,26 @@ module.exports = function createStyleConfig(config) {
 	var errorButtonStates = createButtonStates(colors.error);
 
 	var modalHeadButtonStates = createModalHeadButtonState(colors.black);
+	var linkButtonStates = {
+		default: {
+			color: colors.primary,
+			fill: colors.primary,
+			padding: 0,
+			border: "none",
+			backgroundColor: "transparent",
+			cursor: "pointer",
+			whiteSpace: "nowrap"
+		},
+		hover: {
+			color: tinycolor(colors.primary).lighten(20).toString(),
+			fill: tinycolor(colors.primary).lighten(20).toString()
+		},
+		active: {},
+		disabled: {
+			color: colors.mediumGray,
+			fill: colors.mediumGray
+		}
+	};
 
 	console.log(modalHeadButtonStates);
 
@@ -226,6 +246,7 @@ module.exports = function createStyleConfig(config) {
 		"success": successButtonStates,
 		"warning": warningButtonStates,
 		"error": errorButtonStates,
-		"cancel": ligthGrayButtonStates
+		"cancel": ligthGrayButtonStates,
+		"link": linkButtonStates
 	};
 };
