@@ -102,7 +102,7 @@ module.exports = function(dependencies) {
 
 			if(parsed < minValue) {
 				inputValue(minValue);
-				validatedValue(maxValue);
+				validatedValue(minValue);
 				return;
 			}
 
