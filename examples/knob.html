@@ -149,25 +149,25 @@
 	<br>
 	<hr>
 
-<!--
+
 	<h2>knob-notification-bar</h2>
 	<knob-button params="label: 'Open warning', variation: 'default', icon: '#icon-open', click: function() {notificationVisible.toggle();}"></knob-button>
 	<a href="" data-bind="click: function() {notificationVisible.toggle();}">Open notification</a>
 
 	<knob-notification params="
-		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur molestias error, quia aliquid, illo enim vel asperiores neque obcaecati debitis nesciunt molestiae unde quas, ipsam amet fugiat quibusdam. Expedita, pariatur.',
-		icon: '#icon-done',
-		variation: 'success',
+		message: 'Time to drink a beer!',
+		icon: '#icon-warning',
+		variation: 'warning',
 		visible: notificationVisible
 	">
 	</knob-notification>
 
 	<h2>knob progress bar</h2>
 	<div class="knob-progress">
-		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
+		<div class="progress-bar" role="progressbar"  style="width:30%">30%	</div>
 	</div>
 
---> 
+
 
 	<h2>knob-toggleswitch</h2>
 
@@ -194,7 +194,7 @@
 
 	<h2>knob-modal</h2>
 
-	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+	<knob-button params="label: 'Open modal', variation: 'warning', icon: '#icon-warning', click: function() {modalVisible.toggle();}"></knob-button>
 	<knob-modal params="
 		title: 'test modal',
 		icon: '#icon-open',
@@ -211,8 +211,8 @@
 		icon: '#icon-open',
 		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
 		visible: confirmVisible,
-		okLabel: 'Ok',
-		cancelLabel: 'Cancel',
+		okLabel: 'Fine',
+		cancelLabel: 'Fuck you',
 		callback: confirmCallback
 	"></knob-confirm>
 
@@ -225,7 +225,7 @@
 		icon: '#icon-warning',
 		message: 'I have to alert you about something?',
 		visible: alertVisible,
-		okLabel: 'Ok',
+		okLabel: 'Yes, do it now',
 		callback: alertCallback">
 	</knob-alert>
 
@@ -260,19 +260,19 @@
 
 	<h2>knob-button primary Small</h2>
 	<div data-bind="foreach: buttons">
-		<knob-button class="button--sm" params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+		<knob-button class="button--sm" params="label: $data, variation: 'warning', icon: '#icon-search'"></knob-button>
 	</div>
 	<hr>
 
 	<h2>knob-button primary Medium</h2>
 	<div data-bind="foreach: buttons">
-		<knob-button params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+		<knob-button params="label: $data, variation: 'success', icon: '#icon-error'"></knob-button>
 	</div>
 	<hr>
 
 	<h2>knob-button primary Large</h2>
 	<div data-bind="foreach: buttons">
-		<knob-button class="button--lg" params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+		<knob-button class="button--lg" params="label: $data, variation: 'error', icon: '#icon-search'"></knob-button>
 	</div>
 	<hr>
 
@@ -294,7 +294,7 @@
 				},
 				icon: {
 					value: '#icon-search',
-					hideOnContent: false
+					hideOnContent: true
 				}
 			},
 			right: {
@@ -323,6 +323,9 @@
 				icon: {
 					value: '#icon-search',
 					hideOnContent: true
+				},
+				text: {
+					value: 'Fuck'
 				}
 			},
 			right: {
@@ -369,8 +372,8 @@
 		group: 'test',
 		items: [
 			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
-			{icon: '#icon-list', value: {field: 'id', asc: false}},
-			{label: 'Third option', value: {field: 'name', asc: true}}
+			{icon: '#icon-list', label: 'Beer', value: {field: 'id', asc: false}},
+			{label: 'Third beer', value: {field: 'name', asc: true}}
 		]">
 	</knob-radio>
 	<h4>Blocked</h4>
@@ -421,7 +424,7 @@
 
 	<h2>knob-paged-list</h2>
 
-	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'name', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'Time for a beer!'}">
 		<div>
 			<span data-bind="text: model.data.id"></span>
 			<span data-bind="text: model.data.email"></span>
@@ -445,7 +448,7 @@
 				In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
 			</p>
 		</knob-tab>
-		<knob-tab params="icon: '#icon-grid'">
+		<knob-tab params="icon: '#icon-grid', label: 'BEER'">
 			<p>
 				In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
 			</p>
@@ -457,7 +460,7 @@
 			</p>
 
 		</knob-tab>
-		<knob-tab params="label: 'tabX'">
+		<knob-tab params="label: 'tabX', icon: '#icon-error'">
 			<p>
 				Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 			</p>
@@ -471,10 +474,10 @@
 		</knob-tab>
 	</knob-tabs>
 	<h2>transparent knob-tabs</h2>
-	<knob-tabs params="defaultTab: 0, variation: 'tab-transparent'">
+	<knob-tabs params="defaultTab: 2, variation: 'tab-transparent'">
 		<knob-tab params="label: 'tab1'">Some content</knob-tab>
 		<knob-tab params="label: 'tab2'">Something</knob-tab>
-		<knob-tab params="label: 'tab3'">Transparent background</knob-tab>
+		<knob-tab params="label: 'BEER'">YES, BEER!</knob-tab>
 	</knob-tabs>
 	<h2>knob-checkbox</h2>
 	<knob-checkbox params="
@@ -487,9 +490,9 @@
 	"></knob-checkbox>
 	<h2>knob-numericinput layout back(default)</h2>
 	<knob-numericinput params="
-		minValue: -2000,
-		maxValue: 2000,
-		value: ko.observable(0),
+		minValue: 10,
+		maxValue: 200,
+		value: ko.observable(66),
 		step: 1,
 		left: {
 			text: {
