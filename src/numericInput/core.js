@@ -66,8 +66,10 @@ module.exports = function(dependencies) {
 		var layoutArrangement = config.layoutArrangement || "back";
 
 		var icons = config.icons;
+		var timer;
 		
 		ko.computed(function() {
+			clearTimeout(timer);
 			var val = inputValue();
 			
 			if(!val || val === "-" || val === "+") {
@@ -94,20 +96,24 @@ module.exports = function(dependencies) {
 				return;
 			}
 
-			if(parsed > maxValue) {
-				inputValue(maxValue);
-				validatedValue(maxValue);
-				return;
-			} 
-
-			if(parsed < minValue) {
-				inputValue(minValue);
-				validatedValue(minValue);
-				return;
-			}
-
 			inputValue(parsed);
-			validatedValue(parsed);
+
+			timer = setTimeout(function() {
+
+				if(parsed > maxValue) {
+					inputValue(maxValue);
+					validatedValue(maxValue);
+					return;
+				} 
+
+				if(parsed < minValue) {
+					inputValue(minValue);
+					validatedValue(minValue);
+					return;
+				}
+
+				validatedValue(parsed);
+			}, 500);
 		});
 
 		var decreaseButton = {
