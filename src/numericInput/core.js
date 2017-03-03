@@ -19,11 +19,11 @@ module.exports = function(dependencies) {
 		if(!ko.isObservable(config.value)|| typeof config.value() !== "number") {
 			throw new Error("config.value is mandatory and it should store a number");
 		}
-		if(typeof config.minValue !== "number" || typeof config.minValue === "undefined") {
-			throw new Error("config.minValue is mandatory and it should be a number!");
+		if(typeof config.minValue !== "number" && (!ko.isObservable(config.minValue) || typeof config.minValue() !== "number")) {
+			throw new Error("config.minValue is mandatory and it should be a number or an observable storing a number!");
 		}
-		if(typeof config.maxValue !== "number" || typeof config.maxValue === "undefined") {
-			throw new Error("config.maxValue is mandatory and it should be a number!");
+		if(typeof config.maxValue !== "number" && (!ko.isObservable(config.maxValue) || typeof config.maxValue() !== "number")) {
+			throw new Error("config.maxValue is mandatory and it should be a number or an observable storing a number!");
 		}
 		if(typeof config.step !== "number" || typeof config.step === "undefined") {
 			throw new Error("config.step is mandatory and it should be a number!");
@@ -55,9 +55,10 @@ module.exports = function(dependencies) {
 		var left = createInputDeco(config, "left");
 		var right = createInputDeco(config, "right");
 
-		var minValue = config.minValue;
-		var maxValue = config.maxValue;
-		var inputValue = config.value;
+		var minValue = ko.isObservable(config.minValue) ? config.minValue : ko.observable(config.minValue);
+		var maxValue = ko.isObservable(config.maxValue) ? config.maxValue : ko.observable(config.maxValue);
+		var validatedValue = config.value;
+		var inputValue = ko.observable(validatedValue());
 		var step = config.step;
 		var minTimeout = config.minTimeout || 50;
 		var timeoutDecrement = config.timeoutDecrement || 100;
@@ -65,51 +66,54 @@ module.exports = function(dependencies) {
 		var layoutArrangement = config.layoutArrangement || "back";
 
 		var icons = config.icons;
+		var timer;
 		
 		ko.computed(function() {
+			clearTimeout(timer);
 			var val = inputValue();
+			var min = minValue();
+			var max = maxValue();
 			
 			if(!val || val === "-" || val === "+") {
-				return;
-			}
-
-			if (typeof val === "string" && val.charAt(val.length - 1) === ".") {
-				var beforeTheLast = val.charAt(val.length - 2);
-
-				if (beforeTheLast && beforeTheLast === ".") {
-					inputValue(val.slice(0, -1));
-				}
-
 				return;
 			}
 
 			var parsed = parseFloat(val);
 
 			if(isNaN(parsed)) {
-				inputValue(val.slice(0, -1));
+				inputValue("");
 				return;
 			}
 
-			if(parsed > maxValue) {
-				inputValue(maxValue);
-				return;
-			} 
-
-			if(parsed < minValue) {
-				inputValue(minValue);
-				return;
+			if (!(typeof val === "string" && val.match(/^[+-]?\d+\.$/))) {
+				inputValue(parsed);
 			}
 
-			inputValue(parsed);
+			timer = setTimeout(function() {
+
+				if(parsed > max) {
+					inputValue(max);
+					validatedValue(max);
+					return;
+				} 
+
+				if(parsed < min) {
+					inputValue(min);
+					validatedValue(min);
+					return;
+				}
+
+				validatedValue(parsed);
+			}, 500);
 		});
 
 		var decreaseButton = {
 			icon: icons.decrease,
 			click: function() {
-				if(parseFloat(inputValue()) - step > minValue){
+				if(parseFloat(inputValue()) - step > minValue()){
 					inputValue(parseFloat(inputValue()) - step);
 				} else {
-					inputValue(minValue);
+					inputValue(minValue());
 				}
 			}
 		};
@@ -117,10 +121,10 @@ module.exports = function(dependencies) {
 		var increaseButton = {
 			icon: icons.increase,
 			click: function() {
-				if(parseFloat(inputValue()) + step < maxValue){
+				if(parseFloat(inputValue()) + step < maxValue()){
 					inputValue(parseFloat(inputValue()) + step);
 				} else {
-					inputValue(maxValue);
+					inputValue(maxValue());
 				}
 			}
 		};
