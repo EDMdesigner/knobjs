@@ -57,7 +57,8 @@ module.exports = function(dependencies) {
 
 		var minValue = config.minValue;
 		var maxValue = config.maxValue;
-		var inputValue = config.value;
+		var validatedValue = config.value;
+		var inputValue = ko.observable(validatedValue());
 		var step = config.step;
 		var minTimeout = config.minTimeout || 50;
 		var timeoutDecrement = config.timeoutDecrement || 100;
@@ -65,42 +66,54 @@ module.exports = function(dependencies) {
 		var layoutArrangement = config.layoutArrangement || "back";
 
 		var icons = config.icons;
+		var timer;
 		
 		ko.computed(function() {
+			clearTimeout(timer);
 			var val = inputValue();
 			
 			if(!val || val === "-" || val === "+") {
 				return;
 			}
 
-			if (typeof val === "string" && val.charAt(val.length - 1) === ".") {
-				var beforeTheLast = val.charAt(val.length - 2);
+			if (typeof val === "string" && val.match(/^([+-]?\d+\.)(\D.*)?$/)) {
+				val = val.replace(/^([+-]?\d+\.)(\D.*)?$/, "$1");
+				console.log("Match!");
+				inputValue(val);
+				validatedValue(parseFloat(val));
+				return;
+			}
 
-				if (beforeTheLast && beforeTheLast === ".") {
-					inputValue(val.slice(0, -1));
-				}
-
+			if (typeof val === "string" && val.match(/([+-]?\d+\.)\d*$/)) {
+				validatedValue(parseFloat(val));
 				return;
 			}
 
 			var parsed = parseFloat(val);
 
 			if(isNaN(parsed)) {
-				inputValue(val.slice(0, -1));
-				return;
-			}
-
-			if(parsed > maxValue) {
-				inputValue(maxValue);
-				return;
-			} 
-
-			if(parsed < minValue) {
-				inputValue(minValue);
+				inputValue("");
 				return;
 			}
 
 			inputValue(parsed);
+
+			timer = setTimeout(function() {
+
+				if(parsed > maxValue) {
+					inputValue(maxValue);
+					validatedValue(maxValue);
+					return;
+				} 
+
+				if(parsed < minValue) {
+					inputValue(minValue);
+					validatedValue(minValue);
+					return;
+				}
+
+				validatedValue(parsed);
+			}, 500);
 		});
 
 		var decreaseButton = {
