@@ -15,7 +15,7 @@ describe("Numeric Input", function() {
 		it("missing dependencies.ko", function() {
 			var f = function() {
 				numericInputCore({});
-			} 
+			}; 
 			expect(f).toThrowError("dependencies.ko is mandatory!");
 		});
 
@@ -317,10 +317,10 @@ describe("Numeric Input", function() {
 			}
 		};
 		var vm = createNumericInput(config);
-		var inputValue = vm.inputValue;
+		/*var inputValue = vm.inputValue;
 		var increment = vm.increaseButton.click;
 		var decrement = vm.decreaseButton.click;
-		var wait = 501;	// the default timeout value is 500 ms
+		var wait = 501;	// the default timeout value is 500 ms*/
 
 		beforeEach(function() {
 			value(0);
