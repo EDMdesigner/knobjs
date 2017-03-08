@@ -175,5 +175,10 @@ ko.applyBindings({
 	disabledCheckBoxValue: ko.observable(true),
 	dropdownItems: dropdownItems,
 	changeDropdownItems: changeDropdownItems,
-	toggleValue: ko.observable(false)
+	toggleValue: ko.observable(false),
+	numericMin: ko.observable(-10),
+	numericMax: ko.observable(10),
+	numericStep: ko.observable(1),
+	numericPrecision: ko.observable(1),
+	numericTestVal: ko.observable(6)
 });
