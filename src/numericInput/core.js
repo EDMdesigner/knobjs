@@ -85,7 +85,7 @@ module.exports = function(dependencies) {
 				return;
 			}
 
-			if (!(typeof val === "string" && val.match(/^[+-]?\d+\.$/))) {
+			if (!(typeof val === "string" && val.match(/^[+-]?\d+\.\d*$/))) {
 				inputValue(parsed);
 			}
 
