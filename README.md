@@ -139,7 +139,7 @@ items       | Array                  | Yes      |               | You can config
 
 ## knob-dropdown
 
-This component is also composed of knob-buttons. Therefore very element can have it's icon and label. It also can have an icon on the right, which is usually a caret pointing down to indicate the options will be visible if you click on it. In a sense, it's very similar to the knob-radio element.
+This component is also composed of knob-buttons. Therefore every element can have it's icon and label. It also can have an icon on the right, which is usually a caret pointing down to indicate the options will be visible if you click on it. In a sense, it's very similar to the knob-radio element.
 
 ### Params
 
