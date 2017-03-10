@@ -46,10 +46,22 @@ function createButtonDropdown(config) {
 	
 	var selected = config.selected || ko.observable();
 	var options = ko.observableArray([]);
+
+	ko.computed(function() {
+		var currentSelectedIdx = selectedIdx();
+		var currentItems = items.peek();
+		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
+			currentSelectedIdx = 0;
+			selectedIdx(0);
+		}
+		var currentSelected = options.peek()[currentSelectedIdx];
+		selected(currentSelected);
+	});
+
 	ko.computed(function() {
 		var newOptions = [];
 		var currentItems = items();
-		var currentSelectedIdx = selectedIdx();
+		var currentSelectedIdx = selectedIdx.peek();
 		var currentSelected = options.peek()[currentSelectedIdx];
 		if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
 			currentSelectedIdx = 0;
