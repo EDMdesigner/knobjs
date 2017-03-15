@@ -1,8 +1,35 @@
 var ko = require("knockout");
-var createButtonDropdown = require("../../src/dropdown/vm");
+var createButtonCore = require("../../src/dropdown/core.js");
+var createButtonDropdown = createButtonCore({ ko: ko});
+var window;
 
 describe(" === Dropdown === ", function() {
+	beforeEach(function() {		
+		window = {
+			addEventListener: function(event, callback) {
+				window[event] = callback;
+			},
+			removeEventListener: function(event) {
+				window[event] = undefined;
+			}
+		};
+	});
+
+	afterEach(function() {
+		window.click = undefined;
+	});
+
 	describe(" - with invalid config", function() {
+		it("throws error if dependencies is missing", function() {
+			expect(createButtonCore).toThrowError("dependencies is mandatory!");
+		});
+
+		it("throws error if dependencies.ko is missing", function() {
+			var f = function() {
+				createButtonCore({});
+			};
+			expect(f).toThrowError("dependencies.ko is mandatory!");
+		});
 
 		it("should throw error if config.rightIcon isn't given", function() {
 			expect(createButtonDropdown).toThrowError("config.rightIcon element is mandatory!");
@@ -27,30 +54,34 @@ describe(" === Dropdown === ", function() {
 		});
 
 		it("should throw error if type of config.items isn't array or observableArray", function() {
-			expect(function() {
+			var f = function() {
 				createButtonDropdown({
 					rightIcon: "random",
 					items: "notArrayNorObservableArray",
 					selected: ko.observable()
-				}).toThrowError("config.items should be an array or an observableArray!");
-			});
+				});
+			};
+			expect(f).toThrowError("config.items should be an array or an observableArray!");
 		});
 
 		it("should throw error if config.items is empty array or is an empty observableArray", function() {
-			expect(function() {
+			var f = function() {
 				createButtonDropdown({
 					rightIcon: "random",
 					items: [],
 					selected: ko.observable()
-				}).toThrowError("config.items should not be empty");
-			});
-			expect(function() {
+				});
+			};
+			expect(f).toThrowError("config.items should not be empty");
+
+			var f2 = function() {
 				createButtonDropdown({
 					rightIcon: "random",
 					items: ko.observableArray([]),
 					selected: ko.observable()
-				}).toThrowError("value of config.items should not be empty");
-			});
+				});
+			};
+			expect(f2).toThrowError("value of config.items should not be empty");
 		});
 
 		it("should throw error if config.items has an element which doesn't have label and/or icon property", function() {
@@ -87,7 +118,15 @@ describe(" === Dropdown === ", function() {
 					icon: "ranomdIcon2",
 					value: "value3"
 				}
-			]
+			],
+			window: {
+				addEventListener: function(event, callback) {
+					window[event] = callback;
+				},
+				removeEventListener: function(event) {
+					window[event] = undefined;
+				}
+			}
 		};
 
 		var vm = createButtonDropdown(config);
@@ -133,6 +172,14 @@ describe(" === Dropdown === ", function() {
 				]);
 				config.items = items;
 				config.selectedIdx = selectedIdx;
+				config.window = {
+					addEventListener: function(event, callback) {
+						window[event] = callback;
+					},
+					removeEventListener: function(event) {
+						window[event] = undefined;
+					}
+				};
 				vm = createButtonDropdown(config);
 			});
 
