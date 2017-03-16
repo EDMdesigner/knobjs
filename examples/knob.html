@@ -398,13 +398,18 @@
 	<h3>observableArray 'items' parameter</h3>
 	<knob-dropdown params="
 		rightIcon: '#icon-expand-more',
-		items: dropdownItems">
+		items: dropdownItems,
+		selected: dropdownSelected,
+		selectedIdx: dropdownSelectedIdx
+		">
 	</knob-dropdown>
 	<knob-button params="
-		label: 'change items',
+		label: 'add more items',
 		click: changeDropdownItems
 	">
 	</knob-button>
+	<p>Selected index: <span data-bind="text: dropdownSelectedIdx()"></span></p>
+	<p>Selected value: <span data-bind="text: dropdownSelected().value"></span></p>
 	<hr>
 
 	<h2>knob-inline-text-editor</h2>
