@@ -232,7 +232,7 @@ module.exports = function createStyleConfig(config) {
 		}
 	};
 
-	console.log(modalHeadButtonStates);
+	//console.log(modalHeadButtonStates);
 
 	return {
 		"default": ligthGrayButtonStates,
