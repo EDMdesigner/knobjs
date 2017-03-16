@@ -64,7 +64,6 @@ module.exports = function(dependencies) {
 			var currentSelectedIdx = selectedIdx();
 			var currentOptions = options.peek();
 			if (currentOptions.length === 0) {
-				console.log("0 options!");
 				return;
 			}
 			if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentOptions.length)) {

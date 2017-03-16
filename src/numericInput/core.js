@@ -91,7 +91,7 @@ module.exports = function(dependencies) {
 			var max = maxValue();
 			var step = stepValue();
 			var precision = precisionValue();
-			console.log(precision);
+			//console.log(precision);
 
 			if (min > max) {
 				throw new Error("minValue cannot be greater than maxValue!");
