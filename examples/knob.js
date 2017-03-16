@@ -138,6 +138,10 @@ var dropdownItems = ko.observableArray([]);
 var dropdownSelected = ko.observable();
 var dropdownSelectedIdx = ko.observable(1);
 
+var dropdownValueToShow = ko.computed(function() {
+	return (dropdownSelected() ? dropdownSelected().value : "");
+});
+
 var changeDropdownItems = function() {
 	var items = dropdownItems();
 	if (items.length >= 10) {
@@ -178,6 +182,7 @@ ko.applyBindings({
 	changeDropdownItems: changeDropdownItems,
 	dropdownSelected: dropdownSelected,
 	dropdownSelectedIdx: dropdownSelectedIdx,
+	dropdownValueToShow: dropdownValueToShow,
 	toggleValue: ko.observable(false),
 	numericMin: ko.observable(-10),
 	numericMax: ko.observable(10),

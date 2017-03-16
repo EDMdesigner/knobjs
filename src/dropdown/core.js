@@ -11,6 +11,7 @@ module.exports = function(dependencies) {
 	}
 
 	var ko = dependencies.ko;
+	//var window;
 
 	return function createButtonDropdown(config) {
 		config = config || {};
@@ -38,9 +39,9 @@ module.exports = function(dependencies) {
 			}
 		}
 
-		if (config.window) {
-			var window = config.window;
-		}
+		/*if (config.window) {
+			window = config.window;
+		}*/
 
 		var rightIcon = ko.observable(config.rightIcon);
 
@@ -61,12 +62,16 @@ module.exports = function(dependencies) {
 
 		ko.computed(function() {
 			var currentSelectedIdx = selectedIdx();
-			var currentItems = items.peek();
-			if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
+			var currentOptions = options.peek();
+			if (currentOptions.length === 0) {
+				console.log("0 options!");
+				return;
+			}
+			if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentOptions.length)) {
 				currentSelectedIdx = 0;
 				selectedIdx(0);
 			}
-			var currentSelected = options.peek()[currentSelectedIdx];
+			var currentSelected = currentOptions[currentSelectedIdx];
 			selected(currentSelected);
 		});
 
@@ -121,10 +126,10 @@ module.exports = function(dependencies) {
 
 			dropdownVisible(!dropdownVisible());
 
-			/*/ should remove this when test in phantomjs
+			// should remove this when test in phantomjs
 			if (typeof window === "undefined") {
 				return;
-			}*/
+			}
 
 			if (dropdownVisible()) {
 				window.addEventListener("click", closeDropdown, false);
