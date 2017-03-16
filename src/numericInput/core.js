@@ -105,7 +105,7 @@ module.exports = function(dependencies) {
 				throw new Error("precision cannot be negative!");
 			}
 			
-			if(!val || val === "-" || val === "+") {
+			if(val === "" || val === "-" || val === "+") {
 				return;
 			}
 
@@ -149,7 +149,9 @@ module.exports = function(dependencies) {
 			icon: icons.decrease,
 			click: function() {
 				var val = parseFloat(inputValue());
-				val = val || validatedValue();
+				if (!val && val !== 0) {
+					val = validatedValue();
+				}	
 				var step = stepValue();
 				var min = minValue();
 				if(val - step > min){
@@ -164,7 +166,9 @@ module.exports = function(dependencies) {
 			icon: icons.increase,
 			click: function() {
 				var val = parseFloat(inputValue());
-				val = val || validatedValue();
+				if (!val && val !== 0) {
+					val = validatedValue();
+				}	
 				var step = stepValue();
 				var max = maxValue();
 				if(val + step < max){
