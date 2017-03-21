@@ -135,21 +135,26 @@ function alertClose() {
 }
 
 var dropdownItems = ko.observableArray([]);
+var dropdownSelected = ko.observable();
+var dropdownSelectedIdx = ko.observable(1);
+
+var dropdownValueToShow = ko.computed(function() {
+	return (dropdownSelected() ? dropdownSelected().value : "");
+});
 
 var changeDropdownItems = function() {
-	var prev = dropdownItems().length;
-	var newLength = prev;
-	while (newLength === prev) {
-		newLength = Math.round(Math.random()*10 + 2);
-	}
-	var newItems = [];
-	for (var i = 0; i < newLength; i += 1) {
-		newItems.push({
-			label: "item " + (i + 1).toString() + " " + Math.round(Math.random()*1000 + 1).toString(),
-			value: "value " + (i + 1).toString()
+	var items = dropdownItems();
+	if (items.length >= 10) {
+		items = [];
+	}	
+	for (var i = 0; i < 3; i += 1) {
+		var val = Math.round(Math.random()*1000 + 1);
+		items.push({
+			label: "item " + (items.length + 1).toString() + " " + val.toString(),
+			value: val
 		});
 	}
-	dropdownItems(newItems);
+	dropdownItems(items);
 };
 changeDropdownItems();
 
@@ -175,6 +180,9 @@ ko.applyBindings({
 	disabledCheckBoxValue: ko.observable(true),
 	dropdownItems: dropdownItems,
 	changeDropdownItems: changeDropdownItems,
+	dropdownSelected: dropdownSelected,
+	dropdownSelectedIdx: dropdownSelectedIdx,
+	dropdownValueToShow: dropdownValueToShow,
 	toggleValue: ko.observable(false),
 	numericMin: ko.observable(-10),
 	numericMax: ko.observable(10),
