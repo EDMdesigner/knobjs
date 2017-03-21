@@ -60,12 +60,13 @@ module.exports = function(dependencies) {
 		var selected = config.selected || ko.observable();
 		var options = ko.observableArray([]);
 
-		for (var i = 0; i < items().length; i = i + 1) {
+		var initItems = items();
+		for (var i = 0; i < initItems.length; i = i + 1) {
 			options.push(createOption({
-				label: items()[i].label,
-				icon: items()[i].icon,
+				label: initItems[i].label,
+				icon: initItems[i].icon,
 				idx: i,
-				value: items()[i].value
+				value: initItems[i].value
 			}));
 		}
 
