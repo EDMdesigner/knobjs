@@ -60,6 +60,16 @@ module.exports = function(dependencies) {
 		var selected = config.selected || ko.observable();
 		var options = ko.observableArray([]);
 
+		var initItems = items();
+		for (var i = 0; i < initItems.length; i = i + 1) {
+			options.push(createOption({
+				label: initItems[i].label,
+				icon: initItems[i].icon,
+				idx: i,
+				value: initItems[i].value
+			}));
+		}
+
 		ko.computed(function() {
 			var currentSelectedIdx = selectedIdx();
 			var currentOptions = options.peek();
