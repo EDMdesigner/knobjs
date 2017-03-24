@@ -73,7 +73,7 @@ module.exports = function(dependencies) {
 			precisionValue = config.precision;
 			precisionValue = ko.isObservable(precisionValue) ? precisionValue : ko.observable(precisionValue);
 		}
-		var updateTimeout = config.updateTimeout || 500;
+		var updateTimeout = config.updateTimeout || 200;
 		var validatedValue = config.value;
 		var inputValue = ko.observable(validatedValue());
 		var minTimeout = config.minTimeout || 50;
@@ -105,7 +105,7 @@ module.exports = function(dependencies) {
 				throw new Error("precision cannot be negative!");
 			}
 			
-			if(!val || val === "-" || val === "+") {
+			if(val === "" || val === "-" || val === "+") {
 				return;
 			}
 
@@ -143,6 +143,11 @@ module.exports = function(dependencies) {
 
 				validatedValue(parsed);
 			}, updateTimeout);
+		});
+
+		ko.computed(function() {
+			var newVal = validatedValue();
+			inputValue(newVal);
 		});
 
 		var decreaseButton = {
