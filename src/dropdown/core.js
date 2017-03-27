@@ -70,6 +70,29 @@ module.exports = function(dependencies) {
 			}));
 		}
 
+		function findIndex(item, list) {
+			var index = -1;
+			for (var i=0; i < list.length; i += 1) {
+				if (item.value === list[i].value) {
+					index = i;
+				}
+			}
+			return index;
+		}
+
+		ko.computed(function() {
+			var currentSelected = selected();
+			if (!currentSelected) {
+				return;
+			}
+			var currentOptions = options.peek();
+			var index = findIndex(currentSelected, currentOptions);
+			if (index === -1) {
+				return;
+			}
+			selectedIdx(index);
+		});
+
 		ko.computed(function() {
 			var currentSelectedIdx = selectedIdx();
 			var currentOptions = options.peek();
