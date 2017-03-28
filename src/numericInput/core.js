@@ -160,9 +160,9 @@ module.exports = function(dependencies) {
 				var step = stepValue();
 				var min = minValue();
 				if(val - step > min){
-					inputValue(val - step);
+					validatedValue(val - step);
 				} else {
-					inputValue(min);
+					validatedValue(min);
 				}
 			}
 		};
@@ -177,9 +177,9 @@ module.exports = function(dependencies) {
 				var step = stepValue();
 				var max = maxValue();
 				if(val + step < max){
-					inputValue(val + step);
+					validatedValue(val + step);
 				} else {
-					inputValue(max);
+					validatedValue(max);
 				}
 			}
 		};
