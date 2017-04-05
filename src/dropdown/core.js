@@ -25,17 +25,22 @@ module.exports = function(dependencies) {
 		if (config.selected && !ko.isObservable(config.selected)) {
 			throw new Error("config.selected has to be a knockout observable!");
 		}
+		if (config.selectedIdx) {
+			if (!ko.isObservable(config.selectedIdx) && typeof config.selectedIdx !== "number") {
+				throw new Error("config.selectedIdx has to be an observable or a number!");
+			}
+		}
 		if (!Array.isArray(config.items) && !ko.isObservable(config.items)) {
 			throw new Error("config.items should be an array or an observableArray!");
 		}
 		if (Array.isArray(config.items)) {
 			if (config.items.length === 0) {
-				throw new Error("config.items should not be empty");
+				throw new Error("config.items should not be empty!");
 			}
 		}
 		if (ko.isObservable(config.items)) {
 			if (config.items().length === 0) {
-				throw new Error("value of config.items should not be empty");
+				throw new Error("The value of config.items should not be empty!");
 			}
 		}
 
@@ -50,18 +55,13 @@ module.exports = function(dependencies) {
 		if(!ko.isObservable(items)) {
 			items = ko.observableArray(items);
 		}
-
-		if (!config.selectedIdx) {
-			config.selectedIdx = 0;
-		}
-		var selectedIdx = ko.isObservable(config.selectedIdx) ? config.selectedIdx : ko.observable(config.selectedIdx);
-
 		
 		var selected = config.selected || ko.observable();
 		var options = ko.observableArray([]);
 
 		var initItems = items();
 		for (var i = 0; i < initItems.length; i = i + 1) {
+			checkItem(initItems[i]);
 			options.push(createOption({
 				label: initItems[i].label,
 				icon: initItems[i].icon,
@@ -70,64 +70,106 @@ module.exports = function(dependencies) {
 			}));
 		}
 
-		function findIndex(item, list) {
-			var index = -1;
-			for (var i=0; i < list.length; i += 1) {
-				if (item.value === list[i].value) {
-					index = i;
-				}
+		// We need all these for a correct initialization...
+		var initIndex;
+		var initValue;
+		var selectedIdx;
+		var selectedValue;
+		var isObsIndex = true;
+		var isObsValue = false;
+
+		if (ko.isObservable(config.selectedValue)) {
+			if (config.selectedValue() || config.selectedValue() === 0) {
+				initValue = config.selectedValue();
 			}
-			return index;
+		} else {
+			isObsValue = false;
+			initValue = config.selectedValue;
 		}
 
+		if (ko.isObservable(config.selectedIdx)) {
+			if (typeof config.selectedIdx() === "number") {
+				initIndex = config.selectedIdx();
+			}
+		} else {
+			isObsIndex = false;
+			initIndex = config.selectedIdx;
+		}
+
+		// If no initial setting given, we default to the first option.
+		if (initIndex === undefined && initValue === undefined) {
+			selectedValue = isObsValue ? config.selectedValue || ko.observable();
+			selectedIdx = isObsIndex ? config.selectedIdx || ko.observable(0);
+		}
+
+		// If an initial index or value is given, we use the corresponding option.
+
+
+		// If both an index and a value is given, we check whether they are compatible.
+
+		// Handles the change of selected - updates selectedIdx and selectedValue.
 		ko.computed(function() {
 			var currentSelected = selected();
 			if (!currentSelected) {
 				return;
 			}
 			var currentOptions = options.peek();
-			var index = findIndex(currentSelected, currentOptions);
+			var index = findIndexByValue(currentSelected.value, currentOptions);
 			if (index === -1) {
-				return;
+				throw new Error("Dropdown: invalid selected item set!");
 			}
+			selectedValue(item.value);
 			selectedIdx(index);
 		});
 
+		// Handles the change of selectedIdx - updates selected only!
 		ko.computed(function() {
-			var currentSelectedIdx = selectedIdx();
+			var currentIndex = selectedIdx();
+			if (!currentIndex && currentIndex !== 0) {
+				return;
+			}
 			var currentOptions = options.peek();
 			if (currentOptions.length === 0) {
 				return;
 			}
-			if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentOptions.length)) {
-				currentSelectedIdx = 0;
-				selectedIdx(0);
+			if(!(currentIndex >= 0 && currentIndex < currentOptions.length)) {
+				throw new Error("Dropdown: invalid selectedIdx set!");
 			}
-			var currentSelected = currentOptions[currentSelectedIdx];
-			selected(currentSelected);
+			var newSelected = currentOptions[currentIndex];
+			selected(newSelected);
 		});
 
+		// Handles the change of selectedValue - updates selected only!
+		ko.computed(function() {
+			var currentValue = selectedValue();
+			if (!currentValue && currentValue !== 0) {
+				return;
+			}
+			var currentOptions = options.peek();
+			if (currentOptions.length === 0) {
+				return;
+			}
+			var newIndex = findIndexByValue(currentValue, currentOptions);
+			if (newIndex === -1) {
+				throw new Error("Dropdown: invalid selectedValue set!");
+			}
+			var newSelected = currentOptions[newIndex];
+			selected(newSelected);
+		});
+
+		// Handles the changes of the items list
 		ko.computed(function() {
 			var newOptions = [];
 			var currentItems = items();
-			var currentSelectedIdx = selectedIdx.peek();
-			var currentSelected = options.peek()[currentSelectedIdx];
-			if(!(currentSelectedIdx >= 0 && currentSelectedIdx < currentItems.length)) {
-				currentSelectedIdx = 0;
+			var currentIndex = selectedIdx.peek();
+			var currentSelected = options.peek()[currentIndex];
+			if(!(currentIndex >= 0 && currentIndex < currentItems.length)) {
+				currentIndex = 0;
 			}
 			var found = false;
 			
 			for (var idx = 0; idx < currentItems.length; idx += 1) {
-
-				if (!currentItems[idx].label && !currentItems[idx].icon) {
-					throw new Error("each element of config.items has to have label and/or icon property");
-				}
-				if (currentSelected) {
-					if (currentSelected.value === currentItems[idx].value) {
-						currentSelectedIdx = idx;
-						found = true;
-					}
-				}
+				checkItem(currentItems[idx]);
 				newOptions.push(createOption({
 					label: currentItems[idx].label,
 					icon: currentItems[idx].icon,
@@ -135,12 +177,12 @@ module.exports = function(dependencies) {
 					value: currentItems[idx].value
 				}));
 			}
-			if(!found) {
-				currentSelectedIdx = 0;
+			var index = findIndexByValue(currentSelected.value, newOptions);
+			if(index !== -1) {
+				currentIndex = index;
 			}
 			options(newOptions);
-			selected(newOptions[currentSelectedIdx]);
-			selectedIdx(currentSelectedIdx);
+			selected(newOptions[currentIndex]);
 		});
 		
 		var dropdownVisible = ko.observable(false);
@@ -170,6 +212,16 @@ module.exports = function(dependencies) {
 			}
 		};
 
+		// Returns the index of the first item with the given value
+		function findIndexByValue(value, list) {
+			for (var i=0; i < list.length; i += 1) {
+				if (value === list[i].value) {
+					return i;
+				}
+			}
+			return -1;
+		}
+
 		function createOption(config) {
 			var obj = {
 				label: ko.observable(config.label),
@@ -183,6 +235,19 @@ module.exports = function(dependencies) {
 			};
 
 			return obj;
+		}
+
+		function checkItem(item) {
+			if (item === undefined) {
+				throw new Error("The items of config.items cannot be undefined!");
+			}
+			if (item.value === undefined) {
+				throw new Error("Each element of config.items has to have a value property!")
+			}
+			if (!item.label && item.label !== 0 && !item.icon) {
+				// Although we might default to item.value
+				throw new Error("Each element of config.items has to have label and/or icon property!");
+			}
 		}
 
 		return {
