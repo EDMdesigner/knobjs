@@ -34,13 +34,11 @@ module.exports = function(dependencies) {
 		}
 
 		function save () {
-			console.log("save");
 			originalValue(editedValue());
 			editMode(false);
 		}
 
 		function cancel () {
-			console.log("cancel");
 			editedValue(originalValue());
 			editMode(false);
 		}
