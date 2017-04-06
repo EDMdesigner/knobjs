@@ -146,7 +146,7 @@ var changeDropdownItems = function() {
 	var items = dropdownItems();
 	if (items.length >= 10) {
 		items = [];
-	}	
+	}
 	for (var i = 0; i < 3; i += 1) {
 		var val = Math.round(Math.random()*1000 + 1);
 		items.push({
@@ -158,12 +158,31 @@ var changeDropdownItems = function() {
 };
 changeDropdownItems();
 
+var inputWithEditButton = {
+	value: ko.observable("original title"),
+	labels: {
+		edit: "",
+		save: "SAVE",
+		cancel: "CANCEL",
+	},
+	icons: {
+		edit: "#icon-edit",
+		save: "",
+		cancel: ""
+	}
+};
+
+// var inputWithEditButton = {
+// 	value: ko.observable("original title")
+// };
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
 	numOfItems: ko.observable(1000),
 	itemsPerPage: ko.observable(10),
 	buttons: buttons,
+	inputWithEditButton: inputWithEditButton,
 	modalVisible: ko.observable(false),
 	confirmVisible: ko.observable(false),
 	confirmCallback: function(ok) {

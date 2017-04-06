@@ -167,7 +167,7 @@
 		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
 	</div>
 
---> 
+-->
 
 	<h2>knob-toggleswitch</h2>
 
@@ -282,7 +282,7 @@
 		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
 	</div>
 	<hr>
-	
+
 	<h2> advanced knob-inputs</h2>
 	<div style="width: 300px">
 		<knob-input params="
@@ -310,7 +310,7 @@
 					value: 'Search',
 					hideOnContent: true
 				},
-				icon: { 
+				icon: {
 					value: '#icon-search',
 					hideOnContent: false
 				}
@@ -359,6 +359,16 @@
 			variation: 'primary'">
 		</knob-input>
 	</div>
+
+	<h2>knob-input-with-edit-button</h2>
+	<knob-input-with-edit-button params="
+		value: inputWithEditButton.value,
+		icons: inputWithEditButton.icons,
+		labels: inputWithEditButton.labels
+	">
+	</knob-input-with-edit-button>
+	<p data-bind="text: inputWithEditButton.value"></p>
+	<!-- <p data-bind="text: 'value: ' + inputWithEditButton.value()"></p> -->
 
 	<h2>knob-textarea</h2>
 	<knob-textarea></knob-textarea>

@@ -123,7 +123,7 @@ function initKnob(config) {
 		createTabStyle = theme.createTabStyle;
 
 	} else if (typeof theme === "string") {
-		
+
 		if (theme === "chamaileon") {
 			createButtonStyle = createButtonStyleChamaileon;
 			createInputStyle = createInputStyleChamaileon;
@@ -152,14 +152,15 @@ function initKnob(config) {
 
 	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
 	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config.colors));
+	registerComponent("knob-input-with-edit-button", require("./inputWithEditButton/vm"), require("./inputWithEditButton/template.html"), createInputStyle(config.colors));
 	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(config.colors));
 	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
 	registerComponent(
 		"knob-inline-text-editor",
-		 require("./inlineTextEditor/vm"),
-		 require("./inlineTextEditor/template.html"),
-		 null,
-		 icons.inlineTextEditor
+			require("./inlineTextEditor/vm"),
+			require("./inlineTextEditor/template.html"),
+			null,
+			icons.inlineTextEditor
 		);
 	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
 	registerComponent(
@@ -214,7 +215,7 @@ function initKnob(config) {
 		}
 	);
 	registerComponent(
-		"knob-numericinput", 
+		"knob-numericinput",
 		require("./numericInput/vm"),
 		require("./numericInput/template.html"),
 		null,
