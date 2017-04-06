@@ -29,20 +29,20 @@ module.exports = function(dependencies) {
 		var originalValue = config.value;
 		var editedValue = ko.observable(originalValue());
 
-		function toggleEditMode () {
-			editMode(!editMode());
+		function edit () {
+			editMode(true);
 		}
 
 		function save () {
 			console.log("save");
 			originalValue(editedValue());
-			toggleEditMode();
+			editMode(false);
 		}
 
 		function cancel () {
 			console.log("cancel");
 			editedValue(originalValue());
-			toggleEditMode();
+			editMode(false);
 		}
 
 		return {
@@ -50,7 +50,7 @@ module.exports = function(dependencies) {
 			originalValue: originalValue,
 			editMode: editMode,
 
-			toggleEditMode: toggleEditMode,
+			edit: edit,
 			save: save,
 			cancel: cancel,
 
