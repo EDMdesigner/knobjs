@@ -136,24 +136,20 @@ function alertClose() {
 
 var dropdownItems = ko.observableArray([]);
 var dropdownSelected = ko.observable();
-var dropdownSelectedIdx = ko.observable(1);
+var dropdownSelectedIdx = ko.observable(2);
+var dropdownSelectedValue = ko.observable(7);
 
-var dropdownValueToShow = ko.computed(function() {
-	return (dropdownSelected() ? dropdownSelected().value : "");
-});
-
+var up = true;
 var changeDropdownItems = function() {
-	var items = dropdownItems();
-	if (items.length >= 10) {
-		items = [];
-	}	
-	for (var i = 0; i < 3; i += 1) {
-		var val = Math.round(Math.random()*1000 + 1);
+	var items =  [];
+	for (var i = 1; i < 11; i += 1) {
+		var val = up ? i : 11 - i;
 		items.push({
-			label: "item " + (items.length + 1).toString() + " " + val.toString(),
+			label: "item " + i + " - value: " + val.toString(),
 			value: val
 		});
 	}
+	up = !up;
 	dropdownItems(items);
 };
 changeDropdownItems();
@@ -182,7 +178,7 @@ ko.applyBindings({
 	changeDropdownItems: changeDropdownItems,
 	dropdownSelected: dropdownSelected,
 	dropdownSelectedIdx: dropdownSelectedIdx,
-	dropdownValueToShow: dropdownValueToShow,
+	dropdownSelectedValue: dropdownSelectedValue,
 	toggleValue: ko.observable(false),
 	numericMin: ko.observable(-10),
 	numericMax: ko.observable(10),

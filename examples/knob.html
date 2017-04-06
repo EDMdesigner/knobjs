@@ -400,16 +400,17 @@
 		rightIcon: '#icon-expand-more',
 		items: dropdownItems,
 		selected: dropdownSelected,
-		selectedIdx: dropdownSelectedIdx
+		selectedIdx: dropdownSelectedIdx,
+		selectedValue: dropdownSelectedValue
 		">
 	</knob-dropdown>
 	<knob-button params="
-		label: 'add more items',
+		label: 'change options',
 		click: changeDropdownItems
 	">
 	</knob-button>
 	<p>Selected index: <span data-bind="text: dropdownSelectedIdx"></span></p>
-	<p>Selected value: <span data-bind="text: dropdownValueToShow"></span></p>
+	<p>Selected value: <span data-bind="text: dropdownSelectedValue"></span></p>
 	<hr>
 
 	<h2>knob-inline-text-editor</h2>

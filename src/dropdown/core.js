@@ -70,46 +70,11 @@ module.exports = function(dependencies) {
 			}));
 		}
 
-		// We need all these for a correct initialization...
-		var initIndex;
-		var initValue;
-		var selectedIdx;
-		var selectedValue;
-		var isObsIndex = true;
-		var isObsValue = false;
-
-		if (ko.isObservable(config.selectedValue)) {
-			if (config.selectedValue() || config.selectedValue() === 0) {
-				initValue = config.selectedValue();
-			}
-		} else {
-			isObsValue = false;
-			initValue = config.selectedValue;
+		var selectedValue = ko.isObservable(config.selectedValue) ? config.selectedValue : ko.observable(config.selectedValue);
+		var selectedIdx = ko.isObservable(config.selectedIdx) ? config.selectedIdx : ko.observable(config.selectedIdx);
+		if (!(0 <= selectedIdx() && selectedIdx() < options().length)) {
+			selectedIdx(0);
 		}
-
-		if (ko.isObservable(config.selectedIdx)) {
-			if (typeof config.selectedIdx() === "number") {
-				initIndex = config.selectedIdx();
-			}
-		} else {
-			isObsIndex = false;
-			initIndex = config.selectedIdx;
-		}
-
-		// If no initial setting given, we default to the first option.
-		if (initIndex === undefined && initValue === undefined) {
-			selectedValue = isObsValue ? config.selectedValue || ko.observable();
-			selectedIdx = isObsIndex ? config.selectedIdx || ko.observable(0);
-		}
-
-		// If an initial index or value is given, we use the corresponding option.
-		if (initIndex !== undefined && initValue === undefined) {
-			selectedValue = isObsValue ? config.selectedValue || ko.observable();
-			selectedIdx = isObsIndex ? config.selectedIdx || ko.observable(initValue);
-		}
-
-
-		// If both an index and a value is given, we check whether they are compatible.
 
 		// Handles the change of selected - updates selectedIdx and selectedValue.
 		ko.computed(function() {
@@ -122,25 +87,8 @@ module.exports = function(dependencies) {
 			if (index === -1) {
 				throw new Error("Dropdown: invalid selected item set!");
 			}
-			selectedValue(item.value);
+			selectedValue(currentSelected.value);
 			selectedIdx(index);
-		});
-
-		// Handles the change of selectedIdx - updates selected only!
-		ko.computed(function() {
-			var currentIndex = selectedIdx();
-			if (!currentIndex && currentIndex !== 0) {
-				return;
-			}
-			var currentOptions = options.peek();
-			if (currentOptions.length === 0) {
-				return;
-			}
-			if(!(currentIndex >= 0 && currentIndex < currentOptions.length)) {
-				throw new Error("Dropdown: invalid selectedIdx set!");
-			}
-			var newSelected = currentOptions[currentIndex];
-			selected(newSelected);
 		});
 
 		// Handles the change of selectedValue - updates selected only!
@@ -161,6 +109,23 @@ module.exports = function(dependencies) {
 			selected(newSelected);
 		});
 
+		// Handles the change of selectedIdx - updates selected only!
+		ko.computed(function() {
+			var currentIndex = selectedIdx();
+			if (!currentIndex && currentIndex !== 0) {
+				return;
+			}
+			var currentOptions = options.peek();
+			if (currentOptions.length === 0) {
+				return;
+			}
+			if(!(currentIndex >= 0 && currentIndex < currentOptions.length)) {
+				throw new Error("Dropdown: invalid selectedIdx set!");
+			}
+			var newSelected = currentOptions[currentIndex];
+			selected(newSelected);
+		});
+
 		// Handles the changes of the items list
 		ko.computed(function() {
 			var newOptions = [];
@@ -170,7 +135,6 @@ module.exports = function(dependencies) {
 			if(!(currentIndex >= 0 && currentIndex < currentItems.length)) {
 				currentIndex = 0;
 			}
-			var found = false;
 			
 			for (var idx = 0; idx < currentItems.length; idx += 1) {
 				checkItem(currentItems[idx]);
@@ -181,11 +145,15 @@ module.exports = function(dependencies) {
 					value: currentItems[idx].value
 				}));
 			}
+			options(newOptions);
+			
+			if (!currentSelected) {
+				return;
+			}
 			var index = findIndexByValue(currentSelected.value, newOptions);
 			if(index !== -1) {
 				currentIndex = index;
 			}
-			options(newOptions);
 			selected(newOptions[currentIndex]);
 		});
 		
@@ -246,7 +214,7 @@ module.exports = function(dependencies) {
 				throw new Error("The items of config.items cannot be undefined!");
 			}
 			if (item.value === undefined) {
-				throw new Error("Each element of config.items has to have a value property!")
+				throw new Error("Each element of config.items has to have a value property!");
 			}
 			if (!item.label && item.label !== 0 && !item.icon) {
 				// Although we might default to item.value
