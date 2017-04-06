@@ -172,10 +172,6 @@ var inputWithEditButton = {
 	}
 };
 
-// var inputWithEditButton = {
-// 	value: ko.observable("original title")
-// };
-
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
