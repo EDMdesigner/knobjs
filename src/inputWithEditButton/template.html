@@ -1,40 +1,42 @@
-<div data-bind="visible: !editMode()">
+<div class="knob-input-with-edit-button">
 
-	<span data-bind="text: originalValue"></span>
+	<div data-bind="visible: !editMode()">
 
-	<span>
+		<span data-bind="text: originalValue"></span>
+
 		<knob-button params="
 			label: labels['edit'],
 			click: toggleEditMode,
 			leftIcon: icons['edit']
 			">
 		</knob-button>
-	</span>
 
-</div>
+	</div>
 
 
-<div data-bind="visible: editMode">
+	<div data-bind="visible: editMode">
 
-	<knob-input params="
-		value: value
-	">
-	</knob-input>
-
-	<span class="control-button">
-		<knob-button params="
-			label: labels['save'],
-			click: save
+		<knob-input params="
+			value: value
 			">
-		</knob-button>
-	</span>
+		</knob-input>
 
-	<span class="control-button">
-		<knob-button params="
-			label: labels['cancel'],
-			click: cancel
-			">
-		</knob-button>
-	</span>
+		<span class="control-button">
+			<knob-button params="
+				label: labels['save'],
+				click: save
+				">
+			</knob-button>
+		</span>
+
+		<span class="control-button">
+			<knob-button params="
+				label: labels['cancel'],
+				click: cancel
+				">
+			</knob-button>
+		</span>
+
+	</div>
 
 </div>
