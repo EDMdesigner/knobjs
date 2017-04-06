@@ -103,6 +103,10 @@ module.exports = function(dependencies) {
 		}
 
 		// If an initial index or value is given, we use the corresponding option.
+		if (initIndex !== undefined && initValue === undefined) {
+			selectedValue = isObsValue ? config.selectedValue || ko.observable();
+			selectedIdx = isObsIndex ? config.selectedIdx || ko.observable(initValue);
+		}
 
 
 		// If both an index and a value is given, we check whether they are compatible.
