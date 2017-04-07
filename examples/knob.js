@@ -134,29 +134,40 @@ function alertClose() {
 	window.alert("Alert closed");
 }
 
-var dropdownItems = ko.observableArray([]);
-var dropdownSelected = ko.observable();
-var dropdownSelectedIdx = ko.observable(1);
-
-var dropdownValueToShow = ko.computed(function() {
-	return (dropdownSelected() ? dropdownSelected().value : "");
-});
-
-var changeDropdownItems = function() {
-	var items = dropdownItems();
-	if (items.length >= 10) {
-		items = [];
-	}	
-	for (var i = 0; i < 3; i += 1) {
-		var val = Math.round(Math.random()*1000 + 1);
-		items.push({
-			label: "item " + (items.length + 1).toString() + " " + val.toString(),
-			value: val
-		});
+var up = true;
+var dropdown1 = {
+	items: ko.observableArray([]),
+	selected: ko.observable(),
+	index: ko.observable(2),
+	value: ko.observable(7),
+	changeItems: function() {
+		var items =  [];
+		for (var i = 1; i < 11; i += 1) {
+			var val = up ? i : 11 - i;
+			items.push({
+				label: "item " + i + " - value: " + val.toString(),
+				value: val
+			});
+		}
+		up = !up;
+		dropdown1.items(items);
 	}
-	dropdownItems(items);
 };
-changeDropdownItems();
+dropdown1.changeItems();
+
+var dropdown2 = {
+	items: [
+		{label: "zero", value: 0},
+		{label: "one", value: 1},
+		{label: "two", value: 2},
+		{label: "three", value: 3},
+		{label: "four", value: 4},
+		{label: "five", value: 5}
+	],
+	index: ko.observable(3),
+	selected: ko.observable(),
+	value: ko.observable()
+};
 
 ko.applyBindings({
 	store: store,
@@ -178,11 +189,8 @@ ko.applyBindings({
 	notificationVisible: ko.observable(false),
 	checkboxValue: ko.observable(false),
 	disabledCheckBoxValue: ko.observable(true),
-	dropdownItems: dropdownItems,
-	changeDropdownItems: changeDropdownItems,
-	dropdownSelected: dropdownSelected,
-	dropdownSelectedIdx: dropdownSelectedIdx,
-	dropdownValueToShow: dropdownValueToShow,
+	dropdown1: dropdown1,
+	dropdown2: dropdown2,
 	toggleValue: ko.observable(false),
 	numericMin: ko.observable(-10),
 	numericMax: ko.observable(10),
