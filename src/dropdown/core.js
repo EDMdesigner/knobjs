@@ -49,6 +49,7 @@ module.exports = function(dependencies) {
 		}*/
 
 		var rightIcon = ko.observable(config.rightIcon);
+		var valueField = config.valueField || "value";
 
 		var items = config.items;
 
@@ -61,12 +62,12 @@ module.exports = function(dependencies) {
 
 		var initItems = items();
 		for (var i = 0; i < initItems.length; i = i + 1) {
-			checkItem(initItems[i]);
+			checkItem(initItems[i], valueField);
 			options.push(createOption({
 				label: initItems[i].label,
 				icon: initItems[i].icon,
 				idx: i,
-				value: initItems[i].value
+				value: initItems[i][valueField]
 			}));
 		}
 
@@ -85,7 +86,8 @@ module.exports = function(dependencies) {
 			var currentOptions = options.peek();
 			var index = findIndexByValue(currentSelected.value, currentOptions);
 			if (index === -1) {
-				throw new Error("Dropdown: invalid selected item set!");
+				return;
+				//throw new Error("Dropdown: invalid selected item set!");
 			}
 			selectedValue(currentSelected.value);
 			selectedIdx(index);
@@ -103,7 +105,9 @@ module.exports = function(dependencies) {
 			}
 			var newIndex = findIndexByValue(currentValue, currentOptions);
 			if (newIndex === -1) {
-				throw new Error("Dropdown: invalid selectedValue set!");
+				selected(options.peek()[0]);
+				return;
+				//throw new Error("Dropdown: invalid selectedValue set!");
 			}
 			var newSelected = currentOptions[newIndex];
 			selected(newSelected);
@@ -120,7 +124,7 @@ module.exports = function(dependencies) {
 				return;
 			}
 			if(!(currentIndex >= 0 && currentIndex < currentOptions.length)) {
-				throw new Error("Dropdown: invalid selectedIdx set!");
+				currentIndex = 0;
 			}
 			var newSelected = currentOptions[currentIndex];
 			selected(newSelected);
@@ -137,12 +141,12 @@ module.exports = function(dependencies) {
 			}
 			
 			for (var idx = 0; idx < currentItems.length; idx += 1) {
-				checkItem(currentItems[idx]);
+				checkItem(currentItems[idx], valueField);
 				newOptions.push(createOption({
 					label: currentItems[idx].label,
 					icon: currentItems[idx].icon,
 					idx: idx,
-					value: currentItems[idx].value
+					value: currentItems[idx][valueField]
 				}));
 			}
 			options(newOptions);
@@ -153,6 +157,8 @@ module.exports = function(dependencies) {
 			var index = findIndexByValue(currentSelected.value, newOptions);
 			if(index !== -1) {
 				currentIndex = index;
+			} else {
+				currentIndex = 0;
 			}
 			selected(newOptions[currentIndex]);
 		});
@@ -201,7 +207,7 @@ module.exports = function(dependencies) {
 				idx: config.idx,
 				value: config.value,
 				select: function() {
-					selectedIdx(obj.idx);
+					selected(obj);
 					dropdownVisible.toggle();
 				}
 			};
@@ -209,11 +215,11 @@ module.exports = function(dependencies) {
 			return obj;
 		}
 
-		function checkItem(item) {
+		function checkItem(item, valField) {
 			if (item === undefined) {
 				throw new Error("The items of config.items cannot be undefined!");
 			}
-			if (item.value === undefined) {
+			if (item[valField] === undefined) {
 				throw new Error("Each element of config.items has to have a value property!");
 			}
 			if (!item.label && item.label !== 0 && !item.icon) {

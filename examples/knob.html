@@ -396,21 +396,54 @@
 		]">
 	</knob-dropdown>
 	<h3>observableArray 'items' parameter</h3>
+	<h5>After changing the items, the item with the previously selected value remains selected (if present).</h5>
 	<knob-dropdown params="
 		rightIcon: '#icon-expand-more',
-		items: dropdownItems,
-		selected: dropdownSelected,
-		selectedIdx: dropdownSelectedIdx,
-		selectedValue: dropdownSelectedValue
+		items: dropdown1.items,
+		selected: dropdown1.selected,
+		selectedIdx: dropdown1.index,
+		selectedValue: dropdown1.value
 		">
 	</knob-dropdown>
 	<knob-button params="
 		label: 'change options',
-		click: changeDropdownItems
+		click: dropdown1.changeItems
 	">
 	</knob-button>
-	<p>Selected index: <span data-bind="text: dropdownSelectedIdx"></span></p>
-	<p>Selected value: <span data-bind="text: dropdownSelectedValue"></span></p>
+	<p>Selected index: <span data-bind="text: dropdown1.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown1.value"></span></p>
+
+	<h3>selecting item by index or value</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown2.items,
+		selected: dropdown2.selected,
+		selectedIdx: dropdown2.index,
+		selectedValue: dropdown2.value
+		">
+	</knob-dropdown>
+
+	<p>Selected index: <span data-bind="text: dropdown2.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown2.value"></span></p>
+
+	Change the selected index here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.index
+	">
+	</knob-numericinput>
+
+	Change the selected value here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.value
+	">
+	</knob-numericinput>
+
 	<hr>
 
 	<h2>knob-inline-text-editor</h2>
