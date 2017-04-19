@@ -167,7 +167,7 @@
 		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
 	</div>
 
---> 
+-->
 
 	<h2>knob-toggleswitch</h2>
 
@@ -282,7 +282,7 @@
 		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
 	</div>
 	<hr>
-	
+
 	<h2> advanced knob-inputs</h2>
 	<div style="width: 300px">
 		<knob-input params="
@@ -310,7 +310,7 @@
 					value: 'Search',
 					hideOnContent: true
 				},
-				icon: { 
+				icon: {
 					value: '#icon-search',
 					hideOnContent: false
 				}
@@ -459,7 +459,6 @@
 	<hr>
 
 	<h2>knob-paged-list</h2>
-
 	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
 		<div>
 			<span data-bind="text: model.data.id"></span>
@@ -468,6 +467,16 @@
 			<span data-bind="text: model.data.title"></span>
 		</div>
 	</knob-paged-list>
+
+	<h2>knob-selectable-paged-list</h2>
+	<knob-selectable-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-selectable-paged-list>
 
 
 	<h2>knob-tabs</h2>

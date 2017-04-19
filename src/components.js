@@ -123,7 +123,7 @@ function initKnob(config) {
 		createTabStyle = theme.createTabStyle;
 
 	} else if (typeof theme === "string") {
-		
+
 		if (theme === "chamaileon") {
 			createButtonStyle = createButtonStyleChamaileon;
 			createInputStyle = createInputStyleChamaileon;
@@ -223,6 +223,21 @@ function initKnob(config) {
 	});
 
 	registerComponent({
+		name: "knob-selectable-paged-list",
+		createVm: require("./selectablePagedList/vm"),
+		template: require("./selectablePagedList/template.html"),
+		style: createPagedListStyle(config.colors),
+		icons: {
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		},
+		labels: {
+			noResults: labels.noResults
+		}
+	});
+
+	registerComponent({
 		name: "knob-toggleswitch",
 		createVm: require("./toggleSwitch/vm"),
 		template: require("./toggleSwitch/template.html"),
@@ -282,7 +297,7 @@ function initKnob(config) {
 	});
 
 	registerComponent({
-		name: "knob-numericinput", 
+		name: "knob-numericinput",
 		createVm: require("./numericInput/vm"),
 		template: require("./numericInput/template.html"),
 		icons: icons.numericInput
