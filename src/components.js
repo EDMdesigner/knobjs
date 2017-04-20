@@ -28,6 +28,9 @@ var createModalStyleDefault = require("./modal/style");
 var createPagedListStyle;
 var createPagedListStyleDefault = require("./pagedList/style");
 
+var createSelectablePagedListStyle;
+var createSelectablePagedListStyleDefault = require("./selectablePagedList/style");
+
 var createNotificationStyle;
 var createNotificationStyleDefault = require("./notificationBar/style");
 
@@ -101,6 +104,10 @@ function initKnob(config) {
 			throw new Error("config.theme.createPagedListStyle must be a function");
 		}
 
+		if (typeof theme.createSelectablePagedListStyle !== "function") {
+			throw new Error("config.theme.createSelectablePagedListStyle must be a function");
+		}
+
 		if (typeof theme.createNotificationStyle !== "function") {
 			throw new Error("config.theme.createNotificationStyle must be a function");
 		}
@@ -118,6 +125,7 @@ function initKnob(config) {
 		createToggleSwitchStyle = theme.createToggleSwitchStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
+		createSelectablePagedListStyle = theme.createSelectablePagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
 		createCheckboxStyle = theme.createCheckboxStyle;
 		createTabStyle = theme.createTabStyle;
@@ -130,6 +138,7 @@ function initKnob(config) {
 			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
+			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
@@ -137,6 +146,7 @@ function initKnob(config) {
 			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
+			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		}
 		createCheckboxStyle = createCheckboxStyleDefault;
@@ -226,7 +236,7 @@ function initKnob(config) {
 		name: "knob-selectable-paged-list",
 		createVm: require("./selectablePagedList/vm"),
 		template: require("./selectablePagedList/template.html"),
-		style: createPagedListStyle(config.colors),
+		style: createSelectablePagedListStyle(config.colors),
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
