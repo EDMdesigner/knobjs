@@ -1,14 +1,15 @@
 <div class="knob-selectable-paged-list">
   <knob-paged-list params="
     store: store,
-    fields: ['id', 'email', 'name', 'title'],
-    search: 'title',
-    orderBy: {name: -1},
-    sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}],
-    labels: {noResults: 'No results found'}">
+    fields: fields,
+    search: search,
+    orderBy: orderBy,
+    sort: sort,
+    labels: labels,
+    icons: icons">
 
 
-    <div data-bind="css: { selected: $parents[2].selected() === $index() }, click: function(){ $parents[2].selected($index())}">
+    <div data-bind="css: { selected: $parents[2].selected() && $parents[2].selected().index() === $index() }, click: $parents[2].buttonSelect ? null : $parents[2].select">
 
       <!-- ko template: { nodes: $parentContext.$parentContext.$parentContext.$componentTemplateNodes } --><!-- /ko -->
 

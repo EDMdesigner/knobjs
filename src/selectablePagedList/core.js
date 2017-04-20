@@ -3,7 +3,7 @@
 
 module.exports = function pagedListCore(dependencies) {
 
-	var obligatoryDeps = ["ko", "createPagedList"];
+	var obligatoryDeps = ["ko"];
 
 	for (var i = 0; i < obligatoryDeps.length; i += 1) {
 		if (typeof dependencies[obligatoryDeps[i]] === "undefined") {
@@ -12,12 +12,23 @@ module.exports = function pagedListCore(dependencies) {
 	}
 
 	var ko = dependencies.ko;
-	var createPagedList = dependencies.createPagedList;
 
 	return function createSelectablePagedList(config) {
-		var pagedList = createPagedList(config);
+		if (!config) {
+			throw new Error("config is mandatory!");
+		}
 
-		pagedList.selected = ko.observable(2);
-		return pagedList;
+		if (!ko.isObservable(config.selected)) {
+			throw new Error("config.selected is mandatory, and it has to be an observable!");
+		}
+
+		config.selected = config.selected || ko.observable();
+		config.selected(null);
+
+		config.select = function (item) {
+			config.selected(item);
+		};
+
+		return config;
 	};
 };
