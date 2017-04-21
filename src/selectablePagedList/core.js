@@ -22,18 +22,21 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.selected is mandatory, and it has to be an observable!");
 		}
 
-		config.selected = config.selected || ko.observable();
+		config.selected = config.selected;
 		config.selected(null);
 		config.selectedId = ko.computed(function () {
 			var selectedVal = config.selected();
 
 			if (!selectedVal) {
-				return;
+				return null;
+			}
+
+			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
+				throw new Error("selectablePagedList: Invalid superdata object");
 			}
 
 			return selectedVal.model.data.id;
 		});
-
 
 		config.select = function (item) {
 			config.selected(item);
