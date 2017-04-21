@@ -9,7 +9,7 @@
     icons: icons">
 
 
-    <div data-bind="css: { selected: $parents[2].selected() && $parents[2].selected().index() === $index() }, click: $parents[2].buttonSelect ? null : $parents[2].select">
+    <div data-bind="css: { selected: $parents[2].selectedId() === $data.model.data.id }, click: $parents[2].buttonSelect ? null : $parents[2].select">
       <!-- ko template: { nodes: $parentContext.$parentContext.$parentContext.$componentTemplateNodes } --><!-- /ko -->
     </div>
 
