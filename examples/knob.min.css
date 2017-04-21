@@ -98,6 +98,9 @@
   font-size: 36px;
   color: #cacaca; }
 
+.knob-selectable-paged-list .selected {
+  color: blue; }
+
 .knob-pagination {
   overflow: hidden;
   display: table;
