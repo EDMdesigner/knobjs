@@ -191,6 +191,7 @@ ko.applyBindings({
 	disabledCheckBoxValue: ko.observable(true),
 	dropdown1: dropdown1,
 	dropdown2: dropdown2,
+	pagedListSelected: ko.observable(),
 	toggleValue: ko.observable(false),
 	numericMin: ko.observable(-10),
 	numericMax: ko.observable(10),
