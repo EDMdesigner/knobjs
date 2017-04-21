@@ -1,10 +1,6 @@
 "use strict";
 
 var ko = require("knockout");
-// var createProxy = superdata.proxy.memory;
-// var createModel = superdata.model.model;
-// var createStore = superdata.store.store;
-
 var core = require("../../src/selectablePagedList/core");
 
 describe("selectablePagedList", function() {
@@ -94,5 +90,4 @@ describe("selectablePagedList", function() {
       });
     });
   });
-
 });
