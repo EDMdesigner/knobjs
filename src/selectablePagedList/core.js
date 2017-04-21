@@ -22,7 +22,7 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.selected is mandatory, and it has to be an observable!");
 		}
 
-		config.selected = config.selected || ko.observable();
+		config.selected = config.selected;
 		config.selected(null);
 		config.selectedId = ko.computed(function () {
 			var selectedVal = config.selected();
