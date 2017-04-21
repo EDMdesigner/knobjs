@@ -28,12 +28,15 @@ module.exports = function pagedListCore(dependencies) {
 			var selectedVal = config.selected();
 
 			if (!selectedVal) {
-				return;
+				return null;
+			}
+
+			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
+				throw new Error("selectablePagedList: Invalid superdata object");
 			}
 
 			return selectedVal.model.data.id;
 		});
-
 
 		config.select = function (item) {
 			config.selected(item);
