@@ -39,7 +39,8 @@ function knobRegisterComponent(config) {
 				}
 
 				Object.keys(optionalConfig).forEach(function(prop) {
-					params[prop] = extend(true, {}, optionalConfig[prop], params[prop]);
+					var actOptConf = optionalConfig[prop];
+					params[prop] = extend(true, actOptConf instanceof Array ? [] : {}, actOptConf, params[prop]);
 				});
 
 				return createVm(params, componentInfo);
