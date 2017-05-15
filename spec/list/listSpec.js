@@ -158,7 +158,7 @@ describe("List", function() {
 							sort: [],
 							search: ""
 						});
-					}).toThrowError("config.search must be an object!");
+					}).toThrowError("config.store must be an object!");
 				});
 			});
 
