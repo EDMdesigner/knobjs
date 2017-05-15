@@ -20,16 +20,59 @@ module.exports = function inifiteListCore(dependencies) {
 			throw new Error("config.store is mandatory!");
 		}
 
+		if(!config.icons) {
+			throw new Error("config.icons is mandatory!");
+		}
+
+		if(!config.icons.search) {
+			throw new Error("config.icons.search is mandatory!");
+		}
+
+		if(!config.icons.dropdown) {
+			throw new Error("config.icons.dropdown is mandatory!");
+		}
+
+		if(!config.icons.sort) {
+			throw new Error("config.icons.sort is mandatory!");
+		}
+
+		if(!config.icons.sort.asc) {
+		 	throw new Error("config.icons.sort.asc is mandatory!");
+		}
+
+		if(!config.icons.sort.desc) {
+			throw new Error("config.icons.sort.desc is mandatory!");
+		}
+
+		if(!config.labels) {
+			throw new Error("config.labels is mandatory!");
+		}
+
+		if(!config.labels.noResults) {
+			throw new Error("config.labels.noResults is mandatory!");
+		}
+
+		if(!config.labels.loadMore) {
+			throw new Error("config.labels.loadMore is mandatory!");
+		}
+
 		var store = config.store;
 		
 		store.load.before.add(beforeLoad);
 		store.load.after.add(afterLoad);
 		
-		var list = createList(config);
-		
 		var numOfItems = config.numOfItems || 10;
 		var numOfItemsToLoad = config.numOfItemsToLoad || 10;
 		var loadMoreCalled = ko.observable(false);
+		
+		var list = createList(config);
+
+		list.listClass = config.listClass || "knob-infinite-list__list";
+		list.itemClass = config.itemClass || "knob-infinite-list__item";
+		list.icons = config.icons;
+		list.labels = config.labels;
+
+		list.loadMore = loadMore;
 
 		load(0, numOfItems);
 
@@ -53,8 +96,6 @@ module.exports = function inifiteListCore(dependencies) {
 			loadMoreCalled(true);
 			load(numOfItems, numOfItemsToLoad);
 		}
-
-		list.loadMore = loadMore;
 
 		return list;
 	};

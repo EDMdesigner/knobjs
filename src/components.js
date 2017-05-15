@@ -31,6 +31,9 @@ var createPagedListStyleDefault = require("./pagedList/style");
 var createSelectablePagedListStyle;
 var createSelectablePagedListStyleDefault = require("./selectablePagedList/style");
 
+var createInfiniteListStyle;
+var createInfiniteListStyleDefault = require("./infiniteList/style");
+
 var createNotificationStyle;
 var createNotificationStyleDefault = require("./notificationBar/style");
 
@@ -108,6 +111,10 @@ function initKnob(config) {
 			throw new Error("config.theme.createSelectablePagedListStyle must be a function");
 		}
 
+		if (typeof theme.createInfiniteListStyle !== "function") {
+			throw new Error("config.theme.createInfiniteListStyle must be a function");
+		}
+
 		if (typeof theme.createNotificationStyle !== "function") {
 			throw new Error("config.theme.createNotificationStyle must be a function");
 		}
@@ -126,6 +133,7 @@ function initKnob(config) {
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
 		createSelectablePagedListStyle = theme.createSelectablePagedListStyle;
+		createInfiniteListStyle = theme.createInfiniteListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
 		createCheckboxStyle = theme.createCheckboxStyle;
 		createTabStyle = theme.createTabStyle;
@@ -139,6 +147,7 @@ function initKnob(config) {
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
 			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
+			createInfiniteListStyle = createInfiniteListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
@@ -147,6 +156,7 @@ function initKnob(config) {
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
 			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
+			createInfiniteListStyle = createInfiniteListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		}
 		createCheckboxStyle = createCheckboxStyleDefault;
@@ -244,6 +254,22 @@ function initKnob(config) {
 		},
 		labels: {
 			noResults: labels.noResults
+		}
+	});
+
+	registerComponent({
+		name: "knob-infinite-list",
+		createVm: require("./infiniteList/vm"),
+		template: require("./infiniteList/template.html"),
+		style: createInfiniteListStyle(config.colors),
+		icons: {
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		},
+		labels: {
+			noResults: labels.noResults,
+			loadMore: labels.loadMore
 		}
 	});
 

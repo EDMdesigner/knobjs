@@ -1,0 +1,21 @@
+<div class="knob-infinite-list">
+	<!-- ko if: error -->
+	<div data-bind="text: error"></div>
+	<!-- /ko -->
+
+	<div data-bind="css: listClass, foreach: items">
+		<div data-bind="css: $parent.itemClass">
+			<!-- ko template: {
+				nodes: $componentTemplateNodes,
+				data: { model: $data, parent: $parent, index: $index }
+			} -->
+			<!-- /ko -->
+		</div>
+	</div>
+
+	<!-- ko if: items().length === 0 -->
+	<span class="no-result" data-bind="visible: !loading(), text: labels.noResults"></span>
+	<!-- /ko -->
+
+	<div data-bind="visible: !loading(), click: loadMore">Load more...</div>
+</div>
