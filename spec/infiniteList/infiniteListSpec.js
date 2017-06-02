@@ -211,45 +211,46 @@ describe("infiniteList", function() {
 	});
 
 	describe("- with valid config", function() {
-
 		var proxy;
 		var model;
 		var store;
+		var config;
 		var infiniteList;
 
-		describe("with vm", function() {
+		beforeAll(function() {
+			proxy = createProxy({
+				idProperty: "id",
+				idType: "number",
+				route: "/user"
+			});
 
-			beforeAll(function() {
-				proxy = createProxy({
-					idProperty: "id",
-					idType: "number",
-					route: "/user"
-				});
-
-				model = createModel({
-					fields: {
-						id: {
-							type: "number"
-						},
-						email: {
-							type: "string"
-						},
-						name: {
-							type: "string"
-						},
-						title: {
-							type: "string"
-						}
+			model = createModel({
+				fields: {
+					id: {
+						type: "number"
 					},
-					idField: "id",
-					proxy: proxy
-				});
+					email: {
+						type: "string"
+					},
+					name: {
+						type: "string"
+					},
+					title: {
+						type: "string"
+					}
+				},
+				idField: "id",
+				proxy: proxy
+			});
 
-				store = createStore({
-					model: model
-				});
+			store = createStore({
+				model: model
+			});
+		});
 
-				var config = {
+		describe("with vm", function() {
+			beforeAll(function() {
+				config = {
 					store: store,
 					fields: ["title", "id", "name"],
 					search: "title",
@@ -284,6 +285,49 @@ describe("infiniteList", function() {
 				expect(typeof infiniteList.itemClass).toBe("string");
 				expect(typeof infiniteList.icons).toBe("object");
 				expect(typeof infiniteList.labels).toBe("object");
+			});
+		});
+
+		describe("with loadMoreHandler", function() {
+			beforeAll(function() {
+				config = {
+					store: store,
+					fields: ["title", "id", "name"],
+					search: "title",
+					sort: [{
+						label: "By Id",
+						value: "id"
+					}, {
+						label: "By Name",
+						value: "name"
+					}],
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						loading: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						noResults: "result",
+						loadMore: "load"
+					},
+					loadMoreHandler: {}
+				};
+
+				infiniteList = createInfiniteList(config);
+			});
+
+			it("interface", function() {
+				expect(typeof infiniteList.loadMore).toBe("function");
+				expect(typeof infiniteList.listClass).toBe("string");
+				expect(typeof infiniteList.itemClass).toBe("string");
+				expect(typeof infiniteList.icons).toBe("object");
+				expect(typeof infiniteList.labels).toBe("object");
+
+				expect(typeof config.loadMoreHandler.loadMore).toBe("function");
 			});
 		});
 
