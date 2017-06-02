@@ -265,7 +265,8 @@ function initKnob(config) {
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
-			dropdown: icons.dropdown
+			dropdown: icons.dropdown,
+			loading: icons.loading
 		},
 		labels: {
 			noResults: labels.noResults,

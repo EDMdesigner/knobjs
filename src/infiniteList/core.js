@@ -4,11 +4,11 @@
 module.exports = function inifiteListCore(dependencies) {
 	var obligatoryDeps = ["ko", "createList"];
 
-	for (var i = 0; i < obligatoryDeps.length; i += 1) {
-		if (typeof dependencies[obligatoryDeps[i]] === "undefined") {
-			throw new Error("dependencies." + obligatoryDeps[i] + " is mandatory!");
+	obligatoryDeps.forEach(function(dependency) {
+		if (typeof dependencies[dependency] === "undefined") {
+			throw new Error("dependencies." + dependency + " is mandatory!");
 		}
-	}
+	});
 
 	var ko = dependencies.ko;
 	var createList = dependencies.createList;
@@ -30,6 +30,10 @@ module.exports = function inifiteListCore(dependencies) {
 
 		if(!config.icons.dropdown) {
 			throw new Error("config.icons.dropdown is mandatory!");
+		}
+
+		if(!config.icons.loading) {
+			throw new Error("config.icons.loading is mandatory!");
 		}
 
 		if(!config.icons.sort) {

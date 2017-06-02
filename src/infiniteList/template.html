@@ -3,19 +3,35 @@
 	<div data-bind="text: error"></div>
 	<!-- /ko -->
 
-	<div data-bind="css: listClass, foreach: items">
-		<div data-bind="css: $parent.itemClass">
-			<!-- ko template: {
-				nodes: $componentTemplateNodes,
-				data: { model: $data, parent: $parent, index: $index }
-			} -->
+	<div>
+		<div class="knob-infinite-list__bar">
+			<input class="knob-input" type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
+			<knob-button class="knob-button-search" params="label: '',
+								variation: 'default',
+								icon: icons.search">
+			</knob-button>
+			<!-- ko if: sortOptions.length > 0 -->
+			<knob-dropdown class="knob-dropdown" params="rightIcon: icons.dropdown, selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
 		</div>
+		<ul data-bind="css: listClass, foreach: items">
+			<li data-bind="css: $parent.itemClass">
+				<!-- ko template: {
+					nodes: $componentTemplateNodes,
+					data: { model: $data, parent: $parent, index: $index }
+				} -->
+				<!-- /ko -->
+			</li>
+		</ul>
+
+		<!-- ko if: items().length === 0 -->
+		<span class="no-result" data-bind="visible: !loading(), text: labels.noResults"></span>
+		<!-- /ko -->
 	</div>
 
-	<!-- ko if: items().length === 0 -->
-	<span class="no-result" data-bind="visible: !loading(), text: labels.noResults"></span>
-	<!-- /ko -->
+	<div class="loading" data-bind="visible: loading">
+		<svg class="anim-rotate"><use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': icons.loading}" xlink:href=""></use></svg>
+	</div>
 
 	<div data-bind="visible: !loading(), click: loadMore">Load more...</div>
 </div>
