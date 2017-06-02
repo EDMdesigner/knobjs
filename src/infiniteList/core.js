@@ -61,15 +61,15 @@ module.exports = function inifiteListCore(dependencies) {
 		}
 
 		var store = config.store;
-		
+
 		store.load.before.add(beforeLoad);
 		store.load.after.add(afterLoad);
-		
+
 		var numOfInitialItems = config.numOfItems || 10;
 		var numOfItemsToLoad = config.numOfItemsToLoad || 10;
 		var numOfItems = 0;
 		var loadMoreCalled = ko.observable(false);
-		
+
 		var list = createList(config);
 
 		list.listClass = config.listClass || "knob-infinite-list__list";
@@ -78,6 +78,10 @@ module.exports = function inifiteListCore(dependencies) {
 		list.labels = config.labels;
 
 		list.loadMore = loadMore;
+
+		if (config.loadMoreHandler) {
+			config.loadMoreHandler.loadMore = loadMore;
+		}
 
 		init();
 
