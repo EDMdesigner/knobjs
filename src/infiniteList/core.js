@@ -65,8 +65,9 @@ module.exports = function inifiteListCore(dependencies) {
 		store.load.before.add(beforeLoad);
 		store.load.after.add(afterLoad);
 		
-		var numOfItems = config.numOfItems || 10;
+		var numOfInitialItems = config.numOfItems || 10;
 		var numOfItemsToLoad = config.numOfItemsToLoad || 10;
+		var numOfItems = 0;
 		var loadMoreCalled = ko.observable(false);
 		
 		var list = createList(config);
@@ -78,27 +79,39 @@ module.exports = function inifiteListCore(dependencies) {
 
 		list.loadMore = loadMore;
 
-		load(0, numOfItems);
+		init();
 
-		function beforeLoad() {
-			if (!loadMoreCalled()) {
-				list.items([]);
-			}
-		}
-
-		function afterLoad() {
-			numOfItems += numOfItemsToLoad;
-			loadMoreCalled(false);
-		}
-		
-		function load(skip, limit) {
-			list.skip(skip);
-			list.limit(limit);
+		function init() {
+			loadMoreCalled(true);
+			load(numOfItems, numOfInitialItems);
 		}
 
 		function loadMore() {
 			loadMoreCalled(true);
 			load(numOfItems, numOfItemsToLoad);
+		}
+
+		function load(skip, limit) {
+			list.skip(skip);
+			list.limit(limit);
+		}
+
+		function beforeLoad() {
+			if (!loadMoreCalled()) {
+				list.items([]);
+				numOfItems = 0;
+				load(numOfItems, numOfInitialItems);
+			}
+		}
+
+		function afterLoad() {
+			if (!loadMoreCalled()) {
+				numOfItems += numOfInitialItems;
+				return;
+			}
+
+			loadMoreCalled(false);
+			numOfItems += numOfItemsToLoad;
 		}
 
 		return list;
