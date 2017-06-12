@@ -46,6 +46,7 @@
     "knockout": "ko"
   },
   "devDependencies": {
+    "aws-sdk": "^2.67.0",
     "browserify": "^12.0.1",
     "browserify-global-shim": "^1.0.0",
     "connect": "^3.4.1",
