@@ -15,12 +15,27 @@ pipeline {
             }
         }
         stage('deploy to CDN') {
-            steps {
+            when {
+                branch "staging"
+            }
                 sh 'gulp build:prod'
                 sh 'gulp s3-deploy --s3key "AKIAJNPMGIYKGXUK7MQA" \
                     --s3secret "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" \
                     --s3region "us-east-1" \
                     --s3bucket "knobjs-staging"'
+            }
+            when {
+                branch "master"
+            }
+                sh 'gulp build:prod'
+                sh 'gulp s3-deploy --s3key "AKIAJMFBS5UW3UCXF6VQ" \
+                    --s3secret "XLxw6ebPG0DqVhG2q89vwafsPgh9oP" \
+                    --s3region "us-east-1" \
+                    --s3bucket "knobjs-cdn"'
+                    npm set init.author.name "edmdesigner-bot"
+                sh 'npm set init.author.email "info@edmdesigner.com"'
+                sh 'echo "//registry.npmjs.org/:_authToken=ea72d5e5-e506-4b32-bd53-db1a766df54a" > ~/.npmrc'
+                sh 'npm publish'
             }
         }
         stage('clean up') {
