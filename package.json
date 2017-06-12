@@ -64,6 +64,7 @@
     "gulp-sass": "^2.2.0",
     "gulp-svgmin": "^1.2.2",
     "gulp-svgstore": "^6.0.0",
+    "gulp-util": "^3.0.8",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
