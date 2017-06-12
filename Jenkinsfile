@@ -36,7 +36,7 @@ pipeline {
                     --s3secret "XLxw6ebPG0DqVhG2q89vwafsPgh9oP" \
                     --s3region "us-east-1" \
                     --s3bucket "knobjs-cdn"'
-                    npm set init.author.name "edmdesigner-bot"
+                sh 'npm set init.author.name "edmdesigner-bot"'
                 sh 'npm set init.author.email "info@edmdesigner.com"'
                 sh 'echo "//registry.npmjs.org/:_authToken=ea72d5e5-e506-4b32-bd53-db1a766df54a" > ~/.npmrc'
                 sh 'npm publish'
