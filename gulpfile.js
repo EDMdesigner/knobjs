@@ -18,6 +18,7 @@ var gutil = require("gulp-util");
 var AWS = require("aws-sdk");
 var fs = require("fs");
 var mime = require("mime-types");
+var reporters = require("jasmine-reporters");
 
 var packageJson = require("./package.json");
 
@@ -151,7 +152,9 @@ gulp.task("jscs", function() {
 gulp.task("jasmine", function() {
 	return gulp.src("spec/**/*Spec.js")
 		.pipe(jasmine({
-			verbose: true
+			verbose: true,
+			reporter: new reporters.JUnitXmlReporter(),
+			abortOnTestFailure: true
 		}));
 });
 
@@ -165,9 +168,12 @@ gulp.task("pre-test", function () {
 
 gulp.task("istanbul", ["pre-test"], function () {
 	return gulp.src(["spec/**/*Spec.js"])
-		.pipe(jasmine())
+		.pipe(jasmine({
+			reporter: new reporters.JUnitXmlReporter(),
+			abortOnTestFailure: true
+		}))
 		// Creating the reports after tests ran
-		.pipe(istanbul.writeReports())
+		.pipe(istanbul.writeReports({reporters: [ "cobertura" ]}))
 		// Enforce a coverage of at least 90%
 		.pipe(istanbul.enforceThresholds({ thresholds: { global: 50 } }));
 });
