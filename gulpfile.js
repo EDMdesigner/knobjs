@@ -248,8 +248,11 @@ gulp.task("s3-deploy", function() {
 			}
 			throw new Error(errorMessage);
 		}
+
+		var currentFile;
+
 		for (var i = 0; i < files.length; i += 1) {
-			let currentFile = files[i];
+			currentFile = files[i];
 			fs.readFile(currentFile, createUploadFunction(currentFile));
 		}
 	});
