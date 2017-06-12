@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'Node 6.10.2'
+        nodejs 'Node Argon [4.6.0] + mocha, gulp, grunt, jasmine'
     }
     stages {
         stage('build') {
@@ -14,6 +14,15 @@ pipeline {
                 sh 'npm test'
             }
         }
+        stage('deploy to CDN') {
+            steps {
+                withAWS(region:'eu-west-1', credentials:'AWS-staging-user') {
+                    s3Upload(file:'dist', bucket:'knob-cdn')
+                }
+            }
+        }
+
+
     }
     post {
     	failure {
