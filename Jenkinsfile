@@ -17,7 +17,7 @@ pipeline {
         stage('deploy to CDN') {
             steps {
                 sh 'gulp build:prod'
-                withAWS(region:'eu-west-1', credentials:'AWS-staging-user') {
+                withAWS(region:'eu-east-1', credentials:'AWS-staging-user') {
                     s3Upload(file:'dist', bucket:'knob-cdn')
                 }
             }
