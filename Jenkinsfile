@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'gulp build:prod'
                 withAWS(region:'us-east-1', credentials:'AWS-staging-user') {
-                    s3Upload(file:'dist', bucket:'knob-cdn')
+                    s3Upload(file:'dist', bucket:'knobjs-cdn')
                 }
             }
         }
