@@ -14,19 +14,23 @@ pipeline {
                 sh 'npm test'
             }
         }
-        stage('deploy to CDN') {
+        stage('deploy staging to CDN') {
             when {
                 branch "staging"
             }
+            steps {
                 sh 'gulp build:prod'
                 sh 'gulp s3-deploy --s3key "AKIAJNPMGIYKGXUK7MQA" \
                     --s3secret "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" \
                     --s3region "us-east-1" \
                     --s3bucket "knobjs-staging"'
             }
+        }
+        stage('deploy and publish') {
             when {
                 branch "master"
             }
+            steps {
                 sh 'gulp build:prod'
                 sh 'gulp s3-deploy --s3key "AKIAJMFBS5UW3UCXF6VQ" \
                     --s3secret "XLxw6ebPG0DqVhG2q89vwafsPgh9oP" \
