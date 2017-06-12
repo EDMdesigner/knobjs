@@ -17,12 +17,19 @@ pipeline {
         stage('deploy to CDN') {
             steps {
                 sh 'gulp build:prod'
+                version = sh(returnStdout: true, script: 'grep version package.json | awk -F\'"\' \'{print $4}\'').trim()
                 withAWS(region:'us-east-1', credentials:'AWS-staging-user') {
                     s3Upload(file:'dist', bucket:'knobjs-cdn')
                 }
             }
         }
-
+        stage('clean up') {
+            steps {
+                step {
+                    cleanWs()
+                }
+            }
+        }
 
     }
     post {
