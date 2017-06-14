@@ -1,0 +1,17 @@
+<div class="knob-selectable-paged-list">
+  <knob-paged-list params="
+    store: store,
+    fields: fields,
+    search: search,
+    orderBy: orderBy,
+    sort: sort,
+    labels: labels,
+    icons: icons">
+
+
+    <div data-bind="css: { selected: $parents[2].selectedId() === $data.model.data.id }, click: $parents[2].buttonSelect ? null : $parents[2].select">
+      <!-- ko template: { nodes: $parentContext.$parentContext.$parentContext.$componentTemplateNodes } --><!-- /ko -->
+    </div>
+
+  </knob-paged-list>
+</div>

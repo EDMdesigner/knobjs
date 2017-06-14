@@ -167,7 +167,7 @@
 		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
 	</div>
 
---> 
+-->
 
 	<h2>knob-toggleswitch</h2>
 
@@ -282,7 +282,7 @@
 		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
 	</div>
 	<hr>
-	
+
 	<h2> advanced knob-inputs</h2>
 	<div style="width: 300px">
 		<knob-input params="
@@ -310,7 +310,7 @@
 					value: 'Search',
 					hideOnContent: true
 				},
-				icon: { 
+				icon: {
 					value: '#icon-search',
 					hideOnContent: false
 				}
@@ -396,20 +396,54 @@
 		]">
 	</knob-dropdown>
 	<h3>observableArray 'items' parameter</h3>
+	<h5>After changing the items, the item with the previously selected value remains selected (if present).</h5>
 	<knob-dropdown params="
 		rightIcon: '#icon-expand-more',
-		items: dropdownItems,
-		selected: dropdownSelected,
-		selectedIdx: dropdownSelectedIdx
+		items: dropdown1.items,
+		selected: dropdown1.selected,
+		selectedIdx: dropdown1.index,
+		selectedValue: dropdown1.value
 		">
 	</knob-dropdown>
 	<knob-button params="
-		label: 'add more items',
-		click: changeDropdownItems
+		label: 'change options',
+		click: dropdown1.changeItems
 	">
 	</knob-button>
-	<p>Selected index: <span data-bind="text: dropdownSelectedIdx"></span></p>
-	<p>Selected value: <span data-bind="text: dropdownValueToShow"></span></p>
+	<p>Selected index: <span data-bind="text: dropdown1.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown1.value"></span></p>
+
+	<h3>selecting item by index or value</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown2.items,
+		selected: dropdown2.selected,
+		selectedIdx: dropdown2.index,
+		selectedValue: dropdown2.value
+		">
+	</knob-dropdown>
+
+	<p>Selected index: <span data-bind="text: dropdown2.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown2.value"></span></p>
+
+	Change the selected index here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.index
+	">
+	</knob-numericinput>
+
+	Change the selected value here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.value
+	">
+	</knob-numericinput>
+
 	<hr>
 
 	<h2>knob-inline-text-editor</h2>
@@ -425,7 +459,6 @@
 	<hr>
 
 	<h2>knob-paged-list</h2>
-
 	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
 		<div>
 			<span data-bind="text: model.data.id"></span>
@@ -434,6 +467,40 @@
 			<span data-bind="text: model.data.title"></span>
 		</div>
 	</knob-paged-list>
+
+	<h2>knob-selectable-paged-list</h2>
+	<knob-selectable-paged-list params="selected: pagedListSelected, store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-selectable-paged-list>
+
+	<div data-bind="text: pagedListSelected() && 'index: ' + pagedListSelected().index()"></div>
+	<div data-bind="text: pagedListSelected() && 'id: ' + pagedListSelected().model.data.id"></div>
+	<div data-bind="text: pagedListSelected() && 'email: ' + pagedListSelected().model.data.email"></div>
+	<div data-bind="text: pagedListSelected() && 'name: ' + pagedListSelected().model.data.name"></div>
+	<div data-bind="text: pagedListSelected() && 'title: ' + pagedListSelected().model.data.title"></div>
+
+	<h2>knob-selectable-paged-list with select buttton</h2>
+	<knob-selectable-paged-list params="buttonSelect: true, selected: pagedListSelected, store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+			<button data-bind="click: select">select</button>
+		</div>
+	</knob-selectable-paged-list>
+
+	<div data-bind="text: pagedListSelected() && 'index: ' + pagedListSelected().index()"></div>
+	<div data-bind="text: pagedListSelected() && 'id: ' + pagedListSelected().model.data.id"></div>
+	<div data-bind="text: pagedListSelected() && 'email: ' + pagedListSelected().model.data.email"></div>
+	<div data-bind="text: pagedListSelected() && 'name: ' + pagedListSelected().model.data.name"></div>
+	<div data-bind="text: pagedListSelected() && 'title: ' + pagedListSelected().model.data.title"></div>
+
 
 
 	<h2>knob-tabs</h2>

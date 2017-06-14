@@ -72,7 +72,7 @@ describe(" === Dropdown === ", function() {
 					selected: ko.observable()
 				});
 			};
-			expect(f).toThrowError("config.items should not be empty");
+			expect(f).toThrowError("config.items should not be empty!");
 
 			var f2 = function() {
 				createButtonDropdown({
@@ -81,7 +81,7 @@ describe(" === Dropdown === ", function() {
 					selected: ko.observable()
 				});
 			};
-			expect(f2).toThrowError("value of config.items should not be empty");
+			expect(f2).toThrowError("The value of config.items should not be empty!");
 		});
 
 		it("should throw error if config.items has an element which doesn't have label and/or icon property", function() {
@@ -90,88 +90,163 @@ describe(" === Dropdown === ", function() {
 					rightIcon: "random",
 					items: [
 						{
-							value: ""
+							value: "x"
 						}
 					],
 					selected: ko.observable()
 				});
-			}).toThrowError("each element of config.items has to have label and/or icon property");
+			}).toThrowError("Each element of config.items has to have label and/or icon property!");
+		});
+
+		it("should throw error if an item has no value prop", function() {
+			expect(function() {
+				createButtonDropdown({
+					rightIcon: "stuff",
+					valueField: "key",
+					items: [{
+						label: "label",
+						value: "definedButOtherFieldConfigured"
+					}]
+				});
+			}).toThrowError("Each element of config.items has to have a value property!");
+		});
+
+		it("should throw error if config.selectedIdx doesn't store a number", function() {
+			expect(function() {
+				createButtonDropdown({
+					rightIcon: "x",
+					items: [{ label: "y", value: "z" }],
+					selectedIdx: "not nearly a number"
+				});
+			}).toThrowError("config.selectedIdx has to be an observable or a number!");
 		});
 	});
 
 	describe(" - with valid config", function() {
-
-		var config = {
-			rightIcon: "random",
-			selected: ko.observable(),
-			items: [
-				{
-					label: "randonLabel1",
-					value: "value1"
-				},
-				{
-					icon: "ranomdIcon1",
-					value: "value2"
-				},
-				{
-					label: "randonLabel2",
-					icon: "ranomdIcon2",
-					value: "value3"
-				}
-			],
-			window: {
-				addEventListener: function(event, callback) {
-					window[event] = callback;
-				},
-				removeEventListener: function(event) {
-					window[event] = undefined;
-				}
-			}
-		};
-
-		var vm = createButtonDropdown(config);
-
-		it("toggleDropdownVisible true or false", function() {
-			expect(vm.dropdownVisible()).toBe(false);
-			vm.dropdownVisible.toggle();
-			expect(vm.dropdownVisible()).toBe(true);
-			vm.dropdownVisible.toggle();
-			expect(vm.dropdownVisible()).toBe(false);
-		});
-
-		it("should be set right icon and/or label when selected", function() {
-			expect(vm.selected().label()).toBe("randonLabel1");
-
-			vm.options()[1].select();
-			expect(vm.selected().icon()).toBe("ranomdIcon1");
-
-			vm.options()[2].select();
-			expect(vm.selected().label()).toBe("randonLabel2");
-			expect(vm.selected().icon()).toBe("ranomdIcon2");
-		});
-		describe("optional observable parameters", function() {
-
-			var items;
-			var selectedIdx;
-			beforeEach(function() {
-				items = ko.observableArray([]);
-				selectedIdx = ko.observable(0);
-				items([
+		var vm;
+		var config;
+		beforeEach(function() {
+			config = {
+				rightIcon: "random",
+				items: [
 					{
-						label: "label1",
+						label: "randomLabel1",
 						value: "value1"
 					},
 					{
-						label: "label2",
+						icon: "randomIcon1",
 						value: "value2"
 					},
 					{
-						label: "label3",
+						label: "randomLabel2",
+						icon: "randomIcon2",
 						value: "value3"
+					}
+				],
+				window: {
+					addEventListener: function(event, callback) {
+						window[event] = callback;
+					},
+					removeEventListener: function(event) {
+						window[event] = undefined;
+					}
+				}
+			};
+			vm = createButtonDropdown(config);
+		});
+
+		describe(" simple functions", function() {
+
+			it("toggleDropdownVisible true or false", function() {
+				expect(vm.dropdownVisible()).toBe(false);
+				vm.dropdownVisible.toggle();
+				expect(vm.dropdownVisible()).toBe(true);
+				vm.dropdownVisible.toggle();
+				expect(vm.dropdownVisible()).toBe(false);
+			});
+
+			it("should be set right icon and/or label when selected", function() {
+				expect(vm.selected().label()).toBe("randomLabel1");
+
+				vm.options()[1].select();
+				expect(vm.selected().icon()).toBe("randomIcon1");
+
+				vm.options()[2].select();
+				expect(vm.selected().label()).toBe("randomLabel2");
+				expect(vm.selected().icon()).toBe("randomIcon2");
+			});
+		});
+
+		describe("correct initialization", function() {
+
+			it ("selects item correctly by index", function() {
+				config.selectedIdx = 2;
+				vm = createButtonDropdown(config);
+				expect(vm.selected().label()).toBe("randomLabel2");
+			});
+
+			it ("selects item correctly by observable index", function() {
+				config.selectedIdx = ko.observable(1);
+				vm = createButtonDropdown(config);
+				expect(vm.selected().icon()).toBe("randomIcon1");
+			});
+
+			it ("select first item if index is out of range", function() {
+				config.selectedIdx = 666;
+				vm = createButtonDropdown(config);
+				expect(vm.selected().label()).toBe("randomLabel1");
+			});
+
+			it ("selects item correctly by value", function() {
+				config.selectedValue = "value3";
+				vm = createButtonDropdown(config);
+				expect(vm.selected().label()).toBe("randomLabel2");
+			});
+
+			it ("selects item correctly by observable value", function() {
+				config.selectedValue = ko.observable("value2");
+				vm = createButtonDropdown(config);
+				expect(vm.selected().icon()).toBe("randomIcon1");
+			});
+
+			it ("select first item if value cannot be found", function() {
+				config.selectedValue = "some beautiful, but tragically unfindable value";
+				vm = createButtonDropdown(config);
+				expect(vm.selected().label()).toBe("randomLabel1");
+			});
+		});
+
+		describe("observable parameters", function() {
+
+			var items;
+			var selectedIdx;
+			var selectedValue;
+			var selected;
+
+			beforeEach(function() {
+				items = ko.observableArray([]);
+				selectedIdx = ko.observable(0);
+				selectedValue = ko.observable();
+				selected = ko.observable();
+				items([
+					{
+						label: "label1",
+						key: "value1"
+					},
+					{
+						label: "label2",
+						key: "value2"
+					},
+					{
+						label: "label3",
+						key: "value3"
 					}
 				]);
 				config.items = items;
 				config.selectedIdx = selectedIdx;
+				config.selectedValue = selectedValue;
+				config.selected = selected;
+				config.valueField = "key";
 				config.window = {
 					addEventListener: function(event, callback) {
 						window[event] = callback;
@@ -189,21 +264,31 @@ describe(" === Dropdown === ", function() {
 					expect(function() {
 						items([
 							{
-								notLabelNorIconProperty: "some value"
+								notLabelNorIconProperty: "some value",
+								key: "x"
 							}
 						]);
-					}).toThrowError("each element of config.items has to have label and/or icon property");
+					}).toThrowError("Each element of config.items has to have label and/or icon property!");
+
+					expect(function() {
+						items([
+							{
+								label: "some value",
+								notKey: "x"
+							}
+						]);
+					}).toThrowError("Each element of config.items has to have a value property!");
 				});
 				
 				it("should refresh options corresponding to changed items", function() {
 					items([
 						{
 							label: "changed label",
-							value: "changed value"
+							key: "changed value"
 						},
 						{
 							label: "changed label2",
-							value: "changed value2"
+							key: "changed value2"
 						}
 					]);
 					expect(vm.options()[0].label()).toBe("changed label");
@@ -219,19 +304,19 @@ describe(" === Dropdown === ", function() {
 					items([
 						{
 							label: "other label1",
-							value: "other value1"
+							key: "other value1"
 						},
 						{
 							label: "other label2",
-							value: "other value2"
+							key: "other value2"
 						},
 						{
 							label: "label3",
-							value: "value2"
+							key: "value2"
 						},
 						{
 							label: "label4",
-							value: "value4"
+							key: "value4"
 						}
 					]);
 					expect(vm.selected().value).toBe("value2");
@@ -244,11 +329,11 @@ describe(" === Dropdown === ", function() {
 					items([
 						{
 							label: "some label",
-							value: "some value"
+							key: "some value"
 						},
 						{
 							label: "some label2",
-							value: "some value2"
+							key: "some value2"
 						}
 					]);
 					expect(vm.selected().value).toBe("some value");
@@ -273,26 +358,26 @@ describe(" === Dropdown === ", function() {
 					items([
 						{
 							label: "other label1",
-							value: "other value1"
+							key: "other value1"
 						},
 						{
 							label: "other label2",
-							value: "other value2"
+							key: "other value2"
 						},
 						{
 							label: "other label3",
-							value: "value2"
+							key: "value2"
 						}
 					]);
 					expect(selectedIdx()).toBe(2);
 					items([
 						{
 							label: "label1",
-							value: "value1"
+							key: "value1"
 						},
 						{
 							label: "label2",
-							value: "notValue2"
+							key: "notValue2"
 						}
 					]);
 					expect(selectedIdx()).toBe(0);
@@ -312,6 +397,64 @@ describe(" === Dropdown === ", function() {
 					expect(vm.selected().label()).toBe("label1");
 					selectedIdx(-1);
 					expect(selectedIdx()).toBe(0);
+					expect(vm.selected().value).toBe("value1");
+					expect(vm.selected().label()).toBe("label1");
+				});
+
+			});
+			
+			describe("observable given as selectedValue", function() {
+				
+				it("should refresh value of selectedValue when selecting element", function() {
+					vm.options()[1].select();
+					expect(selectedValue()).toBe("value2");
+					vm.options()[2].select();
+					expect(selectedValue()).toBe("value3");
+					vm.options()[0].select();
+					expect(selectedValue()).toBe("value1");
+				});
+
+				it("should refresh value of selectedIdx when refreshing items", function() {
+					vm.options()[1].select();
+					items([
+						{
+							label: "other label1",
+							key: "other value1"
+						},
+						{
+							label: "other label2",
+							key: "other value2"
+						},
+						{
+							label: "other label3",
+							key: "value2"
+						}
+					]);
+					expect(selectedValue()).toBe("value2");
+					items([
+						{
+							label: "label1",
+							key: "value1"
+						},
+						{
+							label: "label2",
+							key: "notValue2"
+						}
+					]);
+					expect(selectedValue()).toBe("value1");
+				});
+
+				it("should select item when changing selectedValue observable's value", function() {
+					selectedValue("value3");
+					expect(vm.selected().idx).toBe(2);
+					expect(vm.selected().label()).toBe("label3");
+				});
+
+				it("should select element at index 0 when selectedValue is changed to a value not present", function() {
+					selectedIdx(2);
+					selectedValue("some sad little value not present right now");
+					expect(selectedIdx()).toBe(0);
+					expect(selectedValue()).toBe("value1");
 					expect(vm.selected().value).toBe("value1");
 					expect(vm.selected().label()).toBe("label1");
 				});

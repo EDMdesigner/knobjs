@@ -28,6 +28,9 @@ var createModalStyleDefault = require("./modal/style");
 var createPagedListStyle;
 var createPagedListStyleDefault = require("./pagedList/style");
 
+var createSelectablePagedListStyle;
+var createSelectablePagedListStyleDefault = require("./selectablePagedList/style");
+
 var createNotificationStyle;
 var createNotificationStyleDefault = require("./notificationBar/style");
 
@@ -101,6 +104,10 @@ function initKnob(config) {
 			throw new Error("config.theme.createPagedListStyle must be a function");
 		}
 
+		if (typeof theme.createSelectablePagedListStyle !== "function") {
+			throw new Error("config.theme.createSelectablePagedListStyle must be a function");
+		}
+
 		if (typeof theme.createNotificationStyle !== "function") {
 			throw new Error("config.theme.createNotificationStyle must be a function");
 		}
@@ -118,18 +125,20 @@ function initKnob(config) {
 		createToggleSwitchStyle = theme.createToggleSwitchStyle;
 		createModalStyle = theme.createModalStyle;
 		createPagedListStyle = theme.createPagedListStyle;
+		createSelectablePagedListStyle = theme.createSelectablePagedListStyle;
 		createNotificationStyle = theme.createNotificationStyle;
 		createCheckboxStyle = theme.createCheckboxStyle;
 		createTabStyle = theme.createTabStyle;
 
 	} else if (typeof theme === "string") {
-		
+
 		if (theme === "chamaileon") {
 			createButtonStyle = createButtonStyleChamaileon;
 			createInputStyle = createInputStyleChamaileon;
 			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleChamaileon;
 			createPagedListStyle = createPagedListStyleDefault;
+			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
@@ -137,6 +146,7 @@ function initKnob(config) {
 			createToggleSwitchStyle = createToggleSwitchStyleDefault;
 			createModalStyle = createModalStyleDefault;
 			createPagedListStyle = createPagedListStyleDefault;
+			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
 		}
 		createCheckboxStyle = createCheckboxStyleDefault;
@@ -150,76 +160,158 @@ function initKnob(config) {
 	var checkboxStyle = createCheckboxStyle(config.colors);
 	var tabStyle = createTabStyle(config);
 
-	registerComponent("knob-button", require("./button/vm"), require("./button/template.html"), buttonStyle);
-	registerComponent("knob-input", require("./input/vm"), require("./input/template.html"), createInputStyle(config.colors));
-	registerComponent("knob-textarea", require("./textarea/vm"), require("./textarea/template.html"), createInputStyle(config.colors));
-	registerComponent("knob-radio", require("./radio/vm"), require("./radio/template.html"));
-	registerComponent(
-		"knob-inline-text-editor",
-		 require("./inlineTextEditor/vm"),
-		 require("./inlineTextEditor/template.html"),
-		 null,
-		 icons.inlineTextEditor
-		);
-	registerComponent("knob-dropdown", require("./dropdown/vm"), require("./dropdown/template.html"));
-	registerComponent(
-		"knob-pagination",
-		require("./pagination/vm"),
-		require("./pagination/template.html"),
-		buttonStyle,
-		icons.pagination
-	);
-	registerComponent(
-		"knob-items-per-page",
-		require("./itemsPerPage/vm"),
-		require("./itemsPerPage/template.html"),
-		null,
-		{
+	registerComponent({
+		name: "knob-button",
+		createVm: require("./button/vm"),
+		template: require("./button/template.html"),
+		style: buttonStyle
+	});
+
+	registerComponent({
+		name: "knob-input",
+		createVm: require("./input/vm"),
+		template: require("./input/template.html"),
+		style: createInputStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-textarea",
+		createVm: require("./textarea/vm"),
+		template: require("./textarea/template.html"),
+		style: createInputStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-radio",
+		createVm: require("./radio/vm"),
+		template: require("./radio/template.html")
+	});
+
+	registerComponent({
+		name: "knob-inline-text-editor",
+		createVm: require("./inlineTextEditor/vm"),
+		template: require("./inlineTextEditor/template.html"),
+		icons: icons.inlineTextEditor
+	});
+
+	registerComponent({
+		name: "knob-dropdown",
+		createVm: require("./dropdown/vm"),
+		template: require("./dropdown/template.html")
+	});
+
+	registerComponent({
+		name: "knob-pagination",
+		createVm: require("./pagination/vm"),
+		template: require("./pagination/template.html"),
+		style: buttonStyle,
+		icons: icons.pagination
+	});
+
+	registerComponent({
+		name: "knob-items-per-page",
+		createVm: require("./itemsPerPage/vm"),
+		template: require("./itemsPerPage/template.html"),
+		icons: {
 			dropdown: icons.dropdown
 		}
-	);
+	});
 
-	registerComponent(
-		"knob-paged-list",
-		require("./pagedList/vm"),
-		require("./pagedList/template.html"),
-		createPagedListStyle(config.colors),
-		{
+	registerComponent({
+		name: "knob-paged-list",
+		createVm: require("./pagedList/vm"),
+		template: require("./pagedList/template.html"),
+		style: createPagedListStyle(config.colors),
+		icons: {
 			search: icons.search,
 			sort: icons.sort,
 			dropdown: icons.dropdown
 		},
-		{
+		labels: {
 			noResults: labels.noResults
 		}
-	);
+	});
 
-	registerComponent("knob-toggleswitch", require("./toggleSwitch/vm"), require("./toggleSwitch/template.html"), createToggleSwitchStyle(config.colors));
-	registerComponent("knob-modal", require("./modal/vm"), require("./modal/template.html"), createModalStyle(config.colors));
-	registerComponent("knob-confirm", require("./modal/confirm/vm"), require("./modal/confirm/template.html"), createModalStyle(config.colors));
-	registerComponent("knob-alert", require("./modal/alert/vm"), require("./modal/alert/template.html"), createModalStyle(config.colors));
+	registerComponent({
+		name: "knob-selectable-paged-list",
+		createVm: require("./selectablePagedList/vm"),
+		template: require("./selectablePagedList/template.html"),
+		style: createSelectablePagedListStyle(config.colors),
+		icons: {
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		},
+		labels: {
+			noResults: labels.noResults
+		}
+	});
 
-	registerComponent("knob-tabs", require("./tabs/vm"), require("./tabs/template.html"));
-	registerComponent("knob-tab", require("./tabs/tab/vm"), require("./tabs/tab/template.html"), tabStyle);
+	registerComponent({
+		name: "knob-toggleswitch",
+		createVm: require("./toggleSwitch/vm"),
+		template: require("./toggleSwitch/template.html"),
+		style: createToggleSwitchStyle(config.colors)
+	});
 
-	registerComponent("knob-notification", require("./notificationBar/vm"), require("./notificationBar/template.html"), createNotificationStyle(config.colors));
-	registerComponent(
-		"knob-checkbox",
-		require("./checkbox/vm"),
-		require("./checkbox/template.html"),
-		checkboxStyle,
-		{
+	registerComponent({
+		name: "knob-modal",
+		createVm: require("./modal/vm"),
+		template: require("./modal/template.html"),
+		style: createModalStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-confirm",
+		createVm: require("./modal/confirm/vm"),
+		template: require("./modal/confirm/template.html"),
+		style: createModalStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-alert",
+		createVm: require("./modal/alert/vm"),
+		template: require("./modal/alert/template.html"),
+		style: createModalStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-tabs",
+		createVm: require("./tabs/vm"),
+		template: require("./tabs/template.html")
+	});
+
+	registerComponent({
+		name: "knob-tab",
+		createVm: require("./tabs/tab/vm"),
+		template: require("./tabs/tab/template.html"),
+		style: tabStyle
+	});
+
+	registerComponent({
+		name: "knob-notification",
+		createVm: require("./notificationBar/vm"),
+		template: require("./notificationBar/template.html"),
+		style: createNotificationStyle(config.colors)
+	});
+
+	registerComponent({
+		name: "knob-checkbox",
+		createVm: require("./checkbox/vm"),
+		template: require("./checkbox/template.html"),
+		style: checkboxStyle,
+		icons: {
 			tick: icons.tick,
 			cross: icons.cross
 		}
-	);
-	registerComponent(
-		"knob-numericinput", 
-		require("./numericInput/vm"),
-		require("./numericInput/template.html"),
-		null,
-		icons.numericInput
-	);
+	});
+
+	registerComponent({
+		name: "knob-numericinput",
+		createVm: require("./numericInput/vm"),
+		template: require("./numericInput/template.html"),
+		icons: icons.numericInput
+	});
 
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
