@@ -37,10 +37,10 @@ pipeline {
             }
             steps {
                 sh 'gulp build:prod'
-                sh 'gulp s3-deploy --s3key "AKIAJNPMGIYKGXUK7MQA" \
-                    --s3secret "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" \
-                    --s3region "us-east-1" \
-                    --s3bucket "knobjs-staging"'
+                withCredentials([usernamePassword(credentialsId: 'aws-staging', usernameVariable: 'AWS_KEY', passwordVariable: 'AWS_SECRET')]) {
+                    // available as an env variable, but will be masked if you try to print it out any which way
+                    sh 'gulp s3-deploy --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-staging'
+                }
             }
         }
         stage('deploy and publish') {
@@ -49,13 +49,15 @@ pipeline {
             }
             steps {
                 sh 'gulp build:prod'
-                sh 'gulp s3-deploy --s3key "AKIAJMFBS5UW3UCXF6VQ" \
-                    --s3secret "XLxw6ebPG0DqVhG2q89vwafsPgh9oP" \
-                    --s3region "us-east-1" \
-                    --s3bucket "knobjs-cdn"'
+                withCredentials([usernamePassword(credentialsId: 'aws-prod', usernameVariable: 'AWS_KEY', passwordVariable: 'AWS_SECRET')]) {
+                    // available as an env variable, but will be masked if you try to print it out any which way
+                    sh 'gulp s3-deploy --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-cdn'
+                }
                 sh 'npm set init.author.name "edmdesigner-bot"'
                 sh 'npm set init.author.email "info@edmdesigner.com"'
-                sh 'echo "//registry.npmjs.org/:_authToken=ea72d5e5-e506-4b32-bd53-db1a766df54a" > ~/.npmrc'
+                withCredentials([string(credentialsId: 'edmdesigner-bot', variable: 'NPM_AUTH_TOKEN')]) {
+                    sh 'echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc'
+                }
                 sh 'npm publish'
             }
         }
@@ -64,17 +66,16 @@ pipeline {
                 cleanWs()
             }
         }
-
     }
     post {
-    	failure {
-    		slackSend color: 'danger', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-    	}
-    	success {
-    slackSend color: 'good', message: "SUCCES: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-    	}
-    	unstable {
-    slackSend color: 'warning', message: "UNSTABLE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
-    	}
+        failure {
+            slackSend color: 'danger', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        }
+        success {
+            slackSend color: 'good', message: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        }
+        unstable {
+            slackSend color: 'warning', message: "UNSTABLE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})"
+        }
     }
 }
