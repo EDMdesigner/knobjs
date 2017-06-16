@@ -41,6 +41,13 @@ pipeline {
                     // available as an env variable, but will be masked if you try to print it out any which way
                     sh 'gulp s3-deploy --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-staging'
                 }
+                sh 'npm set init.author.name "edmdesigner-bot-staging"'
+                sh 'npm set init.author.email "info@edmdesigner.com"'
+                withCredentials([string(credentialsId: 'edmdesigner-bot-private', variable: 'NPM_AUTH_TOKEN')]) {
+                    sh 'echo "registry=http://npm.edmdesigner.com/" > ~/.npmrc'
+                    sh 'echo "//npm.edmdesigner.com/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc'
+                }
+                sh 'npm publish'
             }
         }
         stage('deploy and publish') {
