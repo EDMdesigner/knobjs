@@ -55,7 +55,7 @@
     "tinycolor2": "^1.3.0"
   },
   "dependencies": {
-    "edm-supergulp": "^0.1.11",
+    "edm-supergulp": "latest",
     "extend": "^3.0.0",
     "knockout": "^3.4.0",
     "superdata": "0.1.15"
