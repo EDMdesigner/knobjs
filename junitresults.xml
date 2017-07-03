@@ -1,304 +1,304 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Base vm" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.073" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Base vm" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.077" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Base vm.with invalid config" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.006" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Base vm.with invalid config" name="config.component" time="0.004" />
-  <testcase classname="Base vm.with invalid config" name="config.style" time="0.002" />
+ <testsuite name="Base vm.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.021" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Base vm.with invalid config" name="config.component" time="0.003" />
+  <testcase classname="Base vm.with invalid config" name="config.style" time="0.017" />
  </testsuite>
- <testsuite name="Base vm.with valid config" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.067" errors="0" tests="7" skipped="0" disabled="0" failures="0">
-  <testcase classname="Base vm.with valid config" name="interface" time="0.035" />
-  <testcase classname="Base vm.with valid config" name="initial values" time="0" />
-  <testcase classname="Base vm.with valid config" name="state change" time="0.001" />
+ <testsuite name="Base vm.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.056" errors="0" tests="7" skipped="0" disabled="0" failures="0">
+  <testcase classname="Base vm.with valid config" name="interface" time="0.002" />
+  <testcase classname="Base vm.with valid config" name="initial values" time="0.001" />
+  <testcase classname="Base vm.with valid config" name="state change" time="0.017" />
   <testcase classname="Base vm.with valid config" name="hover behaviour enable/disable" time="0.001" />
-  <testcase classname="Base vm.with valid config" name="focus behaviour enable/disable" time="0.028" />
+  <testcase classname="Base vm.with valid config" name="focus behaviour enable/disable" time="0" />
   <testcase classname="Base vm.with valid config" name="click behaviour enable/disable" time="0" />
-  <testcase classname="Base vm.with valid config" name="select behaviour enable/disable" time="0.002" />
+  <testcase classname="Base vm.with valid config" name="select behaviour enable/disable" time="0.035" />
  </testsuite>
- <testsuite name="Button" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.309" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Button" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.337" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Button.Invalid config" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.002" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+ <testsuite name="Button.Invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.031" errors="0" tests="3" skipped="0" disabled="0" failures="0">
   <testcase classname="Button.Invalid config" name="missing config" time="0.001" />
-  <testcase classname="Button.Invalid config" name="config.click has to be a function" time="0" />
-  <testcase classname="Button.Invalid config" name="config has to contain minimum one of label/lefticon/righticon/icon" time="0" />
+  <testcase classname="Button.Invalid config" name="config.click has to be a function" time="0.029" />
+  <testcase classname="Button.Invalid config" name="config has to contain minimum one of label/lefticon/righticon/icon" time="0.001" />
  </testsuite>
- <testsuite name="Button.With valid config" timestamp="2017-07-03T20:43:22" hostname="localhost" time="0.307" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+ <testsuite name="Button.With valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.306" errors="0" tests="6" skipped="0" disabled="0" failures="0">
   <testcase classname="Button.With valid config" name="config.icon" time="0" />
   <testcase classname="Button.With valid config" name="interface" time="0.001" />
   <testcase classname="Button.With valid config" name="radio behaviour" time="0" />
-  <testcase classname="Button.With valid config" name="click behaviour" time="0.002" />
+  <testcase classname="Button.With valid config" name="click behaviour" time="0.001" />
   <testcase classname="Button.With valid config" name="should call click only once without triggerOnHold" time="0" />
-  <testcase classname="Button.With valid config" name="should call click several times when triggerOnHold is defined" time="0.304" />
+  <testcase classname="Button.With valid config" name="should call click several times when triggerOnHold is defined" time="0.303" />
  </testsuite>
- <testsuite name=" === Dropdown === " timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.052" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Checkbox" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name=" === Dropdown === . - with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.011" errors="0" tests="10" skipped="0" disabled="0" failures="0">
-  <testcase classname=" === Dropdown === . - with invalid config" name="throws error if dependencies is missing" time="0.001" />
+ <testsuite name="Checkbox.Invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="7" skipped="0" disabled="0" failures="0">
+  <testcase classname="Checkbox.Invalid config" name="missing config" time="0" />
+  <testcase classname="Checkbox.Invalid config" name="config has to contain value" time="0.001" />
+  <testcase classname="Checkbox.Invalid config" name="config.value has to be an observable" time="0" />
+  <testcase classname="Checkbox.Invalid config" name="config has to contain icons" time="0" />
+  <testcase classname="Checkbox.Invalid config" name="config.icons has to be an object" time="0" />
+  <testcase classname="Checkbox.Invalid config" name="config.icons has to contain tick icon" time="0.002" />
+  <testcase classname="Checkbox.Invalid config" name="config.icons has to contain cross icon" time="0" />
+ </testsuite>
+ <testsuite name="Checkbox.With valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="Checkbox.With valid config" name="config.icons" time="0" />
+  <testcase classname="Checkbox.With valid config" name="interface" time="0.001" />
+  <testcase classname="Checkbox.With valid config" name="click behaviour" time="0" />
+  <testcase classname="Checkbox.With valid config" name="value change on click" time="0" />
+  <testcase classname="Checkbox.With valid config" name="handle disabled state" time="0" />
+ </testsuite>
+ <testsuite name=" === Dropdown === " timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.029" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ </testsuite>
+ <testsuite name=" === Dropdown === . - with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.006" errors="0" tests="10" skipped="0" disabled="0" failures="0">
+  <testcase classname=" === Dropdown === . - with invalid config" name="throws error if dependencies is missing" time="0.002" />
   <testcase classname=" === Dropdown === . - with invalid config" name="throws error if dependencies.ko is missing" time="0" />
-  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.rightIcon isn&apos;t given" time="0.003" />
+  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.rightIcon isn&apos;t given" time="0.001" />
   <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.items isn&apos;t given" time="0.001" />
   <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.selected is not an observable" time="0" />
-  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if type of config.items isn&apos;t array or observableArray" time="0.002" />
-  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.items is empty array or is an empty observableArray" time="0.002" />
+  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if type of config.items isn&apos;t array or observableArray" time="0" />
+  <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.items is empty array or is an empty observableArray" time="0" />
   <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.items has an element which doesn&apos;t have label and/or icon property" time="0.001" />
   <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if an item has no value prop" time="0" />
   <testcase classname=" === Dropdown === . - with invalid config" name="should throw error if config.selectedIdx doesn&apos;t store a number" time="0" />
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.041" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name=" === Dropdown === . - with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.023" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config. simple functions" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.006" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname=" === Dropdown === . - with valid config. simple functions" name="toggleDropdownVisible true or false" time="0.005" />
-  <testcase classname=" === Dropdown === . - with valid config. simple functions" name="should be set right icon and/or label when selected" time="0.001" />
+ <testsuite name=" === Dropdown === . - with valid config. simple functions" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname=" === Dropdown === . - with valid config. simple functions" name="toggleDropdownVisible true or false" time="0.003" />
+  <testcase classname=" === Dropdown === . - with valid config. simple functions" name="should be set right icon and/or label when selected" time="0" />
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config.correct initialization" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.023" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+ <testsuite name=" === Dropdown === . - with valid config.correct initialization" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.007" errors="0" tests="6" skipped="0" disabled="0" failures="0">
   <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by index" time="0.001" />
-  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by observable index" time="0.002" />
-  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="select first item if index is out of range" time="0.017" />
-  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by value" time="0" />
-  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by observable value" time="0.001" />
-  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="select first item if value cannot be found" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by observable index" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="select first item if index is out of range" time="0" />
+  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by value" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="selects item correctly by observable value" time="0.002" />
+  <testcase classname=" === Dropdown === . - with valid config.correct initialization" name="select first item if value cannot be found" time="0" />
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config.observable parameters" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.012" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name=" === Dropdown === . - with valid config.observable parameters" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.013" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should throw error if value of items changed to an invalid items array" time="0.001" />
+ <testsuite name=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.005" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should throw error if value of items changed to an invalid items array" time="0.002" />
   <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should refresh options corresponding to changed items" time="0.001" />
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should refresh selected and selectedIdx assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also" time="0" />
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should refresh selected to first item if value of previously selected option can&apos;t be found in items observableArray&apos;s value" time="0" />
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should refresh selected and selectedIdx assigning by value of option when value of items observableArray is changed, but selected value can be found in new items value also" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observableArray given as config.items" name="should refresh selected to first item if value of previously selected option can&apos;t be found in items observableArray&apos;s value" time="0.001" />
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+ <testsuite name=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="4" skipped="0" disabled="0" failures="0">
   <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" name="should refresh value of selectedIdx when selecting element" time="0.001" />
   <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" name="should refresh value of selectedIdx when refreshing items" time="0.001" />
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" name="should select item when changing selectedIdx observable&apos;s value" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" name="should select item when changing selectedIdx observable&apos;s value" time="0" />
   <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedIdx" name="should select element at index 0 when selectedIdx is changed to index out of range" time="0.001" />
  </testsuite>
- <testsuite name=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should refresh value of selectedValue when selecting element" time="0" />
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should refresh value of selectedIdx when refreshing items" time="0.001" />
-  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should select item when changing selectedValue observable&apos;s value" time="0" />
+ <testsuite name=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should refresh value of selectedValue when selecting element" time="0.001" />
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should refresh value of selectedIdx when refreshing items" time="0" />
+  <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should select item when changing selectedValue observable&apos;s value" time="0.002" />
   <testcase classname=" === Dropdown === . - with valid config.observable parameters.observable given as selectedValue" name="should select element at index 0 when selectedValue is changed to a value not present" time="0.001" />
  </testsuite>
- <testsuite name="Checkbox" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.007" errors="0" tests="0" skipped="0" disabled="0" failures="0">
- </testsuite>
- <testsuite name="Checkbox.Invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="7" skipped="0" disabled="0" failures="0">
-  <testcase classname="Checkbox.Invalid config" name="missing config" time="0.001" />
-  <testcase classname="Checkbox.Invalid config" name="config has to contain value" time="0" />
-  <testcase classname="Checkbox.Invalid config" name="config.value has to be an observable" time="0" />
-  <testcase classname="Checkbox.Invalid config" name="config has to contain icons" time="0.001" />
-  <testcase classname="Checkbox.Invalid config" name="config.icons has to be an object" time="0" />
-  <testcase classname="Checkbox.Invalid config" name="config.icons has to contain tick icon" time="0" />
-  <testcase classname="Checkbox.Invalid config" name="config.icons has to contain cross icon" time="0.001" />
- </testsuite>
- <testsuite name="Checkbox.With valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
-  <testcase classname="Checkbox.With valid config" name="config.icons" time="0" />
-  <testcase classname="Checkbox.With valid config" name="interface" time="0" />
-  <testcase classname="Checkbox.With valid config" name="click behaviour" time="0.002" />
-  <testcase classname="Checkbox.With valid config" name="value change on click" time="0.001" />
-  <testcase classname="Checkbox.With valid config" name="handle disabled state" time="0" />
- </testsuite>
- <testsuite name="Invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Invalid config" name="config.value has to be an observable!" time="0.001" />
-  <testcase classname="Invalid config" name="config.icons missing" time="0.002" />
+  <testcase classname="Invalid config" name="config.icons missing" time="0.001" />
   <testcase classname="Invalid config" name="config.icons.edit missing" time="0" />
-  <testcase classname="Invalid config" name="config.icons.done missing" time="0" />
-  <testcase classname="Invalid config" name="config.icons.close missing" time="0.001" />
+  <testcase classname="Invalid config" name="config.icons.done missing" time="0.001" />
+  <testcase classname="Invalid config" name="config.icons.close missing" time="0" />
  </testsuite>
- <testsuite name="Valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Valid config" name="Interface" time="0" />
   <testcase classname="Valid config" name="config.value set" time="0" />
  </testsuite>
- <testsuite name="Valid config.Behaviour" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
-  <testcase classname="Valid config.Behaviour" name="edit" time="0" />
-  <testcase classname="Valid config.Behaviour" name="save" time="0.001" />
+ <testsuite name="Valid config.Behaviour" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="Valid config.Behaviour" name="edit" time="0.001" />
+  <testcase classname="Valid config.Behaviour" name="save" time="0" />
   <testcase classname="Valid config.Behaviour" name="cancel" time="0" />
   <testcase classname="Valid config.Behaviour" name="Esc" time="0.001" />
   <testcase classname="Valid config.Behaviour" name="Enter" time="0.001" />
  </testsuite>
- <testsuite name="Input" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Input" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Input.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+ <testsuite name="Input.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="3" skipped="0" disabled="0" failures="0">
   <testcase classname="Input.- with invalid config" name="missing config" time="0.001" />
   <testcase classname="Input.- with invalid config" name="invalid value type" time="0" />
   <testcase classname="Input.- with invalid config" name="invalid hasFocus type" time="0" />
  </testsuite>
- <testsuite name="Input.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Input.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Input.- with valid config" name="interface" time="0.001" />
   <testcase classname="Input.- with valid config" name="behaviour check" time="0.001" />
  </testsuite>
- <testsuite name="=== itemsPerPage ===" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="=== itemsPerPage ===" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="=== itemsPerPage ===. - with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="=== itemsPerPage ===. - with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="=== itemsPerPage ===. - with invalid config" name="numOfItems" time="0" />
   <testcase classname="=== itemsPerPage ===. - with invalid config" name="itemsPerPageList not empty" time="0.001" />
  </testsuite>
- <testsuite name="=== itemsPerPage ===. - with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="=== itemsPerPage ===. - with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="=== itemsPerPage ===. - with valid config" name="numOfPages and numOfItems should be observable" time="0" />
   <testcase classname="=== itemsPerPage ===. - with valid config" name="itemsPerPageList is array" time="0" />
-  <testcase classname="=== itemsPerPage ===. - with valid config" name="valid typeof label and value" time="0" />
+  <testcase classname="=== itemsPerPage ===. - with valid config" name="valid typeof label and value" time="0.001" />
   <testcase classname="=== itemsPerPage ===. - with valid config" name="itemsPerPageList - label - value" time="0" />
-  <testcase classname="=== itemsPerPage ===. - with valid config" name="Change numOfItems and itemsPerPage, should change numOfPages value" time="0.001" />
+  <testcase classname="=== itemsPerPage ===. - with valid config" name="Change numOfItems and itemsPerPage, should change numOfPages value" time="0" />
  </testsuite>
- <testsuite name="List" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.138" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.138" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.without config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.without config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.without config" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.01" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.01" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with invalid config.(existence check)" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(existence check)" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with invalid config.(existence check).with empty config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="List.with invalid config.(existence check).with empty config" name="should return an error" time="0" />
+ <testsuite name="List.with invalid config.(existence check).with empty config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="List.with invalid config.(existence check).with empty config" name="should return an error" time="0.001" />
  </testsuite>
- <testsuite name="List.with invalid config.(existence check).without search" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="List.with invalid config.(existence check).without search" name="should return an error" time="0.001" />
+ <testsuite name="List.with invalid config.(existence check).without search" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="List.with invalid config.(existence check).without search" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(existence check).without sort" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(existence check).without sort" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(existence check).without sort" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(existence check).without fields" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(existence check).without fields" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(existence check).without fields" name="should return an error" time="0.001" />
  </testsuite>
- <testsuite name="List.with invalid config.(existence check).without store" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="List.with invalid config.(existence check).without store" name="should return an error" time="0.001" />
+ <testsuite name="List.with invalid config.(existence check).without store" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="List.with invalid config.(existence check).without store" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(type check)" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(type check)" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with invalid config.(type check).with invalid search type" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(type check).with invalid search type" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(type check).with invalid search type" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(type check).with invalid sort type" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="List.with invalid config.(type check).with invalid sort type" name="should return an error" time="0.001" />
+ <testsuite name="List.with invalid config.(type check).with invalid sort type" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="List.with invalid config.(type check).with invalid sort type" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(type check).with invalid fields type" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(type check).with invalid fields type" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(type check).with invalid fields type" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(type check).with invalid store type" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(type check).with invalid store type" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(type check).with invalid store type" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(type check).with invalid orderBy format" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(type check).with invalid orderBy format" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(type check).with invalid orderBy format" name="should throw Error" time="0.001" />
  </testsuite>
- <testsuite name="List.with invalid config.(relation check)" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(relation check)" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with invalid config.(relation check).with invalid search value" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(relation check).with invalid search value" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(relation check).with invalid search value" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(relation check).with invalid sort object" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(relation check).with invalid sort object" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(relation check).with invalid sort object" name="should return an error" time="0" />
  </testsuite>
- <testsuite name="List.with invalid config.(relation check).with invalid orderBy key" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with invalid config.(relation check).with invalid orderBy key" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with invalid config.(relation check).with invalid orderBy key" name="should throw Error" time="0.002" />
  </testsuite>
- <testsuite name="List.with invalid config.(relation check).with invalid orderBy value" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="List.with invalid config.(relation check).with invalid orderBy value" name="should throw Error" time="0.001" />
+ <testsuite name="List.with invalid config.(relation check).with invalid orderBy value" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="List.with invalid config.(relation check).with invalid orderBy value" name="should throw Error" time="0" />
  </testsuite>
- <testsuite name="List.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.128" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.128" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with valid config.the interface should look like this:" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="12" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.the interface should look like this:" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="12" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with valid config.the interface should look like this:" name="- store should be an object" time="0" />
-  <testcase classname="List.with valid config.the interface should look like this:" name="- fields should be an array" time="0.001" />
+  <testcase classname="List.with valid config.the interface should look like this:" name="- fields should be an array" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- search should be an observable" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- sort should be an object observable" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- sortOptions should be an array" time="0.001" />
-  <testcase classname="List.with valid config.the interface should look like this:" name="- skip should be a number observable" time="0" />
+  <testcase classname="List.with valid config.the interface should look like this:" name="- skip should be a number observable" time="0.001" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- limit should be a number observable" time="0" />
-  <testcase classname="List.with valid config.the interface should look like this:" name="- items should be an observable array" time="0.001" />
+  <testcase classname="List.with valid config.the interface should look like this:" name="- items should be an observable array" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- count should be a read-only computed observable" time="0.001" />
   <testcase classname="List.with valid config.the interface should look like this:" name="initStoreHandling should be a function" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- loading should be a read-only computed observable" time="0" />
   <testcase classname="List.with valid config.the interface should look like this:" name="- error should be a read-only computed observable" time="0" />
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.124" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.125" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:.without externalInit" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.113" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:.without externalInit" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.112" errors="0" tests="4" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.find" time="0.021" />
   <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.sort" time="0.022" />
-  <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.skip" time="0.003" />
-  <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.limit" time="0.002" />
+  <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.skip" time="0.002" />
+  <testcase classname="List.with valid config.should behave like this:.without externalInit" name="should change store.limit" time="0.003" />
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.064" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.063" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to a string" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.042" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to a string" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.042" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to a string" name="should set store.find with the RegExp of the string" time="0.021" />
   <testcase classname="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to a string" name="should not convert store.find to RegExp if it&apos;s a RegExp already" time="0.021" />
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to an array of strings" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.022" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to an array of strings" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.021" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with valid config.should behave like this:.without externalInit.if value of the search observable changed.to an array of strings" name="should set store.find with an array of RegExps" time="0.021" />
  </testsuite>
- <testsuite name="List.with valid config.should behave like this:.with externalInit, " timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.01" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+ <testsuite name="List.with valid config.should behave like this:.with externalInit, " timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.013" errors="0" tests="4" skipped="0" disabled="0" failures="0">
   <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.find" time="0.004" />
-  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.sort" time="0.003" />
-  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.skip" time="0.001" />
-  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.limit" time="0.002" />
+  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.sort" time="0.002" />
+  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.skip" time="0.003" />
+  <testcase classname="List.with valid config.should behave like this:.with externalInit, " name="list should not change store.limit" time="0.003" />
  </testsuite>
- <testsuite name="Modal" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Modal.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Modal.- with invalid config" name="missing config" time="0" />
   <testcase classname="Modal.- with invalid config" name="invalid visible type" time="0" />
  </testsuite>
- <testsuite name="Modal.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Modal.- with valid config" name="calls base" time="0.001" />
+ <testsuite name="Modal.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Modal.- with valid config" name="calls base" time="0" />
   <testcase classname="Modal.- with valid config" name="toggle true or false" time="0" />
  </testsuite>
- <testsuite name="NotificationBar" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="NotificationBar" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="NotificationBar.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="NotificationBar.- with invalid config" name="missing config" time="0" />
-  <testcase classname="NotificationBar.- with invalid config" name="invalid visible type" time="0.001" />
+ <testsuite name="NotificationBar.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="NotificationBar.- with invalid config" name="missing config" time="0.001" />
+  <testcase classname="NotificationBar.- with invalid config" name="invalid visible type" time="0" />
  </testsuite>
- <testsuite name="NotificationBar.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="NotificationBar.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="NotificationBar.- with valid config" name="call base" time="0" />
   <testcase classname="NotificationBar.- with valid config" name="toggle true or false" time="0" />
  </testsuite>
- <testsuite name="Numeric Input" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.019" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Numeric Input" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.031" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Numeric Input.Invalid Config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.006" errors="0" tests="15" skipped="0" disabled="0" failures="0">
-  <testcase classname="Numeric Input.Invalid Config" name="missing dependencies" time="0.001" />
-  <testcase classname="Numeric Input.Invalid Config" name="missing dependencies.ko" time="0" />
-  <testcase classname="Numeric Input.Invalid Config" name="missing config" time="0.001" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.value missing" time="0" />
+ <testsuite name="Numeric Input.Invalid Config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.006" errors="0" tests="15" skipped="0" disabled="0" failures="0">
+  <testcase classname="Numeric Input.Invalid Config" name="missing dependencies" time="0" />
+  <testcase classname="Numeric Input.Invalid Config" name="missing dependencies.ko" time="0.001" />
+  <testcase classname="Numeric Input.Invalid Config" name="missing config" time="0" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.value missing" time="0.001" />
   <testcase classname="Numeric Input.Invalid Config" name="config.minValue missing" time="0" />
   <testcase classname="Numeric Input.Invalid Config" name="config.minValue invalid" time="0" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.maxValue missing" time="0.001" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.maxValue missing" time="0" />
   <testcase classname="Numeric Input.Invalid Config" name="config.maxValue invalid" time="0" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.step missing" time="0.001" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.step missing" time="0.002" />
   <testcase classname="Numeric Input.Invalid Config" name="config.step invalid" time="0" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.precision invalid" time="0.001" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.updateTimeout invalid" time="0" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.precision invalid" time="0" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.updateTimeout invalid" time="0.001" />
   <testcase classname="Numeric Input.Invalid Config" name="config.prefix invalid" time="0" />
-  <testcase classname="Numeric Input.Invalid Config" name="config.postfix invalid" time="0.001" />
+  <testcase classname="Numeric Input.Invalid Config" name="config.postfix invalid" time="0" />
   <testcase classname="Numeric Input.Invalid Config" name="config.layoutArrangement invalid" time="0" />
  </testsuite>
- <testsuite name="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.005" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.017" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name="Interface check" time="0.001" />
-  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" has correct step functionality" time="0.001" />
-  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly validates non-numeric input values" time="0.002" />
-  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly validates values outside the boundaries" time="0" />
-  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly rounds values" time="0.001" />
+  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" has correct step functionality" time="0.002" />
+  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly validates non-numeric input values" time="0.001" />
+  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly validates values outside the boundaries" time="0.001" />
+  <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step, without precision and updateTimeout" name=" correctly rounds values" time="0.012" />
  </testsuite>
- <testsuite name="Numeric Input.Valid config with fix minValue, maxValue, step and precision" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+ <testsuite name="Numeric Input.Valid config with fix minValue, maxValue, step and precision" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
   <testcase classname="Numeric Input.Valid config with fix minValue, maxValue, step and precision" name="Interface check" time="0" />
  </testsuite>
- <testsuite name="Numeric Input.Valid config with observable minValue, maxValue, precision, step" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.006" errors="0" tests="13" skipped="0" disabled="0" failures="0">
+ <testsuite name="Numeric Input.Valid config with observable minValue, maxValue, precision, step" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.006" errors="0" tests="13" skipped="0" disabled="0" failures="0">
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="Interface check" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" has correct step functionality" time="0" />
-  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="doesn&apos;t allow stepping outside the limits" time="0.001" />
-  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" correctly validates non-numeric input values" time="0" />
+  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="doesn&apos;t allow stepping outside the limits" time="0" />
+  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" correctly validates non-numeric input values" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" correctly validates values outside the boundaries" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" correctly rounds values" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="does no rounding if precision is set to 0" time="0" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name=" correctly revalidates on change of minValue, maxValue" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="throws error if min &gt; max" time="0" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="throws error if step &lt;= 0" time="0" />
-  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="throws error if precision &lt; 0" time="0.001" />
-  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="uses validatedValue on increase/decrease click if inputValue === &apos;&apos;" time="0" />
+  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="throws error if precision &lt; 0" time="0" />
+  <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="uses validatedValue on increase/decrease click if inputValue === &apos;&apos;" time="0.001" />
   <testcase classname="Numeric Input.Valid config with observable minValue, maxValue, precision, step" name="accepts the . character at the end of numbers" time="0" />
  </testsuite>
- <testsuite name="pagedList" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.008" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="pagedList" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.008" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="pagedList.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="11" skipped="0" disabled="0" failures="0">
+ <testsuite name="pagedList.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="11" skipped="0" disabled="0" failures="0">
   <testcase classname="pagedList.- with invalid config" name="missing config" time="0.001" />
   <testcase classname="pagedList.- with invalid config" name="config.store missing" time="0" />
   <testcase classname="pagedList.- with invalid config" name="config.icons missing" time="0" />
@@ -308,196 +308,196 @@
   <testcase classname="pagedList.- with invalid config" name="config.icons.sort.asc missing" time="0.001" />
   <testcase classname="pagedList.- with invalid config" name="config.icons.sort.desc missing" time="0" />
   <testcase classname="pagedList.- with invalid config" name="config.labels missing" time="0" />
-  <testcase classname="pagedList.- with invalid config" name="config.labels.noResults missing" time="0.001" />
-  <testcase classname="pagedList.- with invalid config" name="missing name if stateModel is present" time="0.001" />
+  <testcase classname="pagedList.- with invalid config" name="config.labels.noResults missing" time="0.002" />
+  <testcase classname="pagedList.- with invalid config" name="missing name if stateModel is present" time="0" />
  </testsuite>
- <testsuite name="pagedList.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="pagedList.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="pagedList.- with valid config.with vm" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="pagedList.- with valid config.with vm" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="pagedList.- with valid config.with vm" name="interface" time="0" />
   <testcase classname="pagedList.- with valid config.with vm" name="limit and skip function" time="0" />
  </testsuite>
- <testsuite name="pagedList.- with valid config.With mock createList" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="pagedList.- with valid config.With mock createList" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="pagedList.- with valid config.With mock createList.with stateModel" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="pagedList.- with valid config.With mock createList.with stateModel" name="it should call stateModel.load and fill list porperties" time="0.001" />
+ <testsuite name="pagedList.- with valid config.With mock createList.with stateModel" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="pagedList.- with valid config.With mock createList.with stateModel" name="it should call stateModel.load and fill list porperties" time="0" />
  </testsuite>
- <testsuite name="Pagination" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.012" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Pagination" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.012" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Pagination.invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="10" skipped="0" disabled="0" failures="0">
+ <testsuite name="Pagination.invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.005" errors="0" tests="10" skipped="0" disabled="0" failures="0">
   <testcase classname="Pagination.invalid config" name="config.currentPage out of range should work" time="0.002" />
   <testcase classname="Pagination.invalid config" name="if config.afterHead present, it should be larger than zero" time="0" />
-  <testcase classname="Pagination.invalid config" name="if config.beforeTail present, it should be larger than zero" time="0" />
+  <testcase classname="Pagination.invalid config" name="if config.beforeTail present, it should be larger than zero" time="0.001" />
   <testcase classname="Pagination.invalid config" name="if config.beforeCurrent present, it should be larger than zero" time="0" />
   <testcase classname="Pagination.invalid config" name="if config.afterCurrent present, it should be larger than zero" time="0" />
   <testcase classname="Pagination.invalid config" name="config.icons missing" time="0" />
   <testcase classname="Pagination.invalid config" name="config.icons.first missing" time="0" />
-  <testcase classname="Pagination.invalid config" name="config.icons.prev missing" time="0.001" />
+  <testcase classname="Pagination.invalid config" name="config.icons.prev missing" time="0" />
   <testcase classname="Pagination.invalid config" name="config.icons.next missing" time="0" />
-  <testcase classname="Pagination.invalid config" name="config.icons.last missing" time="0.001" />
+  <testcase classname="Pagination.invalid config" name="config.icons.last missing" time="0.002" />
  </testsuite>
- <testsuite name="Pagination.valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.008" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="Pagination.valid config" name="Interface" time="0" />
+ <testsuite name="Pagination.valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.007" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Pagination.valid config" name="Interface" time="0.001" />
  </testsuite>
- <testsuite name="Pagination.valid config.Step Tests" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.007" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+ <testsuite name="Pagination.valid config.Step Tests" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.006" errors="0" tests="3" skipped="0" disabled="0" failures="0">
   <testcase classname="Pagination.valid config.Step Tests" name="Empty config" time="0.002" />
-  <testcase classname="Pagination.valid config.Step Tests" name="With 30 pages" time="0.002" />
-  <testcase classname="Pagination.valid config.Step Tests" name="next and prev should not out index" time="0.002" />
+  <testcase classname="Pagination.valid config.Step Tests" name="With 30 pages" time="0.004" />
+  <testcase classname="Pagination.valid config.Step Tests" name="next and prev should not out index" time="0" />
  </testsuite>
- <testsuite name="=== Radio ===" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="=== Radio ===" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="=== Radio ===. - with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="=== Radio ===. - with invalid config" name="items is an empty array" time="0" />
+ <testsuite name="=== Radio ===. - with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="=== Radio ===. - with invalid config" name="items is an empty array" time="0.001" />
   <testcase classname="=== Radio ===. - with invalid config" name="items without label or icon property" time="0.001" />
  </testsuite>
- <testsuite name="=== Radio ===.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="=== Radio ===.- with valid config" name="selected" time="0.001" />
+ <testsuite name="=== Radio ===.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="=== Radio ===.- with valid config" name="selected" time="0" />
  </testsuite>
- <testsuite name="selectablePagedList" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="selectablePagedList" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="selectablePagedList.- invalid dependencies" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="1" skipped="0" disabled="0" failures="0">
-  <testcase classname="selectablePagedList.- invalid dependencies" name="dependencies.ko" time="0" />
+ <testsuite name="selectablePagedList.- invalid dependencies" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="selectablePagedList.- invalid dependencies" name="dependencies.ko" time="0.001" />
  </testsuite>
- <testsuite name="selectablePagedList.- valid dependencies" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="selectablePagedList.- valid dependencies" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="selectablePagedList.- valid dependencies.- invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="selectablePagedList.- valid dependencies.- invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="selectablePagedList.- valid dependencies.- invalid config" name="config" time="0" />
   <testcase classname="selectablePagedList.- valid dependencies.- invalid config" name="config.selected" time="0" />
  </testsuite>
- <testsuite name="selectablePagedList.- valid dependencies.- valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
-  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="interface" time="0.001" />
-  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="should throw error with message: &apos;selectablePagedList: Invalid superdata object&apos; " time="0.001" />
+ <testsuite name="selectablePagedList.- valid dependencies.- valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="interface" time="0.002" />
+  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="should throw error with message: &apos;selectablePagedList: Invalid superdata object&apos; " time="0" />
   <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="should set selectedId to null, if selected is given falsie" time="0" />
   <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="select should set selected" time="0" />
-  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="changing selected should refresh selectedId" time="0" />
+  <testcase classname="selectablePagedList.- valid dependencies.- valid config" name="changing selected should refresh selectedId" time="0.001" />
  </testsuite>
- <testsuite name="tabs" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.006" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="tabs" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.005" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="tabs.with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+ <testsuite name="tabs.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="3" skipped="0" disabled="0" failures="0">
   <testcase classname="tabs.with invalid config" name="should not work without child knob-tab components" time="0" />
-  <testcase classname="tabs.with invalid config" name="should not work if the knob-tab child components don&apos;t have the proper params" time="0.001" />
-  <testcase classname="tabs.with invalid config" name="should not work if the knob-tab child components don&apos;t have the proper params" time="0.001" />
+  <testcase classname="tabs.with invalid config" name="should not work if the knob-tab child components don&apos;t have the proper params" time="0" />
+  <testcase classname="tabs.with invalid config" name="should not work if the knob-tab child components don&apos;t have the proper params" time="0.002" />
  </testsuite>
- <testsuite name="tabs.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="9" skipped="0" disabled="0" failures="0">
-  <testcase classname="tabs.with valid config" name="should have four elements in the buttons and in the panels array as well" time="0.001" />
+ <testsuite name="tabs.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="9" skipped="0" disabled="0" failures="0">
+  <testcase classname="tabs.with valid config" name="should have four elements in the buttons and in the panels array as well" time="0" />
   <testcase classname="tabs.with valid config" name="value of the selected index observable should equal to the defaultTab config value" time="0" />
   <testcase classname="tabs.with valid config" name="should have a tabsGroup property, which is a string" time="0" />
   <testcase classname="tabs.with valid config" name="the panels content should be the childNodes of the knob-tab elements" time="0" />
   <testcase classname="tabs.with valid config" name="the buttons config should come from the component nodes" time="0.001" />
   <testcase classname="tabs.with valid config" name="should use given selectedIdx" time="0" />
   <testcase classname="tabs.with valid config" name="should use given defaultTab over given selectedIdx" time="0" />
-  <testcase classname="tabs.with valid config" name="should pass given config.variation" time="0" />
-  <testcase classname="tabs.with valid config" name="should use default tab variation if no config.variation is given" time="0.002" />
+  <testcase classname="tabs.with valid config" name="should pass given config.variation" time="0.001" />
+  <testcase classname="tabs.with valid config" name="should use default tab variation if no config.variation is given" time="0.001" />
  </testsuite>
- <testsuite name="Textarea" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Textarea" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Textarea.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="3" skipped="0" disabled="0" failures="0">
-  <testcase classname="Textarea.- with invalid config" name="missing config" time="0" />
-  <testcase classname="Textarea.- with invalid config" name="invalid value type" time="0.001" />
+ <testsuite name="Textarea.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="Textarea.- with invalid config" name="missing config" time="0.001" />
+  <testcase classname="Textarea.- with invalid config" name="invalid value type" time="0" />
   <testcase classname="Textarea.- with invalid config" name="invalid hasFocus type" time="0" />
  </testsuite>
- <testsuite name="Textarea.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Textarea.- with valid config" name="interface" time="0" />
-  <testcase classname="Textarea.- with valid config" name="behaviour check" time="0.001" />
+ <testsuite name="Textarea.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Textarea.- with valid config" name="interface" time="0.001" />
+  <testcase classname="Textarea.- with valid config" name="behaviour check" time="0" />
  </testsuite>
- <testsuite name="==== ToggleSwitch ====" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="==== ToggleSwitch ====" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="==== ToggleSwitch ====. - with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="==== ToggleSwitch ====. - with invalid config" name="config.value should be defined" time="0" />
-  <testcase classname="==== ToggleSwitch ====. - with invalid config" name="config.value should be an observable" time="0.001" />
+ <testsuite name="==== ToggleSwitch ====. - with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="==== ToggleSwitch ====. - with invalid config" name="config.value should be defined" time="0.001" />
+  <testcase classname="==== ToggleSwitch ====. - with invalid config" name="config.value should be an observable" time="0" />
  </testsuite>
- <testsuite name="==== ToggleSwitch ====. - with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
-  <testcase classname="==== ToggleSwitch ====. - with valid config" name="interface" time="0" />
+ <testsuite name="==== ToggleSwitch ====. - with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+  <testcase classname="==== ToggleSwitch ====. - with valid config" name="interface" time="0.001" />
   <testcase classname="==== ToggleSwitch ====. - with valid config" name="click should negate value" time="0" />
-  <testcase classname="==== ToggleSwitch ====. - with valid config" name="should activate subVms when value is true" time="0.001" />
+  <testcase classname="==== ToggleSwitch ====. - with valid config" name="should activate subVms when value is true" time="0" />
   <testcase classname="==== ToggleSwitch ====. - with valid config" name="should de-activate subVms when value is false" time="0" />
   <testcase classname="==== ToggleSwitch ====. - with valid config" name="should write variation value to the baseVM when called with baseconfig" time="0" />
  </testsuite>
- <testsuite name="Click behaviour" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.005" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Click behaviour" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Click behaviour.with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
-  <testcase classname="Click behaviour.with invalid config" name="missing config" time="0.001" />
+ <testsuite name="Click behaviour.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+  <testcase classname="Click behaviour.with invalid config" name="missing config" time="0" />
   <testcase classname="Click behaviour.with invalid config" name="state not observable" time="0" />
  </testsuite>
- <testsuite name="Click behaviour.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Click behaviour.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Click behaviour.with valid config" name="eventHandlers are functions, state is ko.observable" time="0" />
-  <testcase classname="Click behaviour.with valid config" name="not call addEventlistener" time="0.001" />
-  <testcase classname="Click behaviour.with valid config" name="call addEventListener, mouseUp and removeEventListener" time="0.001" />
-  <testcase classname="Click behaviour.with valid config" name="vm.state() remains disabled" time="0.001" />
+  <testcase classname="Click behaviour.with valid config" name="not call addEventlistener" time="0" />
+  <testcase classname="Click behaviour.with valid config" name="call addEventListener, mouseUp and removeEventListener" time="0.002" />
+  <testcase classname="Click behaviour.with valid config" name="vm.state() remains disabled" time="0" />
   <testcase classname="Click behaviour.with valid config" name="vm.state() changed to hover" time="0" />
  </testsuite>
- <testsuite name="Focus behaviour" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Focus behaviour" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Focus behaviour.with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Focus behaviour.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Focus behaviour.with invalid config" name="missing config" time="0.001" />
   <testcase classname="Focus behaviour.with invalid config" name="state not observable" time="0" />
  </testsuite>
- <testsuite name="Focus behaviour.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Focus behaviour.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Focus behaviour.with valid config" name="eventHandlers are functions, state is knockout observable" time="0" />
   <testcase classname="Focus behaviour.with valid config" name="state remains disabled" time="0" />
-  <testcase classname="Focus behaviour.with valid config" name="state changes to active" time="0" />
-  <testcase classname="Focus behaviour.with valid config" name="state remains disabled" time="0.001" />
+  <testcase classname="Focus behaviour.with valid config" name="state changes to active" time="0.001" />
+  <testcase classname="Focus behaviour.with valid config" name="state remains disabled" time="0" />
   <testcase classname="Focus behaviour.with valid config" name="state changes to default" time="0" />
  </testsuite>
- <testsuite name="Hover behaviour" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Hover behaviour" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Hover behaviour.with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Hover behaviour.with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Hover behaviour.with invalid config" name="missing config" time="0.001" />
   <testcase classname="Hover behaviour.with invalid config" name="state not observable" time="0" />
  </testsuite>
- <testsuite name="Hover behaviour.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Hover behaviour.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Hover behaviour.with valid config" name="eventHandlers are function, state is a knockout observable" time="0" />
-  <testcase classname="Hover behaviour.with valid config" name="state doesn&apos;t change it&apos;s value when disabled or active on mouseOver" time="0" />
-  <testcase classname="Hover behaviour.with valid config" name="state changes to hover if not disabled or active on mouseOver" time="0.001" />
+  <testcase classname="Hover behaviour.with valid config" name="state doesn&apos;t change it&apos;s value when disabled or active on mouseOver" time="0.001" />
+  <testcase classname="Hover behaviour.with valid config" name="state changes to hover if not disabled or active on mouseOver" time="0" />
   <testcase classname="Hover behaviour.with valid config" name="state doesn&apos;t change it&apos;s value when disabled or active on mouseOut" time="0" />
   <testcase classname="Hover behaviour.with valid config" name="state changes back to it&apos;s previous on mouseOut" time="0" />
  </testsuite>
- <testsuite name="Select behaviour" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Select behaviour" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Select behaviour.Invalid configs" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Select behaviour.Invalid configs" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Select behaviour.Invalid configs" name="vm is missing" time="0.001" />
   <testcase classname="Select behaviour.Invalid configs" name="state has to be an observable" time="0" />
  </testsuite>
- <testsuite name="Select behaviour.Valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Select behaviour.Valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Select behaviour.Valid config" name="eventHandlers are functions, state is ko.observable" time="0" />
   <testcase classname="Select behaviour.Valid config" name="state remains unchanged when disabled on mousedown" time="0" />
   <testcase classname="Select behaviour.Valid config" name="state changes to active when not disabled on mousedown" time="0.001" />
   <testcase classname="Select behaviour.Valid config" name="state remains unchanged when disabled on mouseup" time="0" />
   <testcase classname="Select behaviour.Valid config" name="states of others in the gourp changes to default on mouseup" time="0" />
  </testsuite>
- <testsuite name="Modal - Alert" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal - Alert" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Modal - Alert.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal - Alert.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="5" skipped="0" disabled="0" failures="0">
   <testcase classname="Modal - Alert.- with invalid config" name="missing config" time="0.001" />
   <testcase classname="Modal - Alert.- with invalid config" name="invalid message type" time="0" />
   <testcase classname="Modal - Alert.- with invalid config" name="invalid okLabel type" time="0" />
-  <testcase classname="Modal - Alert.- with invalid config" name="invalid visible type" time="0" />
-  <testcase classname="Modal - Alert.- with invalid config" name="invalid callback" time="0.001" />
+  <testcase classname="Modal - Alert.- with invalid config" name="invalid visible type" time="0.001" />
+  <testcase classname="Modal - Alert.- with invalid config" name="invalid callback" time="0" />
  </testsuite>
- <testsuite name="Modal - Alert.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal - Alert.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="Modal - Alert.- with valid config" name="interface" time="0" />
   <testcase classname="Modal - Alert.- with valid config" name="call ok" time="0" />
  </testsuite>
- <testsuite name="Modal - Confirm" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.004" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="Modal - Confirm" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.003" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="Modal - Confirm.- with invalid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.002" errors="0" tests="4" skipped="0" disabled="0" failures="0">
-  <testcase classname="Modal - Confirm.- with invalid config" name="missing config" time="0.001" />
+ <testsuite name="Modal - Confirm.- with invalid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname="Modal - Confirm.- with invalid config" name="missing config" time="0" />
   <testcase classname="Modal - Confirm.- with invalid config" name="message" time="0" />
   <testcase classname="Modal - Confirm.- with invalid config" name="okLabel" time="0" />
-  <testcase classname="Modal - Confirm.- with invalid config" name="cancelLabel" time="0.001" />
+  <testcase classname="Modal - Confirm.- with invalid config" name="cancelLabel" time="0" />
  </testsuite>
- <testsuite name="Modal - Confirm.- with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="3" skipped="0" disabled="0" failures="0">
-  <testcase classname="Modal - Confirm.- with valid config" name="interface test" time="0" />
+ <testsuite name="Modal - Confirm.- with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="3" skipped="0" disabled="0" failures="0">
+  <testcase classname="Modal - Confirm.- with valid config" name="interface test" time="0.001" />
   <testcase classname="Modal - Confirm.- with valid config" name="Confirm Ok callback" time="0" />
   <testcase classname="Modal - Confirm.- with valid config" name="Confirm Cancel callback" time="0" />
  </testsuite>
- <testsuite name="tab" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="0" skipped="0" disabled="0" failures="0">
+ <testsuite name="tab" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.002" errors="0" tests="0" skipped="0" disabled="0" failures="0">
  </testsuite>
- <testsuite name="tab.dependencies" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="tab.dependencies" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="tab.dependencies" name="should throw error if depencencies is missing" time="0" />
   <testcase classname="tab.dependencies" name="should throw error if depencencies.base is missing" time="0" />
  </testsuite>
- <testsuite name="tab.with valid config" timestamp="2017-07-03T20:43:23" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
+ <testsuite name="tab.with valid config" timestamp="2017-07-03T21:28:02" hostname="localhost" time="0.001" errors="0" tests="2" skipped="0" disabled="0" failures="0">
   <testcase classname="tab.with valid config" name="should set config properly and pass parameters to base" time="0.001" />
   <testcase classname="tab.with valid config" name="should should pass to base the default variation value, if no config.variation is given" time="0" />
  </testsuite>

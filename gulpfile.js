@@ -56,7 +56,7 @@ var deployFiles = [
 // 		.pipe(gulp.dest("examples/"));
 // });
 
-superGulp.taskTemplates.initPluginTasks({
+superGulp.taskTemplates.initFrontendTasks({
 	packageJson: packageJson,
 	coverage: 70,
 	deployFolder: packageJson.version,
