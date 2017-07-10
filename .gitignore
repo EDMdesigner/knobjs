@@ -6,3 +6,5 @@ dist
 dist/*
 # Coverage directory used by tools like istanbul
 coverage
+tmp
+junitresults.xml
