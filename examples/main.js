@@ -3,7 +3,7 @@
 
 var superdata = require("superdata");
 
-var initKnob = require("../src/components").init;
+var initKnob = require("../src/main").init;
 
 initKnob({
 	theme: "background", //background, border, border-fill, chamaileon
