@@ -289,10 +289,10 @@ sort   | Array           | Yes      |               | The field names based on w
 ```html
 <knob-paged-list params="store: store, search: 'title', sort: ['id', 'name']">
 	<div>
-		<span data-bind="text: data.id"></span>
-		<span data-bind="text: data.email"></span>
-		<span data-bind="text: data.name"></span>
-		<span data-bind="text: data.title"></span>
+		<span data-bind="text: model.data.id"></span>
+		<span data-bind="text: model.data.email"></span>
+		<span data-bind="text: model.data.name"></span>
+		<span data-bind="text: model.data.title"></span>
 	</div>
 </knob-paged-list>
 
