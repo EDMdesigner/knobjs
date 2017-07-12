@@ -39,7 +39,7 @@ pipeline {
                 sh 'gulp build:prod'
                 withCredentials([usernamePassword(credentialsId: 'aws-staging', usernameVariable: 'AWS_KEY', passwordVariable: 'AWS_SECRET')]) {
                     // available as an env variable, but will be masked if you try to print it out any which way
-                    sh 'gulp s3-deploy --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-staging'
+                    sh 'gulp deploy:staging --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-staging'
                 }
                 sh 'npm set init.author.name "edmdesigner-bot-staging"'
                 sh 'npm set init.author.email "info@edmdesigner.com"'
@@ -58,7 +58,7 @@ pipeline {
                 sh 'gulp build:prod'
                 withCredentials([usernamePassword(credentialsId: 'aws-prod', usernameVariable: 'AWS_KEY', passwordVariable: 'AWS_SECRET')]) {
                     // available as an env variable, but will be masked if you try to print it out any which way
-                    sh 'gulp s3-deploy --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-cdn'
+                    sh 'gulp deploy:prod --s3key $AWS_KEY --s3secret $AWS_SECRET --s3region us-east-1 --s3bucket knobjs-cdn'
                 }
                 sh 'npm set init.author.name "edmdesigner-bot"'
                 sh 'npm set init.author.email "info@edmdesigner.com"'
