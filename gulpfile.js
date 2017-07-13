@@ -92,7 +92,7 @@ superGulp.taskTemplates.initFrontendTasks({
 					minify: true,
 					destFolder: "./dist/",
 					outputFileName: "knob.js",
-					standaloneName: packageJson.name
+					standaloneName: "knob"
 				}
 			],
 			dev: [
