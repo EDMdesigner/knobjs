@@ -169,6 +169,12 @@ var dropdown2 = {
 	value: ko.observable()
 };
 
+var infiniteList = {
+	loadMoreHandler: {
+		loadMore: function() {}
+	}
+};
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -197,5 +203,6 @@ ko.applyBindings({
 	numericMax: ko.observable(10),
 	numericStep: ko.observable(1),
 	numericPrecision: ko.observable(1),
-	numericTestVal: ko.observable(6)
+	numericTestVal: ko.observable(6),
+	infiniteList: infiniteList
 });

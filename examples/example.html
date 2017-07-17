@@ -504,7 +504,7 @@
 	<hr>
 
 	<h2>knob-infinite-list</h2>
-	<knob-infinite-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {id: 1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: { noResults: 'No results found', loadMore: 'Load more...'}">
+	<knob-infinite-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {id: 1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: { noResults: 'No results found', loadMore: 'Load more...'}, loadMoreHandler: infiniteList.loadMoreHandler">
 		<div>
 			<span data-bind="text: model.data.id"></span>
 			<span data-bind="text: model.data.email"></span>
@@ -512,6 +512,10 @@
 			<span data-bind="text: model.data.title"></span>
 		</div>
 	</knob-infinite-list>
+
+	<br>
+
+	<button data-bind="click: infiniteList.loadMoreHandler.loadMore">Load More</button>
 
 	<hr>
 
