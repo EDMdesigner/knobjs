@@ -3,9 +3,9 @@
 
 var superdata = require("superdata");
 
-var initKnob = require("../src/components").init;
+var knob = require("knob-js");
 
-initKnob({
+knob.init({
 	theme: "background", //background, border, border-fill, chamaileon
 	// for default and theme4
 	colors: {

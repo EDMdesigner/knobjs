@@ -23,7 +23,7 @@ module.exports = function createList(config) {
 	}
 
 	if (typeof config.store !== "object") {
-		throw new Error("config.search must be an object!");
+		throw new Error("config.store must be an object!");
 	}
 
 	if (!(config.fields instanceof Array)) {
