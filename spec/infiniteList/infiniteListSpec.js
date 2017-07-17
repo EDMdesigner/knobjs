@@ -1,12 +1,12 @@
 "use strict";
 
-// var ko = require("knockout");
+var ko = require("knockout");
 var superdata = require("superdata");
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
 
-// var infiniteListCore = require("../../src/infiniteList/core");
+var infiniteListCore = require("../../src/infiniteList/core");
 var createInfiniteList = require("../../src/infiniteList/vm");
 
 describe("infiniteList", function() {
@@ -33,7 +33,7 @@ describe("infiniteList", function() {
 		});
 
 		it("config.icons missing", function() {
-			expect(function() {	
+			expect(function() {
 				createInfiniteList({
 					store: "store",
 					labels: {
@@ -331,8 +331,117 @@ describe("infiniteList", function() {
 			});
 		});
 
-		describe("With mock createList", function() {
-			// TODO
+		describe("with mock createList", function() {
+			var mockList;
+			var createInfiniteListWithMockedCreateList;
+
+			beforeAll(function() {
+				mockList = {
+					sortOptions: [1],
+					findSortIdx: function() {
+						return 0;
+					},
+					sort: function() {
+						return {
+							value: 1
+						};
+					},
+					skip: function() {},
+					limit: function() {},
+					search: function() {},
+					initStoreHandling: function() {},
+					items: function() {},
+					itemsPerPage: function() {}
+				};
+
+				spyOn(mockList, "findSortIdx").and.callThrough();
+				spyOn(mockList, "sort").and.callThrough();
+				spyOn(mockList, "skip").and.callThrough();
+				spyOn(mockList, "limit").and.callThrough();
+				spyOn(mockList, "search").and.callThrough();
+				spyOn(mockList, "initStoreHandling").and.callThrough();
+				spyOn(mockList, "items").and.callThrough();
+				spyOn(mockList, "itemsPerPage").and.callThrough();
+
+				var mockCreateList = function() {
+					return mockList;
+				};
+
+				createInfiniteListWithMockedCreateList = infiniteListCore({
+					ko: ko,
+					createList: mockCreateList
+				});
+
+				proxy = createProxy({
+					idProperty: "id",
+					idType: "number",
+					route: "/user"
+				});
+
+				model = createModel({
+					fields: {
+						id: {
+							type: "number"
+						},
+						email: {
+							type: "string"
+						},
+						name: {
+							type: "string"
+						},
+						title: {
+							type: "string"
+						}
+					},
+					idField: "id",
+					proxy: proxy
+				});
+
+				store = createStore({
+					model: model
+				});
+
+				config = {
+					store: store,
+					fields: ["title", "id", "name"],
+					search: "title",
+					sort: [{
+						label: "By Id",
+						value: "id"
+					}, {
+						label: "By Name",
+						value: "name"
+					}],
+					icons: {
+						search: "icon",
+						dropdown: "icon",
+						loading: "icon",
+						sort: {
+							asc: "icon",
+							desc: "icon"
+						}
+					},
+					labels: {
+						noResults: "result",
+						loadMore: "load"
+					},
+					loadMoreHandler: {}
+				};
+
+				infiniteList = createInfiniteListWithMockedCreateList(config);
+			});
+
+			it("it should call load and fill list porperties", function() {
+				expect(mockList.skip).toHaveBeenCalled();
+				expect(mockList.limit).toHaveBeenCalled();
+			});
+
+			it("loadMore should call load", function() {
+				config.loadMoreHandler.loadMore();
+
+				expect(mockList.skip).toHaveBeenCalled();
+				expect(mockList.limit).toHaveBeenCalled();
+			});
 		});
 	});
 });
