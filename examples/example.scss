@@ -39,7 +39,8 @@
 		}
 	}
 
-	.knob-pagedlist__list {
+	.knob-pagedlist__list,
+	.knob-infinite-list__list {
 		list-style: none;
 		padding: 0;
 		width: 100%;
@@ -48,7 +49,8 @@
 		border-bottom: 1px solid #ddd;
 		margin-bottom: 0;
 
-		.knob-pagedlist__item {
+		.knob-pagedlist__item,
+		.knob-infinite-list__item {
 			padding: 5px;
 			cursor: pointer;
 
