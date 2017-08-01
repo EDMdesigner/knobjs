@@ -59,7 +59,6 @@ pipeline {
                 withNPM(npmrcConfig:'npmrc-global') {
                     sh 'npm publish'
                 }
-                
             }
         }
         stage('clean up') {
