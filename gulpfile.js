@@ -59,7 +59,7 @@ var deployFiles = [
 superGulp.taskTemplates.initFrontendTasks({
 	packageJson: packageJson,
 	coverage: 70,
-	deployFolder: packageJson.version,
+	deployFolder: "knobjs/" + packageJson.version + "/",
 	addPluginTasks: false,
 	files: {
 		js: jsFiles,
