@@ -174,7 +174,9 @@ function initKnob(config) {
 		name: "knob-button",
 		createVm: require("./button/vm"),
 		template: require("./button/template.html"),
-		style: buttonStyle
+		style: buttonStyle,
+		css: require("./button/css"),
+		colors: config.colors
 	});
 
 	registerComponent({

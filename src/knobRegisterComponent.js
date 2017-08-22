@@ -3,6 +3,9 @@
 var ko = require("knockout");
 var extend = require("extend");
 
+var styleElem = document.createElement("style");
+document.head.appendChild(styleElem);
+
 function knobRegisterComponent(config) {
 	if (typeof config.name !== "string") {
 		throw new Error("config.name has to be a string");
@@ -20,12 +23,20 @@ function knobRegisterComponent(config) {
 	var createVm = config.createVm;
 	var template = config.template;
 	var style = config.style;
+	var css = config.css;
+	var colors = config.colors;
 
 	var optionalConfig = extend(true, {}, config);
 	delete optionalConfig.name;
 	delete optionalConfig.createVm;
 	delete optionalConfig.template;
 	delete optionalConfig.style;
+
+	if (css) {
+		var cssTemplate = css(colors);
+		var cssTextNode = document.createTextNode(cssTemplate);
+		styleElem.appendChild(cssTextNode);
+	}
 
 	ko.components.register(name, {
 		viewModel: {

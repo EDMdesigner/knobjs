@@ -1,8 +1,9 @@
-<button data-bind="css: cssClass,
-					style: style,
-					event: eventHandlers,
-					click: click,
+<button class="knob-button" data-bind="click: click,
 					disable: state() === 'disabled'">
+
+	<span class="icon-wrapper" data-bind="if: leftImage">
+			<img class="img" data-bind="attr: { src: leftImage, alt:'Image not found' }"/>
+	</span>
 
 	<span class="icon-wrapper" data-bind="if: leftIcon">
 		<svg class="icon">
@@ -16,5 +17,9 @@
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': rightIcon}" xlink:href=""></use>
 		</svg>
+	</span>
+
+	<span class="icon-wrapper" data-bind="if: rightImage">
+			<img class="img" data-bind="attr: { src: rightImage, alt:'Image not found' }"/>
 	</span>
 </button>

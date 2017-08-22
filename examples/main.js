@@ -9,7 +9,8 @@ knob.init({
 	theme: "background", //background, border, border-fill, chamaileon
 	// for default and theme4
 	colors: {
-		primary: "#44c0fc",
+		default: "#bfbfbf", 
+		primary: "#a0e1ff",
 		secondary: "#f4f4f4",
 
 		info: "#25aaf2",

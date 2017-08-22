@@ -35,8 +35,9 @@ module.exports = function(dependencies) {
 		var click = config.click;
 		var triggerOnHold = config.triggerOnHold || false;
 
-		var vm = base(config);
 
+		var vm = base(config);
+		
 		vm.behaviours.hover.enable();
 
 		if (config.radio) {
@@ -51,6 +52,7 @@ module.exports = function(dependencies) {
 		var timeoutDecrement = triggerOnHold.timeoutDecrement || null;
 		var timeout = baseTimeout;
 
+		
 		var decoratedClick = function() {
 			click();
 			timeoutId = setTimeout(function() {
@@ -100,6 +102,8 @@ module.exports = function(dependencies) {
 
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
+		vm.leftImage = ko.observable(ko.unwrap(config.leftImage));
+		vm.rightImage = ko.observable(config.rightImage);
 		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
 

@@ -26,7 +26,7 @@ var jsonFiles = [
 ];
 
 var specFiles = [
-	"spec/**/*Spec.js"
+	"src/**/spec/*Spec.js"
 ];
 
 var sourceFiles = [
@@ -73,7 +73,9 @@ superGulp.taskTemplates.initFrontendTasks({
 			dev: [
 				{files: "./node_modules/normalize.css/normalize.css", dest: "./dist/lib"},
 				{files: "./node_modules/knockout/build/output/knockout-latest.debug.js", dest: "./dist/lib"},
-				{files: "./examples/example.html", dest: "./dist/examples"}
+				{files: "./examples/example.html", dest: "./dist/examples"},
+				{files: "./examples/button.html", dest: "./dist/examples"}
+				//{files: "./src/button/button.css", dest: "./dist/examples"}
 			]
 		},
 		sass: {
@@ -89,7 +91,7 @@ superGulp.taskTemplates.initFrontendTasks({
 			common: [
 				{
 					entries: ["./src/main.js"],
-					minify: true,
+					minify: false,
 					destFolder: "./dist/",
 					outputFileName: "knob.js",
 					standaloneName: "knob"
