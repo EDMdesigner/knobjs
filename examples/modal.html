@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-open" viewBox="0 0 32 32">
+<path d="M26.667 8h-10.667l-2.667-2.667h-8c-1.473 0-2.653 1.193-2.653 2.667l-0.013 16c0 1.473 1.193 2.667 2.667 2.667h21.333c1.473 0 2.667-1.193 2.667-2.667v-13.333c0-1.473-1.193-2.667-2.667-2.667zM26.667 24h-21.333v-13.333h21.333v13.333z"/>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M25.333 8.553l-1.887-1.887-7.447 7.447-7.447-7.447-1.887 1.887 7.447 7.447-7.447 7.447 1.887 1.887 7.447-7.447 7.447 7.447 1.887-1.887-7.447-7.447z"/>
+</symbol></svg><!-- endinject -->
+	<h1>KNOB 2.0</h1>
+	<h2>knob-modal</h2>
+
+	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: modalVisible">
+		<p>
+			Lorem ipsum <a href="#">dolor sit amet</a>, <strong>consectetur adipisicing elit</strong>. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
+		</p>
+	</knob-modal>
+	<hr>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>

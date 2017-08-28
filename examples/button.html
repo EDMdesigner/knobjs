@@ -6,30 +6,15 @@
 	<link rel="stylesheet" href="/lib/normalize.css">
 	<link rel="stylesheet" href="/knob.css">
 	<link rel="stylesheet" href="/examples/example.css">
-	<style type="text/css">
-		.anim-rotate {
-			animation: rotate 1.9s infinite linear;
-		}
-
-		@keyframes rotate {
-			from {
-				transform: rotate(0) scale(1) skew(1deg) translate(0);
-			}
-
-			to {
-				transform: rotate(360deg) scale(1) skew(1deg) translate(0);
-			}
-		}
-	</style>
 </head>
 <body>
 <div class="example">
 	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-warning" viewBox="0 0 32 32">
 <path d="M1.333 28h29.333l-14.667-25.333-14.667 25.333zM17.333 24h-2.667v-2.667h2.667v2.667zM17.333 18.667h-2.667v-5.333h2.667v5.333z"/>
 </symbol></svg><!-- endinject -->
-	<h1>knob.js</h1>
+	<h1>KNOB 2.0</h1>
 
-		<h2>Button variations</h2>
+		<h2>Knob-button variations</h2>
 		<h3>Default with icons</h3>
 		<knob-button class="" params="label: 'Default', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="" params="label: 'Default', rightIcon: '#icon-warning'"></knob-button>
@@ -51,8 +36,17 @@
 		<h3>Error</h3>
 		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning'"></knob-button>
-
-
+		<h3>Disabled</h3>
+		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning', disabled:true"></knob-button>
+		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning', disabled:true"></knob-button>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
 </div>
 <script src="/lib/knockout-latest.debug.js"></script>
 <script src="/knob.js"></script>

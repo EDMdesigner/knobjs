@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-expand-more" viewBox="0 0 32 32">
+<path d="M22.113 11.447l-6.113 6.113-6.113-6.113-1.887 1.887 8 8 8-8z"/>
+</symbol>
+<symbol id="icon-sort-asc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 18h18v4h-18v-4z"/>
+<path d="M14 12h14v4h-14v-4z"/>
+<path d="M14 6h10v4h-10v-4z"/>
+<path d="M14 0h6v4h-6v-4z"/>
+</symbol>
+<symbol id="icon-sort-desc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 0h18v4h-18v-4z"/>
+<path d="M14 6h14v4h-14v-4z"/>
+<path d="M14 12h10v4h-10v-4z"/>
+<path d="M14 18h6v4h-6v-4z"/>
+</symbol>
+<symbol id="icon-expand-less" viewBox="0 0 32 32">
+<path d="M16 10.667l-8 8 1.887 1.887 6.113-6.113 6.113 6.113 1.887-1.887z"/>
+</symbol><symbol id="icon-expand-more" viewBox="0 0 32 32">
+<path d="M22.113 11.447l-6.113 6.113-6.113-6.113-1.887 1.887 8 8 8-8z"/>
+</symbol>
+<symbol id="icon-arrow-downward" viewBox="0 0 32 32">
+<path d="M26.667 16l-1.88-1.88-7.453 7.44v-16.227h-2.667v16.227l-7.44-7.453-1.893 1.893 10.667 10.667 10.667-10.667z"/>
+</symbol><symbol id="icon-arrow-upward" viewBox="0 0 32 32">
+<path d="M5.333 16l1.887 1.887 7.447-7.447v16.227h2.667v-16.227l7.447 7.447 1.887-1.887-10.667-10.667-10.667 10.667z"/>
+</symbol></svg><!-- endinject -->
+	<h1>KNOB 2.0</h1>
+
+	<h2>knob-dropdown</h2>
+	<h3>array 'items' parameter</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: [
+			{label: 'id', icon: '#icon-sort-asc', value: {field: 'id desc', asc: true}},
+			{label: 'id', icon: '#icon-sort-desc', value: {field: 'id', asc: false}},
+			{label: 'name', icon: '#icon-sort-asc', value: {field: 'name', asc: true}},
+			{label: 'name', icon: '#icon-sort-desc', value: {field: 'name', asc: false}}
+		]">
+	</knob-dropdown>
+	<h3>observableArray 'items' parameter</h3>
+	<h5>After changing the items, the item with the previously selected value remains selected (if present).</h5>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown1.items,
+		selected: dropdown1.selected,
+		selectedIdx: dropdown1.index,
+		selectedValue: dropdown1.value
+		">
+	</knob-dropdown>
+	<knob-button params="
+		label: 'change options',
+		click: dropdown1.changeItems
+	">
+	</knob-button>
+	<p>Selected index: <span data-bind="text: dropdown1.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown1.value"></span></p>
+
+	<h3>selecting item by index or value</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown2.items,
+		selected: dropdown2.selected,
+		selectedIdx: dropdown2.index,
+		selectedValue: dropdown2.value
+		">
+	</knob-dropdown>
+
+	<p>Selected index: <span data-bind="text: dropdown2.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown2.value"></span></p>
+
+	Change the selected index here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.index
+	">
+	</knob-numericinput>
+
+	Change the selected value here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.value
+	">
+	</knob-numericinput>
+
+	<hr>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>
