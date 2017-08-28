@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+	<style type="text/css">
+		.anim-rotate {
+			animation: rotate 1.9s infinite linear;
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0) scale(1) skew(1deg) translate(0);
+			}
+
+			to {
+				transform: rotate(360deg) scale(1) skew(1deg) translate(0);
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="example">
+	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-grid" viewBox="0 0 32 32">
+<path d="M5.333 10.667h5.333v-5.333h-5.333v5.333zM13.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 18.667h5.333v-5.333h-5.333v5.333zM13.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 5.333v5.333h5.333v-5.333h-5.333zM13.333 10.667h5.333v-5.333h-5.333v5.333zM21.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 26.667h5.333v-5.333h-5.333v5.333z"/>
+</symbol>
+<symbol id="icon-list" viewBox="0 0 32 32">
+<path d="M5.333 18.667h5.333v-5.333h-5.333v5.333zM5.333 25.333h5.333v-5.333h-5.333v5.333zM5.333 12h5.333v-5.333h-5.333v5.333zM12 18.667h16v-5.333h-16v5.333zM12 25.333h16v-5.333h-16v5.333zM12 6.667v5.333h16v-5.333h-16z"/>
+</symbol>
+	<h1>KNOB 2.0</h1>
+
+	<h2>knob-radio</h2>
+	<h4>Inline</h4>
+	<knob-radio params="
+		group: 'test',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+	<h4>Blocked</h4>
+	<knob-radio params="
+		group: 'test2',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]" class="knob-radio--block">
+	</knob-radio>
+	<hr>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>
