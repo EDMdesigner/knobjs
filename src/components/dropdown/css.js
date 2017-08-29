@@ -1,3 +1,5 @@
+"use strict";
+
 var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {

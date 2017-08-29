@@ -1,3 +1,5 @@
+"use strict";
+
 var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
 

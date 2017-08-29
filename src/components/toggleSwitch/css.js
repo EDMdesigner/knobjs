@@ -1,3 +1,5 @@
+"use strict";
+
 module.exports = function() {
 
 let cssTemplate = `
@@ -36,9 +38,6 @@ let cssTemplate = `
 .knob-toggle-track:active {
   transition: margin 0.4s ease-in;
 }
-
-}
 `;
-
 	return cssTemplate;
 };

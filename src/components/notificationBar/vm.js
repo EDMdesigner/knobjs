@@ -1,4 +1,5 @@
 "use strict";
+
 var ko = require("knockout");
 var base = require("../../base/vm");
 

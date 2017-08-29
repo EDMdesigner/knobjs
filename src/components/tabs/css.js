@@ -1,3 +1,5 @@
+"use strict";
+
 var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
