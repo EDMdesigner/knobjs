@@ -204,7 +204,7 @@ describe("Button", function() {
 			expect(config.click).toHaveBeenCalledTimes(1);
 		});
 
-		/*it("should call click several times when triggerOnHold is defined", function(done) {
+		it("should call click several times when triggerOnHold is defined", function(done) {
 			var config = {
 				componentName: componentName,
 				variation: variation,
@@ -225,12 +225,12 @@ describe("Button", function() {
 
 			buttonVm = createButton(config);
 
-			buttonVm.currentStyle = "active";
+			buttonVm.currentStyle("active");
 			setTimeout(function() {
-				buttonVm.currentStyle = "default";
+				buttonVm.currentStyle("default");
 				expect(config.click.calls.count()).toBeGreaterThan(2);
 				done();
 			}, 301);
-		});*/
+		});
 	});
 });

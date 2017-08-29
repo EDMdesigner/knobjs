@@ -1,11 +1,6 @@
 var tinycolor = require("tinycolor2");
-var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
-
-var baseColor = config.primary;
-var colorShades = createColorShades(baseColor);
-var textColor = tinycolor(baseColor).isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-radio {
@@ -51,32 +46,16 @@ let cssTemplate = `
 .knob-tab.orientation-left-top .knob-tab p:nth-child(1) {
   margin-top: 0;
 }
-.knob-radio button {
-  color: ${ textColor };
-  fill: ${ textColor };
-}
-.knob-radio button:hover {
-  background-color: ${ colorShades.color4 };
-  color: ${ textColor };
-  fill: ${ textColor };
-}
 .knob-radio .active button {
   font-weight: bold;
-  color: ${ textColor };
-  border-top: 5px solid ${ baseColor === config.default ? "#bababa" : baseColor };
-  color: ${ textColor };
-  fill: ${ textColor };
-  cursor: not-allowed;
+  border-top: 4px solid ${ config.primary };
 }
-.knob-radio--block .active button {
+.knob-radio--block .knob-radio .active button {
   font-weight: bold;
-  border-left: 5px solid ${ baseColor === config.default ? "#bababa" : baseColor };
-  color: ${ textColor };
+  border-left: 5px solid ${ config.primary };
   border-top: none;
-  fill: ${ textColor };
-  cursor: not-allowed;
 }
 `;
 
-  return cssTemplate;
-};
+return cssTemplate;
+}

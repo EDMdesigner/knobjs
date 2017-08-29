@@ -42,6 +42,8 @@ module.exports = function(dependencies) {
 		var minTimeout = triggerOnHold.minTimeout || null;
 		var timeoutDecrement = triggerOnHold.timeoutDecrement || null;
 		var timeout = baseTimeout;
+		var currentStyle = ko.observable("default");
+		vm.currentStyle = currentStyle;
 
 		
 		var decoratedClick = function() {
@@ -54,7 +56,7 @@ module.exports = function(dependencies) {
 				}
 
 
-				if (vm.currentStyle === "active") {
+				if (vm.currentStyle() === "active") {
 					decoratedClick();
 				} else {
 					clearTimeout(timeoutId);
@@ -68,7 +70,7 @@ module.exports = function(dependencies) {
 		if (triggerOnHold) {
 			ko.computed(function() {
 
-				if (vm.currentStyle === "active" && timeoutId) {
+				if (vm.currentStyle() === "active" && timeoutId) {
 					clearTimeout(timeoutId);
 					timeoutId = null;
 					return;
@@ -78,7 +80,7 @@ module.exports = function(dependencies) {
 					return;
 				}
 
-				if(vm.currentStyle === "active") {
+				if(vm.currentStyle() === "active") {
 					timeout = baseTimeout;
 					decoratedClick();
 				}

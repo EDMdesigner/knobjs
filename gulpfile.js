@@ -83,7 +83,8 @@ superGulp.taskTemplates.initFrontendTasks({
 				{files: "./examples/checkbox.html", dest: "./dist/examples"},
 				{files: "./examples/infiniteList.html", dest: "./dist/examples"},
 				{files: "./examples/misc.html", dest: "./dist/examples"},
-				{files: "./examples/modal.html", dest: "./dist/examples"}				
+				{files: "./examples/modal.html", dest: "./dist/examples"},				
+				{files: "./examples/selectablePagedList.html", dest: "./dist/examples"}				
 			]
 		},
 		sass: {

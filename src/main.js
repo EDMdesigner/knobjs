@@ -183,14 +183,18 @@ function initKnob(config) {
 		name: "knob-input",
 		createVm: require("./components/input/vm"),
 		template: require("./components/input/template.html"),
-		style: createInputStyle(config.colors)
+		style: createInputStyle(config.colors),
+		css: require("./components/input/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
 		name: "knob-textarea",
 		createVm: require("./components/textarea/vm"),
 		template: require("./components/textarea/template.html"),
-		style: createInputStyle(config.colors)
+		style: createInputStyle(config.colors),
+		css: require("./components/textarea/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
@@ -264,7 +268,9 @@ function initKnob(config) {
 		},
 		labels: {
 			noResults: labels.noResults
-		}
+		},
+		css: require("./components/selectablePagedList/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
@@ -290,7 +296,9 @@ function initKnob(config) {
 		name: "knob-toggleswitch",
 		createVm: require("./components/toggleSwitch/vm"),
 		template: require("./components/toggleSwitch/template.html"),
-		style: createToggleSwitchStyle(config.colors)
+		style: createToggleSwitchStyle(config.colors),
+		css: require("./components/toggleSwitch/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
@@ -306,14 +314,18 @@ function initKnob(config) {
 		name: "knob-confirm",
 		createVm: require("./components/modal/confirm/vm"),
 		template: require("./components/modal/confirm/template.html"),
-		style: createModalStyle(config.colors)
+		style: createModalStyle(config.colors),
+		css: require("./components/modal/confirm/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
 		name: "knob-alert",
 		createVm: require("./components/modal/alert/vm"),
 		template: require("./components/modal/alert/template.html"),
-		style: createModalStyle(config.colors)
+		style: createModalStyle(config.colors),
+		css: require("./components/modal/alert/css"),
+		colors: config.colors
 	});
 
 	registerComponent({

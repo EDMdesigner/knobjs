@@ -1,10 +1,10 @@
-//var tinycolor = require("tinycolor2");
-//var createColorShades = require("../../utils/colorShades");
+var tinycolor = require("tinycolor2");
+var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-//var baseColor = config.primary;  
-//var colorShades = createColorShades(baseColor);
+var baseColor = config.primary;  
+var colorShades = createColorShades(baseColor);
 
 
 let cssTemplate = `
@@ -28,20 +28,26 @@ let cssTemplate = `
   max-width: 90%;
   /*	z-index: 22; */
   overflow: hidden;
-  border: 1px solid;
+  border: 3px solid ${ colorShades.color5 };
+}
+.knob-modal:hover {
+  border: 3px solid ${ colorShades.color2 };
 }
 .knob-modal__header {
   padding: 10px;
+  color: black;
 }
 .knob-modal__header .desc {
   padding-right: 10px;
   vertical-align: middle;
+  color: black;
 }
 .knob-modal__header .desc svg {
   float: left;
   margin-right: 10px;
   width: 24px;
   height: 24px;
+  fill: black;
 }
 .knob-modal__header .button-close {
   float: right;
@@ -54,7 +60,7 @@ let cssTemplate = `
 }
 .knob-modal__body {
   max-width: 555px;
-  padding: 0;
+  padding: 15px;
   width: 100%;
 }
 .knob-modal__content {
