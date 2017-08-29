@@ -18,10 +18,97 @@
 </symbol>
 <symbol id="icon-done" viewBox="0 0 32 32">
 <path d="M12 21.56l-5.56-5.56-1.887 1.887 7.447 7.447 16-16-1.887-1.887z"/>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M20.667 18.667h-1.060l-0.367-0.367c1.307-1.513 2.093-3.48 2.093-5.633 0-4.787-3.88-8.667-8.667-8.667s-8.667 3.88-8.667 8.667 3.88 8.667 8.667 8.667c2.153 0 4.12-0.787 5.633-2.087l0.367 0.367v1.053l6.667 6.653 1.987-1.987-6.653-6.667zM12.667 18.667c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/>
 </symbol></svg><!-- endinject -->
 	<h1>KNOB 2.0</h1>
 	<h2>knob-inline-text-editor</h2>
 	<knob-inline-text-editor></knob-inline-text-editor>
+	<hr>
+	<h2>knob-input</h2>
+	<div style="width: 300px">
+		<knob-input params="placeholder: 'Name'"></knob-input>
+		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
+	</div>
+	<hr>
+
+	<h2> advanced knob-inputs</h2>
+	<div style="width: 300px">
+		<knob-input params="
+			placeholder: 'Price',
+			left: {
+				text: {
+					value: 'PRE:',
+					hideOnContent: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			},
+			right: {
+				text:{
+					value: 'HUF'
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			left: {
+				text:{
+					value: 'Search',
+					hideOnContent: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			right: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search'
+				}
+			}">
+		</knob-input>
+		<h3>knob-input with primary variation</h3>
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			right: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			variation: 'primary'">
+		</knob-input>
+	</div>
 	<hr>
 </div>
 <script src="/lib/knockout-latest.debug.js"></script>

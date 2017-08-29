@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-arrow-downward" viewBox="0 0 32 32">
+<path d="M26.667 16l-1.88-1.88-7.453 7.44v-16.227h-2.667v16.227l-7.44-7.453-1.893 1.893 10.667 10.667 10.667-10.667z"/>
+</symbol><symbol id="icon-arrow-upward" viewBox="0 0 32 32">
+<path d="M5.333 16l1.887 1.887 7.447-7.447v16.227h2.667v-16.227l7.447 7.447 1.887-1.887-10.667-10.667-10.667 10.667z"/>
+</symbol>
+</svg><!-- endinject -->
+<h2>knob-numericinput layout back(default)</h2>
+	<h4>Configuration: minValue: -273, maxValue: 3000, step: 5, precision: 1</h4>
+	<knob-numericinput params="
+		minValue: -273,
+		maxValue: 3000,
+		value: ko.observable(0),
+		precision: 1,
+		step: 5,
+		left: {
+			text: {
+				value: 'Temperature: '
+			}
+		},
+		right: {
+			text: {
+				value: '°C'
+			}
+		}
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout split</h2>
+	<h4>Configuration: minValue: 3, maxValue: 600, step: 3, precision not given (defaults to step)</h4>
+	<knob-numericinput params="
+		minValue: 3,
+		maxValue: 600,
+		value: ko.observable(12),
+		step: 3,
+		left: {
+			text: {
+				value: 'Font size: '
+			}
+		},
+		right: {
+			text: {
+				value: 'px'
+			}
+		},
+		layoutArrangement: 'split'
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout front</h2>
+	<h4>Configuration: minValue: 0, maxValue: 20000, step: 10, precision: 0 (any numeric value between the boundaries can be typed in)</h4>
+	<knob-numericinput params="
+		minValue: 0,
+		maxValue: 20000,
+		value: ko.observable(876.8),
+		precision: 0,
+		step: 10,
+		left: {
+			text: {
+				value: 'Distance: '
+			}
+		},
+		right: {
+			text: {
+				value: 'km'
+			}
+		},
+		layoutArrangement: 'front'
+	">
+	</knob-numericinput>
+
+	<h2>knob-numericinput with adjustable parameters</h2>
+	<h4>(revalidates its value on the change of parameters)</h4>
+
+	<knob-numericinput params="
+		minValue: numericMin,
+		maxValue: numericMax,
+		value: numericTestVal,
+		precision: numericPrecision,
+		step: numericStep
+	"></knob-numericinput>
+
+	<h4>The validated value of the component is: <span data-bind="text: numericTestVal"></span></h4>
+
+	minValue: <knob-numericinput params="
+		minValue: -2000,
+		maxValue: 0,
+		value: numericMin,
+		step: 1
+	"></knob-numericinput>
+
+	maxValue: <knob-numericinput params="
+		minValue: 0,
+		maxValue: 2000,
+		value: numericMax,
+		step: 1
+	"></knob-numericinput>
+
+	step: <knob-numericinput params="
+		minValue: 1,
+		maxValue: 100,
+		value: numericStep,
+		step: 1
+	"></knob-numericinput>
+
+	precision: <knob-numericinput params="
+		minValue: 0,
+		maxValue: 20,
+		value: numericPrecision,
+		step: 1,
+		precision: 0
+	"></knob-numericinput>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>

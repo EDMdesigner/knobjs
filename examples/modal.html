@@ -29,6 +29,31 @@
 		</p>
 	</knob-modal>
 	<hr>
+	<h2>knob-confirm</h2>
+	<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-open',
+		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+		visible: confirmVisible,
+		okLabel: 'Ok',
+		cancelLabel: 'Cancel',
+		callback: confirmCallback
+	"></knob-confirm>
+	<hr>
+	<h2>knob-alert</h2>
+	<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
+
+
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-warning',
+		message: 'I have to alert you about something?',
+		visible: alertVisible,
+		okLabel: 'Ok',
+		callback: alertCallback">
+	</knob-alert>
+	<hr>
 </div>
 <script src="/lib/knockout-latest.debug.js"></script>
 <script src="/knob.js"></script>
