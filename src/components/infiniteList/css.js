@@ -1,4 +1,3 @@
-var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {

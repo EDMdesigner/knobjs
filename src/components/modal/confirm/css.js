@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function() {
 
 let cssTemplate = `
 .knob-modal-confirm .knob-modal__buttons {

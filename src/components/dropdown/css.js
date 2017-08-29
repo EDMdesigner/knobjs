@@ -1,11 +1,9 @@
-var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
 var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
-var textColor = tinycolor(config.primary).isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-dropdown-menu {

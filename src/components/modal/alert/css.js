@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function() {
 
 let cssTemplate = `
 .knob-modal-alert .knob-modal__buttons {

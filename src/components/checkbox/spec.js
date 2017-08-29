@@ -157,7 +157,6 @@ describe("Checkbox", function() {
 						}
 					};
 
-					spyOn(vm.behaviours.hover, "enable");
 					spyOn(vm.behaviours.click, "enable");
 
 					return vm;
@@ -231,9 +230,6 @@ describe("Checkbox", function() {
 			};
 
 			checkboxVm = createCheckbox(config);
-
-			expect(checkboxVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(checkboxVm.behaviours.click.enable).toHaveBeenCalled();
 		});
 
 		it("value change on click", function() {
@@ -268,7 +264,7 @@ describe("Checkbox", function() {
 					cross: crossIcon
 				},
 				value: value,
-				state: "disabled"
+				disabled: "disabled"
 			};
 
 			checkboxVm = createCheckbox(config);

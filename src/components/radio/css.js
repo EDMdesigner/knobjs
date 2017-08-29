@@ -1,5 +1,3 @@
-var tinycolor = require("tinycolor2");
-
 module.exports = function(config) {
 
 let cssTemplate = `
@@ -58,4 +56,4 @@ let cssTemplate = `
 `;
 
 return cssTemplate;
-}
+};
