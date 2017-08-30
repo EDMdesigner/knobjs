@@ -7,6 +7,11 @@ var knob = require("knob-js");
 var ko = window.ko;
 
 var defaultColor = ko.observable("e2e2e2");
+var primaryColor = ko.observable("a0e1ff");
+var infoColor = ko.observable("25aaf2");
+var warningColor = ko.observable("f5a500");
+var successColor = ko.observable("54c059");
+var errorColor = ko.observable("ee483b");
 
 ko.computed(function() {
 	knob.init({
@@ -14,13 +19,13 @@ ko.computed(function() {
 	// for default and theme4
 	colors: {
 		default: defaultColor(), 
-		primary: "#a0e1ff",
+		primary: primaryColor(),
 		secondary: "#f4f4f4",
 
-		info: "#25aaf2",
-		success: "#54c059",
-		warning: "#f5a500",
-		error: "#ee483b",
+		info: infoColor(),
+		success: successColor(),
+		warning: warningColor(),
+		error: errorColor(),
 
 		white: "#fff",
 		black: "#000",
@@ -160,10 +165,6 @@ var dropdown1 = {
 };
 dropdown1.changeItems();
 
-var defaultColor = function(){
-	alert();
-}
-
 var dropdown2 = {
 	items: [
 		{label: "zero", value: 0},
@@ -213,5 +214,10 @@ ko.applyBindings({
 	numericPrecision: ko.observable(1),
 	numericTestVal: ko.observable(6),
 	infiniteList: infiniteList,
-	defaultColor: defaultColor
+	defaultColor: defaultColor,
+	primaryColor: primaryColor,
+	infoColor: infoColor,
+	warningColor: warningColor,
+	successColor: successColor,
+	errorColor: errorColor
 });

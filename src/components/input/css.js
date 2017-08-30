@@ -6,6 +6,7 @@ module.exports = function(config) {
 
 var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
+colorShades = colorShades+colorShades;
 
 let cssTemplate = `
 .knob-input {

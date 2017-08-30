@@ -86,14 +86,20 @@
 </symbol></svg><!-- endinject -->
 	<h1>knob.js 2.0</h1>
 		<h4>Please choose your preferred colors:</h4>
-		<br/>
+		<table>
 		Default-color: <input class="jscolor" value="e2e2e2" 
 		data-bind="value: defaultColor">
-		Primary-color: <input class="jscolor" value="a0e1ff">
-		Info-color: <input class="jscolor" value="25aaf2">
-		Warning-color: <input class="jscolor" value="f5a500">
-		Success-color: <input class="jscolor" value="54c059">
-		Error-color: <input class="jscolor" value="ee483b">
+		Primary-color: <input class="jscolor" value="a0e1ff"
+		data-bind="value: primaryColor">
+		Info-color: <input class="jscolor" value="25aaf2"
+		data-bind="value: infoColor">
+		Warning-color: <input class="jscolor" value="f5a500"
+		data-bind="value: warningColor">
+		Success-color: <input class="jscolor" value="54c059"
+		data-bind="value: successColor">
+		Error-color: <input class="jscolor" value="ee483b"
+		data-bind="value: errorColor">
+		</table>
 		<h2>Buttons</h2>
 		<knob-button class="" params="label: 'Default', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="" params="label: 'Default', rightIcon: '#icon-warning'"></knob-button>

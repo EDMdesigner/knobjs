@@ -29,7 +29,7 @@ let cssTemplate = `
 .knob-dropdown div button:hover {
   background-color: ${ colorShades.color4 };
 }
-.knob-dropdown .knob-button:hover {
+.variation-primary .knob-dropdown .knob-button:hover {
   background-color: ${ colorShades.color4 };
 }
 .knob-dropdown-menu button:hover {

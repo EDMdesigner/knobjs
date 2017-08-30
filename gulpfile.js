@@ -86,7 +86,7 @@ superGulp.taskTemplates.initFrontendTasks({
 				{files: "./examples/misc.html", dest: "./dist/examples"},
 				{files: "./examples/modal.html", dest: "./dist/examples"},				
 				{files: "./examples/selectablePagedList.html", dest: "./dist/examples"},				
-				{files: "./examples/superexample.html", dest: "./dist/examples"},
+				{files: "./examples/superExample.html", dest: "./dist/examples"},
 				{files: "./lib/jscolor.js", dest: "./dist/lib"}			
 			]
 		},
