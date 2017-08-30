@@ -14,16 +14,10 @@ let cssTemplate = `
   border-style: solid;
   border-width: 1px;
 }
-.knob-input:hover {
-  border: 1px solid ${ colorShades.color4 } !important	;
-}
-.knob-input-wrapper.active > div {
-  border: 2px solid ${ colorShades.color6 } !important	;
-}
 .knob-input input {
-  border: 0px none !important;
-  outline: 0px none !important;
-  background: transparent none !important;
+  border: 0px none;
+  outline: 0px none;
+  background: transparent none;
   flex: 1 100%;
   margin-left: 3px;
   margin-right: 3px;

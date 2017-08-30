@@ -42,21 +42,17 @@ let cssTemplate = `
     cursor: not-allowed;
   }
 
-  .primary .knob-tab .active button {
+  .variation-primary .knob-tab .active button {
     background-color: blue;
   }
 
-  .secondary .knob-tab button {
+  .variation-secondary .knob-tab button {
     font-size: 16px;
   }
 
-  .secondary .knob-tab .active button {
+  .variation-secondary .knob-tab .active button {
     background-color: red;
-  }
-
-
-
-  
+  }  
   `;
 
   return cssTemplate;

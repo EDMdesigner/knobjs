@@ -26,11 +26,10 @@ let cssTemplate = `
   border-width: 1px;
   border-top: 0px;
 }
-.knob-button:hover {
-  text-align: left;
-  border-radius: 0px;
-  border-width: 1px;
-  border-top: 0px;
+.knob-dropdown div button:hover {
+  background-color: ${ colorShades.color4 };
+}
+.knob-dropdown .knob-button:hover {
   background-color: ${ colorShades.color4 };
 }
 .knob-dropdown-menu button:hover {

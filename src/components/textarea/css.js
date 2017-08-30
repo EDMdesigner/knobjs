@@ -18,8 +18,12 @@ let cssTemplate = `
   max-width: 100%;
   min-height: 60px;
 }
+.knob-textarea:hover {
+  border: 1px solid ${ colorShades.color4 } !important;
+}
 .knob-textarea-wrapper.active > textarea {
-	border: 2px solid ${ colorShades.color4 } !important;
+	border: 2px solid ${ colorShades.color6 } !important;
+  outline: none !important;
 }
 `;
 

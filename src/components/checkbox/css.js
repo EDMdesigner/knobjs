@@ -16,8 +16,12 @@ knob-checkbox svg:hover {
   cursor: pointer;
   fill: ${ colorShades.color4 };
 }
+knob-checkbox .disabled{
+	fill: #d3d3d3;
+}
 knob-checkbox .disabled svg {
   cursor: not-allowed;
+  fill: #d3d3d3;
 }
 knob-checkbox .icon {
   width: 24px;

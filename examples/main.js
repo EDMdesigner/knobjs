@@ -4,12 +4,16 @@
 var superdata = require("superdata");
 
 var knob = require("knob-js");
+var ko = window.ko;
 
-knob.init({
+var defaultColor = ko.observable("e2e2e2");
+
+ko.computed(function() {
+	knob.init({
 	theme: "background", //background, border, border-fill, chamaileon
 	// for default and theme4
 	colors: {
-		default: "#e2e2e2", 
+		default: defaultColor(), 
 		primary: "#a0e1ff",
 		secondary: "#f4f4f4",
 
@@ -62,12 +66,12 @@ knob.init({
 		noResults: "No results"
 	}
 });
+}, this);
 
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
 
-var ko = window.ko;
 
 var proxy = createProxy({
 	idProperty: "id",
@@ -156,6 +160,10 @@ var dropdown1 = {
 };
 dropdown1.changeItems();
 
+var defaultColor = function(){
+	alert();
+}
+
 var dropdown2 = {
 	items: [
 		{label: "zero", value: 0},
@@ -175,7 +183,6 @@ var infiniteList = {
 		loadMore: function() {}
 	}
 };
-
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -205,5 +212,6 @@ ko.applyBindings({
 	numericStep: ko.observable(1),
 	numericPrecision: ko.observable(1),
 	numericTestVal: ko.observable(6),
-	infiniteList: infiniteList
+	infiniteList: infiniteList,
+	defaultColor: defaultColor
 });

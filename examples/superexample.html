@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS 2.0</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-add" viewBox="0 0 32 32">
+<path d="M25.333 17.333h-8v8h-2.667v-8h-8v-2.667h8v-8h2.667v8h8v2.667z"/>
+</symbol><symbol id="icon-arrow-downward" viewBox="0 0 32 32">
+<path d="M26.667 16l-1.88-1.88-7.453 7.44v-16.227h-2.667v16.227l-7.44-7.453-1.893 1.893 10.667 10.667 10.667-10.667z"/>
+</symbol><symbol id="icon-arrow-upward" viewBox="0 0 32 32">
+<path d="M5.333 16l1.887 1.887 7.447-7.447v16.227h2.667v-16.227l7.447 7.447 1.887-1.887-10.667-10.667-10.667 10.667z"/>
+</symbol><symbol id="icon-attach" viewBox="0 0 32 32">
+<path d="M22 8v15.333c0 2.947-2.387 5.333-5.333 5.333s-5.333-2.387-5.333-5.333v-16.667c0-1.84 1.493-3.333 3.333-3.333s3.333 1.493 3.333 3.333v14c0 0.733-0.593 1.333-1.333 1.333s-1.333-0.6-1.333-1.333v-12.667h-2v12.667c0 1.84 1.493 3.333 3.333 3.333s3.333-1.493 3.333-3.333v-14c0-2.947-2.387-5.333-5.333-5.333s-5.333 2.387-5.333 5.333v16.667c0 4.053 3.287 7.333 7.333 7.333s7.333-3.28 7.333-7.333v-15.333h-2z"/>
+</symbol><symbol id="icon-check" viewBox="0 0 32 32">
+<path d="M16 2.667c-7.367 0-13.333 5.967-13.333 13.333 0 7.36 5.967 13.333 13.333 13.333 7.36 0 13.333-5.973 13.333-13.333 0-7.367-5.973-13.333-13.333-13.333zM13.333 22.667l-6.667-6.667 1.887-1.887 4.78 4.78 10.113-10.113 1.887 1.887-12 12z"/>
+</symbol><symbol id="icon-chevron-left" viewBox="0 0 32 32">
+<path d="M20.553 9.887l-1.887-1.887-8 8 8 8 1.887-1.887-6.113-6.113z"/>
+</symbol><symbol id="icon-chevron-right" viewBox="0 0 32 32">
+<path d="M13.333 8l-1.887 1.887 6.113 6.113-6.113 6.113 1.887 1.887 8-8z"/>
+</symbol><symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M25.333 8.553l-1.887-1.887-7.447 7.447-7.447-7.447-1.887 1.887 7.447 7.447-7.447 7.447 1.887 1.887 7.447-7.447 7.447 7.447 1.887-1.887-7.447-7.447z"/>
+</symbol><symbol id="icon-copy" viewBox="0 0 32 32">
+<path d="M21.333 1.333h-16c-1.473 0-2.667 1.193-2.667 2.667v18.667h2.667v-18.667h16v-2.667zM25.333 6.667h-14.667c-1.473 0-2.667 1.193-2.667 2.667v18.667c0 1.473 1.193 2.667 2.667 2.667h14.667c1.473 0 2.667-1.193 2.667-2.667v-18.667c0-1.473-1.193-2.667-2.667-2.667zM25.333 28h-14.667v-18.667h14.667v18.667z"/>
+</symbol><symbol id="icon-delete" viewBox="0 0 32 32">
+<path d="M8 25.333c0 1.473 1.193 2.667 2.667 2.667h10.667c1.473 0 2.667-1.193 2.667-2.667v-16h-16v16zM25.333 5.333h-4.667l-1.333-1.333h-6.667l-1.333 1.333h-4.667v2.667h18.667v-2.667z"/>
+</symbol><symbol id="icon-desktop" viewBox="0 0 32 32">
+<path d="M28 4h-24c-1.473 0-2.667 1.193-2.667 2.667v16c0 1.473 1.193 2.667 2.667 2.667h6.667v2.667h10.667v-2.667h6.667c1.473 0 2.653-1.193 2.653-2.667l0.013-16c0-1.473-1.193-2.667-2.667-2.667zM28 22.667h-24v-16h24v16z"/>
+</symbol><symbol id="icon-done" viewBox="0 0 32 32">
+<path d="M12 21.56l-5.56-5.56-1.887 1.887 7.447 7.447 16-16-1.887-1.887z"/>
+</symbol><symbol id="icon-edit" viewBox="0 0 32 32">
+<path d="M4 23v5h5l14.747-14.747-5-5-14.747 14.747zM27.613 9.387c0.52-0.52 0.52-1.36 0-1.88l-3.12-3.12c-0.52-0.52-1.36-0.52-1.88 0l-2.44 2.44 5 5 2.44-2.44z"/>
+</symbol><symbol id="icon-error" viewBox="0 0 32 32">
+<path d="M16 2.667c-7.36 0-13.333 5.967-13.333 13.333s5.973 13.333 13.333 13.333 13.333-5.967 13.333-13.333-5.973-13.333-13.333-13.333zM17.333 22.667h-2.667v-2.667h2.667v2.667zM17.333 17.333h-2.667v-8h2.667v8z"/>
+</symbol><symbol id="icon-expand-less" viewBox="0 0 32 32">
+<path d="M16 10.667l-8 8 1.887 1.887 6.113-6.113 6.113 6.113 1.887-1.887z"/>
+</symbol><symbol id="icon-expand-more" viewBox="0 0 32 32">
+<path d="M22.113 11.447l-6.113 6.113-6.113-6.113-1.887 1.887 8 8 8-8z"/>
+</symbol><symbol id="icon-file-upload" viewBox="0 0 32 32">
+<path d="M25.8 13.387c-0.907-4.6-4.947-8.053-9.8-8.053-3.853 0-7.2 2.187-8.867 5.387-4.013 0.427-7.133 3.827-7.133 7.947 0 4.413 3.587 8 8 8h17.333c3.68 0 6.667-2.987 6.667-6.667 0-3.52-2.733-6.373-6.2-6.613zM18.667 17.333v5.333h-5.333v-5.333h-4l6.667-6.667 6.667 6.667h-4z"/>
+</symbol><symbol id="icon-first-page" viewBox="0 0 32 32">
+<path d="M24.547 22.12l-6.12-6.12 6.12-6.12-1.88-1.88-8 8 8 8zM8 8h2.667v16h-2.667z"/>
+</symbol><symbol id="icon-grid" viewBox="0 0 32 32">
+<path d="M5.333 10.667h5.333v-5.333h-5.333v5.333zM13.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 26.667h5.333v-5.333h-5.333v5.333zM5.333 18.667h5.333v-5.333h-5.333v5.333zM13.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 5.333v5.333h5.333v-5.333h-5.333zM13.333 10.667h5.333v-5.333h-5.333v5.333zM21.333 18.667h5.333v-5.333h-5.333v5.333zM21.333 26.667h5.333v-5.333h-5.333v5.333z"/>
+</symbol><symbol id="icon-info" viewBox="0 0 32 32">
+<path d="M14.667 22.667h2.667v-8h-2.667v8zM16 2.667c-7.367 0-13.333 5.967-13.333 13.333s5.967 13.333 13.333 13.333 13.333-5.967 13.333-13.333-5.967-13.333-13.333-13.333zM16 26.667c-5.88 0-10.667-4.787-10.667-10.667s4.787-10.667 10.667-10.667 10.667 4.787 10.667 10.667-4.787 10.667-10.667 10.667zM14.667 12h2.667v-2.667h-2.667v2.667z"/>
+</symbol><symbol id="icon-last-page" viewBox="0 0 32 32">
+<path d="M7.453 9.88l6.12 6.12-6.12 6.12 1.88 1.88 8-8-8-8zM21.333 8h2.667v16h-2.667z"/>
+</symbol><symbol id="icon-list" viewBox="0 0 32 32">
+<path d="M5.333 18.667h5.333v-5.333h-5.333v5.333zM5.333 25.333h5.333v-5.333h-5.333v5.333zM5.333 12h5.333v-5.333h-5.333v5.333zM12 18.667h16v-5.333h-16v5.333zM12 25.333h16v-5.333h-16v5.333zM12 6.667v5.333h16v-5.333h-16z"/>
+</symbol><symbol id="icon-loading" viewBox="0 0 32 32">
+<path d="M16 8v4l5.333-5.333-5.333-5.333v4c-5.893 0-10.667 4.773-10.667 10.667 0 2.093 0.613 4.033 1.653 5.68l1.947-1.947c-0.593-1.113-0.933-2.38-0.933-3.733 0-4.42 3.58-8 8-8zM25.013 10.32l-1.947 1.947c0.593 1.113 0.933 2.38 0.933 3.733 0 4.42-3.58 8-8 8v-4l-5.333 5.333 5.333 5.333v-4c5.893 0 10.667-4.773 10.667-10.667 0-2.093-0.613-4.033-1.653-5.68z"/>
+</symbol><symbol id="icon-mobile" viewBox="0 0 32 32">
+<path d="M22.667 1.347l-13.333-0.013c-1.473 0-2.667 1.193-2.667 2.667v24c0 1.473 1.193 2.667 2.667 2.667h13.333c1.473 0 2.667-1.193 2.667-2.667v-24c0-1.473-1.193-2.653-2.667-2.653zM22.667 25.333h-13.333v-18.667h13.333v18.667z"/>
+</symbol><symbol id="icon-more-horiz" viewBox="0 0 32 32">
+<path d="M8 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM24 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM16 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667z"/>
+</symbol><symbol id="icon-more-vert" viewBox="0 0 32 32">
+<path d="M16 10.667c1.473 0 2.667-1.193 2.667-2.667s-1.193-2.667-2.667-2.667-2.667 1.193-2.667 2.667 1.193 2.667 2.667 2.667zM16 13.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667zM16 21.333c-1.473 0-2.667 1.193-2.667 2.667s1.193 2.667 2.667 2.667 2.667-1.193 2.667-2.667-1.193-2.667-2.667-2.667z"/>
+</symbol><symbol id="icon-open" viewBox="0 0 32 32">
+<path d="M26.667 8h-10.667l-2.667-2.667h-8c-1.473 0-2.653 1.193-2.653 2.667l-0.013 16c0 1.473 1.193 2.667 2.667 2.667h21.333c1.473 0 2.667-1.193 2.667-2.667v-13.333c0-1.473-1.193-2.667-2.667-2.667zM26.667 24h-21.333v-13.333h21.333v13.333z"/>
+</symbol><symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M20.667 18.667h-1.060l-0.367-0.367c1.307-1.513 2.093-3.48 2.093-5.633 0-4.787-3.88-8.667-8.667-8.667s-8.667 3.88-8.667 8.667 3.88 8.667 8.667 8.667c2.153 0 4.12-0.787 5.633-2.087l0.367 0.367v1.053l6.667 6.653 1.987-1.987-6.653-6.667zM12.667 18.667c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/>
+</symbol><symbol id="icon-settings" viewBox="0 0 32 32">
+<path d="M25.907 17.3c0.053-0.427 0.093-0.86 0.093-1.3s-0.040-0.873-0.093-1.3l2.82-2.207c0.253-0.2 0.327-0.56 0.16-0.853l-2.667-4.62c-0.167-0.287-0.513-0.407-0.813-0.287l-3.32 1.34c-0.687-0.527-1.44-0.973-2.253-1.313l-0.5-3.533c-0.060-0.313-0.333-0.56-0.667-0.56h-5.333c-0.333 0-0.607 0.247-0.66 0.56l-0.5 3.533c-0.813 0.34-1.567 0.78-2.253 1.313l-3.32-1.34c-0.3-0.113-0.647 0-0.813 0.287l-2.667 4.62c-0.167 0.287-0.093 0.647 0.16 0.853l2.813 2.207c-0.053 0.427-0.093 0.86-0.093 1.3s0.040 0.873 0.093 1.3l-2.813 2.207c-0.253 0.2-0.327 0.56-0.16 0.853l2.667 4.62c0.167 0.287 0.513 0.407 0.813 0.287l3.32-1.34c0.687 0.527 1.44 0.973 2.253 1.313l0.5 3.533c0.053 0.313 0.327 0.56 0.66 0.56h5.333c0.333 0 0.607-0.247 0.66-0.56l0.5-3.533c0.813-0.34 1.567-0.78 2.253-1.313l3.32 1.34c0.3 0.113 0.647 0 0.813-0.287l2.667-4.62c0.167-0.287 0.093-0.647-0.16-0.853l-2.813-2.207zM16 20.667c-2.58 0-4.667-2.087-4.667-4.667s2.087-4.667 4.667-4.667 4.667 2.087 4.667 4.667-2.087 4.667-4.667 4.667z"/>
+</symbol><symbol id="icon-sort-asc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 18h18v4h-18v-4z"/>
+<path d="M14 12h14v4h-14v-4z"/>
+<path d="M14 6h10v4h-10v-4z"/>
+<path d="M14 0h6v4h-6v-4z"/>
+</symbol><symbol id="icon-sort-desc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 0h18v4h-18v-4z"/>
+<path d="M14 6h14v4h-14v-4z"/>
+<path d="M14 12h10v4h-10v-4z"/>
+<path d="M14 18h6v4h-6v-4z"/>
+</symbol><symbol id="icon-tablet" viewBox="0 0 32 32">
+<path d="M24.667 0h-18.667c-1.84 0-3.333 1.493-3.333 3.333v25.333c0 1.84 1.493 3.333 3.333 3.333h18.667c1.84 0 3.333-1.493 3.333-3.333v-25.333c0-1.84-1.493-3.333-3.333-3.333zM15.333 30.667c-1.107 0-2-0.893-2-2s0.893-2 2-2 2 0.893 2 2-0.893 2-2 2zM25.333 25.333h-20v-21.333h20v21.333z"/>
+</symbol><symbol id="icon-warning" viewBox="0 0 32 32">
+<path d="M1.333 28h29.333l-14.667-25.333-14.667 25.333zM17.333 24h-2.667v-2.667h2.667v2.667zM17.333 18.667h-2.667v-5.333h2.667v5.333z"/>
+</symbol></svg><!-- endinject -->
+	<h1>knob.js 2.0</h1>
+		<h4>Please choose your preferred colors:</h4>
+		<br/>
+		Default-color: <input class="jscolor" value="e2e2e2" 
+		data-bind="value: defaultColor">
+		Primary-color: <input class="jscolor" value="a0e1ff">
+		Info-color: <input class="jscolor" value="25aaf2">
+		Warning-color: <input class="jscolor" value="f5a500">
+		Success-color: <input class="jscolor" value="54c059">
+		Error-color: <input class="jscolor" value="ee483b">
+		<h2>Buttons</h2>
+		<knob-button class="" params="label: 'Default', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="" params="label: 'Default', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Default with images	</h3>
+		<knob-button class="" params="label: 'Default', leftImage: 'http://icons.veryicon.com/png/System/iOS7%20Minimal/Emoticons%20Tongue%20out.png'"></knob-button>
+		<knob-button class="" params="label: 'Default', rightImage: 'http://icons.veryicon.com/png/System/iOS7%20Minimal/Emoticons%20Tongue%20out.png'"></knob-button>
+		<h3>Primary</h3>
+		<knob-button class="variation-primary" params="label: 'Primary', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-primary" params="label: 'Primary', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Info</h3>
+		<knob-button class="variation-info" params="label: 'Info', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-info" params="label: 'Info', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Warning</h3>
+		<knob-button class="variation-warning" params="label: 'Warning', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-warning" params="label: 'Warning', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Done</h3>
+		<knob-button class="variation-success" params="label: 'Done', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-success" params="label: 'Done', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Error</h3>
+		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Disabled</h3>
+		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning', disabled:true"></knob-button>
+		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning', disabled:true"></knob-button>
+
+<!--
+	<h2>knob-notification-bar</h2>
+	<knob-button params="label: 'Open warning', variation: 'default', icon: '#icon-open', click: function() {notificationVisible.toggle();}"></knob-button>
+	<a href="" data-bind="click: function() {notificationVisible.toggle();}">Open notification</a>
+
+	<knob-notification params="
+		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur molestias error, quia aliquid, illo enim vel asperiores neque obcaecati debitis nesciunt molestiae unde quas, ipsam amet fugiat quibusdam. Expedita, pariatur.',
+		icon: '#icon-done',
+		variation: 'success',
+		visible: notificationVisible
+	">
+	</knob-notification>
+
+	<h2>knob progress bar</h2>
+	<div class="knob-progress">
+		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
+	</div>
+
+-->
+
+	<h2>knob-toggleswitch</h2>
+
+	<knob-toggleswitch params="value: toggleValue">
+	</knob-toggleswitch>
+
+	<br>
+
+	<knob-toggleswitch params="value: toggleValue">
+	</knob-toggleswitch>
+
+	<div data-bind="text: toggleValue"></div>
+
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<br>
+
+	<knob-toggleswitch params="value: toggleValue, variation: 'square'">
+	</knob-toggleswitch>
+
+	<div data-bind="text: toggleValue"></div>
+
+
+	<h2>knob-modal</h2>
+
+	<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: modalVisible">
+		<p>
+			Lorem ipsum <a href="#">dolor sit amet</a>, <strong>consectetur adipisicing elit</strong>. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
+		</p>
+	</knob-modal>
+
+	<h3>knob-confirm</h3>
+	<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
+	<knob-confirm params="
+		title: 'Confirm',
+		icon: '#icon-open',
+		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+		visible: confirmVisible,
+		okLabel: 'Ok',
+		cancelLabel: 'Cancel',
+		callback: confirmCallback
+	"></knob-confirm>
+
+	<h3>knob-alert</h3>
+	<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
+
+
+	<knob-alert params="
+		title: 'test alert',
+		icon: '#icon-warning',
+		message: 'I have to alert you about something?',
+		visible: alertVisible,
+		okLabel: 'Ok',
+		callback: alertCallback">
+	</knob-alert>
+	<h2>knob-button default Small</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--sm" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-button default Medium</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-button default Large</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--lg" params="label: $data, variation: 'default', icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-button primary Small</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--sm variation-primary" params="label: $data, icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-button primary Medium</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="variation-primary" params="label: $data, icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-button primary Large</h2>
+	<div data-bind="foreach: buttons">
+		<knob-button class="button--lg variation-primary" params="label: $data, variation: 'primary', icon: '#icon-search'"></knob-button>
+	</div>
+	<hr>
+
+	<h2>knob-input</h2>
+	<div style="width: 300px">
+		<knob-input params="placeholder: 'Name'"></knob-input>
+		<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
+	</div>
+	<hr>
+
+	<h2> advanced knob-inputs</h2>
+	<div style="width: 300px">
+		<knob-input params="
+			placeholder: 'Price',
+			left: {
+				text: {
+					value: 'PRE:',
+					hideOnContent: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			},
+			right: {
+				text:{
+					value: 'HUF'
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			left: {
+				text:{
+					value: 'Search',
+					hideOnContent: true
+				},
+				icon: {
+					value: '#icon-search',
+					hideOnContent: false
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			right: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			}">
+		</knob-input>
+
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search'
+				}
+			}">
+		</knob-input>
+		<h3>knob-input with primary variation</h3>
+		<knob-input params="
+			placeholder: 'Search',
+			left: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			right: {
+				icon: {
+					value: '#icon-search',
+					hideOnContent: true
+				}
+			},
+			variation: 'primary'">
+		</knob-input>
+	</div>
+
+	<h2>knob-textarea</h2>
+	<knob-textarea></knob-textarea>
+
+	<h2>knob-radio</h2>
+	<h4>Inline</h4>
+	<knob-radio params="
+		group: 'test',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]">
+	</knob-radio>
+	<h4>Blocked</h4>
+	<knob-radio params="
+		group: 'test2',
+		items: [
+			{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
+			{icon: '#icon-list', value: {field: 'id', asc: false}},
+			{label: 'Third option', value: {field: 'name', asc: true}}
+		]" class="knob-radio--block">
+	</knob-radio>
+	<hr>
+
+	<h2>knob-dropdown</h2>
+	<h3>array 'items' parameter</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: [
+			{label: 'id', icon: '#icon-sort-asc', value: {field: 'id desc', asc: true}},
+			{label: 'id', icon: '#icon-sort-desc', value: {field: 'id', asc: false}},
+			{label: 'name', icon: '#icon-sort-asc', value: {field: 'name', asc: true}},
+			{label: 'name', icon: '#icon-sort-desc', value: {field: 'name', asc: false}}
+		]">
+	</knob-dropdown>
+	<h3>observableArray 'items' parameter</h3>
+	<h5>After changing the items, the item with the previously selected value remains selected (if present).</h5>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown1.items,
+		selected: dropdown1.selected,
+		selectedIdx: dropdown1.index,
+		selectedValue: dropdown1.value
+		">
+	</knob-dropdown>
+	<knob-button params="
+		label: 'change options',
+		click: dropdown1.changeItems
+	">
+	</knob-button>
+	<p>Selected index: <span data-bind="text: dropdown1.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown1.value"></span></p>
+
+	<h3>selecting item by index or value</h3>
+	<knob-dropdown params="
+		rightIcon: '#icon-expand-more',
+		items: dropdown2.items,
+		selected: dropdown2.selected,
+		selectedIdx: dropdown2.index,
+		selectedValue: dropdown2.value
+		">
+	</knob-dropdown>
+
+	<p>Selected index: <span data-bind="text: dropdown2.index"></span></p>
+	<p>Selected value: <span data-bind="text: dropdown2.value"></span></p>
+
+	Change the selected index here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.index
+	">
+	</knob-numericinput>
+
+	Change the selected value here:
+	<knob-numericinput params="
+		minValue: -10,
+		maxValue: 10,
+		step: 1,
+		value: dropdown2.value
+	">
+	</knob-numericinput>
+
+	<hr>
+
+	<h2>knob-inline-text-editor</h2>
+	<knob-inline-text-editor></knob-inline-text-editor>
+	<hr>
+
+	<h2>knob-items-per-page</h2>
+	<knob-items-per-page params="numOfItems: numOfItems, numOfPages: numOfPages, itemsPerPage: itemsPerPage"></knob-items-per-page>
+	<hr>
+
+	<h2>knob-pagination</h2>
+	<knob-pagination params="numOfPages: numOfPages"></knob-pagination>
+	<hr>
+
+	<h2>knob-paged-list</h2>
+	<knob-paged-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-paged-list>
+
+	<h2>knob-selectable-paged-list</h2>
+	<knob-selectable-paged-list params="selected: pagedListSelected, store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-selectable-paged-list>
+
+	<div data-bind="text: pagedListSelected() && 'index: ' + pagedListSelected().index()"></div>
+	<div data-bind="text: pagedListSelected() && 'id: ' + pagedListSelected().model.data.id"></div>
+	<div data-bind="text: pagedListSelected() && 'email: ' + pagedListSelected().model.data.email"></div>
+	<div data-bind="text: pagedListSelected() && 'name: ' + pagedListSelected().model.data.name"></div>
+	<div data-bind="text: pagedListSelected() && 'title: ' + pagedListSelected().model.data.title"></div>
+
+	<h2>knob-selectable-paged-list with select buttton</h2>
+	<knob-selectable-paged-list params="buttonSelect: true, selected: pagedListSelected, store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {name: -1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: {noResults: 'No results found'}">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+			<button data-bind="click: select">select</button>
+		</div>
+	</knob-selectable-paged-list>
+
+	<div data-bind="text: pagedListSelected() && 'index: ' + pagedListSelected().index()"></div>
+	<div data-bind="text: pagedListSelected() && 'id: ' + pagedListSelected().model.data.id"></div>
+	<div data-bind="text: pagedListSelected() && 'email: ' + pagedListSelected().model.data.email"></div>
+	<div data-bind="text: pagedListSelected() && 'name: ' + pagedListSelected().model.data.name"></div>
+	<div data-bind="text: pagedListSelected() && 'title: ' + pagedListSelected().model.data.title"></div>
+
+	<hr>
+
+	<h2>knob-infinite-list</h2>
+	<knob-infinite-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {id: 1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: { noResults: 'No results found', loadMore: 'Load more...'}, loadMoreHandler: infiniteList.loadMoreHandler">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-infinite-list>
+
+	<br>
+
+	<button data-bind="click: infiniteList.loadMoreHandler.loadMore">Load More</button>
+
+	<hr>
+
+	<h2>knob-tabs</h2>
+	<h3>Left orient</h3>
+		<knob-tabs params="defaultTab: 0" class="knob-tab orientation-left-top">
+			<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+				<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+			</knob-tab>
+			<knob-tab params="icon: '#icon-grid'">
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+
+			</knob-tab>
+			<knob-tab params="label: 'tabX'">
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+
+			</knob-tab>
+	</knob-tabs>
+	<hr>
+	<h3>Top orient</h3>
+	<knob-tabs params="defaultTab: 0" class="knob-tab">
+			<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+				<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+			</knob-tab>
+			<knob-tab params="icon: '#icon-grid'">
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+
+			</knob-tab>
+			<knob-tab params="label: 'tabX'">
+				<p>
+					Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+				</p>
+				<p>
+					In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+				</p>
+				<p>
+					Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+				</p>
+
+			</knob-tab>
+	</knob-tabs>
+	<hr>
+	<h2>knob-checkbox</h2>
+	<knob-checkbox params="value: checkboxValue"></knob-checkbox>
+	<h2>disabled knob-checkbox</h2>
+	<knob-checkbox params="value: disabledCheckBoxValue, disabled: true
+	"></knob-checkbox>
+	<hr>
+	<h2>knob-numericinput layout back(default)</h2>
+	<h4>Configuration: minValue: -273, maxValue: 3000, step: 5, precision: 1</h4>
+	<knob-numericinput params="
+		minValue: -273,
+		maxValue: 3000,
+		value: ko.observable(0),
+		precision: 1,
+		step: 5,
+		left: {
+			text: {
+				value: 'Temperature: '
+			}
+		},
+		right: {
+			text: {
+				value: '°C'
+			}
+		}
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout split</h2>
+	<h4>Configuration: minValue: 3, maxValue: 600, step: 3, precision not given (defaults to step)</h4>
+	<knob-numericinput params="
+		minValue: 3,
+		maxValue: 600,
+		value: ko.observable(12),
+		step: 3,
+		left: {
+			text: {
+				value: 'Font size: '
+			}
+		},
+		right: {
+			text: {
+				value: 'px'
+			}
+		},
+		layoutArrangement: 'split'
+	">
+	</knob-numericinput>
+	<h2>knob-numericinput layout front</h2>
+	<h4>Configuration: minValue: 0, maxValue: 20000, step: 10, precision: 0 (any numeric value between the boundaries can be typed in)</h4>
+	<knob-numericinput params="
+		minValue: 0,
+		maxValue: 20000,
+		value: ko.observable(876.8),
+		precision: 0,
+		step: 10,
+		left: {
+			text: {
+				value: 'Distance: '
+			}
+		},
+		right: {
+			text: {
+				value: 'km'
+			}
+		},
+		layoutArrangement: 'front'
+	">
+	</knob-numericinput>
+
+	<h2>knob-numericinput with adjustable parameters</h2>
+	<h4>(revalidates its value on the change of parameters)</h4>
+
+	<knob-numericinput params="
+		minValue: numericMin,
+		maxValue: numericMax,
+		value: numericTestVal,
+		precision: numericPrecision,
+		step: numericStep
+	"></knob-numericinput>
+
+	<h4>The validated value of the component is: <span data-bind="text: numericTestVal"></span></h4>
+
+	minValue: <knob-numericinput params="
+		minValue: -2000,
+		maxValue: 0,
+		value: numericMin,
+		step: 1
+	"></knob-numericinput>
+
+	maxValue: <knob-numericinput params="
+		minValue: 0,
+		maxValue: 2000,
+		value: numericMax,
+		step: 1
+	"></knob-numericinput>
+
+	step: <knob-numericinput params="
+		minValue: 1,
+		maxValue: 100,
+		value: numericStep,
+		step: 1
+	"></knob-numericinput>
+
+	precision: <knob-numericinput params="
+		minValue: 0,
+		maxValue: 20,
+		value: numericPrecision,
+		step: 1,
+		precision: 0
+	"></knob-numericinput>
+
+
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+<script src="/lib/jscolor.js"></script>
+</body>
+</html>
