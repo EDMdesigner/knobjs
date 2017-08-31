@@ -25,18 +25,26 @@ function knobRegisterComponent(config) {
 	var style = config.style;
 	var css = config.css;
 	var colors = config.colors;
+	var lastTextNode = null;
 
 	var optionalConfig = extend(true, {}, config);
 	delete optionalConfig.name;
 	delete optionalConfig.createVm;
 	delete optionalConfig.template;
 	delete optionalConfig.style;
-
-	if (css) {
-		var cssTemplate = css(colors);
-		var cssTextNode = document.createTextNode(cssTemplate);
-		styleElem.appendChild(cssTextNode);
-	}
+	
+	ko.computed(function() {
+		if (css) {
+			var currentColors = colors();
+			var cssTemplate = css(currentColors);
+			if(lastTextNode){
+				styleElem.removeChild(lastTextNode);
+			}
+			var cssTextNode = document.createTextNode(cssTemplate);
+			lastTextNode = cssTextNode;
+			styleElem.appendChild(cssTextNode);
+		}
+	}, this);
 
 	ko.components.register(name, {
 		viewModel: {

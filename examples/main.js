@@ -13,11 +13,8 @@ var warningColor = ko.observable("f5a500");
 var successColor = ko.observable("54c059");
 var errorColor = ko.observable("ee483b");
 
-ko.computed(function() {
-	knob.init({
-	theme: "background", //background, border, border-fill, chamaileon
-	// for default and theme4
-	colors: {
+var colors = ko.computed(function() {
+	return {
 		default: defaultColor(), 
 		primary: primaryColor(),
 		secondary: "#f4f4f4",
@@ -35,7 +32,13 @@ ko.computed(function() {
 		darkGray: "#e5e9ec",
 
 		border: "#d2cdc6" //only for the chamaileon style
-	},
+	};
+});
+
+knob.init({
+	theme: "background", //background, border, border-fill, chamaileon
+	// for default and theme4
+	colors: colors,
 	// for chamaileon theme
 	color1: {
 		primary: "#44c0fc",
@@ -64,14 +67,14 @@ ko.computed(function() {
 		black: "#000",
 		transparent: "transparent"
 	},
-	icons: {
-		search: "#icon-search"
-	},
-	labels: {
-		noResults: "No results"
-	}
+		icons: {
+			search: "#icon-search"
+		},
+		labels: {
+			noResults: "No results"
+		}
 });
-}, this);
+
 
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
