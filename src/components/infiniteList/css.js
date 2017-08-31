@@ -20,13 +20,19 @@ let cssTemplate = `
   padding-bottom: 5px;
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-input:hover {
-  border-color: ${ colorShades.color5 };
+  border: 1px solid ${ colorShades.color4 };
+}
+.knob-infinite-list .knob-infinite-list__bar .knob-input-wrapper.active > .knob-input {
+  border: 2px solid ${ colorShades.color6 };
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-dropdown, .knob-infinite-list .knob-infinite-list__bar .knob-items-per-page {
   float: right;
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-button-search {
   float: left;
+}
+.knob-infinite-list .knob-infinite-list__bar .knob-button-search button:hover{
+  background-color: ${ colorShades.color4 };
 }
 .knob-infinite-list .knob-infinite-list__list {
   list-style: none;

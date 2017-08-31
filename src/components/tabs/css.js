@@ -4,7 +4,7 @@ var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
+var baseColor = tinycolor(config.primary);  
 var textColor = tinycolor(config.primary).isDark() ? "white" : "black";
 
 let cssTemplate = `
@@ -16,6 +16,9 @@ let cssTemplate = `
     border-bottom-width: 1px;
     color: ${ textColor };
     fill: ${ textColor }
+  }
+  .knob-tab.orientation-left-top .knob-tab {
+    margin-left: 5px;
   }
   .knob-tab .active button{
     font-size: 14px;
@@ -41,7 +44,6 @@ let cssTemplate = `
     fill: ${ textColor };
     cursor: not-allowed;
   }
-
   .variation-primary .knob-tab .active button {
     background-color: blue;
   }

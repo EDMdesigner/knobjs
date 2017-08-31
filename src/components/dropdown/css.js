@@ -4,7 +4,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
+var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
@@ -47,6 +47,13 @@ let cssTemplate = `
 .knob-dropdown-menu div:last-of-type button {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+knob-pagelist__bar input:hover {
+  border: 1px solid ${ colorShades.color4 } !important;
+}
+knob-pagelist__bar input:focus {
+  border: 1px solid ${ colorShades.color4 } !important;
+  outline: none !important
 }
 `;
 	return cssTemplate;

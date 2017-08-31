@@ -1,6 +1,10 @@
 "use strict";
 
+var tinycolor = require("tinycolor2");
+
 module.exports = function(config) {
+
+var baseColor = tinycolor(config.primary);
 
 let cssTemplate = `
 .knob-radio {
@@ -48,11 +52,11 @@ let cssTemplate = `
 }
 .knob-radio .active button {
   font-weight: bold;
-  border-top: 4px solid ${ config.primary };
+  border-top: 4px solid ${ baseColor };
 }
 .knob-radio--block .knob-radio .active button {
   font-weight: bold;
-  border-left: 5px solid ${ config.primary };
+  border-left: 5px solid ${ baseColor };
   border-top: none;
 }
 `;

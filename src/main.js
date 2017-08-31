@@ -367,7 +367,9 @@ function initKnob(config) {
 		name: "knob-numericinput",
 		createVm: require("./components/numericInput/vm"),
 		template: require("./components/numericInput/template.html"),
-		icons: icons.numericInput
+		icons: icons.numericInput,
+		css: require("./components/numericInput/css"),
+		colors: config.colors,
 	});
 
 	if (config.background) {

@@ -43,7 +43,8 @@ let cssTemplate = `
   vertical-align: middle;
   color: black;
 }
-.knob-modal__header .desc svg {
+
+.knob-modal__header svg {
   float: left;
   margin-right: 10px;
   width: 24px;
