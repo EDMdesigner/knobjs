@@ -79,12 +79,12 @@ module.exports = function createColorThemeBackground(theme) {
 		};
 	}
 
-	var defaultToggleTrackStates = createToggleTrackStatesBackground(colors.lightGray);
-	var defaultToogleTickStates = createToogleTickStatesBackground(colors.lightGray);
+	var defaultToggleTrackStates = createToggleTrackStatesBackground(colors().lightGray);
+	var defaultToogleTickStates = createToogleTickStatesBackground(colors().lightGray);
 
 	// Create custom rectangular toggleSwitch button styles
-	var squareToggleTrackStates = createToggleTrackStatesBackground(colors.lightGray);
-	var squareToogleTickStates = createToogleTickStatesBackground(colors.lightGray);
+	var squareToggleTrackStates = createToggleTrackStatesBackground(colors().lightGray);
+	var squareToogleTickStates = createToogleTickStatesBackground(colors().lightGray);
 	squareToggleTrackStates.default.borderRadius = 0;
 	squareToogleTickStates.default.borderRadius = 0;
 
