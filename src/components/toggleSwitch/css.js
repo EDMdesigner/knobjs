@@ -1,6 +1,13 @@
 "use strict";
 
-module.exports = function() {
+var tinycolor = require("tinycolor2"); 
+var createColorShades = require("../../utils/colorShades");
+
+module.exports = function(config) {
+
+var baseColor = config.primary;
+var defaultToggleTrackStates = createColorShades(config.lightGray);
+var defaultToogleTickStates = createColorShades(config.primary);
 
 let cssTemplate = `
 .knob-toggle-track {
@@ -8,8 +15,8 @@ let cssTemplate = `
   width: 40px;
   height: 20px;
   cursor: pointer;
-  border: 1px solid transparent;
-  background: transparent;
+  border: 1px solid ${ defaultToggleTrackStates.color2 };
+  background: ${ defaultToggleTrackStates.color1 };
   border-radius: 11px;
   transition: background-color 0.4s ease-in;
 }
@@ -25,7 +32,7 @@ let cssTemplate = `
   margin-top: 1px;
   margin-left: 1px;
 }
-.knob-toggle-track .knob-toggle-tick.state-active {
+.knob-toggle-track.active .knob-toggle-tick {
   margin-left: 21px;
 }
 .knob-toggle-track:hover {
@@ -35,7 +42,7 @@ let cssTemplate = `
   transition: all 0.4s;
   box-shadow: 1px 2px 3px rgba(125, 125, 125, .3);
 }
-.knob-toggle-track:active {
+.knob-toggle-track.active {
   transition: margin 0.4s ease-in;
 }
 `;

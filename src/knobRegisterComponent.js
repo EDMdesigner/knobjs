@@ -44,7 +44,7 @@ function knobRegisterComponent(config) {
 			lastTextNode = cssTextNode;
 			styleElem.appendChild(cssTextNode);
 		}
-	}, this);
+	});
 
 	ko.components.register(name, {
 		viewModel: {

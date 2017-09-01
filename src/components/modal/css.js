@@ -1,5 +1,6 @@
 "use strict";
 
+var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
@@ -29,10 +30,13 @@ let cssTemplate = `
   max-width: 90%;
   /*	z-index: 22; */
   overflow: hidden;
-  border: 3px solid ${ colorShades.color5 };
+  border: 2px solid ${ tinycolor(config.default) };
 }
 .knob-modal:hover {
-  border: 3px solid ${ colorShades.color2 };
+  background-color: ${ tinycolor(config.default) };
+}
+.knob-modal:hover .knob-modal__body .knob-button {
+  background-color: ${ colorShades.color3 };
 }
 .knob-modal__header {
   padding: 10px;
@@ -43,7 +47,10 @@ let cssTemplate = `
   vertical-align: middle;
   color: black;
 }
-
+.knob-modal__header .desc span {
+  position: relative;
+  top: 2px;
+}
 .knob-modal__header svg {
   float: left;
   margin-right: 10px;
@@ -59,6 +66,9 @@ let cssTemplate = `
   background: none;
   border-radius: 0;
   border: 0 none;
+}
+.knob-modal__header .button-close button:hover svg {
+  fill: ${ colorShades.color2 };
 }
 .knob-modal__body {
   max-width: 555px;

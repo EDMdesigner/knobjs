@@ -7,15 +7,13 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.base is mandatory!");
 	}
 
-	var base = dependencies.base;
-
 	return function createTab(config) {
 		config = config || {};
 		config.component = "tab";
 		config.variation = config.variation || "tab";
 		config.state = "active";
 
-		var vm = base(config);
+		var vm = {};
 
 		return vm;
 	};

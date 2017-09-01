@@ -14,8 +14,7 @@ module.exports = function(dependencies) {
 	}
 
 	var ko = dependencies.ko;
-	var base = dependencies.base;
-
+	
 	return function createModal(config) {
 
 		if (!config) {
@@ -38,7 +37,7 @@ module.exports = function(dependencies) {
 
 		config.component = "modal";
 
-		var vm = base(config);
+		var vm = {};
 
 		vm.visible = visible;
 		vm.title = title;

@@ -39,32 +39,15 @@ module.exports = function(dependencies) {
 			throw new Error("config.component is mandatory!");
 		}
 
-		if (!config.style) {
-			throw new Error("config.style is mandatory!");
-		}
-
 		var component = config.component;
-		var style = config.style;
 
 		var state = ko.observable(config.state || "default");
 		var variation = config.variation || "default";
 
 
-		var cssClassComputed = ko.computed(function() {
-			return "knob-" + component + " state-" + state() + " variation-" + variation;
-		});
-		var styleComputed = ko.computed(function() {
-			var stateVal = state();
-
-			return style[variation][stateVal];
-		});
-
 		var vm = {
 			variation: variation,
 			state: state,
-
-			cssClass: cssClassComputed,
-			style: styleComputed,
 
 			eventHandlers: {}
 		};

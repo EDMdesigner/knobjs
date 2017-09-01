@@ -51,9 +51,6 @@ module.exports = function(dependencies) {
 
 		var vm = base(config);
 
-		vm.behaviours.hover.enable();
-		vm.behaviours.focus.enable();
-
 		vm.placeholder = ko.observable(config.placeholder);
 		vm.type = config.type;
 		vm.value = config.value || ko.observable();

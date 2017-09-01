@@ -1,7 +1,5 @@
 <div class="knob-textarea-wrapper" data-bind="css: hasFocus() ? 'active' : ''">
-<textarea data-bind="css: cssClass,
-					style: style,
-					attr: {placeholder: placeholder},
+<textarea class="knob-textarea" data-bind="attr: {placeholder: placeholder},
 					event: eventHandlers,
 					hasFocus: hasFocus,
 					disable: state() === 'disabled',

@@ -1,5 +1,5 @@
 <div class="switch">
-	<span data-bind="css: track.cssClass, style: track.style, event: track.eventHandlers, click: click">
-		<span data-bind="css: tick.cssClass, style: tick.style, event: tick.eventHandlers"></span>
+	<span class="knob-toggle-track" data-bind="css: { active: active }, event: track.eventHandlers, click: click">
+		<span class="knob-toggle-tick" data-bind="event: tick.eventHandlers"></span>
 	</span>
 </div>

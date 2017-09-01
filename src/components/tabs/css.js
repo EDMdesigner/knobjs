@@ -13,19 +13,13 @@ let cssTemplate = `
     font-weight: 400;
     text-transform: uppercase;
     border-width: 0px;
-    border-bottom-width: 1px;
     color: ${ textColor };
     fill: ${ textColor }
   }
-  .knob-tab.orientation-left-top .knob-tab {
-    margin-left: 5px;
+  .knob-tab.orientation-left-top .knob-radio {
+    border-bottom: none;
   }
   .knob-tab .active button{
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: uppercase;
-    border-width: 0px;
-    border-bottom-width: 1px;
     border-top: 5px solid ${ baseColor === config.default ? "bababa" : baseColor };
     font-weight: bold;
     color: ${ textColor };
@@ -33,16 +27,13 @@ let cssTemplate = `
     cursor: not-allowed;
   }
   .knob-tab.orientation-left-top .active button{
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: uppercase;
-    border-width: 0px;
-    border-bottom-width: 1px;
-    border-left: 5px solid ${ baseColor === config.default ? "#bababa" : baseColor };
+    border-top: none;
+    border-left: 4px solid ${ baseColor === config.default ? "#bababa" : baseColor };
     font-weight: bold;
     color: ${ textColor };
     fill: ${ textColor };
     cursor: not-allowed;
+    border-bottom: none
   }
   .variation-primary .knob-tab .active button {
     background-color: blue;

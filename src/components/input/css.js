@@ -4,15 +4,14 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.default;  
+var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
 .knob-input {
   padding: 7px 12px;
   margin: 3px;
-  border-style: solid;
-  border-width: 1px;
+  border: 1px solid ${ config.darkGray };
 }
 .knob-input input {
   border: 0px none;
@@ -23,10 +22,10 @@ let cssTemplate = `
   margin-right: 3px;
 }
 .knob-input:hover {
-  border: 1px solid ${ colorShades.color4 };
+  outline: 1px solid ${ colorShades.color4 };
  }
-.knob-input-wrapper.active > .knob-input {
-  border: 2px solid ${ colorShades.color6 } ;
+.knob-input.active {
+  outline: 1px solid ${ colorShades.color6 } ;
  }
 .knob-input .icon-wrapper .icon {
   width: 20px;

@@ -4,7 +4,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.default;  
+var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
@@ -17,16 +17,17 @@ let cssTemplate = `
   flex-direction: column-reverse;
 }
 .knob-numericInput .knob-input:hover {
-	border: 1px solid ${ colorShades.color4 };
+	outline: 1px solid ${ colorShades.color4 };
 }
 .knob-numericInput .knob-input-wrapper.active > .knob-input {
-	border: 2px solid ${ colorShades.color6	 };
+	border: none;
+	outline: 1px solid ${ colorShades.color6 };
 }
 .knob-numericInput .knob-button:hover {
-	background-color: ${ colorShades.color4 };
+	background-color: ${ colorShades.color4 } !important;
 }
 .knob-numericInput .knob-button:active {
-	background-color: ${ colorShades.color6 };
+	background-color: ${ colorShades.color6 } !important;
 }
 `;
 	return cssTemplate;

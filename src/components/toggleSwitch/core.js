@@ -15,7 +15,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 	var base = dependencies.base;
-
+	var active = ko.observable(false);
 
 	return function createToggleSwitch(config) {
 		if (!config) {
@@ -29,13 +29,11 @@ module.exports = function(dependencies) {
 		var vm = {};
 
 		var tickConfig = {
-			component: "toggle-tick",
-			style: config.style.tick
+			component: "toggle-tick"
 		};
 
 		var trackConfig = {
-			component: "toggle-track",
-			style: config.style.track
+			component: "toggle-track"
 		};
 
 		// Pass the variation if given to style.js for 
@@ -47,27 +45,21 @@ module.exports = function(dependencies) {
 
 		vm.tick = base(tickConfig);
 		vm.track = base(trackConfig);
-
+		
 		vm.track.behaviours.hover.enable();
 
 
 		var value = config.value;
 		var click = function() {
-			value(!value());
+			if(active)active=false;
+			else active=true;
+
+			return active;
 		};
-
-		ko.computed(function() {
-			if (value()) {
-				vm.tick.state("active");
-				vm.track.state("active");
-			} else {
-				vm.tick.state("default");
-				vm.track.state("default");
-			}
-		});
-
+	
 		vm.value = value;
 		vm.click = click;
+		vm.active = active;
 
 		return vm;
 	};
