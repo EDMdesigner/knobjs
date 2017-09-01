@@ -1,4 +1,4 @@
-<div class='knob-input' data-bind="css: hasFocus() ? 'active' : ''">
+<div class='knob-input' data-bind="css: { active: hasFocus, disabled: disabled }">
 	<span class="icon-wrapper preIcon" data-bind="if: left.icon.value, visible: left.icon.visible">
 		<svg class="icon">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': left.icon.value}" xlink:href=""></use>
@@ -13,9 +13,7 @@
 	
 	<input data-bind="
 					attr: {type: type, placeholder: placeholder},
-					event: eventHandlers,
 					hasFocus: hasFocus,
-					disable: state() === 'disabled',
 					value: value,
 					valueUpdate: 'afterkeydown'" />
 

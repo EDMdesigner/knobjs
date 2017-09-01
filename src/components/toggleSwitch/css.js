@@ -32,8 +32,12 @@ let cssTemplate = `
   margin-top: 1px;
   margin-left: 1px;
 }
+.knob-toggle-track.active {
+  background-color: ${ tinycolor(baseColor) };  
+}
 .knob-toggle-track.active .knob-toggle-tick {
   margin-left: 21px;
+  background-color: ${ defaultToggleTrackStates.color1 };  
 }
 .knob-toggle-track:hover {
   transition: background-color 0.4s ease-in;
@@ -44,6 +48,12 @@ let cssTemplate = `
 }
 .knob-toggle-track.active {
   transition: margin 0.4s ease-in;
+}
+.knob-toggle-track.square {
+  border-radius: 0px;
+}
+.knob-toggle-track.square .knob-toggle-tick {
+  border-radius: 0px;
 }
 `;
 	return cssTemplate;

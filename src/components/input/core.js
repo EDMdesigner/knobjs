@@ -48,17 +48,14 @@ module.exports = function(dependencies) {
 
 		var left = createInputDeco(config, "left");
 		var right = createInputDeco(config, "right");
+		var disabled = config.disabled || false;
 
-		var vm = base(config);
+		var vm = {};
 
 		vm.placeholder = ko.observable(config.placeholder);
 		vm.type = config.type;
 		vm.value = config.value || ko.observable();
 		vm.hasFocus = config.hasFocus || ko.observable(false);
-
-		if (config.keyDown) {
-			vm.eventHandlers.keydown = config.keyDown;
-		}
 
 		function createPlaceholderComputed(item, dependency) {
 			ko.computed(function() {
@@ -77,6 +74,7 @@ module.exports = function(dependencies) {
 
 		vm.left = left;
 		vm.right = right;
+		vm.disabled = disabled;
 		
 		return vm;
 	};

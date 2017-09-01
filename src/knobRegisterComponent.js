@@ -35,7 +35,7 @@ function knobRegisterComponent(config) {
 	
 	ko.computed(function() {
 		if (css) {
-			var currentColors = colors();
+			var currentColors = ko.isObservable(colors) ? colors() : colors;
 			var cssTemplate = css(currentColors);
 			if(lastTextNode){
 				styleElem.removeChild(lastTextNode);

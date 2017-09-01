@@ -15,7 +15,6 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 	var base = dependencies.base;
-	var active = ko.observable(false);
 
 	return function createToggleSwitch(config) {
 		if (!config) {
@@ -27,39 +26,22 @@ module.exports = function(dependencies) {
 		}
 
 		var vm = {};
+		var active = ko.observable(false);
+		var square = ko.observable(false);
 
-		var tickConfig = {
-			component: "toggle-tick"
-		};
-
-		var trackConfig = {
-			component: "toggle-track"
-		};
-
-		// Pass the variation if given to style.js for 
-		// rectangular toggleswitch buttons
-		if (config.variation) {
-			trackConfig.variation = config.variation;
-			tickConfig.variation = config.variation;
+		if (config.variation === 'square'){
+			square(true);
 		}
-
-		vm.tick = base(tickConfig);
-		vm.track = base(trackConfig);
-		
-		vm.track.behaviours.hover.enable();
-
 
 		var value = config.value;
 		var click = function() {
-			if(active)active=false;
-			else active=true;
-
-			return active;
+			active(!active());
 		};
 	
 		vm.value = value;
 		vm.click = click;
 		vm.active = active;
+		vm.square = square;
 
 		return vm;
 	};

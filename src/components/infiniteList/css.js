@@ -31,7 +31,7 @@ let cssTemplate = `
 .knob-infinite-list .knob-infinite-list__bar .knob-button-search {
   float: left;
 }
-.knob-infinite-list .knob-infinite-list__bar .knob-button-search button:hover{
+.knob-infinite-list .knob-infinite-list__bar button:hover{
   background-color: ${ colorShades.color4 };
 }
 .knob-infinite-list .knob-infinite-list__list {

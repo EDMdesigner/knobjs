@@ -18,18 +18,11 @@ module.exports = function(dependencies) {
 		config.component = "textarea";
 		config.placeholder = config.placeholder || "";
 
-		var vm = base(config);
-
-		vm.behaviours.hover.enable();
-		vm.behaviours.focus.enable();
+		var vm = {};
 
 		vm.placeholder = config.placeholder;
 		vm.value = config.value || ko.observable();
 		vm.hasFocus = config.hasFocus || ko.observable(false);
-
-		if (config.keyDown) {
-			vm.eventHandlers.keydown = config.keyDown;
-		}
 
 		return vm;
 	};

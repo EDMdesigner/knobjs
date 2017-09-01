@@ -1,5 +1,6 @@
 "use strict";
 
+var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
@@ -9,6 +10,8 @@ var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
 .knob-input {
+  display: -webkit-flex;
+  display: flex;
   padding: 7px 12px;
   margin: 3px;
   border: 1px solid ${ config.darkGray };
@@ -20,6 +23,12 @@ let cssTemplate = `
   flex: 1 100%;
   margin-left: 3px;
   margin-right: 3px;
+}
+.knob-input.disabled {
+  background-color: ${ tinycolor(config.lightGray) };
+}
+.knob-input.disabled:hover {
+  outline: none;
 }
 .knob-input:hover {
   outline: 1px solid ${ colorShades.color4 };

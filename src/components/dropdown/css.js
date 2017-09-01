@@ -4,7 +4,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.default;  
+var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `

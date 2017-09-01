@@ -33,7 +33,7 @@ let cssTemplate = `
   border: 2px solid ${ tinycolor(config.default) };
 }
 .knob-modal:hover {
-  background-color: ${ tinycolor(config.default) };
+  border: 2px solid ${ tinycolor(baseColor) };
 }
 .knob-modal:hover .knob-modal__body .knob-button {
   background-color: ${ colorShades.color3 };
