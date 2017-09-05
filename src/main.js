@@ -56,7 +56,6 @@ function initKnob(config) {
 		name: "knob-button",
 		createVm: require("./components/button/vm"),
 		template: require("./components/button/template.html"),
-		//style: buttonStyle,
 		css: require("./components/button/css"),
 		colors: config.colors
 	});
@@ -89,7 +88,9 @@ function initKnob(config) {
 		name: "knob-inline-text-editor",
 		createVm: require("./components/inlineTextEditor/vm"),
 		template: require("./components/inlineTextEditor/template.html"),
-		icons: icons.inlineTextEditor
+		icons: icons.inlineTextEditor,
+		css: require("./components/inlineTextEditor/css"),
+		colors: config.colors
 	});
 
 	registerComponent({
