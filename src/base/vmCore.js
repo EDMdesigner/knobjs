@@ -39,8 +39,6 @@ module.exports = function(dependencies) {
 			throw new Error("config.component is mandatory!");
 		}
 
-		var component = config.component;
-
 		var state = ko.observable(config.state || "default");
 		var variation = config.variation || "default";
 

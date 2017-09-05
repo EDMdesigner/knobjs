@@ -116,12 +116,5 @@ describe("Input", function() {
 			expect(ko.isObservable(inputVm.value)).toBe(true);
 			expect(typeof inputVm.type).toBe("string");
 		});
-
-		it("behaviour check", function() {
-			inputVm = createInput(config);
-
-			expect(inputVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(inputVm.behaviours.focus.enable).toHaveBeenCalled();
-		});
 	});
 });

@@ -51,11 +51,5 @@ describe("tab", function() {
 				state: "active"
 			});
 		});
-
-		it("should should pass to base the default variation value, if no config.variation is given", function() {
-			createTabs();
-			expect(mockBase.calls.argsFor(0)[0].variation).toBe("tab");
-		});	
-
 	});
 });

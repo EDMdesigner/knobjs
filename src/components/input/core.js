@@ -2,17 +2,12 @@ module.exports = function(dependencies) {
 	if(!dependencies) {
 		throw new Error("dependencies is mandatory!");
 	}
-
-	if(!dependencies.base) {
-		throw new Error("dependencies.base is mandatory!");
-	}
-
+	
 	if(!dependencies.ko) {
 		throw new Error("dependencies.ko is mandatory!");
 	}
 
 	var ko = dependencies.ko;
-	var base = dependencies.base;
 
 	return function createInput(config) {
 

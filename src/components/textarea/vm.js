@@ -2,12 +2,10 @@
 "use strict";
 
 var ko = require("knockout");
-var base = require("../../base/vm");
 var core = require("./core");
 
 var dependencies = {
-	ko: ko,
-	base: base
+	ko: ko
 };
 
 module.exports = core(dependencies);

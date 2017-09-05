@@ -9,12 +9,7 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.ko is mandatory!");
 	}
 
-	if (!dependencies.base) {
-		throw new Error("dependencies.base is mandatory!");
-	}
-
 	var ko = dependencies.ko;
-	var base = dependencies.base;
 
 	return function createToggleSwitch(config) {
 		if (!config) {
@@ -29,7 +24,7 @@ module.exports = function(dependencies) {
 		var active = ko.observable(false);
 		var square = ko.observable(false);
 
-		if (config.variation === 'square'){
+		if (config.variation === "square"){
 			square(true);
 		}
 

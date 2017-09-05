@@ -1,6 +1,5 @@
 module.exports = function(dependencies) {
 	var ko = dependencies.ko;
-	var base = dependencies.base;
 
 	return function createInput(config) {
 		if (!config) {

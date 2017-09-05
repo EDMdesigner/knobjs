@@ -15,37 +15,36 @@ let cssTemplate = `
     border-width: 0px;
     color: ${ textColor };
     fill: ${ textColor }
-  }
-  .knob-tab.orientation-left-top .knob-radio {
-    border-bottom: none;
+    position: relative;
   }
   .knob-tab .active button{
-    border-top: 5px solid ${ baseColor === config.default ? "bababa" : baseColor };
+    border-top: 3px solid ${ baseColor === config.default ? "bababa" : baseColor };
     font-weight: bold;
     color: ${ textColor };
     fill: ${ textColor };
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-left: 1px solid ${ tinycolor(config.darkGray) };
+    border-right: 1px solid ${ tinycolor(config.darkGray) };
+    border-bottom: transparent;
+    background-color: white;
     cursor: not-allowed;
+  }
+  .knob-tab .active {
+    margin-bottom: 2px;    
   }
   .knob-tab.orientation-left-top .active button{
     border-top: none;
     border-left: 4px solid ${ baseColor === config.default ? "#bababa" : baseColor };
-    font-weight: bold;
-    color: ${ textColor };
-    fill: ${ textColor };
+    font-weight: bold;    
     cursor: not-allowed;
-    border-bottom: none
   }
-  .variation-primary .knob-tab .active button {
-    background-color: blue;
+  .knob-radio-wrapper {
+    border-bottom: 1px solid ${ tinycolor(config.default) };
   }
-
-  .variation-secondary .knob-tab button {
-    font-size: 16px;
+  .knob-radio {
+    margin-bottom: -3px;
   }
-
-  .variation-secondary .knob-tab .active button {
-    background-color: red;
-  }  
   `;
 
   return cssTemplate;

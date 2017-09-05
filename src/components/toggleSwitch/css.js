@@ -7,7 +7,6 @@ module.exports = function(config) {
 
 var baseColor = config.primary;
 var defaultToggleTrackStates = createColorShades(config.lightGray);
-var defaultToogleTickStates = createColorShades(config.primary);
 
 let cssTemplate = `
 .knob-toggle-track {

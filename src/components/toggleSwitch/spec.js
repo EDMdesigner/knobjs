@@ -32,14 +32,6 @@ describe("==== ToggleSwitch ====", function(){
 
 		var config = {
 			value: ko.observable(false),
-			style: {
-				tick: {
-
-				},
-				track: {
-
-				}
-			}
 		};
 
 		var createToggleSwitch;
@@ -48,11 +40,6 @@ describe("==== ToggleSwitch ====", function(){
 		beforeAll(function() {
 			function mockBase(conf) {
 				return {
-					behaviours: {
-						hover: {
-							enable: jasmine.createSpy("hover-enable")
-						}
-					},
 					state: ko.observable("default"),
 					variation: conf.variation
 				};
@@ -67,12 +54,8 @@ describe("==== ToggleSwitch ====", function(){
 		it("interface", function() {
 			toggleVm = createToggleSwitch(config);
 
-			expect(toggleVm.tick).toBeDefined();
-			expect(toggleVm.track).toBeDefined();
-			expect(ko.isObservable(toggleVm.value)).toBe(true);
+			expect(ko.isObservable(toggleVm.active)).toBe(true);
 			expect(typeof toggleVm.click).toBe("function");
-
-			expect(toggleVm.track.behaviours.hover.enable).toHaveBeenCalled();
 		});
 
 		it("click should negate value", function() {
@@ -81,32 +64,10 @@ describe("==== ToggleSwitch ====", function(){
 			expect(toggleVm.value()).toBe(false);
 
 			toggleVm.click();
-			expect(toggleVm.value()).toBe(true);
+			expect(toggleVm.active()).toBe(true);
 
 			toggleVm.click();
-			expect(toggleVm.value()).toBe(false);
+			expect(toggleVm.active()).toBe(false);
 		});
-
-		it("should activate subVms when value is true", function() {
-			config.value(true);
-
-			expect(toggleVm.tick.state()).toBe("active");
-			expect(toggleVm.track.state()).toBe("active");
-		});
-
-		it("should de-activate subVms when value is false", function() {
-			config.value(false);
-
-			expect(toggleVm.tick.state()).toBe("default");
-			expect(toggleVm.track.state()).toBe("default");
-		});
-
-		it("should write variation value to the baseVM when called with baseconfig", function() {
-			config.variation = "myVar";
-			toggleVm = createToggleSwitch(config);
-			expect(toggleVm.tick.variation).toEqual("myVar");
-			expect(toggleVm.track.variation).toEqual("myVar");
-		});
-
 	});
 });

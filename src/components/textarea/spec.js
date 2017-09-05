@@ -75,23 +75,7 @@ describe("Textarea", function() {
 		beforeEach(function () {
 			function createMockBaseFunction() {
 				return function() {
-					var vm = {
-						behaviours: {
-							hover: {
-								enable: function() {
-
-								},
-							},
-							focus: {
-								enable: function() {
-
-								},
-							}
-						}
-					};
-
-					spyOn(vm.behaviours.hover, "enable");
-					spyOn(vm.behaviours.focus, "enable");
+					var vm = {};
 
 					return vm;
 				};
@@ -114,13 +98,6 @@ describe("Textarea", function() {
 
 			expect(ko.isObservable(textareaVm.hasFocus)).toBe(true);
 			expect(ko.isObservable(textareaVm.value)).toBe(true);
-		});
-
-		it("behaviour check", function() {
-			textareaVm = createTextarea(config);
-
-			expect(textareaVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(textareaVm.behaviours.focus.enable).toHaveBeenCalled();
 		});
 	});
 });

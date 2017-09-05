@@ -46,9 +46,6 @@ function initKnob(config) {
 		noResults: "No results"
 	};
 
-
-	var theme = config.theme;
-
 	var icons = extend(true, {}, defaultIcons, config.icons);
 	var labels = extend(true, {}, defaultLabels, config.labels);
 
