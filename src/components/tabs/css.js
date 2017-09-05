@@ -35,9 +35,19 @@ let cssTemplate = `
   }
   .knob-tab.orientation-left-top .active button{
     border-top: none;
+    border-right: none;
+    background-color: ${ tinycolor(config.default) };
     border-left: 4px solid ${ baseColor === config.default ? "#bababa" : baseColor };
     font-weight: bold;    
     cursor: not-allowed;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+  .knob-tab.orientation-left-top button {
+    border-bottom: 1px solid ${ tinycolor(config.darkGray) };
+  }
+  .knob-tab.orientation-left-top .active {
+    margin-bottom: 0px;    
   }
   .knob-radio-wrapper {
     border-bottom: 1px solid ${ tinycolor(config.default) };

@@ -5,7 +5,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
+var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
 var selectedColor = tinycolor(colorShades.color4).isDark() ? colorShades.color2 : colorShades.color5;
 

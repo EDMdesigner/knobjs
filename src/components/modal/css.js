@@ -5,7 +5,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
+var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
 
 
@@ -33,10 +33,7 @@ let cssTemplate = `
   border: 2px solid ${ tinycolor(config.default) };
 }
 .knob-modal:hover {
-  border: 2px solid ${ tinycolor(baseColor) };
-}
-.knob-modal:hover .knob-modal__body .knob-button {
-  background-color: ${ colorShades.color3 };
+  border: 2px solid ${ tinycolor(config.primary) };
 }
 .knob-modal__header {
   padding: 10px;

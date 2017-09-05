@@ -11,6 +11,8 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 
+	ko.bindingHandlers['css2'] = ko.bindingHandlers.css;
+
 	return function createToggleSwitch(config) {
 		if (!config) {
 			config = {};
@@ -21,22 +23,28 @@ module.exports = function(dependencies) {
 		}
 
 		var vm = {};
-		var active = ko.observable(false);
+		var active = ko.observable(true);
 		var square = ko.observable(false);
+		var variation = ko.observable("default");
 
-		if (config.variation === "square"){
+		if (config.shape === "square"){
 			square(true);
 		}
 
+		variation(config.variation);
+
 		var value = config.value;
 		var click = function() {
-			active(!active());
+			if(variation() !== "disabled") {
+				active(!active());
+			}
 		};
 	
 		vm.value = value;
 		vm.click = click;
 		vm.active = active;
 		vm.square = square;
+		vm.variation = variation;
 
 		return vm;
 	};

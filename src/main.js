@@ -215,12 +215,6 @@ function initKnob(config) {
 	});
 
 	registerComponent({
-		name: "knob-notification",
-		createVm: require("./components/notificationBar/vm"),
-		template: require("./components/notificationBar/template.html"),
-	});
-
-	registerComponent({
 		name: "knob-checkbox",
 		createVm: require("./components/checkbox/vm"),
 		template: require("./components/checkbox/template.html"),

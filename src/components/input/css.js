@@ -5,7 +5,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
+var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
@@ -36,6 +36,26 @@ let cssTemplate = `
 .knob-input.active {
   outline: 1px solid ${ colorShades.color6 } ;
  }
+.knob-input.active.primary {
+  outline: 1px solid ${ tinycolor(config.primary) };
+ }
+.knob-input.active.warning {
+  outline: 1px solid ${ tinycolor(config.warning) };
+ }
+.knob-input.active.info {
+  outline: 1px solid ${ tinycolor(config.info) };
+ }
+.knob-input.active.success {
+  outline: 1px solid ${ tinycolor(config.success) };
+ }
+.knob-input.active.error {
+  outline: 1px solid ${ tinycolor(config.error) };
+ }
+.knob-input.active.disabled {
+  outline: 1px solid ${ tinycolor(config.disabled) };
+  cursor: not-allowed;
+ }
+
 .knob-input .icon-wrapper .icon {
   width: 20px;
   height: 20px;

@@ -5,7 +5,7 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;
+var baseColor = config.default;
 var colorShades = createColorShades(baseColor);
 var textColor = tinycolor(baseColor).isDark() ? "white" : "black";
 
@@ -24,7 +24,12 @@ let cssTemplate = `
   padding-bottom: 5px;
 }
 .knob-pagelist .knob-pagelist__bar .knob-input:hover {
-  border-color: ${ colorShades.color5 };
+  border-color: ${ colorShades.color4 };
+  outline: none;
+}
+.knob-pagelist .knob-pagelist__bar .knob-input:focus {
+  border-color: ${ colorShades.color6 };
+  outline: none;
 }
 .knob-pagelist .knob-pagelist__bar .knob-dropdown, .knob-pagelist .knob-pagelist__bar .knod-items-per-page {
   float: right;

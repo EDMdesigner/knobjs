@@ -27,21 +27,12 @@ describe("Modal", function() {
 
 
 	describe("- with valid config", function() {
-		var base;
 		var createModal;
 		var modalVm;
 
 		beforeEach(function() {
-			base = {
-				mockBase: function() {
-					return {};
-				}
-			};
-
-			spyOn(base, "mockBase").and.callThrough();
 			createModal = modalCore({
-				ko: ko,
-				base: base.mockBase
+				ko: ko
 			});
 		});
 
@@ -61,11 +52,6 @@ describe("Modal", function() {
 			style: style,
 			icon: "randomIcon"
 		};
-
-		it("calls base", function() {
-			modalVm = createModal(config);
-			expect(base.mockBase).toHaveBeenCalled();
-		});
 
 
 		it("toggle true or false", function() {

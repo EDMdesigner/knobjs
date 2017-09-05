@@ -52,12 +52,11 @@ let cssTemplate = `
 }
 .knob-radio .active button {
   font-weight: bold;
-  border-top: 4px solid ${ baseColor };
+  background-color: ${ baseColor };
 }
 .knob-radio--block .knob-radio .active button {
   font-weight: bold;
-  border-left: 5px solid ${ baseColor };
-  border-top: none;
+  background-color: ${ baseColor };
 }
 `;
 

@@ -4,8 +4,8 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
-var colorShades = createColorShades(baseColor);
+var baseColor = config.default;  
+var colorShades = createColorShades(baseColor); 
 
 
 let cssTemplate = `
@@ -20,10 +20,12 @@ let cssTemplate = `
   padding-bottom: 5px;
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-input:hover {
+  outline: none;
   border: 1px solid ${ colorShades.color4 };
 }
-.knob-infinite-list .knob-infinite-list__bar .knob-input-wrapper.active > .knob-input {
-  border: 2px solid ${ colorShades.color6 };
+.knob-infinite-list .knob-infinite-list__bar .knob-input:focus {
+  border: 1px solid ${ colorShades.color6 };
+  outline: none;
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-dropdown, .knob-infinite-list .knob-infinite-list__bar .knob-items-per-page {
   float: right;
@@ -46,10 +48,10 @@ let cssTemplate = `
   font-size: 36px;
   color: #cacaca;
 }
-button {
+.knob-infinite-list button {
   border-radius: 3px;
 }
-button:hover {
+.knob-infinite-list button:hover {
   background-color: ${ colorShades.color4 };
 }
 `;

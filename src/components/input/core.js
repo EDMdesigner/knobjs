@@ -44,9 +44,11 @@ module.exports = function(dependencies) {
 		var left = createInputDeco(config, "left");
 		var right = createInputDeco(config, "right");
 		var disabled = config.disabled || false;
+		var variation = ko.observable("default");
 
 		var vm = {};
 
+		variation(config.variation);
 		vm.placeholder = ko.observable(config.placeholder);
 		vm.type = config.type;
 		vm.value = config.value || ko.observable();
@@ -70,6 +72,7 @@ module.exports = function(dependencies) {
 		vm.left = left;
 		vm.right = right;
 		vm.disabled = disabled;
+		vm.variation = variation;
 		
 		return vm;
 	};

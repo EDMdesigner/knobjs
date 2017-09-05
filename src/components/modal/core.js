@@ -9,10 +9,6 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.ko is mandatory!");
 	}
 
-	if(!dependencies.base) {
-		throw new Error("dependencies.base is mandatory!");
-	}
-
 	var ko = dependencies.ko;
 	
 	return function createModal(config) {

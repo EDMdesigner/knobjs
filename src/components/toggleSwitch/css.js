@@ -54,6 +54,25 @@ let cssTemplate = `
 .knob-toggle-track.square .knob-toggle-tick {
   border-radius: 0px;
 }
+.knob-toggle-track.active.warning {
+  background-color: ${ tinycolor(config.warning) }; 
+}
+.knob-toggle-track.active.info {
+  background-color: ${ tinycolor(config.info) }; 
+}
+.knob-toggle-track.active.error {
+  background-color: ${ tinycolor(config.error) }; 
+}
+.knob-toggle-track.active.success {
+  background-color: ${ tinycolor(config.success) }; 
+}
+.knob-toggle-track.active.disabled {
+  background-color: ${ tinycolor(config.lightGray) };
+  cursor: not-allowed; 
+}
+.knob-toggle-track.disabled .knob-toggle-tick {
+  background-color: ${ tinycolor(config.darkGray) }; 
+}
 `;
 	return cssTemplate;
 };
