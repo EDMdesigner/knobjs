@@ -34,7 +34,10 @@ let cssTemplate = `
   cursor: not-allowed;
 }
 .knob-input.disabled:hover {
-  outline: none;
+  outline: none;  
+}
+.knob-input.disabled input {
+  cursor: not-allowed;
 }
 .knob-input:hover {
   outline: 1px solid ${ colorShades.color4 };
@@ -57,21 +60,39 @@ let cssTemplate = `
 .variation-error .knob-input {
   outline: 1px solid ${ errorColorShades.color3 };
  }
- .variation-primary .knob-input.active {
+ .knob-input.active:hover {
+  outline: 2px solid ${ colorShades.color4 } ;
+ }
+.variation-primary .knob-input.active {
+  outline: 2px solid ${ primaryColorShades.color4 };
+ }
+.variation-warning .knob-input.active {
+  outline: 2px solid ${ warningColorShades.color4 };
+    background-color: transparent;
+ }
+.variation-info .knob-input.active {
+  outline: 2px solid ${ infoColorShades.color4 };
+ }
+.variation-success .knob-input.active {
+  outline: 2px solid ${ successColorShades.color4 };
+ }
+.variation-error .knob-input.active {
+  outline: 2px solid ${ errorColorShades.color4 };
+ }
+ .variation-primary .knob-input:hover {
   outline: 2px solid ${ tinycolor(config.primary) };
   fill: ${ tinycolor(config.primary) };
  }
-.variation-warning .knob-input.active {
+.variation-warning .knob-input:hover {
   outline: 2px solid ${ tinycolor(config.warning) };
-  background-color: transparent;
  }
-.variation-info .knob-input.active {
+.variation-info .knob-input:hover {
   outline: 2px solid ${ tinycolor(config.info) };
  }
-.variation-success .knob-input.active {
+.variation-success .knob-input:hover {
   outline: 2px solid ${ tinycolor(config.success) };
  }
-.variation-error .knob-input.active {
+.variation-error .knob-input:hover {
   outline: 2px solid ${ tinycolor(config.error) };
  }
 .knob-input .icon-wrapper .icon {

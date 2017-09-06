@@ -1,11 +1,14 @@
 "use strict";
 
 var tinycolor = require("tinycolor2");
+var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = tinycolor(config.primary);  
+var baseColor = config.primary;  
 var textColor = tinycolor(config.default).isDark() ? "white" : "black";
+var colorShades = createColorShades(baseColor);
+var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
 
 let cssTemplate = `
   .knob-tab button {
@@ -18,7 +21,7 @@ let cssTemplate = `
     position: relative;
   }
   .knob-tab .active button{
-    border-top: 3px solid ${ baseColor === config.default ? "bababa" : baseColor };
+    border-top: 3px solid ${ activeTabColor };
     font-weight: bold;
     color: ${ textColor };
     fill: ${ textColor };
@@ -37,7 +40,7 @@ let cssTemplate = `
     border-top: none;
     border-right: none;
     background-color: ${ tinycolor(config.default) };
-    border-left: 4px solid ${ baseColor === config.default ? "#bababa" : baseColor };
+    border-left: 4px solid ${ activeTabColor };
     font-weight: bold;    
     cursor: not-allowed;
     border-top-left-radius: 0px;
@@ -63,7 +66,7 @@ let cssTemplate = `
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid ${ baseColor };
+    border-bottom: 2px solid ${ activeTabColor };
   }
   `;
 

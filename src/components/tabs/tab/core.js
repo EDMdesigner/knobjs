@@ -3,10 +3,6 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies is mandatory!");
 	}
 
-	if(!dependencies.base) {
-		throw new Error("dependencies.base is mandatory!");
-	}
-
 	return function createTab(config) {
 		config = config || {};
 		config.component = "tab";

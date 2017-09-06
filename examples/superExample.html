@@ -280,6 +280,7 @@
 					<!--  Info confirm modal -->
 					<knob-button class="button-close variation-info" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleInfo.toggle();}"></knob-button>
 					<knob-confirm class="variation-info" params="
+						okButtonVariation: 'info',
 						title: 'Confirm',
 						icon: '#icon-open',
 						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
@@ -293,6 +294,7 @@
 					<!--  Warning confirm modal -->
 					<knob-button class="button-close variation-warning" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleWarning.toggle();}"></knob-button>
 					<knob-confirm class="variation-warning" params="
+						okButtonVariation: 'warning',
 						title: 'Confirm',
 						icon: '#icon-open',
 						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
@@ -306,6 +308,7 @@
 					<!--  Success confirm modal -->
 					<knob-button class="button-close variation-success" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleSuccess.toggle();}"></knob-button>
 					<knob-confirm class="variation-success" params="
+						okButtonVariation: 'success',
 						title: 'Confirm',
 						icon: '#icon-open',
 						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
@@ -319,6 +322,7 @@
 					<!--  Error confirm modal -->
 					<knob-button class="button-close variation-error" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleError.toggle();}"></knob-button>
 					<knob-confirm class="variation-error" params="
+						okButtonVariation: 'error',
 						title: 'Confirm',
 						icon: '#icon-open',
 						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
@@ -696,7 +700,6 @@
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
-					<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>
@@ -736,7 +739,6 @@
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
-					<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>
@@ -776,7 +778,6 @@
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
-					<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>

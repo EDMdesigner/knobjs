@@ -1,4 +1,4 @@
-<div class="knob-modal-confirm">
+<div class="knob-modal-confirm" data-bind="css: okButtonVariation">
 	<knob-modal params="
 		title: title,
 		icon: icon,
@@ -6,12 +6,12 @@
 		visible: visible">
 		<div class="knob-modal__content" data-bind="text: message"></div>
 		<div class="knob-modal__buttons">
-			<knob-button params="
+			<knob-button class="okButton" params="
 				label: okLabel,
 				variation: 'primary',
 				click: ok
 			"></knob-button>
-			<knob-button params="
+			<knob-button class="cancelButton" params="
 				label: cancelLabel,
 				variation: 'cancel',
 				click: cancel

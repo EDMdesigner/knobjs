@@ -7,7 +7,7 @@ module.exports = function(config) {
 
 var baseColor = config.primary;
 var colorShades = createColorShades(baseColor);
-var basicTextColor = tinycolor(baseColor).isDark() ? baseColor : colorShades.color6;
+var basicTextColor = tinycolor(baseColor).isDark() ? baseColor : colorShades.color7;
 var activeTextColor = tinycolor(baseColor).isDark() ? "white" : "black";
 
 let cssTemplate = `

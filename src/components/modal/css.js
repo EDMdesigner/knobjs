@@ -32,12 +32,14 @@ let cssTemplate = `
   background: white;
   min-width: 240px;
   max-width: 90%;
+  padding-top: 6px;
+  padding-left: 6px;
   /*	z-index: 22; */
   overflow: hidden;
   border: 2px solid ${ tinycolor(config.default) };
 }
 .knob-modal:hover {
-  border: 2px solid ${ tinycolor(config.primary) };
+  border: 2px solid ${ colorShades.color4 };
 }
 .variation-info .knob-modal:hover {
   border: 2px solid ${ tinycolor(config.info) };
