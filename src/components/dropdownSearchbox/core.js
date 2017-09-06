@@ -14,7 +14,7 @@ module.exports = function pagedListCore(dependencies) {
 	var ko = dependencies.ko;
 	var createList = dependencies.createList;
 
-	return function createPagedList(config) {
+	return function createDropdownSearchbox(config) {
 		config = config || {};
 
 		if (!config.store) {
@@ -149,6 +149,7 @@ module.exports = function pagedListCore(dependencies) {
 		//SELECT
 		config.selected = config.selected;
 		config.selected(null);
+
 		config.selectedItem = ko.computed(function () {
 			var selectedVal = config.selected();
 
@@ -161,6 +162,20 @@ module.exports = function pagedListCore(dependencies) {
 			}
 
 			return selectedVal.model.data.id + " " + selectedVal.model.data.email + " " + selectedVal.model.data.name + " " + selectedVal.model.data.title;
+		});
+
+		config.selectedId = ko.computed(function () {
+			var selectedVal = config.selected();
+
+			if (!selectedVal) {
+				return null;
+			}
+
+			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
+				throw new Error("selectablePagedList: Invalid superdata object");
+			}
+
+			return selectedVal.model.data.id;
 		});
 
 		config.select = function (item) {
@@ -177,8 +192,6 @@ module.exports = function pagedListCore(dependencies) {
 			return "Add item " + list.search();
 		});
 
-
-
 		//return list;
 
 		return {
@@ -187,9 +200,9 @@ module.exports = function pagedListCore(dependencies) {
 			addItem: addItem,
 			icons: config.icons,
 			labels: config.labels,
-			//config: config,
-			// selected: config.selectedItem,
-			select: config.select
+			select: config.select,
+			selectedId: config.selectedId,
+			selectedItem: config.selectedItem
 		};
 	};
 };

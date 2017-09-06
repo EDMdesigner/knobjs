@@ -11,7 +11,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 
-	ko.bindingHandlers['css2'] = ko.bindingHandlers.css;
+	ko.bindingHandlers.css2 = ko.bindingHandlers.css;
 
 	return function createToggleSwitch(config) {
 		if (!config) {

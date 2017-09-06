@@ -10,42 +10,6 @@ var registerComponent = require("./knobRegisterComponent");
 
 var baseVm = require("./base/vm");
 
-var createButtonStyle;
-var createButtonStyleDefault = require("./button/style");
-var createButtonStyleChamaileon = require("./button/chamaileon");
-
-var createInputStyle;
-var createInputStyleDefault = require("./input/style");
-var createInputStyleChamaileon = require("./input/chamaileon");
-
-var createToggleSwitchStyle;
-var createToggleSwitchStyleDefault = require("./toggleSwitch/style");
-
-var createModalStyle;
-var createModalStyleChamaileon = require("./modal/chamaileon");
-var createModalStyleDefault = require("./modal/style");
-
-var createPagedListStyle;
-var createPagedListStyleDefault = require("./pagedList/style");
-
-var createSelectablePagedListStyle;
-var createSelectablePagedListStyleDefault = require("./selectablePagedList/style");
-
-var createInfiniteListStyle;
-var createInfiniteListStyleDefault = require("./infiniteList/style");
-
-var createNotificationStyle;
-var createNotificationStyleDefault = require("./notificationBar/style");
-
-var createCheckboxStyle;
-var createCheckboxStyleDefault = require("./checkbox/style");
-
-var createTabStyle;
-var createTabStyleDefault = require("./tabs/tab/style");
-
-var createDropdownSearchboxStyle;
-var createDropdownSearchboxStyleDefault = require("./dropdownSearchbox/style");
-
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -84,98 +48,6 @@ function initKnob(config) {
 
 	var icons = extend(true, {}, defaultIcons, config.icons);
 	var labels = extend(true, {}, defaultLabels, config.labels);
-
-	if (typeof theme === "object" && theme !== null) {
-
-		if (typeof theme.createButtonStyle !== "function") {
-			throw new Error("config.theme.createButtonStyle must be a function");
-		}
-
-		if (typeof theme.createInputStyle !== "function") {
-			throw new Error("config.theme.createInputStyle must be a function");
-		}
-
-		if (typeof theme.createToggleSwitchStyle !== "function") {
-			throw new Error("config.theme.createToggleSwitchStyle must be a function");
-		}
-
-		if (typeof theme.createModalStyle !== "function") {
-			throw new Error("config.theme.createModalStyle must be a function");
-		}
-
-		if (typeof theme.createPagedListStyle !== "function") {
-			throw new Error("config.theme.createPagedListStyle must be a function");
-		}
-
-		if (typeof theme.createSelectablePagedListStyle !== "function") {
-			throw new Error("config.theme.createSelectablePagedListStyle must be a function");
-		}
-
-		if (typeof theme.createInfiniteListStyle !== "function") {
-			throw new Error("config.theme.createInfiniteListStyle must be a function");
-		}
-
-		if (typeof theme.createNotificationStyle !== "function") {
-			throw new Error("config.theme.createNotificationStyle must be a function");
-		}
-
-		if (typeof theme.createCheckboxStyle !== "function") {
-			throw new Error("config.theme.createCheckboxStyle must be a function");
-		}
-
-		if (typeof theme.createTabStyle !== "function") {
-			throw new Error("config.theme.createTabStyle must be a function");
-		}
-
-		if (typeof theme.createDropdownSearchboxStyle !== "function") {
-			throw new Error("config.theme.createDropdownSearchboxStyle must be a function");
-		}
-
-		createButtonStyle = theme.createButtonStyle;
-		createInputStyle = theme.createInputStyle;
-		createToggleSwitchStyle = theme.createToggleSwitchStyle;
-		createModalStyle = theme.createModalStyle;
-		createPagedListStyle = theme.createPagedListStyle;
-		createSelectablePagedListStyle = theme.createSelectablePagedListStyle;
-		createInfiniteListStyle = theme.createInfiniteListStyle;
-		createNotificationStyle = theme.createNotificationStyle;
-		createCheckboxStyle = theme.createCheckboxStyle;
-		createTabStyle = theme.createTabStyle;
-		createDropdownSearchboxStyle = theme.createDropdownSearchboxStyle;
-
-	} else if (typeof theme === "string") {
-
-		if (theme === "chamaileon") {
-			createButtonStyle = createButtonStyleChamaileon;
-			createInputStyle = createInputStyleChamaileon;
-			createToggleSwitchStyle = createToggleSwitchStyleDefault;
-			createModalStyle = createModalStyleChamaileon;
-			createPagedListStyle = createPagedListStyleDefault;
-			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
-			createInfiniteListStyle = createInfiniteListStyleDefault;
-			createNotificationStyle = createNotificationStyleDefault;
-			createDropdownSearchboxStyle = createDropdownSearchboxStyleDefault;
-		} else {
-			createButtonStyle = createButtonStyleDefault;
-			createInputStyle = createInputStyleDefault;
-			createToggleSwitchStyle = createToggleSwitchStyleDefault;
-			createModalStyle = createModalStyleDefault;
-			createPagedListStyle = createPagedListStyleDefault;
-			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
-			createInfiniteListStyle = createInfiniteListStyleDefault;
-			createNotificationStyle = createNotificationStyleDefault;
-			createDropdownSearchboxStyle = createDropdownSearchboxStyleDefault;
-		}
-		createCheckboxStyle = createCheckboxStyleDefault;
-		createTabStyle = createTabStyleDefault;
-
-	} else {
-		throw new Error("config.theme should be an object or a string");
-	}
-
-	var buttonStyle = createButtonStyle(config);
-	var checkboxStyle = createCheckboxStyle(config.colors);
-	var tabStyle = createTabStyle(config);
 
 	registerComponent({
 		name: "knob-button",
@@ -367,7 +239,8 @@ function initKnob(config) {
 		name: "knob-dropdown-searchbox",
 		createVm: require("./components/dropdownSearchbox/vm"),
 		template: require("./components/dropdownSearchbox/template.html"),
-		style: createDropdownSearchboxStyle(config.colors),
+		css: require("./components/dropdownSearchbox/css"),
+		colors: config.colors,
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
