@@ -1,0 +1,14 @@
+<div class="knob-radio" data-bind="foreach: items">
+	<div data-bind="component: {
+		name: 'knob-button',
+		params: {
+			variation: $parent.variation,
+			label: label,
+			icon: icon,
+			radio: true,
+			group: group,
+			click: select
+		}
+	}, css: isSelected() ? 'active' : ''">
+	</div>
+</div>

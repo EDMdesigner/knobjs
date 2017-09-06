@@ -1,0 +1,49 @@
+<div class="knob-pagination" data-bind="if: pageSelectors().length">
+	<span data-bind="component: {
+						name: 'knob-button',
+						params: {
+							variation: 'pagination',
+							icon: icons.first,
+							disabled: first().disabled,
+							click: first().selectPage
+						}
+					}">
+	</span>
+	<span data-bind="component: {
+						name: 'knob-button',
+						params: {
+							variation: 'pagination',
+							icon: icons.prev,
+							disabled: prev().disabled,
+							click: prev().selectPage
+						}
+					}">
+	</span>
+	<span data-bind="foreach: pageSelectors">
+		<knob-button params="label: label,
+							variation: 'pagination',
+							disabled: disabled,
+							click: selectPage"
+							data-bind="css: { active: active }"></knob-button>
+	</span>
+	<span data-bind="component: {
+						name: 'knob-button',
+						params: {
+							variation: 'pagination',
+							icon: icons.next,
+							disabled: next().disabled,
+							click: next().selectPage
+						}
+					}">
+	</span>
+	<span data-bind="component: {
+						name: 'knob-button',
+						params: {
+							variation: 'pagination',
+							icon: icons.last,
+							disabled: last().disabled,
+							click: last().selectPage
+						}
+					}">
+	</span>
+</div>
