@@ -43,6 +43,9 @@ var createCheckboxStyleDefault = require("./checkbox/style");
 var createTabStyle;
 var createTabStyleDefault = require("./tabs/tab/style");
 
+var createDropdownSearchboxStyle;
+var createDropdownSearchboxStyleDefault = require("./dropdownSearchbox/style");
+
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -127,6 +130,10 @@ function initKnob(config) {
 			throw new Error("config.theme.createTabStyle must be a function");
 		}
 
+		if (typeof theme.createDropdownSearchboxStyle !== "function") {
+			throw new Error("config.theme.createDropdownSearchboxStyle must be a function");
+		}
+
 		createButtonStyle = theme.createButtonStyle;
 		createInputStyle = theme.createInputStyle;
 		createToggleSwitchStyle = theme.createToggleSwitchStyle;
@@ -137,6 +144,7 @@ function initKnob(config) {
 		createNotificationStyle = theme.createNotificationStyle;
 		createCheckboxStyle = theme.createCheckboxStyle;
 		createTabStyle = theme.createTabStyle;
+		createDropdownSearchboxStyle = theme.createDropdownSearchboxStyle;
 
 	} else if (typeof theme === "string") {
 
@@ -149,6 +157,7 @@ function initKnob(config) {
 			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createInfiniteListStyle = createInfiniteListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
+			createDropdownSearchboxStyle = createDropdownSearchboxStyleDefault;
 		} else {
 			createButtonStyle = createButtonStyleDefault;
 			createInputStyle = createInputStyleDefault;
@@ -158,6 +167,7 @@ function initKnob(config) {
 			createSelectablePagedListStyle = createSelectablePagedListStyleDefault;
 			createInfiniteListStyle = createInfiniteListStyleDefault;
 			createNotificationStyle = createNotificationStyleDefault;
+			createDropdownSearchboxStyle = createDropdownSearchboxStyleDefault;
 		}
 		createCheckboxStyle = createCheckboxStyleDefault;
 		createTabStyle = createTabStyleDefault;
@@ -338,6 +348,21 @@ function initKnob(config) {
 		createVm: require("./numericInput/vm"),
 		template: require("./numericInput/template.html"),
 		icons: icons.numericInput
+	});
+
+	registerComponent({
+		name: "knob-dropdown-searchbox",
+		createVm: require("./dropdownSearchbox/vm"),
+		template: require("./dropdownSearchbox/template.html"),
+		style: createDropdownSearchboxStyle(config.colors),
+		icons: {
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		},
+		labels: {
+			noResults: labels.noResults
+		}
 	});
 
 	if (config.background) {

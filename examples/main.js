@@ -204,5 +204,6 @@ ko.applyBindings({
 	numericStep: ko.observable(1),
 	numericPrecision: ko.observable(1),
 	numericTestVal: ko.observable(6),
-	infiniteList: infiniteList
+	infiniteList: infiniteList,
+	dropdownSearchbox: ko.observable(),
 });

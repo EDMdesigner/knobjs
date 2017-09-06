@@ -1,0 +1,26 @@
+<div class="knob-dropdown-searchbox">
+    <div>
+        <div class="knob-pagelist__bar">
+            <input class="knob-input" type="text" data-bind="value: list.search, valueUpdate: 'afterkeydown'" />
+            <knob-button class="knob-button-search" params="label: '',
+                                    variation: 'default',
+                                    icon: icons.search">
+            </knob-button>
+        </div>
+
+        <!-- ko if: shouldDisplay -->
+        <ul data-bind="css: list.listClass, foreach: list.items">
+            <li data-bind="css: $parent.list.itemClass">
+                <!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parent, index: $index, select: $parents[0].buttonSelect ? $parents[0].select : null} } -->
+                <!-- /ko -->
+            </li>
+        </ul>
+        <!-- /ko -->
+
+        <a href="#" class="selected" data-bind="text: selected"></a>
+        <!-- ko if: list.items().length === 0 -->
+        <span class="no-result" data-bind="visible: !list.loading(), text: labels.noResults"></span>
+        <a href="#" class="add-item" data-bind="visible: !list.loading(), text: addItem"></a>
+        <!-- /ko -->
+    </div>
+</div>

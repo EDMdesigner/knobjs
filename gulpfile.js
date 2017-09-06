@@ -73,7 +73,8 @@ superGulp.taskTemplates.initFrontendTasks({
 			dev: [
 				{files: "./node_modules/normalize.css/normalize.css", dest: "./dist/lib"},
 				{files: "./node_modules/knockout/build/output/knockout-latest.debug.js", dest: "./dist/lib"},
-				{files: "./examples/example.html", dest: "./dist/examples"}
+				{files: "./examples/example.html", dest: "./dist/examples"},
+				{files: "./examples/dropdownsearchbox.html", dest: "./dist/examples"}
 			]
 		},
 		sass: {
