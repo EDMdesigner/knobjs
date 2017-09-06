@@ -10,7 +10,6 @@ var registerComponent = require("./knobRegisterComponent");
 
 var baseVm = require("./base/vm");
 
-<<<<<<< HEAD
 var createButtonStyle;
 var createButtonStyleDefault = require("./button/style");
 var createButtonStyleChamaileon = require("./button/chamaileon");
@@ -47,8 +46,6 @@ var createTabStyleDefault = require("./tabs/tab/style");
 var createDropdownSearchboxStyle;
 var createDropdownSearchboxStyleDefault = require("./dropdownSearchbox/style");
 
-=======
->>>>>>> origin/knob_2_0
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -88,7 +85,6 @@ function initKnob(config) {
 	var icons = extend(true, {}, defaultIcons, config.icons);
 	var labels = extend(true, {}, defaultLabels, config.labels);
 
-<<<<<<< HEAD
 	if (typeof theme === "object" && theme !== null) {
 
 		if (typeof theme.createButtonStyle !== "function") {
@@ -181,8 +177,6 @@ function initKnob(config) {
 	var checkboxStyle = createCheckboxStyle(config.colors);
 	var tabStyle = createTabStyle(config);
 
-=======
->>>>>>> origin/knob_2_0
 	registerComponent({
 		name: "knob-button",
 		createVm: require("./components/button/vm"),
@@ -371,8 +365,8 @@ function initKnob(config) {
 
 	registerComponent({
 		name: "knob-dropdown-searchbox",
-		createVm: require("./dropdownSearchbox/vm"),
-		template: require("./dropdownSearchbox/template.html"),
+		createVm: require("./components/dropdownSearchbox/vm"),
+		template: require("./components/dropdownSearchbox/template.html"),
 		style: createDropdownSearchboxStyle(config.colors),
 		icons: {
 			search: icons.search,
