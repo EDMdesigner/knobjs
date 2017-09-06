@@ -53,7 +53,7 @@ let cssTemplate = `
 		position: relative;
 		float: left;
 		text-decoration: none;
-		background-color: ${ baseColor };
+		background-color: ${ tinycolor(baseColor) };
 		color: ${ activeTextColor };
 		fill: ${ activeTextColor };
 		font-weight: bold;

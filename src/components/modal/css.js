@@ -7,6 +7,10 @@ module.exports = function(config) {
 
 var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
+var errorColorShades = createColorShades(config.error);
+var successColorShades = createColorShades(config.success);
+var infoColorShades = createColorShades(config.info);
+var warningColorShades = createColorShades(config.warning);
 
 
 let cssTemplate = `
@@ -35,9 +39,48 @@ let cssTemplate = `
 .knob-modal:hover {
   border: 2px solid ${ tinycolor(config.primary) };
 }
-.knob-modal__header {
-  padding: 10px;
-  color: black;
+.variation-info .knob-modal:hover {
+  border: 2px solid ${ tinycolor(config.info) };
+}
+.variation-info .knob-modal .knob-modal__header .button-close button:hover svg {
+  fill: ${ infoColorShades.color2 };
+}
+.variation-info .knob-modal .knob-modal__header .desc .icon {
+  fill: ${ infoColorShades.color4 };
+}
+.variation-warning .knob-modal:hover {
+  border: 2px solid ${ tinycolor(config.warning) };
+}
+.variation-warning .knob-modal .knob-modal__header .button-close button:hover svg {
+  fill: ${ warningColorShades.color2 };
+}
+.variation-warning .knob-modal .knob-modal__header .desc .icon {
+  fill: ${ warningColorShades.color4 };
+}
+.variation-success .knob-modal:hover {
+  border: 2px solid ${ tinycolor(config.success) };
+}
+.variation-success .knob-modal .knob-modal__header .button-close button:hover svg {
+  fill: ${ successColorShades.color2 };
+}
+.variation-success .knob-modal .knob-modal__header .desc .icon {
+  fill: ${ successColorShades.color4 };
+}
+.variation-error .knob-modal:hover {
+  border: 2px solid ${ tinycolor(config.error) };
+}
+.variation-error .knob-modal .knob-modal__header .button-close button:hover svg {
+  fill: ${ errorColorShades.color2 };
+}
+.knob-modal .knob-modal__header .button-close button:hover {
+  background-color: transparent;
+}
+.variation-error .knob-modal .knob-modal__header .desc .icon {
+  fill: ${ errorColorShades.color4 };
+}
+.knob-input.active.primary { 
+  outline: 2px solid ${ tinycolor(config.primary) }; 
+  fill: red;
 }
 .knob-modal__header .desc {
   padding-right: 10px;

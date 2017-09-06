@@ -195,6 +195,10 @@ ko.applyBindings({
 	buttons: buttons,
 	modalVisible: ko.observable(false),
 	confirmVisible: ko.observable(false),
+	confirmVisibleInfo: ko.observable(false),
+	confirmVisibleWarning: ko.observable(false),
+	confirmVisibleSuccess: ko.observable(false),
+	confirmVisibleError: ko.observable(false),
 	confirmCallback: function(ok) {
 		if (ok) {
 			window.alert("Ok");
@@ -203,6 +207,14 @@ ko.applyBindings({
 		}
 	},
 	alertVisible: ko.observable(false),
+	alertVisibleInfo: ko.observable(false),
+	alertVisibleWarning: ko.observable(false),
+	alertVisibleError: ko.observable(false),
+	alertVisibleSuccess: ko.observable(false),
+	warningVisible: ko.observable(false),
+	infoVisible: ko.observable(false),
+	successVisible: ko.observable(false),
+	errorVisible: ko.observable(false),	
 	alertCallback: alertClose,
 	notificationVisible: ko.observable(false),
 	checkboxValue: ko.observable(false),

@@ -7,6 +7,11 @@ module.exports = function(config) {
 
 var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
+var primaryColorShades = createColorShades(config.primary);
+var errorColorShades = createColorShades(config.error);
+var successColorShades = createColorShades(config.success);
+var infoColorShades = createColorShades(config.info);
+var warningColorShades = createColorShades(config.warning);
 
 let cssTemplate = `
 .knob-input {
@@ -26,6 +31,7 @@ let cssTemplate = `
 }
 .knob-input.disabled {
   background-color: ${ tinycolor(config.lightGray) };
+  cursor: not-allowed;
 }
 .knob-input.disabled:hover {
   outline: none;
@@ -34,28 +40,40 @@ let cssTemplate = `
   outline: 1px solid ${ colorShades.color4 };
  }
 .knob-input.active {
-  outline: 1px solid ${ colorShades.color6 } ;
+  outline: 2px solid ${ colorShades.color6 } ;
  }
-.knob-input.active.primary {
-  outline: 1px solid ${ tinycolor(config.primary) };
+.variation-primary .knob-input {
+  outline: 1px solid ${ primaryColorShades.color3 };
  }
-.knob-input.active.warning {
-  outline: 1px solid ${ tinycolor(config.warning) };
+.variation-warning .knob-input {
+  outline: 1px solid ${ warningColorShades.color3 };
  }
-.knob-input.active.info {
-  outline: 1px solid ${ tinycolor(config.info) };
+.variation-info .knob-input {
+  outline: 1px solid ${ infoColorShades.color3 };
  }
-.knob-input.active.success {
-  outline: 1px solid ${ tinycolor(config.success) };
+.variation-success .knob-input {
+  outline: 1px solid ${ successColorShades.color3 };
  }
-.knob-input.active.error {
-  outline: 1px solid ${ tinycolor(config.error) };
+.variation-error .knob-input {
+  outline: 1px solid ${ errorColorShades.color3 };
  }
-.knob-input.active.disabled {
-  outline: 1px solid ${ tinycolor(config.disabled) };
-  cursor: not-allowed;
+ .variation-primary .knob-input.active {
+  outline: 2px solid ${ tinycolor(config.primary) };
+  fill: ${ tinycolor(config.primary) };
  }
-
+.variation-warning .knob-input.active {
+  outline: 2px solid ${ tinycolor(config.warning) };
+  background-color: transparent;
+ }
+.variation-info .knob-input.active {
+  outline: 2px solid ${ tinycolor(config.info) };
+ }
+.variation-success .knob-input.active {
+  outline: 2px solid ${ tinycolor(config.success) };
+ }
+.variation-error .knob-input.active {
+  outline: 2px solid ${ tinycolor(config.error) };
+ }
 .knob-input .icon-wrapper .icon {
   width: 20px;
   height: 20px;

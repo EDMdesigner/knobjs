@@ -8,8 +8,6 @@ var extend = require("extend");
 
 var registerComponent = require("./knobRegisterComponent");
 
-var baseVm = require("./base/vm");
-
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -243,9 +241,6 @@ function initKnob(config) {
 module.exports = {
 	init: initKnob,
 
-	registerComponent: registerComponent,
-	base: {
-		vm: baseVm
-	}
+	registerComponent: registerComponent
 };
-//
+
