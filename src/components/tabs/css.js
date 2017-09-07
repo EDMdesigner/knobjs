@@ -70,6 +70,7 @@ let cssTemplate = `
   }
   .knob-tab.secondary-variation .knob-radio-wrapper {
     border-bottom: none;
+    margin-left: 10px;
   }
   .knob-tab.secondary-variation .knob-radio-wrapper button {
     background-color: transparent;
