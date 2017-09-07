@@ -13,6 +13,7 @@ var selectedColor = tinycolor(colorShades.color4).isDark() ? colorShades.color2 
 let cssTemplate = `
 .knob-dropdown-searchbox {
     border: 1px solid #131313;
+    overflow: hidden;
   }
   .knob-dropdown-searchbox .selected {
     color: ${ selectedColor };
@@ -42,23 +43,21 @@ let cssTemplate = `
     padding: 2px;
     color: #cacaca;
   }
-  .knob-dropdown-searchbox .add-item {
+  .knob-dropdown-searchbox .moreItem {
     text-align: left;
-    display: block;
     margin: 0 auto;
     padding: 2px;
-    background-color: blue;
-    color: ${ textColor.isDark };
+    background-color: ${ selectedColor };
+    color: ${ textColor };
   }
   .knob-dropdown-searchbox .selected-item {
     text-align: left;
     display: block;
     margin: 0 auto;
     padding: 2px;
-    background-color: blue;
+    background-color: ${ selectedColor };
     color: ${ textColor };
   }
-  
 `;
 
 return cssTemplate;

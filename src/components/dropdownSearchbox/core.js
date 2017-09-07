@@ -178,12 +178,16 @@ module.exports = function pagedListCore(dependencies) {
 			// return list.search() !== "" || displayAlways;
 		});
 
-		var more = ko.computed(function () {
+		var moreWithFoundedItem = function() {
+			console.log("moreWithFoundedItem");
+		};
+
+		var noResult = ko.computed(function () {
 			return list.search();
 		});
 
-		var moreWithItem = function() {
-			console.log("TODO");
+		var moreWithNotFoundItem = function() {
+			console.log("moreWithNotFoundItem");
 		};
 
 		var displayRemove = ko.computed(function() {
@@ -205,8 +209,9 @@ module.exports = function pagedListCore(dependencies) {
 			selectedId: config.selectedId,
 			selectedItem: config.selectedItem,
 			shouldDisplay: shouldDisplay,
-			more: more,
-			moreWithItem: moreWithItem,	
+			moreWithFoundedItem: moreWithFoundedItem,
+			noResult: noResult,
+			moreWithNotFoundItem: moreWithNotFoundItem,	
 			displayRemove: displayRemove,
 			removeSelectedItem: removeSelectedItem
 		};
