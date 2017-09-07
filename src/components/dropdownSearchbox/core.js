@@ -161,40 +161,54 @@ module.exports = function pagedListCore(dependencies) {
 		config.select = function (item) {
 			config.selected(item);
 		};
-		
+
 		var shouldDisplay = ko.computed(function () {
 			var display = false;
 
-			if(config.selected() === null && list.search() === "") {
+			if (config.selected() === null && list.search() === "") {
 				display = false;
-			} else if(config.selected() === null && list.search() !== "") {
+			} else if (config.selected() === null && list.search() !== "") {
 				display = true;
-			} else if(config.selected() !== null) {
+			} else if (config.selected() !== null) {
 				display = false;
-			} else if(config.search() !== "") {
+			} else if (config.search() !== "") {
 				display = true;
 			}
 			return display || displayAlways;
 			// return list.search() !== "" || displayAlways;
 		});
 
-		var moreWithFoundedItem = function() {
+		var moreWithFoundedItem = function () {
 			console.log("moreWithFoundedItem");
 		};
 
+		function validateEmail(email) {
+			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
+		}
+
 		var noResult = ko.computed(function () {
-			return list.search();
+			//return list.search();
+			var text = list.search();
+
+			if (validateEmail(text)) {
+				console.log("EMAIL");
+				return "Email: " + text;
+			} else {
+				console.log("USER");
+				return "User: " + text;
+			}
 		});
 
-		var moreWithNotFoundItem = function() {
+		var moreWithNotFoundItem = function () {
 			console.log("moreWithNotFoundItem");
 		};
 
-		var displayRemove = ko.computed(function() {
+		var displayRemove = ko.computed(function () {
 			return config.selected() !== null;
 		});
 
-		var removeSelectedItem = function() {
+		var removeSelectedItem = function () {
 			config.selected(null);
 		};
 
@@ -211,7 +225,7 @@ module.exports = function pagedListCore(dependencies) {
 			shouldDisplay: shouldDisplay,
 			moreWithFoundedItem: moreWithFoundedItem,
 			noResult: noResult,
-			moreWithNotFoundItem: moreWithNotFoundItem,	
+			moreWithNotFoundItem: moreWithNotFoundItem,
 			displayRemove: displayRemove,
 			removeSelectedItem: removeSelectedItem
 		};

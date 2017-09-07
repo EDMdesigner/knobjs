@@ -45,6 +45,7 @@ let cssTemplate = `
   }
   .knob-dropdown-searchbox .moreItem {
     text-align: left;
+    display: block;
     margin: 0 auto;
     padding: 2px;
     background-color: ${ selectedColor };
