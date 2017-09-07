@@ -68,6 +68,18 @@ let cssTemplate = `
     border-right: none;
     border-bottom: 2px solid ${ activeTabColor };
   }
+  .knob-tab.secondary-variation .knob-radio-wrapper {
+    border-bottom: none;
+  }
+  .knob-tab.secondary-variation .knob-radio-wrapper button {
+    background-color: transparent;
+    border: none;
+    text-transform: lowercase;
+  }
+   .knob-tab.secondary-variation .knob-radio-wrapper .active button {
+    color: ${ activeTabColor };
+    fill: ${ activeTabColor };
+  }
   `;
 
   return cssTemplate;

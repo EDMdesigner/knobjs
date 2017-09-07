@@ -811,6 +811,28 @@
 				</knob-tab>
 		</knob-tabs>
 		<hr>
+		<h3>Knob-tab within knob-tab (secondary variation)</h3>
+		<knob-tabs params="defaultTab: 0" class="knob-tab">
+				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+					<!-- Secondaray tab-->
+					<knob-tabs params="defaultTab: 0" class="knob-tab secondary-variation">
+						<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+						</knob-tab>
+						<knob-tab params="icon: '#icon-grid'">
+						</knob-tab>
+						<knob-tab params="label: 'tabX'">
+						</knob-tab>
+					</knob-tabs>
+					<!-- ............. -->
+				</knob-tab>
+				<knob-tab params="icon: '#icon-grid'">
+					
+				</knob-tab>
+				<knob-tab params="label: 'tabX'">
+
+				</knob-tab>
+		</knob-tabs>
+		<hr>
 		<h2>knob-checkbox</h2>
 		<knob-checkbox params="value: checkboxValue"></knob-checkbox>
 		<h2>disabled knob-checkbox</h2>
