@@ -12,17 +12,26 @@
         <li data-bind="css: $parent.list.itemClass">
 
             <div data-bind="css: { selected: $parents[0].selectedId() === $data.data.id }, click: $parents[0].buttonSelect ? null : $parents[0].select">
-                <!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parents, index: $index, select: $parents[0].buttonSelect ? $parents[0].select : null} } -->
+                <!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parents, index: $index} } -->
                 <!-- /ko -->
             </div>
 
         </li>
     </ul>
     <!-- /ko -->
-
-    <a href="#" class="selected" data-bind="text: selectedItem"></a>
+    <span class="selected" data-bind="text: selectedItem"></span>
+    <!-- ko if: displayRemove -->
+    <knob-button class="variation-error" params="label: '',
+                                        variation: 'default',
+                                        icon: icons.close" data-bind="click: removeSelectedItem">
+    </knob-button>
+    <!-- /ko -->
     <!-- ko if: list.items().length === 0 -->
     <span class="no-result" data-bind="visible: !list.loading(), text: labels.noResults"></span>
-    <a href="#" class="add-item" data-bind="visible: !list.loading(), text: addItem"></a>
+    <span href="#" class="add-item" data-bind="visible: !list.loading(), text: more"></span>
+    <knob-button class="moreItem" params="label: '',
+                                                variation: 'default',
+                                                icon: icons.moreHoriz" data-bind="click: moreWithItem">
+    </knob-button>
     <!-- /ko -->
 </div>

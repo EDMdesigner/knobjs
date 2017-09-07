@@ -36,20 +36,8 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.icons.search is mandatory!");
 		}
 
-		if (!config.icons.dropdown) {
-			throw new Error("config.icons.dropdown is mandatory!");
-		}
-
-		if (!config.icons.sort) {
-			throw new Error("config.icons.sort is mandatory!");
-		}
-
-		if (!config.icons.sort.asc) {
-			throw new Error("config.icons.sort.asc is mandatory!");
-		}
-
-		if (!config.icons.sort.desc) {
-			throw new Error("config.icons.sort.desc is mandatory!");
+		if (!config.icons.close) {
+			throw new Error("config.icons.close is mandatory!");
 		}
 
 		if (!config.labels) {
@@ -78,15 +66,11 @@ module.exports = function pagedListCore(dependencies) {
 
 		var list = createList(config);
 
-		var numOfPages = ko.observable();
 		var itemsPerPage = ko.observable(10);
-		var currentPage = ko.observable(0);
 
 		list.listClass = config.listClass || "knob-pagedlist__list";
 		list.itemClass = config.itemClass || "knob-pagedlist__item";
-		list.numOfPages = numOfPages;
 		list.itemsPerPage = itemsPerPage;
-		list.currentPage = currentPage;
 
 		if (stateModel) {
 			stateModel.load(name, function (err, result) {
@@ -112,11 +96,7 @@ module.exports = function pagedListCore(dependencies) {
 
 		function initStoreHandling() {
 			ko.computed(function () {
-				var currentPageVal = currentPage();
-				var itemsPerPageVal = itemsPerPage();
-
-				list.skip(currentPageVal * itemsPerPageVal);
-				list.limit(itemsPerPageVal);
+				list.limit(itemsPerPage());
 			});
 
 
@@ -183,26 +163,52 @@ module.exports = function pagedListCore(dependencies) {
 		};
 		
 		var shouldDisplay = ko.computed(function () {
-			//console.log("search: " + list.search() !== "" + "\n");
-			//console.log("seleted: " + config.selected() !== "" + "\n");
-			return list.search() !== "" || displayAlways;
+			var display = false;
+
+			if(config.selected() === null && list.search() === "") {
+				display = false;
+			} else if(config.selected() === null && list.search() !== "") {
+				display = true;
+			} else if(config.selected() !== null) {
+				display = false;
+			} else if(config.search() !== "") {
+				display = true;
+			}
+			return display || displayAlways;
+			// return list.search() !== "" || displayAlways;
 		});
 
-		var addItem = ko.computed(function () {
-			return "Add item " + list.search();
+		var more = ko.computed(function () {
+			return list.search();
 		});
+
+		var moreWithItem = function() {
+			console.log("TODO");
+		};
+
+		var displayRemove = ko.computed(function() {
+			return config.selected() !== null;
+		});
+
+		var removeSelectedItem = function() {
+			config.selected(null);
+		};
+
 
 		//return list;
 
 		return {
 			list: list,
-			shouldDisplay: shouldDisplay,
-			addItem: addItem,
 			icons: config.icons,
 			labels: config.labels,
 			select: config.select,
 			selectedId: config.selectedId,
-			selectedItem: config.selectedItem
+			selectedItem: config.selectedItem,
+			shouldDisplay: shouldDisplay,
+			more: more,
+			moreWithItem: moreWithItem,	
+			displayRemove: displayRemove,
+			removeSelectedItem: removeSelectedItem
 		};
 	};
 };

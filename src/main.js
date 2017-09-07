@@ -39,7 +39,9 @@ function initKnob(config) {
 			edit: "#icon-edit",
 			done: "#icon-done",
 			close: "#icon-close"
-		}
+		},
+		close: "#icon-close",
+		moreHoriz: '#icon-more-horiz'
 	};
 
 	var defaultLabels = {
@@ -244,7 +246,9 @@ function initKnob(config) {
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
-			dropdown: icons.dropdown
+			dropdown: icons.dropdown,
+			close: icons.close,
+			moreHoriz: icons.moreHoriz
 		},
 		labels: {
 			noResults: labels.noResults

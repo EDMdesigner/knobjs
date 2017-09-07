@@ -19,14 +19,14 @@ let cssTemplate = `
   }
   .knob-dropdown-searchbox .knob-pagelist__bar {
     overflow: hidden;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid  ${ colorShades.color4 };
   }
   .knob-dropdown-searchbox .knob-pagelist__bar .knob-input {
     float: left;
-    border-color: #ddd;
+    border-color:  ${ colorShades.color4 };
   }
   .knob-dropdown-searchbox .knob-pagelist__bar .knob-input:hover {
-    border-color: #131313;
+    border-color: ${ colorShades.color4 };
   }
   .knob-dropdown-searchbox .knob-pagelist__bar .knob-button-search {
     float: left;
@@ -48,7 +48,7 @@ let cssTemplate = `
     margin: 0 auto;
     padding: 2px;
     background-color: blue;
-    color: white;
+    color: ${ textColor.isDark };
   }
   .knob-dropdown-searchbox .selected-item {
     text-align: left;
@@ -56,7 +56,7 @@ let cssTemplate = `
     margin: 0 auto;
     padding: 2px;
     background-color: blue;
-    color: white;
+    color: ${ textColor };
   }
   
 `;
