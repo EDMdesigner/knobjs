@@ -6,9 +6,13 @@ var createColorShades = require("../../utils/colorShades");
 module.exports = function(config) {
 
 var baseColor = config.primary;  
-var textColor = tinycolor(config.default).isDark() ? "white" : "black";
+var textColor = function(color) {
+  return tinycolor(color).isDark() ? "white" : "black";
+};
 var colorShades = createColorShades(baseColor);
 var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
+var activeButtonColor = "white";
+
 
 let cssTemplate = `
   .knob-tab button {
@@ -16,21 +20,21 @@ let cssTemplate = `
     font-weight: 400;
     text-transform: uppercase;
     border-width: 0px;
-    color: ${ textColor };
-    fill: ${ textColor }
-    position: relative;
+    color: ${ textColor(config.default) };
+    fill: ${ textColor(config.default) };
+    background-color: ${ tinycolor(config.default) };
   }
   .knob-tab .active button{
     border-top: 3px solid ${ activeTabColor };
     font-weight: bold;
-    color: ${ textColor };
-    fill: ${ textColor };
+    color: ${ textColor(config.default) };
+    fill: ${ textColor(config.default) };
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     border-left: 1px solid ${ tinycolor(config.darkGray) };
     border-right: 1px solid ${ tinycolor(config.darkGray) };
     border-bottom: transparent;
-    background-color: white;
+    background-color: ${ activeButtonColor };
     cursor: not-allowed;
   }
   .knob-tab .active {
@@ -53,10 +57,10 @@ let cssTemplate = `
     margin-bottom: 0px;    
   }
   .knob-radio-wrapper {
-    border-bottom: 1px solid ${ tinycolor(config.default) };
+    border-bottom: 1px solid ${ tinycolor(config.darkGray) };
   }
   .knob-radio {
-    margin-bottom: -3px;
+    margin-bottom: -1px;
   }
   .border-bottom-variation .knob-tabs button {
     background-color: transparent;
@@ -80,6 +84,13 @@ let cssTemplate = `
    .knob-tab.secondary-variation .knob-radio-wrapper .active button {
     color: ${ activeTabColor };
     fill: ${ activeTabColor };
+  }
+  .knob-panel-group {
+    background-color: ${ activeButtonColor };
+    padding-top: 1px;
+  }
+  .knob-tabs {
+    background-color: ${ tinycolor(config.default) };
   }
   `;
 
