@@ -5,6 +5,7 @@ var tinycolor = require("tinycolor2");
 module.exports = function(config) {
 
 var baseColor = tinycolor(config.primary);
+var textColor = baseColor.isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-radio {
@@ -53,10 +54,16 @@ let cssTemplate = `
 .knob-radio .active button {
   font-weight: bold;
   background-color: ${ baseColor };
+  color: ${ textColor };
+  fill: ${ textColor };
+  outline: none;
 }
 .knob-radio--block .knob-radio .active button {
   font-weight: bold;
   background-color: ${ baseColor };
+  color: ${ textColor };
+  fill: ${ textColor };
+  outline: none;
 }
 `;
 

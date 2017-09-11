@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dropdown Searchbox</title>
-    <link rel="stylesheet" href="/lib/normalize.css">
-    <link rel="stylesheet" href="/knob.css">
-    <link rel="stylesheet" href="/examples/example.css">
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/examples/example.css">
     <style type="text/css">
         .anim-rotate {
             animation: rotate 1.9s infinite linear;
@@ -189,6 +188,7 @@
                 fields: ['id', 'email', 'name', 'title'], 
                 search: 'title', 
                 orderBy: {name: -1}, 
+
                 sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], 
                 labels: {noResults: 'No results found'}">
             <div>
@@ -206,10 +206,10 @@
         <div data-bind="text: pagedListSelected() && 'title: ' + pagedListSelected().model.data.title"></div>
 -->
     </div>
-
     <script src="/lib/knockout-latest.debug.js"></script>
     <script src="/knob.js"></script>
     <script src="/examples/main.js"></script>
+    <script src="/lib/jscolor.js"></script>
 </body>
 
 </html>

@@ -48,29 +48,29 @@ let cssTemplate = `
 .knob-toggle-track.active {
   transition: margin 0.4s ease-in;
 }
-.knob-toggle-track.square {
+.square .knob-toggle-track {
   border-radius: 0px;
 }
-.knob-toggle-track.square .knob-toggle-tick {
+.square .knob-toggle-track .knob-toggle-tick {
   border-radius: 0px;
 }
-.knob-toggle-track.active.warning {
+.variation-warning .active {
   background-color: ${ tinycolor(config.warning) }; 
 }
-.knob-toggle-track.active.info {
+.variation-info .knob-toggle-track.active {
   background-color: ${ tinycolor(config.info) }; 
 }
-.knob-toggle-track.active.error {
+.variation-error .knob-toggle-track.active {
   background-color: ${ tinycolor(config.error) }; 
 }
-.knob-toggle-track.active.success {
+.variation-success .knob-toggle-track.active {
   background-color: ${ tinycolor(config.success) }; 
 }
-.knob-toggle-track.active.disabled {
+.disabled .knob-toggle-track.active {
   background-color: ${ tinycolor(config.lightGray) };
   cursor: not-allowed; 
 }
-.knob-toggle-track.disabled .knob-toggle-tick {
+.disabled .knob-toggle-track .knob-toggle-tick {
   background-color: ${ tinycolor(config.darkGray) }; 
 }
 `;

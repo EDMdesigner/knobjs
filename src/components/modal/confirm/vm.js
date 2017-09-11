@@ -29,6 +29,7 @@ function createConfirmModal(config) {
 	var okLabel = config.okLabel;
 	var cancelLabel = config.cancelLabel;
 
+	var okButtonVariation = config.okButtonVariation;
 
 	function ok() {
 		callback(true);
@@ -51,7 +52,9 @@ function createConfirmModal(config) {
 		cancelLabel: cancelLabel,
 
 		ok: ok,
-		cancel: cancel
+		cancel: cancel,
+
+		okButtonVariation: okButtonVariation
 	};
 }
 

@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>KnobJS 2.0</title>
 	<link rel="stylesheet" href="/lib/normalize.css">
-	<link rel="stylesheet" href="/knob.css">
 	<link rel="stylesheet" href="/examples/example.css">
 </head>
 <body>
@@ -137,8 +136,8 @@
 		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning'"></knob-button>
 		<h3>Disabled</h3>
-		<knob-button class="variation-error" params="label: 'Error', leftIcon: '#icon-warning', disabled:true"></knob-button>
-		<knob-button class="variation-error" params="label: 'Error', rightIcon: '#icon-warning', disabled:true"></knob-button>
+		<knob-button params="label: 'Disabled', leftIcon: '#icon-warning', disabled:true"></knob-button>
+		<knob-button params="label: 'Disabled', rightIcon: '#icon-warning', disabled:true"></knob-button>
 		<hr>
 
 		<h2>knob-toggleswitch</h2>
@@ -150,23 +149,23 @@
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'info'">
+					<knob-toggleswitch class="variation-info" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'warning'">
+					<knob-toggleswitch class="variation-warning" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'success'">
+					<knob-toggleswitch class="variation-success" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'error'">
+					<knob-toggleswitch class="variation-error" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'disabled'">
+					<knob-toggleswitch class="disabled" params="value: toggleValue, disabled: true">
 					</knob-toggleswitch>
 				</td>
 			</tr>
@@ -176,27 +175,27 @@
 		<table>
 			<tr>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, shape: 'square'">
+					<knob-toggleswitch class="square" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'info', shape: 'square'">
+					<knob-toggleswitch class="variation-info square" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'warning', shape: 'square'">
+					<knob-toggleswitch class="variation-warning square" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'success', shape: 'square'">
+					<knob-toggleswitch class="variation-success square" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'error', shape: 'square'">
+					<knob-toggleswitch class="variation-error square" params="value: toggleValue">
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch params="value: toggleValue, variation: 'disabled', shape: 'square'">
+					<knob-toggleswitch class="disabled square" params="value: toggleValue, disabled: true">
 					</knob-toggleswitch>
 				</td>
 			</tr>
@@ -205,7 +204,7 @@
 
 
 		<h2>knob-modal</h2>
-
+		<!-- Default modal -->
 		<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
 		<knob-modal params="
 			title: 'test modal',
@@ -216,30 +215,190 @@
 			</p>
 		</knob-modal>
 
-		<h3>knob-confirm</h3>
-		<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
-		<knob-confirm params="
-			title: 'Confirm',
+		<!-- Info modal -->
+		<knob-button class="variation-info" params="label: 'Info modal', variation: 'default', icon: '#icon-open', click: function() {infoVisible.toggle();}"></knob-button>
+		<knob-modal class="variation-info" params="
+			title: 'test modal',
 			icon: '#icon-open',
-			message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
-			visible: confirmVisible,
-			okLabel: 'Ok',
-			cancelLabel: 'Cancel',
-			callback: confirmCallback
-		"></knob-confirm>
+			visible: infoVisible">
+			<p>
+				Information is power!
+			</p>
+		</knob-modal>
 
+		<!-- Warning modal -->
+		<knob-button class="variation-warning" params="label: 'Warning modal', variation: 'default', icon: '#icon-open', click: function() {warningVisible.toggle();}"></knob-button>
+		<knob-modal class="variation-warning" params="
+			title: 'test modal',
+			icon: '#icon-open',
+			visible: warningVisible">
+			<p>
+				Waaarning! Watch out here I come!
+			</p>
+		</knob-modal>
+
+		<!-- Success modal -->
+		<knob-button class="variation-success" params="label: 'Success modal', variation: 'default', icon: '#icon-open', click: function() {successVisible.toggle();}"></knob-button>
+		<knob-modal class="variation-success" params="
+			title: 'test modal',
+			icon: '#icon-open',
+			visible: successVisible">
+			<p>
+				Congratulations!
+			</p>
+		</knob-modal>
+
+		<!-- Error modal -->
+		<knob-button class="variation-error" params="label: 'Error modal', icon: '#icon-open', click: function() {errorVisible.toggle();}"></knob-button>
+		<knob-modal class="variation-error" params="
+			title: 'test modal',
+			icon: '#icon-open',
+			visible: errorVisible">
+			<p>
+				Danger! Something went wrong.
+			</p>
+		</knob-modal>
+
+		<h3>knob-confirm</h3>
+		<table>
+			<tr>
+				<td>
+					<!--  Default confirm modal -->
+					<knob-button class="button-close" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisible.toggle();}"></knob-button>
+					<knob-confirm params="
+						title: 'Confirm',
+						icon: '#icon-open',
+						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+						visible: confirmVisible,
+						okLabel: 'Ok',
+						cancelLabel: 'Cancel',
+						callback: confirmCallback
+					"></knob-confirm>
+				</td>
+				<td>
+					<!--  Info confirm modal -->
+					<knob-button class="button-close variation-info" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleInfo.toggle();}"></knob-button>
+					<knob-confirm class="variation-info" params="
+						okButtonVariation: 'info',
+						title: 'Confirm',
+						icon: '#icon-open',
+						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+						visible: confirmVisibleInfo,
+						okLabel: 'Ok',
+						cancelLabel: 'Cancel',
+						callback: confirmCallback
+					"></knob-confirm>
+				</td>
+				<td>
+					<!--  Warning confirm modal -->
+					<knob-button class="button-close variation-warning" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleWarning.toggle();}"></knob-button>
+					<knob-confirm class="variation-warning" params="
+						okButtonVariation: 'warning',
+						title: 'Confirm',
+						icon: '#icon-open',
+						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+						visible: confirmVisibleWarning,
+						okLabel: 'Ok',
+						cancelLabel: 'Cancel',
+						callback: confirmCallback
+					"></knob-confirm>
+				</td>
+				<td>
+					<!--  Success confirm modal -->
+					<knob-button class="button-close variation-success" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleSuccess.toggle();}"></knob-button>
+					<knob-confirm class="variation-success" params="
+						okButtonVariation: 'success',
+						title: 'Confirm',
+						icon: '#icon-open',
+						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+						visible: confirmVisibleSuccess,
+						okLabel: 'Ok',
+						cancelLabel: 'Cancel',
+						callback: confirmCallback
+					"></knob-confirm>
+				</td>
+				<td>
+					<!--  Error confirm modal -->
+					<knob-button class="button-close variation-error" params="label: 'Open confirm', variation: 'default', icon: '#icon-open', click: function() {confirmVisibleError.toggle();}"></knob-button>
+					<knob-confirm class="variation-error" params="
+						okButtonVariation: 'error',
+						title: 'Confirm',
+						icon: '#icon-open',
+						message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae doloribus porro eos consequuntur libero rerum, ea laboriosam voluptate consequatur perferendis omnis nisi quasi beatae voluptatibus, quae, animi. Debitis, in tempora.?',
+						visible: confirmVisibleError,
+						okLabel: 'Ok',
+						cancelLabel: 'Cancel',
+						callback: confirmCallback
+					"></knob-confirm>
+				</td>
+			</tr>
+		</table>
 		<h3>knob-alert</h3>
-		<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
+		<table>
+			<tr>
+				<td>	
+					<!--  Default error modal -->
+					<knob-button class="button-close" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisible.toggle();}"></knob-button>
+					<knob-alert params="
+						title: 'test alert',
+						icon: '#icon-warning',
+						message: 'I have to alert you about something?',
+						visible: alertVisible,
+						okLabel: 'Ok',
+						callback: alertCallback">
+					</knob-alert>
+				</td>
+				<td>
+					<!--  Info error modal -->
+					<knob-button class="button-close variation-info" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisibleInfo.toggle();}"></knob-button>
+					<knob-alert class="variation-info" params="
+						title: 'test alert',
+						icon: '#icon-warning',
+						message: 'I have to alert you about something?',
+						visible: alertVisibleInfo,
+						okLabel: 'Ok',
+						callback: alertCallback">
+					</knob-alert>
+				</td>
+				<td>
+					<!--  Warning error modal -->
+					<knob-button class="button-close variation-warning" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisibleWarning.toggle();}"></knob-button>
+					<knob-alert class="variation-warning"  params="
+						title: 'test alert',
+						icon: '#icon-warning',
+						message: 'I have to alert you about something?',
+						visible: alertVisibleWarning,
+						okLabel: 'Ok',
+						callback: alertCallback">
+					</knob-alert>
+				</td>
+				<td>
+					<!--  Success error modal -->
+					<knob-button class="button-close variation-success" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisibleSuccess.toggle();}"></knob-button>
+					<knob-alert class="variation-success" params="
+						title: 'test alert',
+						icon: '#icon-warning',
+						message: 'I have to alert you about something?',
+						visible: alertVisibleSuccess,
+						okLabel: 'Ok',
+						callback: alertCallback">
+					</knob-alert>
+				</td>
+				<td>
+					<!--  Error error modal -->
+					<knob-button class="button-close variation-error" params="label: 'Open alert', variation: 'default', icon: '#icon-open', click: function() {alertVisibleError.toggle();}"></knob-button>
+					<knob-alert class="variation-error" params="
+						title: 'test alert',
+						icon: '#icon-warning',
+						message: 'I have to alert you about something?',
+						visible: alertVisibleError,
+						okLabel: 'Ok',
+						callback: alertCallback">
+					</knob-alert>
+				</td>
+			</tr>
+		</table>
 
-
-		<knob-alert params="
-			title: 'test alert',
-			icon: '#icon-warning',
-			message: 'I have to alert you about something?',
-			visible: alertVisible,
-			okLabel: 'Ok',
-			callback: alertCallback">
-		</knob-alert>
 		<hr>
 		<h2>knob-button default Small</h2>
 		<div data-bind="foreach: buttons">
@@ -280,12 +439,19 @@
 		<h2>knob-input</h2>
 		<div style="width: 300px">
 			<knob-input params="placeholder: 'Name'"></knob-input>
-			<knob-input params="placeholder: 'Primary', variation: 'primary'"></knob-input>
-			<knob-input params="placeholder: 'Info', variation: 'info'"></knob-input>
-			<knob-input params="placeholder: 'Warning', variation: 'warning'"></knob-input>
-			<knob-input params="placeholder: 'Success', variation: 'success'"></knob-input>
-			<knob-input params="placeholder: 'Error', variation: 'error'"></knob-input>
-			<knob-input params="placeholder: 'Disabled', disabled:true"></knob-input>			
+			<br>
+			<knob-input class="variation-primary" params="placeholder: 'Primary'"></knob-input>
+			<br>
+			<knob-input class="variation-info" params="placeholder: 'Info'"></knob-input>
+			<br>
+			<knob-input class="variation-warning" params="placeholder: 'Warning'"></knob-input>
+			<br>
+			<knob-input class="variation-success" params="placeholder: 'Success'"></knob-input>
+			<br>
+			<knob-input class="variation-error" params="placeholder: 'Error', variation: 'error'"></knob-input>
+			<br>
+			<knob-input class="disabled" params="placeholder: 'Disabled', disabled:true"></knob-input>	
+			<br>		
 			<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
 		</div>
 		<hr>
@@ -533,7 +699,6 @@
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
-					<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>
@@ -567,13 +732,12 @@
 				</knob-tab>
 		</knob-tabs>
 		<hr>
-		<h3>Top orient</h3>
+		<h3>Top orient with top border</h3>
 		<knob-tabs params="defaultTab: 0" class="knob-tab">
 				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
-					<a href="" data-bind="click: function() {$root.notificationVisible.toggle();}">Open notification</a>
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>
@@ -603,6 +767,67 @@
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
+
+				</knob-tab>
+		</knob-tabs>
+		<hr>
+		<h3>Top orient with border bottom</h3>
+		<knob-tabs params="defaultTab: 0" class="border-bottom-variation knob-tab">
+				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+					<p>
+						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+					</p>
+					<p>
+						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+					</p>
+					<p>
+						In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+					</p>
+				</knob-tab>
+				<knob-tab params="icon: '#icon-grid'">
+					<p>
+						In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+					</p>
+					<p>
+						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+					</p>
+					<p>
+						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+					</p>
+
+				</knob-tab>
+				<knob-tab params="label: 'tabX'">
+					<p>
+						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
+					</p>
+					<p>
+						In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
+					</p>
+					<p>
+						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
+					</p>
+
+				</knob-tab>
+		</knob-tabs>
+		<hr>
+		<h3>Knob-tab within knob-tab (secondary variation)</h3>
+		<knob-tabs params="defaultTab: 0" class="knob-tab">
+				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+					<!-- Secondaray tab-->
+					<knob-tabs params="defaultTab: 0" class="knob-tab secondary-variation">
+						<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+						</knob-tab>
+						<knob-tab params="icon: '#icon-grid'">
+						</knob-tab>
+						<knob-tab params="label: 'tabX'">
+						</knob-tab>
+					</knob-tabs>
+					<!-- ............. -->
+				</knob-tab>
+				<knob-tab params="icon: '#icon-grid'">
+					
+				</knob-tab>
+				<knob-tab params="label: 'tabX'">
 
 				</knob-tab>
 		</knob-tabs>

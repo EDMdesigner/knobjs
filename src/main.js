@@ -8,8 +8,6 @@ var extend = require("extend");
 
 var registerComponent = require("./knobRegisterComponent");
 
-var baseVm = require("./base/vm");
-
 function initKnob(config) {
 	if (!config) {
 		config = {};
@@ -37,11 +35,8 @@ function initKnob(config) {
 		},
 		inlineTextEditor: {
 			edit: "#icon-edit",
-			done: "#icon-done",
-			close: "#icon-close"
-		},
-		close: "#icon-close",
-		moreHoriz: '#icon-more-horiz'
+			done: "#icon-done"
+		}
 	};
 
 	var defaultLabels = {
@@ -246,9 +241,7 @@ function initKnob(config) {
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
-			dropdown: icons.dropdown,
-			close: icons.close,
-			moreHoriz: icons.moreHoriz
+			dropdown: icons.dropdown
 		},
 		labels: {
 			noResults: labels.noResults
@@ -263,9 +256,6 @@ function initKnob(config) {
 module.exports = {
 	init: initKnob,
 
-	registerComponent: registerComponent,
-	base: {
-		vm: baseVm
-	}
+	registerComponent: registerComponent
 };
-//
+

@@ -19,19 +19,9 @@
         </li>
     </ul>
     <!-- /ko -->
-    <span class="selected" data-bind="text: selectedItem, click: moreWithFoundedItem"></span>
-    <!-- ko if: displayRemove -->
-    <knob-button class="variation-error" params="label: '',
-                                        variation: 'default',
-                                        icon: icons.close" data-bind="click: removeSelectedItem">
-    </knob-button>
-    <!-- /ko -->
+    <span class="selected" data-bind="text: selectedItem"></span>
     <!-- ko if: list.items().length === 0 -->
     <span class="no-result" data-bind="visible: !list.loading(), text: labels.noResults"></span>
-    <span class="moreItem" data-bind="visible: !list.loading(), text: noResult, click: moreWithNotFoundItem"></span>
-    <!-- <knob-button class="" params="label: '',
-                                variation: 'default',
-                                icon: icons.moreHoriz" data-bind="click: moreWithNotFoundItem">
-    </knob-button> -->
+    <span class="moreItem" data-bind="visible: !list.loading(), text: noResult, click: notFoundItem"></span>
     <!-- /ko -->
 </div>
