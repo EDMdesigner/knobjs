@@ -60,8 +60,8 @@ module.exports = function(config) {
 			border: 1px solid;
 		}
 		.knob-button .icon-wrapper .icon {
-			width: 20px;
-			height: 20px;
+			width: 17px;
+			height: 17px;
 			vertical-align: middle;
 			line-height: 1;
 		}

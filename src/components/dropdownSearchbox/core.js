@@ -36,10 +36,6 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.icons.search is mandatory!");
 		}
 
-		if (!config.icons.close) {
-			throw new Error("config.icons.close is mandatory!");
-		}
-
 		if (!config.labels) {
 			throw new Error("config.labels is mandatory!");
 		}
@@ -61,6 +57,10 @@ module.exports = function pagedListCore(dependencies) {
 		var displayAlways = config.displayAlways || false;
 		var stateModel = config.stateModel;
 		var store = config.store;
+
+		var handleSelected = config.handleSelected;
+		// var handleNotFound = config.handleNotFound;
+		// var validateFunction = config.validateFunction;
 
 		store.load.before.add(beforeLoad);
 
@@ -158,10 +158,6 @@ module.exports = function pagedListCore(dependencies) {
 			return selectedVal.model.data.id;
 		});
 
-		config.select = function (item) {
-			config.selected(item);
-		};
-
 		var shouldDisplay = ko.computed(function () {
 			var display = false;
 
@@ -178,40 +174,45 @@ module.exports = function pagedListCore(dependencies) {
 			// return list.search() !== "" || displayAlways;
 		});
 
-		var moreWithFoundedItem = function () {
-			console.log("moreWithFoundedItem");
+		config.select = function (item) {
+			config.selected(item);
+			console.log(item);
+			handleSelected(item);
+			reset();
 		};
+
+		var noResult = ko.computed(function () {
+			return list.search();
+		});
 
 		function validateEmail(email) {
 			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			return re.test(email);
 		}
 
-		var noResult = ko.computed(function () {
-			//return list.search();
-			var text = list.search();
+		var notFoundItem = function () {
+			var result = list.search();
+			console.log("notFoundItem " + result);
 
-			if (validateEmail(text)) {
-				console.log("EMAIL");
-				return "Email: " + text;
+			// handleNotFound(validateFunction, result);
+
+			var ret = false;
+			if (validateEmail(result)) {
+				console.log("Email: " + result);
+				// handleNotFound(result);
+				ret = true;
 			} else {
-				console.log("USER");
-				return "User: " + text;
+				console.log("User: " + result);
+				ret = false;
 			}
-		});
-
-		var moreWithNotFoundItem = function () {
-			console.log("moreWithNotFoundItem");
+			reset();
+			return ret;
 		};
 
-		var displayRemove = ko.computed(function () {
-			return config.selected() !== null;
-		});
-
-		var removeSelectedItem = function () {
+		var reset = function() {
 			config.selected(null);
+			list.search("");
 		};
-
 
 		//return list;
 
@@ -223,11 +224,8 @@ module.exports = function pagedListCore(dependencies) {
 			selectedId: config.selectedId,
 			selectedItem: config.selectedItem,
 			shouldDisplay: shouldDisplay,
-			moreWithFoundedItem: moreWithFoundedItem,
 			noResult: noResult,
-			moreWithNotFoundItem: moreWithNotFoundItem,
-			displayRemove: displayRemove,
-			removeSelectedItem: removeSelectedItem
+			notFoundItem: notFoundItem
 		};
 	};
 };
