@@ -59,8 +59,7 @@ module.exports = function pagedListCore(dependencies) {
 		var store = config.store;
 
 		var handleSelected = config.handleSelected;
-		// var handleNotFound = config.handleNotFound;
-		// var validateFunction = config.validateFunction;
+		var handleNotFound = config.handleNotFound;
 
 		store.load.before.add(beforeLoad);
 
@@ -130,20 +129,6 @@ module.exports = function pagedListCore(dependencies) {
 		config.selected = config.selected;
 		config.selected(null);
 
-		config.selectedItem = ko.computed(function () {
-			var selectedVal = config.selected();
-
-			if (!selectedVal) {
-				return null;
-			}
-
-			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
-				throw new Error("dropdownSearch: Invalid superdata object");
-			}
-
-			return selectedVal.model.data.id + " " + selectedVal.model.data.email + " " + selectedVal.model.data.name + " " + selectedVal.model.data.title;
-		});
-
 		config.selectedId = ko.computed(function () {
 			var selectedVal = config.selected();
 
@@ -151,11 +136,13 @@ module.exports = function pagedListCore(dependencies) {
 				return null;
 			}
 
-			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
-				throw new Error("selectablePagedList: Invalid superdata object");
+			console.log(selectedVal.data);
+
+			if (!selectedVal || !selectedVal.data || typeof selectedVal.data.id === undefined) {
+				throw new Error("dropdownSearchBox: Invalid superdata object");
 			}
 
-			return selectedVal.model.data.id;
+			return selectedVal.data.id;
 		});
 
 		var shouldDisplay = ko.computed(function () {
@@ -176,7 +163,6 @@ module.exports = function pagedListCore(dependencies) {
 
 		config.select = function (item) {
 			config.selected(item);
-			console.log(item);
 			handleSelected(item);
 			reset();
 		};
@@ -185,28 +171,12 @@ module.exports = function pagedListCore(dependencies) {
 			return list.search();
 		});
 
-		function validateEmail(email) {
-			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			return re.test(email);
-		}
-
 		var notFoundItem = function () {
 			var result = list.search();
 			console.log("notFoundItem " + result);
 
-			// handleNotFound(validateFunction, result);
-
-			var ret = false;
-			if (validateEmail(result)) {
-				console.log("Email: " + result);
-				// handleNotFound(result);
-				ret = true;
-			} else {
-				console.log("User: " + result);
-				ret = false;
-			}
+			handleNotFound(result);
 			reset();
-			return ret;
 		};
 
 		var reset = function() {
