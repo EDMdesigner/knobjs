@@ -12,6 +12,13 @@ describe("dropdownSearchbox", function () {
                 });
             }).toThrowError("dependencies.ko is mandatory!");
         });
+
+        it("dependencies.createList", function () {
+            expect(function () {
+                core({
+                });
+            }).toThrowError("dependencies.createList is mandatory!");
+        });
     });
 
     describe("- valid dependencies", function () {

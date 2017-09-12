@@ -242,9 +242,6 @@ function initKnob(config) {
 			search: icons.search,
 			sort: icons.sort,
 			dropdown: icons.dropdown
-		},
-		labels: {
-			noResults: labels.noResults
 		}
 	});
 

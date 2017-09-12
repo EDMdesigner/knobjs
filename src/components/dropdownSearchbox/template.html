@@ -21,6 +21,6 @@
     <!-- /ko -->
     <span class="selected" data-bind="text: selectedItem"></span>
     <!-- ko if: list.items().length === 0 -->
-    <span class="moreItem" data-bind="visible: !list.loading(), text: noResultLabel, click: notFoundItem"></span>
+    <span class="moreItem" data-bind="visible: !list.loading(), text: noResultLabel, click: clickMoreItem "></span>
     <!-- /ko -->
 </div>

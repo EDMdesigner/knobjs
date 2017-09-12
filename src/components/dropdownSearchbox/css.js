@@ -14,10 +14,9 @@ let cssTemplate = `
 .knob-dropdown-searchbox {
     border: 1px solid #131313;
     overflow: hidden;
+    color: ${ textColor };
   }
-  .knob-dropdown-searchbox .selected {
-    color: ${ selectedColor };
-  }
+ 
   .knob-dropdown-searchbox .knob-pagelist__bar {
     overflow: hidden;
     border-bottom: 1px solid  ${ colorShades.color4 };
@@ -36,28 +35,13 @@ let cssTemplate = `
     list-style: none;
     padding: 0;
   }
-  .knob-dropdown-searchbox .no-result {
-    text-align: left;
-    display: block;
-    margin: 0 auto;
-    padding: 2px;
-    color: #cacaca;
-  }
   .knob-dropdown-searchbox .moreItem {
     text-align: left;
     display: block;
     margin: 0 auto;
     padding: 2px;
     background-color: ${ selectedColor };
-    color: ${ textColor };
-  }
-  .knob-dropdown-searchbox .selected-item {
-    text-align: left;
-    display: block;
-    margin: 0 auto;
-    padding: 2px;
-    background-color: ${ selectedColor };
-    color: ${ textColor };
+    color: white;
   }
 `;
 

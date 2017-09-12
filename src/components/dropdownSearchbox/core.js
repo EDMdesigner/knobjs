@@ -36,14 +36,6 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.icons.search is mandatory!");
 		}
 
-		if (!config.labels) {
-			throw new Error("config.labels is mandatory!");
-		}
-
-		if (!config.labels.noResults) {
-			throw new Error("config.labels.noResults is mandatory!");
-		}
-
 		if (!config) {
 			throw new Error("config is mandatory!");
 		}
@@ -165,34 +157,40 @@ module.exports = function pagedListCore(dependencies) {
 			// return list.search() !== "" || displayAlways;
 		});
 
-		config.select = function (item) {
+		config.select = function(item) {
 			config.selected(item);
 			handleSelected(item);
 			reset();
 		};
 
 		var noResultLabel = ko.computed(function() {
+			var label = "";
 			if(validator(list.search())) {
-				return "Invite: " + list.search();
+				label = "Invite: " + list.search();
 			} else {
-				return "Unkown user: " + list.search();
+				label = "Unkown user: " + list.search();
 			}
+			return label;
 		});
 
-		var notFoundItem = function () {
+		var notFoundItem = function() {
 			var result = list.search();
-			console.log("notFoundItem " + result);
 
 			handleNotFound(validator(result));
 			reset();
 		};
 
+		var clickMoreItem = function() {
+			var label = list.search();
+			if(validator(label)) {
+				return notFoundItem();
+			}
+		}
+
 		var reset = function() {
 			config.selected(null);
 			list.search("");
 		};
-
-		//return list;
 
 		return {
 			list: list,
@@ -203,7 +201,8 @@ module.exports = function pagedListCore(dependencies) {
 			selectedItem: config.selectedItem,
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
-			notFoundItem: notFoundItem
+			notFoundItem: notFoundItem,
+			clickMoreItem: clickMoreItem
 		};
 	};
 };
