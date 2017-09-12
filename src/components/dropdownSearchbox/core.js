@@ -48,22 +48,26 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config is mandatory!");
 		}
 
-		if (!ko.isObservable(config.selected)) {
-			throw new Error("config.selected is mandatory, and it has to be an observable!");
-		}
+		// if(config.handleSelected) {
+		// 	throw new Error("config.handleSelected is mandatory!");
+		// }
+
+		// if(config.handleNotFound) {
+		// 	throw new Error("config.handleNotFound is mandatory!");
+		// }
 
 		var name = config.name;
 
-		var displayAlways = config.displayAlways || false;
 		var stateModel = config.stateModel;
 		var store = config.store;
 
+		store.load.before.add(beforeLoad);
+		var list = createList(config);
+
+		var displayAlways = config.displayAlways || false;
 		var handleSelected = config.handleSelected;
 		var handleNotFound = config.handleNotFound;
-
-		store.load.before.add(beforeLoad);
-
-		var list = createList(config);
+		var validator = config.validator;
 
 		var itemsPerPage = ko.observable(10);
 
@@ -167,15 +171,19 @@ module.exports = function pagedListCore(dependencies) {
 			reset();
 		};
 
-		var noResult = ko.computed(function () {
-			return list.search();
+		var noResultLabel = ko.computed(function() {
+			if(validator(list.search())) {
+				return "Invite: " + list.search();
+			} else {
+				return "Unkown user: " + list.search();
+			}
 		});
 
 		var notFoundItem = function () {
 			var result = list.search();
 			console.log("notFoundItem " + result);
 
-			handleNotFound(result);
+			handleNotFound(validator(result));
 			reset();
 		};
 
@@ -194,7 +202,7 @@ module.exports = function pagedListCore(dependencies) {
 			selectedId: config.selectedId,
 			selectedItem: config.selectedItem,
 			shouldDisplay: shouldDisplay,
-			noResult: noResult,
+			noResultLabel: noResultLabel,
 			notFoundItem: notFoundItem
 		};
 	};
