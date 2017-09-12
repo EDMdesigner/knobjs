@@ -15,7 +15,9 @@ module.exports = function pagedListCore(dependencies) {
 	var createList = dependencies.createList;
 
 	return function createDropdownSearchbox(config) {
-		config = config || {};
+		if (!config) {
+			throw new Error("config is mandatory!");
+		}
 
 		if (!config.store) {
 			throw new Error("config.store is mandatory!");
@@ -28,25 +30,17 @@ module.exports = function pagedListCore(dependencies) {
 			}
 		}
 
+		if(!config.handleSelected) {
+			throw new Error("config.handleSelected is mandatory!");
+		}
+
+		if(!config.handleNotFound) {
+			throw new Error("config.handleNotFound is mandatory!");
+		}
+
 		if (!config.icons) {
 			throw new Error("config.icons is mandatory!");
 		}
-
-		if (!config.icons.search) {
-			throw new Error("config.icons.search is mandatory!");
-		}
-
-		if (!config) {
-			throw new Error("config is mandatory!");
-		}
-
-		// if(config.handleSelected) {
-		// 	throw new Error("config.handleSelected is mandatory!");
-		// }
-
-		// if(config.handleNotFound) {
-		// 	throw new Error("config.handleNotFound is mandatory!");
-		// }
 
 		var name = config.name;
 
@@ -141,6 +135,13 @@ module.exports = function pagedListCore(dependencies) {
 			return selectedVal.data.id;
 		});
 
+		config.select = function(item) {
+			config.selected(item);
+			handleSelected(item);
+			reset();
+		};
+
+
 		var shouldDisplay = ko.computed(function () {
 			var display = false;
 
@@ -156,12 +157,6 @@ module.exports = function pagedListCore(dependencies) {
 			return display || displayAlways;
 			// return list.search() !== "" || displayAlways;
 		});
-
-		config.select = function(item) {
-			config.selected(item);
-			handleSelected(item);
-			reset();
-		};
 
 		var noResultLabel = ko.computed(function() {
 			var label = "";
@@ -185,7 +180,7 @@ module.exports = function pagedListCore(dependencies) {
 			if(validator(label)) {
 				return notFoundItem();
 			}
-		}
+		};
 
 		var reset = function() {
 			config.selected(null);
@@ -198,7 +193,6 @@ module.exports = function pagedListCore(dependencies) {
 			labels: config.labels,
 			select: config.select,
 			selectedId: config.selectedId,
-			selectedItem: config.selectedItem,
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
 			notFoundItem: notFoundItem,
