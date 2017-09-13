@@ -3,9 +3,9 @@
 
 var ko = require("knockout");
 var createList = require("../list/vm");
-var pagedListCore = require("./core");
+var core = require("./core");
 
-module.exports = pagedListCore({
+module.exports = core({
 	ko: ko,
 	createList: createList
 });

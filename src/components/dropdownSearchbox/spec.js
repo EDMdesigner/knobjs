@@ -1,8 +1,13 @@
 "use strict";
 
 var ko = require("knockout");
-var createList = require("../list/vm");
+var createList = require("./vm");
 var core = require("./core");
+
+var superdata = require("superdata");
+var createProxy = superdata.proxy.memory;
+var createModel = superdata.model.model;
+var createStore = superdata.store.store;
 
 describe("dropdownSearchbox", function () {
     describe("- invalid dependencies", function () {
@@ -38,11 +43,11 @@ describe("dropdownSearchbox", function () {
             it("config.store", function () {
                 expect(function () {
                     createDropdownSearchbox({
-                        
+
                     });
                 }).toThrowError("config.store is mandatory!");
             });
-      
+
             it("config.handleSelected", function () {
                 expect(function () {
                     createDropdownSearchbox({
@@ -72,101 +77,138 @@ describe("dropdownSearchbox", function () {
 
         });
 
-        describe("- valid config", function () {
-            var config, store, selected, handleSelected, handleNotFound, icons, dropdownSearchbox, mockSuperDataObject;
-            beforeAll(function() { 
-				store = {
-                    load: function() {
+        describe("- with valid config", function () {
+            var proxy;
+            var model;
+            var store;
+            var dropdownSearchbox;
 
-                    }
-                };
+            describe("With mock createList", function () {
+                describe("with stateModel", function () {
 
-                store.load.before = {
-                    add: function() {
+                    var createdropdownSearchboxWithMock;
+                    var mockStateModel;
+                    var mockList;
 
-                    }
-                };
-                
-                selected = "selected";
-                
-                handleSelected = function() {
-                    console.log("handleSelected");
-                };
+                    beforeAll(function () {
+                        mockList = {
+                            sortOptions: [1],
+                            findSortIdx: function () {
+                                return 0;
+                            },
+                            sort: function () {
+                                return {
+                                    value: 1
+                                };
+                            },
+                            skip: function () { },
+                            limit: function () { },
+                            search: function () { },
+                            initStoreHandling: function () { },
+                            items: function () { },
+                            itemsPerPage: function () { }
+                        };
 
-                handleNotFound = function() {
-                    console.log("handleNotFound");
-                };
+                        spyOn(mockList, "search").and.callThrough();
+                        spyOn(mockList, "initStoreHandling").and.callThrough();
+                        spyOn(mockList, "items").and.callThrough();
+                        spyOn(mockList, "itemsPerPage").and.callThrough();
 
-                icons = {
-                    search: "icon"
-                };
+                        var mockCreateList = function () {
+                            return mockList;
+                        };
 
-                config = {
-                    store: store,
-                    selected: selected,
-                    handleSelected: handleSelected,
-                    handleNotFound: handleNotFound,
-                    icons: icons
-                };
-                
-                mockSuperDataObject = {
-                    model: {
-                        data: {
-                            id: 1
-                        }
-                    }
-                };
+                        createdropdownSearchboxWithMock = core({
+                            ko: ko,
+                            createList: mockCreateList
+                        });
 
-                spyOn(store, "load").and.callThrough();
-                // spyOn(mockSuperDataObject, "load").and.callThrough();
-                
+                        proxy = createProxy({
+                            idProperty: "id",
+                            idType: "number",
+                            route: "/user"
+                        });
 
-                dropdownSearchbox = createDropdownSearchbox(config);
+                        model = createModel({
+                            fields: {
+                                id: {
+                                    type: "number"
+                                },
+                                email: {
+                                    type: "string"
+                                },
+                                name: {
+                                    type: "string"
+                                },
+                                title: {
+                                    type: "string"
+                                }
+                            },
+                            idField: "id",
+                            proxy: proxy
+                        });
+
+                        store = createStore({
+                            model: model
+                        });
+
+                        mockStateModel = {
+                            load: function (name, cb) {
+                                cb(null, {
+                                    data: {
+                                        sort: "sort",
+                                        itemsPerPage: "itemsPerPage",
+                                        seatch: "search"
+                                    }
+                                });
+                            },
+                            create: function () { }
+                        };
+
+                        spyOn(mockStateModel, "load").and.callThrough();
+                        spyOn(mockStateModel, "create");
+
+                        var config = {
+                            store: store,
+                            selected: ko.observable(),
+                            stateModel: mockStateModel,
+                            name: "testdropdownSearchbox",
+                            fields: ["title", "id", "name"],
+                            search: "title",
+                            sort: [{
+                                label: "By Id",
+                                value: "id"
+                            }, {
+                                label: "By Name",
+                                value: "name"
+                            }],
+                            icons: {
+                                search: "icon",
+                                dropdown: "icon",
+                                sort: {
+                                    asc: "icon",
+                                    desc: "icon"
+                                }
+                            },
+                            labels: {
+                                noResults: "result"
+                            },
+                            handleNotFound: function () { },
+                            handleSelected: function () { }
+                        };
+
+                        dropdownSearchbox = createdropdownSearchboxWithMock(config);
+                    });
+
+                    it("it should call stateModel.load and fill list porperties", function () {
+                        expect(mockList.search).toHaveBeenCalled();
+                        expect(mockList.initStoreHandling).toHaveBeenCalled();
+
+                        expect(mockStateModel.load).toHaveBeenCalled();
+                        expect(mockStateModel.create).toHaveBeenCalled();
+                    });
+                });
             });
-
-            it("it should call store.load and fill list porperties", function() {
-                expect(store.load).toHaveBeenCalled();
-            });
-
-            // it("interface", function () {
-            //     expect(dropdownSearchbox).toBe(config);
-            //     expect(store.load).toBe("function");
-			// 	expect(typeof dropdownSearchbox.select).toBe("function");
-			// 	expect(dropdownSearchbox.selected()).toBe(null);
-            //     expect(ko.isObservable(dropdownSearchbox.selectedId)).toBe(true);
-            //     expect(ko.isObservable(dropdownSearchbox.shouldDisplay)).toBe(true);
-            //     expect(ko.isObservable(dropdownSearchbox.noResultLabel)).toBe(true);
-            //     expect(typeof dropdownSearchbox.notFoundItem).toBe("function");
-            //     expect(typeof dropdownSearchbox.clickMoreItem).toBe("function");
-            //     expect(typeof dropdownSearchbox.reset).toBe("function");
-			// });
-
-			// it("should throw error with message: 'dropdownSearchbox: Invalid superdata object' ", function () {
-			// 	expect(function () {
-			// 		dropdownSearchbox.selected({
-			// 		});
-			// 	}).toThrowError("dropdownSearchbox: Invalid superdata object");
-			// });
-
-			// it("should set selectedId to null, if selected is given false", function () {
-			// 	expect(function () {
-			// 		dropdownSearchbox.selected();
-			// 	}).not.toThrow();
-			// 	expect(dropdownSearchbox.selectedId()).toBe(null);
-			// });
-
-			// it("select should set selected", function () {
-			// 	dropdownSearchbox.select(mockSuperDataObject);
-			// 	expect(dropdownSearchbox.selected()).toBe(mockSuperDataObject);
-			// });
-
-			// it("changing selected should refresh selectedId", function () {
-			// 	expect(function () {
-			// 		dropdownSearchbox.selected(mockSuperDataObject);
-			// 	}).not.toThrow();
-			// 	expect(dropdownSearchbox.selectedId()).toBe(1);
-			// });
-
         });
     });
 });

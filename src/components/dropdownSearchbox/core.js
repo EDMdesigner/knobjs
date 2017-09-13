@@ -50,10 +50,14 @@ module.exports = function pagedListCore(dependencies) {
 		store.load.before.add(beforeLoad);
 		var list = createList(config);
 
+		var defaultValidator = function() {
+			return true;
+		};
+
 		var displayAlways = config.displayAlways || false;
 		var handleSelected = config.handleSelected;
 		var handleNotFound = config.handleNotFound;
-		var validator = config.validator;
+		var validator = config.validator || defaultValidator;
 
 		var itemsPerPage = ko.observable(10);
 
@@ -64,11 +68,6 @@ module.exports = function pagedListCore(dependencies) {
 		if (stateModel) {
 			stateModel.load(name, function (err, result) {
 				if (err !== "NOT_FOUND") {
-					if (result.data.sort) {
-						list.sortIdx = list.findSortIdx(result.data.sort);
-						list.sort(list.sortOptions[list.sortIdx]);
-					}
-
 					if (result.data.itemsPerPage) {
 						list.itemsPerPage(result.data.itemsPerPage);
 					}
@@ -93,13 +92,11 @@ module.exports = function pagedListCore(dependencies) {
 				list.initStoreHandling();
 
 				ko.computed(function () {
-					var sortVal = list.sort().value;
 					var searchVal = list.search();
 					var itemsPerPageVal = itemsPerPage();
 
 					config.stateModel.create({
 						name: name,
-						sort: sortVal,
 						search: searchVal,
 						itemsPerPage: itemsPerPageVal
 					}, function (err) {
@@ -141,7 +138,6 @@ module.exports = function pagedListCore(dependencies) {
 			reset();
 		};
 
-
 		var shouldDisplay = ko.computed(function () {
 			var display = false;
 
@@ -155,7 +151,6 @@ module.exports = function pagedListCore(dependencies) {
 				display = true;
 			}
 			return display || displayAlways;
-			// return list.search() !== "" || displayAlways;
 		});
 
 		var noResultLabel = ko.computed(function() {
