@@ -126,7 +126,7 @@ module.exports = function pagedListCore(dependencies) {
 			console.log(selectedVal.data);
 
 			if (!selectedVal || !selectedVal.data || typeof selectedVal.data.id === undefined) {
-				throw new Error("dropdownSearchBox: Invalid superdata object");
+				throw new Error("dropdownSearchbox: Invalid superdata object");
 			}
 
 			return selectedVal.data.id;
@@ -191,7 +191,12 @@ module.exports = function pagedListCore(dependencies) {
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
 			notFoundItem: notFoundItem,
-			clickMoreItem: clickMoreItem
+			clickMoreItem: clickMoreItem,
+			selected: config.selected,			
+			reset: reset,
+			handleNotFound: handleNotFound,
+			handleSelected: handleSelected,
+			validator: validator
 		};
 	};
 };

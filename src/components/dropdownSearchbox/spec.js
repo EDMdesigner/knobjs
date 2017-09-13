@@ -81,7 +81,15 @@ describe("dropdownSearchbox", function () {
             var proxy;
             var model;
             var store;
+            var config;
+            var selected = ko.observable();
             var dropdownSearchbox;
+
+            var mockSuperDataObject = {
+                data: {
+                    id: 1
+                }
+            };
 
             describe("With mock createList", function () {
                 describe("with stateModel", function () {
@@ -168,9 +176,9 @@ describe("dropdownSearchbox", function () {
                         spyOn(mockStateModel, "load").and.callThrough();
                         spyOn(mockStateModel, "create");
 
-                        var config = {
+                        config = {
                             store: store,
-                            selected: ko.observable(),
+                            selected: selected,
                             stateModel: mockStateModel,
                             name: "testdropdownSearchbox",
                             fields: ["title", "id", "name"],
@@ -208,6 +216,83 @@ describe("dropdownSearchbox", function () {
                         expect(mockStateModel.create).toHaveBeenCalled();
                     });
                 });
+            });
+
+            it("observables", function () {
+                expect(ko.isObservable(dropdownSearchbox.noResultLabel)).toBe(true);
+                expect(ko.isObservable(dropdownSearchbox.shouldDisplay)).toBe(true);
+            });
+
+            it("interface", function () {
+                expect(typeof dropdownSearchbox.shouldDisplay).toBe("function");
+                expect(typeof dropdownSearchbox.noResultLabel).toBe("function");
+
+                expect(typeof dropdownSearchbox.select).toBe("function");
+                expect(typeof dropdownSearchbox.notFoundItem).toBe("function");
+                expect(typeof dropdownSearchbox.clickMoreItem).toBe("function");
+                expect(typeof dropdownSearchbox.reset).toBe("function");
+            });
+
+            it("shouldDisplay", function () {
+                dropdownSearchbox.shouldDisplay();
+                expect(typeof dropdownSearchbox.shouldDisplay()).toBe("boolean");
+            });
+
+            it("noResultLabel", function () {
+                dropdownSearchbox.noResultLabel();
+                expect(typeof dropdownSearchbox.noResultLabel()).toBe("string");
+            });
+
+            it("select", function () {
+                dropdownSearchbox.select();
+                expect(config.selected).not.toBe(null);
+                expect(typeof dropdownSearchbox.handleSelected).toBe("function");
+                expect(typeof dropdownSearchbox.reset).toBe("function");
+            });
+
+            it("should throw error with message: 'dropdownSearchbox: Invalid superdata object' ", function () {
+                expect(function () {
+                    dropdownSearchbox.selected({
+                    });
+                }).toThrowError("dropdownSearchbox: Invalid superdata object");
+            });
+
+            it("should set selectedId to null, if selected is given false", function () {
+                expect(function () {
+                    dropdownSearchbox.selected();
+                }).not.toThrow();
+                expect(dropdownSearchbox.selectedId()).toBe(null);
+            });
+
+            // it("select should set selected", function () {
+            //     dropdownSearchbox.select(mockSuperDataObject);
+            //     expect(dropdownSearchbox.selected()).toBe(mockSuperDataObject);
+            // });
+
+            it("changing selected should refresh selectedId", function () {
+                expect(function () {
+                    dropdownSearchbox.selected(mockSuperDataObject);
+                }).not.toThrow();
+                expect(dropdownSearchbox.selectedId()).toBe(1);
+            });
+
+            it("notFoundItem", function () {
+                dropdownSearchbox.notFoundItem();
+                expect(typeof dropdownSearchbox.handleNotFound).toBe("function");
+                expect(typeof dropdownSearchbox.reset).toBe("function");
+            });
+
+            it("clickMoreItem", function () {
+                dropdownSearchbox.clickMoreItem();
+                if (dropdownSearchbox.validator()) {
+                    expect(typeof dropdownSearchbox.handleNotFound).toBe("function");
+                }
+            });
+
+            it("reset", function () {
+                dropdownSearchbox.reset();
+                expect(dropdownSearchbox.selected()).toBe(null);
+                expect(dropdownSearchbox.list.search).toMatch("");
             });
         });
     });
