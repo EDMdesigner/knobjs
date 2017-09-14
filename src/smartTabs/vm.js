@@ -17,7 +17,6 @@ function createTabs(config, componentInfo) {
 
 	componentInfo = componentInfo || {};
 	componentInfo.templateNodes = componentInfo.templateNodes || [];
-	var element = componentInfo.element;
 
 	var defaultTab = config.defaultTab || 0;
 	var variation = config.variation || "tab";
@@ -28,40 +27,41 @@ function createTabs(config, componentInfo) {
 
 	var tabsData = ko.observableArray();
 
-	function getIndex(node) {
-		var parent = node.parentNode;
-		var index = 0;
-		var result = -1;
-		element.childNodes.forEach(function(child) {
-			if (child === parent) {
-				result = index;
-				return;
-			}
-			if (child.classList.contains("tab-wrapper")) {
-				index += 1;
-			}
-		});
-		return result;
-	}
+	var tabNodes = componentInfo.templateNodes.filter(function(child) {
+		return child.nodeName.toLowerCase() === "smart-tab";
+	});
 
-	componentInfo.templateNodes.forEach(function(node) {
-		if (node.nodeName.toLowerCase() !== "smart-tab") {
-			return;
-		}
+	tabNodes.forEach(function(node, index) {
+		tabsData.push(createTabData());
+
+		var bindings = node.getAttribute("data-bind") || "";
+		bindings += "visible: selectedIdx() === " + index + ",";
+		node.setAttribute("data-bind", bindings);
+
 		var params = node.getAttribute("params") || "";
-		params = "tabsData: $parents[1].tabsData," + params;
-		params = "getIndex: $parents[1].getIndex," + params;
+		params = "tabData: tabsData()[" + index + "]," + params;
 		node.setAttribute("params", params);
 	});
 
 	selectedIdx(defaultTab);
 
+	console.log("tabs");
+
 	return {
 		tabsData: tabsData,
-		getIndex: getIndex,
 		variation: variation,
 		selectedIdx: selectedIdx,
 		tabsGroup: tabsGroup
+	};
+}
+
+function createTabData() {
+	return {
+		label: ko.observable(),
+		icon: ko.observable(),
+		leftIcon: ko.observable(),
+		rightIcon: ko.observable(),
+		exists: ko.observable(false)
 	};
 }
 

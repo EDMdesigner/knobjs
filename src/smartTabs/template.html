@@ -6,9 +6,7 @@
 		items: tabsData">
 	</smart-radio>
 
-	<div class="knob-panel-group" data-bind="foreach: tabsData">
-		<div class="tab-wrapper" data-bind="visible: $parent.selectedIdx() == $index()">
-			<!-- ko template: { nodes: $componentTemplateNodes[$index] } --><!-- /ko -->
-		</div>
+	<div class="knob-panel-group">
+		<!-- ko template: { nodes: $componentTemplateNodes } --><!-- /ko -->
 	</div>
 </div>

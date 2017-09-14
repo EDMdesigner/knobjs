@@ -13,23 +13,33 @@ function createRadio(config) {
 	var variation = config.variation || "default";
 
 	var items = ko.computed(function() {
-		var itemList = config.items();
+		var itemList = config.items().filter(function(item) {
+			return item.exists();
+		});
+
 		return itemList.map(function(item) {
 			return createItemVm(item);
 		});
 	});
 
-	var sel = selectedIdx();
+	ko.computed(function() {
+		var currentItems = items();
+		if (currentItems.length === 0) {
+			return;
+		}
 
-	if (typeof sel === "number") {
-		sel = Math.floor(sel);
-		sel %= items.length;
+		var sel = selectedIdx.peek();
 
-		items[sel].select();
+		if (typeof sel === "number" && !isNaN(sel)) {
+			sel = Math.floor(sel);
+			sel %= currentItems.length;
 
-	} else {
-		items[0].select();
-	}
+			currentItems[sel].select();
+
+		} else {
+			currentItems[0].select();
+		}
+	});
 
 	function createItemVm(item) {
 
@@ -49,7 +59,7 @@ function createRadio(config) {
 
 		Object.defineProperty(obj, "index", {
 			get: function() {
-				return items.indexOf(obj);
+				return items().indexOf(obj);
 			}
 		});
 

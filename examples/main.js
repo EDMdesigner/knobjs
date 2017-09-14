@@ -207,5 +207,8 @@ ko.applyBindings({
 	infiniteList: infiniteList,
 	tabLabel1: ko.observable("tab1"),
 	tabLabel2: ko.observable("tab2"),
-	tabLabel3: ko.observable("tab3")
+	tabLabel3: ko.observable("tab3"),
+	showTab1: ko.observable(true),
+	showTab2: ko.observable(true),
+	showTab3: ko.observable(true)
 });

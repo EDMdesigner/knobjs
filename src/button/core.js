@@ -100,7 +100,7 @@ module.exports = function(dependencies) {
 
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
-		vm.label = ko.observable(ko.unwrap(config.label));
+		vm.label = ko.isObservable(config.label) ? config.label : ko.observable(config.label);
 		vm.value = config.value;
 
 		vm.click = clickCb;
