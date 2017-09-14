@@ -1,50 +1,42 @@
 "use strict";
 
+var superschema = require("superschema");
+
+var dependencyPattern = {
+	ko: "object",
+	createList: "function",
+	extend: "function"
+};
+
+var configPattern = {
+	store: "object",
+	handleSelected: "function",
+	handleNotFound: "function",
+	validator: "optional function",
+	icons: "object",
+	labels: "optional object",
+};
+
+var defaultLabels = {};
+
 module.exports = function pagedListCore(dependencies) {
-
-	var obligatoryDeps = ["ko", "createList"];
-
-	for (var i = 0; i < obligatoryDeps.length; i += 1) {
-		if (typeof dependencies[obligatoryDeps[i]] === "undefined") {
-			throw new Error("dependencies." + obligatoryDeps[i] + " is mandatory!");
-		}
-	}
+	superschema.check(dependencies, dependencyPattern, "dependencies");
 
 	var ko = dependencies.ko;
 	var createList = dependencies.createList;
+	var extend = dependencies.extend;
 
 	return function createDropdownSearchbox(config) {
-		if (!config) {
-			throw new Error("config is mandatory!");
-		}
+		superschema.check(config, configPattern, "config");
 
-		if (!config.store) {
-			throw new Error("config.store is mandatory!");
-		}
-
-		if (!config.handleSelected) {
-			throw new Error("config.handleSelected is mandatory!");
-		}
-
-		if (!config.handleNotFound) {
-			throw new Error("config.handleNotFound is mandatory!");
-		}
-
-		if (!config.icons) {
-			throw new Error("config.icons is mandatory!");
-		}
+		var label = extend(true, {}, defaultLabels, config.labels);
 
 		var store = config.store;
 
 		store.load.before.add(beforeLoad);
 
 		config.sort = [{
-			label: "By id",
 			value: "id"
-		},
-		{
-			label: "By name",
-			value: "name"
 		}];
 
 		var list = createList(config);
@@ -116,11 +108,12 @@ module.exports = function pagedListCore(dependencies) {
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
 			clickMoreItem: clickMoreItem,
-			selected: config.selected,
 			reset: reset,
 			handleNotFound: handleNotFound,
 			handleSelected: handleSelected,
-			validator: validator
+			validator: validator,
+
+			label: label
 		};
 	};
 };
