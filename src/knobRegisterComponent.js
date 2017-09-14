@@ -4,7 +4,17 @@ var ko = require("knockout");
 var extend = require("extend");
 
 var styleElem = document.createElement("style");
-document.head.appendChild(styleElem);
+var targetElem = document.getElementById("knob-insert-after");
+
+if (targetElem) {
+	insertAfter(targetElem, styleElem);
+} else {
+	document.head.appendChild(styleElem);
+}
+
+function insertAfter(referenceNode, el) {
+	referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
 
 function knobRegisterComponent(config) {
 	if (typeof config.name !== "string") {
