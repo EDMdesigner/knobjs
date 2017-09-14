@@ -35,8 +35,7 @@ function initKnob(config) {
 		},
 		inlineTextEditor: {
 			edit: "#icon-edit",
-			done: "#icon-done",
-			close: "#icon-close"
+			done: "#icon-done"
 		}
 	};
 
@@ -231,6 +230,19 @@ function initKnob(config) {
 		icons: icons.numericInput,
 		css: require("./components/numericInput/css"),
 		colors: config.colors,
+	});
+
+	registerComponent({
+		name: "knob-dropdown-searchbox",
+		createVm: require("./components/dropdownSearchbox/vm"),
+		template: require("./components/dropdownSearchbox/template.html"),
+		css: require("./components/dropdownSearchbox/css"),
+		colors: config.colors,
+		icons: {
+			search: icons.search,
+			sort: icons.sort,
+			dropdown: icons.dropdown
+		}
 	});
 
 	if (config.background) {
