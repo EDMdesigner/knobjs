@@ -42,7 +42,6 @@ function createRadio(config) {
 	});
 
 	function createItemVm(item) {
-
 		var obj = {
 			label: item.label,
 			icon: item.icon,
@@ -59,6 +58,9 @@ function createRadio(config) {
 
 		Object.defineProperty(obj, "index", {
 			get: function() {
+				if (item.index !== undefined) {
+					return item.index;
+				}
 				return items().indexOf(obj);
 			}
 		});

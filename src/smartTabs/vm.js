@@ -32,7 +32,7 @@ function createTabs(config, componentInfo) {
 	});
 
 	tabNodes.forEach(function(node, index) {
-		tabsData.push(createTabData());
+		tabsData.push(createTabData(index));
 
 		var bindings = node.getAttribute("data-bind") || "";
 		bindings += "visible: selectedIdx() === " + index + ",";
@@ -55,13 +55,14 @@ function createTabs(config, componentInfo) {
 	};
 }
 
-function createTabData() {
+function createTabData(index) {
 	return {
 		label: ko.observable(),
 		icon: ko.observable(),
 		leftIcon: ko.observable(),
 		rightIcon: ko.observable(),
-		exists: ko.observable(false)
+		exists: ko.observable(false),
+		index: index
 	};
 }
 

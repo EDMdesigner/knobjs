@@ -567,31 +567,31 @@
 	<h2>smart knob-tabs</h2>
 	<smart-tabs params="defaultTab: 0">
 		<!-- ko if: $root.showTab1 -->
-			<smart-tab params="label: $root.tabLabel1">Some content</smart-tab>
+			<smart-tab params="label: $root.tabLabel1">Some very interesting content in Tab1.</smart-tab>
 		<!-- /ko -->
 		<!-- ko if: $root.showTab2 -->
-			<smart-tab params="label: $root.tabLabel2">Something</smart-tab>
+			<smart-tab params="label: $root.tabLabel2">Even more interesting content in Tab2.</smart-tab>
 		<!-- /ko -->
 		<!-- ko if: $root.showTab3 -->
-			<smart-tab params="label: $root.tabLabel3">Transparent background</smart-tab>
+			<smart-tab params="label: $root.tabLabel3">Tab3 is the best!</smart-tab>
 		<!-- /ko -->
 	</smart-tabs>
-	<knob-input params="
+	Tab1 label: <knob-input params="
 		value: tabLabel1
 	"></knob-input>
-	<knob-checkbox params="
+	Tab1 visible: <knob-checkbox params="
 		value: showTab1
 	"></knob-checkbox>
-	<knob-input params="
+	Tab2 label: <knob-input params="
 		value: tabLabel2
 	"></knob-input>
-	<knob-checkbox params="
+	Tab2 visible: <knob-checkbox params="
 		value: showTab2
 	"></knob-checkbox>
-	<knob-input params="
+	Tab3 label: <knob-input params="
 		value: tabLabel3
 	"></knob-input>
-	<knob-checkbox params="
+	Tab3 visible: <knob-checkbox params="
 		value: showTab3
 	"></knob-checkbox>
 	<h2>knob-checkbox</h2>
