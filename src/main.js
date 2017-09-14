@@ -5,6 +5,8 @@
 //THIS FILE SHOULD BE GENERATED
 
 var extend = require("extend");
+var ko = require("knockout");
+var superschema = require("superschema");
 
 var registerComponent = require("./knobRegisterComponent");
 
@@ -42,6 +44,10 @@ var createCheckboxStyleDefault = require("./checkbox/style");
 
 var createTabStyle;
 var createTabStyleDefault = require("./tabs/tab/style");
+
+superschema.extend({
+	ko: ko
+});
 
 function initKnob(config) {
 	if (!config) {
@@ -198,6 +204,12 @@ function initKnob(config) {
 	});
 
 	registerComponent({
+		name: "smart-radio",
+		createVm: require("./smartRadio/vm"),
+		template: require("./smartRadio/template.html")
+	});
+
+	registerComponent({
 		name: "knob-inline-text-editor",
 		createVm: require("./inlineTextEditor/vm"),
 		template: require("./inlineTextEditor/template.html"),
@@ -312,6 +324,19 @@ function initKnob(config) {
 		name: "knob-tab",
 		createVm: require("./tabs/tab/vm"),
 		template: require("./tabs/tab/template.html"),
+		style: tabStyle
+	});
+
+	registerComponent({
+		name: "smart-tabs",
+		createVm: require("./smartTabs/vm"),
+		template: require("./smartTabs/template.html")
+	});
+
+	registerComponent({
+		name: "smart-tab",
+		createVm: require("./smartTabs/tab/vm"),
+		template: require("./smartTabs/tab/template.html"),
 		style: tabStyle
 	});
 

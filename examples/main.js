@@ -204,5 +204,8 @@ ko.applyBindings({
 	numericStep: ko.observable(1),
 	numericPrecision: ko.observable(1),
 	numericTestVal: ko.observable(6),
-	infiniteList: infiniteList
+	infiniteList: infiniteList,
+	tabLabel1: ko.observable("tab1"),
+	tabLabel2: ko.observable("tab2"),
+	tabLabel3: ko.observable("tab3")
 });
