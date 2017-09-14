@@ -18,8 +18,6 @@ module.exports = function(dependencies) {
 
 		var tabData = config.tabData;
 
-		console.log("tab config", config);
-
 		var label = ko.isObservable(config.label) ? config.label : ko.observable(config.label);
 		var icon = ko.isObservable(config.icon) ? config.icon : ko.observable(config.icon);
 		var leftIcon = ko.isObservable(config.leftIcon) ? config.leftIcon : ko.observable(config.leftIcon);
@@ -35,19 +33,13 @@ module.exports = function(dependencies) {
 		var vm = base(config);
 
 		vm.dispose = function() {
-			console.log("dispose from vm");
 			tabData().exists(false);
 		};
 
 		tabData().exists(true);
-		console.log("tab");
 		
 		return vm;
 	}
-
-	createTab.prototype.dispose = function() {
-		console.log("dispose from prototype :(");
-	};
 
 	return createTab;
 };

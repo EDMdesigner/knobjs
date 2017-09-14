@@ -45,8 +45,6 @@ function createTabs(config, componentInfo) {
 
 	selectedIdx(defaultTab);
 
-	console.log("tabs");
-
 	return {
 		tabsData: tabsData,
 		variation: variation,
