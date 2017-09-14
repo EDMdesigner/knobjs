@@ -22,7 +22,6 @@
         <!-- endinject -->
         <h2>knob-dropdown-searchbox</h2>
         <knob-dropdown-searchbox params="
-                selected: dropdownSearchbox, 
                 store: store, 
                 fields: ['id', 'email', 'name', 'title'], 
                 search: 'title', 
@@ -30,8 +29,7 @@
                 handleSelected: handleSelected,
                 handleNotFound: handleNotFound,
                 validator: validator,
-                orderBy: {name: -1}, 
-                sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}]">
+                labels: {validLabel: 'Invite member: ', invalidLabel: 'Unkonwn user: '}">
             <div>
                 <span data-bind="text: model.data.id"></span>
                 <span data-bind="text: model.data.email"></span>
@@ -42,16 +40,17 @@
     </div>
     <script>
         var handleSelected = function(item) {
+            console.log("SELECTED: ");
             console.log(item);
         }
 
         var handleNotFound = function(result) {
+            console.log("NOT FOUND: ");
 			console.log(result);
         }
 
         function validator(email) {
 			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            console.log(email);
             return re.test(email);
 		}
     </script>

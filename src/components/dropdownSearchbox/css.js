@@ -12,7 +12,7 @@ var selectedColor = tinycolor(colorShades.color4).isDark() ? colorShades.color2 
 
 let cssTemplate = `
 .knob-dropdown-searchbox {
-    border: 1px solid #131313;
+    //border: 1px solid #131313;
     overflow: hidden;
     color: ${ textColor };
   }
@@ -42,6 +42,7 @@ let cssTemplate = `
     padding: 2px;
     background-color: ${ selectedColor };
     color: white;
+    cursor: pointer;
   }
 `;
 

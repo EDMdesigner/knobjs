@@ -1,4 +1,3 @@
-/*jslint node: true */
 "use strict";
 
 module.exports = function pagedListCore(dependencies) {
@@ -23,18 +22,11 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.store is mandatory!");
 		}
 
-		if (config.stateModel) {
-			config.externalInit = true;
-			if (!config.name) {
-				throw new Error("If state saving is needed, config.name is mandatory!");
-			}
-		}
-
-		if(!config.handleSelected) {
+		if (!config.handleSelected) {
 			throw new Error("config.handleSelected is mandatory!");
 		}
 
-		if(!config.handleNotFound) {
+		if (!config.handleNotFound) {
 			throw new Error("config.handleNotFound is mandatory!");
 		}
 
@@ -42,15 +34,22 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.icons is mandatory!");
 		}
 
-		var name = config.name;
-
-		var stateModel = config.stateModel;
 		var store = config.store;
 
 		store.load.before.add(beforeLoad);
+
+		config.sort = [{
+			label: "By id",
+			value: "id"
+		},
+		{
+			label: "By name",
+			value: "name"
+		}];
+
 		var list = createList(config);
 
-		var defaultValidator = function() {
+		var defaultValidator = function () {
 			return true;
 		};
 
@@ -65,120 +64,47 @@ module.exports = function pagedListCore(dependencies) {
 		list.itemClass = config.itemClass || "knob-pagedlist__item";
 		list.itemsPerPage = itemsPerPage;
 
-		if (stateModel) {
-			stateModel.load(name, function (err, result) {
-				if (err !== "NOT_FOUND") {
-					if (result.data.itemsPerPage) {
-						list.itemsPerPage(result.data.itemsPerPage);
-					}
-
-					if (result.data.search) {
-						list.search(result.data.search);
-					}
-				}
-				initStoreHandling();
-			});
-		} else {
-			initStoreHandling();
-		}
+		initStoreHandling();
 
 		function initStoreHandling() {
 			ko.computed(function () {
 				list.limit(itemsPerPage());
 			});
-
-
-			if (stateModel) {
-				list.initStoreHandling();
-
-				ko.computed(function () {
-					var searchVal = list.search();
-					var itemsPerPageVal = itemsPerPage();
-
-					config.stateModel.create({
-						name: name,
-						search: searchVal,
-						itemsPerPage: itemsPerPageVal
-					}, function (err) {
-						if (err) {
-							return console.log(err);
-						}
-					});
-				});
-			}
+			list.initStoreHandling();
 		}
 
 		function beforeLoad() {
 			list.items([]);
 		}
 
-		//SELECT
-		config.selected = config.selected;
-		config.selected(null);
-
-		config.selectedId = ko.computed(function () {
-			var selectedVal = config.selected();
-
-			if (!selectedVal) {
-				return null;
-			}
-
-			console.log(selectedVal.data);
-
-			if (!selectedVal || !selectedVal.data || typeof selectedVal.data.id === undefined) {
-				throw new Error("dropdownSearchbox: Invalid superdata object");
-			}
-
-			return selectedVal.data.id;
-		});
-
-		config.select = function(item) {
-			config.selected(item);
+		config.select = function (item) {
 			handleSelected(item);
 			reset();
 		};
 
 		var shouldDisplay = ko.computed(function () {
-			var display = false;
-
-			if (config.selected() === null && list.search() === "") {
-				display = false;
-			} else if (config.selected() === null && list.search() !== "") {
-				display = true;
-			} else if (config.selected() !== null) {
-				display = false;
-			} else if (config.search() !== "") {
-				display = true;
-			}
-			return display || displayAlways;
+			return list.search() !== "" || displayAlways;
 		});
 
-		var noResultLabel = ko.computed(function() {
-			var label = "";
-			if(validator(list.search())) {
-				label = "Invite: " + list.search();
-			} else {
-				label = "Unkown user: " + list.search();
+		var noResultLabel = ko.computed(function () {
+			if (validator(list.search())) {
+				return config.labels.validLabel + list.search();
 			}
-			return label;
+
+			return config.labels.invalidLabel + list.search();
 		});
 
-		var notFoundItem = function() {
-			var result = list.search();
+		var clickMoreItem = function () {
+			var label = list.search();
+			if (!validator(label)) {
+				return;
+			}
 
-			handleNotFound(validator(result));
+			handleNotFound(label);
 			reset();
 		};
 
-		var clickMoreItem = function() {
-			var label = list.search();
-			if(validator(label)) {
-				return notFoundItem();
-			}
-		};
-
-		var reset = function() {
-			config.selected(null);
+		var reset = function () {
 			list.search("");
 		};
 
@@ -187,12 +113,10 @@ module.exports = function pagedListCore(dependencies) {
 			icons: config.icons,
 			labels: config.labels,
 			select: config.select,
-			selectedId: config.selectedId,
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
-			notFoundItem: notFoundItem,
 			clickMoreItem: clickMoreItem,
-			selected: config.selected,			
+			selected: config.selected,
 			reset: reset,
 			handleNotFound: handleNotFound,
 			handleSelected: handleSelected,

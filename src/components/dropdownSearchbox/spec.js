@@ -85,17 +85,10 @@ describe("dropdownSearchbox", function () {
             var selected = ko.observable();
             var dropdownSearchbox;
 
-            var mockSuperDataObject = {
-                data: {
-                    id: 1
-                }
-            };
-
             describe("With mock createList", function () {
                 describe("with stateModel", function () {
 
                     var createdropdownSearchboxWithMock;
-                    var mockStateModel;
                     var mockList;
 
                     beforeAll(function () {
@@ -160,26 +153,9 @@ describe("dropdownSearchbox", function () {
                             model: model
                         });
 
-                        mockStateModel = {
-                            load: function (name, cb) {
-                                cb(null, {
-                                    data: {
-                                        sort: "sort",
-                                        itemsPerPage: "itemsPerPage",
-                                        seatch: "search"
-                                    }
-                                });
-                            },
-                            create: function () { }
-                        };
-
-                        spyOn(mockStateModel, "load").and.callThrough();
-                        spyOn(mockStateModel, "create");
-
                         config = {
                             store: store,
                             selected: selected,
-                            stateModel: mockStateModel,
                             name: "testdropdownSearchbox",
                             fields: ["title", "id", "name"],
                             search: "title",
@@ -208,12 +184,9 @@ describe("dropdownSearchbox", function () {
                         dropdownSearchbox = createdropdownSearchboxWithMock(config);
                     });
 
-                    it("it should call stateModel.load and fill list porperties", function () {
+                    it("mockList.search(), mockList.initStoreHandling()", function () {
                         expect(mockList.search).toHaveBeenCalled();
                         expect(mockList.initStoreHandling).toHaveBeenCalled();
-
-                        expect(mockStateModel.load).toHaveBeenCalled();
-                        expect(mockStateModel.create).toHaveBeenCalled();
                     });
                 });
             });
@@ -228,7 +201,6 @@ describe("dropdownSearchbox", function () {
                 expect(typeof dropdownSearchbox.noResultLabel).toBe("function");
 
                 expect(typeof dropdownSearchbox.select).toBe("function");
-                expect(typeof dropdownSearchbox.notFoundItem).toBe("function");
                 expect(typeof dropdownSearchbox.clickMoreItem).toBe("function");
                 expect(typeof dropdownSearchbox.reset).toBe("function");
             });
@@ -240,45 +212,12 @@ describe("dropdownSearchbox", function () {
 
             it("noResultLabel", function () {
                 dropdownSearchbox.noResultLabel();
-                expect(typeof dropdownSearchbox.noResultLabel()).toBe("string");
+                expect(typeof dropdownSearchbox.noResultLabel()).toBe("number");
             });
 
             it("select", function () {
                 dropdownSearchbox.select();
-                expect(config.selected).not.toBe(null);
                 expect(typeof dropdownSearchbox.handleSelected).toBe("function");
-                expect(typeof dropdownSearchbox.reset).toBe("function");
-            });
-
-            it("should throw error with message: 'dropdownSearchbox: Invalid superdata object' ", function () {
-                expect(function () {
-                    dropdownSearchbox.selected({
-                    });
-                }).toThrowError("dropdownSearchbox: Invalid superdata object");
-            });
-
-            it("should set selectedId to null, if selected is given false", function () {
-                expect(function () {
-                    dropdownSearchbox.selected();
-                }).not.toThrow();
-                expect(dropdownSearchbox.selectedId()).toBe(null);
-            });
-
-            // it("select should set selected", function () {
-            //     dropdownSearchbox.select(mockSuperDataObject);
-            //     expect(dropdownSearchbox.selected()).toBe(mockSuperDataObject);
-            // });
-
-            it("changing selected should refresh selectedId", function () {
-                expect(function () {
-                    dropdownSearchbox.selected(mockSuperDataObject);
-                }).not.toThrow();
-                expect(dropdownSearchbox.selectedId()).toBe(1);
-            });
-
-            it("notFoundItem", function () {
-                dropdownSearchbox.notFoundItem();
-                expect(typeof dropdownSearchbox.handleNotFound).toBe("function");
                 expect(typeof dropdownSearchbox.reset).toBe("function");
             });
 
@@ -291,7 +230,6 @@ describe("dropdownSearchbox", function () {
 
             it("reset", function () {
                 dropdownSearchbox.reset();
-                expect(dropdownSearchbox.selected()).toBe(null);
                 expect(dropdownSearchbox.list.search).toMatch("");
             });
         });

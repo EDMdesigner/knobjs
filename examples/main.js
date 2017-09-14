@@ -229,7 +229,6 @@ ko.applyBindings({
 	numericPrecision: ko.observable(1),
 	numericTestVal: ko.observable(6),
 	infiniteList: infiniteList,
-	dropdownSearchbox: ko.observable(),
 	defaultColor: defaultColor,
 	primaryColor: primaryColor,
 	infoColor: infoColor,
