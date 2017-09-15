@@ -37,9 +37,6 @@ module.exports = function(dependencies) {
 		superschema.check(config, configPattern, "config");
 		superschema.check(componentInfo, componentInfoPattern, "componentInfo");
 
-		componentInfo = componentInfo || {};
-		componentInfo.templateNodes = componentInfo.templateNodes || [];
-
 		var defaultTab = config.defaultTab || 0;
 		var variation = config.variation || "tab";
 		var selectedIdx = config.selectedIdx || ko.observable();
