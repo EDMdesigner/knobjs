@@ -2,6 +2,7 @@
 
 var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
+var borderBox = require("../../utils/borderBox"); 
 
 module.exports = function(config) {
 
@@ -49,6 +50,7 @@ module.exports = function(config) {
 
 	let cssTemplate = `
 		.knob-button {
+			${ borderBox() }
 			line-height: 1.42857;
 			font-size: 12px;
 			padding: 6px 12px;

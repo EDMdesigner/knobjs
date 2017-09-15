@@ -11,7 +11,7 @@ var textColor = function(color) {
 };
 var colorShades = createColorShades(baseColor);
 var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
-var activeButtonColor = "white";
+var activeButtonColor = config.white;
 
 
 let cssTemplate = `
