@@ -566,14 +566,14 @@
 	</knob-tabs>
 	<h2>smart knob-tabs</h2>
 	<smart-tabs params="defaultTab: 0">
-		<!-- ko if: $root.showTab1 -->
-			<smart-tab params="label: $root.tabLabel1">Some very interesting content in Tab1.</smart-tab>
+		<!-- ko if: $parent.showTab1 -->
+			<smart-tab params="label: $parent.tabLabel1">Some very interesting content in Tab1.</smart-tab>
 		<!-- /ko -->
-		<!-- ko if: $root.showTab2 -->
-			<smart-tab params="label: $root.tabLabel2">Even more interesting content in Tab2.</smart-tab>
+		<!-- ko if: $parent.showTab2 -->
+			<smart-tab data-bind="style: { color: 'green' }" params="label: $parent.tabLabel2">Even more interesting content in Tab2.</smart-tab>
 		<!-- /ko -->
-		<!-- ko if: $root.showTab3 -->
-			<smart-tab params="label: $root.tabLabel3">Tab3 is the best!</smart-tab>
+		<!-- ko if: $parent.showTab3 -->
+			<smart-tab data-bind="style: { color: 'red' }" params="label: $parent.tabLabel3">Tab3 is the best!</smart-tab>
 		<!-- /ko -->
 	</smart-tabs>
 	Tab1 label: <knob-input params="

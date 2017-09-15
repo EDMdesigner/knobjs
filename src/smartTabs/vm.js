@@ -35,7 +35,7 @@ function createTabs(config, componentInfo) {
 		tabsData.push(createTabData(index));
 
 		var bindings = node.getAttribute("data-bind") || "";
-		bindings += "visible: selectedIdx() === " + index + ",";
+		bindings = "visible: selectedIdx() === " + index + "," + bindings;
 		node.setAttribute("data-bind", bindings);
 
 		var params = node.getAttribute("params") || "";
