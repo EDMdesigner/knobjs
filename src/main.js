@@ -85,12 +85,6 @@ function initKnob(config) {
 	});
 
 	registerComponent({
-		name: "smart-radio",
-		createVm: require("./smartRadio/vm"),
-		template: require("./smartRadio/template.html")
-	});
-
-	registerComponent({
 		name: "knob-inline-text-editor",
 		createVm: require("./components/inlineTextEditor/vm"),
 		template: require("./components/inlineTextEditor/template.html"),
@@ -221,18 +215,6 @@ function initKnob(config) {
 		template: require("./components/tabs/tab/template.html"),
 		css: require("./components/tabs/tab/css"),
 		colors: config.colors
-	});
-
-	registerComponent({
-		name: "smart-tabs",
-		createVm: require("./smartTabs/vm"),
-		template: require("./smartTabs/template.html")
-	});
-
-	registerComponent({
-		name: "smart-tab",
-		createVm: require("./smartTabs/tab/vm"),
-		template: require("./smartTabs/tab/template.html")
 	});
 
 	registerComponent({

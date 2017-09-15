@@ -1,33 +1,61 @@
-var tabCore = require("./../tab/core");
+"use strict";
+
+var ko = require("knockout");
+var superschema = require("superschema");
+
+var core = require("./core");
+
+var dependencies = {
+	ko: ko
+};
+
+var mockedTabData = {
+	label: ko.observable(null),
+	icon: ko.observable(null),
+	leftIcon: ko.observable(null),
+	rightIcon: ko.observable(null),
+	exists: ko.observable(false)
+};
+
+var config = {
+	tabData: ko.observable(mockedTabData)
+};
+
+var interfacePattern = {
+	dispose: "function"
+};
+
+var createVm, vm;
 
 describe("tab", function() {
-	describe("dependencies", function() {
+	
+	describe("config and dependency check", function() {
+		beforeEach(function() {
+			spyOn(superschema, "check").and.callThrough();
+		});
 
-		it("should throw error if depencencies is missing", function() {
-			expect(function() {
-				tabCore();
-			}).toThrowError("dependencies is mandatory!");
+		it("checks dependencies", function() {
+			core(dependencies);
+			expect(superschema.check.calls.mostRecent().args[0]).toBe(dependencies);
+		});
+
+		it("checks config", function() {
+			createVm = core(dependencies);
+			createVm(config);
+			expect(superschema.check.calls.mostRecent().args[0]).toBe(config);
 		});
 	});
 
-	describe("with valid config", function() {
-
-		var createTabs;
-
+	describe("valid config", function() {
 		beforeEach(function() {
-			createTabs = tabCore({
-			});
+			createVm = core(dependencies);
+			vm = createVm(config);
 		});
 
-		it("should set config properly", function() {
-			createTabs({
-				variation: "tab-transparent"
-			});
-			createTabs({
-				component: "someStringToAlter",
-				variation: "tab-transparent",
-				state: "someOtherStringToAlter"
-			});
+		it("interface check", function() {
+			expect(function() {
+				superschema.check(vm, interfacePattern);
+			}).not.toThrow();
 		});
 	});
 });

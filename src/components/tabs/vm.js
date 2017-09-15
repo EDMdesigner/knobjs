@@ -31,7 +31,7 @@ function createTabs(config, componentInfo) {
 	var tabsData = ko.observableArray();
 
 	var tabNodes = componentInfo.templateNodes.filter(function(child) {
-		return child.nodeName.toLowerCase() === "smart-tab";
+		return child.nodeName.toLowerCase() === "knob-tab";
 	});
 
 	tabNodes.forEach(function(node, index) {
@@ -47,7 +47,7 @@ function createTabs(config, componentInfo) {
 	});
 
 	var buttonData = ko.computed(function() {
-		return tabNodes().filter(function(item) {
+		return tabsData().filter(function(item) {
 			return item.exists();
 		});
 	});

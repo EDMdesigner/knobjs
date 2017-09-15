@@ -565,20 +565,20 @@
 		<knob-tab params="label: 'tab3'">Transparent background</knob-tab>
 	</knob-tabs>
 	<h2>smart knob-tabs</h2>
-	<smart-tabs params="defaultTab: 0">
+	<knob-tabs params="defaultTab: 0">
 		<!-- ko if: showTab1 -->
-			<smart-tab params="label: tabLabel1">Some very interesting content in Tab1.</smart-tab>
+			<knob-tab params="label: tabLabel1">Some very interesting content in Tab1.</knob-tab>
 		<!-- /ko -->
 		<!-- ko if: showTab2 -->
-			<smart-tab data-bind="style: { color: 'green' }" params="label: tabLabel2">
+			<knob-tab data-bind="style: { color: 'green' }" params="label: tabLabel2">
 				Even more interesting content in Tab2.
 				Some data from an outer context: <span data-bind="text: numericTestVal"></span>
-			</smart-tab>
+			</knob-tab>
 		<!-- /ko -->
 		<!-- ko if: showTab3 -->
-			<smart-tab data-bind="style: { color: 'red' }" params="label: tabLabel3">Tab3 is the best!</smart-tab>
+			<knob-tab data-bind="style: { color: 'red' }" params="label: tabLabel3">Tab3 is the best!</knob-tab>
 		<!-- /ko -->
-	</smart-tabs>
+	</knob-tabs>
 	Tab1 label: <knob-input params="
 		value: tabLabel1
 	"></knob-input>
