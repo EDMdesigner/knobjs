@@ -13,10 +13,7 @@ function createRadio(config) {
 	var variation = config.variation || "default";
 
 	var items = ko.computed(function() {
-		var itemList = config.items().filter(function(item) {
-			return item.exists();
-		});
-
+		var itemList = ko.isObservable(config.items) ? config.items() : config.items;
 		return itemList.map(function(item) {
 			return createItemVm(item);
 		});
@@ -42,6 +39,9 @@ function createRadio(config) {
 	});
 
 	function createItemVm(item) {
+		if (!item.label && !item.icon) {
+			throw new Error("Each radio item should have a label or an icon!");
+		}
 		var obj = {
 			label: item.label,
 			icon: item.icon,
@@ -58,7 +58,7 @@ function createRadio(config) {
 
 		Object.defineProperty(obj, "index", {
 			get: function() {
-				if (item.index !== undefined) {
+				if (item.index !== undefined) { // This way items can define their own index if necessary - e.g used by the knob-tabs.
 					return item.index;
 				}
 				return items().indexOf(obj);

@@ -8,6 +8,7 @@ var superGulp = createSuperGulp({
 });
 
 var packageJson = require("./package.json");
+var jasmineConfigObject = require("./spec/support/jasmine.json");
 
 var jsFiles = [
 	"./*.js",
@@ -27,7 +28,7 @@ var jsonFiles = [
 ];
 
 var specFiles = [
-	"src/**/spec.js"
+	"src/**/*[Ss]pec.js"
 ];
 
 var sourceFiles = [
@@ -61,6 +62,7 @@ superGulp.taskTemplates.initFrontendTasks({
 	packageJson: packageJson,
 	coverage: 70,
 	deployFolder: "knobjs/" + packageJson.version + "/",
+	jasmineConfigObject: jasmineConfigObject,
 	addPluginTasks: false,
 	files: {
 		js: jsFiles,

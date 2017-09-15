@@ -43,10 +43,17 @@ function createTabs(config, componentInfo) {
 		node.setAttribute("params", params);
 	});
 
+	var buttonData = ko.computed(function() {
+		return tabNodes().filter(function(item) {
+			return item.exists();
+		});
+	});
+
 	selectedIdx(defaultTab);
 
 	return {
 		tabsData: tabsData,
+		buttonData: buttonData,
 		variation: variation,
 		selectedIdx: selectedIdx,
 		tabsGroup: tabsGroup
