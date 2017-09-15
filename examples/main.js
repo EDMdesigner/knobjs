@@ -4,18 +4,25 @@
 var superdata = require("superdata");
 
 var knob = require("knob-js");
+var ko = window.ko;
 
-knob.init({
-	theme: "background", //background, border, border-fill, chamaileon
-	// for default and theme4
-	colors: {
-		primary: "#44c0fc",
+var defaultColor = ko.observable("e2e2e2");
+var primaryColor = ko.observable("a0e1ff");
+var infoColor = ko.observable("25aaf2");
+var warningColor = ko.observable("f5a500");
+var successColor = ko.observable("54c059");
+var errorColor = ko.observable("ee483b");
+
+var colors = ko.computed(function() {
+	return {
+		default: defaultColor(), 
+		primary: primaryColor(),
 		secondary: "#f4f4f4",
 
-		info: "#25aaf2",
-		success: "#54c059",
-		warning: "#f5a500",
-		error: "#ee483b",
+		info: infoColor(),
+		success: successColor(),
+		warning: warningColor(),
+		error: errorColor(),
 
 		white: "#fff",
 		black: "#000",
@@ -25,7 +32,13 @@ knob.init({
 		darkGray: "#e5e9ec",
 
 		border: "#d2cdc6" //only for the chamaileon style
-	},
+	};
+});
+
+knob.init({
+	theme: "background", //background, border, border-fill, chamaileon
+	// for default and theme4
+	colors: colors,
 	// for chamaileon theme
 	color1: {
 		primary: "#44c0fc",
@@ -54,19 +67,19 @@ knob.init({
 		black: "#000",
 		transparent: "transparent"
 	},
-	icons: {
-		search: "#icon-search"
-	},
-	labels: {
-		noResults: "No results"
-	}
+		icons: {
+			search: "#icon-search"
+		},
+		labels: {
+			noResults: "No results"
+		}
 });
+
 
 var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
 
-var ko = window.ko;
 
 var proxy = createProxy({
 	idProperty: "id",
@@ -174,7 +187,6 @@ var infiniteList = {
 		loadMore: function() {}
 	}
 };
-
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -183,6 +195,10 @@ ko.applyBindings({
 	buttons: buttons,
 	modalVisible: ko.observable(false),
 	confirmVisible: ko.observable(false),
+	confirmVisibleInfo: ko.observable(false),
+	confirmVisibleWarning: ko.observable(false),
+	confirmVisibleSuccess: ko.observable(false),
+	confirmVisibleError: ko.observable(false),
 	confirmCallback: function(ok) {
 		if (ok) {
 			window.alert("Ok");
@@ -191,6 +207,14 @@ ko.applyBindings({
 		}
 	},
 	alertVisible: ko.observable(false),
+	alertVisibleInfo: ko.observable(false),
+	alertVisibleWarning: ko.observable(false),
+	alertVisibleError: ko.observable(false),
+	alertVisibleSuccess: ko.observable(false),
+	warningVisible: ko.observable(false),
+	infoVisible: ko.observable(false),
+	successVisible: ko.observable(false),
+	errorVisible: ko.observable(false),	
 	alertCallback: alertClose,
 	notificationVisible: ko.observable(false),
 	checkboxValue: ko.observable(false),
@@ -210,5 +234,11 @@ ko.applyBindings({
 	tabLabel3: ko.observable("tab3"),
 	showTab1: ko.observable(true),
 	showTab2: ko.observable(true),
-	showTab3: ko.observable(true)
+	showTab3: ko.observable(true),
+	defaultColor: defaultColor,
+	primaryColor: primaryColor,
+	infoColor: infoColor,
+	warningColor: warningColor,
+	successColor: successColor,
+	errorColor: errorColor
 });

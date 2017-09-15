@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+		<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-sort-asc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 18h18v4h-18v-4z"/>
+<path d="M14 12h14v4h-14v-4z"/>
+<path d="M14 6h10v4h-10v-4z"/>
+<path d="M14 0h6v4h-6v-4z"/>
+</symbol><symbol id="icon-sort-desc" viewBox="0 0 32 32">
+<path d="M10 24v-24h-4v24h-5l7 7 7-7h-5z"/>
+<path d="M14 0h18v4h-18v-4z"/>
+<path d="M14 6h14v4h-14v-4z"/>
+<path d="M14 12h10v4h-10v-4z"/>
+<path d="M14 18h6v4h-6v-4z"/>
+</symbol>
+<symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M20.667 18.667h-1.060l-0.367-0.367c1.307-1.513 2.093-3.48 2.093-5.633 0-4.787-3.88-8.667-8.667-8.667s-8.667 3.88-8.667 8.667 3.88 8.667 8.667 8.667c2.153 0 4.12-0.787 5.633-2.087l0.367 0.367v1.053l6.667 6.653 1.987-1.987-6.653-6.667zM12.667 18.667c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"/>
+</symbol></svg><!-- endinject -->
+	<h1>KNOB 2.0</h1>
+	<h2>knob-infinite-list</h2>
+	<knob-infinite-list params="store: store, fields: ['id', 'email', 'name', 'title'], search: 'title', orderBy: {id: 1}, sort: [{label: 'By id', value:'id'}, {label: 'By name', value:'name'}], labels: { noResults: 'No results found', loadMore: 'Load more...'}, loadMoreHandler: infiniteList.loadMoreHandler">
+		<div>
+			<span data-bind="text: model.data.id"></span>
+			<span data-bind="text: model.data.email"></span>
+			<span data-bind="text: model.data.name"></span>
+			<span data-bind="text: model.data.title"></span>
+		</div>
+	</knob-infinite-list>
+
+	<br>
+
+	<button data-bind="click: infiniteList.loadMoreHandler.loadMore">Load More</button>
+
+	<hr>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>
