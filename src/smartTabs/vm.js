@@ -35,11 +35,11 @@ function createTabs(config, componentInfo) {
 		tabsData.push(createTabData(index));
 
 		var bindings = node.getAttribute("data-bind") || "";
-		bindings = "visible: selectedIdx() === " + index + "," + bindings;
+		bindings = "visible: $parent.selectedIdx() === " + index + "," + bindings;
 		node.setAttribute("data-bind", bindings);
 
 		var params = node.getAttribute("params") || "";
-		params = "tabData: tabsData()[" + index + "]," + params;
+		params = "tabData: $parent.tabsData()[" + index + "]," + params;
 		node.setAttribute("params", params);
 	});
 
