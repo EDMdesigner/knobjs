@@ -1,21 +1,24 @@
-module.exports = function(dependencies) {
-	if(!dependencies) {
-		throw new Error("dependencies is mandatory!");
-	}
+"use strict";
 
-	if(!dependencies.base) {
-		throw new Error("dependencies.base is mandatory!");
-	}
+var superschema = require("superschema");
+
+var dependencyPattern = {
+	ko: "object"
+};
+
+var configPattern = {};
+
+module.exports = function(dependencies) {
+
+	superschema.check(dependencies, dependencyPattern, "dependencies");
 
 	var base = dependencies.base;
 	var ko = dependencies.ko;
 
 	function createTab(config) {
-		config = config || {};
-		config.component = "tab";
-		config.variation = config.variation || "tab";
-		config.state = "active";
 
+		superschema.check(config, configPattern, "config");
+		
 		var tabData = config.tabData;
 
 		var label = ko.isObservable(config.label) ? config.label : ko.observable(config.label);

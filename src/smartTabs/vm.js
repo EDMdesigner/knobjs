@@ -3,6 +3,9 @@
 
 var ko = require("knockout");
 var superschema = require("superschema");
+var css = require("./css");
+
+css({});
 
 var configPattern = {
 	defaultTab: "optional number",

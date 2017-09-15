@@ -1,11 +1,12 @@
-<div>
-	<smart-radio params="
-		group: tabsGroup,
-		variation: 'tab',
-		selectedIdx: selectedIdx,
-		items: buttonData">
-	</smart-radio>
-
+<div class="knob-tabs">
+	<div class="knob-radio-wrapper">
+		<knob-radio params="
+			group: tabsGroup,
+			variation: 'tab',
+			selectedIdx: selectedIdx,
+			items: buttonData
+		"></knob-radio>
+	</div>
 	<div class="knob-panel-group">
 		<!-- ko template: { nodes: $componentTemplateNodes, data: $parent } --><!-- /ko -->
 	</div>
