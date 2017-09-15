@@ -1,73 +1,101 @@
-var createTabs = require("./vm");
+"use strict";
+
 var ko = require("knockout");
+var superschema = require("superschema");
+
+var core = require("./core");
+
+var css = jasmine.createSpy("css");
+
+var dependencies = {
+	css: css,
+	ko: ko
+};
+
+var mockedTab = {
+	nodeName: "knob-tab",
+	getAttribute: function(attribute) {
+		return attribute + "TestValue";
+	},
+	setAttribute: function() {}
+};
+
+var config = {};
+var componentInfo = {
+	templateNodes: [ mockedTab ]
+};
+
+var interfacePattern = {
+	tabsData: {
+		__type: "observable",
+		__value: {
+			__type: "array",
+			__elements: {
+				label: "observable",
+				icon: "observable",
+				leftIcon: "observable",
+				rightIcon: "observable",
+				exists: "observable boolean",
+				index: "number"
+			}
+		}
+	},
+	buttonData: {
+		__type: "observable",
+		__value: {
+			__type: "array",
+			__elements: {
+				label: "observable",
+				icon: "observable",
+				leftIcon: "observable",
+				rightIcon: "observable",
+				exists: "observable boolean",
+				index: "number"
+			}
+		}
+	},
+	variation: "string",
+	selectedIdx: "observable",
+	tabsGroup: "string"
+};
+
+var createVm, vm;
 
 describe("tabs", function() {
-	describe("with invalid config", function() {
-		it("should not work without child knob-tab components", function() {
-			expect(createTabs).toThrowError("knob-tabs component should have at least one knob-tab component as a child component!");
+	describe("config and dependency check", function() {
+		beforeEach(function() {
+			spyOn(superschema, "check").and.callThrough();
 		});
 
-		it("should not work if the knob-tab child components don't have the proper params", function() {
-			var componentInfo = {
-				templateNodes: [
-					{
-						nodeName: "TEXT"
-					},
-					{
-						nodeName: "KNOB-TAB",
-						getAttribute: function() {
-							return "";
-						}
-					}
-				]
-			};
-
-			expect(function() {
-				createTabs({}, componentInfo);
-			}).toThrowError("The child knob-tab components should have proper params (icon and/or label) just like with buttons!");
+		it("checks dependencies", function() {
+			core(dependencies);
+			expect(superschema.check.calls.mostRecent().args[0]).toBe(dependencies);
 		});
 
-		it("should not work if the knob-tab child components don't have the proper params", function() {
-			var componentInfo = {
-				templateNodes: [
-					{
-						nodeName: "KNOB-TAB",
-						getAttribute: function() {
-							return "label: 'myTestLabel', iconRight: '#abcd'";
-						}
-					},
-					{
-						nodeName: "KNOB-TAB",
-						getAttribute: function() {
-							return "label: 'myTestLabel'";
-						}
-					},
-					{
-						nodeName: "TEXT"
-					},
-					{
-						nodeName: "KNOB-TAB",
-						getAttribute: function() {
-							return "icon: '#xyz'";
-						}
-					},
-					{
-						nodeName: "KNOB-TAB",
-						getAttribute: function() {
-							return "";
-						}
-					}
-				]
-			};
+		it("checks config and componentInfo", function() {
+			createVm = core(dependencies);
+			superschema.check.calls.reset();
+			createVm(config, componentInfo);
+			expect(superschema.check.calls.argsFor(0)[0]).toBe(config);
+			expect(superschema.check.calls.argsFor(1)[0]).toBe(componentInfo);
+		});
+	});
 
+	describe("valid config", function() {
+		beforeEach(function() {
+			createVm = core(dependencies);
+			vm = createVm(config, componentInfo);
+		});
+
+		it("interface check", function() {
 			expect(function() {
-				createTabs({}, componentInfo);
-			}).toThrowError("The child knob-tab components should have proper params (icon and/or label) just like with buttons!");
+				superschema.check(vm, interfacePattern);
+			}).not.toThrow();
 		});
 	});
 
 	describe("with valid config", function() {
-		var componentInfo = {
+		/*var componentInfo = {
 			templateNodes: [
 				{
 					nodeName: "KNOB-TAB",
@@ -209,7 +237,7 @@ describe("tabs", function() {
 			var vm = createTabs({}, componentInfo);
 
 			expect(vm.variation).toBe("tab");
-		});
+		});*/
 
 	});
 });
