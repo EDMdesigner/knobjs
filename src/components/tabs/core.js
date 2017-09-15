@@ -18,9 +18,7 @@ var componentInfoPattern = {
 	templateNodes: {
 		__type: "array",
 		__elements: {
-			nodeName: "string",
-			getAttribute: "function",
-			setAttribute: "function"
+			nodeName: "string"
 		}
 	}
 };

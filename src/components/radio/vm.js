@@ -12,6 +12,10 @@ function createRadio(config) {
 
 	var variation = config.variation || "default";
 
+	if (!ko.isObservable(config.items) && config.items.length === 0) {
+		throw new Error("config.items should not be empty");
+	}
+
 	var items = ko.computed(function() {
 		var itemList = ko.isObservable(config.items) ? config.items() : config.items;
 		return itemList.map(function(item) {
@@ -40,7 +44,7 @@ function createRadio(config) {
 
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
-			throw new Error("Each radio item should have a label or an icon!");
+			throw new Error("Each radiobutton has to have a label and/or icon!");
 		}
 		var obj = {
 			label: item.label,
