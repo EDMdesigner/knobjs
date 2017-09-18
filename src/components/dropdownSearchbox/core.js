@@ -10,8 +10,9 @@ var dependencyPattern = {
 
 var configPattern = {
 	store: "object",
-	handleSelected: "function",
-	handleNotFound: "function",
+	newItemEnabled: "optional boolean",
+	selectCallback: "function",
+	newItemCallback: "optional function",
 	validator: "optional function",
 	icons: "object",
 	itemsPerPage: "optional number",
@@ -19,10 +20,16 @@ var configPattern = {
 };
 
 var defaultLabels = {
-	validLabel: "Add",
-	invalidLabel: "Invalid item"
+	newItem: "Add ",
+	invalidItem: "Invalid item: ",
+	notFound: "Can't find item "
 };
+
 var defaultItemsPerPage = 10;
+
+function defaultValidator() {
+	return true;
+}
 
 module.exports = function pagedListCore(dependencies) {
 	superschema.check(dependencies, dependencyPattern, "dependencies");
@@ -36,6 +43,15 @@ module.exports = function pagedListCore(dependencies) {
 
 		var labels = extend(true, {}, defaultLabels, config.labels);
 		var itemsPerPage = ko.observable(config.itemsPerPage || defaultItemsPerPage);
+		var newItemEnabled = config.newItemEnabled || false;
+		var displayAlways = config.displayAlways || false;
+		var newItemCallback = config.newItemCallback;
+		var selectCallback = config.selectCallback;
+		var validator = config.validator || defaultValidator;
+
+		if (newItemEnabled && !newItemCallback) {
+			throw new Error("config.newItemCallback is mandatory if adding new items is enabled!");
+		}
 
 		var store = config.store;
 
@@ -46,16 +62,6 @@ module.exports = function pagedListCore(dependencies) {
 		}];
 
 		var list = createList(config);
-
-		var defaultValidator = function () {
-			return true;
-		};
-
-		var displayAlways = config.displayAlways || false;
-		var handleSelected = config.handleSelected;
-		var handleNotFound = config.handleNotFound;
-		var validator = config.validator || defaultValidator;
-
 
 		list.listClass = config.listClass || "knob-pagedlist__list";
 		list.itemClass = config.itemClass || "knob-pagedlist__item";
@@ -74,48 +80,50 @@ module.exports = function pagedListCore(dependencies) {
 			list.items([]);
 		}
 
-		config.select = function (item) {
-			handleSelected(item);
+		function select(item) {
+			selectCallback(item);
 			reset();
-		};
+		}
 
 		var shouldDisplay = ko.computed(function () {
 			return list.search() !== "" || displayAlways;
 		});
 
 		var noResultLabel = ko.computed(function () {
+			if (!newItemEnabled) {
+				return labels.notFound;
+			}
 			if (validator(list.search())) {
-				return labels.validLabel + list.search();
+				return labels.newItem + list.search();
 			}
 
-			return labels.invalidLabel + list.search();
+			return labels.invalidItem + list.search();
 		});
 
-		var clickMoreItem = function () {
-			var label = list.search();
-			if (!validator(label)) {
+		function addNewItem() {
+			if (!newItemEnabled) {
+				return;
+			}
+			var newItem = list.search();
+			if (!validator(newItem)) {
 				return;
 			}
 
-			handleNotFound(label);
+			newItemCallback(newItem);
 			reset();
-		};
+		}
 
-		var reset = function () {
+		function reset() {
 			list.search("");
-		};
+		}
 
 		return {
 			list: list,
 			icons: config.icons,
-			select: config.select,
+			select: select,
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
-			clickMoreItem: clickMoreItem,
-			reset: reset,
-			handleNotFound: handleNotFound,
-			handleSelected: handleSelected,
-			validator: validator,
+			addNewItem: addNewItem,
 
 			labels: labels
 		};

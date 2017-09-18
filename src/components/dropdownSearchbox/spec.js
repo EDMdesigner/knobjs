@@ -13,11 +13,8 @@ var interfacePattern = {
     labels: "object",
     shouldDisplay: "observable boolean",
     noResultLabel: "observable string",
-    clickMoreItem: "function",
-    reset: "function",
-    handleNotFound: "function",
-    handleSelected: "function",
-    validator: "function"
+    addNewItem: "function",
+    select: "function"
 };
 
 var createVm, vm;
@@ -123,8 +120,8 @@ config = {
     labels: {
         noResults: "result"
     },
-    handleNotFound: function () { },
-    handleSelected: function () { }
+    newItemCallback: function () {},
+    selectCallback: function () {}
 };
 
 dropdownSearchbox = createdropdownSearchboxWithMock(config);
