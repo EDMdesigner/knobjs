@@ -124,7 +124,6 @@ describe("dropdownSearchbox", function () {
             expect(mockList.initStoreHandling).toHaveBeenCalled();
         });
 
-        // this is just basic (and unnecessary) interface testing - functionality should be tested...
         it("select", function () {
             vm.list.search("stuff");
             vm.select({
@@ -134,11 +133,12 @@ describe("dropdownSearchbox", function () {
             expect(vm.list.search()).toBe("");
         });
 
-        // this is just basic (and unnecessary) interface testing - functionality should be tested...
         it("addNewItem", function () {
             vm.list.search("testItem");
             vm.addNewItem();
             expect(config.newItemCallback).toHaveBeenCalledWith("testItem");
         });
+
+        // More functionality testing needed...
     });
 });
