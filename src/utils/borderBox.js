@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function() {
-	let cssTemplate = `
+	var cssTemplate = `
 		[class^=knob-],
 		[class^=knob-] *,
 		[class^=knob-]:before,
