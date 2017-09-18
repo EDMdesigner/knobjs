@@ -11,8 +11,8 @@ var interfacePattern = {
     list: "object",
     icons: "object",
     labels: "object",
-    shouldDisplay: "function",
-    noResultLabel: "function",
+    shouldDisplay: "observable boolean",
+    noResultLabel: "observable string",
     clickMoreItem: "function",
     reset: "function",
     handleNotFound: "function",
@@ -173,35 +173,14 @@ describe("dropdownSearchbox", function () {
             }).not.toThrow();
         });
 
-        it("observables", function () {
-            expect(ko.isObservable(dropdownSearchbox.noResultLabel)).toBe(true);
-            expect(ko.isObservable(dropdownSearchbox.shouldDisplay)).toBe(true);
-        });
-
-        it("interface", function () {
-            expect(typeof dropdownSearchbox.shouldDisplay).toBe("function");
-            expect(typeof dropdownSearchbox.noResultLabel).toBe("function");
-
-            expect(typeof dropdownSearchbox.clickMoreItem).toBe("function");
-            expect(typeof dropdownSearchbox.reset).toBe("function");
-        });
-
-        it("shouldDisplay", function () {
-            dropdownSearchbox.shouldDisplay();
-            expect(typeof dropdownSearchbox.shouldDisplay()).toBe("boolean");
-        });
-
-        it("noResultLabel", function () {
-            dropdownSearchbox.noResultLabel();
-            expect(typeof dropdownSearchbox.noResultLabel()).toBe("string");
-        });
-
+        // this is just basic (and unnecessary) interface testing - functionality should be tested...
         it("select", function () {
             dropdownSearchbox.select();
             expect(typeof dropdownSearchbox.handleSelected).toBe("function");
             expect(typeof dropdownSearchbox.reset).toBe("function");
         });
 
+        // this is just basic (and unnecessary) interface testing - functionality should be tested...
         it("clickMoreItem", function () {
             dropdownSearchbox.clickMoreItem();
             if (dropdownSearchbox.validator()) {
