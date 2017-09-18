@@ -31,7 +31,8 @@ var specFiles = [
 ];
 
 var sourceFiles = [
-	"src/**/*.js"
+	"src/**/*.js",
+	"!src/**/spec.js"
 ];
 
 var deployFiles = [

@@ -193,7 +193,7 @@ describe("dropdownSearchbox", function () {
 
         it("noResultLabel", function () {
             dropdownSearchbox.noResultLabel();
-            expect(typeof dropdownSearchbox.noResultLabel()).toBe("number");
+            expect(typeof dropdownSearchbox.noResultLabel()).toBe("string");
         });
 
         it("select", function () {
