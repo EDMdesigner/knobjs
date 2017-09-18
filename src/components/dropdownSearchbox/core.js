@@ -14,10 +14,15 @@ var configPattern = {
 	handleNotFound: "function",
 	validator: "optional function",
 	icons: "object",
+	itemsPerPage: "optional number",
 	labels: "optional object",
 };
 
-var defaultLabels = {};
+var defaultLabels = {
+	validLabel: "Add",
+	invalidLabel: "Invalid item"
+};
+var defaultItemsPerPage = 10;
 
 module.exports = function pagedListCore(dependencies) {
 	superschema.check(dependencies, dependencyPattern, "dependencies");
@@ -29,7 +34,8 @@ module.exports = function pagedListCore(dependencies) {
 	return function createDropdownSearchbox(config) {
 		superschema.check(config, configPattern, "config");
 
-		var label = extend(true, {}, defaultLabels, config.labels);
+		var labels = extend(true, {}, defaultLabels, config.labels);
+		var itemsPerPage = ko.observable(config.itemsPerPage || defaultItemsPerPage);
 
 		var store = config.store;
 
@@ -50,7 +56,6 @@ module.exports = function pagedListCore(dependencies) {
 		var handleNotFound = config.handleNotFound;
 		var validator = config.validator || defaultValidator;
 
-		var itemsPerPage = ko.observable(10);
 
 		list.listClass = config.listClass || "knob-pagedlist__list";
 		list.itemClass = config.itemClass || "knob-pagedlist__item";
@@ -80,10 +85,10 @@ module.exports = function pagedListCore(dependencies) {
 
 		var noResultLabel = ko.computed(function () {
 			if (validator(list.search())) {
-				return config.labels.validLabel + list.search();
+				return labels.validLabel + list.search();
 			}
 
-			return config.labels.invalidLabel + list.search();
+			return labels.invalidLabel + list.search();
 		});
 
 		var clickMoreItem = function () {
@@ -103,7 +108,6 @@ module.exports = function pagedListCore(dependencies) {
 		return {
 			list: list,
 			icons: config.icons,
-			labels: config.labels,
 			select: config.select,
 			shouldDisplay: shouldDisplay,
 			noResultLabel: noResultLabel,
@@ -113,7 +117,7 @@ module.exports = function pagedListCore(dependencies) {
 			handleSelected: handleSelected,
 			validator: validator,
 
-			label: label
+			labels: labels
 		};
 	};
 };
