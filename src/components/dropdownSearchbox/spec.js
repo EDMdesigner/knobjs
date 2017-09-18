@@ -59,13 +59,6 @@ var config = {
     store: mockStore,
     fields: ["title", "id", "name"],
     search: "title",
-    sort: [{
-        label: "By Id",
-        value: "id"
-    }, {
-        label: "By Name",
-        value: "name"
-    }],
     icons: {
         search: "icon",
         dropdown: "icon",

@@ -11,7 +11,6 @@ var dependencyPattern = {
 var configPattern = {
 	store: "object",
 	fields: "array",
-	sort: "array",
 	search: "string",
 	newItemEnabled: "optional boolean",
 	selectCallback: "function",
@@ -59,6 +58,10 @@ module.exports = function pagedListCore(dependencies) {
 		var store = config.store;
 
 		store.load.before.add(beforeLoad);
+
+		config.sort = [{
+			value: config.search
+		}];
 
 		var list = createList(config);
 
