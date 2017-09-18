@@ -3,7 +3,11 @@
 var ko = require("knockout");
 var extend = require("extend");
 
+var borderBox = require("./utils/borderBox");
+
 var styleElem = document.createElement("style");
+styleElem.appendChild(document.createTextNode(borderBox()));
+
 var targetElem = document.getElementById("knob-insert-after");
 
 if (targetElem) {
