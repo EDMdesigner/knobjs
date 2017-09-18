@@ -10,6 +10,9 @@ var dependencyPattern = {
 
 var configPattern = {
 	store: "object",
+	fields: "array",
+	sort: "array",
+	search: "string",
 	newItemEnabled: "optional boolean",
 	selectCallback: "function",
 	newItemCallback: "optional function",
@@ -57,10 +60,6 @@ module.exports = function pagedListCore(dependencies) {
 
 		store.load.before.add(beforeLoad);
 
-		config.sort = [{
-			value: "id"
-		}];
-
 		var list = createList(config);
 
 		list.listClass = config.listClass || "knob-pagedlist__list";
@@ -81,7 +80,7 @@ module.exports = function pagedListCore(dependencies) {
 		}
 
 		function select(item) {
-			selectCallback(item);
+			selectCallback(item.data);
 			reset();
 		}
 

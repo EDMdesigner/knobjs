@@ -24,11 +24,13 @@
         <knob-dropdown-searchbox params="
                 store: store, 
                 fields: ['id', 'email', 'name', 'title'], 
-                search: 'title', 
+                search: 'title',
+                sort: [{ value: 'name' }];
                 displayAlways: false,
-                handleSelected: handleSelected,
-                handleNotFound: handleNotFound,
+                selectCallback: handleSelected,
+                newItemCallback: handleNotFound,
                 validator: validator,
+                newItemEnabled: true,
                 labels: {validLabel: 'Invite member: ', invalidLabel: 'Unkonwn user: '}">
             <div>
                 <span data-bind="text: model.data.id"></span>
