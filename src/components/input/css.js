@@ -2,7 +2,6 @@
 
 var tinycolor = require("tinycolor2");
 var createColorShades = require("../../utils/colorShades");
-var borderBox = require("../../utils/borderBox"); 
 
 module.exports = function(config) {
 
@@ -16,7 +15,6 @@ var warningColorShades = createColorShades(config.warning);
 
 let cssTemplate = `
 .knob-input {
-  ${ borderBox() }
   display: -webkit-flex;
   display: flex;
   padding: 7px 12px;
