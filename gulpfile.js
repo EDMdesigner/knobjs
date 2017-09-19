@@ -28,7 +28,7 @@ var jsonFiles = [
 ];
 
 var specFiles = [
-	"src/**/spec.js"
+	"src/**/*[Ss]pec.js"
 ];
 
 var sourceFiles = [

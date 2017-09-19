@@ -74,8 +74,6 @@ module.exports = function(config) {
 	var errorButtonColors = createButtonStateColors(config.error, "error");
 	var successButtonColors = createButtonStateColors(config.success, "success");
 
-
-
 	let cssTemplate = `
 		.knob-button {
 			line-height: 1.42857;
