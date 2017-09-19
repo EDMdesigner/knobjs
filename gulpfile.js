@@ -8,12 +8,14 @@ var superGulp = createSuperGulp({
 });
 
 var packageJson = require("./package.json");
+var jasmineConfigObject = require("./spec/support/jasmine.json");
 
 var jsFiles = [
 	"./*.js",
 	"./src/**/*.js",
 	"./spec/**/*.js",
-	"./examples/*.js"
+	"./examples/*.js",
+	"!./lib/jscolor.js"
 ];
 
 var jsonFiles = [
@@ -26,11 +28,12 @@ var jsonFiles = [
 ];
 
 var specFiles = [
-	"spec/**/*Spec.js"
+	"src/**/spec.js"
 ];
 
 var sourceFiles = [
-	"src/**/*.js"
+	"src/**/*.js",
+	"!src/**/spec.js"
 ];
 
 var deployFiles = [
@@ -60,6 +63,7 @@ superGulp.taskTemplates.initFrontendTasks({
 	packageJson: packageJson,
 	coverage: 70,
 	deployFolder: "knobjs/" + packageJson.version + "/",
+	jasmineConfigObject: jasmineConfigObject,
 	addPluginTasks: false,
 	files: {
 		js: jsFiles,
@@ -73,7 +77,8 @@ superGulp.taskTemplates.initFrontendTasks({
 			dev: [
 				{files: "./node_modules/normalize.css/normalize.css", dest: "./dist/lib"},
 				{files: "./node_modules/knockout/build/output/knockout-latest.debug.js", dest: "./dist/lib"},
-				{files: "./examples/example.html", dest: "./dist/examples"}
+				{files: "./examples/*.html", dest: "./dist/examples"},
+				{files: "./lib/jscolor.js", dest: "./dist/lib"}			
 			]
 		},
 		sass: {
@@ -99,7 +104,7 @@ superGulp.taskTemplates.initFrontendTasks({
 				{
 					entries: ["./examples/main.js"],
 					destFolder: "./dist/examples/",
-					minify: false,
+					minify: true,
 					outputFileName: "main.js",
 					standaloneName: packageJson.name + "Example",
 				}

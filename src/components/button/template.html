@@ -1,0 +1,24 @@
+<button class="knob-button" data-bind="click: click, disable: disabled">
+
+	<span class="icon-wrapper" data-bind="if: leftImage">
+			<img class="img" data-bind="attr: { src: leftImage, alt:'Image not found' }"/>
+	</span>
+
+	<span class="icon-wrapper" data-bind="if: leftIcon">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': leftIcon}" xlink:href=""></use>
+		</svg>
+	</span>
+	
+	<span class="label" data-bind="text: label"></span>
+
+	<span class="icon-wrapper" data-bind="if: rightIcon">
+		<svg class="icon">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': rightIcon}" xlink:href=""></use>
+		</svg>
+	</span>
+
+	<span class="icon-wrapper" data-bind="if: rightImage">
+			<img class="img" data-bind="attr: { src: rightImage, alt:'Image not found' }"/>
+	</span>
+</button>

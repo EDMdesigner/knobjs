@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Searchbox</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+
+<body>
+    <div class="example">
+        <!-- inject:svg -->
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <symbol id="icon-search" viewBox="0 0 32 32">
+                <path d="M20.667 18.667h-1.060l-0.367-0.367c1.307-1.513 2.093-3.48 2.093-5.633 0-4.787-3.88-8.667-8.667-8.667s-8.667 3.88-8.667 8.667 3.88 8.667 8.667 8.667c2.153 0 4.12-0.787 5.633-2.087l0.367 0.367v1.053l6.667 6.653 1.987-1.987-6.653-6.667zM12.667 18.667c-3.313 0-6-2.687-6-6s2.687-6 6-6 6 2.687 6 6-2.687 6-6 6z"
+                />
+            </symbol>
+        </svg>
+        <!-- endinject -->
+        <h2>knob-dropdown-searchbox</h2>
+        <knob-dropdown-searchbox params="
+                store: store, 
+                fields: ['id', 'email', 'name', 'title'], 
+                search: 'email',
+                displayAlways: false,
+                selectCallback: handleSelected,
+                newItemCallback: handleNotFound,
+                validator: validator,
+                newItemEnabled: true,
+                labels: {validLabel: 'Invite member: ', invalidLabel: 'Unkonwn user: '}">
+            <div>
+                <span data-bind="text: model.data.id"></span>
+                <span data-bind="text: model.data.email"></span>
+                <span data-bind="text: model.data.name"></span>
+                <span data-bind="text: model.data.title"></span>
+            </div>
+        </knob-dropdown-searchbox>
+    </div>
+    <script>
+        var handleSelected = function(item) {
+            console.log("SELECTED: ");
+            console.log(item);
+        }
+
+        var handleNotFound = function(result) {
+            console.log("NOT FOUND: ");
+			console.log(result);
+        }
+
+        function validator(email) {
+			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+		}
+    </script>
+    <script src="/lib/knockout-latest.debug.js"></script>
+    <script src="/knob.js"></script>
+    <script src="/examples/main.js"></script>
+    <script src="/lib/jscolor.js"></script>
+</body>
+
+</html>

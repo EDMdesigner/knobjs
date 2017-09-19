@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+</head>
+<body>
+<div class="example">
+		<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<symbol id="icon-check" viewBox="0 0 32 32">
+<path d="M16 2.667c-7.367 0-13.333 5.967-13.333 13.333 0 7.36 5.967 13.333 13.333 13.333 7.36 0 13.333-5.973 13.333-13.333 0-7.367-5.973-13.333-13.333-13.333zM13.333 22.667l-6.667-6.667 1.887-1.887 4.78 4.78 10.113-10.113 1.887 1.887-12 12z"/>
+</symbol><symbol id="icon-close" viewBox="0 0 32 32">
+<path d="M25.333 8.553l-1.887-1.887-7.447 7.447-7.447-7.447-1.887 1.887 7.447 7.447-7.447 7.447 1.887 1.887 7.447-7.447 7.447 7.447 1.887-1.887-7.447-7.447z"/>
+</symbol></svg><!-- endinject -->
+	<h1>KNOB 2.0</h1>
+	<h2>knob-checkbox</h2>
+	<knob-checkbox params="
+		value: checkboxValue
+	"></knob-checkbox>
+	<h2>disabled knob-checkbox</h2>
+	<knob-checkbox params="
+		value: disabledCheckBoxValue,
+		disabled: true
+	"></knob-checkbox>
+	<hr>
+</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>

@@ -3,6 +3,23 @@
 var ko = require("knockout");
 var extend = require("extend");
 
+var borderBox = require("./utils/borderBox");
+
+var styleElem = document.createElement("style");
+styleElem.appendChild(document.createTextNode(borderBox()));
+
+var targetElem = document.getElementById("knob-insert-after");
+
+if (targetElem) {
+	insertAfter(targetElem, styleElem);
+} else {
+	document.head.appendChild(styleElem);
+}
+
+function insertAfter(referenceNode, el) {
+	referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
+
 function knobRegisterComponent(config) {
 	if (typeof config.name !== "string") {
 		throw new Error("config.name has to be a string");
@@ -20,12 +37,28 @@ function knobRegisterComponent(config) {
 	var createVm = config.createVm;
 	var template = config.template;
 	var style = config.style;
+	var css = config.css;
+	var colors = config.colors;
+	var lastTextNode = null;
 
 	var optionalConfig = extend(true, {}, config);
 	delete optionalConfig.name;
 	delete optionalConfig.createVm;
 	delete optionalConfig.template;
 	delete optionalConfig.style;
+	
+	ko.computed(function() {
+		if (css) {
+			var currentColors = ko.isObservable(colors) ? colors() : colors;
+			var cssTemplate = css(currentColors);
+			if(lastTextNode){
+				styleElem.removeChild(lastTextNode);
+			}
+			var cssTextNode = document.createTextNode(cssTemplate);
+			lastTextNode = cssTextNode;
+			styleElem.appendChild(cssTextNode);
+		}
+	});
 
 	ko.components.register(name, {
 		viewModel: {
