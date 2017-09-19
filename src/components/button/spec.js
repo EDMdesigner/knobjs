@@ -145,45 +145,6 @@ describe("Button", function() {
 			expect(typeof buttonVm.value).toBe(typeof config.value);
 		});
 
-		/*it("radio behaviour", function() {
-			var config = {
-				componentName: componentName,
-				variation: variation,
-				initialState: initialState,
-				style: style,
-				leftIcon: leftIcon,
-				label: label,
-				value: value,
-				radio: true,
-				click: click
-			};
-
-			buttonVm = createButton(config);
-			
-			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(buttonVm.behaviours.select.enable).toHaveBeenCalled();
-			expect(buttonVm.behaviours.click.enable).not.toHaveBeenCalled();
-		}); */
-
-		/*it("click behaviour", function() {
-			var config = {
-				componentName: componentName,
-				variation: variation,
-				initialState: initialState,
-				style: style,
-				leftIcon: leftIcon,
-				label: label,
-				value: value,
-				click: click
-			};
-
-			buttonVm = createButton(config);
-
-			expect(buttonVm.behaviours.hover.enable).toHaveBeenCalled();
-			expect(buttonVm.behaviours.select.enable).not.toHaveBeenCalled();
-			expect(buttonVm.behaviours.click.enable).toHaveBeenCalled();
-		});*/
-
 		it("should call click only once without triggerOnHold", function() {
 			var config = {
 				componentName: componentName,

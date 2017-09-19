@@ -2,10 +2,6 @@
 "use strict";
 
 var ko = require("knockout");
-var css = require("./css");
-
-css({});
-
 var nextTabsGroupIdx = 0;
 
 function convertParamsToObject(params) {

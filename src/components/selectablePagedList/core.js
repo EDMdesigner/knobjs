@@ -31,8 +31,6 @@ module.exports = function pagedListCore(dependencies) {
 				return null;
 			}
 
-			console.log(selectedVal);
-
 			if (!selectedVal.model || !selectedVal.model.data || typeof selectedVal.model.data.id === undefined) {
 				throw new Error("selectablePagedList: Invalid superdata object");
 			}
