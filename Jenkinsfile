@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'Node Argon [4.6.0] + mocha, gulp, grunt, jasmine'
+		nodejs 'Node 6.10.2'
     }
     stages {
         stage('build') {
