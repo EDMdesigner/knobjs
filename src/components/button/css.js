@@ -37,6 +37,35 @@ module.exports = function(config) {
 			}`;
 	}
 
+	function createLinkButtonShades() {
+		return `
+			.variation-link .knob-button {
+				background-color: transparent;
+				border-color: transparent;
+				color: #2ca6f7;
+				fill: #2ca6f7;
+			}
+			.variation-link .knob-button:hover {
+				background-color: transparent;
+				border-color: transparent;
+				color: #82cdff;
+				fill: #82cdff;
+			}
+			.variation-link .knob-button:active {
+				background-color: transparent;
+				border-color: transparent;
+				color: #104b72;
+				fill: #104b72;
+			}
+			.variation-link .knob-button:disabled {
+				background-color: transparent;
+				border-color: transparent;
+				color: #606060;
+				fill: #606060;
+				cursor: not-allowed;
+			}`;
+	}
+
 	var defaultButtonColors = createButtonStateColors(config.default, "");
 	var primaryButtonColors = createButtonStateColors(config.primary, "primary");
 	var secondaryButtonColors = createButtonStateColors(config.secondary, "secondary");
@@ -44,8 +73,6 @@ module.exports = function(config) {
 	var warningButtonColors = createButtonStateColors(config.warning, "warning");
 	var errorButtonColors = createButtonStateColors(config.error, "error");
 	var successButtonColors = createButtonStateColors(config.success, "success");
-
-
 
 	let cssTemplate = `
 		.knob-button {
@@ -97,7 +124,8 @@ module.exports = function(config) {
 		${ infoButtonColors }
 		${ warningButtonColors }
 		${ successButtonColors }
-		${ errorButtonColors }		
+		${ errorButtonColors }
+		${ createLinkButtonShades() }		
 	`;
 
 	return cssTemplate;
