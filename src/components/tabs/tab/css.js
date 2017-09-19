@@ -2,7 +2,7 @@
 
 module.exports = function(config) {
 
-let cssTemplate =`
+	let cssTemplate =`
 .tab {
 	background-color: ${ config.lightGray };
 }	

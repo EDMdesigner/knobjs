@@ -1,7 +1,9 @@
 /*jslint node: true */
 "use strict";
 
-var tabCore = require("./core");
+var ko = require("knockout");
+var core = require("./core");
 
-module.exports = tabCore({
+module.exports = core({
+	ko: ko
 });

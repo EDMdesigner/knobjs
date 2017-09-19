@@ -7,12 +7,11 @@ module.exports = function(config) {
 
 var baseColor = config.primary;  
 var textColor = function(color) {
-  return tinycolor(color).isDark() ? "white" : "black";
+	return tinycolor(color).isDark() ? "white" : "black";
 };
 var colorShades = createColorShades(baseColor);
 var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
 var activeButtonColor = config.white;
-
 
 let cssTemplate = `
 	.knob-tab button {
@@ -93,5 +92,5 @@ let cssTemplate = `
 	}
 	`;
 
-  return cssTemplate;
+	return cssTemplate;
 };
