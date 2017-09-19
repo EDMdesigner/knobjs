@@ -11,30 +11,13 @@ var interfacePattern = {
     list: "object",
     icons: "object",
     labels: "object",
-    shouldDisplay: "function",
-    noResultLabel: "function",
-    clickMoreItem: "function",
-    reset: "function",
-    handleNotFound: "function",
-    handleSelected: "function",
-    validator: "function"
+    shouldDisplay: "observable boolean",
+    noResultLabel: "observable string",
+    addNewItem: "function",
+    select: "function"
 };
 
 var createVm, vm;
-
-var superdata = require("superdata");
-var createProxy = superdata.proxy.memory;
-var createModel = superdata.model.model;
-var createStore = superdata.store.store;
-
-var proxy;
-var model;
-var store;
-var config;
-var selected = ko.observable();
-var dropdownSearchbox;
-
-var createdropdownSearchboxWithMock;
 
 var mockList = {
     sortOptions: [1],   
@@ -48,7 +31,7 @@ var mockList = {
     },
     skip: function () { },
     limit: function () { },
-    search: function () { },
+    search: ko.observable(""),
     initStoreHandling: function () { },
     items: function () { },
     itemsPerPage: function () { }
@@ -64,54 +47,18 @@ var dependencies = {
     extend: extend
 };
 
-createdropdownSearchboxWithMock = core({
-    ko: ko,
-    extend: extend,
-    createList: mockCreateList
-});
-
-proxy = createProxy({
-    idProperty: "id",
-    idType: "number",
-    route: "/user"
-});
-
-model = createModel({
-    fields: {
-        id: {
-            type: "number"
-        },
-        email: {
-            type: "string"
-        },
-        name: {
-            type: "string"
-        },
-        title: {
-            type: "string"
+var mockStore = {
+    load: {
+        before: {
+            add: function() {}
         }
-    },
-    idField: "id",
-    proxy: proxy
-});
+    }
+};
 
-store = createStore({
-    model: model
-});
-
-config = {
-    store: store,
-    selected: selected,
-    name: "testdropdownSearchbox",
+var config = {
+    store: mockStore,
     fields: ["title", "id", "name"],
     search: "title",
-    sort: [{
-        label: "By Id",
-        value: "id"
-    }, {
-        label: "By Name",
-        value: "name"
-    }],
     icons: {
         search: "icon",
         dropdown: "icon",
@@ -123,11 +70,10 @@ config = {
     labels: {
         noResults: "result"
     },
-    handleNotFound: function () { },
-    handleSelected: function () { }
+    newItemCallback: function () {},
+    selectCallback: function () {},
+    newItemEnabled: true
 };
-
-dropdownSearchbox = createdropdownSearchboxWithMock(config);
 
 describe("dropdownSearchbox", function () {
     describe("config and dependency check", function () {
@@ -149,22 +95,15 @@ describe("dropdownSearchbox", function () {
 
     describe("valid config", function () {
         beforeEach(function () {
+            spyOn(mockList, "search").and.callThrough();
+            spyOn(mockList, "initStoreHandling").and.callThrough();
+            spyOn(mockList, "items").and.callThrough();
+            spyOn(mockList, "itemsPerPage").and.callThrough();
+            spyOn(config, "selectCallback");
+            spyOn(config, "newItemCallback");
+
             createVm = core(dependencies);
             vm = createVm(config);
-
-            describe("With mock createList", function () {
-                describe("with stateModel", function () {
-                        spyOn(mockList, "search").and.callThrough();
-                        spyOn(mockList, "initStoreHandling").and.callThrough();
-                        spyOn(mockList, "items").and.callThrough();
-                        spyOn(mockList, "itemsPerPage").and.callThrough();
-    
-                    it("mockList.search(), mockList.initStoreHandling()", function () {
-                        expect(mockList.search).toHaveBeenCalled();
-                        expect(mockList.initStoreHandling).toHaveBeenCalled();
-                    });
-                });
-            });
         });
 
         it("interface check", function () {
@@ -173,45 +112,26 @@ describe("dropdownSearchbox", function () {
             }).not.toThrow();
         });
 
-        it("observables", function () {
-            expect(ko.isObservable(dropdownSearchbox.noResultLabel)).toBe(true);
-            expect(ko.isObservable(dropdownSearchbox.shouldDisplay)).toBe(true);
-        });
-
-        it("interface", function () {
-            expect(typeof dropdownSearchbox.shouldDisplay).toBe("function");
-            expect(typeof dropdownSearchbox.noResultLabel).toBe("function");
-
-            expect(typeof dropdownSearchbox.clickMoreItem).toBe("function");
-            expect(typeof dropdownSearchbox.reset).toBe("function");
-        });
-
-        it("shouldDisplay", function () {
-            dropdownSearchbox.shouldDisplay();
-            expect(typeof dropdownSearchbox.shouldDisplay()).toBe("boolean");
-        });
-
-        it("noResultLabel", function () {
-            dropdownSearchbox.noResultLabel();
-            expect(typeof dropdownSearchbox.noResultLabel()).toBe("number");
+        it("mockList.search(), mockList.initStoreHandling()", function () {
+            expect(mockList.search).toHaveBeenCalled();
+            expect(mockList.initStoreHandling).toHaveBeenCalled();
         });
 
         it("select", function () {
-            dropdownSearchbox.select();
-            expect(typeof dropdownSearchbox.handleSelected).toBe("function");
-            expect(typeof dropdownSearchbox.reset).toBe("function");
+            vm.list.search("stuff");
+            vm.select({
+                data: "testData"
+            });
+            expect(config.selectCallback).toHaveBeenCalledWith("testData");
+            expect(vm.list.search()).toBe("");
         });
 
-        it("clickMoreItem", function () {
-            dropdownSearchbox.clickMoreItem();
-            if (dropdownSearchbox.validator()) {
-                expect(typeof dropdownSearchbox.handleNotFound).toBe("function");
-            }
+        it("addNewItem", function () {
+            vm.list.search("testItem");
+            vm.addNewItem();
+            expect(config.newItemCallback).toHaveBeenCalledWith("testItem");
         });
 
-        it("reset", function () {
-            dropdownSearchbox.reset();
-            expect(dropdownSearchbox.list.search).toMatch("");
-        });
+        // More functionality testing needed...
     });
 });
