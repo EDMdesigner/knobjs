@@ -17,7 +17,6 @@ var colors = ko.computed(function() {
 	return {
 		default: defaultColor(), 
 		primary: primaryColor(),
-		secondary: "#f4f4f4",
 
 		info: infoColor(),
 		success: successColor(),
@@ -28,10 +27,7 @@ var colors = ko.computed(function() {
 		black: "#000",
 
 		lightGray: "#f5f7f8",
-		mediumGray: "#f0f2f4",
-		darkGray: "#e5e9ec",
-
-		border: "#d2cdc6" //only for the chamaileon style
+		darkGray: "#e5e9ec"
 	};
 });
 
@@ -42,7 +38,6 @@ knob.init({
 	// for chamaileon theme
 	color1: {
 		primary: "#44c0fc",
-		secondary: "#f4f4f4",
 
 		info: {
 			background: "#25aaf2"
@@ -66,7 +61,7 @@ knob.init({
 
 		black: "#000",
 		transparent: "transparent"
-	},
+		},
 		icons: {
 			search: "#icon-search"
 		},

@@ -41,7 +41,8 @@ function initKnob(config) {
 		},
 		inlineTextEditor: {
 			edit: "#icon-edit",
-			done: "#icon-done"
+			done: "#icon-done",
+			close: "#icon-close"
 		}
 	};
 

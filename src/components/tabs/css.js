@@ -17,13 +17,12 @@ let cssTemplate = `
 	.knob-tab button {
 		font-size: 14px;
 		font-weight: 400;
-		text-transform: uppercase;
 		border-width: 0px;
 		color: ${ textColor(config.default) };
 		fill: ${ textColor(config.default) };
 		background-color: ${ tinycolor(config.default) };
 	}
-	.knob-tab .active button{
+	.knob-tab .active .knob-button{
 		border-top: 3px solid ${ activeTabColor };
 		font-weight: bold;
 		color: ${ textColor(config.default) };
@@ -39,7 +38,7 @@ let cssTemplate = `
 	.knob-tab .active {
 		margin-bottom: 2px;    
 	}
-	.knob-tab.orientation-left-top .active button{
+	.knob-tab.orientation-left-top .active .knob-button{
 		border-top: none;
 		border-right: none;
 		background-color: ${ tinycolor(config.default) };
