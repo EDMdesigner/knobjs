@@ -13,11 +13,11 @@ let cssTemplate = `
   position: absolute;
   margin-top: 3px;
 }
-.knob-button {
+.knob-dropdown .knob-button {
   text-align: left;
   border-radius: 0px;
   border-width: 1px;
-  border-top: 0px;
+  border-top: 1px;
 }
 .knob-dropdown-menu button {
   width: 100%;
@@ -37,7 +37,7 @@ let cssTemplate = `
   text-align: left;
   border-radius: 0px;
   border-width: 1px;
-  border-top: 0px;
+  border-top: 1px;
   background-color: ${ colorShades.color4 };
 }
 .knob-dropdown-menu div:first-of-type button {
