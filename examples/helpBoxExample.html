@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>KnobJS</title>
+	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/knob.css">
+	<link rel="stylesheet" href="/examples/example.css">
+	<style type="text/css">
+		.anim-rotate {
+			animation: rotate 1.9s infinite linear;
+		}
+
+		@keyframes rotate {
+			from {
+				transform: rotate(0) scale(1) skew(1deg) translate(0);
+			}
+
+			to {
+				transform: rotate(360deg) scale(1) skew(1deg) translate(0);
+			}
+		}
+	</style>
+</head>
+<body>
+<div class="example">
+<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
+	<knob-modal params="
+		title: 'test modal',
+		icon: '#icon-open',
+		visible: modalVisible">
+		<p>
+			Lorem ipsum <a href="#">dolor sit amet</a>, <strong>consectetur adipisicing elit</strong>. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
+		</p>
+	</knob-modal>
+	</div>
+<script src="/lib/knockout-latest.debug.js"></script>
+<script src="/knob.js"></script>
+<script src="/examples/main.js"></script>
+</body>
+</html>
