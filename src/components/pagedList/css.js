@@ -16,13 +16,15 @@ let cssTemplate = `
 .knob-pagelist .knob-pagelist__bar {
   overflow: hidden;
   border-bottom: 1px solid #ddd;
+  min-height: 40px;
+  padding-bottom: 3px;
 }
 .knob-pagelist .knob-pagelist__bar .knob-input {
   float: left;
   border-color: #ddd;
   margin-top: 0px;
   padding-bottom: 5px;
-  margin-left: 0px;
+  margin: 0px;
 }
 .knob-pagelist .knob-pagelist__bar .knob-input:hover {
   border-color: ${ colorShades.color4 };
