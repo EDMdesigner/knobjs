@@ -246,6 +246,14 @@ function initKnob(config) {
 		}
 	});
 
+	registerComponent({
+		name: "knob-help-box",
+		createVm: require("./components/helpBox/vm"),
+		template: require("./components/helpBox/template.html"),
+		css: require("./components/helpBox/css"),
+		colors: config.colors
+	});
+
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
 	}

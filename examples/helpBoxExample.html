@@ -2,40 +2,113 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>KnobJS</title>
+	<title>help-box</title>
 	<link rel="stylesheet" href="/lib/normalize.css">
-	<link rel="stylesheet" href="/knob.css">
 	<link rel="stylesheet" href="/examples/example.css">
-	<style type="text/css">
-		.anim-rotate {
-			animation: rotate 1.9s infinite linear;
+	<style>
+		.container {
+			position: relative;
+			margin: 0 auto;
+			width: 60%;
+			height: auto;
+			border: 1px solid #000;	
 		}
-
-		@keyframes rotate {
-			from {
-				transform: rotate(0) scale(1) skew(1deg) translate(0);
-			}
-
-			to {
-				transform: rotate(360deg) scale(1) skew(1deg) translate(0);
-			}
+		.knob-helpbox-container h1 {
+			font-size: 2rem;
+			text-align: center;
+		}
+		.knob-helpbox-container h2 {
+			font-size: 1.5rem;
+			text-align: center;
+		}
+		.knob-helpbox-container span {
+			font-size: 1.3rem;
+			font-weight: 700;
+		}
+		.knob-helpbox-container ul {
+			width: 80%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			padding: 1.5rem;
+			list-style-type: none;
+		}
+		.knob-helpbox-container li {
+			flex-basis: 30%;
+			text-align: center;
 		}
 	</style>
 </head>
+
 <body>
-<div class="example">
-<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
-	<knob-modal params="
-		title: 'test modal',
-		icon: '#icon-open',
-		visible: modalVisible">
-		<p>
-			Lorem ipsum <a href="#">dolor sit amet</a>, <strong>consectetur adipisicing elit</strong>. Autem beatae dolorum molestiae, dignissimos, qui laboriosam a. Autem voluptatum, laboriosam fugiat velit quae soluta nesciunt cum? Ut voluptates molestias, obcaecati totam!
-		</p>
-	</knob-modal>
+	<div class="example">
+		<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<symbol id="icon-open" viewBox="0 0 32 32">
+			<path d="M26.667 8h-10.667l-2.667-2.667h-8c-1.473 0-2.653 1.193-2.653 2.667l-0.013 16c0 1.473 1.193 2.667 2.667 2.667h21.333c1.473 0 2.667-1.193 2.667-2.667v-13.333c0-1.473-1.193-2.667-2.667-2.667zM26.667 24h-21.333v-13.333h21.333v13.333z"/>
+		</symbol>
+		<symbol id="icon-close" viewBox="0 0 32 32">
+			<path d="M25.333 8.553l-1.887-1.887-7.447 7.447-7.447-7.447-1.887 1.887 7.447 7.447-7.447 7.447 1.887 1.887 7.447-7.447 7.447 7.447 1.887-1.887-7.447-7.447z"/>
+		</symbol></svg><!-- endinject -->
+		<h1>KNOB 2.0</h1>
+		<h2>knob-help-box default</h2>
+		<knob-help-box >
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p>Nunc ut ipsum et lectus volutpat rhoncus. Mauris tempor urna mauris, sed <a href="#">bibendum lorem tempor nec.</a> In a justo lectus. Pellentesque tortor lorem, hendrerit et convallis vel, vulputate non orci.</p>
+
+			<ul>
+				<li>Donec sollicitudin massa nec sodales tincidunt. Donec feugiat ullamcorper velit eu ullamcorper. Morbi aliquet laoreet dolor nec efficitur.
+				</li>
+				<li>Donec sollicitudin massa nec sodales tincidunt. Donec feugiat ullamcorper velit eu ullamcorper. Morbi aliquet laoreet dolor nec efficitur.
+				</li>
+				<li>Donec sollicitudin massa nec sodales tincidunt. Donec feugiat ullamcorper velit eu ullamcorper. Morbi aliquet laoreet dolor nec efficitur.
+				</li>
+			</ul>
+		</knob-help-box>
+		<br>
+		<hr>
+		<br>
+		<h2>knob-help-box info</h2>
+		<knob-help-box  class="variation-info">
+			<h1>Vivamus viverra nulla sed ex sollicitudin congue.</h1>
+			<p>Nunc ut ipsum et lectus volutpat rhoncus. Mauris tempor urna mauris, sed <a href="#">bibendum lorem tempor nec.</a> In a justo lectus. Pellentesque tortor lorem, hendrerit et convallis vel, vulputate non orci. usce urna dui, bibendum sed facilisis sed, elementum non tortor. Fusce pharetra, dolor eget pretium aliquam, elit sem lacinia lacus, id ultrices eros diam vel odio. Ut ac nunc eget quam porttitor iaculis quis vel nulla. Integer sollicitudin eu lacus vel iaculis.</p>
+			<span>Nulla facilisi</span>
+			<p>Etiam bibendum neque neque, at congue elit consectetur ut. Nam ornare sit amet enim eu finibus. In vehicula tellus nibh, sit amet vehicula nulla efficitur ac.</p>
+			<span>Morbi non metus vitae</span>
+			<p>Cras commodo massa tristique, tristique massa et, dignissim ex. Vivamus eget enim sapien. Aliquam aliquet lorem eget libero maximus, et feugiat quam feugiat. Aliquam id tellus quis lectus consectetur semper quis vel urna.</p>
+		</knob-help-box>
+		<br>
+		<hr>
+		<br>
+		<h2>knob-help-box warning</h2>
+		<knob-help-box class="variation-warning">
+			<h1>Warning!</h1>
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<p>Nunc ut ipsum et lectus volutpat rhoncus. Mauris tempor urna mauris, sed <a href="#">bibendum lorem tempor nec.</a> In a justo lectus. Pellentesque tortor lorem, hendrerit et convallis vel, vulputate non orci.</p>
+		</knob-help-box>
+		<br>
+		<hr>
+		<br>
+		<h2>knob-help-box success</h2>
+		<knob-help-box class="variation-success">
+			<h1>Congratulations!</h1>
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<p>Nunc ut ipsum et lectus volutpat rhoncus. Mauris tempor urna mauris, sed <a href="#">bibendum lorem tempor nec.</a> In a justo lectus. Pellentesque tortor lorem, hendrerit et convallis vel, vulputate non orci.</p>
+		</knob-help-box>
+		<br>
+		<hr>
+		<br>
+		<h2>knob-help-box error</h2>
+		<knob-help-box class="variation-error">
+			<h1>Error! Something went wrong!</h1>
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<p>Nunc ut ipsum et lectus volutpat rhoncus. Mauris tempor urna mauris, sed <a href="#">bibendum lorem tempor nec.</a> In a justo lectus. Pellentesque tortor lorem, hendrerit et convallis vel, vulputate non orci.</p>
+		</knob-help-box>
+		<br>
+		<br>
 	</div>
-<script src="/lib/knockout-latest.debug.js"></script>
-<script src="/knob.js"></script>
-<script src="/examples/main.js"></script>
+
+	<script src="/lib/knockout-latest.debug.js"></script>
+	<script src="/knob.js"></script>
+	<script src="/examples/main.js"></script>
 </body>
 </html>
