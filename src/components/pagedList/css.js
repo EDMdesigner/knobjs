@@ -17,7 +17,6 @@ let cssTemplate = `
   overflow: hidden;
   border-bottom: 1px solid #ddd;
   min-height: 40px;
-  padding-bottom: 3px;
 }
 .knob-pagelist .knob-pagelist__bar .knob-input {
   float: left;
