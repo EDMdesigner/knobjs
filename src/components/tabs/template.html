@@ -1,16 +1,13 @@
-<div class="knob-tabs">
+<div class="knob-tab knob-tabs">
 	<div class="knob-radio-wrapper">
 		<knob-radio params="
 			group: tabsGroup,
 			variation: 'tab',
 			selectedIdx: selectedIdx,
-			items: buttons
-			">
-		</knob-radio>
+			items: buttonData
+		"></knob-radio>
 	</div>
-	<div class="knob-panel-group" data-bind="foreach: panels">
-		<knob-tab data-bind="visible: $parent.selectedIdx() == $index()" params="variation: $parent.variation">
-			<!-- ko template: { nodes: $data } --><!-- /ko -->
-		</knob-tab>
+	<div class="knob-panel-group">
+		<!-- ko template: { nodes: $componentTemplateNodes, data: $parent } --><!-- /ko -->
 	</div>
 </div>

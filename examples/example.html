@@ -564,6 +564,39 @@
 		<knob-tab params="label: 'tab2'">Something</knob-tab>
 		<knob-tab params="label: 'tab3'">Transparent background</knob-tab>
 	</knob-tabs>
+	<h2>knob-tabs can have observable labels</h2>
+	<knob-tabs params="defaultTab: 0">
+		<!-- ko if: showTab1 -->
+			<knob-tab params="label: tabLabel1">Some very interesting content in Tab1.</knob-tab>
+		<!-- /ko -->
+		<!-- ko if: showTab2 -->
+			<knob-tab data-bind="style: { color: 'green' }" params="label: tabLabel2">
+				Even more interesting content in Tab2.
+				Some data from an outer context: <span data-bind="text: numericTestVal"></span>
+			</knob-tab>
+		<!-- /ko -->
+		<!-- ko if: showTab3 -->
+			<knob-tab data-bind="style: { color: 'red' }" params="label: tabLabel3">Tab3 is the best!</knob-tab>
+		<!-- /ko -->
+	</knob-tabs>
+	Tab1 label: <knob-input params="
+		value: tabLabel1
+	"></knob-input>
+	Tab1 visible: <knob-checkbox params="
+		value: showTab1
+	"></knob-checkbox>
+	Tab2 label: <knob-input params="
+		value: tabLabel2
+	"></knob-input>
+	Tab2 visible: <knob-checkbox params="
+		value: showTab2
+	"></knob-checkbox>
+	Tab3 label: <knob-input params="
+		value: tabLabel3
+	"></knob-input>
+	Tab3 visible: <knob-checkbox params="
+		value: showTab3
+	"></knob-checkbox>
 	<h2>knob-checkbox</h2>
 	<knob-checkbox params="
 		value: checkboxValue

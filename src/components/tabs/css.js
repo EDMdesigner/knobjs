@@ -7,12 +7,11 @@ module.exports = function(config) {
 
 var baseColor = config.primary;  
 var textColor = function(color) {
-  return tinycolor(color).isDark() ? "white" : "black";
+	return tinycolor(color).isDark() ? "white" : "black";
 };
 var colorShades = createColorShades(baseColor);
 var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
 var activeButtonColor = config.white;
-
 
 let cssTemplate = `
 	.knob-tab button {
@@ -25,7 +24,6 @@ let cssTemplate = `
 	}
 	.knob-tab .active .knob-button{
 		border-top: 3px solid ${ activeTabColor };
-		font-weight: bold;
 		color: ${ textColor(config.default) };
 		fill: ${ textColor(config.default) };
 		border-top-left-radius: 3px;
@@ -44,7 +42,6 @@ let cssTemplate = `
 		border-right: none;
 		background-color: ${ tinycolor(config.default) };
 		border-left: 4px solid ${ activeTabColor };
-		font-weight: bold;    
 		cursor: not-allowed;
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
@@ -93,5 +90,5 @@ let cssTemplate = `
 	}
 	`;
 
-  return cssTemplate;
+	return cssTemplate;
 };
