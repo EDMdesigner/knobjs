@@ -7,62 +7,77 @@ function createRadio(config) {
 
 	config = config || {};
 
-	var vm = {};
+	var selected = config.selected || ko.observable();
+	var selectedIdx = config.selectedIdx || ko.observable();
 
-	if (config.items.length === 0) {
+	var variation = config.variation || "default";
+
+	if (!ko.isObservable(config.items) && config.items.length === 0) {
 		throw new Error("config.items should not be empty");
 	}
 
-	vm.selected = config.selected || ko.observable();
-	vm.selectedIdx = config.selectedIdx || ko.observable();
+	var items = ko.computed(function() {
+		var itemList = ko.isObservable(config.items) ? config.items() : config.items;
+		return itemList.map(function(item) {
+			return createItemVm(item);
+		});
+	});
 
-	vm.variation = config.variation || "default";
-
-	vm.items = [];
-
-	for (var idx = 0; idx < config.items.length; idx += 1) {
-
-		var act = config.items[idx];
-
-		if (!act.label && !act.icon) {
-			throw new Error("each element of config.items has to have label and/or icon property");
+	ko.computed(function() {
+		var currentItems = items();
+		if (currentItems.length === 0) {
+			return;
 		}
 
-		vm.items.push(createItemVm(act.label, act.icon, act.value, idx));
-	}
+		var sel = selectedIdx.peek();
 
-	var sel = vm.selectedIdx();
+		if (typeof sel === "number" && !isNaN(sel)) {
+			sel = Math.floor(sel);
+			sel %= currentItems.length;
 
-	if (typeof sel === "number") {
-		sel = Math.floor(sel);
-		sel %= vm.items.length;
+			currentItems[sel].select();
 
-		vm.items[sel].select();
+		} else {
+			currentItems[0].select();
+		}
+	});
 
-	} else {
-		vm.items[0].select();
-	}
-
-	function createItemVm(label, icon, value, idx) {
-
+	function createItemVm(item) {
+		if (!item.label && !item.icon) {
+			throw new Error("Each radiobutton has to have a label and/or icon!");
+		}
 		var obj = {
-			label: label,
-			icon: icon,
+			label: item.label,
+			icon: item.icon,
 			group: config.group,
-			value: value,
+			value: item.value,
 			select: function() {
-				vm.selected(obj);
-				vm.selectedIdx(idx);
+				selected(obj);
+				selectedIdx(obj.index);
 			},
 			isSelected: ko.computed(function() {
-				return idx === vm.selectedIdx();
+				return obj === selected();
 			})
 		};
+
+		Object.defineProperty(obj, "index", {
+			get: function() {
+				if (item.index !== undefined) { // This way items can define their own index if necessary - e.g used by the knob-tabs.
+					return item.index;
+				}
+				return items().indexOf(obj);
+			}
+		});
 
 		return obj;
 	}
 
-	return vm;
+	return {
+		items: items,
+		selected: selected,
+		selectedIdx: selectedIdx,
+		variation: variation
+	};
 }
 
 module.exports = createRadio;

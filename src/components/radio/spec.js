@@ -23,7 +23,7 @@ describe("=== Radio ===", function() {
 					],
 					selected: ko.observable()
 				});
-			}).toThrowError("each element of config.items has to have label and/or icon property");
+			}).toThrowError("Each radiobutton has to have a label and/or icon!");
 		});
 
 	});
@@ -55,14 +55,14 @@ describe("=== Radio ===", function() {
 		it("selected", function() {
 			expect(vm.selected().label).toBe("randomLabel0");
 
-			vm.items[1].select();
+			vm.items()[1].select();
 			expect(vm.selected().icon).toBe("randomIcon1");
 
-			vm.items[2].select();
+			vm.items()[2].select();
 			expect(vm.selected().label).toBe("randomLabel2");
 			expect(vm.selected().icon).toBe("randomIcon2");
 
-			vm.items[3].select();
+			vm.items()[3].select();
 			expect(vm.selected().label).toBe("randomLabel3");
 			expect(vm.selected().icon).toBe("randomIcon3");
 			expect(vm.selected().value).toBe("randomValue3");

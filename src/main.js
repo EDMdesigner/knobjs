@@ -5,8 +5,14 @@
 //THIS FILE SHOULD BE GENERATED
 
 var extend = require("extend");
+var ko = require("knockout");
+var superschema = require("superschema");
 
 var registerComponent = require("./knobRegisterComponent");
+
+superschema.extend({
+	ko: ko
+});
 
 function initKnob(config) {
 	if (!config) {

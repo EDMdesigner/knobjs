@@ -90,9 +90,9 @@ module.exports = function(dependencies) {
 
 		vm.leftIcon = ko.observable(ko.unwrap(config.leftIcon || config.icon));
 		vm.rightIcon = ko.observable(ko.unwrap(config.rightIcon));
+		vm.label = ko.isObservable(config.label) ? config.label : ko.observable(config.label);
 		vm.leftImage = ko.observable(config.leftImage);
 		vm.rightImage = ko.observable(config.rightImage);
-		vm.label = ko.observable(ko.unwrap(config.label));
 		vm.value = config.value;
 		vm.disabled = disabled;
 
