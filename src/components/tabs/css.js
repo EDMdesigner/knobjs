@@ -56,7 +56,7 @@ let cssTemplate = `
 		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
 	}
 	.knob-radio {
-		margin-bottom: -1px;
+		margin-bottom: -3px;
 	}
 	.border-bottom-variation .knob-tabs button {
 		background-color: transparent;
