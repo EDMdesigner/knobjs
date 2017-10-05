@@ -31,6 +31,9 @@ let cssTemplate = `
 		transition: opacity 1s;
 		box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2), 0 0px 0px 0 rgba(0,0,0,0.19);
 	}
+	.primary .tooltip:hover{
+		box-shadow: 0 0 3px red;
+	}
 
 	/* Tooltip arrow */
 	.primary.arrow-down .tooltip::after {
@@ -75,6 +78,10 @@ let cssTemplate = `
 		border-style: solid;
 		border-color: transparent transparent ${ tinycolor(config.primary) } transparent;
 	}
+	.primary.arrow-up .tooltip:hover::after{
+		box-shadow: 0 0 3px red;
+	}
+
 
 	.info .tooltip{
 		background-color: ${ tinycolor(config.info) };
