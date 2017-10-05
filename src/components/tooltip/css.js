@@ -4,13 +4,23 @@ var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
 
+var width = document.getElementsByClassName("tooltip").offsetWidth;
+var height = document.getElementsByClassName("tooltip").offsetHeight;
+
+width = width;
+height = height;
+
 let cssTemplate = `
 	.knob-tooltip-wrapper {
 		position: relative;
 		display: inline-block;
 	}
+	.tooltip {
+		width: 100%;
+		padding: 10px;
+		display: inline-block;
+	}
 	.primary .tooltip{
-		width: 120px;
 		background-color: ${ tinycolor(config.primary) };
 		color: #fff;
 		text-align: center;
@@ -36,9 +46,10 @@ let cssTemplate = `
 	.primary.arrow-left .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		right: 100%;
-		margin-left: -5px;
+		top: 50%;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent ${ tinycolor(config.primary) } transparent transparent;
@@ -46,9 +57,10 @@ let cssTemplate = `
 	.primary.arrow-right .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		left: 104.5%;
-		margin-left: -5px;
+		top: 50%;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent ${ tinycolor(config.primary) };
@@ -65,7 +77,6 @@ let cssTemplate = `
 	}
 
 	.info .tooltip{
-		width: 120px;
 		background-color: ${ tinycolor(config.info) };
 		color: #fff;
 		text-align: center;
@@ -92,9 +103,10 @@ let cssTemplate = `
 	.info.arrow-left .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		right: 100%;
-		margin-left: -5px;
+		top: 50%;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent ${ tinycolor(config.info) } transparent transparent;
@@ -102,9 +114,10 @@ let cssTemplate = `
 	.info.arrow-right .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		left: 104.5%;
-		margin-left: -5px;
+		top: 50%;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent ${ tinycolor(config.info) };
@@ -121,7 +134,6 @@ let cssTemplate = `
 	}
 
 	.warning .tooltip{
-		width: 120px;
 		background-color: ${ tinycolor(config.warning) };
 		color: #fff;
 		text-align: center;
@@ -147,9 +159,10 @@ let cssTemplate = `
 	.warning.arrow-left .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		right: 100%;
-		margin-left: -5px;
+		top: 50%;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent ${ tinycolor(config.warning) } transparent transparent;
@@ -157,9 +170,10 @@ let cssTemplate = `
 	.warning.arrow-right .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		left: 104.5%;
-		margin-left: -5px;
+		top: 50%;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent ${ tinycolor(config.warning) };
@@ -176,7 +190,6 @@ let cssTemplate = `
 	}
 
 	.success .tooltip{
-		width: 120px;
 		background-color: ${ tinycolor(config.success) };
 		color: #fff;
 		text-align: center;
@@ -202,9 +215,10 @@ let cssTemplate = `
 	.success.arrow-left .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		right: 100%;
-		margin-left: -5px;
+		top: 50%;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent ${ tinycolor(config.success) } transparent transparent;
@@ -212,9 +226,10 @@ let cssTemplate = `
 	.success.arrow-right .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		left: 104.5%;
-		margin-left: -5px;
+		top: 50%;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent ${ tinycolor(config.success) };
@@ -231,7 +246,6 @@ let cssTemplate = `
 	}
 
 	.error .tooltip{
-		width: 120px;
 		background-color: ${ tinycolor(config.error) };
 		color: #fff;
 		text-align: center;
@@ -257,9 +271,10 @@ let cssTemplate = `
 	.error.arrow-left .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		right: 100%;
-		margin-left: -5px;
+		top: 50%;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent ${ tinycolor(config.error) } transparent transparent;
@@ -267,9 +282,10 @@ let cssTemplate = `
 	.error.arrow-right .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 35%;
-		left: 104.5%;
-		margin-left: -5px;
+		top: 50%;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent transparent ${ tinycolor(config.error) };
@@ -283,7 +299,7 @@ let cssTemplate = `
 		border-width: 5px;
 		border-style: solid;
 		border-color: transparent transparent ${ tinycolor(config.error) } transparent;
-	}	
+	}
 }
 `;
 	return cssTemplate;
