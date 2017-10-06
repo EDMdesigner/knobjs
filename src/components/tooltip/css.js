@@ -23,26 +23,45 @@ let cssTemplate = `
 		text-align: center;
 		padding: 5px 0;
 		border-radius: 6px;
+		color: transparent;
 
 		/* Fade in tooltip */
 		transition: opacity 1s;
 		box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2), 0 0px 0px 0 rgba(0,0,0,0.19);
 	}
 
-	.arrow-down .tooltip::after {
+	.arrow-down.subleft .tooltip::after {
 		content: "";
 		position: absolute;
 		top: 100%;
-		left: 50%;
+		left: 15px;
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
 	}
-
-	.arrow-left .tooltip::after {
+	.arrow-down.subright .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 50%;
+		top: 100%;
+		right: 15px;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+	}
+	.arrow-left.subup .tooltip::after {
+		content: "";
+		position: absolute;
+		top: 15px;
+		left: 0;
+		margin-left: -10px;
+		margin-top: -4px;
+		border-width: 5px;
+		border-style: solid;
+	}
+	.arrow-left.subdown .tooltip::after {
+		content: "";
+		position: absolute;
+		bottom: 15px;
 		left: 0;
 		margin-left: -10px;
 		margin-top: -4px;
@@ -50,10 +69,20 @@ let cssTemplate = `
 		border-style: solid;
 	}
 
-	.arrow-right .tooltip::after {
+	.arrow-right.subup .tooltip::after {
 		content: "";
 		position: absolute;
-		top: 50%;
+		top: 15px;
+		right: 0;
+		margin-right: -10px;
+		margin-top: -5px;
+		border-width: 5px;
+		border-style: solid;
+	}
+	.arrow-right.subdown .tooltip::after {
+		content: "";
+		position: absolute;
+		bottom: 15px;
 		right: 0;
 		margin-right: -10px;
 		margin-top: -5px;
@@ -61,11 +90,20 @@ let cssTemplate = `
 		border-style: solid;
 	}
 
-	.arrow-up .tooltip::after {
+	.arrow-up.subleft .tooltip::after {
 		content: "";
 		position: absolute;
 		bottom: 100%;
 		left: 15px;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+	}
+	.arrow-up.subright .tooltip::after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		right: 15px;
 		margin-left: -5px;
 		border-width: 5px;
 		border-style: solid;
