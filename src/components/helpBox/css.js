@@ -17,6 +17,9 @@ let cssTemplate = `
   position: relative;
   padding: 1rem;
 }
+.padding-fix {
+  padding: 0;
+}
 .knob-helpbox-container {
   position: relative;  
   width: 100%;

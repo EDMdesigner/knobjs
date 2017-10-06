@@ -2,24 +2,11 @@
 
 var ko = require("knockout");
 
-function createHelpBox() {	
+var core = require("./core");
 
-	var vm = {};
-
-	vm.boxEnabled = ko.observable(true);
-	vm.infoEnabled = ko.observable(false);
-
-	vm.hideBox = function() {
-		vm.boxEnabled(false);
-		vm.infoEnabled(true);
-
-	};
-	vm.showBox = function() {
-		vm.boxEnabled(true);
-		vm.infoEnabled(false);
-	};
-
-	return vm;
-}
+var createHelpBox = core({
+	ko: ko,
+	localStorage: window.localStorage
+});
 
 module.exports = createHelpBox;
