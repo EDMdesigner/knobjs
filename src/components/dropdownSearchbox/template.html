@@ -1,10 +1,6 @@
 <div class="knob-dropdown-searchbox">
     <div class="knob-pagelist__bar">
-        <input class="knob-input" type="text" data-bind="value: list.search, valueUpdate: 'afterkeydown'" />
-        <!-- <knob-button class="knob-button-search" params="label: '',
-                                    variation: 'default',
-                                    icon: icons.search">
-        </knob-button> -->
+        <input class="knob-input" type="text" data-bind="value: list.search, valueUpdate: 'afterkeydown', attr: { placeholder: labels.placeholder }" />
     </div>
 
     <!-- ko if: shouldDisplay -->
