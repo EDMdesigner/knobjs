@@ -8,11 +8,7 @@ module.exports = function(dependencies) {
 	return function createTooltip(config) {
 		config = config || {};
 
-		var visible = config.visible;
-
 		var vm = {};
-
-		vm.visible = visible;
 
 		return vm;
 	};

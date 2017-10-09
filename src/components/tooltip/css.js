@@ -4,12 +4,6 @@ var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
 
-var width = document.getElementsByClassName("tooltip").offsetWidth;
-var height = document.getElementsByClassName("tooltip").offsetHeight;
-
-width = width;
-height = height;
-
 let cssTemplate = `
 	.knob-tooltip-wrapper {
 		position: relative;
