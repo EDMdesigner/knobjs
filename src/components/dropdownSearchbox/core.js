@@ -24,7 +24,8 @@ var configPattern = {
 var defaultLabels = {
 	newItem: "Add ",
 	invalidItem: "Invalid item: ",
-	notFound: "Can't find item "
+	notFound: "Can't find item ",
+	placeholder: "Search..."
 };
 
 var defaultItemsPerPage = 10;
