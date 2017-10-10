@@ -253,6 +253,14 @@ function initKnob(config) {
 		}
 	});
 
+	registerComponent({
+		name: "knob-tooltip",
+		createVm: require("./components/tooltip/vm"),
+		template: require("./components/tooltip/template.html"),
+		css: require("./components/tooltip/css"),
+		colors: config.colors,
+	});
+
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
 	}
