@@ -127,7 +127,8 @@ function initKnob(config) {
 		icons: {
 			search: icons.search,
 			sort: icons.sort,
-			dropdown: icons.dropdown
+			dropdown: icons.dropdown,
+			loading: icons.loading
 		},
 		labels: {
 			noResults: labels.noResults
@@ -250,6 +251,14 @@ function initKnob(config) {
 			sort: icons.sort,
 			dropdown: icons.dropdown
 		}
+	});
+
+	registerComponent({
+		name: "knob-tooltip",
+		createVm: require("./components/tooltip/vm"),
+		template: require("./components/tooltip/template.html"),
+		css: require("./components/tooltip/css"),
+		colors: config.colors,
 	});
 
 	if (config.background) {
