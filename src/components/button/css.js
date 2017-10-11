@@ -44,18 +44,21 @@ module.exports = function(config) {
 				border-color: transparent;
 				color: #2ca6f7;
 				fill: #2ca6f7;
+				padding: 0;
 			}
 			.variation-link .knob-button:hover {
 				background-color: transparent;
 				border-color: transparent;
 				color: #82cdff;
 				fill: #82cdff;
+				padding: 0;
 			}
 			.variation-link .knob-button:active {
 				background-color: transparent;
 				border-color: transparent;
 				color: #104b72;
 				fill: #104b72;
+				padding: 0;
 			}
 			.variation-link .knob-button:disabled {
 				background-color: transparent;
@@ -63,6 +66,7 @@ module.exports = function(config) {
 				color: #606060;
 				fill: #606060;
 				cursor: not-allowed;
+				padding: 0;
 			}`;
 	}
 
@@ -87,6 +91,7 @@ module.exports = function(config) {
 			text-align: center;
 			touch-action: manipulation;
 			border: 1px solid;
+			border-radius: 4px;
 		}
 		.knob-button .icon-wrapper .icon {
 			width: 17px;
@@ -98,6 +103,10 @@ module.exports = function(config) {
 			width: 20px;
 			height: 20px;
 		}
+		btn_xsmall{
+			height: 30px;
+			width: 110px;
+		}		
 		.button--lg .knob-button {
 			padding: 10px 16px;
 			font-size: 18px;

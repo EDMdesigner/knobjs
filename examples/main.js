@@ -6,7 +6,7 @@ var superdata = require("superdata");
 var knob = require("knob-js");
 var ko = window.ko;
 
-var defaultColor = ko.observable("e2e2e2");
+var defaultColor = ko.observable("00bee6");
 var primaryColor = ko.observable("a0e1ff");
 var infoColor = ko.observable("25aaf2");
 var warningColor = ko.observable("f5a500");
