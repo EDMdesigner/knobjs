@@ -50,6 +50,9 @@ let cssTemplate = `
   font-size: 36px;
   color: #cacaca;
 }
+.knob-pagelist .loading {
+  text-align: center;
+}
 .knob-pagelist .knob-pagelist__bar .knob-button-search button:hover {
   background-color: ${ colorShades.color4 };
   color: ${ textColor };

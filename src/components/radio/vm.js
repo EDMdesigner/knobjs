@@ -42,6 +42,13 @@ function createRadio(config) {
 		}
 	});
 
+	ko.computed(function() {
+		var index = selectedIdx();
+		if (typeof index === "number" && items.peek()[index]) {
+			items.peek()[index].select();
+		}
+	});
+
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
 			throw new Error("Each radiobutton has to have a label and/or icon!");
