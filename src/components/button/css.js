@@ -197,6 +197,7 @@ module.exports = function(config) {
 		.knob-button .img {
 			width: 20px;
 			height: 20px;
+			vertical-align: middle;
 		}
 		btn_xsmall{
 			height: 30px;

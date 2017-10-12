@@ -21,11 +21,12 @@ let cssTemplate = `
 		color: ${ textColor(config.default) };
 		fill: ${ textColor(config.default) };
 		background-color: ${ tinycolor(config.lightGray) };
-		border-radius: 0;
 		margin-left: -4px;
-		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
 	}
-	.knob-tab .active .knob-button{
+	.top-border-variation > .knob-tabs > .knob-radio-wrapper .knob-radio > :not(.active) .knob-button {
+		box-shadow: inset 0 -1px 0 ${ tinycolor(config.darkGray) };
+	}
+	.top-border-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button{
 		color: ${ tinycolor(config.primary) };
 		fill: ${ tinycolor(config.primary) };
 		border-top: 1px solid ${ tinycolor(config.darkGray) };
@@ -35,14 +36,14 @@ let cssTemplate = `
 		background-color: ${ activeButtonColor };
 		cursor: not-allowed;
 	}
-	.knob-tab .active {
+	.top-border-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active {
 		margin-bottom: 2px;    
 	}
-	.knob-tab.orientation-left-top .active .knob-button{
+	.knob-tab.orientation-left-top > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button{
 		border-top: none;
 		border-right: none;
 		background-color: ${ tinycolor(config.default) };
-		border-left: 4px solid ${ activeTabColor };
+		border-left: 4px solid ${ tinycolor(config.primary) };
 		cursor: not-allowed;
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
@@ -59,12 +60,14 @@ let cssTemplate = `
 	.knob-radio {
 		margin-bottom: -3px;
 	}
-	.border-bottom-variation .knob-tabs button {
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > div > .knob-button {
 		background-color: transparent;
 		border: none;
 	}
-	.border-bottom-variation .knob-tabs .active button {
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button {
 		border-bottom: 2px solid ${ tinycolor(config.primary) };
+		color: ${ tinycolor(config.primary) };
+		fill: ${ tinycolor(config.primary) };
 	}
 	.border-bottom-variation .knob-tabs {
 		background-color: transparent;
