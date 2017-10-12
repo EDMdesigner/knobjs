@@ -184,6 +184,8 @@ module.exports = function(config) {
 			text-align: center;
 			touch-action: manipulation;
 			border: 1px solid;
+		}
+		.rounded .knob-button {
 			border-radius: 6px;
 		}
 		.knob-button .icon-wrapper .icon {
