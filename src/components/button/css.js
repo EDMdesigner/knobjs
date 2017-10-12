@@ -12,27 +12,28 @@ module.exports = function(config) {
 		return `
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button {
 				background-color: ${ tinycolor(color) };
-				border-color: ${ colorVersions.color3 };
+				border-color: ${ tinycolor(color) };
 				color: ${ textColor };
 				fill: ${ textColor };
 			}
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:hover {
-				background-color: ${ colorVersions.color3 };
-				border-color: ${ colorVersions.color5 };
+				background-color: ${ colorVersions.color2 };
+				border-color: ${ colorVersions.color2 };
 				color: ${ textColor };
 				fill: ${ textColor };
 			}
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:active {
 				background-color: ${ colorVersions.color4 };
-				border-color: ${ colorVersions.color6 };
+				border-color: ${ colorVersions.color4 };
 				color: ${ textColor };
 				fill: ${ textColor };
 			}
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:disabled {
-				background-color: #d3d3d3;
-				border-color: #606060;
-				color: #606060;
-				fill: #606060;
+				background-color: ${ colorVersions.color6 };
+				border-color: ${ colorVersions.color6 };
+				opacity: 0.6;
+				color: white;
+				fill: white;
 				cursor: not-allowed;
 			}`;
 	}
@@ -70,6 +71,98 @@ module.exports = function(config) {
 			}`;
 	}
 
+	function createGhostButtonShades() {
+		return `
+			.variation-ghost .knob-button {
+				background-color: rgba(248, 244, 244, 0.36);
+				border-color: solid 1px #dddddd;
+				color: white;
+				fill: white;
+			}
+			.variation-ghost .knob-button:hover {
+				background-color: rgba(216, 213, 213, 0.72);
+				border-color: rgba(216, 213, 213, 0.72);
+				color: white;
+				fill: white;
+			}
+			.variation-ghost .knob-button:active {
+				background-color: rgba(255, 255, 255, 0.36);
+				border: solid 1px #ffffff;
+				color: white;
+				fill: white;
+			}
+			.variation-ghost .knob-button:disabled {
+				background-color: rgba(248, 244, 244, 0.72);
+				border: solid 1px #dddddd;
+				opacity: 0.6;
+				color: white;
+				fill: white;
+				cursor: not-allowed;
+			}`;
+	}
+
+	function createLightButtonShades() {
+		var lightColorVersions = createColorShades(config.light);
+		return `
+			.variation-light .knob-button {
+				background-color: ${ lightColorVersions.color1 };
+				border-color: ${ lightColorVersions.color1 };
+				color: ${ tinycolor(config.primary) };
+				fill: ${ tinycolor(config.primary) };
+			}
+			.variation-light .knob-button:hover {
+				background-color: ${ lightColorVersions.color2 };
+				border: solid 1px ${ lightColorVersions.color2 };;
+				color: ${ tinycolor(config.primary) };
+				fill: ${ tinycolor(config.primary) };
+			}
+			.variation-light .knob-button:active {
+				background-color: ${ lightColorVersions.color1 };
+				border-color: ${ lightColorVersions.color1 };
+				color: ${ tinycolor(config.primary) };
+				fill: ${ tinycolor(config.primary) };
+			}
+			.variation-light .knob-button:disabled {
+				background-color: ${ lightColorVersions.color1 };
+				border-color: ${ lightColorVersions.color1 };
+				opacity: 0.27;
+				color: ${ tinycolor(config.primary) };
+				fill: ${ tinycolor(config.primary) };
+				cursor: not-allowed;
+			}`;
+	}
+
+	function createDarkButtonShades() {
+		var darkColorVersions = createColorShades(config.dark);
+		return `
+			.variation-dark .knob-button {
+				background-color: ${ darkColorVersions.color1 };
+				border-color: ${ darkColorVersions.color1 };
+				color: white;
+				fill: white;
+			}
+			.variation-dark .knob-button:hover {
+				background-color: ${ darkColorVersions.color2 };
+				border: solid 1px ${ darkColorVersions.color2 };;
+				color: white;
+				fill: white;
+			}
+			.variation-dark .knob-button:active {
+				background-color: ${ darkColorVersions.color1 };
+				border-color: ${ darkColorVersions.color1 };
+				color: white;
+				fill: white;
+			}
+			.variation-dark .knob-button:disabled {
+				background-color: ${ darkColorVersions.color1 };
+				border-color: ${ darkColorVersions.color1 };
+				opacity: 0.27;
+				color: white;
+				fill: white;
+				cursor: not-allowed;
+			}`;
+	}	
+
 	var defaultButtonColors = createButtonStateColors(config.default, "");
 	var primaryButtonColors = createButtonStateColors(config.primary, "primary");
 	var secondaryButtonColors = createButtonStateColors(config.secondary, "secondary");
@@ -91,7 +184,9 @@ module.exports = function(config) {
 			text-align: center;
 			touch-action: manipulation;
 			border: 1px solid;
-			border-radius: 4px;
+		}
+		.rounded .knob-button {
+			border-radius: 6px;
 		}
 		.knob-button .icon-wrapper .icon {
 			width: 17px;
@@ -137,6 +232,9 @@ module.exports = function(config) {
 		${ successButtonColors }
 		${ errorButtonColors }	
 		${ createLinkButtonShades() }	
+		${ createGhostButtonShades() }	
+		${ createDarkButtonShades() }	
+		${ createLightButtonShades() }	
 	`;
 
 	return cssTemplate;

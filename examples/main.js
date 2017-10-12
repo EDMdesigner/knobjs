@@ -8,6 +8,9 @@ var ko = window.ko;
 
 var defaultColor = ko.observable("e2e2e2");
 var primaryColor = ko.observable("00bee6");
+var secondaryColor  = ko.observable("2d3291");
+var lightColor  = ko.observable("f9f4f4");
+var darkColor  = ko.observable("003540");
 var infoColor = ko.observable("25aaf2");
 var warningColor = ko.observable("f5a500");
 var successColor = ko.observable("54c059");
@@ -17,7 +20,9 @@ var colors = ko.computed(function() {
 	return {
 		default: defaultColor(), 
 		primary: primaryColor(),
-
+		secondary: secondaryColor(),
+		light: lightColor(),
+		dark: darkColor(),
 		info: infoColor(),
 		success: successColor(),
 		warning: warningColor(),
@@ -232,6 +237,9 @@ ko.applyBindings({
 	showTab3: ko.observable(true),
 	defaultColor: defaultColor,
 	primaryColor: primaryColor,
+	secondaryColor: secondaryColor,
+	lightColor: lightColor,
+	darkColor: darkColor,
 	infoColor: infoColor,
 	warningColor: warningColor,
 	successColor: successColor,
