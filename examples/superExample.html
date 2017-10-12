@@ -96,6 +96,18 @@
 		data-bind="value: primaryColor">
 		</td>
 		<td>
+		Secondary-color: <input class="jscolor" value="2d3291"
+		data-bind="value: secondaryColor">
+		</td>
+		<td>
+		Light-color: <input class="jscolor" value="f9f4f4"
+		data-bind="value: lightColor">
+		</td>		
+		<td>
+		Dark-color: <input class="jscolor" value="003540"
+		data-bind="value: darkColor">
+		</td>					
+		<td>
 		Info-color: <input class="jscolor" value="25aaf2"
 		data-bind="value: infoColor">
 		</td>
@@ -171,6 +183,20 @@
 		<h3>Primary</h3>
 		<knob-button class="variation-primary" params="label: 'Primary', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="variation-primary" params="label: 'Primary', rightIcon: '#icon-warning'"></knob-button>
+		<h3>Secondary</h3>
+		<knob-button class="variation-secondary" params="label: 'Secondary', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-secondary" params="label: 'Secondary', rightIcon: '#icon-warning'"></knob-button>		
+		<h3>Light</h3>
+		<knob-button class="variation-light" params="label: 'Light', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-light" params="label: 'Light', rightIcon: '#icon-warning', disabled: true"></knob-button>		
+		<h3>Dark</h3>
+		<knob-button class="variation-dark" params="label: 'Dark', leftIcon: '#icon-warning'"></knob-button>
+		<knob-button class="variation-dark" params="label: 'Dark', rightIcon: '#icon-warning', disabled: true"></knob-button>
+		<h3>Ghost</h3>
+		<div style="background-color: black; display: table; border-radius: 6px;">
+			<knob-button class="variation-ghost" params="label: 'Ghost', leftIcon: '#icon-warning'"></knob-button>
+			<knob-button class="variation-ghost" params="label: 'Ghost', rightIcon: '#icon-warning', disabled: true"></knob-button>
+		</div>
 		<h3>Info</h3>
 		<knob-button class="variation-info" params="label: 'Info', leftIcon: '#icon-warning'"></knob-button>
 		<knob-button class="variation-info" params="label: 'Info', rightIcon: '#icon-warning'"></knob-button>
