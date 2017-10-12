@@ -52,14 +52,12 @@ let cssTemplate = `
   margin-top: 0;
 }
 .knob-radio .active button {
-  text-shadow: 1px 0 0 ${ textColor };
   background-color: ${ baseColor };
   color: ${ textColor };
   fill: ${ textColor };
   outline: none;
 }
 .knob-radio--block .knob-radio .active button {
-  text-shadow: 0.6px 0 0 ${ textColor };
   background-color: ${ baseColor };
   color: ${ textColor };
   fill: ${ textColor };

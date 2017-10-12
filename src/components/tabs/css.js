@@ -20,14 +20,15 @@ let cssTemplate = `
 		border-width: 0px;
 		color: ${ textColor(config.default) };
 		fill: ${ textColor(config.default) };
-		background-color: ${ tinycolor(config.default) };
+		background-color: ${ tinycolor(config.lightGray) };
+		border-radius: 0;
+		margin-left: -4px;
+		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
 	}
 	.knob-tab .active .knob-button{
-		border-top: 3px solid ${ activeTabColor };
-		color: ${ textColor(config.default) };
-		fill: ${ textColor(config.default) };
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
+		color: ${ tinycolor(config.primary) };
+		fill: ${ tinycolor(config.primary) };
+		border-top: 1px solid ${ tinycolor(config.darkGray) };
 		border-left: 1px solid ${ tinycolor(config.darkGray) };
 		border-right: 1px solid ${ tinycolor(config.darkGray) };
 		border-bottom: transparent;
@@ -63,11 +64,22 @@ let cssTemplate = `
 		border: none;
 	}
 	.border-bottom-variation .knob-tabs .active button {
+		border-bottom: 2px solid ${ tinycolor(config.primary) };
+	}
+	.border-bottom-variation .knob-tabs {
+		background-color: transparent;
+	}
+
+	.border-bottom-variation .knob-tab > .knob-radio-wrapper .active .knob-button {
 		border-top: none;
 		border-left: none;
 		border-right: none;
-		border-bottom: 2px solid ${ activeTabColor };
 	}
+
+	.border-bottom-variation .knob-radio-wrapper {
+		border: none;
+	}
+
 	.knob-tab.secondary-variation .knob-radio-wrapper {
 		border-bottom: none;
 		margin-left: 10px;
@@ -86,7 +98,7 @@ let cssTemplate = `
 		padding-top: 1px;
 	}
 	.knob-tabs {
-		background-color: ${ tinycolor(config.default) };
+		background-color: ${ tinycolor(config.lightGray) };
 	}
 	`;
 
