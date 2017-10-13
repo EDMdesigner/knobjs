@@ -7,15 +7,15 @@ module.exports = function(config) {
 
 var baseColor = config.default;  
 var colorShades = createColorShades(baseColor);
-var errorColorShades = createColorShades(config.error);
-var successColorShades = createColorShades(config.success);
 var infoColorShades = createColorShades(config.info);
 var warningColorShades = createColorShades(config.warning);
+var successColorShades = createColorShades(config.success);
+var errorColorShades = createColorShades(config.error);
 
 
 let cssTemplate = `
 .knob-modal-overlay {
-  background: rgba(0, 0, 0, .7);
+  background: rgba(256, 256, 256, .7);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -26,23 +26,31 @@ let cssTemplate = `
   justify-content: center;
   align-items: center;
 }
-.knob-modal {
+.knob-modal-overlay  > .knob-modal {
   backface-visibility: hidden;
   font-smoothing: antialiased;
-  background: white;
   min-width: 240px;
   max-width: 90%;
-  padding-top: 6px;
-  padding-left: 6px;
+  padding: 6px;
   /*	z-index: 22; */
   overflow: hidden;
-  border: 2px solid ${ tinycolor(config.default) };
+  background-color: ${ config.mediumGray };
+  border-bottom: 2px solid ${ tinycolor(config.primary) };
 }
-.knob-modal:hover {
-  border: 2px solid ${ colorShades.color4 };
+.knob-modal > .knob-modal__header > .button-close > .knob-button > .icon-wrapper > .icon {
+  vertical-align: initial;
 }
-.variation-info .knob-modal:hover {
-  border: 2px solid ${ tinycolor(config.info) };
+.leftText > .knob-modal-overlay > .knob-modal > .knob-modal__header > .desc > .icon  {
+  float: left;
+}
+.centerText > .knob-modal-overlay > .knob-modal > .knob-modal__header {
+  text-align: center;
+}
+.centerText > .knob-modal-overlay > .knob-modal > .knob-modal__header > .desc > .icon {
+  vertical-align: middle;  
+}
+.variation-info > .knob-modal-overlay  > .knob-modal {
+  border-bottom-color: ${ infoColorShades.color1 };
 }
 .variation-info .knob-modal .knob-modal__header .button-close button:hover svg {
   fill: ${ infoColorShades.color2 };
@@ -50,8 +58,8 @@ let cssTemplate = `
 .variation-info .knob-modal .knob-modal__header .desc .icon {
   fill: ${ infoColorShades.color4 };
 }
-.variation-warning .knob-modal:hover {
-  border: 2px solid ${ tinycolor(config.warning) };
+.variation-warning > .knob-modal-overlay  > .knob-modal {
+  border-bottom-color: ${ warningColorShades.color1 };
 }
 .variation-warning .knob-modal .knob-modal__header .button-close button:hover svg {
   fill: ${ warningColorShades.color2 };
@@ -59,8 +67,8 @@ let cssTemplate = `
 .variation-warning .knob-modal .knob-modal__header .desc .icon {
   fill: ${ warningColorShades.color4 };
 }
-.variation-success .knob-modal:hover {
-  border: 2px solid ${ tinycolor(config.success) };
+.variation-success > .knob-modal-overlay  > .knob-modal {
+  border-bottom-color: ${ successColorShades.color1 };
 }
 .variation-success .knob-modal .knob-modal__header .button-close button:hover svg {
   fill: ${ successColorShades.color2 };
@@ -68,14 +76,11 @@ let cssTemplate = `
 .variation-success .knob-modal .knob-modal__header .desc .icon {
   fill: ${ successColorShades.color4 };
 }
-.variation-error .knob-modal:hover {
-  border: 2px solid ${ tinycolor(config.error) };
+.variation-error > .knob-modal-overlay  > .knob-modal {
+  border-bottom-color: ${ errorColorShades.color1 };
 }
 .variation-error .knob-modal .knob-modal__header .button-close button:hover svg {
   fill: ${ errorColorShades.color2 };
-}
-.knob-modal .knob-modal__header .button-close button:hover {
-  background-color: transparent;
 }
 .variation-error .knob-modal .knob-modal__header .desc .icon {
   fill: ${ errorColorShades.color4 };
@@ -93,13 +98,13 @@ let cssTemplate = `
   position: relative;
   top: 2px;
 }
-.knob-modal__header svg {
-  float: left;
+.knob-modal-overlay > .knob-modal > .knob-modal__header > .desc > .icon {
   margin-right: 10px;
   width: 24px;
   height: 24px;
   fill: black;
 }
+
 .knob-modal__header .button-close {
   float: right;
 }

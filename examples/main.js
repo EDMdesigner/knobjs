@@ -32,6 +32,7 @@ var colors = ko.computed(function() {
 		black: "#000",
 
 		lightGray: "#f5f7f8",
+		mediumGray: "#f9f4f4",
 		darkGray: "#e5e9ec"
 	};
 });
@@ -60,7 +61,7 @@ knob.init({
 		white: "#fff",
 
 		lightGray: "#f5f7f8",
-		mediumGray: "#f0f2f4",
+		mediumGray: "#f9f4f4",
 		darkGray: "#e5e9ec",
 		border: "#d2cdc6",
 
