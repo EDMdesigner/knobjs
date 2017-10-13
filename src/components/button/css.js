@@ -8,7 +8,7 @@ module.exports = function(config) {
 	function createButtonStateColors(color, className) {
 		var colorVersions = createColorShades(color);
 
-		var textColor = tinycolor(color).isDark() ? tinycolor("white") : tinycolor("black");
+		var textColor = tinycolor(colorVersions.color2).isDark() ? tinycolor("white") : tinycolor("black");
 		return `
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button {
 				background-color: ${ tinycolor(color) };
@@ -19,14 +19,10 @@ module.exports = function(config) {
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:hover {
 				background-color: ${ colorVersions.color2 };
 				border-color: ${ colorVersions.color2 };
-				color: ${ textColor };
-				fill: ${ textColor };
 			}
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:active {
 				background-color: ${ colorVersions.color4 };
 				border-color: ${ colorVersions.color4 };
-				color: ${ textColor };
-				fill: ${ textColor };
 			}
 			${ className.length > 0 ? ".variation-" + className + " " : "" }.knob-button:disabled {
 				background-color: ${ colorVersions.color6 };
@@ -82,21 +78,15 @@ module.exports = function(config) {
 			.variation-ghost .knob-button:hover {
 				background-color: rgba(216, 213, 213, 0.72);
 				border-color: rgba(216, 213, 213, 0.72);
-				color: white;
-				fill: white;
 			}
 			.variation-ghost .knob-button:active {
 				background-color: rgba(255, 255, 255, 0.36);
-				border: solid 1px #ffffff;
-				color: white;
-				fill: white;
+				border-color: #ffffff;
 			}
 			.variation-ghost .knob-button:disabled {
 				background-color: rgba(248, 244, 244, 0.72);
-				border: solid 1px #dddddd;
+				border-color: #dddddd;
 				opacity: 0.6;
-				color: white;
-				fill: white;
 				cursor: not-allowed;
 			}`;
 	}
@@ -106,28 +96,16 @@ module.exports = function(config) {
 		return `
 			.variation-light .knob-button {
 				background-color: ${ lightColorVersions.color1 };
-				border-color: ${ lightColorVersions.color1 };
+				border: solid 1px ${ lightColorVersions.color1 };
 				color: ${ tinycolor(config.primary) };
 				fill: ${ tinycolor(config.primary) };
 			}
 			.variation-light .knob-button:hover {
 				background-color: ${ lightColorVersions.color2 };
-				border: solid 1px ${ lightColorVersions.color2 };;
-				color: ${ tinycolor(config.primary) };
-				fill: ${ tinycolor(config.primary) };
-			}
-			.variation-light .knob-button:active {
-				background-color: ${ lightColorVersions.color1 };
-				border-color: ${ lightColorVersions.color1 };
-				color: ${ tinycolor(config.primary) };
-				fill: ${ tinycolor(config.primary) };
+				border-color: ${ lightColorVersions.color2 }
 			}
 			.variation-light .knob-button:disabled {
-				background-color: ${ lightColorVersions.color1 };
-				border-color: ${ lightColorVersions.color1 };
 				opacity: 0.27;
-				color: ${ tinycolor(config.primary) };
-				fill: ${ tinycolor(config.primary) };
 				cursor: not-allowed;
 			}`;
 	}
@@ -137,28 +115,16 @@ module.exports = function(config) {
 		return `
 			.variation-dark .knob-button {
 				background-color: ${ darkColorVersions.color1 };
-				border-color: ${ darkColorVersions.color1 };
+				border: solid 1px ${ darkColorVersions.color1 };
 				color: white;
 				fill: white;
 			}
 			.variation-dark .knob-button:hover {
 				background-color: ${ darkColorVersions.color2 };
-				border: solid 1px ${ darkColorVersions.color2 };;
-				color: white;
-				fill: white;
-			}
-			.variation-dark .knob-button:active {
-				background-color: ${ darkColorVersions.color1 };
-				border-color: ${ darkColorVersions.color1 };
-				color: white;
-				fill: white;
+				border-color: ${ darkColorVersions.color2 };
 			}
 			.variation-dark .knob-button:disabled {
-				background-color: ${ darkColorVersions.color1 };
-				border-color: ${ darkColorVersions.color1 };
 				opacity: 0.27;
-				color: white;
-				fill: white;
 				cursor: not-allowed;
 			}`;
 	}	
