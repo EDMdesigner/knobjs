@@ -51,15 +51,13 @@ let cssTemplate = `
 .knob-tab.orientation-left-top .knob-tab p:nth-child(1) {
   margin-top: 0;
 }
-.knob-radio .active button {
-  text-shadow: 1px 0 0 ${ textColor };
+.knob-radio > .active > .knob-button {
   background-color: ${ baseColor };
   color: ${ textColor };
   fill: ${ textColor };
   outline: none;
 }
-.knob-radio--block .knob-radio .active button {
-  text-shadow: 0.6px 0 0 ${ textColor };
+.knob-radio--block > .knob-radio > .active > .knob-button {
   background-color: ${ baseColor };
   color: ${ textColor };
   fill: ${ textColor };

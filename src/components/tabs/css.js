@@ -1,92 +1,77 @@
 "use strict";
 
 var tinycolor = require("tinycolor2");
-var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.primary;  
 var textColor = function(color) {
 	return tinycolor(color).isDark() ? "white" : "black";
 };
-var colorShades = createColorShades(baseColor);
-var activeTabColor = tinycolor(baseColor).isDark() ? tinycolor(baseColor) : colorShades.color6;
 var activeButtonColor = config.white;
 
 let cssTemplate = `
-	.knob-tab button {
+	.knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > div > .knob-button {
 		font-size: 14px;
 		font-weight: 400;
 		border-width: 0px;
 		color: ${ textColor(config.default) };
 		fill: ${ textColor(config.default) };
-		background-color: ${ tinycolor(config.default) };
+		background-color: ${ tinycolor(config.lightGray) };
 	}
-	.knob-tab .active .knob-button{
-		border-top: 3px solid ${ activeTabColor };
-		color: ${ textColor(config.default) };
-		fill: ${ textColor(config.default) };
-		border-top-left-radius: 3px;
-		border-top-right-radius: 3px;
-		border-left: 1px solid ${ tinycolor(config.darkGray) };
-		border-right: 1px solid ${ tinycolor(config.darkGray) };
+	.top-border-variation > .knob-tabs > .knob-radio-wrapper .knob-radio > :not(.active) .knob-button {
+		box-shadow: inset 0 -1px 0 ${ tinycolor(config.darkGray) };
+		margin-left: -4px;
+	}
+	.top-border-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button{
+		color: ${ tinycolor(config.primary) };
+		fill: ${ tinycolor(config.primary) };
+		border-top: 1px solid ${ tinycolor(config.darkGray) };
 		border-bottom: transparent;
 		background-color: ${ activeButtonColor };
 		cursor: not-allowed;
+		margin-left: -4px;
+		box-shadow: inset 1px 0 0 ${ tinycolor(config.darkGray) }, inset -1px 0 0 ${ tinycolor(config.darkGray) };
 	}
-	.knob-tab .active {
+	.top-border-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active {
 		margin-bottom: 2px;    
 	}
-	.knob-tab.orientation-left-top .active .knob-button{
+	.top-border-variation > .knob-tab > .knob-radio-wrapper {
+		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
+	}
+	.top-border-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio {
+		margin-bottom: -3px;
+	}
+	.top-border-variation > .knob-tab > .knob-panel-group {
+		background-color: ${ activeButtonColor };
+		padding-top: 1px;
+	}
+	.top-border-variation > .knob-tabs {
+		background-color: ${ tinycolor(config.lightGray) };
+	}
+	.knob-tab.orientation-left-top > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button{
 		border-top: none;
 		border-right: none;
-		background-color: ${ tinycolor(config.default) };
-		border-left: 4px solid ${ activeTabColor };
+		border-left: 4px solid ${ tinycolor(config.primary) };
 		cursor: not-allowed;
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
 	}
-	.knob-tab.orientation-left-top button {
-		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
-	}
-	.knob-tab.orientation-left-top .active {
-		margin-bottom: 0px;    
-	}
-	.knob-radio-wrapper {
-		border-bottom: 1px solid ${ tinycolor(config.darkGray) };
-	}
-	.knob-radio {
-		margin-bottom: -3px;
-	}
-	.border-bottom-variation .knob-tabs button {
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > div > .knob-button {
 		background-color: transparent;
 		border: none;
 	}
-	.border-bottom-variation .knob-tabs .active button {
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button {
+		border-bottom: 2px solid ${ tinycolor(config.primary) };
+		color: ${ tinycolor(config.primary) };
+		fill: ${ tinycolor(config.primary) };
+	}
+	.border-bottom-variation > .knob-tab {
+		background-color: transparent;
+	}
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button {
 		border-top: none;
 		border-left: none;
 		border-right: none;
-		border-bottom: 2px solid ${ activeTabColor };
-	}
-	.knob-tab.secondary-variation .knob-radio-wrapper {
-		border-bottom: none;
-		margin-left: 10px;
-	}
-	.knob-tab.secondary-variation .knob-radio-wrapper button {
-		background-color: transparent;
-		border: none;
-		text-transform: lowercase;
-	}
-	 .knob-tab.secondary-variation .knob-radio-wrapper .active button {
-		color: ${ activeTabColor };
-		fill: ${ activeTabColor };
-	}
-	.knob-panel-group {
-		background-color: ${ activeButtonColor };
-		padding-top: 1px;
-	}
-	.knob-tabs {
-		background-color: ${ tinycolor(config.default) };
 	}
 	`;
 
