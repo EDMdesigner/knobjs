@@ -16,6 +16,7 @@ let cssTemplate = `
 	background-color: ${ tinycolor(config.primary) };
 	color: ${ textColor(config.primary) };
 	fill: ${ textColor(config.primary) };
+	border-color: transparent;
 }
 .knob-modal-alert > knob-modal > .knob-modal-overlay > .knob-modal {
 	border: 1px solid ${ tinycolor(config.darkGray) };
