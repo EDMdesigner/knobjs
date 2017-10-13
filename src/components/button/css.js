@@ -81,11 +81,11 @@ module.exports = function(config) {
 			}
 			.variation-ghost .knob-button:active {
 				background-color: rgba(255, 255, 255, 0.36);
-				border: solid 1px #ffffff;
+				border-color: #ffffff;
 			}
 			.variation-ghost .knob-button:disabled {
 				background-color: rgba(248, 244, 244, 0.72);
-				border: solid 1px #dddddd;
+				border-color: #dddddd;
 				opacity: 0.6;
 				cursor: not-allowed;
 			}`;
@@ -96,13 +96,13 @@ module.exports = function(config) {
 		return `
 			.variation-light .knob-button {
 				background-color: ${ lightColorVersions.color1 };
-				border-color: ${ lightColorVersions.color1 };
+				border: solid 1px ${ lightColorVersions.color1 };
 				color: ${ tinycolor(config.primary) };
 				fill: ${ tinycolor(config.primary) };
 			}
 			.variation-light .knob-button:hover {
 				background-color: ${ lightColorVersions.color2 };
-				border: solid 1px ${ lightColorVersions.color2 };
+				border-color: ${ lightColorVersions.color2 }
 			}
 			.variation-light .knob-button:disabled {
 				opacity: 0.27;
@@ -115,13 +115,13 @@ module.exports = function(config) {
 		return `
 			.variation-dark .knob-button {
 				background-color: ${ darkColorVersions.color1 };
-				border-color: ${ darkColorVersions.color1 };
+				border: solid 1px ${ darkColorVersions.color1 };
 				color: white;
 				fill: white;
 			}
 			.variation-dark .knob-button:hover {
 				background-color: ${ darkColorVersions.color2 };
-				border: solid 1px ${ darkColorVersions.color2 };
+				border-color: ${ darkColorVersions.color2 };
 			}
 			.variation-dark .knob-button:disabled {
 				opacity: 0.27;
