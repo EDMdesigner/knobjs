@@ -68,7 +68,7 @@ let cssTemplate = `
 	.border-bottom-variation > .knob-tab {
 		background-color: transparent;
 	}
-	.border-bottom-variation .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button {
+	.border-bottom-variation > .knob-tab > .knob-radio-wrapper > knob-radio > .knob-radio > .active > .knob-button {
 		border-top: none;
 		border-left: none;
 		border-right: none;
