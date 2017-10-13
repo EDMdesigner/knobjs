@@ -1,73 +1,46 @@
 "use strict";
 
 var tinycolor = require("tinycolor2");
-var createColorShades = require("../../../utils/colorShades");
 
 module.exports = function(config) {
-
-var baseColor = config.default;  
-var colorShades = createColorShades(baseColor);
-var errorColorShades = createColorShades(config.error);
-var successColorShades = createColorShades(config.success);
-var infoColorShades = createColorShades(config.info);
-var warningColorShades = createColorShades(config.warning);
 
 var textColor = function(color) {
 	return tinycolor(color).isDark() ? "white" : "black";
 };
+textColor = textColor;
+config = config;
 
 let cssTemplate = `
-.knob-modal-confirm .knob-modal__buttons {
-  	padding: 10px;
-  	text-align: right;
-  	outline: none;
-  	border:none;
+.knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal {
+	border: 1px solid ${ tinycolor(config.darkGray) };
 }
-
-.knob-modal-confirm .knob-modal__buttons .cancelButton .knob-button:hover {
-	background-color: ${ colorShades.color4 };
+.knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons {
+	text-align: center;
 }
-.knob-modal-confirm .knob-modal__buttons .okButton .knob-button:hover {
-	background-color: ${ colorShades.color4 };
+.knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons > .cancelButton > .knob-button {
+	background-color: transparent;
+	color: ${ tinycolor(config.dark) };
+	fill: ${ tinycolor(config.dark) };
 }
-.knob-modal-confirm .knob-modal__buttons .knob-button{
-	background-color: ${ tinycolor(baseColor) };
-	outline-color: transparent;
-	fill: black;
-	color: black;
+.variation-info > .knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons > .okButton > .knob-button {
+	background-color: ${ tinycolor(config.info) };
+	color: ${ textColor(config.info) };
+	fill: ${ textColor(config.info) };
 }
-.knob-modal-confirm.info .okButton button {
-	background-color: ${ infoColorShades.color3 };
-	outline: 1px solid ${ infoColorShades.color3 };
-	color: ${ textColor(infoColorShades.color3) };
-	fill: ${ textColor(infoColorShades.color3) };
+.variation-warning > .knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons > .okButton > .knob-button {
+	background-color: ${ tinycolor(config.warning) };
+	color: ${ textColor(config.warning) };
+	fill: ${ textColor(config.warning) };
 }
-.knob-modal-confirm.info .knob-modal__buttons .okButton .knob-button:hover {
-	background-color: ${ infoColorShades.color4 };
+.variation-success > .knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons > .okButton > .knob-button {
+	background-color: ${ tinycolor(config.success) };
+	color: ${ textColor(config.success) };
+	fill: ${ textColor(config.success) };
 }
-.knob-modal-confirm.warning .okButton button {
-	background-color: ${ warningColorShades.color3 };
-	color: ${ textColor(warningColorShades.color3) };
-	fill: ${ textColor(warningColorShades.color3) };
-}
-.knob-modal-confirm.warning .knob-modal__buttons .okButton .knob-button:hover {
-	background-color: ${ warningColorShades.color4 };
-}
-.knob-modal-confirm.error .okButton button {
-	background-color: ${ errorColorShades.color3 };	
-	color: ${ textColor(errorColorShades.color3) };
-	fill: ${ textColor(errorColorShades.color3) };
-}
-.knob-modal-confirm.error .knob-modal__buttons .okButton .knob-button:hover {
-	background-color: ${ errorColorShades.color4 };
-}
-.knob-modal-confirm.success .okButton button {
-	background-color: ${ successColorShades.color3 };
-	color: ${ textColor(successColorShades.color3) };
-	fill: ${ textColor(successColorShades.color3) };
-}
-.knob-modal-confirm.success .knob-modal__buttons .okButton .knob-button:hover {
-	background-color: ${ successColorShades.color4 };
+.variation-error > .knob-modal-confirm > knob-modal > .knob-modal-overlay > .knob-modal > .knob-modal__body > .knob-modal__buttons > .okButton > .knob-button {
+	background-color: ${ tinycolor(config.error) };
+	color: ${ textColor(config.error) };
+	fill: ${ textColor(config.error) };
 }
 `;
 	return cssTemplate;
