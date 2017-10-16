@@ -1,20 +1,12 @@
 "use strict";
 
-var createColorShades = require("../../utils/colorShades");
+var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
-
-var baseColor = config.primary;  
-var colorShades = createColorShades(baseColor);
-
 
 let cssTemplate = `
 knob-checkbox svg {
   cursor: pointer;
-}
-knob-checkbox svg:hover {
-  cursor: pointer;
-  fill: ${ colorShades.color4 };
 }
 knob-checkbox .disabled{
 	fill: #d3d3d3;
@@ -28,6 +20,14 @@ knob-checkbox .icon {
   height: 24px;
   vertical-align: middle;
   line-height: 1;
+}
+.checkbox {
+  border: 1px solid ${ tinycolor(config.darkGray) };
+  width: 24px;
+  height: 24px;
+}
+.checkbox:hover {
+  border-color: gray;
 }
 `;
 	return cssTemplate;

@@ -28,19 +28,18 @@ module.exports = function(dependencies) {
 			throw new Error("config.icons.tick is mandatory!");
 		}
 
-		if (!config.icons.cross) {
-			throw new Error("config.icons.cross is mandatory!");
-		}
-
 		var icons = config.icons;
 		var disabled = config.disabled || false;
+		var variation = config.variation;
+		
 
 		config.component = "checkbox";
 
 		var vm = {};
 
 		vm.tick = ko.observable(ko.unwrap(icons.tick));
-		vm.cross = ko.observable(ko.unwrap(icons.cross));
+		vm.plus = ko.observable(ko.unwrap(icons.plus));
+		vm.minus = ko.observable(ko.unwrap(icons.minus));
 		vm.value = config.value;
 		vm.disabled = disabled;
 		vm.click = function(){
@@ -50,6 +49,24 @@ module.exports = function(dependencies) {
 
 			vm.value(!vm.value());
 		};
+		vm.normalValue = ko.computed(function() {
+			if(variation === "normal" && vm.value()) {
+				return true;
+			}
+			return false;				
+		});
+		vm.itemValue = ko.computed(function() {
+			if(variation === "item" && vm.value()) {
+				return true;
+			}
+			return false;				
+		});
+		vm.itemNotValue = ko.computed(function() {
+			if(variation === "item" && !vm.value()) {
+				return true;
+			}
+			return false;				
+		});		
 
 		return vm;
 	};

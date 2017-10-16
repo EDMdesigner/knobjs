@@ -118,21 +118,6 @@ describe("Checkbox", function() {
 				});
 			}).toThrowError("config.icons.tick is mandatory!");
 		});
-
-		it("config.icons has to contain cross icon", function() {
-			expect(function() {
-				createCheckbox({
-					componentName: componentName,
-					variation: variation,
-					initialState: initialState,
-					style: style,
-					icons: {
-						tick: tickIcon
-					},
-					value: value
-				});
-			}).toThrowError("config.icons.cross is mandatory!");
-		});
 	});
 
 	describe("With valid config", function() {
@@ -180,8 +165,7 @@ describe("Checkbox", function() {
 				initialState: initialState,
 				style: style,
 				icons: {
-					tick: tickIcon,
-					cross: crossIcon
+					tick: tickIcon
 				},
 				value: value
 			};
@@ -190,9 +174,7 @@ describe("Checkbox", function() {
 			checkboxVm = createCheckbox(config);
 
 			expect(ko.isObservable(checkboxVm.tick)).toBe(true);
-			expect(ko.isObservable(checkboxVm.cross)).toBe(true);
 			expect(checkboxVm.tick()).toBe(config.icons.tick);
-			expect(checkboxVm.cross()).toBe(config.icons.cross);
 
 		});
 
@@ -223,8 +205,7 @@ describe("Checkbox", function() {
 				initialState: initialState,
 				style: style,
 				icons: {
-					tick: tickIcon,
-					cross: crossIcon
+					tick: tickIcon
 				},
 				value: value
 			};

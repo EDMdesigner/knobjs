@@ -33,8 +33,9 @@ function initKnob(config) {
 			last: "#icon-last-page",
 			next: "#icon-chevron-right"
 		},
-		tick: "#icon-check",
-		cross: "#icon-close",
+		tick: "#icon-done",
+		plus: "#icon-add",
+		minus: "#icon-minus",
 		numericInput:{
 			increase: "#icon-arrow-upward",
 			decrease: "#icon-arrow-downward"
@@ -227,7 +228,9 @@ function initKnob(config) {
 		colors: config.colors,
 		icons: {
 			tick: icons.tick,
-			cross: icons.cross
+			cross: icons.cross,
+			plus: icons.plus,
+			minus: icons.minus
 		}
 	});
 
