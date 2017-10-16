@@ -4,14 +4,14 @@ var createColorShades = require("../../utils/colorShades");
 
 module.exports = function(config) {
 
-var baseColor = config.default;  
+var baseColor = config.primary;  
 var colorShades = createColorShades(baseColor);
 
 let cssTemplate = `
 .knob-textarea {
   border-style: solid;
   border-width: 1px;
-  border-radius: 3px;
+  border-radius: 6px;
   display: inline-block;
   padding: 7px 12px;
   min-width: 100%;
@@ -19,10 +19,11 @@ let cssTemplate = `
   min-height: 60px;
 }
 .knob-textarea-wrapper:hover > textarea {
-  outline: 1px solid ${ colorShades.color4 };
+  border-color: ${ colorShades.color2 };
 }
 .knob-textarea-wrapper.active > textarea {
-	outline: 1px solid ${ colorShades.color6 };
+	border-color: ${ colorShades.color4 };
+  outline: none;
 }
 `;
 
