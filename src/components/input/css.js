@@ -21,6 +21,9 @@ let cssTemplate = `
   margin: 3px;
   border: 1px solid ${ config.darkGray };
 }
+.rounded > .knob-input {
+  border-radius: 6px;
+}
 .knob-input input {
   border: 0px none;
   outline: 0px none;
@@ -40,60 +43,60 @@ let cssTemplate = `
   cursor: not-allowed;
 }
 .knob-input:hover {
-  outline: 1px solid ${ colorShades.color4 };
+  border-color:  ${ colorShades.color4 };
  }
 .knob-input.active {
-  outline: 2px solid ${ colorShades.color6 } ;
+  border-color: ${ colorShades.color6 } ;
  }
 .variation-primary .knob-input {
-  outline: 1px solid ${ primaryColorShades.color3 };
+  border-color: ${ primaryColorShades.color3 };
  }
 .variation-warning .knob-input {
-  outline: 1px solid ${ warningColorShades.color3 };
+  border-color: ${ warningColorShades.color3 };
  }
 .variation-info .knob-input {
-  outline: 1px solid ${ infoColorShades.color3 };
+  border-color: ${ infoColorShades.color3 };
  }
 .variation-success .knob-input {
-  outline: 1px solid ${ successColorShades.color3 };
+  border-color: ${ successColorShades.color3 };
  }
 .variation-error .knob-input {
-  outline: 1px solid ${ errorColorShades.color3 };
+  border-color: ${ errorColorShades.color3 };
  }
  .knob-input.active:hover {
-  outline: 2px solid ${ colorShades.color4 } ;
+  border-color: ${ colorShades.color4 } ;
  }
 .variation-primary .knob-input.active {
-  outline: 2px solid ${ primaryColorShades.color4 };
+  border-color: ${ primaryColorShades.color4 };
  }
 .variation-warning .knob-input.active {
-  outline: 2px solid ${ warningColorShades.color4 };
+  border-color: ${ warningColorShades.color4 };
     background-color: transparent;
  }
 .variation-info .knob-input.active {
-  outline: 2px solid ${ infoColorShades.color4 };
+  border-color: ${ infoColorShades.color4 };
  }
 .variation-success .knob-input.active {
-  outline: 2px solid ${ successColorShades.color4 };
+  border-color: ${ successColorShades.color4 };
  }
 .variation-error .knob-input.active {
-  outline: 2px solid ${ errorColorShades.color4 };
+  border-color: ${ errorColorShades.color4 };
  }
  .variation-primary .knob-input:hover {
-  outline: 2px solid ${ tinycolor(config.primary) };
+  border-color: ${ tinycolor(config.primary) };
   fill: ${ tinycolor(config.primary) };
  }
 .variation-warning .knob-input:hover {
-  outline: 2px solid ${ tinycolor(config.warning) };
+  border-color: ${ tinycolor(config.warning) };
  }
 .variation-info .knob-input:hover {
-  outline: 2px solid ${ tinycolor(config.info) };
+  border-color: ${ tinycolor(config.info) };
  }
 .variation-success .knob-input:hover {
-  outline: 2px solid ${ tinycolor(config.success) };
+  border-color: ${ tinycolor(config.success) };
  }
 .variation-error .knob-input:hover {
-  outline: 2px solid ${ tinycolor(config.error) };
+  border-color: ${ tinycolor(config.error) };
  }
 .knob-input .icon-wrapper .icon {
   width: 20px;
