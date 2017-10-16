@@ -5,6 +5,7 @@
 	<title>KnobJS 2.0</title>
 	<link rel="stylesheet" href="/lib/normalize.css">
 	<link rel="stylesheet" href="/examples/example.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
 <body>
 <div class="example">
@@ -277,12 +278,10 @@
 			</tr>
 		</table>
 		<hr>
-
-
 		<h2>knob-modal</h2>
 		<!-- Default modal -->
 		<knob-button params="label: 'Open modal', variation: 'default', icon: '#icon-open', click: function() {modalVisible.toggle();}"></knob-button>
-		<knob-modal params="
+		<knob-modal class="centerText" params="
 			title: 'test modal',
 			icon: '#icon-open',
 			visible: modalVisible">
@@ -293,7 +292,7 @@
 
 		<!-- Info modal -->
 		<knob-button class="variation-info" params="label: 'Info modal', variation: 'default', icon: '#icon-open', click: function() {infoVisible.toggle();}"></knob-button>
-		<knob-modal class="variation-info" params="
+		<knob-modal class="leftText variation-info" params="
 			title: 'test modal',
 			icon: '#icon-open',
 			visible: infoVisible">
@@ -304,7 +303,7 @@
 
 		<!-- Warning modal -->
 		<knob-button class="variation-warning" params="label: 'Warning modal', variation: 'default', icon: '#icon-open', click: function() {warningVisible.toggle();}"></knob-button>
-		<knob-modal class="variation-warning" params="
+		<knob-modal class="leftText variation-warning" params="
 			title: 'test modal',
 			icon: '#icon-open',
 			visible: warningVisible">
@@ -315,7 +314,7 @@
 
 		<!-- Success modal -->
 		<knob-button class="variation-success" params="label: 'Success modal', variation: 'default', icon: '#icon-open', click: function() {successVisible.toggle();}"></knob-button>
-		<knob-modal class="variation-success" params="
+		<knob-modal class="centerText variation-success" params="
 			title: 'test modal',
 			icon: '#icon-open',
 			visible: successVisible">
@@ -326,7 +325,7 @@
 
 		<!-- Error modal -->
 		<knob-button class="variation-error" params="label: 'Error modal', icon: '#icon-open', click: function() {errorVisible.toggle();}"></knob-button>
-		<knob-modal class="variation-error" params="
+		<knob-modal class="leftText variation-error" params="
 			title: 'test modal',
 			icon: '#icon-open',
 			visible: errorVisible">

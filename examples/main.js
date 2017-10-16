@@ -32,6 +32,7 @@ var colors = ko.computed(function() {
 		black: "#000",
 
 		lightGray: "#f5f7f8",
+		mediumGray: "#f9f4f4",
 		darkGray: "#e5e9ec"
 	};
 });
@@ -41,32 +42,6 @@ knob.init({
 	// for default and theme4
 	colors: colors,
 	// for chamaileon theme
-	color1: {
-		primary: "#44c0fc",
-
-		info: {
-			background: "#25aaf2"
-		},
-		success: {
-			background: "#54c059"
-		},
-		warning: {
-			background: "#f5a500"
-		},
-		error: {
-			background: "#ee483b"
-		},
-
-		white: "#fff",
-
-		lightGray: "#f5f7f8",
-		mediumGray: "#f0f2f4",
-		darkGray: "#e5e9ec",
-		border: "#d2cdc6",
-
-		black: "#000",
-		transparent: "transparent"
-		},
 		icons: {
 			search: "#icon-search"
 		},
