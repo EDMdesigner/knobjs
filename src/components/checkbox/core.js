@@ -40,17 +40,24 @@ module.exports = function(dependencies) {
 		vm.tick = ko.observable(ko.unwrap(icons.tick));
 		vm.plus = ko.observable(ko.unwrap(icons.plus));
 		vm.minus = ko.observable(ko.unwrap(icons.minus));
+		vm.full = ko.observable(ko.unwrap(icons.full));
 		vm.value = config.value;
 		vm.disabled = disabled;
+
 		vm.click = function(){
 			if(disabled) {
 				return;
 			}
-
 			vm.value(!vm.value());
 		};
 		vm.normalValue = ko.computed(function() {
 			if(variation === "normal" && vm.value()) {
+				return true;
+			}
+			return false;				
+		});
+		vm.fullValue = ko.computed(function() {
+			if(variation === "full" && vm.value()) {
 				return true;
 			}
 			return false;				

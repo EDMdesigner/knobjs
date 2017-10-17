@@ -36,6 +36,7 @@ function initKnob(config) {
 		tick: "#icon-done",
 		plus: "#icon-add",
 		minus: "#icon-minus",
+		full: "#icon-copy",
 		numericInput:{
 			increase: "#icon-arrow-upward",
 			decrease: "#icon-arrow-downward"
@@ -228,9 +229,9 @@ function initKnob(config) {
 		colors: config.colors,
 		icons: {
 			tick: icons.tick,
-			cross: icons.cross,
 			plus: icons.plus,
-			minus: icons.minus
+			minus: icons.minus,
+			full: icons.full
 		}
 	});
 
