@@ -22,7 +22,7 @@ let cssTemplate = `
   border-color: ${ colorShades.color2 };
 }
 .knob-textarea-wrapper.active > textarea {
-	border-color: ${ colorShades.color4 };
+  border-color: ${ colorShades.color4 };
   outline: none;
 }
 `;
