@@ -53,20 +53,34 @@ let cssTemplate = `
 .knob-pagelist .loading {
   text-align: center;
 }
-.knob-pagelist .knob-pagelist__bar .knob-button-search button:hover {
-  background-color: ${ colorShades.color4 };
+.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > div > .knob-button {
+  border: 1px solid transparent;
+  background-color: transparent;
   color: ${ textColor };
   fill: ${ textColor };
 }
-.knob-pagelist .knob-pagelist__bar .knob-dropdown button {
+.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > div > .knob-button:hover {
+  border-color: ${ tinycolor(config.primary) };  
+}
+.knob-pagelist > div > .knob-pagelist__bar > .knob-pagelist__items-per-page > knob-dropdown > .knob-dropdown > div > .knob-button {
+  background-color: transparent;
+  border: 1px solid transparent;
   color: ${ textColor };
   fill: ${ textColor };
 }
-.knob-pagelist .knob-pagelist__bar .knob-dropdown button:hover {
-  background-color: ${ colorShades.color4 };
-  color: ${ textColor };
-  fill: ${ textColor };
+.knob-pagelist > div > .knob-pagelist__bar > .knob-pagelist__items-per-page > knob-dropdown > .knob-dropdown > div > .knob-button:hover {
+  border-color: ${ tinycolor(config.primary) };  
 }
+.knob-pagelist > div > .knob-pagelist__bar > .knob-button-search > .knob-button {
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: ${ textColor };
+  fill: ${ textColor };   
+}
+.knob-pagelist > div > .knob-pagelist__bar > .knob-button-search > .knob-button:hover {
+  border-color: ${ tinycolor(config.primary) };  
+}
+.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > .knob-dropdown-menu
 `;
 
 return cssTemplate;
