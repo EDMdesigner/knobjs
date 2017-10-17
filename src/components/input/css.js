@@ -20,7 +20,6 @@ let cssTemplate = `
   padding: 7px 12px;
   margin: 3px;
   border: 1px solid ${ config.darkGray };
-  border-radius: 6px;
 }
 .rounded > .knob-input {
   border-radius: 6px;
