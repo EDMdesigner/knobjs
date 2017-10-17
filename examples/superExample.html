@@ -9,10 +9,14 @@
 </head>
 <body>
 <div class="example">
-	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-add" viewBox="0 0 32 32">
-<path d="M25.333 17.333h-8v8h-2.667v-8h-8v-2.667h8v-8h2.667v8h8v2.667z"/>
-</symbol><symbol id="icon-arrow-downward" viewBox="0 0 32 32">
+	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-arrow-downward" viewBox="0 0 32 32">
 <path d="M26.667 16l-1.88-1.88-7.453 7.44v-16.227h-2.667v16.227l-7.44-7.453-1.893 1.893 10.667 10.667 10.667-10.667z"/>
+</symbol>
+<symbol id="icon-add" viewBox="0 0 32 32">
+<path d="M25.333 17.333h-8v8h-2.667v-8h-8v-2.667h8v-8h2.667v8h8v2.667z"/>
+</symbol>
+<symbol id="icon-minus" viewBox="0 0 32 32">
+<path d="M0 9.75v4.5c0 0.414 0.336 0.75 0.75 0.75h22.5c0.414 0 0.75-0.336 0.75-0.75v-4.5c0-0.414-0.336-0.75-0.75-0.75h-22.5c-0.414 0-0.75 0.336-0.75 0.75z"></path>
 </symbol><symbol id="icon-arrow-upward" viewBox="0 0 32 32">
 <path d="M5.333 16l1.887 1.887 7.447-7.447v16.227h2.667v-16.227l7.447 7.447 1.887-1.887-10.667-10.667-10.667 10.667z"/>
 </symbol><symbol id="icon-attach" viewBox="0 0 32 32">
@@ -242,7 +246,7 @@
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch class="disabled" params="value: toggleValue, disabled: true">
+					<knob-toggleswitch params="value: toggleValue, disabled: true">
 					</knob-toggleswitch>
 				</td>
 			</tr>
@@ -272,7 +276,7 @@
 					</knob-toggleswitch>
 				</td>
 				<td>
-					<knob-toggleswitch class="disabled square" params="value: toggleValue, disabled: true">
+					<knob-toggleswitch class="square" params="value: toggleValue, disabled: true">
 					</knob-toggleswitch>
 				</td>
 			</tr>
@@ -513,21 +517,21 @@
 
 		<h2>knob-input</h2>
 		<div style="width: 300px">
-			<knob-input params="placeholder: 'Name'"></knob-input>
+			<knob-input class="rounded" params="placeholder: 'Name'"></knob-input>
 			<br>
-			<knob-input class="variation-primary" params="placeholder: 'Primary'"></knob-input>
+			<knob-input class="rounded variation-primary" params="placeholder: 'Primary'"></knob-input>
 			<br>
-			<knob-input class="variation-info" params="placeholder: 'Info'"></knob-input>
+			<knob-input class="rounded variation-info" params="placeholder: 'Info'"></knob-input>
 			<br>
-			<knob-input class="variation-warning" params="placeholder: 'Warning'"></knob-input>
+			<knob-input class="rounded variation-warning" params="placeholder: 'Warning'"></knob-input>
 			<br>
-			<knob-input class="variation-success" params="placeholder: 'Success'"></knob-input>
+			<knob-input class="rounded variation-success" params="placeholder: 'Success'"></knob-input>
 			<br>
-			<knob-input class="variation-error" params="placeholder: 'Error', variation: 'error'"></knob-input>
+			<knob-input class="rounded variation-error" params="placeholder: 'Error', variation: 'error'"></knob-input>
 			<br>
-			<knob-input class="disabled" params="placeholder: 'Disabled', disabled:true"></knob-input>	
+			<knob-input class="rounded disabled" params="placeholder: 'Disabled', disabled:true"></knob-input>	
 			<br>		
-			<knob-input params="type: 'email', placeholder: 'Email'"></knob-input>
+			<knob-input class="rounded" params="type: 'email', placeholder: 'Email'"></knob-input>
 		</div>
 		<hr>
 
@@ -886,8 +890,13 @@
 		</knob-tabs>
 		<hr>
 		<h2>knob-checkbox</h2>
-		<knob-checkbox params="value: checkboxValue"></knob-checkbox>
-		<h2>disabled knob-checkbox</h2>
+		<h3>Normal variation</h3>
+		<knob-checkbox params="variation: 'normal', value: checkboxValue"></knob-checkbox>
+		<h3>Item-selector variation</h3>
+		<knob-checkbox params="variation: 'item', value: checkboxValue"></knob-checkbox>
+		<h3>Filled variation</h3>
+		<knob-checkbox params="variation: 'full', value: checkboxValue"></knob-checkbox>				
+		<h3>Disabled</h3>
 		<knob-checkbox params="value: disabledCheckBoxValue, disabled: true
 		"></knob-checkbox>
 		<hr>

@@ -66,11 +66,11 @@ let cssTemplate = `
 .variation-success .knob-toggle-track.active {
   background-color: ${ tinycolor(config.success) }; 
 }
-.disabled .knob-toggle-track.active {
-  background-color: ${ tinycolor(config.lightGray) };
+.disabled.knob-toggle-track {
+  background-color: ${ tinycolor(config.lightGray) } !important;
   cursor: not-allowed; 
 }
-.disabled .knob-toggle-track .knob-toggle-tick {
+.disabled.knob-toggle-track .knob-toggle-tick {
   background-color: ${ tinycolor(config.darkGray) }; 
 }
 `;
