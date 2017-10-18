@@ -196,7 +196,6 @@ let cssTemplate = `
 	.knob-tooltip-wrapper .tooltip:hover{
 		transform: scale(1.05);
 	}
-}
 `;
 	return cssTemplate;
 };
