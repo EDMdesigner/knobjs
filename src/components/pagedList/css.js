@@ -80,7 +80,9 @@ let cssTemplate = `
 .knob-pagelist > div > .knob-pagelist__bar > .knob-button-search > .knob-button:hover {
   border-color: ${ tinycolor(config.primary) };  
 }
-.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > .knob-dropdown-menu
+.knob-pagelist > div > .knob-pagelist__bar button {
+  outline: none;
+}
 `;
 
 return cssTemplate;
