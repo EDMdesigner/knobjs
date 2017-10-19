@@ -621,18 +621,19 @@
 			group: 'test',
 			items: [
 				{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
-				{icon: '#icon-list', value: {field: 'id', asc: false}},
+				{label: 'Second option', value: {field: 'id', asc: false}},
 				{label: 'Third option', value: {field: 'name', asc: true}}
-			]">
+			]" class="knob-radio-inline">
 		</knob-radio>
 		<h4>Blocked</h4>
 		<knob-radio params="
+			view: 'block',
 			group: 'test2',
 			items: [
-				{icon: '#icon-grid', value: {field: 'id desc', asc: true}},
-				{icon: '#icon-list', value: {field: 'id', asc: false}},
+				{label: 'First option', value: {field: 'id desc', asc: true}},
+				{label: 'Second option', value: {field: 'id', asc: false}},
 				{label: 'Third option', value: {field: 'name', asc: true}}
-			]" class="knob-radio--block">
+			]">
 		</knob-radio>
 		<hr>
 
