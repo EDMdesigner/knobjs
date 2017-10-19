@@ -1,5 +1,5 @@
-<div class="knob-radio" data-bind="foreach: items">
-	<div data-bind="component: {
+<div class="knob-radio" data-bind="foreach: items, css: mainBlockView ? 'knob-radio-block' : ''">
+	<div class="radioButton" data-bind="component: {
 		name: 'knob-button',
 		params: {
 			variation: $parent.variation,
@@ -10,5 +10,8 @@
 			click: select
 		}
 	}, css: isSelected() ? 'active' : ''">
+	</div>
+	<div data-bind="if: blockView()" class="blockLabel">
+		<span data-bind="text: label"></span>
 	</div>
 </div>

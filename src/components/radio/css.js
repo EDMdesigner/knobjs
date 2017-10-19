@@ -5,16 +5,15 @@ var tinycolor = require("tinycolor2");
 module.exports = function(config) {
 
 var baseColor = tinycolor(config.primary);
-var textColor = baseColor.isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-radio {
   overflow: hidden;
 }
-.knob-radio > div {
+.knob-radio > div  {
   display: inline-block;
 }
-.knob-radio--block > div > div {
+.knob-radio.knob-radio-block > div {
   display: block;
 }
 .knob-tab.orientation {
@@ -37,6 +36,7 @@ let cssTemplate = `
 }
 .knob-tab.orientation-left-top .knob-radio > div {
   width: 100%;
+  display: block;
 }
 .knob-tab.orientation-left-top .knob-radio > div .knob-button {
   width: 100%;
@@ -53,15 +53,30 @@ let cssTemplate = `
 }
 .knob-radio > .active > .knob-button {
   background-color: ${ baseColor };
-  color: ${ textColor };
-  fill: ${ textColor };
   outline: none;
 }
-.knob-radio--block > .knob-radio > .active > .knob-button {
-  background-color: ${ baseColor };
-  color: ${ textColor };
-  fill: ${ textColor };
+.knob-radio-block.knob-radio > div > .knob-button {
+  float: left;
+  padding: 0;
+  border-radius: 100px;
+  width: 16px;
+  height: 16px;
+  color: transparent;
+  fill: transparent;
+  margin-right: 4px;
+}
+.knob-radio-block.knob-radio > div > .knob-button:active {
   outline: none;
+}
+.knob-radio-block.knob-radio > .active > .knob-button {
+  background-color: ${ baseColor };
+  outline: none;
+}
+.knob-radio-block.knob-radio > .blockLabel {
+  padding-bottom: 5px;
+}
+.knob-radio-block.knob-radio > .blockLabel > span {
+  vertical-align: super;
 }
 `;
 
