@@ -53,35 +53,19 @@ let cssTemplate = `
 .knob-pagelist .loading {
   text-align: center;
 }
-.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > div > .knob-button {
-  border: 1px solid transparent;
-  background-color: transparent;
+.knob-pagelist .knob-pagelist__bar .knob-button-search button:hover {
+  background-color: ${ colorShades.color4 };
   color: ${ textColor };
   fill: ${ textColor };
 }
-.knob-pagelist > div > .knob-pagelist__bar > .knob-dropdown > .knob-dropdown > div > .knob-button:hover {
-  border-color: ${ tinycolor(config.primary) };  
-}
-.knob-pagelist > div > .knob-pagelist__bar > .knob-pagelist__items-per-page > knob-dropdown > .knob-dropdown > div > .knob-button {
-  background-color: transparent;
-  border: 1px solid transparent;
+.knob-pagelist .knob-pagelist__bar .knob-dropdown button {
   color: ${ textColor };
   fill: ${ textColor }; 
 }
-.knob-pagelist > div > .knob-pagelist__bar > .knob-pagelist__items-per-page > knob-dropdown > .knob-dropdown > div > .knob-button:hover {
-  border-color: ${ tinycolor(config.primary) };  
-}
-.knob-pagelist > div > .knob-pagelist__bar > .knob-button-search > .knob-button {
-  border: 1px solid transparent;
-  background-color: transparent;
+.knob-pagelist .knob-pagelist__bar .knob-dropdown button:hover {
+  background-color: ${ colorShades.color4 };
   color: ${ textColor };
-  fill: ${ textColor };   
-}
-.knob-pagelist > div > .knob-pagelist__bar > .knob-button-search > .knob-button:hover {
-  border-color: ${ tinycolor(config.primary) };  
-}
-.knob-pagelist > div > .knob-pagelist__bar button {
-  outline: none;
+  fill: ${ textColor };
 }
 `;
 
