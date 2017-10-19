@@ -60,7 +60,7 @@ let cssTemplate = `
 }
 .knob-pagelist .knob-pagelist__bar .knob-dropdown button {
   color: ${ textColor };
-  fill: ${ textColor };
+  fill: ${ textColor }; 
 }
 .knob-pagelist .knob-pagelist__bar .knob-dropdown button:hover {
   background-color: ${ colorShades.color4 };
