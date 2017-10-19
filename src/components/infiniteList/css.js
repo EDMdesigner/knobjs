@@ -1,12 +1,11 @@
 "use strict";
 
-var createColorShades = require("../../utils/colorShades");
+var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
 
-var baseColor = config.default;  
-var colorShades = createColorShades(baseColor); 
-
+var baseColor = config.default;
+var textColor = tinycolor(baseColor).isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-infinite-list .knob-infinite-list__bar {
@@ -21,20 +20,24 @@ let cssTemplate = `
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-input:hover {
   outline: none;
-  border: 1px solid ${ colorShades.color4 };
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-input:focus {
-  border: 1px solid ${ colorShades.color6 };
   outline: none;
 }
 .knob-infinite-list .knob-infinite-list__bar .knob-dropdown, .knob-infinite-list .knob-infinite-list__bar .knob-items-per-page {
   float: right;
 }
-.knob-infinite-list .knob-infinite-list__bar .knob-button-search {
+.knob-infinite-list > div > .knob-infinite-list__bar > .knob-button-search {
   float: left;
 }
-.knob-infinite-list .knob-infinite-list__bar button:hover{
-  background-color: ${ colorShades.color4 };
+.knob-infinite-list > div > .knob-infinite-list__bar > .knob-button-search > .knob-button {
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: ${ textColor };
+  fill: ${ textColor }; 
+}
+.knob-infinite-list > div > .knob-infinite-list__bar > .knob-button-search > .knob-button:hover {
+  border-color: ${ tinycolor(config.primary) };  
 }
 .knob-infinite-list .knob-infinite-list__list {
   list-style: none;
@@ -50,9 +53,6 @@ let cssTemplate = `
 }
 .knob-infinite-list button {
   border-radius: 3px;
-}
-.knob-infinite-list button:hover {
-  background-color: ${ colorShades.color4 };
 }
 `;
 	return cssTemplate;

@@ -1,11 +1,11 @@
 "use strict";
 
-var createColorShades = require("../../utils/colorShades");
+var tinycolor = require("tinycolor2");
 
 module.exports = function(config) {
 
 var baseColor = config.default;  
-var colorShades = createColorShades(baseColor);
+var textColor = tinycolor(baseColor).isDark() ? "white" : "black";
 
 let cssTemplate = `
 .knob-dropdown-menu {
@@ -13,47 +13,24 @@ let cssTemplate = `
   position: absolute;
   margin-top: 3px;
 }
-.knob-dropdown .knob-button {
-  text-align: left;
-  border-radius: 0px;
-  border-width: 1px;
-  border-top: 1px;
+.knob-dropdown > .knob-dropdown > div > .knob-button:hover {
+  border-color: ${ tinycolor(config.primary) };  
 }
-.knob-dropdown-menu button {
-  width: 100%;
-  text-align: left;
-  border-radius: 0px;
-  border-width: 1px;
-  border-top: 0px;
+knob-dropdown > .knob-dropdown > div > .knob-button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: ${ textColor };
+  fill: ${ textColor }; 
 }
-.knob-dropdown div button:hover {
-  background-color: ${ colorShades.color4 };
+knob-dropdown > .knob-dropdown > .knob-dropdown-menu > div > button {
+  background-color: white;
+  border: 1px solid transparent;
+  width: 100%; 
 }
-.variation-primary .knob-dropdown .knob-button:hover {
-  background-color: ${ colorShades.color4 };
-}
-.knob-dropdown-menu button:hover {
-  width: 100%;
-  text-align: left;
-  border-radius: 0px;
-  border-width: 1px;
-  border-top: 1px;
-  background-color: ${ colorShades.color4 };
-}
-.knob-dropdown-menu div:first-of-type button {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-.knob-dropdown-menu div:last-of-type button {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-knob-pagelist__bar input:hover {
-  border: 1px solid ${ colorShades.color4 } !important;
-}
-knob-pagelist__bar input:focus {
-  border: 1px solid ${ colorShades.color4 } !important;
-  outline: none !important
+knob-dropdown > .knob-dropdown > .knob-dropdown-menu > div > button:hover {
+  background-color:#f8f4f4;
+  border-top-color: ${ tinycolor(config.primary) };  
+  border-bottom-color: ${ tinycolor(config.primary) }; 
 }
 `;
 	return cssTemplate;

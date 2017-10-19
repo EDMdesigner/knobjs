@@ -66,7 +66,7 @@ let cssTemplate = `
   background-color: transparent;
   border: 1px solid transparent;
   color: ${ textColor };
-  fill: ${ textColor };
+  fill: ${ textColor }; 
 }
 .knob-pagelist > div > .knob-pagelist__bar > .knob-pagelist__items-per-page > knob-dropdown > .knob-dropdown > div > .knob-button:hover {
   border-color: ${ tinycolor(config.primary) };  
