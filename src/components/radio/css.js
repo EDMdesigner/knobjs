@@ -72,10 +72,42 @@ let cssTemplate = `
   background-color: ${ baseColor };
   outline: none;
 }
-.knob-radio-block.knob-radio > .blockLabel {
+.knob-radio > .blockLabel {
   padding-bottom: 5px;
 }
-.knob-radio-block.knob-radio > .blockLabel > span {
+knob-radio > .blockLabel > span {
+  vertical-align: super;
+}
+.knob-radio-inline.knob-radio > div > .knob-button {
+  float: left;
+  padding: 0;
+  border-radius: 100px;
+  width: 16px;
+  height: 16px;
+  color: transparent;
+  fill: transparent;
+  margin-right: 4px;
+}
+.knob-radio-inline.knob-radio > div > .knob-button:active {
+  outline: none;
+}
+.knob-radio-inline.knob-radio > .active > .knob-button {
+  background-color: ${ baseColor };
+  outline: none;
+}
+.knob-radio-inline.knob-radio > .blockLabel {
+  padding-bottom: 5px;
+}
+.knob-radio-inline.knob-radio > .blockLabel > span {
+  vertical-align: super;
+}
+.knob-radio.knob-radio-inline > div {
+  display: inline-flex;
+}
+.knob-radio-inline.knob-radio > .inlineLabel {
+  padding-bottom: 5px;
+}
+.knob-radio-inline.knob-radio > .inlineLabel > span {
   vertical-align: super;
 }
 `;

@@ -10,6 +10,7 @@ function createRadio(config) {
 	var selected = config.selected || ko.observable();
 	var selectedIdx = config.selectedIdx || ko.observable();
 	var blockView = false;
+	var inlineView = false;
 	var variation = config.variation || "default";
 
 	if (!ko.isObservable(config.items) && config.items.length === 0) {
@@ -48,6 +49,12 @@ function createRadio(config) {
 		}
 	});
 
+	ko.computed(function() {
+		if(config.view === "inline"){
+			inlineView = true;
+		}
+	});	
+
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
 			throw new Error("Each radiobutton has to have a label and/or icon!");
@@ -66,6 +73,9 @@ function createRadio(config) {
 			}),
 			blockView: ko.computed(function() {
 				return config.view === "block";
+			}),
+			inlineView: ko.computed(function() {
+				return config.view === "inline";
 			})
 		};
 
@@ -86,7 +96,8 @@ function createRadio(config) {
 		selected: selected,
 		selectedIdx: selectedIdx,
 		variation: variation,
-		mainBlockView: blockView
+		mainBlockView: blockView,
+		mainInlineView: inlineView
 	};
 }
 
