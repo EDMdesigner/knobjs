@@ -13,21 +13,24 @@ let cssTemplate = `
   position: absolute;
   margin-top: 3px;
 }
-.knob-dropdown > .knob-dropdown > div > .knob-button:hover {
+.knob-dropdown > div > .knob-button:hover {
   border-color: ${ tinycolor(config.primary) };  
 }
-knob-dropdown > .knob-dropdown > div > .knob-button {
+.knob-dropdown > div > .knob-button {
+  outline: none;
+}
+.knob-dropdown > div > .knob-button {
   background-color: transparent;
   border: 1px solid transparent;
   color: ${ textColor };
   fill: ${ textColor }; 
 }
-knob-dropdown > .knob-dropdown > .knob-dropdown-menu > div > button {
+.knob-dropdown > .knob-dropdown-menu > div > button {
   background-color: white;
   border: 1px solid transparent;
   width: 100%; 
 }
-knob-dropdown > .knob-dropdown > .knob-dropdown-menu > div > button:hover {
+.knob-dropdown > .knob-dropdown-menu > div > button:hover {
   background-color:#f8f4f4;
   border-top-color: ${ tinycolor(config.primary) };  
   border-bottom-color: ${ tinycolor(config.primary) }; 
