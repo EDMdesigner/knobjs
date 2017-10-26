@@ -104,12 +104,6 @@ knob-radio > .blockLabel > span {
 .knob-radio.knob-radio-inline > div {
   display: inline-flex;
 }
-.knob-radio-inline.knob-radio > .inlineLabel {
-  padding-bottom: 5px;
-}
-.knob-radio-inline.knob-radio > .inlineLabel > span {
-  vertical-align: super;
-}
 `;
 
 return cssTemplate;
