@@ -60,6 +60,10 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.labels.noResults is mandatory!");
 		}
 
+		if(config.itemsPerPageList && !Array.isArray(config.itemsPerPageList)) {
+			throw new Error("config.itemsPerPageList has to be an array!");
+		}
+
 		var name = config.name;
 
 		var stateModel = config.stateModel;
@@ -77,6 +81,7 @@ module.exports = function pagedListCore(dependencies) {
 		list.itemClass = config.itemClass || "knob-pagedlist__item";
 		list.numOfPages = numOfPages;
 		list.itemsPerPage = itemsPerPage;
+		list.itemsPerPageList = config.itemsPerPageList;
 		list.currentPage = currentPage;
 
 		list.icons = config.icons;
