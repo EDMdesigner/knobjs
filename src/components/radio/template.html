@@ -11,7 +11,9 @@
 		}
 	}, css: isSelected() ? 'active' : ''">
 	</div>
-	<div data-bind="if: inlineView() || blockView()" class="blockLabel">
+	<!-- ko if: inlineView() || blockView() -->
+	<div class="blockLabel">
 		<span data-bind="text: label"></span>
 	</div>
+    <!-- /ko -->
 </div>
