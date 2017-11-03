@@ -23,17 +23,17 @@ module.exports = function createItemsPerPage(config) {
 	var numOfItems = config.numOfItems;
 
 	var itemsPerPageList = config.itemsPerPageList || [{
-		label: 10,
-		value: 10
+		label: 12,
+		value: 12
 	}, {
-		label: 25,
-		value: 25
+		label: 24,
+		value: 24
 	}, {
-		label: 50,
-		value: 50
+		label: 48,
+		value: 48
 	}, {
-		label: 100,
-		value: 100
+		label: 96,
+		value: 96
 	}];
 
 	var itemsPerPage = ko.observable(itemsPerPageList[0]);
