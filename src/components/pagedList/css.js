@@ -67,6 +67,26 @@ let cssTemplate = `
   color: ${ textColor };
   fill: ${ textColor };
 }
+.anim-rotate { 
+  -webkit-animation: rotate 1.9s infinite linear; 
+   animation: rotate 1.9s infinite linear;  
+} 
+@-webkit-keyframes rotate { 
+   from { 
+   -webkit-transform: rotate(0) scale(1) skew(1deg) translate(0); 
+   transform: rotate(0) scale(1) skew(1deg) translate(0); } 
+   to { 
+   -webkit-transform: rotate(360deg) scale(1) skew(1deg) translate(0); 
+   transform: rotate(360deg) scale(1) skew(1deg) translate(0); } 
+ } 
+ @keyframes rotate { 
+   from { 
+   -webkit-transform: rotate(0) scale(1) skew(1deg) translate(0); 
+   transform: rotate(0) scale(1) skew(1deg) translate(0); } 
+   to { 
+   -webkit-transform: rotate(360deg) scale(1) skew(1deg) translate(0); 
+   transform: rotate(360deg) scale(1) skew(1deg) translate(0); } 
+ } 
 `;
 
 return cssTemplate;
