@@ -10,6 +10,8 @@ var superschema = require("superschema");
 
 var registerComponent = require("./knobRegisterComponent");
 
+var listVm = require("./components/list/vm");
+
 superschema.extend({
 	ko: ko
 });
@@ -272,7 +274,7 @@ function initKnob(config) {
 
 module.exports = {
 	init: initKnob,
-
-	registerComponent: registerComponent
+	registerComponent: registerComponent,
+	listVm: listVm
 };
 
