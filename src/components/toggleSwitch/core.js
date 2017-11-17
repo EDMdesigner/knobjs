@@ -35,6 +35,7 @@ module.exports = function(dependencies) {
 		var click = function() {
 			if(!disabled()) {
 				active(!active());
+				value(!value());
 			}
 		};
 	
