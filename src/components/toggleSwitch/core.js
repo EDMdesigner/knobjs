@@ -21,7 +21,7 @@ module.exports = function(dependencies) {
 		}
 
 		var vm = {};
-		var active = ko.observable(true);
+		var active = ko.observable(config.value());
 		var square = ko.observable(false);
 		var disabled = ko.observable(false);
 

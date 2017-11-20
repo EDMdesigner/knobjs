@@ -64,10 +64,10 @@ describe("==== ToggleSwitch ====", function(){
 			expect(toggleVm.value()).toBe(false);
 
 			toggleVm.click();
-			expect(toggleVm.active()).toBe(false);
+			expect(toggleVm.active()).toBe(true);
 
 			toggleVm.click();
-			expect(toggleVm.active()).toBe(true);
+			expect(toggleVm.active()).toBe(false);
 		});
 	});
 });
