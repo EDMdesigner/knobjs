@@ -66,17 +66,12 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.itemsPerPageList has to be an array!");
 		}
 
-		if(config.padding && typeof config.padding !== "boolean") {
-			throw new Error("config.padding has to be a boolean");
-		}
-
-		if(config.paddingInterval && typeof config.paddingInterval !== "number") {
+		if(config.fakeListItems && config.fakeListItems.paddingInterval && typeof config.fakeListItems.paddingInterval !== "number") {
 			throw new Error("config.padding has to be a number");
 		}
 
 		var name = config.name;
-		var hasPadding = config.padding;
-		var paddingInterval = config.paddingInterval || defaultPaddingInterval;
+		var hasFakeItems = !!config.fakeListItems;
 
 		var stateModel = config.stateModel;
 		var store = config.store;
@@ -160,7 +155,7 @@ module.exports = function pagedListCore(dependencies) {
 		list.paddingCount = ko.observable(0);
 
 		list.paddingItems = ko.computed(function() {
-			if (!hasPadding) {
+			if (!hasFakeItems) {
 				return [];
 			}
 			var count = list.paddingCount();
@@ -197,9 +192,11 @@ module.exports = function pagedListCore(dependencies) {
 			list.paddingCount(itemsPerRow - lastRowLength);
 		}
 
-		if (hasPadding) {
+		if (hasFakeItems) {
 			window.addEventListener("resize", calculatePaddingSizes);
 			// SO HACKY...
+
+			var paddingInterval = config.fakeListItems.paddingInterval || defaultPaddingInterval;
 			window.setInterval(calculatePaddingSizes, paddingInterval);
 		}
 
