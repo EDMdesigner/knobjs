@@ -1,7 +1,7 @@
 /*jslint node: true */
 "use strict";
 
-var paddingIntervalLength = 500; // in ms
+var defaultPaddingInterval = 300; // in ms
 
 module.exports = function pagedListCore(dependencies) {
 
@@ -70,8 +70,13 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.padding has to be a boolean");
 		}
 
+		if(config.paddingInterval && typeof config.paddingInterval !== "number") {
+			throw new Error("config.padding has to be a number");
+		}
+
 		var name = config.name;
 		var hasPadding = config.padding;
+		var paddingInterval = config.paddingInterval || defaultPaddingInterval;
 
 		var stateModel = config.stateModel;
 		var store = config.store;
@@ -195,7 +200,7 @@ module.exports = function pagedListCore(dependencies) {
 		if (hasPadding) {
 			window.addEventListener("resize", calculatePaddingSizes);
 			// SO HACKY...
-			window.setInterval(calculatePaddingSizes, paddingIntervalLength);
+			window.setInterval(calculatePaddingSizes, paddingInterval);
 		}
 
 		/*
