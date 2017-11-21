@@ -20,10 +20,15 @@
 				<knob-dropdown class="knob-dropdown" params="rightIcon: icons.dropdown, selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
 		</div>
-		<ul data-bind="css: listClass, foreach: items">
-			<li data-bind="css: $parent.itemClass">
-				<!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parent, index: $index, select: $parents[1].buttonSelect ? $parents[1].select : null} } --><!-- /ko -->
-			</li>
+		<ul data-bind="css: listClass, attr: { id: randomID } ">
+			<!-- ko foreach: items -->
+				<li data-bind="css: $parent.itemClass">
+					<!-- ko template: { nodes: $componentTemplateNodes, data: {model: $data, parent: $parent, index: $index, select: $parents[1].buttonSelect ? $parents[1].select : null} } --><!-- /ko -->
+				</li>
+			<!-- /ko -->
+			<!-- ko foreach: paddingItems -->
+				<div data-bind="style: { width: $parent.paddingWidth, height: $parent.paddingHeight }"></div>
+			<!-- /ko -->
 		</ul>
 		<!-- ko if: items().length === 0 -->
 			<span class="no-result" data-bind="visible: !loading(), text: labels.noResults"></span>

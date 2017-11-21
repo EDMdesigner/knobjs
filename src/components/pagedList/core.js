@@ -1,6 +1,8 @@
 /*jslint node: true */
 "use strict";
 
+var defaultPaddingInterval = 300; // in ms
+
 module.exports = function pagedListCore(dependencies) {
 
 	var obligatoryDeps = ["ko", "createList"];
@@ -64,7 +66,12 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.itemsPerPageList has to be an array!");
 		}
 
+		if(config.fakeListItems && config.fakeListItems.paddingInterval && typeof config.fakeListItems.paddingInterval !== "number") {
+			throw new Error("config.padding has to be a number");
+		}
+
 		var name = config.name;
+		var hasFakeItems = !!config.fakeListItems;
 
 		var stateModel = config.stateModel;
 		var store = config.store;
@@ -139,6 +146,58 @@ module.exports = function pagedListCore(dependencies) {
 					});
 				});
 			}
+		}
+
+		list.randomID = "knob-paged-list-" + Math.random().toString().slice(2);
+
+		list.paddingWidth = ko.observable(0);
+		list.paddingHeight = ko.observable(0);
+		list.paddingCount = ko.observable(0);
+
+		list.paddingItems = ko.computed(function() {
+			if (!hasFakeItems) {
+				return [];
+			}
+			var count = list.paddingCount();
+			var result = [];
+			for (var i = 0; i < count; i += 1) {
+				result.push({});
+			}
+			return result;
+		});
+
+		function calculatePaddingSizes() {
+			var listContainer = document.getElementById(list.randomID);
+			if (!listContainer) {
+				return;
+			}
+			var listItems = listContainer.getElementsByTagName("li");
+			var itemCount = listItems.length;
+			var listItem = listItems[0];
+			if (!itemCount) {
+				list.paddingCount(0);
+				return;
+			}
+			var listWidth = listContainer.clientWidth;
+			var itemWidth = listItem.clientWidth;
+			var itemHeight = listItem.clientHeight;
+			if (!itemWidth) {
+				return;
+			}
+			var itemsPerRow = Math.floor(listWidth / itemWidth);
+			var lastRowLength = (itemCount % itemsPerRow) || itemsPerRow;
+
+			list.paddingWidth(itemWidth + "px");
+			list.paddingHeight(itemHeight + "px");
+			list.paddingCount(itemsPerRow - lastRowLength);
+		}
+
+		if (hasFakeItems) {
+			window.addEventListener("resize", calculatePaddingSizes);
+			// SO HACKY...
+
+			var paddingInterval = config.fakeListItems.paddingInterval || defaultPaddingInterval;
+			window.setInterval(calculatePaddingSizes, paddingInterval);
 		}
 
 		/*
