@@ -10,7 +10,7 @@ module.exports = function(dependencies) {
 	}
 
 	var ko = dependencies.ko;
-	
+
 	return function createModal(config) {
 
 		if (!config) {
@@ -21,9 +21,14 @@ module.exports = function(dependencies) {
 			throw new Error("config.visible must be an observable");
 		}
 
+		if (config.beforeClose && typeof config.beforeClose !== "function") {
+			throw new Error("config.beforeClose must be a function");
+		}
+
 		config = config || {};
 
 		var visible = config.visible;
+		var beforeClose = config.beforeClose;
 		var title = config.title;
 		var icon = config.icon;
 
@@ -33,12 +38,16 @@ module.exports = function(dependencies) {
 
 		config.component = "modal";
 
-		var vm = {};
+		function closeButtonClick() {
+			if (!beforeClose) {
+				return visible(false);
+			}
+		}
 
-		vm.visible = visible;
-		vm.title = title;
-		vm.icon = icon;
-
-		return vm;
+		return {
+			visible: visible,
+			title: title,
+			icon: icon
+		};
 	};
 };
