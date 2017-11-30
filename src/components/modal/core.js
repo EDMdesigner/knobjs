@@ -1,44 +1,47 @@
 "use strict";
 
+var superschema = require("superschema");
+
+var dependencyPattern = {
+	ko: "object"
+};
+
+var configPattern = {
+	visible: "observable boolean",
+	beforeClose: "optional function",
+	title: "optional string",
+	icon: "optional string"
+};
+
 module.exports = function(dependencies) {
-	if(!dependencies) {
-		throw new Error("dependencies is mandatory!");
-	}
+	superschema.check(dependencies, dependencyPattern, "modalDependencies");
 
-	if(!dependencies.ko) {
-		throw new Error("dependencies.ko is mandatory!");
-	}
+	//var ko = dependencies.ko;
 
-	var ko = dependencies.ko;
-	
 	return function createModal(config) {
-
-		if (!config) {
-			throw new Error("config is mandatory!");
-		}
-
-		if (config.visible && !ko.isObservable(config.visible)) {
-			throw new Error("config.visible must be an observable");
-		}
-
-		config = config || {};
+		superschema.check(config, configPattern, "modalConfig");
 
 		var visible = config.visible;
+		var beforeClose = config.beforeClose;
 		var title = config.title;
 		var icon = config.icon;
+
+		function closeButtonClick() {
+			if (beforeClose && beforeClose()) {
+				return;
+			}
+			visible(false);
+		}
 
 		visible.toggle = function() {
 			visible(!visible());
 		};
 
-		config.component = "modal";
-
-		var vm = {};
-
-		vm.visible = visible;
-		vm.title = title;
-		vm.icon = icon;
-
-		return vm;
+		return {
+			visible: visible,
+			title: title,
+			icon: icon,
+			close: closeButtonClick
+		};
 	};
 };
