@@ -21,7 +21,7 @@ describe("Modal", function() {
 					title: "style",
 					icon: "string"
 				});
-			}).toThrowError("config.visible must be an observable");
+			}).toThrowError("config.visible is mandatory and has be an observable");
 		});
 	});
 

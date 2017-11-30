@@ -17,8 +17,8 @@ module.exports = function(dependencies) {
 			throw new Error("config is mandatory!");
 		}
 
-		if (config.visible && !ko.isObservable(config.visible)) {
-			throw new Error("config.visible must be an observable");
+		if (!ko.isObservable(config.visible)) {
+			throw new Error("config.visible is mandatory and has be an observable");
 		}
 
 		if (config.beforeClose && typeof config.beforeClose !== "function") {
@@ -32,22 +32,18 @@ module.exports = function(dependencies) {
 		var title = config.title;
 		var icon = config.icon;
 
-		visible.toggle = function() {
-			visible(!visible());
-		};
-
-		config.component = "modal";
-
 		function closeButtonClick() {
-			if (!beforeClose) {
-				return visible(false);
+			if (beforeClose && beforeClose()) {
+				return;
 			}
+			visible(false);
 		}
 
 		return {
 			visible: visible,
 			title: title,
-			icon: icon
+			icon: icon,
+			close: closeButtonClick
 		};
 	};
 };
