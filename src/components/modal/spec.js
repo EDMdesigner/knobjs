@@ -54,6 +54,13 @@ describe("knob modal tests", function() {
 			}).not.toThrow();
 		});
 
+		it("visible.toggle toggles the visible value...", function() {
+			vm.visible.toggle();
+			expect(vm.visible()).toBe(false);
+			vm.visible.toggle();
+			expect(vm.visible()).toBe(true);
+		});
+
 		describe("beforeClose callback", function() {
 			it("without beforeClose 'close' closes the modal", function() {
 				vm = createVm({

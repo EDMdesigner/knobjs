@@ -33,6 +33,10 @@ module.exports = function(dependencies) {
 			visible(false);
 		}
 
+		visible.toggle = function() {
+			visible(!visible());
+		};
+
 		return {
 			visible: visible,
 			title: title,
