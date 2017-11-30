@@ -21,8 +21,6 @@ module.exports = function(dependencies) {
 	return function createModal(config) {
 		superschema.check(config, configPattern, "modalConfig");
 
-		config = config || {};
-
 		var visible = config.visible;
 		var beforeClose = config.beforeClose;
 		var title = config.title;

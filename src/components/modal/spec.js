@@ -9,12 +9,9 @@ let dependencies = {
 	ko: ko,
 };
 
-let beforeCloseResult = false;
 let config = {
 	visible: ko.observable(true),
-	beforeClose: function() {
-		return beforeCloseResult;
-	}
+	beforeClose: () => false
 };
 
 let interfacePattern = {
@@ -49,8 +46,6 @@ describe("knob modal tests", function() {
 		beforeEach(function() {
 			createVm = core(dependencies);
 			vm = createVm(config);
-			spyOn(config, "beforeClose").and.callThrough();
-			beforeCloseResult = false;
 		});
 
 		it("interface check", function() {
@@ -74,7 +69,10 @@ describe("knob modal tests", function() {
 			});
 
 			it("'close' does not close the modal if beforeClose returns with a truthy value", function() {
-				beforeCloseResult = true;
+				vm = createVm({
+					visible: ko.observable(true),
+					beforeClose: () => true
+				});
 				vm.close();
 				expect(vm.visible()).toBe(true);
 			});
