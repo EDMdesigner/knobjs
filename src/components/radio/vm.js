@@ -93,11 +93,11 @@ function createRadio(config) {
 			}
 		});
 
-		if(config.noOptionsSelected) {
-			selected(false);
-		}
-
 		return obj;
+	}
+
+	if(config.noOptionsSelected) {
+		selected(false);
 	}
 
 	return {
