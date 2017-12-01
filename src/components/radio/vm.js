@@ -26,6 +26,11 @@ function createRadio(config) {
 
 	ko.computed(function() {
 		var currentItems = items();
+
+		if(config.noOptionsSelected) {
+			return;
+		}
+
 		if (currentItems.length === 0) {
 			return;
 		}
@@ -87,6 +92,10 @@ function createRadio(config) {
 				return items().indexOf(obj);
 			}
 		});
+
+		if(config.noOptionsSelected) {
+			selected(false);
+		}
 
 		return obj;
 	}
