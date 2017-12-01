@@ -14,10 +14,18 @@ var configPattern = {
 module.exports = function(dependencies) {
 	superschema.check(dependencies, dependencyPattern, "modalDependencies");
 
-	//var ko = dependencies.ko;
+	var ko = dependencies.ko;
 
 	return function createModal(config) {
 		superschema.check(config, configPattern, "modalConfig");
+
+		if (config.title && typeof config.title !== "string" && !ko.isObservable(config.title)) {
+			throw new Error("config.title should be a string or an observable");
+		}
+
+		if (config.icon && typeof config.icon !== "string" && !ko.isObservable(config.icon)) {
+			throw new Error("config.icon should be a string or an observable");
+		}
 
 		var visible = config.visible;
 		var beforeClose = config.beforeClose;
