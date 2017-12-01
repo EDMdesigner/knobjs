@@ -8,9 +8,7 @@ var dependencyPattern = {
 
 var configPattern = {
 	visible: "observable boolean",
-	beforeClose: "optional function",
-	title: "optional string",
-	icon: "optional string"
+	beforeClose: "optional function"
 };
 
 module.exports = function(dependencies) {
