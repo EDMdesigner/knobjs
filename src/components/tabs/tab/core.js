@@ -14,7 +14,7 @@ var configPattern = {
 			icon: "observable",
 			leftIcon: "observable",
 			rightIcon: "observable",
-			exists: "observable"
+			exists: "observable",
 		}
 	}
 };
@@ -34,17 +34,19 @@ module.exports = function(dependencies) {
 		var label = ko.isObservable(config.label) ? config.label : ko.observable(config.label);
 		var icon = ko.isObservable(config.icon) ? config.icon : ko.observable(config.icon);
 		var leftIcon = ko.isObservable(config.leftIcon) ? config.leftIcon : ko.observable(config.leftIcon);
-		var rightIcon = ko.isObservable(config.rightIcon) ? config.rightIcon : ko.observable(config.rightIcon);		
+		var rightIcon = ko.isObservable(config.rightIcon) ? config.rightIcon : ko.observable(config.rightIcon);
 
 		ko.computed(function() {
-			tabData().label(label());
-			tabData().icon(icon());
-			tabData().leftIcon(leftIcon());
-			tabData().rightIcon(rightIcon());
+			var tab = tabData();
+			tab.label(label());
+			tab.icon(icon());
+			tab.leftIcon(leftIcon());
+			tab.rightIcon(rightIcon());
+			tab.click = config.click;
 		});
 
 		tabData().exists(true);
-		
+
 		return {
 			dispose: function() {
 				tabData().exists(false);

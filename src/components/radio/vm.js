@@ -12,6 +12,7 @@ function createRadio(config) {
 	var blockView = config.view === "block";
 	var inlineView = config.view === "inline";
 	var variation = config.variation || "default";
+	var onButtonClick = config.onButtonClick;
 
 	if (!ko.isObservable(config.items) && config.items.length === 0) {
 		throw new Error("config.items should not be empty");
@@ -19,17 +20,11 @@ function createRadio(config) {
 
 	var items = ko.computed(function() {
 		var itemList = ko.isObservable(config.items) ? config.items() : config.items;
-		return itemList.map(function(item) {
-			return createItemVm(item);
-		});
+		return itemList.map(createItemVm);
 	});
 
 	ko.computed(function() {
 		var currentItems = items();
-
-		if(config.noOptionsSelected) {
-			return;
-		}
 
 		if (currentItems.length === 0) {
 			return;
@@ -50,7 +45,6 @@ function createRadio(config) {
 
 	ko.computed(function() {
 		var index = selectedIdx();
-		console.log("BEER", index, typeof index);
         if (typeof index === "number" && items.peek()[index]) {
             items.peek()[index].select();
         }
@@ -68,6 +62,15 @@ function createRadio(config) {
 			select: function() {
 				selected(obj);
 				selectedIdx(obj.index);
+			},
+			click: function() {
+				if (typeof onButtonClick === "function") {
+					onButtonClick(obj.index);
+				}
+				obj.select();
+				if (typeof item.click === "function") {
+					item.click();
+				}
 			},
 			isSelected: ko.computed(function() {
 				return obj === selected();
@@ -87,7 +90,7 @@ function createRadio(config) {
 	}
 
 	if(config.noOptionsSelected) {
-		selected(false);
+		selected(null);
 	}
 
 	return {
@@ -95,8 +98,8 @@ function createRadio(config) {
 		selected: selected,
 		selectedIdx: selectedIdx,
 		variation: variation,
-		mainBlockView: blockView,
-		mainInlineView: inlineView
+		blockView: blockView,
+		inlineView: inlineView
 	};
 }
 
