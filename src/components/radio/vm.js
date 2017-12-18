@@ -50,7 +50,6 @@ function createRadio(config) {
 
 	ko.computed(function() {
 		var index = selectedIdx();
-		console.log("BEER", index, typeof index);
         if (typeof index === "number" && items.peek()[index]) {
             items.peek()[index].select();
         }
@@ -69,8 +68,6 @@ function createRadio(config) {
 				selected(obj);
 				selectedIdx(obj.index);
 			},
-			blockView: blockView,
-			inlineView: inlineView,
 			isSelected: ko.computed(function() {
 				return obj === selected();
 			})
