@@ -9,8 +9,8 @@ function createRadio(config) {
 
 	var selected = config.selected || ko.observable();
 	var selectedIdx = config.selectedIdx || ko.observable();
-	var blockView = false;
-	var inlineView = false;
+	var blockView = config.view === "block";
+	var inlineView = config.view === "inline";
 	var variation = config.variation || "default";
 
 	if (!ko.isObservable(config.items) && config.items.length === 0) {
@@ -49,16 +49,11 @@ function createRadio(config) {
 	}); 
 
 	ko.computed(function() {
-		if(config.view === "block"){
-			blockView = true;
-		}
-	});
-
-	ko.computed(function() {
-		if(config.view === "inline"){
-			inlineView = true;
-		}
-	});	
+        var index = selectedIdx();
+        if (typeof index === "number" && items.peek()[index]) {
+            items.peek()[index].select();
+        }
+    });	
 
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
@@ -73,22 +68,15 @@ function createRadio(config) {
 				selected(obj);
 				selectedIdx(obj.index);
 			},
+			blockView: blockView,
+			inlineView: inlineView,
 			isSelected: ko.computed(function() {
 				return obj === selected();
 			}),
-			blockView: ko.computed(function() {
-				return config.view === "block";
-			}),
-			inlineView: ko.computed(function() {
-				return config.view === "inline";
-			})
 		};
 
 		Object.defineProperty(obj, "index", {
 			get: function() {
-				if (config.selectedIdx) {
-					return selectedIdx();
-				}
 				if (item.index !== undefined) { // This way items can define their own index if necessary - e.g used by the knob-tabs.
 					return item.index;
 				}
@@ -108,8 +96,8 @@ function createRadio(config) {
 		selected: selected,
 		selectedIdx: selectedIdx,
 		variation: variation,
-		mainBlockView: blockView,
-		mainInlineView: inlineView
+		blockView: blockView,
+		inlineView: inlineView
 	};
 }
 
