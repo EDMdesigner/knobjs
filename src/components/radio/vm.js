@@ -46,14 +46,15 @@ function createRadio(config) {
 		} else {
 			currentItems[0].select();
 		}
-	}); 
+	});
 
 	ko.computed(function() {
-        var index = selectedIdx();
+		var index = selectedIdx();
+		console.log("BEER", index, typeof index);
         if (typeof index === "number" && items.peek()[index]) {
             items.peek()[index].select();
         }
-    });	
+    });
 
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
@@ -72,7 +73,7 @@ function createRadio(config) {
 			inlineView: inlineView,
 			isSelected: ko.computed(function() {
 				return obj === selected();
-			}),
+			})
 		};
 
 		Object.defineProperty(obj, "index", {
