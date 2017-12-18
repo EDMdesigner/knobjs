@@ -9,8 +9,8 @@ function createRadio(config) {
 
 	var selected = config.selected || ko.observable();
 	var selectedIdx = config.selectedIdx || ko.observable();
-	var blockView = false;
-	var inlineView = false;
+	var blockView = config.view === "block";
+	var inlineView = config.view === "inline";
 	var variation = config.variation || "default";
 
 	if (!ko.isObservable(config.items) && config.items.length === 0) {
@@ -46,19 +46,15 @@ function createRadio(config) {
 		} else {
 			currentItems[0].select();
 		}
-	}); 
-
-	ko.computed(function() {
-		if(config.view === "block"){
-			blockView = true;
-		}
 	});
 
 	ko.computed(function() {
-		if(config.view === "inline"){
-			inlineView = true;
-		}
-	});	
+		var index = selectedIdx();
+		console.log("BEER", index, typeof index);
+        if (typeof index === "number" && items.peek()[index]) {
+            items.peek()[index].select();
+        }
+    });
 
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
@@ -75,12 +71,6 @@ function createRadio(config) {
 			},
 			isSelected: ko.computed(function() {
 				return obj === selected();
-			}),
-			blockView: ko.computed(function() {
-				return config.view === "block";
-			}),
-			inlineView: ko.computed(function() {
-				return config.view === "inline";
 			})
 		};
 

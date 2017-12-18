@@ -68,14 +68,19 @@ module.exports = function(dependencies) {
 			});
 		});
 
-		selectedIdx(defaultTab);
+		function showDefaultTab() {
+			setTimeout(function() {
+				selectedIdx(defaultTab);
+			}, 0);
+		}
 
 		return {
 			tabsData: tabsData,
 			buttonData: buttonData,
 			variation: variation,
 			selectedIdx: selectedIdx,
-			tabsGroup: tabsGroup
+			tabsGroup: tabsGroup,
+			showDefaultTab: showDefaultTab
 		};
 	};
 
