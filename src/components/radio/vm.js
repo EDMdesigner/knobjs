@@ -86,6 +86,9 @@ function createRadio(config) {
 
 		Object.defineProperty(obj, "index", {
 			get: function() {
+				if (config.selectedIdx) {
+					return selectedIdx();
+				}
 				if (item.index !== undefined) { // This way items can define their own index if necessary - e.g used by the knob-tabs.
 					return item.index;
 				}
