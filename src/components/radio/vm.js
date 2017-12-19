@@ -9,9 +9,10 @@ function createRadio(config) {
 
 	var selected = config.selected || ko.observable();
 	var selectedIdx = config.selectedIdx || ko.observable();
-	var blockView = false;
-	var inlineView = false;
+	var blockView = config.view === "block";
+	var inlineView = config.view === "inline";
 	var variation = config.variation || "default";
+	var onButtonClick = config.onButtonClick;
 
 	if (!ko.isObservable(config.items) && config.items.length === 0) {
 		throw new Error("config.items should not be empty");
@@ -19,17 +20,11 @@ function createRadio(config) {
 
 	var items = ko.computed(function() {
 		var itemList = ko.isObservable(config.items) ? config.items() : config.items;
-		return itemList.map(function(item) {
-			return createItemVm(item);
-		});
+		return itemList.map(createItemVm);
 	});
 
 	ko.computed(function() {
 		var currentItems = items();
-
-		if(config.noOptionsSelected) {
-			return;
-		}
 
 		if (currentItems.length === 0) {
 			return;
@@ -46,19 +41,14 @@ function createRadio(config) {
 		} else {
 			currentItems[0].select();
 		}
-	}); 
-
-	ko.computed(function() {
-		if(config.view === "block"){
-			blockView = true;
-		}
 	});
 
 	ko.computed(function() {
-		if(config.view === "inline"){
-			inlineView = true;
-		}
-	});	
+		var index = selectedIdx();
+        if (typeof index === "number" && items.peek()[index]) {
+            items.peek()[index].select();
+        }
+    });
 
 	function createItemVm(item) {
 		if (!item.label && !item.icon) {
@@ -73,14 +63,17 @@ function createRadio(config) {
 				selected(obj);
 				selectedIdx(obj.index);
 			},
+			click: function() {
+				if (typeof onButtonClick === "function") {
+					onButtonClick(obj.index);
+				}
+				obj.select();
+				if (typeof item.click === "function") {
+					item.click();
+				}
+			},
 			isSelected: ko.computed(function() {
 				return obj === selected();
-			}),
-			blockView: ko.computed(function() {
-				return config.view === "block";
-			}),
-			inlineView: ko.computed(function() {
-				return config.view === "inline";
 			})
 		};
 
@@ -97,7 +90,7 @@ function createRadio(config) {
 	}
 
 	if(config.noOptionsSelected) {
-		selected(false);
+		selected(null);
 	}
 
 	return {
@@ -105,8 +98,8 @@ function createRadio(config) {
 		selected: selected,
 		selectedIdx: selectedIdx,
 		variation: variation,
-		mainBlockView: blockView,
-		mainInlineView: inlineView
+		blockView: blockView,
+		inlineView: inlineView
 	};
 }
 

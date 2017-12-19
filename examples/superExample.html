@@ -618,7 +618,7 @@
 		<h2>knob-radio</h2>
 		<h4>Inline</h4>
 		<knob-radio params="
-			noOptionsSelected: true,	
+			noOptionsSelected: true,
 			view: 'inline',
 			group: 'test',
 			items: [
@@ -776,7 +776,7 @@
 
 		<h2>knob-tabs</h2>
 		<h3>Left orient</h3>
-			<knob-tabs params="defaultTab: 0" class="knob-tab orientation-left-top">
+			<knob-tabs params="defaultTab: 1" class="knob-tab orientation-left-top">
 				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
@@ -815,7 +815,7 @@
 		</knob-tabs>
 		<hr>
 		<h3>Top orient with top border</h3>
-		<knob-tabs params="defaultTab: 0" class="knob-tab top-border-variation">
+		<knob-tabs params="defaultTab: 1, onTabClick: function(idx) { console.log('You clicked tab' + idx + '!'); }" class="knob-tab top-border-variation">
 				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
@@ -854,8 +854,8 @@
 		</knob-tabs>
 		<hr>
 		<h3>Top orient with border bottom</h3>
-		<knob-tabs params="defaultTab: 0" class="border-bottom-variation knob-tab">
-				<knob-tab params="label: 'tab1', icon: '#icon-grid'">
+		<knob-tabs params="defaultTab: 2" class="border-bottom-variation knob-tab">
+				<knob-tab params="label: 'tab1', icon: '#icon-grid', click: function() { console.log('You clicked on tab1!') }">
 					<p>
 						Sed vitae condimentum libero. Praesent sollicitudin, diam non fringilla placerat, mi erat rutrum sapien, vitae placerat eros leo id est. Ut convallis libero at ante venenatis, nec vehicula metus mattis. Aliquam auctor neque eros, condimentum fermentum dui volutpat id. In ultrices tempor semper. Nam id semper massa. Nullam tincidunt nibh quis urna consectetur consequat. Curabitur porta sit amet velit id pulvinar. Nam luctus magna at mauris efficitur congue.
 					</p>
@@ -866,7 +866,7 @@
 						In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
 					</p>
 				</knob-tab>
-				<knob-tab params="icon: '#icon-grid'">
+				<knob-tab params="icon: '#icon-grid', click: function() { console.log('You clicked on tab2!') }">
 					<p>
 						In pulvinar risus eget dui lacinia mattis. Nullam nisi dui, mollis ac accumsan eget, bibendum sit amet sem. Donec luctus convallis pellentesque. Mauris vel purus tempus, suscipit elit at, ultrices est. Mauris vitae turpis pretium, dignissim nisi eu, semper nibh. Sed facilisis turpis venenatis congue dapibus. Etiam nibh diam, auctor sit amet ante nec, porttitor fermentum sapien. Aenean scelerisque tortor ligula, eu bibendum leo porttitor nec. Integer purus sapien, convallis ut vehicula pellentesque, varius quis diam. Mauris blandit magna nec magna finibus, vitae ultrices ex facilisis. Donec pretium facilisis orci, at ullamcorper justo viverra vel.
 					</p>
@@ -878,7 +878,7 @@
 					</p>
 
 				</knob-tab>
-				<knob-tab params="label: 'tabX'">
+				<knob-tab params="label: 'tabX', click: function() { console.log('You clicked on tab3!') }">
 					<p>
 						Suspendisse faucibus libero justo, pharetra egestas elit placerat in. Aliquam sed bibendum diam. Phasellus ultrices sed mi vitae porta. Ut arcu leo, ullamcorper at aliquam in, venenatis quis nisi. Nullam ut congue sem, vel malesuada erat. Maecenas congue lacus in urna porta rhoncus. Sed feugiat ornare dolor, vel molestie dui. Mauris pellentesque arcu eu orci efficitur posuere. Mauris mollis nec felis ac dignissim. Nullam aliquam turpis quis egestas aliquam. Etiam eget lobortis turpis. Maecenas faucibus est nec tincidunt laoreet. Quisque aliquam, lorem vel ultricies ullamcorper, nunc diam egestas metus, vel dignissim eros ipsum at arcu. Nulla tincidunt augue gravida mauris luctus, sit amet ultrices eros hendrerit. Integer interdum ex vitae odio efficitur, et varius est vulputate.
 					</p>

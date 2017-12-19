@@ -11,7 +11,8 @@ var dependencyPattern = {
 var configPattern = {
 	defaultTab: "optional number",
 	variation: "optional string",
-	selectedIdx: "optional observable"
+	selectedIdx: "optional observable",
+	onTabClick: "optional function"
 };
 
 var componentInfoPattern = {
@@ -40,6 +41,8 @@ module.exports = function(dependencies) {
 		var defaultTab = config.defaultTab || 0;
 		var variation = config.variation || "tab";
 		var selectedIdx = config.selectedIdx || ko.observable();
+		var displayRadio = ko.observable(false);
+		var onTabClick = config.onTabClick;
 
 		var tabsGroup = "tabsGroup_" + nextTabsGroupIdx;
 		nextTabsGroupIdx += 1;
@@ -68,6 +71,10 @@ module.exports = function(dependencies) {
 			});
 		});
 
+		function renderRadio() {
+			displayRadio(true);
+		}
+
 		selectedIdx(defaultTab);
 
 		return {
@@ -75,7 +82,10 @@ module.exports = function(dependencies) {
 			buttonData: buttonData,
 			variation: variation,
 			selectedIdx: selectedIdx,
-			tabsGroup: tabsGroup
+			tabsGroup: tabsGroup,
+			renderRadio: renderRadio,
+			displayRadio: displayRadio,
+			onTabClick: onTabClick
 		};
 	};
 
@@ -86,6 +96,7 @@ module.exports = function(dependencies) {
 			leftIcon: ko.observable(),
 			rightIcon: ko.observable(),
 			exists: ko.observable(false),
+			click: null,
 			index: index
 		};
 	}

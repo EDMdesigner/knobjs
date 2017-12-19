@@ -1,4 +1,4 @@
-<div class="knob-radio" data-bind="foreach: items, css: { 'knob-radio-block': mainBlockView , 'knob-radio-inline': mainInlineView }">
+<div class="knob-radio" data-bind="foreach: items, css: { 'knob-radio-block': blockView , 'knob-radio-inline': inlineView }">
 	<div data-bind="component: {
 		name: 'knob-button',
 		params: {
@@ -7,11 +7,11 @@
 			icon: icon,
 			radio: true,
 			group: group,
-			click: select
+			click: click
 		}
 	}, css: isSelected() ? 'active' : ''">
 	</div>
-	<!-- ko if: inlineView() || blockView() -->
+	<!-- ko if: $parent.inlineView || $parent.blockView -->
 	<div class="blockLabel">
 		<span data-bind="text: label"></span>
 	</div>
