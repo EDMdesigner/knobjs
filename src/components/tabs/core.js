@@ -9,7 +9,7 @@ var dependencyPattern = {
 };
 
 var configPattern = {
-	defaultTab: "optional number",
+	defaultTab: "optional nullable number",
 	variation: "optional string",
 	selectedIdx: "optional observable",
 	onTabClick: "optional function"
@@ -38,7 +38,7 @@ module.exports = function(dependencies) {
 		superschema.check(config, configPattern, "config");
 		superschema.check(componentInfo, componentInfoPattern, "componentInfo");
 
-		var defaultTab = config.defaultTab || 0;
+		var defaultTab = config.defaultTab;
 		var variation = config.variation || "tab";
 		var selectedIdx = config.selectedIdx || ko.observable();
 		var displayRadio = ko.observable(false);
@@ -75,7 +75,9 @@ module.exports = function(dependencies) {
 			displayRadio(true);
 		}
 
-		selectedIdx(defaultTab);
+		if (defaultTab || defaultTab === 0) {
+			selectedIdx(defaultTab);
+		}
 
 		return {
 			tabsData: tabsData,
