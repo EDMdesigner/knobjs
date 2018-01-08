@@ -20,8 +20,6 @@ module.exports = function(dependencies) {
 			throw new Error("config.value is mandatory and has to be an observable!");
 		}
 
-		var vm = {};
-		var active = ko.observable(config.value());
 		var square = ko.observable(false);
 		var disabled = ko.observable(false);
 
@@ -34,17 +32,15 @@ module.exports = function(dependencies) {
 		var value = config.value;
 		var click = function() {
 			if(!disabled()) {
-				active(!active());
 				value(!value());
 			}
 		};
-	
-		vm.value = value;
-		vm.click = click;
-		vm.active = active;
-		vm.square = square;
-		vm.disabled = disabled;
 
-		return vm;
+		return {
+			value: value,
+			click: click,
+			square: square,
+			disabled: disabled
+		};
 	};
 };
