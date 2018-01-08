@@ -54,7 +54,7 @@ describe("==== ToggleSwitch ====", function(){
 		it("interface", function() {
 			toggleVm = createToggleSwitch(config);
 
-			expect(ko.isObservable(toggleVm.active)).toBe(true);
+			expect(ko.isObservable(toggleVm.value)).toBe(true);
 			expect(typeof toggleVm.click).toBe("function");
 		});
 
@@ -64,10 +64,10 @@ describe("==== ToggleSwitch ====", function(){
 			expect(toggleVm.value()).toBe(false);
 
 			toggleVm.click();
-			expect(toggleVm.active()).toBe(true);
+			expect(toggleVm.value()).toBe(true);
 
 			toggleVm.click();
-			expect(toggleVm.active()).toBe(false);
+			expect(toggleVm.value()).toBe(false);
 		});
 	});
 });
