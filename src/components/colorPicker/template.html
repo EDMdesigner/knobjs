@@ -1,0 +1,25 @@
+<div class="color-picker">
+	<div class="color-picker-container">
+		<!-- <div class="jscolor cube" value="" data-bind=""></div> -->
+		<input value="ffcc00" class="cube jscolor" data-jscolor="{width:101, padding:0, shadow:false,
+    borderWidth:0, backgroundColor:'transparent', insetColor:'#000', styleElement:'styleSpan'}">
+		<div class="small-wrapper">
+			<div value=""><span id="styleSpan" data-bind="value: chosenColor"></span></div>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<knob-button class="rounded" params="
+				label: 'Default', 
+				label colorPickerButton.label, 
+				click: colorPickerButton.click">
+			</knob-button>
+		</div>
+	</div>
+</div>

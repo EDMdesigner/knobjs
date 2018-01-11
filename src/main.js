@@ -58,6 +58,14 @@ function initKnob(config) {
 	var labels = extend(true, {}, defaultLabels, config.labels);
 
 	registerComponent({
+		name: "color-picker",
+		createVm: require("./components/colorPicker/index"),
+		template: require("./components/colorPicker/template.html"),
+		css: require("./components/colorPicker/css")
+		//colors: config.colors
+	});
+
+	registerComponent({
 		name: "knob-button",
 		createVm: require("./components/button/vm"),
 		template: require("./components/button/template.html"),
