@@ -28,7 +28,7 @@ module.exports = function(dependencies) {
 			throw new Error("config.icon should be a string or an observable");
 		}
 
-		if (config.icons && typeof config.icons !== "object" && !ko.isObservable(config.icons)) {
+		if (config.icons && typeof config.icons !== "object") {
 			throw new Error("config.icons should be a string or an observable");
 		}
 
