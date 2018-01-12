@@ -29,7 +29,7 @@ module.exports = function(dependencies) {
 		}
 
 		if (config.icons && typeof config.icons !== "object") {
-			throw new Error("config.icons should be a string or an observable");
+			throw new Error("config.icons should be an object");
 		}
 
 		var visible = config.visible;
