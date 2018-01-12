@@ -8,7 +8,8 @@ var dependencyPattern = {
 
 var configPattern = {
 	visible: "observable boolean",
-	beforeClose: "optional function"
+	beforeClose: "optional function",
+	icons: "optional object"
 };
 
 module.exports = function(dependencies) {
@@ -27,10 +28,19 @@ module.exports = function(dependencies) {
 			throw new Error("config.icon should be a string or an observable");
 		}
 
+		if (config.icons && typeof config.icons !== "object" && !ko.isObservable(config.icons)) {
+			throw new Error("config.icons should be a string or an observable");
+		}
+
 		var visible = config.visible;
 		var beforeClose = config.beforeClose;
 		var title = config.title;
 		var icon = config.icon;
+		var icons = config.icons;
+		if(icons){
+			var backIcon = icons.back;
+		}
+		var closeIconOnLeft = config.closeIconOnLeft;
 
 		function closeButtonClick() {
 			if (beforeClose && beforeClose()) {
@@ -47,7 +57,10 @@ module.exports = function(dependencies) {
 			visible: visible,
 			title: title,
 			icon: icon,
-			close: closeButtonClick
+			close: closeButtonClick,
+			closeIconOnLeft: closeIconOnLeft,
+			icons: icons,
+			backIcon: backIcon
 		};
 	};
 };

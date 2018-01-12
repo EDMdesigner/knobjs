@@ -18,7 +18,8 @@ let interfacePattern = {
 	visible: "observable boolean",
 	title: "optional string",
 	icon: "optional string",
-	close: "function"
+	close: "function",
+	icons: "optional object"
 };
 
 let createVm, vm;
