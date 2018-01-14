@@ -1,23 +1,27 @@
 <div class="color-picker">
 	<div class="color-picker-container">
 		<!-- <div class="jscolor cube" value="" data-bind=""></div> -->
-		<input value="ffcc00" class="cube jscolor" data-jscolor="{width:101, padding:0, shadow:false,
-    borderWidth:0, backgroundColor:'transparent', insetColor:'#000', styleElement:'styleSpan'}">
+		<input id="valueSpan" class="cube jscolor" data-jscolor="{width:100, padding:0, shadow:false,
+    borderWidth:0, backgroundColor:'transparent', insetColor:'#000', styleElement:'styleSpan', valueElement:'valueSpan'}">
 		<div class="small-wrapper">
-			<div value=""><span id="styleSpan" data-bind="value: chosenColor"></span></div>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<span></span>
-			<knob-button class="rounded" params="
-				label: 'Default', 
-				label colorPickerButton.label, 
+			<p class="label" data-bind="text: defaultLabels.currentColor"></p>
+			<span id="valueSpan"></span>
+			<span id="styleSpan" data-bind="value: chosenColor"></span>
+			<p class="label" data-bind="text: defaultLabels.lastUsedColors"></p>
+			<div class="sample-wrapper">
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+				<span class="sample"></span>
+			</div>
+			<knob-button class="rounded picker-btn" params="
+				label: colorPickerButton.label, 
 				click: colorPickerButton.click">
 			</knob-button>
 		</div>

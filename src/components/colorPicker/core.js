@@ -8,6 +8,8 @@ module.exports = function(dependencies) {
 	return function createColorPickerBinding() {
 
 		var defaultLabels = {
+			currentColor: "Current color: ",
+			lastUsedColors: "Last used colors: ",
 			colorPickerButton: "OK"
 		};
 
@@ -22,7 +24,7 @@ module.exports = function(dependencies) {
 		
 
 		var chosenColor = ko.computed(function() {
-			
+
 		});
 		
 		/*
