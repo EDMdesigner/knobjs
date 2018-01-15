@@ -31,8 +31,12 @@ function createRadio(config) {
 		}
 
 		var sel = selectedIdx.peek();
+		var itemToSelect = currentItems.find(item => item.index === sel);
+		itemToSelect = itemToSelect || currentItems[0];
 
-		if (typeof sel === "number" && !isNaN(sel)) {
+		itemToSelect.select();
+
+		/*if (typeof sel === "number" && !isNaN(sel)) {
 			sel = Math.floor(sel);
 			sel %= currentItems.length;
 
@@ -40,13 +44,16 @@ function createRadio(config) {
 
 		} else {
 			currentItems[0].select();
-		}
+		}*/
 	});
 
 	ko.computed(function() {
 		var index = selectedIdx();
-        if (typeof index === "number" && items.peek()[index]) {
-            items.peek()[index].select();
+        if (typeof index === "number") {
+			var itemToSelect = items.peek().find(item => item.index === index);
+			if (itemToSelect) {
+				itemToSelect.select();
+			}
         }
     });
 
