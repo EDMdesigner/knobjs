@@ -59,10 +59,10 @@ function initKnob(config) {
 
 	registerComponent({
 		name: "color-picker",
-		createVm: require("./components/colorPicker/index"),
+		createVm: require("./components/colorPicker/vm"),
 		template: require("./components/colorPicker/template.html"),
-		css: require("./components/colorPicker/css")
-		//colors: config.colors
+		css: require("./components/colorPicker/css"),
+		colors: config.colors
 	});
 
 	registerComponent({

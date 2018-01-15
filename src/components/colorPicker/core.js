@@ -8,10 +8,23 @@ module.exports = function(dependencies) {
 	return function createColorPickerBinding() {
 
 		var defaultLabels = {
-			currentColor: "Current color: ",
-			lastUsedColors: "Last used colors: ",
+			currentColorLabel: "Current color: ",
+			lastUsedColorsLabel: "Last used colors: ",
 			colorPickerButton: "OK"
 		};
+
+		var currentColor = ko.observable("dddddd");
+
+		var defaultArray = new Array(10);
+		defaultArray.fill("ffffff");
+
+		var lastUsedColors = ko.observableArray(defaultArray);
+
+		ko.computed(function() {
+			var lastColor = currentColor();
+			lastUsedColors.unshift(lastColor);
+			lastUsedColors.pop();
+		});
 
 		var colorPickerButton = {
 			label: defaultLabels.colorPickerButton,
@@ -19,76 +32,46 @@ module.exports = function(dependencies) {
 		};
 
 		function colorPickerButtonClick() {
-
+			pickerEnabled(false);
 		}
-		
 
-		var chosenColor = ko.computed(function() {
+		var pickerEnabled = ko.observable(false);
 
-		});
-		
-		/*
-		ko.bindingHandlers.colorPicker = {			//valuAccessor lesz az observable
-			init: function(element, valueAccessor) {
-				// create layer div
-				var previewLayer = document.createElement("div");
-
-				previewLayer.setAttribute("class", "previewJSON-layer");
-				element.appendChild(previewLayer);
-				element.setAttribute("class", "previewJSON");
-			},
-			update: function(element, valueAccessor) {
-				var value = valueAccessor();
-				var config = ko.unwrap(value);
-
-				checkParams(config, configPattern, "config");
-
-				var mailJSON = config.mailJSON;
-				var scroll = config.scroll;
-				var height = config.height;
-				var interfaceObj = config.interface || {};
-				interfaceObj.callbacks = interfaceObj.callbacks || {};
-
-				var DOMHeightCallback = function() {};
-				if (typeof interfaceObj.callbacks.DOMHeight === "function") {
-					DOMHeightCallback = interfaceObj.callbacks.DOMHeight;
-				}
-
-
-				var serviceId = generateId();
-
-				var jsonPreviewConfig = {
-					id: serviceId,
-					parentElement: element,
-					documentJSON: mailJSON,
-					scroll: scroll,
-					height: height,
-					callbacks: {
-						DOMHeight: function(height) {
-							console.log("JSONpreview: " + height + " px DOMHeight received.");
-							DOMHeightCallback(height, {
-								iframe: pluginConnector.getInstance(serviceId).iframe,
-								parentElement: element
-							});
-
-							return;
-						}
-					}
-				};
-
-				pluginConnector.create(jsonPreviewConfig);
-
-				ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
-					pluginConnector.destroy(serviceId);
-				});
+		function togglePicker() {
+			if (!pickerEnabled) {
+				pickerEnabled(false);
 			}
-		};
-		*/
+			pickerEnabled(true);
 
+			/*
+			if (pickerEnabled) {
+				pickerEnabled(true);
+			}
+			*/
+		}
+		/*
+		function hidePicker() {
+			if (!pickerEnabled) {
+				return;
+			}
+
+			pickerEnabled(false);
+		}
+		*/
 		return {
 			defaultLabels: defaultLabels,
+
+			currentColor: currentColor,
+			//backgroundColor: backgroundColor,
+			lastUsedColors: lastUsedColors,
+			//curColor: curColor,
+
 			colorPickerButton: colorPickerButton,
-			chosenColor: chosenColor
+			//chosenColor: chosenColor,
+			//showPicker: showPicker,
+			//hidePicker: hidePicker,
+			togglePicker: togglePicker,
+			pickerEnabled: pickerEnabled
 		};
 	};
 };
