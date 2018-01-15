@@ -35,26 +35,15 @@ function createRadio(config) {
 		itemToSelect = itemToSelect || currentItems[0];
 
 		itemToSelect.select();
-
-		/*if (typeof sel === "number" && !isNaN(sel)) {
-			sel = Math.floor(sel);
-			sel %= currentItems.length;
-
-			currentItems[sel].select();
-
-		} else {
-			currentItems[0].select();
-		}*/
 	});
 
 	ko.computed(function() {
 		var index = selectedIdx();
-        if (typeof index === "number") {
-			var itemToSelect = items.peek().find(item => item.index === index);
-			if (itemToSelect) {
-				itemToSelect.select();
-			}
-        }
+
+		var itemToSelect = items.peek().find(item => item.index === index);
+		if (itemToSelect) {
+			itemToSelect.select();
+		}
     });
 
 	function createItemVm(item) {
