@@ -60,16 +60,9 @@ module.exports = function(dependencies) {
 		*/
 		return {
 			defaultLabels: defaultLabels,
-
 			currentColor: currentColor,
-			//backgroundColor: backgroundColor,
 			lastUsedColors: lastUsedColors,
-			//curColor: curColor,
-
 			colorPickerButton: colorPickerButton,
-			//chosenColor: chosenColor,
-			//showPicker: showPicker,
-			//hidePicker: hidePicker,
 			togglePicker: togglePicker,
 			pickerEnabled: pickerEnabled
 		};

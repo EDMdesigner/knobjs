@@ -2,10 +2,10 @@
 	
 	<span class="main-color" data-bind="click: togglePicker, style: { 'background-color': '#' + currentColor() }"></span>
 
-	<knob-tooltip class="primary arrow-right subdown" data-bind="visible: pickerEnabled">
+	<knob-tooltip class="arrow-right subdown picker-tooltip" data-bind="visible: pickerEnabled">
 		<div class="color-picker-container">
 			<input id="valueSpan" value="dddddd"
-				data-bind="value: currentColor" class="cube jscolor" data-jscolor="{width:100, padding:0, shadow:false,
+				data-bind="value: currentColor" class="cube jscolor" data-jscolor="{width:120, height:120, padding:0, shadow:false,
     			borderWidth:0, backgroundColor:'transparent', insetColor:'#000', styleElement:'styleSpan', valueElement:'valueSpan'}">
 			<div class="small-wrapper">
 				<p class="label" data-bind="text: defaultLabels.currentColorLabel"></p>

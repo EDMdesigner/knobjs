@@ -7,20 +7,23 @@ let cssTemplate = `
 		width: 20px;
 		height: 20px;
 		margin: 5px;
-		margin-left: 50px;
-		border: 1px solid black;
+		margin-left: 440px;
+		border: 1px solid #a9a9a9;
+		border-radius: 3px;
 		display: inline-flex;
 	}
+	.picker-tooltip {
+		margin-left: -440px;
+	}
 	.color-picker-container {
-		width: 380px;
+		width: 400px;
 		height: auto;
-		border: 1px solid #000;
-		background-color: #ffffff;
 	}
 	.cube {
 		display: inline-flex;
-		width: 100px;
-		margin: 20px;
+		width: 120px;
+		margin-top: 20px;
+		margin-right: 20px;
 	}
 	.small-wrapper {
 		display: inline-flex;
@@ -37,13 +40,15 @@ let cssTemplate = `
 	#styleSpan {
 		width: 20px;
 		height: 20px;
-		margin: 5px;
+		margin: 10px;
+		border-radius: 3px;
 		display: inline-flex;
 	}
 	.sample {
 		width: 20px;
 		height: 20px;
 		margin: 5px;
+		border-radius: 3px;
 		display: inline-flex;
 	}
 	.sample-wrapper {
