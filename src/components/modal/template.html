@@ -1,7 +1,8 @@
 <div class="knob-modal-overlay" data-bind="visible: visible">
 	<div class="knob-modal">
 		<div class="knob-modal__header">
-			<knob-button class="button-close" params="variation: 'modalHead', icon: '#icon-close', click: close"></knob-button>
+			<knob-button class="button-back" data-bind="visible: closeIconOnLeft" params="variation: 'modalHead', icon: backIcon, click: close"></knob-button>
+			<knob-button class="button-close" data-bind="visible: !closeIconOnLeft" params="variation: 'modalHead', icon: '#icon-close', click: close"></knob-button>
 
 			<span class="desc">
 				<svg class="icon">
