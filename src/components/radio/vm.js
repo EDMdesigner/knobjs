@@ -31,23 +31,19 @@ function createRadio(config) {
 		}
 
 		var sel = selectedIdx.peek();
+		var itemToSelect = currentItems.find(item => item.index === sel);
+		itemToSelect = itemToSelect || currentItems[0];
 
-		if (typeof sel === "number" && !isNaN(sel)) {
-			sel = Math.floor(sel);
-			sel %= currentItems.length;
-
-			currentItems[sel].select();
-
-		} else {
-			currentItems[0].select();
-		}
+		itemToSelect.select();
 	});
 
 	ko.computed(function() {
 		var index = selectedIdx();
-        if (typeof index === "number" && items.peek()[index]) {
-            items.peek()[index].select();
-        }
+
+		var itemToSelect = items.peek().find(item => item.index === index);
+		if (itemToSelect) {
+			itemToSelect.select();
+		}
     });
 
 	function createItemVm(item) {
