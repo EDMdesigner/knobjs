@@ -47,7 +47,8 @@ function initKnob(config) {
 			edit: "#icon-edit",
 			done: "#icon-done",
 			close: "#icon-close"
-		}
+		},
+		back: "#icon-back"
 	};
 
 	var defaultLabels = {
@@ -196,6 +197,9 @@ function initKnob(config) {
 		createVm: require("./components/modal/vm"),
 		template: require("./components/modal/template.html"),
 		css: require("./components/modal/css"),
+		icons: {
+			back: icons.back
+		},
 		colors: config.colors
 	});
 

@@ -125,6 +125,14 @@ let cssTemplate = `
 .knob-modal__content {
   padding: 10px;
 }
+.knob-modal > .knob-modal__header > .button-back > .knob-button {
+  float: left;
+  background-color: transparent;
+  border-color: transparent;
+}
+.knob-modal > .knob-modal__header .button-back button:hover svg {
+  fill: ${ colorShades.color2 };
+}
 
 `;
 	return cssTemplate;
