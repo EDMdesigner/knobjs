@@ -1,16 +1,34 @@
 "use strict";
 
+var superschema = require("superschema");
+
+var dependencyPattern = {
+	ko: "object",
+	extend: "function"
+};
+
+var defaultLabels = {
+	currentColorLabel: "Current color: ",
+	lastUsedColorsLabel: "Last used colors: ",
+	colorPickerButton: "OK"
+};
+
+var configPattern = {
+	labels: "optional object"
+};
+
 module.exports = function(dependencies) {
+	var checkParams = superschema.check;
+
+	checkParams(dependencies, dependencyPattern, "dependencies");
 
 	var ko = dependencies.ko;
+	var extend = dependencies.extend;
 
-	return function createColorPickerBinding() {
+	return function createColorPickerBinding(config) {
+		checkParams(config, configPattern, "config");
 
-		var defaultLabels = {
-			currentColorLabel: "Current color: ",
-			lastUsedColorsLabel: "Last used colors: ",
-			colorPickerButton: "OK"
-		};
+		var labels = extend(true, {}, defaultLabels, config.labels);
 
 		var currentColor = ko.observable("dddddd");
 
@@ -44,7 +62,7 @@ module.exports = function(dependencies) {
 		}
 		
 		return {
-			defaultLabels: defaultLabels,
+			labels: labels,
 			currentColor: currentColor,
 			lastUsedColors: lastUsedColors,
 			colorPickerButton: colorPickerButton,
