@@ -5,14 +5,14 @@
 	<knob-tooltip class="arrow-right subdown picker-tooltip" data-bind="visible: pickerEnabled">
 		<div class="color-picker-container">
 			<input id="valueSpan" value="dddddd"
-				data-bind="value: currentColor" class="cube jscolor" data-jscolor="{width:120, height:120, padding:0, shadow:false,
-    			borderWidth:0, backgroundColor:'transparent', insetColor:'#000', styleElement:'styleSpan', valueElement:'valueSpan'}">
+				data-bind="value: currentColor" class="color-input jscolor" data-jscolor="{width:120, height:120, padding:0, shadow:false,
+    			borderWidth:0, backgroundColor:'transparent', styleElement:'styleSpan', valueElement:'valueSpan'}">
 			<div class="small-wrapper">
-				<p class="label" data-bind="text: defaultLabels.currentColorLabel"></p>
+				<p class="picker-label" data-bind="text: defaultLabels.currentColorLabel"></p>
 				<span id="styleSpan" data-bind="
 				style: { 'background-color': '#' + currentColor() }
 				"></span>
-				<p class="label" data-bind="text: defaultLabels.lastUsedColorsLabel"></p>
+				<p class="picker-label" data-bind="text: defaultLabels.lastUsedColorsLabel"></p>
 				<div class="sample-wrapper" data-bind="foreach: lastUsedColors">
 					<span class="sample" data-bind="
 						style: { 'background-color': '#' + $data },
@@ -26,6 +26,5 @@
 			</div>
 		</div>
 	</knob-tooltip>
-
 	
 </div>

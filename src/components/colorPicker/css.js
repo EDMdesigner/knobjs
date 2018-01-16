@@ -13,13 +13,14 @@ let cssTemplate = `
 		display: inline-flex;
 	}
 	.picker-tooltip {
+		z-index: 9999;
 		margin-left: -440px;
 	}
 	.color-picker-container {
 		width: 400px;
 		height: auto;
 	}
-	.cube {
+	.color-input {
 		display: inline-flex;
 		width: 120px;
 		margin-top: 20px;
@@ -31,18 +32,20 @@ let cssTemplate = `
 		margin: 15px;
 		width: 180px;
 	}
-	.label {
-		margin: .5rem;
-	}
-	#valueSpan {
-		display: inline-flex;
+	.picker-label {
+		margin: 8px;
+		color: #000;
+		text-align: left;
 	}
 	#styleSpan {
 		width: 20px;
 		height: 20px;
 		margin: 10px;
 		border-radius: 3px;
-		display: inline-flex;
+	}
+	.sample-wrapper {
+		flex-wrap: wrap;
+		margin-bottom: 16px;
 	}
 	.sample {
 		width: 20px;
@@ -50,10 +53,6 @@ let cssTemplate = `
 		margin: 5px;
 		border-radius: 3px;
 		display: inline-flex;
-	}
-	.sample-wrapper {
-		flex-wrap: wrap;
-		margin-bottom: 1rem;
 	}
 	.picker-btn {
 		margin-left: auto;

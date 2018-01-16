@@ -1,4 +1,3 @@
-
 "use strict";
 
 module.exports = function(dependencies) {
@@ -31,33 +30,19 @@ module.exports = function(dependencies) {
 			click: colorPickerButtonClick
 		};
 
+		var pickerEnabled = ko.observable(false);
+
 		function colorPickerButtonClick() {
 			pickerEnabled(false);
 		}
-
-		var pickerEnabled = ko.observable(false);
 
 		function togglePicker() {
 			if (!pickerEnabled) {
 				pickerEnabled(false);
 			}
 			pickerEnabled(true);
-
-			/*
-			if (pickerEnabled) {
-				pickerEnabled(true);
-			}
-			*/
 		}
-		/*
-		function hidePicker() {
-			if (!pickerEnabled) {
-				return;
-			}
-
-			pickerEnabled(false);
-		}
-		*/
+		
 		return {
 			defaultLabels: defaultLabels,
 			currentColor: currentColor,
