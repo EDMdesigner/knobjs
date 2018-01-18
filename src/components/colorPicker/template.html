@@ -1,30 +1,28 @@
 <div class="color-picker">
-	
-	<span class="main-color" data-bind="click: togglePicker, style: { 'background-color': '#' + currentColor() }"></span>
+	<div class="color-picker-container">
 
-	<knob-tooltip class="arrow-right subdown picker-tooltip" data-bind="visible: pickerEnabled">
-		<div class="color-picker-container">
+		<div class="first-wrapper">
 			<input id="valueSpan" value="dddddd"
-				data-bind="value: currentColor" class="color-input jscolor" data-jscolor="{width:120, height:120, padding:0, shadow:false,
-    			borderWidth:0, backgroundColor:'transparent', styleElement:'styleSpan', valueElement:'valueSpan'}">
-			<div class="small-wrapper">
-				<p class="picker-label" data-bind="text: labels.currentColorLabel"></p>
-				<span id="styleSpan" data-bind="
-				style: { 'background-color': '#' + currentColor() }
-				"></span>
-				<p class="picker-label" data-bind="text: labels.lastUsedColorsLabel"></p>
-				<div class="sample-wrapper" data-bind="foreach: lastUsedColors">
-					<span class="sample" data-bind="
-						style: { 'background-color': '#' + $data },
-						click: function() { $parent.currentColor($data); }
-					"></span>
-				</div>
-				<knob-button class="rounded picker-btn" params="
-					label: colorPickerButton.label, 
-					click: colorPickerButton.click">
-				</knob-button>
-			</div>
+				data-bind="value: currentColor">
+			<div data-bind="colorjoe: currentColor"></div>
 		</div>
-	</knob-tooltip>
-	
+		
+		<div class="second-wrapper">
+			<p class="picker-label" data-bind="text: labels.currentColorLabel"></p>
+			<span id="styleSpan" data-bind="
+			style: { 'background-color': currentColor() }
+			"></span>
+			<p class="picker-label" data-bind="text: labels.lastUsedColorsLabel"></p>
+			<div class="sample-wrapper" data-bind="foreach: lastUsedColors">
+				<span class="sample" data-bind="
+					style: { 'background-color': $data },
+					click: function() { $parent.currentColor($data); }
+				"></span>
+			</div>
+			<knob-button class="rounded picker-btn" params="
+				label: colorPickerButton.label, 
+				click: colorPickerButton.click">
+			</knob-button>
+		</div>
+	</div>
 </div>

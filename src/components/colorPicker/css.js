@@ -1,36 +1,34 @@
+
 "use strict";
 
 module.exports = function() {
 
 let cssTemplate = `
-	.main-color {
-		width: 20px;
-		height: 20px;
-		margin: 5px;
-		margin-left: 440px;
-		border: 1px solid #a9a9a9;
-		border-radius: 3px;
-		display: inline-flex;
-	}
-	.picker-tooltip {
-		z-index: 9999;
-		margin-left: -440px;
-	}
 	.color-picker-container {
+		display: flex;
 		width: 400px;
 		height: auto;
+		border-radius: 6px;
+		border: 1px solid #f2f2f2;
+		box-shadow: 0 12px 22px 0 rgba(0, 0, 0, 0.24);
 	}
-	.color-input {
-		display: inline-flex;
-		width: 120px;
-		margin-top: 20px;
-		margin-right: 20px;
-	}
-	.small-wrapper {
+	.first-wrapper {
 		display: inline-flex;
 		flex-direction: column;
 		margin: 15px;
+		width: 200px;
+	}
+	.second-wrapper {
+		display: inline-flex;
+		flex-direction: column;
+		margin: 10px;
 		width: 180px;
+	}
+	#valueSpan {
+		display: inline-flex;
+		width: 114px;
+		height: 20px;
+		margin-left: 8px;
 	}
 	.picker-label {
 		margin: 8px;
@@ -56,7 +54,7 @@ let cssTemplate = `
 	}
 	.picker-btn {
 		margin-left: auto;
-		margin-right: 15px;
+		margin-right: 5px;
 	}
 `;
 	return cssTemplate;

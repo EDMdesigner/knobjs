@@ -279,6 +279,14 @@ function initKnob(config) {
 		colors: config.colors
 	});
 
+	registerComponent({
+		name: "color-picker-in-use",
+		createVm: require("./components/colorPickerInUse/vm"),
+		template: require("./components/colorPickerInUse/template.html"),
+		css: require("./components/colorPickerInUse/css"),
+		colors: config.colors
+	});
+
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
 	}
