@@ -55,7 +55,7 @@ let cssTemplate = `
 	fill: black;
 }
 .numericInputButtonsWrapper {
-	transform: scale(0.82);
+	transform: scale(0.71);
 }
 `;
 	return cssTemplate;

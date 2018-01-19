@@ -152,9 +152,11 @@ module.exports = function(dependencies) {
 			inputValue(newVal);
 			if(newVal === minValue()){
 				reachedMinValue(true);
+				reachedMaxValue(false);
 			}
 			if(newVal === maxValue()){
 				reachedMaxValue(true);
+				reachedMinValue(false);
 			}
 		});
 
