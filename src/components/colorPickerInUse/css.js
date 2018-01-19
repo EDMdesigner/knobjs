@@ -25,7 +25,7 @@ let cssTemplate = `
 		margin-top: -30px;
 		margin-right: 25px;
 	}
-	.arrow-right.subup .tooltip::after {
+	.color-picker-in-use .arrow-right.subup > .knob-tooltip-wrapper > .tooltip::after {
 	border-color: transparent transparent transparent #d9d9d9;
 	}
 `;

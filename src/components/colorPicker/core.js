@@ -91,9 +91,9 @@ module.exports = function(dependencies) {
 		return {
 			labels: labels,
 			currentColor: currentColor,
+			hideCallback: hideCallback,
 			lastUsedColors: lastUsedColors,
-			colorPickerButton: colorPickerButton,
-			hideCallback: hideCallback
+			colorPickerButton: colorPickerButton
 		};
 	};
 };

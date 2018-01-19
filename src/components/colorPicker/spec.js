@@ -1,15 +1,23 @@
-/*
 "use strict";
 
 var ko = require("knockout");
 var extend = require("extend");
 var superschema = require("superschema");
+var colorjoe = require("../../../lib/colorjoe");
 
 var core = require("./core");
 
 var dependencies = {
 	ko: ko,
 	extend: extend
+};
+
+var mockedHideCallback = function() {};
+var mockedCurrentColor = ko.observable("#00bee6");
+
+var config = {
+	currentColor: mockedCurrentColor,
+	hideCallback: mockedHideCallback
 };
 
 var interfacePattern = {
@@ -23,10 +31,10 @@ var interfacePattern = {
 	colorPickerButton: {
 		label: "string",
 		click: "function"
-	},
-	togglePicker: "function",
-	pickerEnabled: "observable"
+	}
 };
+
+/*
 
 var colorPicker;
 
@@ -34,36 +42,43 @@ describe("color picker test", () => {
 	beforeEach(() => {
 		colorPicker = core(dependencies);
 	});
-
-
-
 });
+*/
 
+describe("color picker test", function() {
 
-beforeEach(()=> {
-	middleware = core({
-		User: mockedUser
-	});
-	mockedReq = getMockedReq();
-	mockedRes = getMockedRes();
-	mockedUser.errorMessage = null;
-	spyOn(mockedRes, "send");
-});
+	var createVm, vm;
 
-beforeEach(function(){
-		mockLs = {
-			setItem: function(){},
-			getItem: function(){}
-		};
-
-		spyOn(mockLs, "setItem").and.callThrough();
-		spyOn(mockLs, "getItem").and.callThrough();
-
-		var createHelpBox = helpBoxCore({
-			ko: ko,
-			localStorage: mockLs
+	describe("config and dependency check", function() {
+		beforeEach(function() {
+			spyOn(superschema, "check").and.callThrough();
 		});
 
-	    vm = createHelpBox();
+		it("checks dependencies", function() {
+			core(dependencies);
+			expect(superschema.check.calls.mostRecent().args[0]).toBe(dependencies);
+		});
+
+		it("checks config", function() {
+			createVm = core(dependencies);
+			createVm(config);
+			expect(superschema.check.calls.mostRecent().args[0]).toBe(config);
+		});
 	});
-*/
+
+	describe("valid config", function() {
+		beforeEach(function() {
+			createVm = core(dependencies);
+			spyOn(config, "hideCallback").and.callThrough();
+			vm = createVm(config);
+		});
+
+		it("interface check", function() {
+			expect(function() {
+				superschema.check(vm, interfacePattern);
+			}).not.toThrow();
+		});
+
+		
+	});
+});

@@ -38,9 +38,9 @@ module.exports = function(dependencies) {
 		
 		return {
 			currentColorInUse: currentColorInUse,
+			pickerEnabled: pickerEnabled,
 			hidePicker: hidePicker,
-			togglePicker: togglePicker,
-			pickerEnabled: pickerEnabled
+			togglePicker: togglePicker
 		};
 	};
 };
