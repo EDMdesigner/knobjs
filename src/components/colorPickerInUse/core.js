@@ -23,6 +23,10 @@ module.exports = function(dependencies) {
 		var currentColorInUse = config.currentColorInUse;
 
 		var pickerEnabled = ko.observable(false);
+
+		function hidePicker() {
+			pickerEnabled(false);
+		}
 		
 		function togglePicker() {
 			if (!pickerEnabled) {
@@ -34,6 +38,7 @@ module.exports = function(dependencies) {
 		
 		return {
 			currentColorInUse: currentColorInUse,
+			hidePicker: hidePicker,
 			togglePicker: togglePicker,
 			pickerEnabled: pickerEnabled
 		};

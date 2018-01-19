@@ -7,9 +7,6 @@ let cssTemplate = `
 		display: flex;
 		width: 400px;
 		height: auto;
-		border-radius: 6px;
-		border: 1px solid #f2f2f2;
-		box-shadow: 0 12px 22px 0 rgba(0, 0, 0, 0.24);
 	}
 	.first-wrapper {
 		display: inline-flex;
@@ -21,12 +18,12 @@ let cssTemplate = `
 		display: inline-flex;
 		flex-direction: column;
 		margin: 10px;
-		width: 180px;
+		width: 190px;
 	}
 	#valueSpan {
 		display: inline-flex;
-		width: 114px;
-		height: 20px;
+		width: 120px;
+		height: 25px;
 		margin-left: 8px;
 	}
 	.picker-label {
@@ -37,7 +34,7 @@ let cssTemplate = `
 	#styleSpan {
 		width: 20px;
 		height: 20px;
-		margin: 10px;
+		margin: 8px;
 		border-radius: 3px;
 	}
 	.sample-wrapper {

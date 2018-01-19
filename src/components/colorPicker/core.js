@@ -2,7 +2,6 @@
 
 var superschema = require("superschema");
 var colorjoe = require("../../../lib/colorjoe");
-//var color = require("onecolor");
  
 var dependencyPattern = {
 	ko: "object",
@@ -17,7 +16,8 @@ var defaultLabels = {
 
 var configPattern = {
 	labels: "optional object",
-	currentColor: "observable string"
+	currentColor: "observable string",
+	hideCallback: "optional function"
 };
 
 module.exports = function(dependencies) {
@@ -58,6 +58,7 @@ module.exports = function(dependencies) {
 		var labels = extend(true, {}, defaultLabels, config.labels);
 
 		var currentColor = config.currentColor;
+		var hideCallback = config.hideCallback;
 
 		setTimeout(function() {
 			var joe = colorjoe.rgb("rgbPicker", currentColor());
@@ -77,11 +78,11 @@ module.exports = function(dependencies) {
 			click: colorPickerButtonClick
 		};
 
-		var pickerEnabled = ko.observable(false);
-
 		function colorPickerButtonClick() {
-			pickerEnabled(false);
-
+			if (hideCallback) {
+				hideCallback();
+			}
+			
 			var lastColor = currentColor();
 			lastUsedColors.unshift(lastColor);
 			lastUsedColors.pop();	
@@ -91,7 +92,8 @@ module.exports = function(dependencies) {
 			labels: labels,
 			currentColor: currentColor,
 			lastUsedColors: lastUsedColors,
-			colorPickerButton: colorPickerButton
+			colorPickerButton: colorPickerButton,
+			hideCallback: hideCallback
 		};
 	};
 };

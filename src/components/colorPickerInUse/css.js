@@ -20,6 +20,14 @@ let cssTemplate = `
 		width: 70px;
 		height: 20px;
 	}
+	.tooltip {
+		position: relative;
+		margin-top: -30px;
+		margin-right: 25px;
+	}
+	.arrow-right.subup .tooltip::after {
+	border-color: transparent transparent transparent #d9d9d9;
+	}
 `;
 	return cssTemplate;
 };

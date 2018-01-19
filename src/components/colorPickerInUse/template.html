@@ -5,8 +5,11 @@
 		<input class="color-input" data-bind="value: currentColorInUse">
 	</div>
 
-	<knob-tooltip class="arrow-right subdown picker-tooltip" data-bind="visible: pickerEnabled">
-		<color-picker params="currentColor: currentColorInUse"></color-picker>
+	<knob-tooltip class="light arrow-right subup picker-tooltip" data-bind="visible: pickerEnabled">
+		<color-picker params="
+			currentColor: currentColorInUse,
+			hideCallback: hidePicker
+		"></color-picker>
 	</knob-tooltip>
 
 </div>
