@@ -16,18 +16,46 @@ let cssTemplate = `
   display: inline-flex;
   flex-direction: column-reverse;
 }
-.knob-numericInput .knob-input:hover {
-	outline: 1px solid ${ colorShades.color4 };
+.knob-numericInput .control-button > knob-button > .knob-button:hover > .icon-wrapper > .icon {
+	fill: ${ colorShades.color4 };
+	outline: none;
 }
-.knob-numericInput .knob-input-wrapper.active > .knob-input {
-	border: none;
-	outline: 1px solid ${ colorShades.color6 };
+.knob-numericInput .control-button > knob-button > .knob-button:active > .icon-wrapper > .icon {
+	fill: ${ colorShades.color6 };
+	outline: none;
 }
-.knob-numericInput .knob-button:hover {
-	background-color: ${ colorShades.color4 } !important;
+.numerInputIncreaseWrapper > .control-button > knob-button > .knob-button {
+	background: transparent;
+	border-color: transparent;
+	outline: none;
 }
-.knob-numericInput .knob-button:active {
-	background-color: ${ colorShades.color6 } !important;
+.numerInputDecreaseWrapper > .control-button > knob-button > .knob-button {
+	background: transparent;
+	border-color: transparent;
+	outline: none;
+}
+.reachedMaxValue .knob-button {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+.reachedMinValue .knob-button {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+.knob-numericInput .control-button > .reachedMaxValue > .knob-button:hover > .icon-wrapper > .icon {
+	fill: black;
+}
+.knob-numericInput .control-button > .reachedMaxValue > .knob-button:active > .icon-wrapper > .icon {
+	fill: black;
+}
+.knob-numericInput .control-button > .reachedMinValue > .knob-button:hover > .icon-wrapper > .icon {
+	fill: black;
+}
+.knob-numericInput .control-button > .reachedMinValue > .knob-button:active > .icon-wrapper > .icon {
+	fill: black;
+}
+.numericInputButtonsWrapper {
+	transform: scale(0.82);
 }
 `;
 	return cssTemplate;
