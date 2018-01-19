@@ -219,5 +219,6 @@ ko.applyBindings({
 	warningColor: warningColor,
 	successColor: successColor,
 	errorColor: errorColor,
-	currentColor: ko.observable("#00bee6")
+	currentColor: ko.observable("#00bee6"),
+	currentColorInUse: ko.observable("#00bee6")
 });

@@ -7,7 +7,7 @@ var dependencyPattern = {
 };
 
 var configPattern = {
-	currentColor: "observable string"
+	currentColorInUse: "observable string"
 };
 
 module.exports = function(dependencies) {
@@ -20,21 +20,20 @@ module.exports = function(dependencies) {
 	return function createColorPickerBinding(config) {
 		checkParams(config, configPattern, "config");
 
-		var currentColor = ko.observable("#00bee6");
+		var currentColorInUse = config.currentColorInUse;
 
-		var pickerEnabled = ko.observable();
+		var pickerEnabled = ko.observable(false);
 		
 		function togglePicker() {
-			if (pickerEnabled === true) {
+			if (!pickerEnabled) {
 				pickerEnabled(false);
 			} else {
 				pickerEnabled(true);
 			}
-			
 		}
 		
 		return {
-			currentColor: currentColor,
+			currentColorInUse: currentColorInUse,
 			togglePicker: togglePicker,
 			pickerEnabled: pickerEnabled
 		};

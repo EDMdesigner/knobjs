@@ -57,7 +57,7 @@ module.exports = function(dependencies) {
 
 		var labels = extend(true, {}, defaultLabels, config.labels);
 
-		var currentColor = ko.observable("#00bee6");
+		var currentColor = config.currentColor;
 
 		setTimeout(function() {
 			var joe = colorjoe.rgb("rgbPicker", currentColor());
@@ -78,7 +78,7 @@ module.exports = function(dependencies) {
 		};
 
 		var pickerEnabled = ko.observable(false);
-		
+
 		function colorPickerButtonClick() {
 			pickerEnabled(false);
 

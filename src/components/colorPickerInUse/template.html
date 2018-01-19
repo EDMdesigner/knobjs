@@ -1,12 +1,12 @@
 <div class="color-picker-in-use">
 
 	<div class="holder-wrapper">
-		<span class="color-picker-holder" data-bind="click: togglePicker, style: { 'background-color': currentColor() }"></span>
-		<input class="color-input" data-bind="value: currentColor">
+		<span class="color-picker-holder" data-bind="click: togglePicker, style: { 'background-color': currentColorInUse() }"></span>
+		<input class="color-input" data-bind="value: currentColorInUse">
 	</div>
 
 	<knob-tooltip class="arrow-right subdown picker-tooltip" data-bind="visible: pickerEnabled">
-		<color-picker params="currentColor: currentColor"></color-picker>
+		<color-picker params="currentColor: currentColorInUse"></color-picker>
 	</knob-tooltip>
 
 </div>
