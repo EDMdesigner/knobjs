@@ -150,11 +150,11 @@ module.exports = function(dependencies) {
 		ko.computed(function() {
 			var newVal = validatedValue();
 			inputValue(newVal);
-			if(newVal === minValue()){
+			if(newVal <= minValue()){
 				reachedMinValue(true);
 				reachedMaxValue(false);
 			}
-			if(newVal === maxValue()){
+			if(newVal >= maxValue()){
 				reachedMaxValue(true);
 				reachedMinValue(false);
 			}
