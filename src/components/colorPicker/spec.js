@@ -34,17 +34,6 @@ var interfacePattern = {
 	}
 };
 
-/*
-
-var colorPicker;
-
-describe("color picker test", () => {
-	beforeEach(() => {
-		colorPicker = core(dependencies);
-	});
-});
-*/
-
 describe("color picker test", function() {
 
 	var createVm, vm;
@@ -79,6 +68,28 @@ describe("color picker test", function() {
 			}).not.toThrow();
 		});
 
-		
+		it("colorPickerButton click", function() {
+			var mockedLastColor = mockedCurrentColor();
+			spyOn(vm.lastUsedColors, "unshift").and.callThrough();
+			spyOn(vm.lastUsedColors, "pop").and.callThrough();
+
+			vm.colorPickerButton.click();
+			expect(config.hideCallback).toHaveBeenCalled();
+			expect(vm.lastUsedColors.unshift).toHaveBeenCalledWith(mockedLastColor);
+			expect(vm.lastUsedColors.pop).toHaveBeenCalled();
+		});
+
+
+
+
+
+
+/*
+
+		it("creates an array", function() {
+			var 
+			expect(vm.lastUsedColors).toBe()
+		});
+*/
 	});
 });

@@ -28,7 +28,7 @@ module.exports = function(dependencies) {
 			pickerEnabled(false);
 		}
 		
-		function togglePicker() {
+		function togglePicker() {		// TODO
 			if (!pickerEnabled) {
 				pickerEnabled(false);
 			} else {
