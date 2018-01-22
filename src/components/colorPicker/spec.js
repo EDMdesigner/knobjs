@@ -1,15 +1,32 @@
+
 "use strict";
 
 var ko = require("knockout");
 var extend = require("extend");
 var superschema = require("superschema");
-var colorjoe = require("../../../lib/colorjoe");
 
 var core = require("./core");
 
+var mockedColorjoe = function() {
+	return {};
+};
+
+var joeChangeCallback;
+
+var mockedRgb = {
+	on: function(param, joeChangeCallbackParam){
+		joeChangeCallback = joeChangeCallbackParam;
+	}
+};
+
+mockedColorjoe.rgb = function() {
+	return mockedRgb;
+};
+
 var dependencies = {
 	ko: ko,
-	extend: extend
+	extend: extend,
+	colorjoe: mockedColorjoe
 };
 
 var mockedHideCallback = function() {};
@@ -33,6 +50,8 @@ var interfacePattern = {
 		click: "function"
 	}
 };
+
+
 
 describe("color picker test", function() {
 
@@ -60,12 +79,50 @@ describe("color picker test", function() {
 			createVm = core(dependencies);
 			spyOn(config, "hideCallback").and.callThrough();
 			vm = createVm(config);
+
+			jasmine.clock().install();
 		});
+
+		afterEach(function() {
+			jasmine.clock().uninstall();
+		});
+
 
 		it("interface check", function() {
 			expect(function() {
 				superschema.check(vm, interfacePattern);
 			}).not.toThrow();
+		});
+
+		it("colorjoe bindinghandler", function() {
+			var mockedElement = {};
+			var mockedValueAccessor = ko.observable();
+
+			// init
+			spyOn(ko.bindingHandlers.colorjoe, "init").and.callThrough();
+			spyOn(ko.bindingHandlers.colorjoe, "update").and.callThrough();
+			spyOn(mockedRgb, "on").and.callThrough();
+
+			
+
+			expect(ko.bindingHandlers.colorjoe.init).toHaveBeenCalledWith(mockedElement, mockedValueAccessor);
+
+			expect(mockedElement.colorjoe).toEqual(mockedColorjoe.rgb());
+			expect(mockedRgb.on).toHaveBeenCalled();
+
+			// update
+			expect(ko.bindingHandlers.colorjoe.update).toHaveBeenCalledWith(mockedElement, mockedValueAccessor);
+			expect(mockedElement.colorjoe.set).toHaveBeenCalled();
+		});
+
+		it("creates the color picker", function() {
+			spyOn(mockedColorjoe, "rgb").and.callThrough();
+			spyOn(mockedRgb, "on").and.callThrough();
+
+			expect(mockedColorjoe.rgb).toHaveBeenCalledWith("rgbPicker", mockedCurrentColor);
+			
+			jasmine.clock().tick(3100);
+			expect(mockedRgb.on).toHaveBeenCalled();
 		});
 
 		it("colorPickerButton click", function() {
@@ -78,18 +135,5 @@ describe("color picker test", function() {
 			expect(vm.lastUsedColors.unshift).toHaveBeenCalledWith(mockedLastColor);
 			expect(vm.lastUsedColors.pop).toHaveBeenCalled();
 		});
-
-
-
-
-
-
-/*
-
-		it("creates an array", function() {
-			var 
-			expect(vm.lastUsedColors).toBe()
-		});
-*/
 	});
 });

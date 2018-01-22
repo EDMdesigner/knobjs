@@ -18,7 +18,7 @@ var config = {
 var interfacePattern = {
 	pickerEnabled: "observable",
 	hidePicker: "function",
-	togglePicker: "function"
+	showPicker: "function"
 };
 
 describe("color picker in use test", function() {
@@ -54,9 +54,9 @@ describe("color picker in use test", function() {
 			}).not.toThrow();
 		});
 
-		it("togglePicker function", function() {
+		it("showPicker function", function() {
 			expect(vm.pickerEnabled()).toBe(false);
-			vm.togglePicker();
+			vm.showPicker();
 			expect(vm.pickerEnabled()).toBe(true);
 		});
 

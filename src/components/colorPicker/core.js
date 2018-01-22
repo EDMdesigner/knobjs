@@ -1,11 +1,12 @@
 "use strict";
 
 var superschema = require("superschema");
-var colorjoe = require("../../../lib/colorjoe");
+//var colorjoe = require("../../../lib/colorjoe");
  
 var dependencyPattern = {
 	ko: "object",
-	extend: "function"
+	extend: "function",
+	colorjoe: "function"
 };
 
 var defaultLabels = {
@@ -27,6 +28,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 	var extend = dependencies.extend;
+	var colorjoe = dependencies.colorjoe;
 
 	ko.bindingHandlers.colorjoe = {
 		init: function(element, valueAccessor) {
@@ -35,7 +37,7 @@ module.exports = function(dependencies) {
 			var value = ko.unwrap(va);
 			var joe = colorjoe.rgb(element, value);
 
-			element.colorJoe = joe;
+			element.colorjoe = joe;
 
 			joe.on("change", function(color) {
 				if (ko.isObservable(va)) {
@@ -48,7 +50,7 @@ module.exports = function(dependencies) {
 			var va = valueAccessor();
 			var value = ko.unwrap(va);
 
-			element.colorJoe.set(value);
+			element.colorjoe.set(value);
 		}
 	};
 
