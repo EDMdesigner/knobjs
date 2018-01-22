@@ -7,6 +7,10 @@ const core = require("./core");
 
 let dependencies = {
 	ko: ko,
+	window: {
+		addEventListener: jasmine.createSpy(),
+		removeEventListener: jasmine.createSpy()
+	}
 };
 
 let config = {
@@ -58,8 +62,10 @@ describe("knob modal tests", function() {
 		it("visible.toggle toggles the visible value...", function() {
 			vm.visible.toggle();
 			expect(vm.visible()).toBe(false);
+			expect(dependencies.window.removeEventListener).toHaveBeenCalled();
 			vm.visible.toggle();
 			expect(vm.visible()).toBe(true);
+			expect(dependencies.window.addEventListener).toHaveBeenCalled();
 		});
 
 		describe("beforeClose callback", function() {

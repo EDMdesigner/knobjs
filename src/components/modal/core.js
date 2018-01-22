@@ -3,7 +3,8 @@
 var superschema = require("superschema");
 
 var dependencyPattern = {
-	ko: "object"
+	ko: "object",
+	window: "object"
 };
 
 var configPattern = {
@@ -16,6 +17,7 @@ module.exports = function(dependencies) {
 	superschema.check(dependencies, dependencyPattern, "modalDependencies");
 
 	var ko = dependencies.ko;
+	var window = dependencies.window;
 
 	return function createModal(config) {
 		superschema.check(config, configPattern, "modalConfig");
@@ -37,20 +39,45 @@ module.exports = function(dependencies) {
 		var title = config.title;
 		var icon = config.icon;
 		var icons = config.icons;
+
 		if(icons){
 			var backIcon = icons.back;
 		}
+
 		var closeIconOnLeft = config.closeIconOnLeft;
+
+		function listenToWindowClick(event) {
+			event.stopPropagation();
+			closeButtonClick();
+		}
 
 		function closeButtonClick() {
 			if (beforeClose && beforeClose()) {
 				return;
 			}
+
 			visible(false);
 		}
 
+		function listenToEscape(event) {
+			if(event.key === "Escape") {
+				event.stopPropagation();
+				closeButtonClick();
+			}
+		}
+
 		visible.toggle = function() {
-			visible(!visible());
+			var isVisible = visible();
+
+			if(isVisible) {
+				window.removeEventListener("keypress", listenToEscape);
+				window.removeEventListener("click", listenToWindowClick);
+			} else {
+				window.addEventListener("keypress", listenToEscape);
+				window.addEventListener("click", closeButtonClick);
+			}
+
+			visible(!isVisible);
 		};
 
 		return {
