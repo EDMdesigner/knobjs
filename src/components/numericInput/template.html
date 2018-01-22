@@ -7,72 +7,86 @@
 		right: right
 	">
 	</knob-input>
-	<span class="control-button">
-		<knob-button params="
-			icon: increaseButton.icon,
-			click: increaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: increaseButton.click">
-		</knob-button>
-	</span>
-	<span class="control-button">
-		<knob-button params="
-			icon: decreaseButton.icon,
-			click: decreaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: decreaseButton.click">
-		</knob-button>
-	</span>
-	
+	<div class="numericInputButtonsWrapper">
+		<div class="numerInputIncreaseWrapper">
+			<span class="control-button">
+				<knob-button params="
+					icon: increaseButton.icon,
+					click: increaseButton.click,
+					triggerOnHold: triggerOnHold
+				" data-bind="click: increaseButton.click, css: reachedMaxValue() ? 'reachedMaxValue' : ''">
+				</knob-button>
+			</span>
+		</div>
+		<div class="numerInputDecreaseWrapper">
+			<span class="control-button">
+				<knob-button params="
+					icon: decreaseButton.icon,
+					click: decreaseButton.click,
+					triggerOnHold: triggerOnHold
+				" data-bind="click: decreaseButton.click, css: reachedMinValue() ? 'reachedMinValue' : ''"">
+				</knob-button>
+			</span>
+		</div>
+	</div>
+
 	<!-- post input placeholder -->
 </div>
 
 <div class="knob-numericInput variation-split" data-bind="if: layoutArrangement === 'split'">
 	
 	<!-- pre input placeholder -->
-	<span class="control-button">
-		<knob-button params="
-			icon: decreaseButton.icon,
-			click: decreaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: decreaseButton.click">
-		</knob-button>
-	</span>
+	<div class="numerInputDecreaseWrapper">
+		<span class="control-button">
+			<knob-button params="
+				icon: decreaseButton.icon,
+				click: decreaseButton.click,
+				triggerOnHold: triggerOnHold
+			" data-bind="click: decreaseButton.click, css: reachedMinValue() ? 'reachedMinValue' : ''"">
+			</knob-button>
+		</span>
+	</div>
 	<knob-input params="
 		value: inputValue,
 		left: left,
 		right: right
 	">
 	</knob-input>
-	<span class="control-button">
-		<knob-button params="
-			icon: increaseButton.icon,
-			click: increaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: increaseButton.click">
-		</knob-button>
-	</span>
+	<div class="numerInputIncreaseWrapper">
+		<span class="control-button">		
+			<knob-button params="
+				icon: increaseButton.icon,
+				click: increaseButton.click,
+				triggerOnHold: triggerOnHold
+			" data-bind="click: increaseButton.click, css: reachedMaxValue() ? 'reachedMaxValue' : ''">
+			</knob-button>
+		</span>
+	</div>
 	
 	<!-- post input placeholder -->
 </div>
 
 <div class="knob-numericInput variation-front" data-bind="if: layoutArrangement === 'front'">
-	<span class="control-button">
-		<knob-button params="
-			icon: increaseButton.icon,
-			click: increaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: increaseButton.click">
-		</knob-button>
-	</span>
-	<span class="control-button">
-		<knob-button params="
-			icon: decreaseButton.icon,
-			click: decreaseButton.click,
-			triggerOnHold: triggerOnHold
-		" data-bind="click: decreaseButton.click">
-		</knob-button>
-	</span>
+	<div class="numerInputIncreaseWrapper">
+		<span class="control-button">
+			<knob-button params="
+				icon: increaseButton.icon,
+				click: increaseButton.click,
+				triggerOnHold: triggerOnHold
+			" data-bind="click: increaseButton.click, css: reachedMaxValue() ? 'reachedMaxValue' : ''">
+			</knob-button>
+		</span>
+	</div>
+	<div class="numerInputDecreaseWrapper">
+		<span class="control-button">
+			<knob-button params="
+				icon: decreaseButton.icon,
+				click: decreaseButton.click,
+				triggerOnHold: triggerOnHold
+			" data-bind="click: decreaseButton.click, css: reachedMinValue() ? 'reachedMinValue' : ''"">
+			</knob-button>
+		</span>
+	</div>
 	<!-- pre input placeholder -->
 	<knob-input params="
 		value: inputValue,
