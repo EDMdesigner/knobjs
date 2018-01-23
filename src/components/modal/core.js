@@ -4,7 +4,8 @@ var superschema = require("superschema");
 
 var dependencyPattern = {
 	ko: "object",
-	window: "object"
+	window: "object",
+	document: "object"
 };
 
 var configPattern = {
@@ -13,11 +14,29 @@ var configPattern = {
 	icons: "optional object"
 };
 
+var activeModals = []; //to track shown modals and only hide the last one which became active
+
 module.exports = function(dependencies) {
 	superschema.check(dependencies, dependencyPattern, "modalDependencies");
 
-	var ko = dependencies.ko;
-	var window = dependencies.window;
+	const ko = dependencies.ko;
+	const window = dependencies.window;
+
+	function listenToEscape(event) {
+		event.stopPropagation();
+		window.removeEventListener("keydown", listenToEscape);
+		if(activeModals.length === 0) {
+			return;
+		}
+
+		if(event.key === "Escape"  || event.keyCode === 27) {
+			activeModals.pop()();
+		}
+		return true;
+	}
+
+	window.addEventListener("keyup", () => window.addEventListener("keydown", listenToEscape));
+	window.addEventListener("keydown", listenToEscape);
 
 	return function createModal(config) {
 		superschema.check(config, configPattern, "modalConfig");
@@ -28,10 +47,6 @@ module.exports = function(dependencies) {
 
 		if (config.icon && typeof config.icon !== "string" && !ko.isObservable(config.icon)) {
 			throw new Error("config.icon should be a string or an observable");
-		}
-
-		if (config.icons && typeof config.icons !== "object") {
-			throw new Error("config.icons should be an object");
 		}
 
 		var visible = config.visible;
@@ -46,11 +61,6 @@ module.exports = function(dependencies) {
 
 		var closeIconOnLeft = config.closeIconOnLeft;
 
-		function listenToWindowClick(event) {
-			event.stopPropagation();
-			closeButtonClick();
-		}
-
 		function closeButtonClick() {
 			if (beforeClose && beforeClose()) {
 				return;
@@ -59,23 +69,16 @@ module.exports = function(dependencies) {
 			visible(false);
 		}
 
-		function listenToEscape(event) {
-			if(event.key === "Escape") {
-				event.stopPropagation();
-				closeButtonClick();
-			}
-		}
-
-		visible.toggle = function() {
+		ko.computed(() => {
 			var isVisible = visible();
 
 			if(isVisible) {
-				window.removeEventListener("keypress", listenToEscape);
-				window.removeEventListener("click", listenToWindowClick);
-			} else {
-				window.addEventListener("keypress", listenToEscape);
-				window.addEventListener("click", closeButtonClick);
+				activeModals.push(closeButtonClick);
 			}
+		});
+
+		visible.toggle = function() {
+			var isVisible = visible();
 
 			visible(!isVisible);
 		};
@@ -87,7 +90,9 @@ module.exports = function(dependencies) {
 			close: closeButtonClick,
 			closeIconOnLeft: closeIconOnLeft,
 			icons: icons,
-			backIcon: backIcon
+			backIcon: backIcon,
+			listenToEscape: listenToEscape,
+			activeModals: activeModals
 		};
 	};
 };

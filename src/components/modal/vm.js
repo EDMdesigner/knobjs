@@ -5,5 +5,6 @@ var modalCore = require("./core");
 
 module.exports = modalCore({
 	ko: ko,
-	window: window
+	window: window,
+	document: document
 });
