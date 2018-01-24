@@ -40,8 +40,8 @@ function initKnob(config) {
 		minus: "#icon-minus",
 		full: "#icon-copy",
 		numericInput:{
-			increase: "#icon-arrow-upward",
-			decrease: "#icon-arrow-downward"
+			increase: "#icon-uparrow",
+			decrease: "#icon-downarrow"
 		},
 		inlineTextEditor: {
 			edit: "#icon-edit",

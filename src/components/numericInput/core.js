@@ -66,6 +66,8 @@ module.exports = function(dependencies) {
 		var minValue = ko.isObservable(config.minValue) ? config.minValue : ko.observable(config.minValue);
 		var maxValue = ko.isObservable(config.maxValue) ? config.maxValue : ko.observable(config.maxValue);
 		var stepValue = ko.isObservable(config.step) ? config.step : ko.observable(config.step);
+		var reachedMinValue = ko.observable(false);
+		var reachedMaxValue = ko.observable(false);
 
 		// If precision is not given, we use the step as default.
 		var precisionValue = stepValue;
@@ -148,6 +150,14 @@ module.exports = function(dependencies) {
 		ko.computed(function() {
 			var newVal = validatedValue();
 			inputValue(newVal);
+			if(newVal <= minValue()){
+				reachedMinValue(true);
+				reachedMaxValue(false);
+			}
+			if(newVal >= maxValue()){
+				reachedMaxValue(true);
+				reachedMinValue(false);
+			}
 		});
 
 		var decreaseButton = {
@@ -161,9 +171,12 @@ module.exports = function(dependencies) {
 				var min = minValue();
 				if(val - step > min){
 					validatedValue(val - step);
+					reachedMinValue(false);
 				} else {
 					validatedValue(min);
+					reachedMinValue(true);
 				}
+				reachedMaxValue(false);
 			}
 		};
 
@@ -178,9 +191,12 @@ module.exports = function(dependencies) {
 				var max = maxValue();
 				if(val + step < max){
 					validatedValue(val + step);
+					reachedMaxValue(false);
 				} else {
 					validatedValue(max);
+					reachedMaxValue(true);
 				}
+				reachedMinValue(false);
 			}
 		};
 
@@ -197,7 +213,9 @@ module.exports = function(dependencies) {
 			left: left,
 			right: right,
 			triggerOnHold: triggerOnHold,
-			layoutArrangement: layoutArrangement
+			layoutArrangement: layoutArrangement,
+			reachedMinValue: reachedMinValue,
+			reachedMaxValue: reachedMaxValue
 		};
 	};
 };
