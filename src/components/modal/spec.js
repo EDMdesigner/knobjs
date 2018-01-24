@@ -37,7 +37,10 @@ let interfacePattern = {
 	title: "optional string",
 	icon: "optional string",
 	close: "function",
-	icons: "optional object"
+	icons: "optional object",
+	backIcon: "optional string",
+	listenToEscape: "function",
+	activeModals: "array"
 };
 
 let createVm, vm;
