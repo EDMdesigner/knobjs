@@ -5,8 +5,9 @@ module.exports = function() {
 let cssTemplate = `
 	.color-picker-container {
 		display: flex;
-		width: 400px;
+		width: 200px;
 		height: auto;
+		flex-direction: column;
 	}
 	.first-wrapper {
 		display: inline-flex;

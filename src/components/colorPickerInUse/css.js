@@ -6,7 +6,7 @@ let cssTemplate = `
 	.holder-wrapper {
 		display: flex;
 		width: 120px;
-		margin-left: 440px;
+		margin-left: 120px;
 	}
 	.color-picker-holder {
 		display: inline-flex;
@@ -22,11 +22,9 @@ let cssTemplate = `
 	}
 	.tooltip {
 		position: relative;
-		margin-top: -30px;
+		margin-top: 10px;
 		margin-right: 25px;
-	}
-	.color-picker-in-use .arrow-right.subup > .knob-tooltip-wrapper > .tooltip::after {
-	border-color: transparent transparent transparent #d9d9d9;
+		background: #fff;
 	}
 `;
 	return cssTemplate;
