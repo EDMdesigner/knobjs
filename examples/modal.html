@@ -54,6 +54,19 @@
 		callback: alertCallback">
 	</knob-alert>
 	<hr>
+	<h2>Modal in modal!</h2>
+	<knob-button class="button-close" params="label: 'Open Outer', variation: 'default', icon: '#icon-open', click: () => {modalInModal.outerVisible.toggle();}"></knob-button>
+	<knob-modal params="
+		title: 'modal in modals!',
+		visible: modalInModal.outerVisible
+	">
+		<knob-button class="button-close" params="label: 'Open Inner', variation: 'default', icon: '#icon-open', click: () => {modalInModal.innerVisible.toggle();}"></knob-button>
+		<knob-modal params="
+			title: 'innder modal!',
+			visible: modalInModal.innerVisible
+		">
+		</knob-modal>
+	</knob-modal>
 </div>
 <script src="/lib/knockout-latest.debug.js"></script>
 <script src="/knob.js"></script>
