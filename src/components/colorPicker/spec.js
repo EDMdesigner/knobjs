@@ -1,4 +1,3 @@
-
 "use strict";
 
 var ko = require("knockout");
@@ -11,12 +10,16 @@ var mockedColorjoe = function() {
 	return {};
 };
 
+var mockedElement = {};
+var mockedValueAccessor = ko.observable("mockedValue");
+
 var joeChangeCallback;
 
 var mockedRgb = {
 	on: function(param, joeChangeCallbackParam){
 		joeChangeCallback = joeChangeCallbackParam;
-	}
+	},
+	set: function() {}
 };
 
 mockedColorjoe.rgb = function() {
@@ -29,12 +32,11 @@ var dependencies = {
 	colorjoe: mockedColorjoe
 };
 
-var mockedHideCallback = function() {};
-var mockedCurrentColor = ko.observable("#00bee6");
+var mockedCurrentColor = ko.observable("randomColor");
 
 var config = {
 	currentColor: mockedCurrentColor,
-	hideCallback: mockedHideCallback
+	hideCallback: jasmine.createSpy()
 };
 
 var interfacePattern = {
@@ -50,8 +52,6 @@ var interfacePattern = {
 		click: "function"
 	}
 };
-
-
 
 describe("color picker test", function() {
 
@@ -76,11 +76,12 @@ describe("color picker test", function() {
 
 	describe("valid config", function() {
 		beforeEach(function() {
+			jasmine.clock().install();
+			mockedCurrentColor("randomColor");
+
 			createVm = core(dependencies);
-			spyOn(config, "hideCallback").and.callThrough();
 			vm = createVm(config);
 
-			jasmine.clock().install();
 		});
 
 		afterEach(function() {
@@ -94,45 +95,54 @@ describe("color picker test", function() {
 			}).not.toThrow();
 		});
 
-		it("colorjoe bindinghandler", function() {
-			var mockedElement = {};
-			var mockedValueAccessor = ko.observable();
+		it("creates bindinghandler", function() {
+			expect(typeof ko.bindingHandlers.colorjoe).toBe("object");
+			expect(typeof ko.bindingHandlers.colorjoe.init).toBe("function");
+			expect(typeof ko.bindingHandlers.colorjoe.update).toBe("function");
+		});
 
-			// init
-			spyOn(ko.bindingHandlers.colorjoe, "init").and.callThrough();
-			spyOn(ko.bindingHandlers.colorjoe, "update").and.callThrough();
+		it("colorjoe bindinghandler - init", function() {
 			spyOn(mockedRgb, "on").and.callThrough();
 
-			
+			ko.bindingHandlers.colorjoe.init(mockedElement, ko.observable(mockedValueAccessor));
 
-			expect(ko.bindingHandlers.colorjoe.init).toHaveBeenCalledWith(mockedElement, mockedValueAccessor);
-
-			expect(mockedElement.colorjoe).toEqual(mockedColorjoe.rgb());
+			expect(mockedElement.colorjoe).toBe(mockedRgb);
 			expect(mockedRgb.on).toHaveBeenCalled();
+			joeChangeCallback({
+				hex: ko.observable("superTestColor")
+			});
+			expect(mockedValueAccessor()).toBe("superTestColor");
+		});
 
-			// update
-			expect(ko.bindingHandlers.colorjoe.update).toHaveBeenCalledWith(mockedElement, mockedValueAccessor);
-			expect(mockedElement.colorjoe.set).toHaveBeenCalled();
+		it("colorjoe bindinghandler - update", function() {
+			spyOn(mockedRgb, "set").and.callThrough();
+
+			ko.bindingHandlers.colorjoe.update(mockedElement, ko.observable(mockedValueAccessor));
+
+			expect(mockedRgb.set).toHaveBeenCalledWith("superTestColor");
 		});
 
 		it("creates the color picker", function() {
 			spyOn(mockedColorjoe, "rgb").and.callThrough();
 			spyOn(mockedRgb, "on").and.callThrough();
 
-			expect(mockedColorjoe.rgb).toHaveBeenCalledWith("rgbPicker", mockedCurrentColor);
-			
 			jasmine.clock().tick(3100);
+			
+			expect(mockedColorjoe.rgb).toHaveBeenCalledWith("rgbPicker", "randomColor");
 			expect(mockedRgb.on).toHaveBeenCalled();
+			joeChangeCallback({
+				hex: ko.observable("anotherTestColor")
+			});
+			expect(mockedCurrentColor()).toBe("anotherTestColor");
 		});
 
 		it("colorPickerButton click", function() {
-			var mockedLastColor = mockedCurrentColor();
 			spyOn(vm.lastUsedColors, "unshift").and.callThrough();
 			spyOn(vm.lastUsedColors, "pop").and.callThrough();
 
 			vm.colorPickerButton.click();
 			expect(config.hideCallback).toHaveBeenCalled();
-			expect(vm.lastUsedColors.unshift).toHaveBeenCalledWith(mockedLastColor);
+			expect(vm.lastUsedColors.unshift).toHaveBeenCalledWith("randomColor");
 			expect(vm.lastUsedColors.pop).toHaveBeenCalled();
 		});
 	});
