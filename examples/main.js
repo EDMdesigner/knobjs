@@ -18,7 +18,7 @@ var errorColor = ko.observable("ee483b");
 
 var colors = ko.computed(function() {
 	return {
-		default: defaultColor(), 
+		default: defaultColor(),
 		primary: primaryColor(),
 		secondary: secondaryColor(),
 		light: lightColor(),
@@ -162,6 +162,12 @@ var infiniteList = {
 		loadMore: function() {}
 	}
 };
+
+var modalInModal = {
+	innerVisible: ko.observable(false),
+	outerVisible: ko.observable(false)
+};
+
 ko.applyBindings({
 	store: store,
 	numOfPages: ko.observable(),
@@ -189,7 +195,7 @@ ko.applyBindings({
 	warningVisible: ko.observable(false),
 	infoVisible: ko.observable(false),
 	successVisible: ko.observable(false),
-	errorVisible: ko.observable(false),	
+	errorVisible: ko.observable(false),
 	alertCallback: alertClose,
 	notificationVisible: ko.observable(false),
 	checkboxValue: ko.observable(false),
@@ -219,6 +225,7 @@ ko.applyBindings({
 	warningColor: warningColor,
 	successColor: successColor,
 	errorColor: errorColor,
+	modalInModal: modalInModal
 	currentColor: ko.observable("#00bee6"),
 	currentColorInUse: ko.observable("#00bee6")
 });
