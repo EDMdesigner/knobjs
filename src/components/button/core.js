@@ -10,9 +10,11 @@ module.exports = function(dependencies) {
 		throw new Error("dependencies.ko is mandatory!");
 	}
 
-	var ko = dependencies.ko;
+	const ko = dependencies.ko;
 
 	return function createButton(config) {
+		const window = dependencies.window;
+
 		if (!config) {
 			throw new Error("config is mandatory!");
 		}
@@ -41,6 +43,10 @@ module.exports = function(dependencies) {
 		var currentStyle = ko.observable("default");
 		vm.currentStyle = currentStyle;
 
+		window.addEventListener("mouseup", (event) => {
+			event.stopPropagation();
+			currentStyle("default");
+		});
 		
 		var decoratedClick = function() {
 			click();
@@ -65,7 +71,6 @@ module.exports = function(dependencies) {
 		
 		if (triggerOnHold) {
 			ko.computed(function() {
-
 				if (vm.currentStyle() === "active" && timeoutId) {
 					clearTimeout(timeoutId);
 					timeoutId = null;
