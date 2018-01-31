@@ -280,10 +280,10 @@ function initKnob(config) {
 	});
 
 	registerComponent({
-		name: "color-picker-in-use",
-		createVm: require("./components/colorPickerInUse/vm"),
-		template: require("./components/colorPickerInUse/template.html"),
-		css: require("./components/colorPickerInUse/css"),
+		name: "color-picker-in-tooltip",
+		createVm: require("./components/colorPickerInTooltip/vm"),
+		template: require("./components/colorPickerInTooltip/template.html"),
+		css: require("./components/colorPickerInTooltip/css"),
 		colors: config.colors
 	});
 

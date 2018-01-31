@@ -151,8 +151,27 @@
 		<br>
 		<br>
 		<h2>color picker in use - within tooltip</h2>
-		<color-picker-in-use params="currentColorInUse: currentColorInUse"></color-picker-in-use>
+		<color-picker-in-tooltip params="color: color"></color-picker-in-tooltip>
 		<br>
+
+
+		<!--
+		<h2>color picker in use - within tooltip</h2>
+		<div>
+			<div class="holder-wrapper">
+				<div class="holder-wrapper-right">
+					<span class="color-picker-holder" data-bind="click: showPicker, style: { 'background-color': color() }"></span>
+				</div>
+				<div class="holder-wrapper-left">
+					<input class="color-input" data-bind="value: color">
+				</div>
+			</div>
+
+			<color-picker-in-tooltip params="color: color"></color-picker-in-tooltip>
+		</div>
+		-->
+
+
 		<br>
 		<h2>knob-tooltip</h2>
 			<table width="400" height="200">

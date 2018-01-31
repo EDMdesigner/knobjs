@@ -1,24 +1,30 @@
 "use strict";
 
 var ko = require("knockout");
+var extend = require("extend");
 var superschema = require("superschema");
 
 var core = require("./core");
 
 var dependencies = {
-	ko: ko
+	ko: ko,
+	extend: extend
 };
 
-var mockedCurrentColorInUse = ko.observable("#00bee6");
+var mockedColor = ko.observable("#00bee6");
 
 var config = {
-	currentColorInUse: mockedCurrentColorInUse
+	color: mockedColor
 };
 
 var interfacePattern = {
+	labels: {
+		error: "string",
+	},
 	pickerEnabled: "observable",
 	hidePicker: "function",
-	showPicker: "function"
+	showPicker: "function",
+	error: "observable"
 };
 
 describe("color picker in use test", function() {
@@ -46,6 +52,7 @@ describe("color picker in use test", function() {
 		beforeEach(function() {
 			createVm = core(dependencies);
 			vm = createVm(config);
+			spyOn(vm, "error").and.callThrough();
 		});
 
 		it("interface check", function() {

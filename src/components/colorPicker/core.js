@@ -1,7 +1,6 @@
 "use strict";
 
 var superschema = require("superschema");
-//var colorjoe = require("../../../lib/colorjoe");
  
 var dependencyPattern = {
 	ko: "object",
@@ -12,6 +11,7 @@ var dependencyPattern = {
 var defaultLabels = {
 	currentColorLabel: "Current color: ",
 	lastUsedColorsLabel: "Last used colors: ",
+	transparent: "Transparent",
 	colorPickerButton: "OK"
 };
 
@@ -32,7 +32,6 @@ module.exports = function(dependencies) {
 
 	ko.bindingHandlers.colorjoe = {
 		init: function(element, valueAccessor) {
-
 			var va = valueAccessor();
 			var value = ko.unwrap(va);
 			var joe = colorjoe.rgb(element, value);
@@ -44,11 +43,14 @@ module.exports = function(dependencies) {
 					va(color.hex());
 				}
 			});
-
 		},
 		update: function(element, valueAccessor) {
 			var va = valueAccessor();
 			var value = ko.unwrap(va);
+
+			if (value === "transparent") {
+				return;
+			}
 
 			element.colorjoe.set(value);
 		}
@@ -70,7 +72,7 @@ module.exports = function(dependencies) {
 			});
 		}, 3000);
 
-		var defaultArray = new Array(10);
+		var defaultArray = new Array(8);
 		defaultArray.fill("ffffff");
 
 		var lastUsedColors = ko.observableArray(defaultArray);

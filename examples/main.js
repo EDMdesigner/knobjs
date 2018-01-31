@@ -227,5 +227,5 @@ ko.applyBindings({
 	errorColor: errorColor,
 	modalInModal: modalInModal,
 	currentColor: ko.observable("#00bee6"),
-	currentColorInUse: ko.observable("#00bee6")
+	color: ko.observable("#00bee6")
 });
