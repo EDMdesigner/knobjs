@@ -1,0 +1,7 @@
+<div class="notification-handler" data-bind="foreach: notifications">
+	<div class="notification" data-bind="css: 'variation-' + variation">
+		<span class="message" data-bind="text: message"></span>
+		<div data-bind="visible: variation === 'loading'" class="loader"></div>
+		<knob-button class="button-close" params="icon: '#icon-close', click: remove"></knob-button>
+	</div>
+</div>
