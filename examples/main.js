@@ -6,15 +6,15 @@ var superdata = require("superdata");
 var knob = require("knob-js");
 var ko = window.ko;
 
-var defaultColor = ko.observable("e2e2e2");
-var primaryColor = ko.observable("00bee6");
-var secondaryColor  = ko.observable("2d3291");
-var lightColor  = ko.observable("f9f4f4");
-var darkColor  = ko.observable("003540");
-var infoColor = ko.observable("25aaf2");
-var warningColor = ko.observable("f5a500");
-var successColor = ko.observable("54c059");
-var errorColor = ko.observable("ee483b");
+var defaultColor = ko.observable("#e2e2e2");
+var primaryColor = ko.observable("#00bee6");
+var secondaryColor  = ko.observable("#2d3291");
+var lightColor  = ko.observable("#f9f4f4");
+var darkColor  = ko.observable("#003540");
+var infoColor = ko.observable("#25aaf2");
+var warningColor = ko.observable("#f5a500");
+var successColor = ko.observable("#54c059");
+var errorColor = ko.observable("#ee483b");
 
 var colors = ko.computed(function() {
 	return {
@@ -122,6 +122,24 @@ function alertClose() {
 	window.alert("Alert closed");
 }
 
+// Notification
+let errorNotificationButton = {
+	label: "Error",
+	click: () => {window.knob.notifications.showError("Error notification", 4000);}
+};
+let successNotificationButton = {
+	label: "Success",
+	click: () => {window.knob.notifications.showSuccess("Success notification", 4000);}
+};
+let warningNotificationButton = {
+	label: "Warning",
+	click: () => {window.knob.notifications.showWarning("Warning notification", 4000);}
+};
+let loadingNotificationButton = {
+	label: "Loading",
+	click: () => {window.knob.notifications.showLoading("Loading notification", 4000);}
+};
+
 var up = true;
 var dropdown1 = {
 	items: ko.observableArray([]),
@@ -170,6 +188,11 @@ var modalInModal = {
 
 ko.applyBindings({
 	store: store,
+	// Notification
+	errorNotificationButton: errorNotificationButton,
+	successNotificationButton: successNotificationButton,
+	warningNotificationButton: warningNotificationButton,
+	loadingNotificationButton: loadingNotificationButton,
 	numOfPages: ko.observable(),
 	numOfItems: ko.observable(1000),
 	itemsPerPage: ko.observable(10),

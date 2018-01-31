@@ -68,6 +68,25 @@ variation | string                 | No           |                       | By g
 </script>
 ```
 
+
+## knob-notification
+If you place this component somewhere in your html code, knob attaches an object called notifications to its interface. It doesn't need params like other components, You can use it like this:
+
+```html
+	<knob-notification></knob-notification>
+```
+After that, you can call the following 4 functions in javascript code
+
+```js
+	window.knob.notifications.showError("Error text", 1111)
+	window.knob.notifications.showWarning("Warning text", 1111)
+	window.knob.notifications.showSuccess("Succes text", 1111)
+	window.knob.notifications.showLoading("Loading text", 1111)
+```
+They all have 2 parameters, the text to show, and the time to live in ms. After the given time the notifications will disappear.
+The notifications will have position: absolute, and top: 0 css parameters on them.
+
+
 ## knob-input
 
 This is the other most basic component in knobjs. It's just a simple input, but you can style it in the [knob way](#styling-knob-components).

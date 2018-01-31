@@ -23,7 +23,10 @@
 	</style>
 </head>
 <body>
-<div class="example">
+	<knob-notification></knob-notification>
+
+
+	<div class="example">
 	<!-- inject:svg --><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-add" viewBox="0 0 32 32">
 <path d="M25.333 17.333h-8v8h-2.667v-8h-8v-2.667h8v-8h2.667v8h8v2.667z"/>
 </symbol><symbol id="icon-arrow-downward" viewBox="0 0 32 32">
@@ -177,24 +180,54 @@
 	<h2>knob-notification-bar</h2>
 	<knob-button params="label: 'Open warning', variation: 'default', icon: '#icon-open', click: function() {notificationVisible.toggle();}"></knob-button>
 	<a href="" data-bind="click: function() {notificationVisible.toggle();}">Open notification</a>
-
-	<knob-notification params="
-		message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur molestias error, quia aliquid, illo enim vel asperiores neque obcaecati debitis nesciunt molestiae unde quas, ipsam amet fugiat quibusdam. Expedita, pariatur.',
-		icon: '#icon-done',
-		variation: 'success',
-		visible: notificationVisible
-	">
-	</knob-notification>
-
+	
 	<h2>knob progress bar</h2>
 	<div class="knob-progress">
 		<div class="progress-bar" role="progressbar"  style="width:70%">70%	</div>
 	</div>
-
+	
+	
+	
 -->
 
-	<h2>knob-toggleswitch</h2>
+	<h2>knob-notification</h2>
 
+	Show notification: 
+	<knob-button class="variation-error" params="
+		variation: 'error',
+		label: errorNotificationButton.label,
+		click: errorNotificationButton.click
+	">
+	</knob-button>
+	
+	<knob-button class="variation-success" params="
+		variation: 'success',
+		label: successNotificationButton.label,
+		click: successNotificationButton.click
+	">
+	</knob-button>
+	
+	<knob-button class="variation-warning" params="
+		variation: 'warning',
+		label: warningNotificationButton.label,
+		click: warningNotificationButton.click
+	">
+	</knob-button>
+	
+	<knob-button params="
+		variation: 'default',
+		label: loadingNotificationButton.label,
+		click: loadingNotificationButton.click
+	">
+	</knob-button>
+
+	<br>
+	<br>
+	<br>
+	<hr>
+	
+	<h2>knob-toggleswitch</h2>
+	
 	<knob-toggleswitch params="value: toggleValue">
 	</knob-toggleswitch>
 

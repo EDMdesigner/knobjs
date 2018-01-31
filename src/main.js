@@ -273,10 +273,10 @@ function initKnob(config) {
 	});
 
 	registerComponent({
-		name: "knob-notification-handler",
-		createVm: require("./components/notificationHandler/vm"),
-		template: require("./components/notificationHandler/template.html"),
-		css: require("./components/notificationHandler/css"),
+		name: "knob-notification",
+		createVm: require("./components/notification/vm"),
+		template: require("./components/notification/template.html"),
+		css: require("./components/notification/css"),
 		colors: config.colors
 	});
 
