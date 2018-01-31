@@ -8,6 +8,7 @@ var extend = require("extend");
 var ko = require("knockout");
 var superschema = require("superschema");
 
+var notifications = require("./utils/notifications");
 var registerComponent = require("./knobRegisterComponent");
 
 var listVm = require("./components/list/vm");
@@ -271,12 +272,21 @@ function initKnob(config) {
 		colors: config.colors,
 	});
 
+	registerComponent({
+		name: "knob-notification",
+		createVm: require("./components/notification/vm"),
+		template: require("./components/notification/template.html"),
+		css: require("./components/notification/css"),
+		colors: config.colors
+	});
+
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
 	}
 }
 
 module.exports = {
+	notifications: notifications,
 	init: initKnob,
 	registerComponent: registerComponent,
 	listVm: listVm
