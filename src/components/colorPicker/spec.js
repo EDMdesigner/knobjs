@@ -75,7 +75,7 @@ describe("color picker test", function() {
 		});
 	});
 
-	xdescribe("valid config", function() {
+	describe("valid config", function() {
 		beforeEach(function() {
 			jasmine.clock().install();
 			mockedCurrentColor("randomColor");

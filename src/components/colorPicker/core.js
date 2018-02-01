@@ -48,6 +48,10 @@ module.exports = function(dependencies) {
 			var va = valueAccessor();
 			var value = ko.unwrap(va);
 
+			if (value === null) {
+				return;
+			}
+
 			if (value === "transparent") {
 				return;
 			}
