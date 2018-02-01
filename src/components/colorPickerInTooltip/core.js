@@ -23,7 +23,7 @@ module.exports = function(dependencies) {
 	var ko = dependencies.ko;
 	var extend = dependencies.extend;
 
-	return function createColorPickerBinding(config) {
+	return function createColorPickerTooltip(config) {
 		checkParams(config, configPattern, "config");
 		var labels = extend(true, {}, defaultLabels, config.labels);
 
@@ -49,11 +49,7 @@ module.exports = function(dependencies) {
 				error("");
 
 				if (newValue === "") {
-					return;
-				}
-
-				if (newValue === "transparent") {
-					return color("transparent");
+					return color("");
 				}
 
 				var hexCodeRegex = /^#([A-Fa-f0-9]{6})$/;

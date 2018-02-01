@@ -30,6 +30,11 @@ module.exports = function(dependencies) {
 	var extend = dependencies.extend;
 	var colorjoe = dependencies.colorjoe;
 
+	var defaultArray = new Array(8);
+	defaultArray.fill("ffffff");
+
+	var lastUsedColors = ko.observableArray(defaultArray);
+
 	ko.bindingHandlers.colorjoe = {
 		init: function(element, valueAccessor) {
 			var va = valueAccessor();
@@ -60,7 +65,7 @@ module.exports = function(dependencies) {
 		}
 	};
 
-	return function createColorPickerBinding(config) {
+	return function createColorPicker(config) {
 		checkParams(config, configPattern, "config");
 
 		var labels = extend(true, {}, defaultLabels, config.labels);
@@ -75,12 +80,7 @@ module.exports = function(dependencies) {
 				currentColor(color.hex());
 			});
 		}, 3000);
-
-		var defaultArray = new Array(8);
-		defaultArray.fill("ffffff");
-
-		var lastUsedColors = ko.observableArray(defaultArray);
-		
+	
 		var colorPickerButton = {
 			label: defaultLabels.colorPickerButton,
 			click: colorPickerButtonClick
@@ -92,8 +92,14 @@ module.exports = function(dependencies) {
 			}
 			
 			var lastColor = currentColor();
+
+			if (lastUsedColors.indexOf(lastColor) > -1) {
+				lastUsedColors.remove(lastColor);
+			} else {
+				lastUsedColors.pop();
+			}
+
 			lastUsedColors.unshift(lastColor);
-			lastUsedColors.pop();	
 		}
 		
 		return {
