@@ -32,6 +32,10 @@ let config = {
 	beforeClose: () => false
 };
 
+let componentInfo = {
+	element: {}
+};
+
 let interfacePattern = {
 	visible: "observable boolean",
 	title: "optional string",
@@ -59,7 +63,7 @@ describe("knob modal tests", function() {
 
 		it("checks config", function() {
 			createVm = core(dependencies);
-			createVm(config);
+			createVm(config, componentInfo);
 			expect(superschema.check.calls.mostRecent().args[0]).toBe(config);
 		});
 
@@ -73,7 +77,7 @@ describe("knob modal tests", function() {
 			}).toThrowError();
 		});
 
-		it("error throws", () => {
+		it("more error throws", () => {
 			const errorConfig = extend(true, {}, config);
 			errorConfig.title = 1;
 
@@ -85,14 +89,18 @@ describe("knob modal tests", function() {
 	});
 
 	describe("valid config", function() {
-		beforeEach(function() {
+		beforeEach(function () {
 			spyOn(dependencies.window, "addEventListener").and.callThrough();
 
 			dependencies.window.addEventListener.calls.reset();
 			dependencies.window.removeEventListener.calls.reset();
 
 			createVm = core(dependencies);
-			vm = createVm(config);
+			vm = createVm(config, componentInfo);
+		});
+
+		afterEach(() => {
+			vm.dispose();
 		});
 
 		it("interface check", function() {
@@ -112,7 +120,7 @@ describe("knob modal tests", function() {
 		it("cause of the if(icons) branch", () => {
 			config.icons = {back: "precisely mocked icon"};
 
-			vm = createVm(config);
+			vm = createVm(config, componentInfo);
 		});
 
 		it("adds event listeners", () => {
@@ -143,7 +151,7 @@ describe("knob modal tests", function() {
 			it("without beforeClose 'close' closes the modal", function() {
 				vm = createVm({
 					visible: ko.observable(true)
-				});
+				}, componentInfo);
 				vm.close();
 				expect(vm.visible()).toBe(false);
 			});
@@ -157,7 +165,7 @@ describe("knob modal tests", function() {
 				vm = createVm({
 					visible: ko.observable(true),
 					beforeClose: () => true
-				});
+				}, componentInfo);
 				vm.close();
 				expect(vm.visible()).toBe(true);
 			});

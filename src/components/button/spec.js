@@ -29,6 +29,16 @@ var label = "label";
 var value = "value";
 var click = function() {};
 
+var window = {
+	addEventListener: (type, callback) => callback(mockedEvent),
+	removeEventListener: jasmine.createSpy()
+};
+
+const mockedEvent = {
+	stopPropagation: jasmine.createSpy(),
+	event: "mouseup"
+};
+
 describe("Button", function() {
 
 	describe("Invalid config", function() {
@@ -36,7 +46,8 @@ describe("Button", function() {
 
 		var createButton = buttonCore({
 			ko: ko,
-			base: mockBase
+			base: mockBase,
+			window: window
 		});
 
 		it("missing config", function() {
@@ -53,7 +64,6 @@ describe("Button", function() {
 					leftIcon: leftIcon,
 					label: label,
 					value: value,
-
 					click: "notAFunction"
 				});
 			}).toThrowError("click has to be a function!");
@@ -79,6 +89,11 @@ describe("Button", function() {
 		var buttonVm;
 
 		beforeEach(function() {
+			spyOn(window, "addEventListener").and.callThrough();
+
+			window.addEventListener.calls.reset();
+			window.removeEventListener.calls.reset();
+
 			function createMockBaseFunction() {
 				return function() {
 					var vm = {};
@@ -87,17 +102,14 @@ describe("Button", function() {
 				};
 			}
 
-			
-
 			mockBase = createMockBaseFunction();
 
 			createButton = buttonCore({
 				ko: ko,
-				base: mockBase
+				base: mockBase,
+				window: window
 			});
 		});
-
-		
 
 		it("config.icon", function() {
 			var config = {
@@ -110,7 +122,6 @@ describe("Button", function() {
 				value: value,
 				click: click
 			};
-
 
 			buttonVm = createButton(config);
 
@@ -128,7 +139,8 @@ describe("Button", function() {
 				leftIcon: leftIcon,
 				label: label,
 				value: value,
-				click: click
+				click: click,
+
 			};
 
 			buttonVm = createButton(config);
@@ -144,6 +156,23 @@ describe("Button", function() {
 			expect(ko.isObservable(buttonVm.label)).toBe(true);
 			expect(typeof buttonVm.value).toBe(typeof config.value);
 		});
+
+
+		it("adds event listeners", () => {
+			var config = {
+				componentName: componentName,
+				variation: variation,
+				initialState: initialState,
+				style: style,
+				leftIcon: leftIcon,
+				label: label,
+				value: value,
+				click: click
+			};
+
+			buttonVm = createButton(config);
+			expect(window.addEventListener).toHaveBeenCalledTimes(1);
+		});	
 
 		it("should call click only once without triggerOnHold", function() {
 			var config = {

@@ -1,6 +1,14 @@
 @import "variables";
 @import "scaffolding";
 
+html {
+	width: 100%;
+}
+
+body {
+	position: relative;
+	width: 100%;
+}
 .example {
 	margin: 0 auto;
 	width: 960px;
