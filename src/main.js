@@ -280,6 +280,22 @@ function initKnob(config) {
 		colors: config.colors
 	});
 
+	registerComponent({
+		name: "color-picker",
+		createVm: require("./components/colorPicker/vm"),
+		template: require("./components/colorPicker/template.html"),
+		css: require("./components/colorPicker/css"),
+		colors: config.colors
+	});
+
+	registerComponent({
+		name: "color-picker-in-tooltip",
+		createVm: require("./components/colorPickerInTooltip/vm"),
+		template: require("./components/colorPickerInTooltip/template.html"),
+		css: require("./components/colorPickerInTooltip/css"),
+		colors: config.colors
+	});
+
 	if (config.background) {
 		document.body.style.backgroundColor = config.background;
 	}

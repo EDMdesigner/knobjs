@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>KnobJS 2.0</title>
 	<link rel="stylesheet" href="/lib/normalize.css">
+	<link rel="stylesheet" href="/lib/colorjoe.css">
 	<link rel="stylesheet" href="/examples/example.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 </head>
@@ -141,6 +142,12 @@
 		</tr>
 		</table>
 		<h3>and get ready for the magic...</h3>
+		<br>
+		<h2>color picker in use - within tooltip</h2>
+		<div style="width: 300px; position: relative;">
+			<color-picker-in-tooltip style="display: block; margin-bottom: 170px;" params="color: color"></color-picker-in-tooltip>
+		</div>
+		<br>
 		<h2>knob-tooltip</h2>
 			<table width="400" height="200">
 				<tr>
@@ -1017,8 +1024,6 @@
 			step: 1,
 			precision: 0
 		"></knob-numericinput>
-
-
 </div>
 <script src="/lib/knockout-latest.debug.js"></script>
 <script src="/knob.js"></script>
