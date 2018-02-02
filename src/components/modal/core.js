@@ -23,14 +23,14 @@ module.exports = function(dependencies) {
 	const window = dependencies.window;
 
 	function listenToEscape(event) {
-		event.stopPropagation();
 		window.removeEventListener("keydown", listenToEscape);
-		if(activeModals.length === 0) {
+		if (activeModals.length === 0) {
 			return;
 		}
 
-		if(event.key === "Escape"  || event.keyCode === 27) {
-			activeModals.pop()();
+		if (event.key === "Escape" || event.keyCode === 27) {
+			event.stopPropagation();
+			activeModals[activeModals.length - 1].closeButtonClick();
 		}
 		return true;
 	}
@@ -38,7 +38,7 @@ module.exports = function(dependencies) {
 	window.addEventListener("keyup", () => window.addEventListener("keydown", listenToEscape));
 	window.addEventListener("keydown", listenToEscape);
 
-	return function createModal(config) {
+	return function createModal(config, componentInfo) {
 		superschema.check(config, configPattern, "modalConfig");
 
 		if (config.title && typeof config.title !== "string" && !ko.isObservable(config.title)) {
@@ -51,11 +51,13 @@ module.exports = function(dependencies) {
 
 		var visible = config.visible;
 		var beforeClose = config.beforeClose;
-		var title = config.title;
+		var title = ko.unwrap(config.title);
 		var icon = config.icon;
 		var icons = config.icons;
 
-		if(icons){
+		let actualComponent = {};
+
+		if (icons) {
 			var backIcon = icons.back;
 		}
 
@@ -69,15 +71,23 @@ module.exports = function(dependencies) {
 			visible(false);
 		}
 
-		ko.computed(() => {
+		ko.computed(function () {
 			var isVisible = visible();
 
-			if(isVisible) {
-				activeModals.push(closeButtonClick);
+			if (isVisible) {
+				actualComponent = {
+					title,
+					closeButtonClick,
+					beforeClose
+				};
+
+				activeModals.push(actualComponent);
 			}
+		}, null, {
+			disposeWhenNodeIsRemoved: componentInfo.element
 		});
 
-		visible.toggle = function() {
+		visible.toggle = function () {
 			var isVisible = visible();
 
 			visible(!isVisible);
@@ -92,7 +102,10 @@ module.exports = function(dependencies) {
 			icons: icons,
 			backIcon: backIcon,
 			listenToEscape: listenToEscape,
-			activeModals: activeModals
+			activeModals: activeModals,
+			dispose: () => {
+				activeModals = activeModals.filter(item => item !== actualComponent);
+			}
 		};
 	};
 };

@@ -61,16 +61,19 @@
 
 .colorPicker .twod {
     float: left;
-    margin: 0.5em;
+    /*margin: 0.5em;*/
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0.5em;
 }
 
 /* main dimensions */
 .colorPicker .twod, .colorPicker .twod .bg {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
 }
 .colorPicker .oned, .colorPicker .oned .bg {
-    height: 120px;
+    height: 100px;
 }
 .colorPicker .oned, .colorPicker .oned .bg, .colorPicker .oned .pointer .shape {
     width: 20px;

@@ -2,16 +2,10 @@
 	<div class="color-picker-container">
 
 		<div class="first-wrapper">
-			<input id="valueSpan" value="dddddd"
-				data-bind="value: currentColor">
 			<div data-bind="colorjoe: currentColor"></div>
 		</div>
 		
 		<div class="second-wrapper">
-			<p class="picker-label" data-bind="text: labels.currentColorLabel"></p>
-			<span id="styleSpan" data-bind="
-			style: { 'background-color': currentColor() }
-			"></span>
 			<p class="picker-label" data-bind="text: labels.lastUsedColorsLabel"></p>
 			<div class="sample-wrapper" data-bind="foreach: lastUsedColors">
 				<span class="sample" data-bind="
@@ -19,6 +13,12 @@
 					click: function() { $parent.currentColor($data); }
 				"></span>
 			</div>
+			<p class="picker-label" data-bind="text: labels.transparent"></p>
+			<span class="sample transparent" data-bind="
+				style: { 'background-color': 'transparent' },
+				click: function() { currentColor(''); }
+			"></span>
+			
 			<knob-button class="rounded picker-btn" params="
 				label: colorPickerButton.label, 
 				click: colorPickerButton.click">

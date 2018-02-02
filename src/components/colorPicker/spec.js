@@ -43,6 +43,7 @@ var interfacePattern = {
 	labels: {
 		currentColorLabel: "string",
 		lastUsedColorsLabel: "string",
+		transparent: "string",
 		colorPickerButton: "string"
 	},
 	currentColor: "observable",
@@ -81,13 +82,11 @@ describe("color picker test", function() {
 
 			createVm = core(dependencies);
 			vm = createVm(config);
-
 		});
 
 		afterEach(function() {
 			jasmine.clock().uninstall();
 		});
-
 
 		it("interface check", function() {
 			expect(function() {

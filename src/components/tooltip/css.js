@@ -25,6 +25,7 @@ let cssTemplate = `
 	}
 
 	.arrow-down.subleft .tooltip::after {
+		border-color: ${ tinycolor(config.default) } transparent transparent transparent;
 		content: "";
 		position: absolute;
 		top: 100%;
@@ -34,6 +35,7 @@ let cssTemplate = `
 		border-style: solid;
 	}
 	.arrow-down.subright .tooltip::after {
+		border-color: ${ tinycolor(config.default) } transparent transparent transparent;
 		content: "";
 		position: absolute;
 		top: 100%;
@@ -43,6 +45,7 @@ let cssTemplate = `
 		border-style: solid;
 	}
 	.arrow-left.subup .tooltip::after {
+		border-color: transparent ${ tinycolor(config.default) } transparent transparent;
 		content: "";
 		position: absolute;
 		top: 15px;
@@ -53,6 +56,7 @@ let cssTemplate = `
 		border-style: solid;
 	}
 	.arrow-left.subdown .tooltip::after {
+		border-color: transparent ${ tinycolor(config.default) } transparent transparent;
 		content: "";
 		position: absolute;
 		bottom: 15px;
@@ -64,6 +68,7 @@ let cssTemplate = `
 	}
 
 	.arrow-right.subup .tooltip::after {
+		border-color: transparent transparent transparent ${ tinycolor(config.default) };
 		content: "";
 		position: absolute;
 		top: 15px;
@@ -74,6 +79,7 @@ let cssTemplate = `
 		border-style: solid;
 	}
 	.arrow-right.subdown .tooltip::after {
+		border-color: transparent transparent transparent ${ tinycolor(config.default) };
 		content: "";
 		position: absolute;
 		bottom: 15px;
@@ -85,6 +91,7 @@ let cssTemplate = `
 	}
 
 	.arrow-up.subleft .tooltip::after {
+		border-color: transparent transparent ${ tinycolor(config.default) } transparent;
 		content: "";
 		position: absolute;
 		bottom: 100%;
@@ -94,6 +101,7 @@ let cssTemplate = `
 		border-style: solid;
 	}
 	.arrow-up.subright .tooltip::after {
+		border-color: transparent transparent ${ tinycolor(config.default) } transparent;
 		content: "";
 		position: absolute;
 		bottom: 100%;
