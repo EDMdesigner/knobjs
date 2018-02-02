@@ -57,10 +57,6 @@ module.exports = function(dependencies) {
 				return;
 			}
 
-			if (value === "transparent") {
-				return;
-			}
-
 			element.colorjoe.set(value);
 		}
 	};
