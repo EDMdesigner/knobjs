@@ -24,7 +24,8 @@ let dependencies = {
 const mockedEvent = {
 	stopPropagation: jasmine.createSpy(),
 	key: "Escape",
-	keyCode: 27
+	keyCode: 27,
+	returnValue: false
 };
 
 let config = {
@@ -124,7 +125,7 @@ describe("knob modal tests", function() {
 		});
 
 		it("adds event listeners", () => {
-			expect(dependencies.window.addEventListener).toHaveBeenCalledTimes(3);
+			expect(dependencies.window.addEventListener).toHaveBeenCalledTimes(4);
 		});
 
 		it("removes event listener in listenToEscape", () => {
