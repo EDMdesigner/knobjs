@@ -54,8 +54,9 @@ let cssTemplate = `
 .knob-numericInput .control-button > .reachedMinValue > .knob-button:active > .icon-wrapper > .icon {
 	fill: black;
 }
-.numericInputButtonsWrapper {
-	transform: scale(0.71);
+.knob-numericInput .knob-button .icon-wrapper .icon {
+	width: 10px;
+	height: 10px;
 }
 `;
 	return cssTemplate;
