@@ -35,6 +35,11 @@ module.exports = function(dependencies) {
 		return true;
 	}
 
+	window.addEventListener("beforeunload", (event) => {
+		if(activeModals.length > 0 && activeModals.some(item => typeof item.closeButtonClick === "function")) {
+			event.returnValue = true;
+		}
+	});
 	window.addEventListener("keyup", () => window.addEventListener("keydown", listenToEscape));
 	window.addEventListener("keydown", listenToEscape);
 

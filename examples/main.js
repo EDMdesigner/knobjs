@@ -249,6 +249,10 @@ ko.applyBindings({
 	successColor: successColor,
 	errorColor: errorColor,
 	modalInModal: modalInModal,
+	modalBeforeClose: () => {
+		window.alert("CLOSE?");
+		console.log("close?");
+	},
 	currentColor: ko.observable("#00bee6"),
 	color: ko.observable("#00bee6")
 });
