@@ -36,7 +36,7 @@ module.exports = function(dependencies) {
 	}
 
 	window.addEventListener("beforeunload", (event) => {
-		if(activeModals.length > 0 && activeModals.some(item => typeof item.closeButtonClick === "function")) {
+		if(activeModals.some(item => typeof item.closeButtonClick === "function")) {
 			event.returnValue = true;
 		}
 	});
