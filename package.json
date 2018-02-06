@@ -1,6 +1,6 @@
 {
   "name": "knob-js",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "A highly customizable component library for knockout.js",
   "main": "dist/knob.js",
   "keywords": [

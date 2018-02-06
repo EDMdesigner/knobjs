@@ -14,6 +14,24 @@ var errorColorShades = createColorShades(config.error);
 
 
 let cssTemplate = `
+	.variation-small > .knob-modal-overlay > .knob-modal {
+		width: 100%;
+		max-width: 420px;
+		min-width: 380px;
+	}
+
+	.variation-medium > .knob-modal-overlay >  .knob-modal {
+		width: 100%;
+		max-width: 800px;
+		min-width: 700px;
+	}
+
+	.variation-large > .knob-modal-overlay > .knob-modal {
+		width: 100%;
+		max-width: 1100px;
+		min-width: 1000px;
+	}
+
 	.knob-modal-overlay {
 		background: rgba(256, 256, 256, .7);
 		position: fixed;

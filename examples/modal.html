@@ -56,13 +56,13 @@
 	<hr>
 	<h2>Modal in modal!</h2>
 	<knob-button class="button-close" params="label: 'Open Outer', variation: 'default', icon: '#icon-open', click: () => {modalInModal.outerVisible.toggle();}"></knob-button>
-	<knob-modal params="
+	<knob-modal class="variation-medium" params="
 		title: 'modal in modals!',
 		visible: modalInModal.outerVisible,
 		beforeClose: modalBeforeClose
 	">
 		<knob-button class="button-close" params="label: 'Open Inner', variation: 'default', icon: '#icon-open', click: () => {modalInModal.innerVisible.toggle();}"></knob-button>
-		<knob-modal params="
+		<knob-modal class="variation-small" params="
 			title: 'innder modal!',
 			visible: modalInModal.innerVisible,
 			beforeClose: modalBeforeClose
