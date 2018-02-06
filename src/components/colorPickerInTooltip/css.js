@@ -3,20 +3,18 @@
 module.exports = function(config) {
 
 let cssTemplate = `
-	.color-picker-in-tooltip .backgroundElementsHolder > knob-input,
-	.color-picker-in-tooltip .backgroundElementsHolder > .colorPickerHolder {
-		display: inline-block;
-	}
 	.color-picker-in-tooltip > .backgroundElementsHolder > .colorpickerHolder {
+		display: inline-block;
 		width: 22px;
 		height: 22px;
 		border-radius: 100px;
-		float: left;
-		margin-left: -7px;
+		margin-left: -3px;
 		margin-right: 7px;
 		margin-top: 8px;
+		margin-bottom: -7px;
 	}
 	.color-picker-in-tooltip .knob-input {
+		display: inline-block;
 		border-top-color: transparent;
 		border-left-color: transparent;
 		border-right-color: transparent;
@@ -51,7 +49,7 @@ let cssTemplate = `
 		margin-top: 10px;
 	}
 	knob-tooltip.light.arrow-up.subright.picker-tooltip > .knob-tooltip-wrapper > .tooltip::after {
-		right: 40px;
+		right: 30px;
 		margin-bottom: -10px;
 	}
 `;

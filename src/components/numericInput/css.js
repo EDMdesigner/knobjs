@@ -35,11 +35,11 @@ let cssTemplate = `
 	outline: none;
 }
 .reachedMaxValue .knob-button {
-	opacity: 0.2;
+	fill: ${ config.mediumGray };
 	cursor: not-allowed;
 }
 .reachedMinValue .knob-button {
-	opacity: 0.2;
+	fill: ${ config.mediumGray };
 	cursor: not-allowed;
 }
 .knob-numericInput .control-button > .reachedMaxValue > .knob-button:hover > .icon-wrapper > .icon {
@@ -54,8 +54,9 @@ let cssTemplate = `
 .knob-numericInput .control-button > .reachedMinValue > .knob-button:active > .icon-wrapper > .icon {
 	fill: black;
 }
-.numericInputButtonsWrapper {
-	transform: scale(0.71);
+.knob-numericInput .knob-button .icon-wrapper .icon {
+	width: 10px;
+	height: 10px;
 }
 `;
 	return cssTemplate;

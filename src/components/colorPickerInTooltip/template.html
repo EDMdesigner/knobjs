@@ -1,13 +1,13 @@
 <div class="color-picker-in-tooltip">
 
 	<div class ="backgroundElementsHolder">
-
-		<div data-bind="click: showPicker, style: {background: color() }" class="colorpickerHolder"></div>
+	
 		<knob-input data-bind="css: {'variation-error': error}" params="
 			value: inputColor,
 			placeholder: '#10B4EF'">
 		</knob-input>
-
+		<div data-bind="click: showPicker, style: {background: color() }" class="colorpickerHolder"></div>
+		
 		<!-- ko if: error -->
 			<div class="error" data-bind="text: error"></div>
 		<!-- /ko -->
