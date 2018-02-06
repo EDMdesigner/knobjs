@@ -35,11 +35,11 @@ let cssTemplate = `
 	outline: none;
 }
 .reachedMaxValue .knob-button {
-	opacity: 0.2;
+	fill: ${ config.mediumGray };
 	cursor: not-allowed;
 }
 .reachedMinValue .knob-button {
-	opacity: 0.2;
+	fill: ${ config.mediumGray };
 	cursor: not-allowed;
 }
 .knob-numericInput .control-button > .reachedMaxValue > .knob-button:hover > .icon-wrapper > .icon {
