@@ -1,4 +1,4 @@
-<div class="knob-modal-overlay" data-bind="visible: visible, event: {click: () => activeModals[activeModals.length - 1]()}">
+<div class="knob-modal-overlay" data-bind="visible: visible, event: {click: () => activeModals[activeModals.length - 1].closeButtonClick()}">
 	<div class="knob-modal" data-bind="event: {click: (data, event) => {event.stopPropagation();}}">
 		<div class="knob-modal__header">
 			<knob-button class="button-back" data-bind="visible: closeIconOnLeft" params="variation: 'modalHead', icon: backIcon, click: close"></knob-button>
