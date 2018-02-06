@@ -22,6 +22,14 @@ module.exports = function(dependencies) {
 	const ko = dependencies.ko;
 	const window = dependencies.window;
 
+	function callLastModalClose() {
+		if(activeModals.length === 0) {
+			return;
+		}
+
+		activeModals[activeModals.length - 1].closeButtonClick();
+	}
+
 	function listenToEscape(event) {
 		window.removeEventListener("keydown", listenToEscape);
 		if (activeModals.length === 0) {
@@ -79,7 +87,7 @@ module.exports = function(dependencies) {
 		ko.computed(function () {
 			var isVisible = visible();
 
-			if (isVisible) {
+			if(isVisible) {
 				actualComponent = {
 					title,
 					closeButtonClick,
@@ -87,6 +95,8 @@ module.exports = function(dependencies) {
 				};
 
 				activeModals.push(actualComponent);
+			} else {
+				activeModals = activeModals.filter(item => item !== actualComponent);
 			}
 		}, null, {
 			disposeWhenNodeIsRemoved: componentInfo.element
@@ -108,6 +118,7 @@ module.exports = function(dependencies) {
 			backIcon: backIcon,
 			listenToEscape: listenToEscape,
 			activeModals: activeModals,
+			callLastModalClose: callLastModalClose,
 			dispose: () => {
 				activeModals = activeModals.filter(item => item !== actualComponent);
 			}
