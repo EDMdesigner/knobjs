@@ -39,14 +39,14 @@ let cssTemplate = `
 		max-height: 100%;
 	}
 
-	.variation-fullscreen > .knob-modal-overlay > .knob-modal > .knob-modal__header {
-		display: none;
-	}
-
 	.variation-fullscreen > .knob-modal-overlay > .knob-modal > .knob-modal__body {
 		width: 100%;
 		height: 100%;
 		padding: 0px;
+	}
+
+	.variation-headless > .knob-modal-overlay > .knob-modal > .knob-modal__header {
+		display: none;
 	}
 
 	.knob-modal-overlay {
