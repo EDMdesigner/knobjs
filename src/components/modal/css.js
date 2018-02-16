@@ -32,6 +32,23 @@ let cssTemplate = `
 		min-width: 1000px;
 	}
 
+	.variation-fullscreen > .knob-modal-overlay > .knob-modal {
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.variation-fullscreen > .knob-modal-overlay > .knob-modal > .knob-modal__header {
+		display: none;
+	}
+
+	.variation-fullscreen > .knob-modal-overlay > .knob-modal > .knob-modal__body {
+		width: 100%;
+		height: 100%;
+		padding: 0px;
+	}
+
 	.knob-modal-overlay {
 		background: rgba(256, 256, 256, .7);
 		position: fixed;
