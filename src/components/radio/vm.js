@@ -70,7 +70,8 @@ function createRadio(config) {
 			},
 			isSelected: ko.computed(function() {
 				return obj === selected();
-			})
+			}),
+			disabled: item.disabled || false
 		};
 
 		Object.defineProperty(obj, "index", {
