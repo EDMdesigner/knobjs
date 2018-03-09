@@ -4,7 +4,7 @@ module.exports = function(colors) {
 	console.log(colors);
 	var cssTemplate = `
 		.notification-handler {
-			position: absolute;
+			position: fixed;
 			top: 0;
 			width: 100%;
 			z-index: 1000;
