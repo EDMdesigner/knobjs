@@ -8,6 +8,7 @@ let cssTemplate = `
 	.knob-tooltip-wrapper {
 		position: relative;
 		display: inline-block;
+		z-index: 1;
 	}
 	.tooltip {
 		width: 100%;
