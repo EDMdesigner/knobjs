@@ -698,13 +698,15 @@
 
 		<p>Selected index: <span data-bind="text: dropdown2.index"></span></p>
 		<p>Selected value: <span data-bind="text: dropdown2.value"></span></p>
+		<p>HERE</p>
 		<hr>
 		Change the selected index here:
 		<knob-numericinput params="
 			minValue: -10,
 			maxValue: 10,
 			step: 1,
-			value: dropdown2.index
+			value: dropdown2.index,
+			inputFieldThrottle: 1000
 		">
 		</knob-numericinput>
 
@@ -947,7 +949,7 @@
 			minValue: 3,
 			maxValue: 600,
 			value: ko.observable(12),
-			step: 3,
+			step: 1,
 			left: {
 				text: {
 					value: 'Font size: '
@@ -958,7 +960,8 @@
 					value: 'px'
 				}
 			},
-			layoutArrangement: 'split'
+			layoutArrangement: 'split',
+			inputFieldThrottle: 500
 		">
 		</knob-numericinput>
 		<h2>knob-numericinput layout front</h2>

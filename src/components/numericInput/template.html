@@ -2,7 +2,7 @@
 
 	<!-- pre input placeholder -->
 	<knob-input params="
-		value: inputValue,
+		value: realInputValue,
 		left: left,
 		right: right
 	">
@@ -24,7 +24,7 @@
 					icon: decreaseButton.icon,
 					click: decreaseButton.click,
 					triggerOnHold: triggerOnHold
-				" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''"">
+				" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''">
 				</knob-button>
 			</span>
 		</div>
@@ -42,12 +42,12 @@
 				icon: decreaseButton.icon,
 				click: decreaseButton.click,
 				triggerOnHold: triggerOnHold
-			" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''"">
+			" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''">
 			</knob-button>
 		</span>
 	</div>
-	<knob-input params="
-		value: inputValue,
+	<knob-input data-bind="event: { change: changeHandler }, enterkey: changeHandler" params="
+		value: realInputValue,
 		left: left,
 		right: right
 	">
@@ -83,13 +83,13 @@
 				icon: decreaseButton.icon,
 				click: decreaseButton.click,
 				triggerOnHold: triggerOnHold
-			" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''"">
+			" data-bind="css: reachedMinValue() ? 'reachedMinValue' : ''">
 			</knob-button>
 		</span>
 	</div>
 	<!-- pre input placeholder -->
 	<knob-input params="
-		value: inputValue,
+		value: realInputValue,
 		left: left,
 		right: right
 	">
