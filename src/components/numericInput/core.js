@@ -82,12 +82,11 @@ module.exports = function(dependencies) {
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
 		var layoutArrangement = config.layoutArrangement || "back";
-		var inputFieldThrottle = config.inputFieldThrottle || 0;
 
 		var icons = config.icons;
 		var timer;
 
-		var realInputValue = ko.computed({
+		var inputFieldValue = ko.computed({
 			read: function() {
 				return inputValue();
 			},
@@ -96,12 +95,13 @@ module.exports = function(dependencies) {
 			}
 		});
 
-		function changeHandler(data, event) {
+		function inputChangeHandler(data) {
 			clearTimeout(timer); 
+			var val;
 			if(data){
-				var val = data.inputValue();
+				val = data.inputValue();
 			}else{
-				var val = inputValue();
+				val = inputValue();
 			}
 			var min = minValue();
 			var max = maxValue();
@@ -174,7 +174,7 @@ module.exports = function(dependencies) {
 				reachedMaxValue(false);
 				reachedMinValue(false);
 			}
-		}
+		};
 
 		ko.computed(function() {
 			var newVal = validatedValue();
@@ -199,7 +199,7 @@ module.exports = function(dependencies) {
 					reachedMinValue(true);
 				}
 				reachedMaxValue(false);
-				changeHandler();
+				inputChangeHandler();
 				hideOrSeekButtons(val);
 			}
 		};
@@ -221,7 +221,7 @@ module.exports = function(dependencies) {
 					reachedMaxValue(true);
 				}
 				reachedMinValue(false);
-				changeHandler();
+				inputChangeHandler();
 				hideOrSeekButtons(val);
 			}
 		};
@@ -255,9 +255,9 @@ module.exports = function(dependencies) {
 		};
 
 		return {
-			realInputValue: realInputValue,
+			inputFieldValue: inputFieldValue,
 			inputValue: inputValue,
-			changeHandler: changeHandler,
+			inputChangeHandler: inputChangeHandler,
 			increaseButton: increaseButton,
 			decreaseButton: decreaseButton,
 			left: left,
