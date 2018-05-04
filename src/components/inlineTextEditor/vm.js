@@ -37,7 +37,7 @@ function createInlineTextEditor(config) {
 	vm.value = config.value || ko.observable("");
 	vm.editedValue = ko.observable(vm.value());
 
-	vm.editMode = config.ediMode || ko.observable(false);
+	vm.editMode = config.editMode || ko.observable(false);
 
 	vm.edit = function() {
 		vm.editedValue(vm.value());
