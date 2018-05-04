@@ -15,6 +15,20 @@ describe("Invalid config", function() {
 		}).toThrowError("config.value has to be an observable!");
 	});
 
+	it("config.value has to be an observable!", function() {
+		expect(function() {
+			createInlineTextEditor({
+				editMode: false,
+				value: ko.observable(null),
+				icons: {
+					edit: "icon",
+					done: "icon",
+					close: "icon"
+				}
+			});
+		}).toThrowError("config.editMode has to be an observable!");
+	});
+
 	it("config.icons missing", function() {
 		expect(function() {
 			createInlineTextEditor({
@@ -108,7 +122,7 @@ describe("Valid config", function() {
 		var editedValue = "bunny";
 
 		beforeEach(function() {
-			te = createInlineTextEditor({	
+			te = createInlineTextEditor({
 				icons: {
 					edit: "icon",
 					done: "icon",
