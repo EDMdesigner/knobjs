@@ -85,10 +85,24 @@ module.exports = function(dependencies) {
 
 		var icons = config.icons;
 		var timer;
-		
-		ko.computed(function() {
-			clearTimeout(timer);
-			var val = inputValue();
+
+		var inputFieldValue = ko.computed({
+			read: function() {
+				return inputValue();
+			},
+			write: function(val) {
+				inputValue(val);
+			}
+		});
+
+		function inputChangeHandler(data) {
+			clearTimeout(timer); 
+			var val;
+			if(data){
+				val = data.inputValue();
+			}else{
+				val = inputValue();
+			}
 			var min = minValue();
 			var max = maxValue();
 			var step = stepValue();
@@ -142,14 +156,12 @@ module.exports = function(dependencies) {
 					validatedValue(rounded);
 					return;
 				}
-
 				validatedValue(parsed);
-			}, updateTimeout);
-		});
-
-		ko.computed(function() {
-			var newVal = validatedValue();
-			inputValue(newVal);
+			}, updateTimeout); 
+		}
+		
+		var hideOrSeekButtons = function(newVal) {
+			
 			if(newVal <= minValue()){
 				reachedMinValue(true);
 				reachedMaxValue(false);
@@ -158,6 +170,16 @@ module.exports = function(dependencies) {
 				reachedMaxValue(true);
 				reachedMinValue(false);
 			}
+			if(newVal > minValue() && newVal < maxValue()){
+				reachedMaxValue(false);
+				reachedMinValue(false);
+			}
+		};
+
+		ko.computed(function() {
+			var newVal = validatedValue();
+			inputValue(newVal);
+			hideOrSeekButtons(newVal);
 		});
 
 		var decreaseButton = {
@@ -177,6 +199,8 @@ module.exports = function(dependencies) {
 					reachedMinValue(true);
 				}
 				reachedMaxValue(false);
+				inputChangeHandler();
+				hideOrSeekButtons(val);
 			}
 		};
 
@@ -197,6 +221,8 @@ module.exports = function(dependencies) {
 					reachedMaxValue(true);
 				}
 				reachedMinValue(false);
+				inputChangeHandler();
+				hideOrSeekButtons(val);
 			}
 		};
 
@@ -206,8 +232,32 @@ module.exports = function(dependencies) {
 			baseTimeout: baseTimeout
 		};
 
+		ko.bindingHandlers.enterkey = {
+			init: function (element, valueAccessor) {
+				let called = false;
+				const callback = valueAccessor();
+		
+				const confirmCallback = function(event) {
+					if (!called && (event.key === "Enter" || event.keyCode === 13)) {
+						callback();
+						called = true;
+						return false;		
+					}
+					return true;
+				};
+		
+				window.addEventListener("keydown", confirmCallback);
+		
+				ko.utils.domNodeDisposal.addDisposeCallback(element, function() {
+					window.removeEventListener("keydown", confirmCallback);
+				});
+			}
+		};
+
 		return {
+			inputFieldValue: inputFieldValue,
 			inputValue: inputValue,
+			inputChangeHandler: inputChangeHandler,
 			increaseButton: increaseButton,
 			decreaseButton: decreaseButton,
 			left: left,

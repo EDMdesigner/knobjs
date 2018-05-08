@@ -256,7 +256,11 @@ describe("Numeric Input", function() {
 		});
 
 		it(" has correct step functionality", function() {
+			var data = {
+				inputValue: ko.observable(2)
+			};
 			inputValue(2);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(2);
 			increment();
@@ -269,31 +273,55 @@ describe("Numeric Input", function() {
 		});
 
 		it(" correctly validates non-numeric input values", function() {
+			var data = {
+				inputValue: ko.observable("Darth Vader is drinking beer in the desert")
+			};
 			inputValue("Darth Vader is drinking beer in the desert");
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(0);
 
+			var data2 = {
+				inputValue: ko.observable("3 Darth Vader is drinking beer in the desert")
+			};
 			inputValue("3 Darth Vaders are drinking beer in the desert");
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(3);
 		});
 
 		it (" correctly validates values outside the boundaries", function() {
+			var data = {
+				inputValue: ko.observable(-77)
+			};
 			inputValue(-77);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(-20);
 
+			var data2 = {
+				inputValue: ko.observable(23.412)
+			};
 			inputValue(23.412);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(20);
 		});
 
 		it (" correctly rounds values", function() {
+			var data = {
+				inputValue: ko.observable(2.33)
+			};
 			inputValue(2.33);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(2);
 
+			var data2 = {
+				inputValue: ko.observable(7.835)
+			};
 			inputValue(7.835);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(8);
 		});
@@ -412,7 +440,11 @@ describe("Numeric Input", function() {
 		});
 
 		it(" has correct step functionality", function() {
+			var data = {
+				inputValue: ko.observable(1)
+			};
 			inputValue(1);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(1);
 			increment();
@@ -425,14 +457,22 @@ describe("Numeric Input", function() {
 		});
 
 		it("doesn't allow stepping outside the limits", function() {
+			var data = {
+				inputValue: ko.observable(-20)
+			};
 			inputValue(-20);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(-20);
 			decrement();
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(-20);
 
+			var data2 = {
+				inputValue: ko.observable(19)
+			};
 			inputValue(19);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(19);
 			increment();
@@ -441,46 +481,75 @@ describe("Numeric Input", function() {
 		});
 
 		it(" correctly validates non-numeric input values", function() {
+			var data = {
+				inputValue: ko.observable("Darth Vader is drinking beer in the desert")
+			};
 			inputValue("Darth Vader is drinking beer in the desert");
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(0);
 
+			var data2 = {
+				inputValue: ko.observable("3 Darth Vader is drinking beer in the desert")
+			};
 			inputValue("3 Darth Vaders are drinking beer in the desert");
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(3);
 		});
 
 		it (" correctly validates values outside the boundaries", function() {
+			var data = {
+				inputValue: ko.observable(-77)
+			};
 			inputValue(-77);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(-20);
 
 			max(10);
 
+			var data2 = {
+				inputValue: ko.observable(23.412)
+			};
 			inputValue(23.412);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(10);
 		});
 
 		it (" correctly rounds values", function() {
+			var data = {
+				inputValue: ko.observable(2.33)
+			};
 			inputValue(2.33);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(2);
 
 			precision(0.5);
 
+			var data2 = {
+				inputValue: ko.observable(13.288)
+			};
 			inputValue(13.288);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(13.5);
 
 			precision(10);
+			vm.inputChangeHandler(data2);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(10);
 		});
 
 		it ("does no rounding if precision is set to 0", function() {
+			var data = {
+				inputValue: ko.observable("11.7462548")
+			};
 			precision(0);
 			inputValue("11.7462548");
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(11.7462548);
 
@@ -490,43 +559,66 @@ describe("Numeric Input", function() {
 		});
 
 		it (" correctly revalidates on change of minValue, maxValue", function() {
+			var data = {
+				inputValue: ko.observable(2)
+			};
 			inputValue(2);
 			min(10);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(10);
 
 			min(-70);
 			max(-50);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(-50);
 		});
 
 		it ("throws error if min > max", function() {
+			var data = {
+				inputValue: ko.observable(2)
+			};
 			var f = function() {
 				min(30);
+				vm.inputChangeHandler(data);
 			};
 			expect(f).toThrowError("minValue cannot be greater than maxValue!");
 		});
 
 		it ("throws error if step <= 0", function() {
+			var data = {
+				inputValue: ko.observable(2)
+			};
 			var f = function() {
 				step(0);
+				vm.inputChangeHandler(data);
 			};
 			expect(f).toThrowError("step has to be greater than 0!");
 		});
 
 		it ("throws error if precision < 0", function() {
+			var data = {
+				inputValue: ko.observable(2)
+			};
 			var f = function() {
 				precision(-1);
+				vm.inputChangeHandler(data);
 			};
 			expect(f).toThrowError("precision cannot be negative!");
 		});
 
 		it ("uses validatedValue on increase/decrease click if inputValue === ''", function() {
+			var data = {
+				inputValue: ko.observable(3)
+			};
 			inputValue(3);
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(3);
 			inputValue("");
+			data.inputValue("");
+			vm.inputChangeHandler(data);
 			decrement();
 			jasmine.clock().tick(wait);
 			expect(value()).toBe(1);
@@ -537,7 +629,11 @@ describe("Numeric Input", function() {
 		});
 
 		it ("accepts the . character at the end of numbers", function() {
+			var data = {
+				inputValue: ko.observable("12.")
+			};
 			inputValue("12.");
+			vm.inputChangeHandler(data);
 			jasmine.clock().tick(1);
 			expect(inputValue()).toBe("12.");
 			jasmine.clock().tick(wait);
