@@ -8,8 +8,12 @@ function createInlineTextEditor(config) {
 
 	var config = config || {};
 
-	if (config.value && !ko.isObservable(config.value)) {
+	if(config.hasOwnProperty("value") && !ko.isObservable(config.value)) {
 		throw new Error("config.value has to be an observable!");
+	}
+
+	if(config.hasOwnProperty("editMode") && !ko.isObservable(config.editMode)) {
+		throw new Error("config.editMode has to be an observable!");
 	}
 
 	if(!config.icons) {
@@ -33,7 +37,7 @@ function createInlineTextEditor(config) {
 	vm.value = config.value || ko.observable("");
 	vm.editedValue = ko.observable(vm.value());
 
-	vm.editMode = ko.observable(false);
+	vm.editMode = config.editMode || ko.observable(false);
 
 	vm.edit = function() {
 		vm.editedValue(vm.value());

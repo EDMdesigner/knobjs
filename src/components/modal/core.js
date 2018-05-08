@@ -64,7 +64,7 @@ module.exports = function(dependencies) {
 
 		var visible = config.visible;
 		var beforeClose = config.beforeClose;
-		var title = ko.unwrap(config.title);
+		var title = config.title;
 		var icon = config.icon;
 		var icons = config.icons;
 
