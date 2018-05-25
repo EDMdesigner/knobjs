@@ -16,6 +16,18 @@ function createInlineTextEditor(config) {
 		throw new Error("config.editMode has to be an observable!");
 	}
 
+	if(config.hasOwnProperty("defaultValue") && typeof config.defaultValue !== "string") {
+		throw new Error("config.defaultValue should be a string");
+	}
+
+	if(config.hasOwnProperty("value") && typeof config.value() !== "string") {
+		throw new Error("config.value has to store a string!");
+	}
+
+	if(!config.defaultValue && !config.value) {
+		throw new Error("Either config.value or config.defaultValue has to be given.");
+	}
+
 	if(!config.icons) {
 		throw new Error("config.icons is mandatory!");
 	}
@@ -34,10 +46,15 @@ function createInlineTextEditor(config) {
 
 	vm.icons = config.icons;
 
-	vm.value = config.value || ko.observable("");
+	vm.defaultValue = config.defaultValue;
+	vm.value = config.value || ko.observable(config.defaultValue);
 	vm.editedValue = ko.observable(vm.value());
 
 	vm.editMode = config.editMode || ko.observable(false);
+
+	vm.isInDefaultState = ko.computed(function () {
+		return vm.defaultValue === vm.value();
+	});
 
 	vm.edit = function() {
 		vm.editedValue(vm.value());
@@ -46,7 +63,7 @@ function createInlineTextEditor(config) {
 	};
 
 	vm.save = function() {
-		vm.value(vm.editedValue());
+		vm.value(vm.editedValue() || vm.defaultValue);
 		vm.editMode(false);
 	};
 
@@ -66,6 +83,10 @@ function createInlineTextEditor(config) {
 	};
 
 	vm.inputHasFocus = ko.observable(false);
+
+	vm.dispose = function() {
+		vm.isInDefaultState.dispose();
+	};
 
 	return vm;
 }

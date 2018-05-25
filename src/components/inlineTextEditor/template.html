@@ -1,7 +1,12 @@
 <span class="inline-editor">
 	<span data-bind="visible: !editMode()" class="knob-inlinetext--noedit">
-		<span data-bind="text: value"></span>
-		<knob-button class="edit-start" params="label: '', click: edit, icon: icons.edit">
+		<span data-bind="text: value, style: {
+			'font-style': isInDefaultState() ? 'italic' : 'normal'
+		}"></span>
+		<svg class="edit-start" data-bind="click: edit">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" data-bind="attr: {'xlink:href': icons.edit}" xlink:href=""></use>
+		</svg>
+		<!-- <knob-button class="edit-start" params="label: '', click: edit, icon: icons.edit"> -->
 	</span>
 	<span data-bind="visible: editMode" class="knob-inlinetext--edit">
 		<knob-input params="value: editedValue, hasFocus: inputHasFocus, keyDown: keyDown, visible: editMode"></knob-input>
