@@ -19,7 +19,7 @@ describe("Invalid config", function() {
 		expect(function() {
 			createInlineTextEditor({
 				editMode: false,
-				value: ko.observable(null),
+				value: ko.observable("asd"),
 				icons: {
 					edit: "icon",
 					done: "icon",
@@ -32,7 +32,7 @@ describe("Invalid config", function() {
 	it("config.icons missing", function() {
 		expect(function() {
 			createInlineTextEditor({
-				value: ko.observable(null)
+				value: ko.observable("asd")
 			});
 		}).toThrowError("config.icons is mandatory!");
 	});
@@ -40,7 +40,7 @@ describe("Invalid config", function() {
 	it("config.icons.edit missing", function() {
 		expect(function() {
 			createInlineTextEditor({
-				value: ko.observable(null),
+				value: ko.observable("asd"),
 				icons: {
 					done: "icon",
 					close: "icon"
@@ -52,7 +52,7 @@ describe("Invalid config", function() {
 	it("config.icons.done missing", function() {
 		expect(function() {
 			createInlineTextEditor({
-				value: ko.observable(null),
+				value: ko.observable("asd"),
 				icons: {
 					edit: "icon",
 					close: "icon"
@@ -64,7 +64,7 @@ describe("Invalid config", function() {
 	it("config.icons.close missing", function() {
 		expect(function() {
 			createInlineTextEditor({
-				value: ko.observable(null),
+				value: ko.observable("asd"),
 				icons: {
 					edit: "icon",
 					done: "icon"
@@ -78,10 +78,12 @@ describe("Valid config", function() {
 	it("Interface", function() {
 		var te = createInlineTextEditor({
 			icons: {
-					edit: "icon",
-					done: "icon",
-					close: "icon"
-				}
+				edit: "icon",
+				done: "icon",
+				close: "icon"
+			},
+			value: ko.observable("string")
+
 		});
 
 		//Types
@@ -95,14 +97,14 @@ describe("Valid config", function() {
 		expect(typeof te.keyDown).toBe("function");
 
 		// Values
-		expect(te.value()).toBe("");
-		expect(te.editedValue()).toBe("");
+		expect(te.value()).toBe("string");
+		expect(te.editedValue()).toBe("string");
 		expect(te.editMode()).toBe(false);
 		expect(te.inputHasFocus()).toBe(false);
 	});
 
 	it("config.value set", function() {
-		var value = ko.observable(2);
+		var value = ko.observable("2");
 		var te = createInlineTextEditor({
 			value: value,
 			icons: {
@@ -127,7 +129,8 @@ describe("Valid config", function() {
 					edit: "icon",
 					done: "icon",
 					close: "icon"
-				}
+				},
+				value: ko.observable("string")
 			});
 		});
 
