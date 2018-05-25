@@ -46,7 +46,7 @@ function createInlineTextEditor(config) {
 
 	vm.icons = config.icons;
 
-	vm.defaultValue = config.defaultValue;
+	vm.defaultValue = config.defaultValue || "Enter text here";
 	vm.value = config.value || ko.observable(config.defaultValue);
 	vm.editedValue = ko.observable(vm.value());
 
