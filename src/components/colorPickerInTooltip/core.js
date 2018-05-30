@@ -22,6 +22,7 @@ module.exports = function(dependencies) {
 
 	var ko = dependencies.ko;
 	var extend = dependencies.extend;
+	var window = dependencies.window;
 
 	return function createColorPickerTooltip(config) {
 		checkParams(config, configPattern, "config");
@@ -33,10 +34,14 @@ module.exports = function(dependencies) {
 
 		function hidePicker() {
 			pickerEnabled(false);
+			window.removeEventListener("click", hidePicker);
 		}
 		
 		function showPicker() {
 			pickerEnabled(true);
+			window.setTimeout(() => {
+				window.addEventListener("click", hidePicker);	
+			});
 		}
 
 		var error = ko.observable(null);
