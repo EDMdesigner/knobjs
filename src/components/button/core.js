@@ -32,7 +32,7 @@ module.exports = function(dependencies) {
 
 		var disabled = config.disabled || false;
 
-		
+
 		var vm = {};
 
 		var timeoutId = null;
