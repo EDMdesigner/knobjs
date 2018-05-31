@@ -150,6 +150,7 @@ module.exports = function(config) {
 			text-align: center;
 			touch-action: manipulation;
 			border: 1px solid;
+			position: relative;
 		}
 		.rounded .knob-button {
 			border-radius: 6px;
@@ -197,6 +198,9 @@ module.exports = function(config) {
 			border-radius: 3px;
 			padding: 2px 4px;
 			width: max-content;
+			right: -15px;
+			bottom: -15px;
+			z-index: 1;
 		}
 
 		.counter-default .counter {
