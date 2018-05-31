@@ -192,12 +192,11 @@ module.exports = function(config) {
 		}
 
 		.counter {
-			position: relative;
+			position: absolute;
 			font-size: 12px;
 			border-radius: 3px;
 			padding: 2px 4px;
 			width: max-content;
-			top: -7px;
 		}
 
 		.counter-default .counter {

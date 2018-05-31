@@ -20,11 +20,11 @@
 	<span class="icon-wrapper" data-bind="if: rightImage">
 			<img class="img" data-bind="attr: { src: rightImage, alt:'Image not found' }"/>
 	</span>
+	<!-- ko if: counter -->
+		<div class="counter">
+			<span data-bind="text: actualNumber"></span>
+			<span>/</span>
+			<span data-bind="text: limitNumber"></span>
+		</div>
+	<!-- /ko -->
 </button>
-<!-- ko if: counter -->
-	<div class="counter">
-		<span data-bind="text: actualNumber"></span>
-		<span>/</span>
-		<span data-bind="text: limitNumber"></span>
-	</div>
-<!-- /ko -->
