@@ -103,9 +103,14 @@ module.exports = function(dependencies) {
 
 		vm.click = clickCb;
 
-		vm.counter = config.counter || ko.observable(false);
-		vm.actualNumber = config.actualNumber;
-		vm.limitNumber = config.limitNumber;
+		if(config.actualNumber && config.limitNumber) {
+			vm.counter = {
+				actualNumber: config.actualNumber,
+				limitNumber: config.limitNumber
+			};
+		} else {
+			vm.counter = ko.observable(false);
+		}
 
 		return vm;
 	};
