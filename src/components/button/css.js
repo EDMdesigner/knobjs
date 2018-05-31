@@ -191,26 +191,26 @@ module.exports = function(config) {
 			cursor: not-allowed;
 		}
 
-		.knob-button .counter {
-			position: absolute;
+		.counter {
+			position: relative;
 			font-size: 12px;
 			border-radius: 3px;
 			padding: 2px 4px;
-			margin-left: 75px;
-    		margin-top: -5px;
+			width: max-content;
+			top: -7px;
 		}
 
-		.counter-default .knob-button .counter {
+		.counter-default .counter {
 			background: black;
 			color: white;
 		}
 
-		.counter-primary .knob-button .counter {
+		.counter-primary .counter {
 			background: ${config.secondary};
 			color: ${config.primary};
 		}
 
-		.counter-secondary .knob-button .counter {
+		.counter-secondary .counter {
 			background: ${config.primary};
 			color: ${config.secondary};
 		}
