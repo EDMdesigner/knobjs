@@ -138,7 +138,7 @@ module.exports = function(config) {
 	var successButtonColors = createButtonStateColors(config.success, "success");
 
 
-
+	
 	let cssTemplate = `
 		.knob-button {
 			line-height: 1.42857;
@@ -191,17 +191,41 @@ module.exports = function(config) {
 			cursor: not-allowed;
 		}
 
+		.knob-button .counter {
+			position: absolute;
+			font-size: 12px;
+			border-radius: 3px;
+			padding: 2px 4px;
+			margin-left: 75px;
+    		margin-top: -5px;
+		}
+
+		.counter-default .knob-button .counter {
+			background: black;
+			color: white;
+		}
+
+		.counter-primary .knob-button .counter {
+			background: ${config.secondary};
+			color: ${config.primary};
+		}
+
+		.counter-secondary .knob-button .counter {
+			background: ${config.primary};
+			color: ${config.secondary};
+		}
+
 		${ defaultButtonColors }
 		${ primaryButtonColors }
 		${ secondaryButtonColors }
 		${ infoButtonColors }
 		${ warningButtonColors }
 		${ successButtonColors }
-		${ errorButtonColors }	
+		${ errorButtonColors }
 		${ createLinkButtonShades() }	
 		${ createGhostButtonShades() }	
 		${ createDarkButtonShades() }	
-		${ createLightButtonShades() }	
+		${ createLightButtonShades() }
 	`;
 
 	return cssTemplate;

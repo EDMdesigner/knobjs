@@ -236,6 +236,63 @@
 		<knob-button class="rounded" params="label: 'Disabled', rightIcon: '#icon-warning', disabled:true"></knob-button>
 		<h3>Link</h3>
 		<knob-button class="rounded variation-link" params="label: 'Link'"></knob-button>
+		<h3>Counter Button</h3>
+			<knob-button class="rounded variation-primary counter-primary" params="
+				label: 'Counter Button',
+				counter: ko.observable(true),
+				actualNumber: 3,
+				limitNumber: 10
+			"></knob-button>
+
+			<knob-button class="rounded variation-secondary counter-secondary" params="
+				label: 'Counter Button 2',
+				counter: ko.observable(true),
+				actualNumber: 4,
+				limitNumber: 9
+			"></knob-button>
+
+			<knob-button class="rounded variation-light counter-secondary" params="
+				label: 'Counter Button 3',
+				counter: ko.observable(true),
+				actualNumber: 5,
+				limitNumber: 8
+			"></knob-button>
+
+			<knob-button class="rounded variation-dark counter-primary" params="
+				label: 'Counter Button 4',
+				counter: ko.observable(true),
+				actualNumber: 6,
+				limitNumber: 7
+			"></knob-button>
+
+			<knob-button class="rounded variation-ghost counter-default" params="
+				label: 'Counter Button 5',
+				counter: ko.observable(true),
+				actualNumber: 3,
+				limitNumber: 11
+			"></knob-button>
+
+			<knob-button class="rounded variation-warning counter-primary" params="
+				label: 'Counter Button 7',
+				counter: ko.observable(true),
+				actualNumber: 1,
+				limitNumber: 13
+			"></knob-button>
+
+			<knob-button class="rounded variation-success counter-secondary" params="
+				label: 'Counter Button 8',
+				counter: ko.observable(true),
+				actualNumber: 6,
+				limitNumber: 9
+			"></knob-button>
+
+			<knob-button class="rounded variation-error counter-primary" params="
+				label: 'Counter Button 9',
+				counter: ko.observable(true),
+				actualNumber: 7,
+				limitNumber: 9
+			"></knob-button>
+		<hr>
 		<hr>
 
 		<h2>knob-toggleswitch</h2>

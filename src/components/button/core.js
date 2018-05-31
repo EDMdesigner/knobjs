@@ -32,7 +32,7 @@ module.exports = function(dependencies) {
 
 		var disabled = config.disabled || false;
 
-
+		
 		var vm = {};
 
 		var timeoutId = null;
@@ -102,6 +102,10 @@ module.exports = function(dependencies) {
 		vm.disabled = disabled;
 
 		vm.click = clickCb;
+
+		vm.counter = config.counter || ko.observable(false);
+		vm.actualNumber = config.actualNumber;
+		vm.limitNumber = config.limitNumber;
 
 		return vm;
 	};
