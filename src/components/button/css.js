@@ -215,6 +215,26 @@ module.exports = function(config) {
 			color: ${config.secondary};
 		}
 
+		.counter-light .counter {
+			background: ${ config.light };
+			color: ${ config.dark };
+		}
+
+		.counter-dark .counter {
+			background: ${ config.dark };
+			color: ${ config.light };
+		}
+
+		.counter-warm-gray .counter {
+			background: ${ config.warmGray };
+			color: ${ config.light };
+		}
+
+		.counter-dark-gray .counter {
+			background: ${ config.darkGray };
+			color: ${ config.light };
+		}
+
 		${ defaultButtonColors }
 		${ primaryButtonColors }
 		${ secondaryButtonColors }
