@@ -29,6 +29,7 @@ module.exports = function(dependencies) {
 		var labels = extend(true, {}, defaultLabels, config.labels);
 
 		var color = config.color;
+		var arrowDir = config.arrowDir || "up";
 
 		var pickerEnabled = ko.observable(false);
 
@@ -79,6 +80,7 @@ module.exports = function(dependencies) {
 		
 		return {
 			labels: labels,
+			arrowDir: arrowDir,
 			inputColor: inputColor,
 			color: validColor,
 			pickerEnabled: pickerEnabled,

@@ -12,14 +12,21 @@
 			<div class="error" data-bind="text: error"></div>
 		<!-- /ko -->
 	</div>
-
-	<knob-tooltip class="light arrow-up subright picker-tooltip" data-bind="visible: pickerEnabled">
-		<color-picker params="
-			currentColor: color,
-			hideCallback: hidePicker
-		"></color-picker>
-	</knob-tooltip>
+	<!-- ko if: arrowDir === "up" -->
+		<knob-tooltip class="light arrow-up subright picker-tooltip" data-bind="visible: pickerEnabled">
+			<color-picker params="
+				currentColor: color,
+				hideCallback: hidePicker
+			"></color-picker>
+		</knob-tooltip>
+	<!-- /ko -->
+	<!-- ko if: arrowDir === "down" -->
+		<knob-tooltip class="light arrow-down subright picker-tooltip" data-bind="visible: pickerEnabled">
+			<color-picker params="
+				currentColor: color,
+				hideCallback: hidePicker
+			"></color-picker>
+		</knob-tooltip>
+	<!-- /ko -->
 
 </div>
-
-
