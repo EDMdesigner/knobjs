@@ -6,5 +6,6 @@ var core = require("./core");
 
 module.exports = core({
 	ko: ko,
-	extend: extend
+	extend: extend,
+	window: window
 });
