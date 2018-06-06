@@ -1,5 +1,5 @@
-<div class="color-picker">
-	<div class="color-picker-container">
+<div class="color-picker" data-bind="event: {click: (data, event) => { event.stopPropagation();}}">
+	<div class="color-picker-container" data-bind="event: { blur: hideCallback }">
 
 		<div class="first-wrapper">
 			<div data-bind="colorjoe: currentColor"></div>

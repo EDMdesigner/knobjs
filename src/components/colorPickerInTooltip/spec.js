@@ -6,9 +6,20 @@ var superschema = require("superschema");
 
 var core = require("./core");
 
+var mockedWindow = {
+	addEventListener: (type, callback) => callback(mockedEvent),
+	removeEventListener: jasmine.createSpy(),
+	setTimeout: () => {}
+};
+
+const mockedEvent = {
+	event: "click"
+};
+
 var dependencies = {
 	ko: ko,
-	extend: extend
+	extend: extend,
+	window: mockedWindow
 };
 
 var mockedColor = ko.observable("#00bee6");
@@ -53,6 +64,7 @@ describe("color picker in use test", function() {
 			createVm = core(dependencies);
 			vm = createVm(config);
 			spyOn(vm, "error").and.callThrough();
+			spyOn(dependencies.window, "addEventListener").and.callThrough();
 		});
 
 		it("interface check", function() {
@@ -65,12 +77,16 @@ describe("color picker in use test", function() {
 			expect(vm.pickerEnabled()).toBe(false);
 			vm.showPicker();
 			expect(vm.pickerEnabled()).toBe(true);
+			dependencies.window.setTimeout(function() {
+				expect(dependencies.window.addEventListener).toHaveBeenCalledWith("click", vm.hidePicker);
+			});
 		});
 
 		it("hidePicker function", function() {
 			vm.pickerEnabled(false);
 			vm.hidePicker();
 			expect(vm.pickerEnabled()).toBe(false);
+			expect(dependencies.window.removeEventListener).toHaveBeenCalled();
 		});
 	});
 });

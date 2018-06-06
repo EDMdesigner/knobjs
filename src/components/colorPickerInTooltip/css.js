@@ -42,13 +42,28 @@ let cssTemplate = `
 		background: #fff;
 		width: 93%;
 	}
-	.picker-tooltip > .knob-tooltip-wrapper {
+	knob-tooltip.light.arrow-down.subright.picker-tooltip > .knob-tooltip-wrapper > .tooltip {
+		margin-right: 25px;
+		background: #fff;
+		width: 93%;
+	}
+	knob-tooltip.light.arrow-up.subright.picker-tooltip > .knob-tooltip-wrapper {
 		position: absolute;
 		right: 0;
 		margin-right: -7px;
 		margin-top: 10px;
 	}
+	knob-tooltip.light.arrow-down.subright.picker-tooltip > .knob-tooltip-wrapper {
+		position: absolute;
+		right: 0;
+		margin-right: -7px;
+		margin-top: -200px;
+	}
 	knob-tooltip.light.arrow-up.subright.picker-tooltip > .knob-tooltip-wrapper > .tooltip::after {
+		right: 30px;
+		margin-bottom: -10px;
+	}
+	knob-tooltip.light.arrow-down.subright.picker-tooltip > .knob-tooltip-wrapper > .tooltip::after {
 		right: 30px;
 		margin-bottom: -10px;
 	}
