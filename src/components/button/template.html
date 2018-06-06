@@ -21,7 +21,7 @@
 			<img class="img" data-bind="attr: { src: rightImage, alt:'Image not found' }"/>
 	</span>
 	<!-- ko if: counter -->
-		<div class="counter">
+		<div class="counter" data-bind="css: {'counter-error': counter.actualNumber >= counter.limitNumber}">
 			<span data-bind="text: counter.actualNumber"></span>
 			<span>/</span>
 			<span data-bind="text: counter.limitNumber"></span>
