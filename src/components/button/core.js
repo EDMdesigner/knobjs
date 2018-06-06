@@ -105,8 +105,8 @@ module.exports = function(dependencies) {
 
 		if(config.actualNumber && config.limitNumber) {
 			vm.counter = {
-				actualNumber: ko.unwrap(config.actualNumber),
-				limitNumber: ko.unwrap(config.limitNumber)
+				actualNumber: config.actualNumber,
+				limitNumber: config.limitNumber
 			};
 		} else {
 			vm.counter = false;

@@ -238,9 +238,9 @@ module.exports = function(config) {
 			color: ${ config.light };
 		}
 
-		.counter-error {
-			background: ${config.error} !important;
-			color: white !important;
+		.counter-error .counter {
+			background: ${config.error};
+			color: white;
 		}
 
 		${ defaultButtonColors }
