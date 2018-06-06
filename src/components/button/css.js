@@ -150,6 +150,7 @@ module.exports = function(config) {
 			text-align: center;
 			touch-action: manipulation;
 			border: 1px solid;
+			position: relative;
 		}
 		.rounded .knob-button {
 			border-radius: 6px;
@@ -191,17 +192,63 @@ module.exports = function(config) {
 			cursor: not-allowed;
 		}
 
+		.counter {
+			position: absolute;
+			font-size: 12px;
+			border-radius: 3px;
+			padding: 2px 4px;
+			width: max-content;
+			right: -15px;
+			bottom: -15px;
+			z-index: 1;
+		}
+
+		.counter-default .counter {
+			background: black;
+			color: white;
+		}
+
+		.counter-primary .counter {
+			background: ${config.secondary};
+			color: ${config.primary};
+		}
+
+		.counter-secondary .counter {
+			background: ${config.primary};
+			color: ${config.secondary};
+		}
+
+		.counter-light .counter {
+			background: ${ config.light };
+			color: ${ config.dark };
+		}
+
+		.counter-dark .counter {
+			background: ${ config.dark };
+			color: ${ config.light };
+		}
+
+		.counter-warm-gray .counter {
+			background: ${ config.warmGray };
+			color: ${ config.light };
+		}
+
+		.counter-dark-gray .counter {
+			background: ${ config.darkGray };
+			color: ${ config.light };
+		}
+
 		${ defaultButtonColors }
 		${ primaryButtonColors }
 		${ secondaryButtonColors }
 		${ infoButtonColors }
 		${ warningButtonColors }
 		${ successButtonColors }
-		${ errorButtonColors }	
+		${ errorButtonColors }
 		${ createLinkButtonShades() }	
 		${ createGhostButtonShades() }	
 		${ createDarkButtonShades() }	
-		${ createLightButtonShades() }	
+		${ createLightButtonShades() }
 	`;
 
 	return cssTemplate;

@@ -103,6 +103,15 @@ module.exports = function(dependencies) {
 
 		vm.click = clickCb;
 
+		if(config.actualNumber && config.limitNumber) {
+			vm.counter = {
+				actualNumber: config.actualNumber,
+				limitNumber: config.limitNumber
+			};
+		} else {
+			vm.counter = false;
+		}
+
 		return vm;
 	};
 };
