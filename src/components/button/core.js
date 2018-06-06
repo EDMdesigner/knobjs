@@ -109,7 +109,7 @@ module.exports = function(dependencies) {
 				limitNumber: config.limitNumber
 			};
 		} else {
-			vm.counter = ko.observable(false);
+			vm.counter = false;
 		}
 
 		return vm;
