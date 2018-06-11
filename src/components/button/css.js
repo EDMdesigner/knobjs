@@ -192,7 +192,7 @@ module.exports = function(config) {
 			cursor: not-allowed;
 		}
 
-		.counter {
+		#counter {
 			position: absolute;
 			font-size: 12px;
 			border-radius: 3px;
@@ -203,44 +203,44 @@ module.exports = function(config) {
 			z-index: 1;
 		}
 
-		.counter-default .counter {
+		.counter-default #counter {
 			background: black;
 			color: white;
 		}
 
-		.counter-primary .counter {
+		.counter-primary #counter {
 			background: ${config.secondary};
 			color: ${config.primary};
 		}
 
-		.counter-secondary .counter {
+		.counter-secondary #counter {
 			background: ${config.primary};
 			color: ${config.secondary};
 		}
 
-		.counter-light .counter {
+		.counter-light #counter {
 			background: ${ config.light };
 			color: ${ config.dark };
 		}
 
-		.counter-dark .counter {
+		.counter-dark #counter {
 			background: ${ config.dark };
 			color: ${ config.light };
 		}
 
-		.counter-warm-gray .counter {
+		.counter-warm-gray #counter {
 			background: ${ config.warmGray };
 			color: ${ config.light };
 		}
 
-		.counter-dark-gray .counter {
+		.counter-dark-gray #counter {
 			background: ${ config.darkGray };
 			color: ${ config.light };
 		}
 
-		.counter-error .counter {
-			background: ${config.error};
-			color: white;
+		.counter-error {
+			background: ${config.error} !important;
+			color: white !important;
 		}
 
 		${ defaultButtonColors }
