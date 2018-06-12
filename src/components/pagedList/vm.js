@@ -7,5 +7,6 @@ var pagedListCore = require("./core");
 
 module.exports = pagedListCore({
 	ko: ko,
-	createList: createList
+	createList: createList,
+	document: document
 });

@@ -5,7 +5,7 @@ var defaultPaddingInterval = 300; // in ms
 
 module.exports = function pagedListCore(dependencies) {
 
-	var obligatoryDeps = ["ko", "createList"];
+	var obligatoryDeps = ["ko", "createList", "document"];
 
 	for (var i = 0; i < obligatoryDeps.length; i += 1) {
 		if (typeof dependencies[obligatoryDeps[i]] === "undefined") {
@@ -15,6 +15,8 @@ module.exports = function pagedListCore(dependencies) {
 
 	var ko = dependencies.ko;
 	var createList = dependencies.createList;
+	const document = dependencies.document;
+	let customId = 0;
 
 	return function createPagedList(config) {
 		config = config || {};
@@ -70,6 +72,9 @@ module.exports = function pagedListCore(dependencies) {
 			throw new Error("config.padding has to be a number");
 		}
 
+		customId += 1;
+		var actId = customId;
+
 		var name = config.name;
 		var hasFakeItems = !!config.fakeListItems;
 
@@ -77,8 +82,11 @@ module.exports = function pagedListCore(dependencies) {
 		var store = config.store;
 
 		store.load.before.add(beforeLoad);
+		store.load.after.add(() => setTimeout(afterLoad));
 
 		var list = createList(config);
+		list.customId = customId;
+		list.actId = actId;
 
 		var numOfPages = ko.observable();
 		var itemsPerPage = ko.observable(10);
@@ -209,6 +217,11 @@ module.exports = function pagedListCore(dependencies) {
 
 		function beforeLoad() {
 			list.items([]);
+		}
+
+		function afterLoad() {
+			const input = document.getElementsByClassName(`pagedlist-search${actId}`)[0];
+			return input ? input.removeAttribute("disabled") : console.warn(`No input found for class: pagedlist-search${actId}!`);
 		}
 
 		return list;
