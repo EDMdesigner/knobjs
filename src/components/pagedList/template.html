@@ -5,7 +5,7 @@
 
 	<div>
 		<div class="knob-pagelist__bar">
-			<input class="knob-input" type="text" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
+			<input class="knob-input" type="text" value="" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
 			<knob-button class="knob-button-search" params="label: '',
 								variation: 'default',
 								icon: icons.search">
@@ -20,7 +20,7 @@
 				<knob-dropdown class="knob-dropdown" params="rightIcon: icons.dropdown, selectedIdx: sortIdx, selected: sort, items: sortOptions"></knob-dropdown>
 			<!-- /ko -->
 		</div>
-		
+
 		<!-- ko if: !loading() -->
 			<ul data-bind="css: listClass, attr: { id: randomID } ">
 				<!-- ko foreach: items -->
