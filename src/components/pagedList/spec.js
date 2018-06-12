@@ -7,11 +7,19 @@ var createProxy = superdata.proxy.memory;
 var createModel = superdata.model.model;
 var createStore = superdata.store.store;
 
-var createPagedList = require("./vm");
 
 describe("pagedList", function() {
 
 	describe("- with invalid config", function() {
+		var createPagedList;
+		beforeEach(() => {
+			createPagedList = pagedListCore({
+				ko,
+				createList: () => {},
+				document: {}
+			});
+		});
+
 		it("missing config", function() {
 			expect(createPagedList).toThrowError("config.store is mandatory!");
 		});
@@ -31,7 +39,7 @@ describe("pagedList", function() {
 		});
 
 		it("config.icons missing", function() {
-			expect(function() {	
+			expect(function() {
 				createPagedList({
 					store: "store",
 					labels: {
@@ -184,6 +192,7 @@ describe("pagedList", function() {
 		var model;
 		var store;
 		var pagedList;
+		var createPagedList;
 
 		describe("with vm", function() {
 
@@ -241,10 +250,31 @@ describe("pagedList", function() {
 					}
 				};
 
+				createPagedList = pagedListCore({
+					ko,
+					createList: () => {
+						return {
+							sortOptions: [1],
+							findSortIdx: function() {
+								return 0;
+							},
+							sort: ko.observable(1),
+							skip: ko.observable(),
+							limit: ko.observable(),
+							search: ko.observable(),
+							initStoreHandling: function() {},
+							items: function() {},
+							itemsPerPage: function() {}
+						};
+					},
+					document: {}
+				});
+
 				pagedList = createPagedList(config);
 			});
 
 			it("interface", function() {
+				console.log(pagedList.limit);
 				expect(ko.isObservable(pagedList.numOfPages)).toBe(true);
 				expect(ko.isObservable(pagedList.itemsPerPage)).toBe(true);
 				expect(ko.isObservable(pagedList.currentPage)).toBe(true);
@@ -269,8 +299,17 @@ describe("pagedList", function() {
 				var createPagedListWithMockCreateList;
 				var mockStateModel;
 				var mockList;
+				var mockDocument;
 
 				beforeAll(function() {
+					mockDocument = {
+						getElementsByClassName: () => {
+							return [{
+								setAttribute: () => {}
+							}];
+						}
+					};
+
 					mockList = {
 						sortOptions: [1],
 						findSortIdx: function() {
@@ -304,7 +343,8 @@ describe("pagedList", function() {
 
 					createPagedListWithMockCreateList = pagedListCore({
 						ko: ko,
-						createList: mockCreateList
+						createList: mockCreateList,
+						document: mockDocument
 					});
 
 					proxy = createProxy({

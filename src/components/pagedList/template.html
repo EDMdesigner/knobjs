@@ -5,7 +5,7 @@
 
 	<div>
 		<div class="knob-pagelist__bar">
-			<input class="knob-input" type="text" value="" data-bind="value: search, valueUpdate: 'afterkeydown'"/>
+			<input class="knob-input" type="search" data-bind="value: search, valueUpdate: 'afterkeydown', attr: {name: 'customName' + actId, autocomplete: 'off', disabled: true, class:'knob-input pagedlist-search' + actId}"/>
 			<knob-button class="knob-button-search" params="label: '',
 								variation: 'default',
 								icon: icons.search">
