@@ -17,7 +17,7 @@ var defaultLabels = {
 	warning: "Warning",
 	success: ""
 };
-var defaultTTL = 10000; // in ms
+var defaultTTL = 2000; // in ms
 var maxLoadingTTL = 20000; // in ms
 
 module.exports = function(dependencies) {
