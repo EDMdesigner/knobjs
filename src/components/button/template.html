@@ -1,4 +1,4 @@
-<button class="knob-button" data-bind="click: click, disable: disabled, event: {mousedown: (data, event) => {event.stopPropagation(); currentStyle('active');}}">
+<button class="knob-button" data-bind="click: click, disable: disabled, event: {mousedown: function(data, event) {event.stopPropagation(); currentStyle('active');}}">
 	<span class="icon-wrapper" data-bind="if: leftImage">
 			<img class="img" data-bind="attr: { src: leftImage, alt:'Image not found' }"/>
 	</span>
