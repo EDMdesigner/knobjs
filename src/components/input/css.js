@@ -109,6 +109,9 @@ let cssTemplate = `
   font-size: inherit;
   white-space: nowrap;
 }
+.knob-input > input {
+  line-height: 1em;
+}
 `;
 	return cssTemplate;
 };
