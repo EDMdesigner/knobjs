@@ -15,8 +15,8 @@
 			</div>
 			<p class="picker-label" data-bind="text: labels.transparent"></p>
 			<span class="sample transparent" data-bind="
-				style: { 'background-color': 'transparent' },
-				click: function() { currentColor(''); }
+				style: { 'background-color': '' },
+				click: function() { console.log('CLICKED TRANSPARENT'); currentColor('transparent'); }
 			"></span>
 			
 			<knob-button class="rounded picker-btn" params="

@@ -49,19 +49,24 @@ module.exports = function(dependencies) {
 
 		var validColor = ko.computed({
 			read: function() {
+				console.log("fasza read func", color());
+				
 				return color();
 			},
 			write: function(newValue) {
 				error("");
 
 				if (newValue === "") {
-					return color("");
+					console.log("insde");
+					return color("transparent");
 				}
 
 				var hexCodeRegex = /^#([A-Fa-f0-9]{6})$/;
-				if (!hexCodeRegex.test(newValue)) {
+				if (!hexCodeRegex.test(newValue) && newValue !== "transparent") {
 					return error(labels.error);
 				}
+
+				console.log("KNOB PICKER UPDATED");
 
 				color(newValue);
 			}
@@ -72,6 +77,7 @@ module.exports = function(dependencies) {
 				return validColor();
 			},
 			write: function(newValue) {
+				console.log("KNOB INPUT UPDATED");
 				validColor(newValue);
 			}
 		}).extend({
