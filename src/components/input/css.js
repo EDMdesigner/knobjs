@@ -110,7 +110,7 @@ let cssTemplate = `
   white-space: nowrap;
 }
 .knob-input > input {
-  line-height: 1em;
+  line-height: 2rem;
 }
 `;
 	return cssTemplate;
