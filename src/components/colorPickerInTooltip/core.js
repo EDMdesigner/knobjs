@@ -49,17 +49,18 @@ module.exports = function(dependencies) {
 
 		var validColor = ko.computed({
 			read: function() {
+				
 				return color();
 			},
 			write: function(newValue) {
 				error("");
 
 				if (newValue === "") {
-					return color("");
+					return color("transparent");
 				}
 
 				var hexCodeRegex = /^#([A-Fa-f0-9]{6})$/;
-				if (!hexCodeRegex.test(newValue)) {
+				if (!hexCodeRegex.test(newValue) && newValue !== "transparent") {
 					return error(labels.error);
 				}
 
