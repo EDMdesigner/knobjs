@@ -1,12 +1,22 @@
 <div class="knob-numericInput variation-back" data-bind="if: layoutArrangement === 'back'">
 
 	<!-- pre input placeholder -->
-	<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+	<!-- ko ifnot: immediateEvaluation -->
+		<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+			value: inputFieldValue,
+			left: left,
+			right: right
+		">
+		</knob-input>
+	<!-- /ko -->
+	<!-- ko if: immediateEvaluation -->
+		<knob-input params="
 		value: inputFieldValue,
 		left: left,
 		right: right
-	">
-	</knob-input>
+		">
+		</knob-input>
+	<!-- /ko -->
 	<div class="numericInputButtonsWrapper">
 		<div class="numerInputIncreaseWrapper">
 			<span class="control-button">
@@ -46,12 +56,22 @@
 			</knob-button>
 		</span>
 	</div>
-	<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+	<!-- ko ifnot: immediateEvaluation -->
+		<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+			value: inputFieldValue,
+			left: left,
+			right: right
+		">
+		</knob-input>
+	<!-- /ko -->
+	<!-- ko if: immediateEvaluation -->
+		<knob-input params="
 		value: inputFieldValue,
 		left: left,
 		right: right
-	">
-	</knob-input>
+		">
+		</knob-input>
+	<!-- /ko -->
 	<div class="numerInputIncreaseWrapper">
 		<span class="control-button">		
 			<knob-button params="
@@ -88,12 +108,22 @@
 		</span>
 	</div>
 	<!-- pre input placeholder -->
-	<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+	<!-- ko ifnot: immediateEvaluation -->
+		<knob-input data-bind="event: { change: inputChangeHandler }, enterkey: inputChangeHandler" params="
+			value: inputFieldValue,
+			left: left,
+			right: right
+		">
+		</knob-input>
+	<!-- /ko -->
+	<!-- ko if: immediateEvaluation -->
+		<knob-input params="
 		value: inputFieldValue,
 		left: left,
 		right: right
-	">
-	</knob-input>
+		">
+		</knob-input>
+	<!-- /ko -->
 	
 	<!-- post input placeholder -->
 </div>

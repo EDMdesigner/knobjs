@@ -82,6 +82,7 @@ module.exports = function(dependencies) {
 		var timeoutDecrement = config.timeoutDecrement || 100;
 		var baseTimeout = config.baseTimeout || 500;
 		var layoutArrangement = config.layoutArrangement || "back";
+		var immediateEvaluation = config.immediateEvaluation || false;
 
 		var icons = config.icons;
 		var timer;
@@ -92,6 +93,9 @@ module.exports = function(dependencies) {
 			},
 			write: function(val) {
 				inputValue(val);
+				if(immediateEvaluation){
+					inputChangeHandler();
+				}
 			}
 		});
 
@@ -265,7 +269,8 @@ module.exports = function(dependencies) {
 			triggerOnHold: triggerOnHold,
 			layoutArrangement: layoutArrangement,
 			reachedMinValue: reachedMinValue,
-			reachedMaxValue: reachedMaxValue
+			reachedMaxValue: reachedMaxValue,
+			immediateEvaluation: immediateEvaluation
 		};
 	};
 };
