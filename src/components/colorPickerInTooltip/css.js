@@ -24,6 +24,11 @@ let cssTemplate = `
 		border-width: 2px;
 		border-bottom-color: ${ config.darkGray };
 	}
+	.color-picker-in-tooltip .backgroundElementsHolder > knob-input > .knob-input.active:hover {
+		border-top-color: transparent;
+		border-left-color: transparent;
+		border-right-color: transparent;
+	}
 	.color-picker-in-tooltip .backgroundElementsHolder > knob-input > .knob-input > input {
 		margin-left: -13px;
 		color: ${ config.darkGray };

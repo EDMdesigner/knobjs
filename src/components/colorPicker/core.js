@@ -68,6 +68,7 @@ module.exports = function(dependencies) {
 
 		var currentColor = config.currentColor;
 		var hideCallback = config.hideCallback;
+		var inputFieldColor = config.inputFieldColor;
 
 		setTimeout(function() {
 			var joe = colorjoe.rgb("rgbPicker", currentColor());
@@ -77,6 +78,12 @@ module.exports = function(dependencies) {
 			});
 		}, 3000);
 	
+		ko.computed(function(){
+			if (inputFieldColor()) {
+				colorPickerButtonClick();
+			}
+		});			
+
 		var colorPickerButton = {
 			label: defaultLabels.colorPickerButton,
 			click: colorPickerButtonClick
@@ -89,13 +96,15 @@ module.exports = function(dependencies) {
 			
 			var lastColor = currentColor();
 
-			if (lastUsedColors.indexOf(lastColor) > -1) {
-				lastUsedColors.remove(lastColor);
-			} else {
-				lastUsedColors.pop();
+			if(lastUsedColors()[0] !== lastColor){
+				if (lastUsedColors.indexOf(lastColor) > -1) {
+					lastUsedColors.remove(lastColor);
+				} else {
+					lastUsedColors.pop();
+				}
+	
+				lastUsedColors.unshift(lastColor);
 			}
-
-			lastUsedColors.unshift(lastColor);
 		}
 		
 		return {

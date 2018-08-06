@@ -36,7 +36,8 @@ var mockedCurrentColor = ko.observable("randomColor");
 
 var config = {
 	currentColor: mockedCurrentColor,
-	hideCallback: jasmine.createSpy()
+	hideCallback: jasmine.createSpy(),
+	inputFieldColor: jasmine.createSpy()
 };
 
 var interfacePattern = {

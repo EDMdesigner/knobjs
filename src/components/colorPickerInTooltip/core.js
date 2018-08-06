@@ -30,6 +30,7 @@ module.exports = function(dependencies) {
 
 		var color = config.color;
 		var arrowDir = config.arrowDir || "up";
+		var inputFieldColor = ko.observable(false);
 
 		var pickerEnabled = ko.observable(false);
 
@@ -63,7 +64,7 @@ module.exports = function(dependencies) {
 				if (!hexCodeRegex.test(newValue) && newValue !== "transparent") {
 					return error(labels.error);
 				}
-
+				inputFieldColor(false);
 				color(newValue);
 			}
 		});
@@ -74,6 +75,9 @@ module.exports = function(dependencies) {
 			},
 			write: function(newValue) {
 				validColor(newValue);
+				if (newValue === validColor()) {
+					inputFieldColor(true);
+				}
 			}
 		}).extend({
 			throttle: 1000
@@ -87,6 +91,7 @@ module.exports = function(dependencies) {
 			pickerEnabled: pickerEnabled,
 			hidePicker: hidePicker,
 			showPicker: showPicker,
+			inputFieldColor: inputFieldColor,
 
 			error: error
 		};
