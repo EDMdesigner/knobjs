@@ -78,7 +78,7 @@ module.exports = function(dependencies) {
 			});
 		}, 3000);
 	
-		ko.computed(function(){
+		var inputColorFiledChanged = ko.computed(function(){
 			if (inputFieldColor()) {
 				colorPickerButtonClick();
 			}
@@ -112,7 +112,10 @@ module.exports = function(dependencies) {
 			currentColor: currentColor,
 			hideCallback: hideCallback,
 			lastUsedColors: lastUsedColors,
-			colorPickerButton: colorPickerButton
+			colorPickerButton: colorPickerButton,
+			dispose: function () {
+				inputColorFiledChanged.dispose();
+			}
 		};
 	};
 };

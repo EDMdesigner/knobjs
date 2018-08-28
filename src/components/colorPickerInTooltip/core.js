@@ -92,6 +92,10 @@ module.exports = function(dependencies) {
 			hidePicker: hidePicker,
 			showPicker: showPicker,
 			inputFieldColor: inputFieldColor,
+			dispose: function () {
+				inputColor.dispose();
+				validColor.dispose();
+			},
 
 			error: error
 		};
