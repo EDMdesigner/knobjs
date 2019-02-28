@@ -6,6 +6,7 @@ module.exports = function(colors) {
 		.notification-handler {
 			position: fixed;
 			top: 0;
+			left: 0;
 			width: 100%;
 			z-index: 10000000;
 			box-sizing: border-box;
