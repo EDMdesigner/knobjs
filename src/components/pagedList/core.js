@@ -220,13 +220,15 @@ module.exports = function pagedListCore(dependencies) {
 		}
 
 		function afterLoad() {
-			const input = document.getElementsByClassName(`pagedlist-search${actId}`)[0];
+			return setTimeout(() => {
+				const input = document.getElementsByClassName(`pagedlist-search${actId}`)[0];
 
-			if (input.value !== list.search()) {
-				input.value = "";
-			}
+				if (input.value !== list.search()) {
+					input.value = "";
+				}
 
-			return input ? input.removeAttribute("disabled") : console.warn(`No input found for class: pagedlist-search${actId}!`);
+				return input ? input.removeAttribute("disabled") : console.warn(`No input found for class: pagedlist-search${actId}!`);
+			}, 2500);
 		}
 
 		return list;
